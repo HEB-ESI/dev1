@@ -7,11 +7,16 @@
 Les notes sont générées à partir d'un document *markdown*/*LaTeX*. Lorsque
 *markdown* ne permet pas de faire ce que l'on veut, on ajoute du *LaTeX*. 
 
-Les fichiers pdf sont générés en utilisant **pandoc**. 
+Les fichiers pdf sont générés en utilisant **pandoc**[^pourquoi-latex_macros]. 
 
 ```
-pandoc example.md -o example.pdf --highlight-style=tango
+pandoc reference-organigramme.md -o reference-organigramme.md.pdf\
+    --highlight-style=tango -f markdown-latex_macros
 ```
+
+[^pourquoi-latex_macros]: L'option `-f markdown-latex_macros` indique
+à pandoc de ne pas faire trop le malin et de laisser les commandes
+LaTeX à LaTeX. cf http://pandoc.org/MANUAL.html#latex-macros
 
 Pour les **organigrammes**, inclure la feuille de style `esi-flowchart.sty` qui 
 contient un exemple d'utilisation. 
