@@ -18,9 +18,27 @@ contient un exemple d'utilisation.
 
 ### Prérequis
 
-- *pandoc*
+- *pandoc* (voir ci-dessous)
 - *LaTeX* et les packages renseignés en début de fichiers
+
+#### Installation de pandoc
+Pour installer pandoc sur les ordi de l'école pour utilisation dans Git Bash:
+(Adapté de: https://pandoc.org/installing.html)
+
+- (S'assurer que MikTeX parvient à installer des packages s'il en a besoin.)
+- Télécharger https://github.com/jgm/pandoc/releases/download/2.2/pandoc-2.2-windows-x86_64.zip
+- Dézipper dans un répertoire de votre choix (j'utilise `z:\opt` car `z:\` est le $HOME dans Git Bash)
+- Depuis Git Bash : Ajouter ce répertoire à votre PATH (.bashrc) *ou* créer un lien symbolique depuis `z:\bin` (car ce dernier est déjà dans votre PATH)
+  ```
+  ln -sv ~/opt/pandoc-2.2/pandoc.exe ~/bin/
+  ```
+
+- Enjoy ! Testez avec
+  ```
+  pandoc -o README.pdf README.md
+  ```
 
 ## Auteurs
 
-Pierre Bettens <pbettens@he2b.be>
+- Pierre Bettens <pbettens@he2b.be>
+- Nicolas Richard <nrichard@he2b.be>
