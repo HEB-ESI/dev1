@@ -18,8 +18,8 @@ Ressources pour toute l'UE DEV1.
 .
 ├── cc-by-sa.png
 ├── cours-developpement
-├── laboratoire-environnement
-├── laboratoire-java
+├── labo-cli
+├── labo-java
 ├── references
 └── README.md
 ```
