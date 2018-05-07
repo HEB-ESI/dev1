@@ -17,7 +17,7 @@ header-includes:
 	- \renewcommand{\contentsname}{}
 	- \usepackage{wallpaper}
 	- \DeclareUnicodeCharacter{22C5}{·}
-    - \usepackage{minitoc}
+	- \usepackage{minitoc}
 	- \usepackage{pdfpages}
 	- \setcounter{secttocdepth}{3}
 	- \renewcommand{\stctitle}{}
