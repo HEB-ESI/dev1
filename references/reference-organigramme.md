@@ -149,7 +149,7 @@ la méthode que l'on décrit.
 
 \begin{floatingfigure}[r]{.3\linewidth}
 	\begin{tikzpicture}[node distance=2cm]
-		\node (subprocess) [subprocess] {Appel de procédure};
+		\node (subprocess) [subprocess] {\nodepart{two} Appel de procédure};
 	\end{tikzpicture}
 \end{floatingfigure}
 
