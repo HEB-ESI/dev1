@@ -15,6 +15,10 @@ Quelques pistes pour le cours de dev1-java
     *  [**"Introduction To Javascript"**](https://www.codecademy.com/learn/introduction-to-javascript)(15 badges minimum)
 ([lien](https://www.codecademy.com/learn/introduction-to-javascript))
     * [**"Learn Git"**](https://www.codecademy.com/learn/learn-git) (6 badges minimum) ([lien](https://www.codecademy.com/learn/learn-git))
+   * les étudiants ne peuvent poser de questions que sous forme de propositions de réponse après avoir effectué
+     personnellement ou en groupe des recherches et avoir discuté des réponses (les discussions sont très importantes)
+   * les étudiants ne peuvent, pas plus que les enseignants, invoquer des excuses. Comme dans le monde professionnel,
+     ils doivent plutôt faire des propositions de réparation.
 4. utiliser dès le début des notes de référence principalement en anglais. Que dès le début de la formation, l'anglais
    soit la langue véhiculaire des documents écrits, même si le cours oral, les explications par les 
    enseignants, les discussions entre eux ... sont en français. Ceci en outre nous ouvre sur plus de documents utilisables 
