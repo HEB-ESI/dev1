@@ -1,0 +1,339 @@
+% ===============================================================
+% Feuille de style LaTeX pour produire des notes de cours à l'ESI
+% Marco Codutti, Mai 2013 - Licence CC-BY
+%
+% Utilisation.
+% Le fichier sample.tex donne un exemple d'utilisation. (pas à jour)
+% ===============================================================
+
+
+% ===================================================
+%   Les gros éléments de mise en page
+% ===================================================
+
+
+% Spécifie que les fichiers sources sont codés en UTF8
+% http://www.ctan.org/pkg/inputenc
+% ----------------------------------------------------
+\usepackage[utf8]{inputenc}
+
+% Francisation des textes
+% http://en.wikibooks.org/wiki/LaTeX/Internationalization#Babel
+% -------------------------------------------------------------
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}		% Permet de taper des accents
+
+% Plus belles polices vectorielles que computer roman
+% http://www.tug.dk/FontCatalogue/lmodern/
+% -------------------------------------------------------------
+\usepackage{lmodern}			
+
+% Régler les marges des pages + pas de header
+% http://www.ctan.org/pkg/geometry
+% \usepackage{fullpage}	: alternative (pas de contrôle)
+% -------------------------------------------------------------
+\usepackage[hmargin=3.5cm,vmargin=3.5cm,nohead]{geometry}
+
+% Enlever l'indentation de chaque première ligne de paragraphe
+% + legèr espace entre les paragraphes.
+% http://www.ctan.org/pkg/parskip
+% -------------------------------------------------------------
+\usepackage{parskip}
+
+% Permet d'avoir des couleurs
+% usenames et dvipsnames pour noms prédéfinis
+% http://www.ctan.org/pkg/xcolor
+% -------------------------------------------------------------
+\usepackage[usenames,dvipsnames,table]{xcolor} 
+
+% Permet de barrer, souligner, ...
+% Pour barrer : \sout{texte}
+% -------------------------------------------------------------
+\usepackage[normalem]{ulem}
+
+% Gestion des images.
+% Les images sont dans le dossier eponyme.
+% http://www.ctan.org/pkg/graphicx
+% -------------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{../images/}}	
+
+% Permet d'afficher qqchose à une positin absolue
+% http://www.ctan.org/pkg/textpos
+% -------------------------------------------------------------
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{\TPHorizModule}
+
+% Permet d'écrire des si-sinon dans les commandes
+% Utilisé par maketitle
+% http://www.ctan.org/pkg/ifthen
+% -------------------------------------------------------------
+\usepackage{ifthen}
+
+% Permet d'avoir des références plus lisibles 
+% ex: cf. figure 1 page suivante.
+% http://www.ctan.org/pkg/varioref
+% -------------------------------------------------------------
+\usepackage[french]{varioref}
+
+% Meilleure tables
+% -------------------------------------------------------------
+\usepackage{array}
+
+% Plus de choix dans les bords autour de texte
+% -------------------------------------------------------------
+\usepackage{fancybox}
+
+% Utile pour mettre des todos en marge lors du développement
+% -------------------------------------------------------------
+\usepackage{todonotes}
+
+% Permet d'avoir les numéros de (sub)sections dans la marge
+% Tiré de "Latex Howtos" de Sébastien Combéfis
+% -------------------------------------------------------------
+\makeatletter
+\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\quad}}
+\makeatother
+
+% Un grand contrôle sur l'aspect des listes
+% Note: bizarrement, \setlist ne fonctionne pas (\itemize avec options non plus) 
+% (clash avec un autre package ?)
+% -------------------------------------------------------------
+\usepackage{enumitem}
+\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
+% Environnement liste, alternative à itemize, plus aéré.
+\newlist{liste}{itemize}{3}
+\setlist[liste]{label=--,leftmargin=8mm,itemsep=1mm}
+
+% Pour avoir \leftbar
+\usepackage{framed}
+
+% ===================================================
+%   Commandes pour simplifier l'écriture
+% ===================================================
+
+% Affiche un cadre coloré autour de texte, coloré aussi et en sansserif.
+% Pour encadré numéro d'exercice, de tutoriel, ....
+% -------------------------------------------------------------
+\newcommand{\Cadre}[1]{{
+	\sffamily
+	\color{MidnightBlue}
+	\Ovalbox{\ #1\ }
+}}
+
+
+
+% Crée un itemize spécial pour les tutos (bullet adapté)
+\usepackage{amssymb}
+\newlist{steps}{itemize}{3}
+\setlist[steps]{label=$\blacktriangleright$}
+
+% Pemet d'avoir un cadre ovale avec un titre
+% -------------------------------------------------------------
+\newcommand{\cadretitre}[2]{%
+  \boxput*(0,1){%
+	\colorbox{white}{\Large\textbf{\ #1\ }}%
+  }%
+  {%
+	\setlength{\fboxsep}{10pt}%
+    \Ovalbox{\begin{minipage}{\linewidth-24pt}#2\end{minipage}}}%
+  }
+
+% Modification du style pour les captions des figures
+\usepackage[font=scriptsize,labelfont=sc,position=below]{caption}
+
+% Note en marge
+\newcommand{\notemarge}[1]{%
+	\marginpar{\footnotesize\raggedright\itshape{}#1}%
+}
+% ===================================================
+% Définition des différents éléments de la 1ère page.
+% ===================================================
+
+% Permet une certaine customisation de la table des matières
+% -------------------------------------------------------------
+\addto{\captionsfrench}{\renewcommand*{\contentsname}{}}
+\setcounter{tocdepth}{1}
+
+% Gestion de l'entête et du pied de page
+% On modifie le style plain
+% - pas d'entête
+% - pied de page avec cours + n° leçon + n° page
+% La 1ère page sera mise en style empty
+% http://www.ctan.org/pkg/fancyhdr
+% -------------------------------------------------------------
+\usepackage{fancyhdr}	
+\fancypagestyle{plain}{				% Redéfinir le style plain
+	\fancyhf{} 						% Enlever tout
+	\fancyfoot[R]{						% Infos discrètes en bas à droite
+		\vspace{1.3\baselineskip}
+		\textcolor{gray}{
+			\ifthenelse{\equal{\unitname}{}}{		
+				\small\siglecours\ -- \titre\ --\ page \thepage
+			}{{
+				\small\siglecours\ -- \unitname\ \unitnum\ --\ page \thepage
+			}}			
+		}
+	}									
+	\renewcommand{\headrulewidth}{0pt} % pas de ligne en entête
+}
+
+% Logo de lécole
+% -------------------------------------------------------------
+\newcommand{\logo}{
+	\begin{textblock}{9}(0.9,1)
+	\includegraphics[width=0.4\textwidth]{../images/esi}
+	\end{textblock}
+}
+
+% Coordonnées de l'étudiant
+% -------------------------------------------------------------
+\newcommand{\infosetd}{
+	\begin{textblock}{9}(3.5,1)
+	\Ovalbox{
+		\begin{minipage}{8.4cm}
+			\sffamily
+			\medskip
+			Nom : {\color{lightgray}{\hrulefill}}\medskip
+
+			Prénom : {\color{lightgray}{\hrulefill}}\medskip
+
+			Groupe : {\color{lightgray}{\hrulefill}}
+		\end{minipage}
+	} 
+	\end{textblock}
+}
+
+% Cadre pour les points
+% -------------------------------------------------------------
+\newcommand{\points}[1]{
+	\begin{textblock}{9}(14,1)
+	\Ovalbox{
+		\begin{minipage}{3cm}
+			\sffamily
+			\vspace*{3\baselineskip}
+			\Large \hfill /\ #1
+		\end{minipage}
+	} 
+	\end{textblock}
+}
+
+% Définit le début du document : entête 1ère page
+% -------------------------------------------------------------
+\newcommand{\entete}{
+	% tout en plain (redéfini via fancyhdr)
+	\pagestyle{plain}
+	\thispagestyle{empty}
+	\vspace*{-1.7\baselineskip}
+	% En haut à gauche
+	\begin{minipage}{0.45\textwidth}
+		\large{\textsf{%
+			\ecole\\
+			\entite\\
+			\etude
+		}}
+	\end{minipage}
+	\hfill
+	% En haut à droite
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+		\large{\textsf{
+			\ladate\\
+			\siglecours\\
+			\auteur
+%			\textcolor{white}{.} % Meilleur alignement si même nb de lignes que partie gauche
+		}}
+		\end{flushright}
+	\end{minipage}
+	\vspace*{2\baselineskip}
+}
+
+% Définit le titre
+% Si pas de \unitname -> uniquement titre
+% sous-titre uniquement si présent
+% -------------------------------------------------------------
+\renewcommand{\maketitle}{
+	\textcolor{white}{.}
+	%\\\textcolor{white}{.}
+	\\\cadretitre{{\sffamily\cours}}{
+		\begin{center}
+		{
+			\medskip
+			\ifthenelse{\equal{\unitname}{}}{}
+			{
+				{\LARGE\sffamily\ \ \unitname\ \unitnum}
+			}
+			\ifthenelse{\equal{\titre}{}}{}
+			{
+				\vspace*{-0.5\baselineskip}
+				{\color{gray}{\\\rule{0.3\linewidth}{0.2mm}}}\\
+				\vspace*{0.25\baselineskip}
+				{\LARGE\sffamily\bfseries\titre}
+				\\[5pt]
+			}
+			\ifthenelse{\equal{\soustitre}{}}{}
+			{
+				{\large\itshape\soustitre}
+			}
+		}
+		\end{center}	
+	}
+	\vspace*{2\baselineskip}
+}
+
+% Un sommaire en 1ère page
+% -------------------------------------------------------------
+\newcommand{\sommaire}{
+	\vspace{3\baselineskip}
+	\hrulefill\textbf{\ \ \ Sommaire\ \ \ }\hrulefill
+	\vspace{-3\baselineskip}
+	\tableofcontents
+	\bigskip\hrule
+	\clearpage
+}
+
+% Affiche une licence en bas de page.
+% -------------------------------------------------------------
+\newcommand{\licence}{
+	\begin{textblock}{16}(3,27.3)
+		\includegraphics[width=20mm]{../images/cc-gris.jpg}
+	\end{textblock}
+	\begin{textblock}{16}(5.2,27.1)
+	\tiny{\color{gray}
+		Ce document est distribué sous licence Creative Commons Paternité - Partage à l'Identique 2.0 Belgique 
+		\\(http://creativecommons.org/licenses/by-sa/2.0/be/).
+		\\Les autorisations au-delà du champ de cette licence peuvent être obtenues à 
+		\siteentite{} - \texttt{\contact}.
+		}
+	\end{textblock}
+}
+
+% Affiche la date de dernière édition en bas de page.
+% -------------------------------------------------------------
+\newcommand{\lastedit}{
+	\begin{textblock}{16}(3,28)
+	\tiny{\color{gray}Version du document : \today}
+	\end{textblock}
+}
+
+
+% Url GitLab ESI
+\newcommand{\urlGitLab}{\url{https://git.esi.heb.be}}
+
+%Mise en forme du code au sein d'une ligne de texte
+\newcommand{\inlineCode}[1]{{\ttfamily{#1}}}
+\newcommand{\code}[1]{{\ttfamily{#1}}}
+
+  
+
+
+%==========
+% séparateur horizontal
+%==========
+\newcommand{\hspeparator}{
+	\noindent\hrulefill
+}
+
+
+

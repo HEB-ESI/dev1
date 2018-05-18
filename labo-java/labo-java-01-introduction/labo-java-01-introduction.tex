@@ -1,0 +1,287 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\input{../style/esi.sty}
+\input{../style/listing.sty}
+\input{../style/exercice.sty}
+\input{../style/links.sty}
+\input{../style/constantes.sty}
+
+
+%=========================
+% Titre et sous-titre
+%=========================
+\newcommand{\unitname}{\emph{TD1 - Introduction}}
+\newcommand{\unitnum}{}
+\newcommand{\titre}{Netbeans et Java}
+
+
+
+\begin{document}
+
+	\logo
+	\entete
+	\licence
+	\lastedit
+	\maketitle
+	\setcounter{tocdepth}{3}
+
+	%===================
+	%  Contenu
+	%====================	
+	Dans ce TD vous trouverez une prise en main de l'environnement intégré Netbeans et 
+	vous réaliserez vos premiers programmes en Java.
+
+	\tableofcontents
+
+	\newpage
+
+%===================
+\section{Netbeans: environnement de développement intégré }
+%====================	
+
+	\begin{itemize}
+		\item créer un projet \texttt{td-java} -> décocher ce qu'il faut.
+		\item créer un package \texttt{esi.dev1.td1}
+		\item créer une classe \texttt{Hello} en cochant 'créer la méthode principale'.
+		\item ajouter le code suivant pour afficher \texttt{Bonjour le monde!}
+		\item lancer le programme.
+		\item modifier la méthode principale pour qu'elle affiche \texttt{Hello World!}.
+		\item relancer le programme. C'est beaucoup mieux maintenant.
+	\end{itemize} 
+
+
+%===================
+\section{Affichage}
+%====================	
+
+	% Exemple de rappel
+	Le programme suivant affiche \texttt{Hello!} suivi de \texttt{Bonjour!}.
+	\listing{Java}{code/HelloBonjour.java}
+
+	En java l'affichage se fait par l'\emph{instruction}: \texttt{System.out.println("Hello!");}
+	
+	Le texte entre guillemets sera affiché sur la \emph{sortie standard}.
+
+	% Fin du rappel
+	\hspeparator
+
+
+	%Exercices
+	\Exercice{}
+		Dans le package \texttt{esi.dev1.td1} créer une classe \texttt{Ligne}.
+		Dans cette classe écrivez un programme  (et donc dans la fonction \texttt{main} de cette classe) 
+		qui affiche 10 étoiles les unes à la suite des autres:
+
+		\texttt{*********}
+
+	\Exercice{}
+		Dans une classe \texttt{Carré}, écrivez un programme qui affiche un carré d'étoiles de 5 de côté:
+
+		\begin{verbatim}
+		*****
+		*****
+		*****
+		*****
+		*****
+		\end{verbatim}
+
+	\Exercice{}
+		Dans une classe \texttt{Pyramide}, écrivez un programme qui affiche une pyramide d'étoiles comme ceci:
+
+		\begin{verbatim}
+		   *
+		  ***
+		 *****
+		*******
+		\end{verbatim}
+
+	\Exercice{}
+		Dans une classe \texttt{triangle}, écrivez un programme qui affiche un triangle d'étoiles comme ceci:
+
+		\begin{verbatim}
+		*
+		**
+		***
+		****
+		***
+		**
+		*
+		\end{verbatim}
+
+
+
+
+
+%===================
+\section{Expressions}
+%====================	
+
+	Le programme suivant affiche la somme de 12345678 et 87654321.
+	
+	\listing{Java}{code/Expression.java}
+
+	L'instruction de la ligne 6 affiche le texte entre guillemets~: \texttt{12345678+87654321 = }
+	
+	L'instruction de la ligne 7 affiche le \emph{résultat du calcul} c'est-à-dire la somme de 12345678 et de 87654321~: 
+	\texttt{99999999}
+	
+	Notez que l'\emph{expresssion} \texttt{12345678+87654321} de l'instruction de la ligne 7 
+	ne se trouve \emph{pas} entre guillemets.
+
+	\hspeparator
+
+
+	\Exercice{}
+		Dans une classe \texttt{SommeExemple}, écrivez un programme qui affiche la somme de 10 et 32.
+
+	\Exercice{}
+		Dans une classe \texttt{ProduitExemple}, écrivez un programme qui affiche le produit de 2 et 21.
+	
+	\Exercice{}
+		Dans une classe \texttt{ModuloExemple}, écrivez un programme qui affiche le résultat de 234 modulo 57.
+
+
+%===================
+\section{Variables}
+%====================	
+
+	Le programme suivant affiche l'aire d'un rectangle de longueur 12 et de largeur 4.
+	
+	\listing{Java}{code/Variables.java}
+
+	\`A la ligne 6 la variable \texttt{longueur} est \emph{déclarée} avec le type \texttt{int}, 
+	elle peut donc 'contenir' des entiers. 
+	Sur cette même ligne on lui \emph{assigne} la valeur 12.  
+
+	\`A la ligne 7 la variable \texttt{longueur} est \emph{déclarée} avec le type \texttt{int}. 
+	Sur cette même ligne on lui \emph{assigne} la valeur 4.
+	
+	\`A la ligne 9 on affiche le résultat de la multiplication de la valeur de la variable \texttt{longueur}, 
+	qui vaut 12, et de la valeur de la variable \texttt{largeur}, qui elle vaut 4.  
+  
+
+
+
+	\hspeparator
+
+	\Exercice{} 		
+		Dans un classe \texttt{VariablesExemple1} déclarez 2 variables~: 
+		\texttt{x}, \texttt{y} et initialisez-les avec les valeurs 51 et 17.
+		
+		Ensuite affichez sur la sortie standard la valeur de :
+		\begin{itemize}
+		 	\item x+y
+			\item x-y
+			\item x*y
+			\item x/y
+			\item x*x+y*y
+		\end{itemize} 
+
+
+	\Exercice{} 
+		Dans un classe \texttt{VariablesExemple2} déclarez 3 variables~: 
+		\texttt{a}, \texttt{b} et \texttt{c} et initialisez avec les valeurs 2, 3 et 4 respectivement.
+		
+		Ensuite affichez sur la sortie standard la valeur de :
+		\begin{itemize}
+		 	\item 4 * a * c
+			\item b*b - 4*a*c
+		\end{itemize} 
+	
+
+%===================
+\section{Lecture au clavier}
+%====================	
+
+
+	En java la lecture au clavier se fait en 3 étapes.
+
+	\begin{enumerate}
+		\item \emph{Importer} le \emph{lecteur} (\texttt{Scanner}) ligne 3 du code ci-dessous.
+		\item \emph{Déclarer} et \emph{initialiser} le lecteur:  \texttt{Scanner entrée = new Scanner(System.in);}
+		\item La lecture proprement dite: \texttt{int longueur = entrée.nextInt();}
+	\end{enumerate}
+
+	\listing{java}{code/AireRectangle.java}
+
+	\hspeparator
+
+
+	\Exercice{} 
+		Dans une classe \texttt{Somme}, écrivez un programme qui demande 
+		deux nombres entiers à l'utilisateur et affiche leur somme.
+
+	\begin{verbatim}
+	Entrez un premier nombre entier:
+	12
+	Entrez un second nombre entier:
+	30
+	Leur somme vaut:
+	42
+	\end{verbatim}
+
+	\Exercice{Aire d'un rectangle}
+
+	\Exercice{Aire d'un triangle rectangle}
+
+	\Exercice{HMS en secondes}
+
+	\Exercice{Secondes en minutes} 
+
+	\Exercice{Secondes en heures} 
+
+
+	\section{Exercices supplémentaires}
+
+
+	\newpage
+	\Exercice{}
+		Dans une classe \texttt{Felix}, écrivez un programme qui affiche le dessin suivant:
+
+	\begin{verbatim}
+	                          :                      :M
+	                         XMX                   .HMM>
+	                         MMMM.                dMMMM>
+	                        'MMMMMX     .....   dMMMMMMX
+	                        XMMMMMMMnMMMMMMMMMMMMMMMMMMM
+	                       :MMMMMMMMMMMMMMMMMMMMMMMMMMMM>
+	                       XMMMMM!"    "MMMMMM"`  `"MMMMM
+	                       MMMM#         4MMf        `MMMX
+	                      XMMM            MX          'MMM:
+	                     'MMM~            '>            MMM
+	                     MMMf       .     '>            `MMX
+	                    MMMM>     :MMM    '>   :MMM      MMMX
+	                   XMMMM      MMMM>   '>   XMMMX     MMMMk
+	                  MMMMMM>     MMMM~   'k   MMMMX     MMMMMh
+	                 MMMMMMMX     XMMM    XX   ?MMM     XMMMMMMM
+	                 MMMMMMMMk     ^`    X 'h    `     :MM##MMM~
+	                  ?MM>  ^?M.       .!    %.      .HM"   MM
+	                 .?M      '"%+++!".nMMMMn "%++!*" %.. 'M..
+	                  `?M>+%L         <MMMMMMMM>       :   XM"
+	                    'X   %        XMMMMMMMM>      X   'f
+	                      X   `M.      ?MMMMMM~    .HM   :`
+	                       %.  `MMMx.          .xHMMM   X
+	                  ..    `X  `MMMMMMMMMMMMMMMMMMM  :f
+	                :MMMMMMMh:.M. 4MM     "     MM" xMMMMMMMMMMh.
+	              :MMMMMMMMMMMMMMM: `%x.......x"`.HMMMMMMMMMMMMMM
+	            .MMMMMMMMMMMMMMMMMMMMhx.......xHMMMMMMMMMMMMMMMMM
+	    .nHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM`MMMMMMMMMMMMMMMMX
+	  :MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMdMMMMMMMMMMMMMMMMMMMM
+	 MMMMMMMMMMMMMMMMMMMM"``""MMMMMMMMMMMM!MMMMMMMMMMMMMMMMMMMM~
+	MMMMMMMMMMMMMMMMMMM!     XMMMMMMMMMMMf:HMMMMMMMMMMMMMMMMM!
+	M?MMMMMMMMMMMMMMMM`    :MMMMMMMMMMMM!MMMMMMMMMMMMMMMMMMM~
+	:MMMMMMMMMMMMMMMMX     MMMMMMMMMMMMXXMMMMMMMMMMMMMMMMM`
+	MMMMMMMMMMMMMMMMMX    'MMMMMMMMMMMMM!MMMMMMMMMMMMMMMMX
+	MMMMMMMMMMMMMMMMM~    'MMMMMMMMMMMMMM?MMMMMMMMMMMMMMM~
+	 #M)MMMMMMMM!MMM       MMMMMMMMMMMMMMMM/MMMMMMMMMMMM~
+	   ?MMMMMM"-"2MMMMMx   XMMMMMMMMMMMMMMMMX?**!:MMM"`
+	\end{verbatim}
+
+
+
+
+
+\end{document}
