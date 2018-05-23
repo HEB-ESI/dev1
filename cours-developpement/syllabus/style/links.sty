@@ -7,15 +7,19 @@
 % ex: cf. figure 1 page suivante.
 % http://www.ctan.org/pkg/varioref
 % -------------------------------------------------------------
-\usepackage[french]{varioref}
+%\usepackage[french]{varioref}
+	
 
 % Hyperliens et URL
 % http://www.ctan.org/pkg/hyperref
 % -------------------------------------------------------------
+\usepackage{url}
 \usepackage{hyperref}
 \hypersetup{
   colorlinks = true,  % Colored links instead of ugly boxes
-  urlcolor   = blue,  % Colour for external hyperlinks
-  linkcolor  = blue   % Colour of internal links
+  urlcolor   = black,  % Colour for external hyperlinks
+  linkcolor  = black   % Colour of internal links
 }
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{#2}\footnote{\url{#1}}} 
 
