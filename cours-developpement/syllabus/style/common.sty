@@ -1,0 +1,210 @@
+% ===============================================================
+%   Partie commune à tout type de document : 
+%		syllabus, td, interro...
+% ===============================================================
+
+\usepackage[utf8]{inputenc}     % Source en UTF8, permet les accents
+\usepackage[T1]{fontenc}        % Permet les accents dans le PDF
+\usepackage[francais]{babel}    % Gestion du français
+\usepackage{textcomp}	        % Plein de symboles
+\usepackage{lmodern}            % Police de caractères moderne
+\usepackage[
+	hmargin=3.5cm,
+	vmargin=3cm
+	]{geometry} 				% Géométrie de la page
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+% ===================================================
+%   Style des (sub)sections
+% ===================================================
+
+% Permet d'avoir les numéros de (sub)sections dans la marge
+% Tiré de "Latex Howtos" de Sébastien Combéfis
+% -------------------------------------------------------------
+\makeatletter
+\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\quad}}
+\makeatother
+
+
+% ===================================================
+%   Style des paragraphes
+% ===================================================
+
+% Enlever l'indentation de chaque première ligne de paragraphe
+% + léger espace entre les paragraphes.
+% http://www.ctan.org/pkg/parskip
+% -------------------------------------------------------------
+\usepackage{parskip}
+
+% Pour barrer d'une croix tout un block
+% \begin{wrong}\begin{LDA}...\end{LDA}\end{wrong}
+\usepackage{environ}
+\NewEnviron{wrong}{%
+%	\begin{tikzpicture}
+%		\node (box){\begin{minipage}{\linewidth}\BODY\end{minipage}};
+%		\draw[gray] (box.north west) -- (box.south east); % pour un trait en diagonale principale
+%		\draw[gray] (box.south west) -- (box.north east); % pour un autre trait en diagonale 
+%	\end{tikzpicture}
+	\begin{minipage}{\linewidth-2mm}\BODY\end{minipage}
+	\hskip-5mm
+	\includegraphics[width=1cm]{icon/dont}
+	}
+\NewEnviron{correct}{%
+%	\begin{tikzpicture}
+%		\node (box){\begin{minipage}{\linewidth}\BODY\end{minipage}};
+%		\draw[gray] (box.north west) -- (box.south east); % pour un trait en diagonale principale
+%		\draw[gray] (box.south west) -- (box.north east); % pour un autre trait en diagonale 
+%	\end{tikzpicture}
+	\begin{minipage}{\linewidth-2mm}\BODY\end{minipage}
+	\hskip-5mm
+	\includegraphics[width=1cm]{icon/do}
+	}
+	
+% ===================================================
+%   Paragraphes spéciaux
+% ===================================================
+
+%---------------------------------------
+% Citation en début de chapitre
+%---------------------------------------
+\newenvironment{Exergue}{%
+	\begin{quote}
+	\itshape
+	}{
+	\end{quote}
+	\vskip2\baselineskip
+	}
+
+%---------------------------------------
+% \begin{Emphase}...\end{Emphase}
+% Met en évidence un ou des paragraphes
+% début de cadre en gris
+%---------------------------------------
+\newenvironment{Emphase}%
+  {%
+	\par\nobreak%
+	\bgroup%
+		\color{gray}%
+		\hskip-0.3cm%
+		\rule{4cm}{0.5pt}%
+		\hskip-4cm%
+		\rule[-2em]{0.5pt}{2em}%
+		\vskip-3.5em%
+	\egroup%
+  }{%
+	\par\nobreak%
+	\bgroup%
+		\color{gray}%
+		\vskip-2em%
+		\hskip-0.3cm%
+		\rule{0.5pt}{2em}%
+		\rule{4cm}{0.5pt}%
+		\hskip-4cm%
+	\egroup%
+  }
+
+%---------------------------------------
+% Notes
+%---------------------------------------
+\usepackage{mdframed}
+\newenvironment{Note}{}{}
+\surroundwithmdframed[
+	skipabove=0.5\baselineskip,
+	topline=false,
+	leftline=true,
+	bottomline=false,
+	rightline=false,
+	innerrightmargin=0pt,
+	innerlinewidth=2pt,
+	font=\normalsize,
+	linecolor=gray,
+	fontcolor=black
+]{Note}
+
+%---------------------------------------
+% Pour mettre une icone en marge
+% Utilisation: \marginicon{nomIcone}
+% L'icone doit être présente dans le dossier icon
+% dans un format reconnu (pas de gif)
+%---------------------------------------
+\usepackage{marginnote}
+\newcommand{\marginicon}[1]{
+	\marginnote{\includegraphics[width=25px]{icon/#1}}[8pt]
+}
+
+% ===================================================
+%   Style des textes
+% ===================================================
+
+% Permet d'avoir des couleurs
+% xxxnames pour noms prédéfinis
+% table pour colorier toute une table
+% http://www.ctan.org/pkg/xcolor
+% -------------------------------------------------------------
+%\usepackage[usenames,dvipsnames,svgnames]{xcolor}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Permet de barrer, souligner, ...
+% Pour barrer : \sout{texte}
+% -------------------------------------------------------------
+%\usepackage[normalem]{ulem}
+
+% subscript facile
+% -------------------------------------------------------------
+%\newcommand\textsubscript[1]{\ensuremath{{}_{\mathrm{#1}}}}
+% commenté car le compilateur indique qu'il est déjà défini
+
+% ===================================================
+%   Style des listes en tout genre
+% ===================================================
+
+% Un grand contrôle sur l'aspect des listes
+% -------------------------------------------------------------
+\usepackage{enumitem}
+\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
+\setlist[itemize]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}
+\setlist[enumerate]{itemsep=1mm}
+
+
+% ===================================================
+%   Style des images
+% ===================================================
+
+% Gestion des images.
+% http://www.ctan.org/pkg/graphicx
+% -------------------------------------------------------------
+\usepackage{graphicx}
+
+% Modification du style pour les captions des figures
+% Permet \captionof si on ne veut pas de figure
+% -------------------------------------------------------------
+\usepackage[font=scriptsize,labelfont=sc,skip=5pt]{caption}
+
+% Pour des images entourées de textes.
+% -----------------------------------
+\usepackage{wrapfig}
+
+
+% ===================================================
+%   Style des tableaux
+% ===================================================
+
+\usepackage{array}		% Permet d'utiliser 'm' dans tabular
+\usepackage{hhline}		% Permet \hhline pour une ligne double ou partielle
+
+% ===================================================
+%   Style pour les math
+% ===================================================
+
+\usepackage{mathdots}	% Permet d'avoir un \vdots qui respecte la taille demandée
+\usepackage{amsfonts}	% Permet d'avoir des symboles en plus comme \checkmark
+\usepackage{amsmath} 	% Pour xrightarrow
+
+% ===================================================
+%   Style pour les colonnes
+% ===================================================
+
+% Permet d'avoir du texte sur plusieurs colonnes à l'intérieur du document.
+\usepackage{multicol}

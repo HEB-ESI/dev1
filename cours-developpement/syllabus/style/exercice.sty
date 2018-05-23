@@ -1,0 +1,38 @@
+% =============================================
+%   Permet d'ajouter des exercices numérotés
+%
+%	\begin{Exercice}{titre}
+%		blabla
+%	\end{Exercice}
+% =============================================
+
+\usepackage{fancybox}
+\usepackage{calc}
+
+% Pour un exercice avec numérotation automatique
+\newcounter{exercicenum}[chapter]	% Numéro réinitialisé à chaque chapitre
+\setcounter{exercicenum}{0}			% Si 0 -> 1er exercice = n°1
+\newlength{\widthexercice}
+
+\newenvironment{Exercice}[1]%
+{%
+	\refstepcounter{exercicenum}	% Incrémenter le compteur
+	\providecommand{\exercicelabel}{\large\theexercicenum}
+	\settowidth{\widthexercice}{\exercicelabel}
+	\vspace*{-2mm}
+	\subsubsection*{%
+		\hspace{-\widthexercice} 				% Décaler le numéro à gauche
+		\hspace{-9.5mm}
+		\large%
+		{%
+			\color{MidnightBlue}%
+			\sffamily%
+			\Ovalbox{\exercicelabel}	% Le numéro
+		}%
+		\hspace{1pt}
+		{\sffamily\bfseries#1}	% Le titre
+	}
+	\vspace{-8pt}
+	\nopagebreak}{%
+}{%
+}

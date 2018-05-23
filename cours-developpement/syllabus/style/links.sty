@@ -1,0 +1,21 @@
+% ===============================================================
+%   Tout ce qui concerne les liens internes et externes
+%   (à inclure en dernier sinon hyperref fonctionne mal)
+% ===============================================================
+
+% Permet d'avoir des références plus lisibles (\vref{})
+% ex: cf. figure 1 page suivante.
+% http://www.ctan.org/pkg/varioref
+% -------------------------------------------------------------
+\usepackage[french]{varioref}
+
+% Hyperliens et URL
+% http://www.ctan.org/pkg/hyperref
+% -------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,  % Colored links instead of ugly boxes
+  urlcolor   = blue,  % Colour for external hyperlinks
+  linkcolor  = blue   % Colour of internal links
+}
+

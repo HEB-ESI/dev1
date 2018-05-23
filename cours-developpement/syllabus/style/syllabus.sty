@@ -1,0 +1,82 @@
+% ===============================================================
+%       Feuille de style LaTeX pour un syllabus à l'ESI
+% ---------------------------------------------------------------
+% On suppose qu'on travaille avec la classe book
+%                                                   Marco Codutti
+% ===============================================================
+
+
+% ===================================================
+%   Style commun à tout type de document
+% ===================================================
+\input{style/common.sty}
+
+\usepackage{comment}
+% ===================================================
+%   Éléments remarquables du document
+%   sommaire, toc, index...
+% ===================================================
+
+% Sommaire
+% La toc complète doit aussi être présente
+%-------------------------------------------
+\usepackage{shorttoc}
+
+% Index
+%--------------
+\usepackage{makeidx}
+\makeindex
+
+% TOC
+%--------------
+% décaler à droite chap et section dans toc
+\usepackage{tocloft}
+\addtolength{\cftchapindent}{1cm}
+\addtolength{\cftsecindent}{1cm}
+\addtolength{\cftsubsecindent}{1cm}
+
+
+% ===================================================
+%   Style des parties
+% ===================================================
+
+% Style adapté + une mini-toc en dessous du titre 
+
+% titlesec - permet de mettre en page les titres
+% titletoc - permet de gérer les titres de toc
+% https://www.ctan.org/pkg/titletoc
+%----------------------------------------------
+%
+% ATTENTION : Avec ceci, les numéros de sections disparaissent !
+%
+%\usepackage[explicit]{titlesec}
+%\usepackage{titletoc}
+%\startcontents[chapters] 	 % pour pouvoir faire stop avant partie -> pas dans toc
+%\titleclass{\part}{top}		 % Partie en haut de page
+%\titleformat{\part}[display] % Formatage de la partie
+%	{\thispagestyle{empty}\stopcontents[chapters]\centering\normalfont\Large}% 
+%	{\titlerule[3pt]\vspace{3pt}\titlerule[1pt]\vspace{3pt}{\partname}}%
+%	{5pt}%
+%	{\huge\bfseries#1%
+%	\startcontents[chapters]%
+%	\vspace*{1cm}%
+%	\\%
+%	\large\printcontents[chapters]{}{0}{\setcounter{tocdepth}{0}}%
+%	\vspace*{3pc}%
+%	\noindent\rule{\textwidth}{2pt}}
+%\titlespacing*{\part}{0pt}{30pt}{0pt}	% Espace autour de la partie
+
+
+% ===================================================
+%   Style des chapitres
+% ===================================================
+
+% Pour un plus beau style pour le titre de chapitre
+\usepackage[Lenny]{fncychap}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{				% Redéfinir le style plain
+	\fancyhf{} 						% Enlever tout
+	\fancyhead[RO,LE]{\thepage}
+	\renewcommand{\headrulewidth}{0pt} % pas de ligne en entête
+}

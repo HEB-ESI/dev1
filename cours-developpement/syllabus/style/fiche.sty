@@ -1,0 +1,32 @@
+% ========================================================
+% Introduit l'environnement Fiche pour des fiches d'algo
+% avec numérotation automatique et
+% liste des fiches (via \listoffiche)
+%
+%	\begin{Fiche}{nom fiche}
+%		\Section{nom section}
+%			...
+%		\Section{nom section}
+%			...
+%	\end{Fiche}
+% ========================================================
+
+\newcounter{fichenum}
+\setcounter{fichenum}{0}
+\newenvironment{Fiche}[1]{%
+	\refstepcounter{fichenum}%
+	%\clearpage
+	\begin{center}
+		\Large\sffamily
+		\color{MidnightBlue}
+		\Ovalbox{\quad{}Fiche \no \thefichenum\ -- #1\quad\rule[-1mm]{0cm}{6mm}}
+	\end{center}
+	\addcontentsline{toc}{section}{#1}
+	\addcontentsline{fic}{fiche}
+	{\protect\numberline{\thefichenum}#1}
+	\vspace{5mm}
+	}{%
+	}
+\newcommand{\Section}[1]{\vspace*{-3mm}\subsubsection*{\large{\color{MidnightBlue}\hskip-8mm #1}}\vspace*{-1mm}}
+\newcommand{\listfichename}{}
+\newlistof{fiche}{fic}{\listfichename}

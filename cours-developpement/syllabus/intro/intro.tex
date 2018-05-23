@@ -1,0 +1,400 @@
+% =====================================
+\chapter{Résoudre des problèmes}
+% =====================================
+
+	\begin{Exergue}
+		«~L’algorithmique est le permis de conduire de l’informatique.
+		Sans elle, il n’est pas concevable d’exploiter sans risque un ordinateur.~»
+		\footnote{[CORMEN e.a., Algorithmique, Paris, Edit. Dunod, 2010, (Cours, 
+		exercices et problèmes), p. V] }
+	\end{Exergue}
+
+	\marginicon{objectif}
+	Ce chapitre a pour but
+	de vous faire comprendre ce qu’est une 
+	\emph{procédure de résolution de problèmes}.
+
+	%------------------------------
+	\section{La notion de problème}
+	%------------------------------
+	
+		\subsection{Préliminaires~:~utilité de l’ordinateur}
+		%---------------------------------------------------
+		
+			L’ordinateur est une machine. 
+			Mais une machine intéressante dans la mesure 
+			où elle est destinée d’une part, 
+			à nous décharger d’une multitude de tâches peu valorisantes, 
+			rébarbatives telles que le travail administratif répétitif, 
+			mais surtout parce qu’elle est capable de nous aider, 
+			voire nous remplacer, dans des tâches plus ardues 
+			qu’il nous serait impossible de résoudre sans son existence 
+			(conquête spatiale, prévision météorologique, jeux vidéo\dots).
+			
+			En première approximation, 
+			nous pourrions dire que l’ordinateur 
+			est destiné à nous remplacer, 
+			à faire à notre place 
+			(plus rapidement et probablement avec moins d’erreurs) 
+			un travail nécessaire à la résolution de \textbf{problèmes} 
+			auxquels nous devons faire face. 
+			Attention~! Il s’agit bien de résoudre des \textit{problèmes} 
+			et non des mystères (celui de l’existence, par exemple). 
+			Il faut que la question à laquelle
+			on souhaite répondre soit \textbf{accessible à la raison}.
+	
+		\subsection{Poser le problème}
+		%---------------------------------------------------
+		
+			Un préalable à l’activité de résolution d’un problème 
+			est de bien \textbf{définir} d’abord 
+			quel est le problème posé, 
+			en quoi il consiste exactement~; 
+			par exemple, faire un baba au rhum, 
+			réussir une année d’études, 
+			résoudre une équation mathématique\dots
+			
+			Un problème bien posé doit mentionner 
+			l’\textbf{objectif à atteindre},
+			c’est-à-dire la situation d’arrivée, 
+			le but escompté, le résultat attendu. 
+			Généralement, tout problème se définit d’abord explicitement
+			par ce que l’on souhaite obtenir.
+			
+			La formulation d’un problème ne serait pas complète 
+			sans la connaissance
+			\textbf{du cadre dans lequel le problème est posé~:}
+			de quoi dispose-t-on, quelles sont les hypothèses de base, 
+			quelle est la situation de départ~? 
+			Faire un baba au rhum est un problème tout à fait différent 
+			s’il faut le faire en plein désert 
+			ou dans une cuisine super équipée~! 
+			D’ailleurs, dans certains cas, 
+			la première phase de la résolution d’un problème 
+			consiste à identifier et mettre à sa disposition 
+			les éléments nécessaires à sa résolution~:~
+			dans notre exemple, 
+			ce serait se procurer les ingrédients 
+			et les ustensiles de cuisine.
+		
+			Un problème ne sera véritablement bien spécifié 
+			que s’il s’inscrit dans le schéma suivant~:
+			
+			% Voir si j’en fais un environnement.
+			\begin{center}
+			\begin{Ovalbox}
+				{\textbf{étant donné} [la situation de départ] 
+				\textbf{on demande} [l’objectif]}
+			\end{Ovalbox}
+			\end{center}
+		
+			Parfois, la première étape dans la résolution d’un problème 
+			est de préciser ce problème à partir d’un énoncé flou~:~
+			il ne s’agit pas nécessairement d’un travail facile~!
+	
+			\begin{Emphase}
+				\paragraph{Exercice.} Un problème flou.\\
+				Soit le problème suivant~:~
+				«~Calculer la moyenne de nombres entiers.~».\\
+				Ce problème est-il bien posé~?\\
+				Expliquez pourquoi cet énoncé n'est pas bon. \\
+				Proposez un énoncé qui soit acceptable.
+			\end{Emphase}
+			
+			Une fois le problème correctement posé, 
+			on passe à la recherche et à la description 
+			d’une \textbf{méthode/procédure de résolution}, 
+			afin de savoir comment faire 
+			pour atteindre l’objectif demandé 
+			à partir de ce qui est donné. 
+			Le \textbf{nom} donné à une méthode de résolution 
+			varie en fonction du cadre dans lequel se pose le problème~:~
+			\textit{façon de procéder, mode d’emploi, marche à suivre, 
+			guide, patron, modèle, recette de cuisine, 
+			méthode ou plan de travail, algorithme mathématique, 
+			programme, directives d’utilisation\dots}
+	
+	%--------------------------------
+	\section{Procédure de résolution}
+	%--------------------------------
+	
+		Une \textbf{procédure de résolution} est une description 
+		en termes compréhensibles par l’exécutant 
+		de la \textbf{marche à suivre} 
+		pour résoudre un problème donné.
+		
+		On trouve beaucoup d’exemples dans la vie courante~:
+		recette de cuisine, mode d’emploi d’un GSM, 
+		description d’un itinéraire, 
+		plan de montage d’un jeu de construction, etc. 
+		Il est clair qu’il y a une infinité de rédactions possibles 
+		de ces différentes marches à suivre. 
+		Certaines pourraient être plus précises que d’autres,
+		d’autres par contre pourraient s’avérer exagérément explicatives.		
+
+		Des différents exemples de procédures de résolution 
+		se dégagent les caractéristiques suivantes~:	
+		\begin{itemize}
+		\item 
+			toutes ont un \textbf{nom}
+		\item 
+			elles s’expriment dans un \textbf{langage}
+			(français, anglais, dessins\dots)
+		\item 
+			l’ensemble de la procédure consiste 
+			en une \textbf{série chronologique}
+			d’instructions ou de phrases (parfois numérotées)
+		\item 
+			une instruction se caractérise par un ordre, 
+			une action à accomplir,
+			une \textbf{opération} à exécuter 
+			sur les \textbf{données} du problème
+		\item 
+			certaines phrases justifient ou expliquent ce qui se passe~:~
+			ce sont des \textbf{commentaires}.
+		\end{itemize}
+	
+		On pourra donc définir, en première approximation, 
+		une procédure de résolution comme un texte, 
+		écrit dans un certain langage, 
+		qui décrit une suite d’actions à exécuter dans un ordre précis, 
+		ces actions opérant sur des objets issus des données du problème.
+		
+		Traduite en termes informatiques, une telle procédure d'exécutions d'actions
+		dans un contexte précis, sera appelée un \textbf{algorithme}. Nous y reviendrons
+		et le définirons tout à fait précisément plus loin, dans notre contexte.
+	
+		\subsection{Chronologie des opérations}
+		%--------------------------------------
+		
+			Pour ce qui concerne l’ordinateur, 
+			le travail d’exécution d’une marche à suivre 
+			est impérativement \textbf{séquentiel}. 
+			C’est-à-dire que les instructions d’une procédure de résolution 
+			sont exécutées \textbf{une et une seule fois} 
+			dans l’ordre où elles apparaissent.
+			Cependant certains artifices d’écriture 
+			permettent de \textbf{répéter} l’exécution d’opérations 
+			ou de la \textbf{conditionner}
+			(c’est-à-dire de choisir si l’exécution aura lieu ou non 
+			en fonction de la réalisation d’une condition).
+	
+		\subsection{Les opérations élémentaires}
+		%---------------------------------------
+		
+			Dans la description d’une marche à suivre, 
+			la plupart des opérations sont introduites par un \textbf{verbe}
+			(\textit{remplir}, \textit{verser, prendre, peler}, etc.). 
+			L’exécutant ne pourra exécuter une action que s’il la comprend~:
+			cette action doit, pour lui, être une action élémentaire, 
+			une action qu’il peut réaliser 
+			sans qu’on ne doive lui donner des explications complémentaires. 
+			Ce genre d’opération élémentaire est appelée \textbf{primitive}.
+			
+			Ce concept est évidemment relatif 
+			à ce qu’un exécutant est capable de réaliser. 
+			Cette capacité, il la possède d’abord 
+			parce qu’il est \textbf{construit} d’une certaine façon 
+			(capacité innée). 
+			Ensuite parce que, par construction aussi, 
+			il est doté d’une faculté d’\textbf{apprentissage} 
+			lui permettant d’assimiler, petit à petit, 
+			des procédures non élémentaires qu’il exécute souvent. 
+			Une opération non élémentaire 
+			pourra devenir une primitive un peu plus tard.
+			
+		\subsection{Les opérations bien définies}
+		%----------------------------------------
+		
+			Il arrive de trouver dans certaines marches à suivre 
+			des opérations qui peuvent dépendre d’une certaine manière 
+			de l’appréciation de l’exécutant. 
+			Par exemple, dans une recette de cuisine on pourrait lire~:~
+			\textit{ajouter} \textbf{\textit{un peu}} 
+			\textit{de vinaigre, saler et poivrer} 
+			\textbf{\textit{à volonté}}, \textit{laisser cuire une} 
+			\textbf{\textit{bonne}}
+			\textit{ heure dans un four}
+			\textbf{\textit{bien}} \textit{chaud, etc.}
+			
+			Des instructions floues de ce genre 
+			sont dangereuses à faire figurer dans une bonne marche à suivre 
+			car elles font appel à une appréciation arbitraire de l’exécutant. 
+			Le résultat obtenu risque d’être imprévisible 
+			d’une exécution à l’autre. 
+			De plus, les termes du type \textit{environ, beaucoup, pas trop} 
+			et \textit{à peu près} sont intraduisibles 
+			et proscrites au niveau d’un langage informatique~!%
+			\footnote{%
+				Le lecteur intéressé découvrira 
+				dans la littérature spécialisée 
+				que même les procédures de génération de nombres aléatoires
+				sont elles aussi issues d’algorithmes mathématiques 
+				tout à fait déterministes.
+			}
+			
+			Une \textbf{opération bien définie} 
+			est donc une opération débarrassée
+			de tout vocabulaire flou 
+			et dont le résultat est \textbf{entièrement prévisible}. 
+			Des versions «~bien définies~» des exemples ci-dessus
+			pourraient être~:~
+			\textit{ajouter 2~cl de vinaigre, ajouter 5~g de sel
+			et 1~g de poivre, 
+			laisser cuire 65~minutes dans un four chauffé à 220\degre{}C, etc.}
+	
+			Afin de mettre en évidence la difficulté d’écrire une
+			marche à suivre claire et non ambigüe, on vous propose
+			l’expérience suivante.
+	
+			\begin{Emphase}
+				\paragraph{Expérience.} Le dessin.
+				
+				Cette expérience s’effectue en groupe.
+				Le but est de faire un dessin 
+				et de permettre à une autre personne, 
+				qui ne l’a pas vu, 
+				de le reproduire fidèlement, 
+				au travers d’une «~marche à suivre~».
+	
+				\begin{enumerate}
+				\item
+					Chaque personne prend une feuille de papier et 
+					y dessine quelque chose en quelques traits précis. 
+					Le dessin ne doit pas être trop compliqué~; 
+					on ne teste pas ici vos talents de dessinateur~! 
+					(ça peut être une maison, une voiture\dots)
+				\item
+					Sur une \textbf{autre} feuille de papier, 
+					chacun rédige des instructions permettant de 
+					reproduire fidèlement son propre dessin. 
+					Attention~! Il est important de ne
+					\textbf{jamais faire référence à la signification du dessin}. 
+					Ainsi, on peut écrire~:~«~dessine un rond~» 
+					mais certainement pas~:~«~dessine une roue~».
+				\item
+					Chacun cache à présent son propre dessin et échange 
+					sa feuille d’instructions avec celle de quelqu’un d’autre.
+				\item
+					Chacun s’efforce ensuite 
+					de reproduire le dessin d’un autre 
+					en suivant \textbf{scrupuleusement} 
+					les instructions indiquées sur la feuille reçue en échange, 
+					\textbf{sans tenter d’initiative} 
+					(par exemple en croyant avoir compris ce
+					qu’il faut dessiner).
+				\item
+					Nous examinerons enfin les différences 
+					entre l’original et la reproduction 
+					et nous tenterons de comprendre 
+					pourquoi elles se sont produites 
+					(par imprécision des instructions 
+					ou par mauvaise interprétation de celles-ci 
+					par le dessinateur\dots)
+				\end{enumerate}
+			\end{Emphase}
+	
+			\marginicon{reflexion}
+			Quelles réflexions cette expérience vous inspire-t-elle~?
+			Quelle analogie voyez-vous 
+			avec une marche à suivre donnée à un ordinateur~?
+	
+			Dans cette expérience, 
+			nous imposons que la «~marche à suivre~» 
+			ne mentionne aucun mot expliquant le sens du dessin 
+			(mettre «~rond~» et pas «~roue~» par exemple). 
+			Pourquoi, à votre avis, avons-nous imposé cette contrainte~?
+	
+		\subsection{Opérations soumises à une condition}
+		%-----------------------------------------------
+		
+			En français, 
+			l’utilisation de conjonctions ou locutions conjonctives 
+			du type \textit{si}, \textit{selon que}, \textit{au cas où}\dots{}
+			présuppose la possibilité 
+			de ne pas exécuter certaines opérations 
+			en fonction de certains événements. 
+			D’une fois à l’autre, 
+			certaines de ses parties seront ou non exécutées.
+			
+			\textbf{Exemple~:}~
+			Si la viande est surgelée, 
+			la décongeler à l’aide du four à micro-ondes.
+	
+		\subsection{Opérations à répéter}
+		%--------------------------------
+		
+			De la même manière, 
+			il est possible d’exprimer en français une exécution
+			répétitive d’opérations en utilisant les mots \textit{tous},
+			\textit{chaque}, \textit{tant que}, \textit{jusqu’à ce que},
+			\textit{chaque fois que}, \textit{aussi longtemps que}, 
+			\textit{faire x fois}\dots 
+			
+			Dans certains cas, 
+			le nombre de répétitions est connu à l’avance
+			(\textit{répéter 10 fois}) 
+			ou déterminé par une durée 
+			(\textit{faire cuire pendant 30 minutes}) 
+			et dans d’autres cas il est inconnu.
+			Dans ce cas, la fin de la période de répétition 
+			d’un bloc d’opérations dépend alors 
+			de la réalisation d’une condition 
+			(\textit{lancer le dé jusqu’à ce qu’il tombe sur 6}, 
+			\textit{faire cuire jusqu’à évaporation complète} \dots). 
+			
+			En informatique, lorsqu'il y a répétition organisée, on parle de 
+			\textbf{boucle}. On en retrouve beaucoup, sous différentes formes,
+			dans les codes informatiques.
+			
+			L'exemple ci-dessous permet d'illustrer le danger de boucle infinie, 
+			due à une mauvaise formulation de la condition d’arrêt.
+			Si l'on demande de 
+			\textit{lancer le dé jusqu’à ce que la valeur obtenue soit 7},
+			un humain doté d’intelligence comprend 
+			que la condition est impossible à réaliser, 
+			mais un robot appliquant cette directive à la lettre 
+			lancera le dé perpétuellement.
+	
+		\subsection{À propos des données}
+		%--------------------------------
+		
+			Les types d’objets figurant 
+			dans les diverses procédures de résolution
+			sont fonction du cadre 
+			dans lequel s’inscrivent ces procédures, 
+			du domaine d’application de ces marches à suivre. 
+			Par exemple, pour une recette de cuisine, 
+			ce sont les ingrédients. 
+			Pour un jeu de construction ce sont les briques.
+			
+			L’ordinateur, quant à lui, manipule principalement
+			des données numériques et textuelles. 
+			Nous verrons plus tard 
+			comment on peut combiner ces données élémentaires 
+			pour obtenir des données plus complexes.
+	
+	%-------------------
+	\section{Ressources}
+	%-------------------
+	
+		Pour prolonger votre réflexion sur le concept d’algorithme
+		nous vous proposons quelques ressources en ligne~:
+		\begin{itemize}
+		\item
+			Les Sépas 18 - Les algorithmes~:
+			\url{https://www.youtube.com/watch?v=hG9Jty7P6Es}
+		\item
+			Les Sépas 11 - Un bug~:
+			\url{https://www.youtube.com/watch?v=deI0GV5sWTY}
+		\item
+			Le crépier psycho-rigide comme algorithme~:
+			\url{https://pixees.fr/?p=446}
+		\item
+			Le baseball multicouleur comme algorithme~:
+			\url{https://pixees.fr/?p=450}
+		\item
+			Le jeu de Nim comme algorithme~:
+			\url{https://pixees.fr/?p=443}
+		\end{itemize}
+		

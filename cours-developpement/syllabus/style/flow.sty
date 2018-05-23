@@ -1,0 +1,96 @@
+% ========================================================
+%  Permet d'ajouter des graphiques Tikz (flow charts,...)
+% ========================================================
+
+% === Pour faire des dessins via TikZ
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{shapes.geometric,arrows}
+\usetikzlibrary{positioning}
+
+% === Synopsis adaptés aux nombres d'entrées et de sorties
+
+\newcommand{\flowalgo}[1]{
+	\begin{tikzpicture}
+	\sffamily
+	\matrix [column sep = 2em] {
+		\node[draw, rounded corners, thick] (M) {#1};\\
+	};
+	\end{tikzpicture}
+}
+
+\newcommand{\flowalgor}[2]{
+	\begin{tikzpicture}
+	\sffamily
+	\matrix [column sep = 2em] {
+		\node[draw, rounded corners, thick] (M) {#1}; \pgfmatrixnextcell \node (R) {#2}; \\
+	};
+	\draw[->,thick] (M)  to (R);
+	\end{tikzpicture}
+}
+
+\newcommand{\flowalgod}[3]{
+	\begin{tikzpicture}
+		\sffamily
+		\matrix [column sep = 2em] {
+		 \node (P1) {#1}; \pgfmatrixnextcell \node[draw, rounded corners, thick] (M) {#2}; \pgfmatrixnextcell \node (R) {#3}; \\
+		};
+		\draw[->,thick] (P1) to (M);
+		\draw[->,thick] (M)  to (R);
+	\end{tikzpicture}
+}
+
+\newcommand{\flowalgodd}[4]{
+	\begin{tikzpicture}
+		\sffamily
+		\matrix [column sep = 2em] {
+		 \node (P1) {#1}; \pgfmatrixnextcell \pgfmatrixnextcell \\
+		 \pgfmatrixnextcell \node[draw, rounded corners, thick] (M) {#3}; \pgfmatrixnextcell \node (R) {#4}; \\
+		 \node (P2) {#2}; \pgfmatrixnextcell \pgfmatrixnextcell \\		          
+		};
+		\draw[->,thick] (P1) to (M);
+		\draw[->,thick] (P2) to (M);
+		\draw[->,thick] (M)  to (R);
+	\end{tikzpicture}
+}
+
+\newcommand{\flowalgoddd}[5]{
+	\begin{tikzpicture}
+		\sffamily
+		\matrix [column sep = 2em] {
+		 \node (P1) {#1}; \pgfmatrixnextcell \pgfmatrixnextcell \\
+		 \node (P2) {#2}; \pgfmatrixnextcell \node[draw, rounded corners, thick] (M) {#4}; \pgfmatrixnextcell \node (R) {#5}; \\
+		 \node (P3) {#3}; \pgfmatrixnextcell \pgfmatrixnextcell \\		          
+		};
+		\draw[->,thick] (P1) to (M);
+		\draw[->,thick] (P2) to (M);
+		\draw[->,thick] (P3) to (M);
+		\draw[->,thick] (M)  to (R);
+	\end{tikzpicture}
+}
+
+\newcommand{\flowalgorrr}[5]{
+	\begin{tikzpicture}
+		\sffamily
+		\matrix [column sep = 2em] {
+		                  \pgfmatrixnextcell                                               \pgfmatrixnextcell \node (R1) {#3};  \\
+		 \node (D1) {#1}; \pgfmatrixnextcell \node[draw, rounded corners, thick] (M) {#2}; \pgfmatrixnextcell \node (R2) {#4}; \\
+		                  \pgfmatrixnextcell                                               \pgfmatrixnextcell \node (R3) {#5}; \\		          
+		};
+		\draw[->,thick] (D1) to (M);
+		\draw[->,thick] (M) to (R1);
+		\draw[->,thick] (M) to (R2);
+		\draw[->,thick] (M) to (R3);
+	\end{tikzpicture}
+}
+
+\newcommand{\flowalgov}[2]{
+	\begin{tikzpicture}
+		\sffamily
+		\matrix [column sep = 2em] {
+		 \node (V) {#1}; \pgfmatrixnextcell \node[draw, rounded corners, thick] (M) {#2}; \\
+		};
+		\draw[->,thick] (V) to (M);
+		\draw[->,thick] (M) to (V);
+	\end{tikzpicture}
+}
