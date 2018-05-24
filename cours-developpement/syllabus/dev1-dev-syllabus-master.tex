@@ -7,15 +7,18 @@
 %                                     Pierre Bettens
 %==================================================
 
-\documentclass[a4paper,doubleside,12pt]{book}
+\documentclass[a4paper,doubleside,11pt]{book}
 
 %=========================
 % Les styles
 %=========================
 \input{style/syllabus.sty}
 \input{style/exercice.sty}
-\input{style/flow.sty}
-\input{style/lda.sty}
+%\input{style/flow.sty}
+\input{style/esi-flowchart.sty}
+%\input{style/lda.sty}
+\input{style/pseudocode.sty}
+\input{style/java.sty}
 \input{style/fiche.sty}
 \input{style/links.sty}
 \input{style/dev1-alg.sty}
@@ -34,11 +37,11 @@
 	\include{colophon}
 	\include{toc}
 
-	\part{Introduction aux algorithmes}	
+	\part{Introduction générale}	
 	%----------------------------------------------------------
-%		\include{intro/intro}
-	%	\include{syllabus/intro/ludique}
-		%\include{syllabus/intro/algo}
+		\include{intro/intro}
+		\include{intro/ludique}
+		\include{intro/algo}
 
 	\part{Les bases de l'algorithmique}
 	%----------------------------------------------------------
