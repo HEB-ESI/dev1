@@ -12,16 +12,16 @@
 %=========================
 % Les styles
 %=========================
-\input{style/syllabus.sty}
-\input{style/exercice.sty}
-%\input{style/flow.sty}
-\input{style/esi-flowchart.sty}
-%\input{style/lda.sty}
-\input{style/pseudocode.sty}
-\input{style/java.sty}
-\input{style/fiche.sty}
-\input{style/links.sty}
-\input{style/dev1-alg.sty}
+\input{styles/syllabus.sty}
+\input{styles/exercice.sty}
+\input{styles/flow.sty}
+\input{styles/esi-flowchart.sty}
+%\input{styles/lda.sty}
+\input{styles/pseudocode.sty}
+\input{styles/java.sty}
+\input{styles/fiche.sty}
+\input{styles/links.sty}
+\input{styles/dev1-alg.sty}
 
 %==============================
 % La configuration du document
@@ -45,7 +45,7 @@
 
 	\part{Les bases de l'algorithmique}
 	%----------------------------------------------------------
-	%	\include{syllabus/base/specifier}
+		\include{base/specifier}
 	%	\include{syllabus/base/premalgo}
 	%	\include{syllabus/base/choix}
 	%	\include{syllabus/base/module}
@@ -70,7 +70,8 @@
 	%\appendix
 	%----------------------------------------------------------
 	
-	%\part{Les annexes}
+	\part{Les annexes}
+		\include{annexes/exercices}
 	%	\include{syllabus/annexe/fiches}
 	%	\include{syllabus/annexe/pratique}
 	%	\include{syllabus/annexe/LDA}
