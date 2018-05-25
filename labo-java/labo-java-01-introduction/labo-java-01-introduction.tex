@@ -27,6 +27,7 @@
 	\lastedit
 	\maketitle
 	\setcounter{tocdepth}{3}
+	\graphicspath{{../images/}}
 
 	%===================
 	%  Contenu
@@ -42,16 +43,68 @@
 \section{Netbeans: environnement de développement intégré }
 %====================	
 
-	%TODO
-	\begin{itemize}
-		\item créer un projet \texttt{td-java} -> décocher ce qu'il faut.
-		\item créer un package \texttt{esi.dev1.td1}
-		\item créer une classe \texttt{Hello} en cochant 'créer la méthode principale'.
-		\item ajouter le code suivant pour afficher \texttt{Bonjour le monde!}
-		\item lancer le programme.
-		\item modifier la méthode principale pour qu'elle affiche \texttt{Hello World!}.
-		\item relancer le programme. C'est beaucoup mieux maintenant.
-	\end{itemize} 
+	Vous allez être guidé pas à pas pour la création de votre tout premier programme Java.
+	\begin{enumerate}
+		\item Ouvrez NetBeans. L'icône de l'application se trouve sur votre Bureau. 
+			\begin{center}
+				\includegraphics{NetBeans/nb_icone}
+			\end{center}
+
+
+		\item Il est temps de créer un nouveau projet. Pour cela, cliquez sur \og File \fg en haut à gauche et ensuite, sur nouveau projet. Vous pouvez également utiliser le raccourci clavier CTRL + MAJ + N.
+			\begin{center}
+				\includegraphics[width=\textwidth]{NetBeans/nb_newproject}
+			\end{center}
+		Nommez ce projet \texttt{td-java} et décochez la case \texttt{Create Main Class}.
+			\begin{center}
+				\includegraphics[width=\textwidth]{NetBeans/nb_newproject_name}
+			\end{center}
+
+		Un répertoire a été ajouté sur votre ordinateur. Trouvez le et vérifiez le contenu du dossier contenant les sources de votre projet. Le dossier sur votre ordinateur s'appelle \texttt{src}. S'il est vide, c'est normal, vous n'avez pas encore ajouté de source.
+
+
+		\item Avant d'ajouter les sources, nous allons créer un package. Ceci va vous permettre de faire de votre premier projet, un projet bien structuré en créant une arborescence de fichier. Faites un clique droit sur le dossier contenant les sources de votre projet et ajoutez un nouveau package Java.
+			\begin{center}
+				\includegraphics[width=\textwidth]{NetBeans/nb_newproject_package}
+			\end{center}
+
+		Nommez ce package \texttt{esi.dev1.td1}.
+			\begin{center}
+				\includegraphics[width=\textwidth]{NetBeans/nb_newproject_package2}
+			\end{center}
+		Remarquez que ce package a été ajouté dans les sources de votre projet. 
+			\begin{center}
+				\includegraphics{NetBeans/nb_newproject_package3}
+			\end{center}
+		Dans votre navigateur, vérifiez ce qui a été ajouté dans le dossier contenant vos sources.
+
+
+		\item Dans NetBeans, faites un clique droit sur votre package et ajoutez une nouvelle classe\footnote{Pour le moment, on va simplement dire que c'est un fichier dans lequel se trouve du code Java.}. Nommez cette classe {Hello}\footnote{Si vous oubliez la majuscule au H, nous viendrons vous tirer les oreilles !}
+			\begin{center}
+				\includegraphics[width=\textwidth]{NetBeans/nb_newproject_new_class}
+			\end{center}
+
+
+		\item Cliquez sur votre classe \texttt{Hello}. Si vous voyez le code suivant, veillez à l'effacer\footnote{Nous n'aimons pas le voir, il ne sert à rien}. 
+			\begin{center}
+				\includegraphics[width=\textwidth]{NetBeans/nb_newproject_header}
+			\end{center}
+			Faites la même chose pour le code contenant \texttt{/**...@author...*/}.
+			Maintenant que c'est fait, ajoutez le code suivant :
+\begin{Java}
+	public static void main(String[] args) {
+		System.out.println("Hello, World!");
+	}
+\end{Java}
+			Vous devriez obtenir ceci :
+			\begin{center}
+				\includegraphics{NetBeans/nb_newproject_code}
+			\end{center}
+		\item Lancez le programme en cliquant sur la petite flèche \emph{run} \includegraphics{NetBeans/nb_newproject_run}.
+
+		\item Modifiez votre programme pour que celui-ci affiche \texttt{"Hello"} suivi de votre prénom.
+
+	\end{enumerate}
 
 
 %===================
