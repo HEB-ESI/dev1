@@ -2,6 +2,7 @@
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
 \definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{solarizedyellow}{HTML}{b58900}
  
 %morecomment=[s][\color{javadocblue}]{/**}{*/},
 %numbers=left,
@@ -18,14 +19,20 @@
 	colframe=gray!75,
 	listing only,
 	listing options={
+		style=tcblatex,
 		language=java,
 		tabsize=2,
 		keywordstyle=\color{javapurple}\bfseries,
 		stringstyle=\color{javared},
 		commentstyle=\color{javagreen},
+		numbers=left,
+		numberstyle=\tiny\color{solarizedyellow},
+		stepnumber=3,
+		numbersep=4pt,
 	},
-	hbox,
 	arc=2mm,
-    sharp corners=northeast,
-    rightrule=.6em
+    %sharp corners=northeast,
+    %rightrule=.6em
+    sharp corners=northwest,
+    leftrule=.6em
 }

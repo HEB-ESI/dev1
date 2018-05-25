@@ -25,7 +25,7 @@
 \usepackage{environ} % Merci à astalavista pour ce truc :)
 \NewEnviron{pseudocode}[1][0]{%
 	\begin{flushleft}
-	\begin{tcolorbox}[colback=gray!25,% background
+	\begin{tcolorbox}[colback=gray!15,% background
                   colframe=gray,% frame colour
                   leftrule=.6em,
                   arc=2mm,
@@ -109,7 +109,7 @@
 % \Decl{var}{Type}
 % \Const{var}{valeur}
 %-----------------------------------------------
-\newcommand{\Decl}[2]{\LState #1 : #2}
+\newcommand{\Decl}[2]{\LState #2 #1}
 \newcommand{\Const}[2]{\LState\K{constante}\ #1 = #2}
 
 %-----------------------------------------------
