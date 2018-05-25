@@ -1,0 +1,368 @@
+%==============================
+\chapter{Spécifier le problème}
+%==============================
+
+	Comme nous l’avons dit, 
+	un problème ne sera véritablement bien spécifié 
+	que s’il s’inscrit dans le schéma suivant~:
+		
+	\medskip
+	\begin{center}
+	\begin{Ovalbox}
+		{\textbf{étant donné} [les données] 
+		\textbf{on demande} [résultat]}
+	\end{Ovalbox}
+	\end{center}
+	\medskip
+	
+	La première étape dans la résolution d’un problème est de
+	préciser ce problème à partir de l’énoncé,
+	c-à-d de déterminer et préciser les données et le résultat.
+	
+	\minitoc
+
+	%----------------------------------------------
+	\section{Déterminer les données et le résultat}
+	%----------------------------------------------
+	
+		La toute première étape est de parvenir à extraire
+		d’un énoncé de problème, quelles sont les données
+		et quel est le résultat attendu%
+		\footnote{%
+			Plaçons-nous pour le moment dans le cadre
+			de problèmes où il y a exactement un résultat.%
+		}. Dans la suite, nous utiliserons un exemple très simple afin 
+		d'illustrer les concepts qui nous intéressent. 
+	
+		\begin{Emphase}
+			\paragraph{Exemple.}
+			Soit l’énoncé suivant~:
+			\og
+				Calculer la surface d’un rectangle 
+				à partir de sa longueur et sa largeur
+			\fg.
+			
+			Quelles sont les données~? Il y en a deux~:	
+			\begin{itemize}
+				\item la longueur du rectangle~;
+				\item sa largeur.
+			\end{itemize}
+		
+			Quel est le résultat attendu~? la surface du rectangle.
+		\end{Emphase}
+		
+	%----------------------------------------------
+	\section{Les noms}\index{noms}
+	%----------------------------------------------
+	
+		Pour identifier clairement chaque \textbf{donnée}
+		et pouvoir y faire référence dans le futur algorithme
+		et dans le programme
+		nous devons lui attribuer un \textbf{nom}%		
+		\footnote{%
+				Dans ces notes, nous nous efforcerons de choisir des noms en 
+				anglais,
+				mais vous pouvez très bien choisir
+				des noms français si vous ne vous sentez pas encore suffisament 
+				à l'aise avec l'anglais.
+		}.
+		Il est important de bien choisir les noms. 
+		Le but est de trouver un nom qui soit suffisamment court,
+		tout en restant explicite et ne prêtant pas à confusion.
+		
+	
+		\begin{Emphase}
+			\paragraph{Exemple.}	
+			Quel nom choisir pour la longueur d’un rectangle~?
+	
+			On peut envisager les noms suivants~:
+			\begin{itemize}
+			\item
+				\pc{length} est probablement le plus approprié.
+			\item
+				\pc{rectangleLength} peut se justifier
+				pour éviter toute ambigüité avec une autre longueur.
+			\item
+				\pc{len} peut être admis
+				si le contexte permet de comprendre immédiatement
+				l’abréviation.
+			\item
+				\pc{l} est à proscrire car pas assez explicite.
+			\item
+				\pc{theLengthOfMyRectangle} est inutilement long. 
+			\item
+				\pc{foo} (truc en anglais) ou \pc{tmp} ne sont pas de bons choix
+				car ils n’ont aucun lien avec la donnée.
+			\end{itemize}
+		\end{Emphase}
+
+		Les noms donnés à chaque donnée seront directement associés à une 
+		\textbf{variable} lorsque l'algorithme sera traduit en un programme dans 
+		un langage de programmation. 
+		
+		\marginicon{definition}\index{variable}
+		\textbf{Variable}~:~ Emplacement mémoire nommé pouvant contenir une 
+		valeur. Cette valeur peut changer — est variable — au fil de l'exécution
+		du programme. 
+		
+		Nous allons également donner un \textbf{nom à l’algorithme}
+		de résolution du problème.
+		Cela permettra d’y faire référence dans les explications
+		mais également de l’utiliser dans d’autres algorithmes.
+		Généralement, un nom d’algorithme est~:
+		\begin{itemize}
+		\item soit un verbe indiquant ce que fait l’algorithme~;
+		\item soit un nom indiquant le résultat fourni.	
+		\end{itemize}
+	
+		\begin{Emphase}
+			\paragraph{Exemple.}	
+			Quel nom choisir pour l’algorithme 
+			qui calcule la surface d’un rectangle~?
+	
+			On peut envisager 
+			le verbe \pc{computeRectangleArea}
+			ou le nom \pc{rectangleArea} (notre préféré).
+			On pourrait aussi simplifier en \pc{area}
+			s’il est évident que le problème traite des rectangles.
+		\end{Emphase}
+	
+		Les noms donnés aux algorithmes deviendront généralement les noms des
+		programmes ou des méthodes lorsque l'on implémentera ces algorithmes. 
+
+		Notons que les langages de programmation imposent certaines limitations
+		(parfois différentes d’un langage à l’autre) ce qui peut nécessiter une
+		modification du nom lors de la traduction de l’algorithme en un
+		programme. À chaque langage de programmation sont également associées
+		des \textbf{conventions d'écriture} que les développeurs respectent.
+		Bien que nous y reviendrons plus en détail dans la section
+		\ref{lisibilite}, notons déjà que la simple convention de nom de méthode
+		change d'un langage à l'autre. 
+		
+		Par exemple pour \textit{rectangle area}, nous utiliserons
+		\pc{rectangleArea} en langage Java mais \pc{rectangle\_area} en langage
+		C, C++ et Python. 
+
+	%----------------------------------------------
+	\section{Les types}\index{types}
+	%----------------------------------------------
+		
+		Nous allons également attribuer un \textbf{type} à chaque donnée ainsi
+		qu’au résultat.  Le \textbf{type} décrit la nature de son contenu,
+		quelles valeurs elle peut prendre.
+		
+		Certains langages imposent et vérifient le type de chaque varible tandis
+		que d'autres non. En Java, chaque variable et chaque donnée ont un type. 
+		
+		Dans un premier temps, nous utiliserons ces \textbf{types}
+		\footnote{Écrire ces différents types en français n'est pas une 
+		faute. Dans ces notes nous utiliserons l'anglais}~:
+		
+		\begin{center}
+			\begin{tabular}[t]{|p{1.4cm}|p{1.4cm}|p{8cm}|}
+				\hline
+				\rowcolor{black!40}
+				\color{white}\bf\large Algo & \color{white}\bf\large Java & \\
+				\hline
+				\pc{integer} & \pc{int} & pour les nombres entiers\\
+				\pc{real} & \pc{double} & pour les nombres réels\\
+				\pc{string} & \pc{String}
+						\footnote{Notez la majuscule, indispensable en Java} 
+						& \makecell[tl]{
+							pour les chaines de caractères, les textes\\
+							par exemple~:\\
+							\hspace{1cm}\pc{"Bonjour"},\\
+							\hspace{1cm}\pc{"Bonjour le monde !"},\\
+							\hspace{1cm}\pc{"a"}, \pc{""}\dots
+						}
+					\\
+				\pc{boolean} & \pc{boolean} & quand la valeur 
+			ne peut être que \pc{true} (vrai) ou \pc{false} (false)\\
+			\hline
+			\end{tabular}
+		\end{center}
+
+
+		\begin{Emphase}
+			\paragraph{Exemples.}	
+			\begin{itemize}
+			\item Pour la longueur, la largeur et la surface d’un rectangle, on prendra un réel.
+			\item Pour le nom d’une personne, on choisira la chaine.
+			\item Pour l’âge d’une personne, un entier est indiqué.
+			\item Pour décrire si un étudiant est doubleur ou pas, un booléen est adapté.
+			\item Pour représenter un mois, on préférera souvent un entier
+				donnant le numéro du mois (par ex: 3 pour le mois de mars)
+				plutôt qu’une chaine (par ex: "mars")
+				car les manipulations, les calculs seront plus simples.
+			\end{itemize}
+		\end{Emphase}
+	
+		\subsection{Il n’y a pas d’unité}
+		%-----------------------------------------
+	
+			Un type numérique indique que les valeurs possibles seront
+			des nombres. Il n’y a là aucune notion d’unité.
+			Ainsi, la longueur d’un rectangle, un réel, 
+			peut valoir $2.5$ mais certainement pas $2.5 cm$.
+			Si cette unité a de l’importance,
+			il faut la spécifier dans le nom de la donnée ou en commentaire.
+			
+			\begin{Emphase}
+				\paragraph{Exemple.}
+				Faut-il préciser les unités 
+				pour les dimensions d’un rectangle~?
+				
+				Si la longueur d’un rectangle vaut $6$, 
+				on ne peut pas dire s’il s’agit de centimètres, 
+				de mètres ou encore de kilomètres.
+				Pour notre problème de calcul de la surface,
+				ce n’est pas important~;
+				la surface n’aura pas d’unité non plus.
+
+				Notre seule contrainte est que la longueur et la largeur soient
+				exprimées dans la même unité.
+				
+				Si, par contre, 
+				il est important de préciser que la longueur
+				est donnée en centimètres,
+				on pourrait l’expliciter en la nommant
+				\pc{lengthCm}.	
+			\end{Emphase}
+	
+		\subsection{Préciser les valeurs possibles}
+		%-----------------------------------------
+		
+			Nous aurions pu introduire un seul type numérique
+			mais nous avons choisi de distinguer les entiers et les réels.
+			Pourquoi~?
+			Préciser qu’une donnée ne peut prendre que des valeurs entières
+			(par exemple dans le cas d’un numéro de mois)
+			aide le lecteur à mieux la comprendre.
+			Nous allons aussi pouvoir définir des opérations propres aux entiers
+			(le reste d’une division par exemple).
+			Enfin, pour des raisons techniques,
+			beaucoup de langages font cette distinction.
+			
+			Même ainsi, le type choisi n’est pas toujours assez précis.
+			Souvent, la donnée ne pourra prendre que certaines valeurs.
+			
+			\begin{Emphase}
+				\paragraph{Exemples.}	
+				\begin{itemize} 
+				\item Un âge est un entier qui ne peut pas être négatif.
+				\item Un mois est un entier compris entre 1 et 12.
+				\end{itemize}
+			\end{Emphase}
+			
+			Ces précisions pourront être données en commentaire
+			pour aider à mieux comprendre le problème et sa solution.
+	
+		\subsection{Le type des données complexes}
+		%-----------------------------------------
+		
+			Parfois, aucun des types disponibles ne permet de représenter 
+			la donnée.
+			Il faut alors la décomposer.
+			
+			\begin{Emphase}
+				\paragraph{Exemple.}	
+				Quel type choisir 
+				pour la date de naissance d’une personne~?
+				
+				On pourrait la représenter dans une chaine 
+				(par ex: "17/3/1985")
+				mais cela rendrait difficile le traitement, les calculs
+				(par exemple, déterminer le numéro du mois).
+				Le mieux est sans doute de la décomposer en trois parties~: 
+				le jour, le mois et l’année, tous des entiers.
+			\end{Emphase}
+			
+			Plus loin dans le cours,
+			nous verrons qu’il est possible de définir de nouveaux
+			types de données grâce aux \emph{structures} pour les algorithmes et 
+			aux \emph{classes} pour les langages orientés objets tels que Java. 
+			
+			Nous pourrons alors définir et utiliser un type \pc{Date}
+			et il ne sera plus nécessaire de décomposer une date en trois
+			morceaux bien que le type sera bien entendu composé de trois valeurs.
+
+	
+		\subsection{Exercice}
+		%----------------------------------------------
+		
+			Quel(s) type(s) de données utiliseriez-vous pour représenter 
+			\begin{itemize}
+				\item le prix d’un produit en grande surface~?
+				\item la taille de l’écran de votre ordinateur~?
+				\item votre nom~?
+				\item votre adresse~?
+				\item le pourcentage de remise proposé pour un produit~?
+				\item une date du calendrier~?
+				\item un moment dans la journée~?
+			\end{itemize}
+			
+	%----------------------------------------------
+	\section{Résumés}
+	%----------------------------------------------
+	
+		Toutes les informations déjà collectées sur le problème
+		peuvent être résumées. 
+		
+		\subsection{Résumé graphique}
+		
+		Représentation graphique du problème.
+	
+		\begin{Emphase}
+			\paragraph{Exemple.}
+			Pour le problème, de la surface du rectangle, 
+			on fera le schéma suivant~:
+			
+			\center\flowalgodd{longueur (réel positif)}
+			{largeur (réel positif)}{surfaceRectangle}{réel}	
+		\end{Emphase}
+
+		\subsection{Résumé textuel}
+
+		Résumé textuel du problème, indiquant clairement les données et les 
+		résultats recherchés. 
+
+		\begin{Emphase}
+			\paragraph{Exemple.}
+			\begin{tabular}[t]{|>{\columncolor{black!40}}r|l|}
+				\hline
+				\textbf{Données} & \makecell[tl]{
+					longueur (un réel positif)\\
+					largeur (un réel positif)
+				}\\
+				\hline
+				\textbf{Résultat} & la surface du rectangle\\
+				\hline
+			\end{tabular}
+		\end{Emphase}
+		
+	%----------------------------------------------
+	\section{Exemples numériques}
+	%----------------------------------------------
+	
+		Une dernière étape pour vérifier que le problème
+		est bien compris est de donner quelques exemples numériques.
+		Il est possible de les spécifier en français, 
+		via un graphique ou via une notation compacte.
+
+		\begin{Emphase}
+			\paragraph{Exemples.}
+			Voici différentes façons de présenter des exemples numériques
+			pour le problème de calcul de la surface d’un rectangle~:
+			\begin{itemize}
+			\item En français~: 
+				si la longueur du rectangle vaut 3 et sa largeur vaut 2, 
+				alors sa surface vaut 6.			
+			\item Via un schéma~:	
+				\begin{center}
+					\flowalgodd{length (3)}{width (2)}{rectangleArea}{6}
+				\end{center}
+			\item En notation compacte~:
+				\pc{rectangleArea(3, 2)} donne/vaut $6$.
+			\end{itemize}
+		\end{Emphase}
+	
