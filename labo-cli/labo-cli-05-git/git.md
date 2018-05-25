@@ -38,6 +38,7 @@ Revenez-y en fin de TD pour vérifier que vous comprenez chacune d'elle.
     git remote [-a] -v
     git remote update
 
+Nous décrirons également `.gitignore`.
 
 # Contenu
 ## Notion de contrôle de version
