@@ -40,9 +40,10 @@ Revenez-y en fin de TD pour vérifier que vous comprenez chacune d'elle.
 
 Nous décrirons également `.gitignore`.
 
-# Contenu
-## Notion de contrôle de version
 
+# Contenu
+## Introduction
+### Notion de contrôle de version
 Si vous avez déjà écrit un document un peu long, vous vous êtes sans doute déjà
 trouvé dans la situation où, après une grosse modification, vous changez d'avis
 et décidez que la version précédente était meilleure.
