@@ -4,6 +4,9 @@
 .
 ├── README.md
 └── syllabus
+    ├── base
+    │   ├── premalgo.tex
+    │   └── specifier.tex
     ├── build
     │   └── ...
     ├── colophon.tex
@@ -51,16 +54,16 @@ Quelques choix qui peuvent être discutés:
 ## Crédits
 
 - Version 2018-2019
-    Pierre Bettens (pbt) <pbettens@he2b.be>
+    Pierre Bettens (pbt) <pbettens@he2b.be>  
 
-- Versions antérieures à 2015-2018 ([dépot][dev-alg])
+- Versions antérieures à 2015-2018 ([dépot][dev-alg])  
     Marco Codutti (mcd) <mcodutti@he2b.be>  
-    Catherine Leruste (clr) <cleruste@he2b.be>
+    Catherine Leruste (clr) <cleruste@he2b.be>  
 
 - Version « syllabus de logique » avant le décret paysage 2014-2015
-  ([dépot][dev1-log])
-    Laurent Beeckmans
-    Marco Codutti (mcd) <mcodutti@he2b.be>  
+  ([dépot][dev1-log])  
+    Laurent Beeckmans  
+    Marco Codutti (mcd) <mcodutti@he2b.be>    
 	
 
 \ ![](../cc-by-sa.png)
