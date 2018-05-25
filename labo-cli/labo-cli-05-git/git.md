@@ -63,8 +63,11 @@ digraph versions-lineaire {
     "3 juin" -> "12 juin" -> "13 juin" -> "monTravail.doc"
 }
 
-En pratique, il est probable que vous allez obtenir des fichiers un peu comme
-ceci (dans l'ordre chronologique) :
+Cela fonctionne assez bien mais nous verrons que même dans ce cas simple, Git
+pourra nous aider.
+
+Cependant, en pratique, il est plus probable que vous obteniez des fichiers un
+peu comme ceci (dans l'ordre chronologique) :
 
     monTravail-version-du-3-juin.doc
     monTravail-version-du-12-juin.doc
@@ -77,16 +80,50 @@ ceci (dans l'ordre chronologique) :
 
 Ceci illustre un point : le processus de création n'est pas toujours linéaire,
 même quand on travaille tout seul. Essayez de représenter les liens logiques
-entre les différentes versions[^Ici c'est facile, dans la réalité vous aurez aussi des "Copie de monTravail.doc" dans le tas.].
+entre les différentes versions.
+
+Voici une telle représentation :
 
 FIXME : prévoir un petit graphe type
-digraph versions-non-lineaire {
-    "3 juin" -> "12 juin" -> "finale"
-    "finale" -> {"corrigée", "avec remerciements"}
-    "corrigée" -> "vraiment finale"
-    "avec remerciements" -> "vraiment finale"
-    "monTravail.doc" -??-> "monTravail.doc"
-}
+
+    digraph versionsNonLineaire {
+        minlen=1000;
+        juin3 [label="3 juin"];
+        juin12 [label="12 juin"];
+        corrigee [label="Corrigée"];
+        remerciee [label="Avec remerciements"];
+        finale [label="Version finale"];
+        vraimentFinale [label="Vraiment finale"];
+        monTravail [label="monTravail.doc"];
+        juin3 -> juin12 -> finale [len=1.2];
+        finale -> {corrigee, remerciee} -> vraimentFinale [len=1.7];
+        monTravail -> monTravail [label="???"];
+    }
+
+En première approche, le travail avec Git ressemblera au travail sans Git :
+
+1. création d'un document
+2. sauvegarde dans Git
+3. modification du document
+4. retour à l'étape 2 (sauf si le document est fini)
+5. fini !
+
+À ce stade les aspects importants de Git sont notamment qu'il :
+* va gérer pour vous les liens logiques entre les versions,
+* vous propose des outils pour comparer et fusionner des versions.
+
+### Environnement de travail
+Dans l'école, Git est déjà installé, tant sur les machines Windows que sur le
+serveur `linux1`.
+
+Par ailleurs la conception de `Git` est telle que nous allons travailler *dans
+un répertoire dédié* à notre projet. Cela peut vous sembler étrange si vous
+pensez à l'exemple `monTravail.doc` (dans lequel il n'y a finalement qu'un
+document en plusieurs versions) mais d'un autre côté, un projet de programmation
+va généralement rassembler de nombreux fichiers qu'il est naturel de mettre dans
+un répertoire dédié.
+
+Commençons par créer et aller dans le répertoire `~/dev1/td-git/ex1/` (utilisez `mkdir -p`).
 
 ## Création d'un dépôt Git et de commits
 Pour créer un dépôt Git, c'est-à-dire préparer le terrain pour sauver notre travail, il faut "Initialiser un dépôt". Tapez donc :
