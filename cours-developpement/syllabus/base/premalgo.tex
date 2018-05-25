@@ -655,19 +655,16 @@ aString = hello;
 			Vous pouvez vérifier ensuite sur la fiche \vref{fiche:calcul-complexe}
 			qui présente cette solution.
 				
-TODO
 
 	%=============================================
 	\section{Quelques difficultés liées au calcul}
 	%=============================================
 	
-		Vous êtes habitués à effectuer des calculs.
-		L’expérience nous montre toutefois que certains calculs
-		vous posent des difficultés.
-		Soit parce que ce sont des opérations que vous utilisez peu,
-		soit parce que vous n’avez pas l’habitude de les voir comme des
-		calculs.
-		Citons~: 
+		Vous êtes habitués à effectuer des calculs.  L’expérience nous montre
+		toutefois que certains calculs vous posent des difficultés.  Soit parce
+		que ce sont des opérations que vous utilisez peu, soit parce que vous
+		n’avez pas l’habitude de les voir comme des calculs.  Citons~:
+
 		\begin{itemize}
 		\item
 			assigner des valeurs booléennes 
@@ -678,19 +675,17 @@ TODO
 			utiliser la division entière et le reste.
 		\end{itemize}
 		
-		Parfois, le problème se situe au niveau de la compréhension du vocabulaire.
-		Examinons ces situations une à une
-		en fournissant des exemples et des exercices
-		pour que cela devienne naturel pour vous.
+		Parfois, le problème se situe au niveau de la compréhension du
+		vocabulaire.  Examinons ces situations une à une en fournissant des
+		exemples et des exercices pour que cela devienne naturel.
 
 		%------------------------------------------------------------------------
 		\subsection{Un peu de vocabulaire}
 		%------------------------------------------------------------------------
 
-			Une première difficulté que vous rencontrez généralement 
-			est liée au vocabulaire utilisé. 
-			Qu’entend-on exactement par un opérateur~? un opérande~? 
-			Fixons ces notions.
+			La première difficulté que rencontre un ou une apprenant·e est
+			généralement liée au vocabulaire utilisé.  Qu’est-ce qu'un
+			opérateur~? Un opérande~?  Rappelons et fixons ces notions.
 			
 			\marginicon{definition}
 			\begin{description}
@@ -700,7 +695,8 @@ TODO
 				Une fois le calcul effectué
 				(on dit qu’on \emph{évalue} l’expression), 
 				on obtient une valeur, d’un certain type.
-				Une expression est composée d’opérandes et d’opérateurs.
+				Une expression est composée d’opérandes et d’opérateurs,
+				elle a une valeur et un type.
 			\item[opérateur]\index{opérateur}
 				Un opérateur est ce qui désigne une opération.
 				Exemple~: \Verb_+_ désigne l’addition.
@@ -723,56 +719,86 @@ TODO
 				Un littéral est une valeur notée explicitement 
 				(comme \Verb_12_, \Verb_34.4_, \Verb_"bonjour"_)
 			\item[priorité]\index{priorité}
-				Les opérateurs sont classés par priorité. 
-				Cela permet de savoir dans quel ordre les exécuter.
-				Par exemple, la multiplication est prioritaire par rapport à l’addition.
-				C’est pourquoi l’expression \Verb_a + b * c_ 
-				est équivalente à \Verb_a + (b * c)_ et pas à \Verb_(a + b) * c_.
-				Les parenthèses permettent de modifier ou de souligner la priorité.
-			\end{description}
+
+				Les opérateurs sont classés par priorité.  Cela permet de savoir
+				dans quel ordre les exécuter.  Par exemple, la multiplication
+				est prioritaire par rapport à l’addition.  C’est pourquoi
+				l’expression \Verb_a + b * c_ est équivalente à \Verb_a + (b
+				* c)_ et pas à \Verb_(a + b) * c_.  Les parenthèses permettent
+				de modifier ou de souligner la priorité.  
+		
+		\end{description}
 			
-			\begin{Exercice}{Analyse d’expression}
-				Voici une série d’expressions.
-				On vous demande d’identifier tous les opérateurs
-				et leurs opérandes, 
-				d’indiquer si les opérateurs sont unaires ou binaires
-				et d’identifier les littéraux.
-				On vous demande aussi de fournir une version de l’expression
-				avec le moins de parenthèses possibles et 
-				une autre avec un maximum de parenthèses
-				(tout en respectant le sens de l’expression bien sûr).
+			\begin{Emphase}
+				\paragraph{Exercice~: analyse d’expression}
+				
+				Voici une série d’expressions. Nous vous proposons d’identifier
+				tous les opérateurs et leurs opérandes, d’indiquer si les
+				opérateurs sont unaires ou binaires et d’identifier les
+				littéraux.  
+				
+				Nous vous proposons aussi de fournir une version de
+				l’expression avec le moins de parenthèses possibles et une autre
+				avec un maximum de parenthèses (tout en respectant le sens de
+				l’expression bien sûr et sans mettre de parenthèses redondantes).
+				
 				\begin{itemize}
 				\item \Verb_a+1_
 				\item \Verb_(a+b)*12-4*(-a-b)_ 
 				\item \Verb_a+(b*12)-4*-a_ 
 				\end{itemize}
-			\end{Exercice}
-			
+			\end{Emphase}
+		
+
 		%------------------------------------------------------------------------
 		\subsection{Les comparaisons et les assignations de variables booléennes}
 		%------------------------------------------------------------------------
 		\index{comparaisons}
 		
-			Si je vous dis que $3+1$ est un calcul
-			dont le résultat est $4$, un entier
-			vous n’aurez aucun mal à me croire~; 
-			cela vous parait évident.
-			Ce qui l’est peut-être moins c’est que $1<3$ est aussi
-			un calcul dont le résultat est un \emph{booléen},
-			vrai en l’occurrence. 
-			Ce résultat peut être assigné à une variable booléenne.			
+			$3+1$ est un calcul dont le résultat est $4$, un entier. C'est sans
+			doute évident.
+			
+			$1<3$ est aussi un calcul dont le résultat est un \emph{booléen},
+			vrai en l’occurrence.  Ce résultat peut être assigné à une variable
+			booléenne.			
 
 			\textbf{Exemples.}
 			Voici quelques assignations correctes 
-			(les variables à gauche du \Gets sont des variables booléennes)~:
-			\begin{LDA}
-				\Let positif \Gets nb > 0 \RComment positif est mis à vrai si le nb est positif 
-				\Let adulte \Gets âge $\ge$ 21 \RComment adulte est vrai si l’âge est 21 ou plus
-				\Let réussi \Gets cote $\ge$ 10 \RComment réussi est mis à vrai si la cote est supérieure ou égale à 10
-				\Let parfait \Gets nbFautes = 0 \RComment c’est parfait si le nombre de fautes est 0
-			\end{LDA}
+			
+			\begin{pseudocode}
+				\Decl{positive, adult, successful, perfect}{boolean}
+				\Let positive \Gets nb > 0 
+					\RComment positive est mis à vrai si le nb est positive 
+				\Let adult \Gets age $\ge$ 21 
+					\RComment adult est vrai si l’âge est 21 ou plus
+				\Let successful \Gets cote $\ge$ 10 
+					\RComment successful est mis à vrai si la cote est 
+					\RComment supérieure ou égale à 10
+				\Let perfect \Gets errors == 0  
+					\RComment c’est perfect si le nombre de fautes est 0
+			\end{pseudocode}
+
+			En Java
+
+			\begin{java}
+boolean positive, 
+	adult, 
+	successful, 
+	perfect;
+positive = nb > 0;
+adult = age >= 21;
+successful = code >= 10;
+perfect = errors == 0;
+			\end{java}
+
+			\paragraph{Remarque}
+
+			Pour tester l'égalité, nous utilisons le symbole $==$ afin de le 
+			différencier du symbole $=$ qui est le symbole de d'assignation. 
+			C'est la même chose en Java et dans beaucoup d'autres langages. 
 		
-			\begin{Exercice}{Écrire des expressions booléennes}
+			\begin{Emphase}
+				\paragraph{Exercices~: écrire des expressions booléennes}
 				Pour chacune des phrases suivantes,
 				écrivez l’assignation qui lui correspond.
 				\begin{itemize}
@@ -788,12 +814,14 @@ TODO
 					Un étudiant a \emph{la plus grande distinction} si sa cote est
 					de 18/20 ou plus.
 				\end{itemize}
-			\end{Exercice}
+			\end{Emphase}
 
 		%------------------------------------------------------------------------
 		\subsection{Les opérations logiques}
 		%------------------------------------------------------------------------
-		\index{opérateurs logiques}\index{NON}\index{ET}\index{OU}
+		\index{opérateurs logiques}
+		\index{NON}\index{ET}\index{OU}
+		\index{AND}\index{OR}
 	
 			Les opérateurs logiques agissent sur des expressions booléennes 
 			(variables ou expressions à valeurs booléennes) 
@@ -801,51 +829,74 @@ TODO
 	
 			\begin{center}
 			\begin{tabular}{m{15mm}|m{3cm}|m{8cm}}
+			\hline
+			\rowcolor{black!20}
 			opérateur & nom & description \\
 			\hline
-			\raggedleft \lda{NON} & négation & vrai devient faux et inversement\\
-			\raggedleft \lda{ET} & conjonction logique & vrai si les 2 conditions sont vraies\\
-			\raggedleft \lda{OU} & disjonction logique & vrai si au moins une des 2 conditions est vraie\\
+			\raggedleft \pc{NON} & négation & vrai devient faux et inversement\\
+			\raggedleft \pc{AND} & conjonction logique 
+				& vrai si les 2 conditions sont vraies\\
+			\raggedleft \pc{OR} & disjonction logique 
+				& vrai si au moins une des 2 conditions est vraie\\
 			\hline
 			\end{tabular}
 			\end{center}
 			\medskip
 			
-			Ce qu’on peut résumer par les tableaux suivants~:
+			\paragraph{Remarque}
+			Nous utilisons \pc{AND} et \pc{OR} mais nous acceptons et comprenons 
+			\pc{ET} et \pc{OU}. 
+
+			Ce tableau se résume en \emph{tables de vérité}
+			\index{tables de vérité} comme suit~:
+
 			
 			\begin{center}
-			\begin{tabular}{|cccc|}
+			\begin{tabular}{|ccc|}
 				\hline
-				a & b & a ET b & a OU b \\
+				\rowcolor{black!20}
+				a & b & a ET b   \\
 				\hline
-				vrai & vrai & vrai & vrai \\\hline
-				vrai & faux & faux & vrai \\\hline
-				faux & vrai & faux & vrai \\\hline
-				faux & faux & faux & faux \\\hline				
+				V & V & V \\\hline
+				V & F & F \\\hline
+				F & V & F \\\hline
+				F & F & F \\\hline				
+			\end{tabular}
+			\qquad
+			\begin{tabular}{|ccc|}
+				\hline
+				\rowcolor{black!20}
+				a & b  & a OU b \\
+				\hline
+				V & V & V \\\hline
+				V & F & V \\\hline
+				F & V & V \\\hline
+				F & F & F \\\hline				
 			\end{tabular}
 			\qquad
 			\begin{tabular}{|cc|}
 				\hline
+				\rowcolor{black!20}
 				a & NON a \\
 				\hline
-				vrai & faux \\\hline
-				faux & vrai \\\hline
+				V & F \\\hline
+				F & V \\\hline
 			\end{tabular}
 			\end{center}
 
-			On peut les utiliser 
-			pour donner une valeur à une variable booléenne.
-			Par exemple~:
+			Ces opérateurs peuvent intervenir dans des expressions booléennes.
+
+			\textbf{Exemples}
 			
 			\begin{small}
 			\begin{multicols}{2}
 				\begin{itemize}
-					\item \lda{tarifPlein \Gets 18$\le$âge ET âge$<$60}
-					\item \lda{distinction \Gets 14$\le$cote ET cote<16}
-					\item \lda{nbA3chiffres \Gets 100$\le$nb ET nb$\le$999}
-					\item \lda{tarifRéduit \Gets NON tarifPlein}
-					\item \lda{tarifRéduit \Gets NON (18$\le$âge ET âge$<$60)}
-					\item \lda{tarifRéduit \Gets âge$<$18 OU 60$\le$âge}
+					\item \pc{tarifPlein \Gets 18$\le$âge ET âge$<$60}
+					\item \pc{distinction \Gets 14$\le$cote ET cote<16}
+					\item \pc{nbA3chiffres \Gets 100$\le$nb ET nb$\le$999}
+					\item \pc{tarifRéduit \Gets NON tarifPlein}
+					\item \pc{tarifRéduit \Gets NON (18$\le$âge ET âge$<$60)}
+					\item \pc{tarifRéduit \Gets âge$<$18 OU 60$\le$âge}
 				\end{itemize}
 			\end{multicols}
 			\end{small}
@@ -858,14 +909,21 @@ TODO
 				Vous noterez que le nombre de "et" et de "ou"
 				dans cette phrase ne facilite pas sa compréhension~;)%
 			}. 
-			\\Par exemple, ne pas écrire~: 
-			\lda{tarifRéduit \Gets âge$<$18 OU $\ge$60}
+			
+			Par exemple, ne pas écrire~: 
+			\pc{tarifRéduit \Gets âge$<$18 OU $\ge$60}
 	
-			\paragraph{Loi de De Morgan.}
-				Lorsqu’on a une expression complexe faisant intervenir
-				des négations, on peut utiliser la \emph{Loi de De Morgan}
-				pour la simplifier.
-				Cette loi stipule que~:
+			\paragraph{Loi de De Morgan.}\index{Morgan}
+				Cette loi s'énonce: 
+				\begin{quote}
+					{\Huge «}
+					La négation d'une conjonction (\pc{AND}) de deux
+					propositions est la disjonction (\pc{OR}) des deux
+					négations. De même, la négation de d'une disjonction de deux
+					propositions est la conjonction des deux négations.~{\Huge »}
+				\end{quote}
+
+				… et s'écrit plus simplement~:
 				\[
 					\mathrm{NON}\ (a\ \mathrm{ET}\ b) \Leftrightarrow \mathrm{NON}\ a\ \mathrm{OU}\ \mathrm{NON}\ b
 				\]
@@ -873,35 +931,49 @@ TODO
 					\mathrm{NON}\ (a\ \mathrm{OU}\ b) \Leftrightarrow \mathrm{NON}\ a\ \mathrm{ET}\ \mathrm{NON}\ b
 				\]
 				
-				Par exemple~: \lda{tarifRéduit \Gets NON (18$\le$âge ET âge$<$60)}
-				\\peut s’écrire aussi~: \lda{tarifRéduit \Gets (NON 18$\le$âge) OU (NON âge$<$60)}
-				\\ce qui se simplifie en~: \lda{tarifRéduit \Gets âge$<$18 OU 60$\le$âge}
+				Par exemple, ces trois propositions sont équivalentes~: 
+				
+				\begin{center}	
+					\large
+				\pc{tarifRéduit \Gets NON (18$\le$âge AND âge$<$60)}\\
+				\medskip
+				\pc{tarifRéduit \Gets (NON 18$\le$âge) OR (NON âge$<$60)}\\
+				\medskip
+				\pc{tarifRéduit \Gets âge$<$18 OR 60$\le$âge}\\
+				\end{center}
 	
 			\paragraph{Priorités et parenthèses.}
-				Lorsqu’on écrit une expression mêlant les opérateurs logiques,
-				on considère que NON est prioritaire sur ET qui l’est sur OU.
-				
-				Ainsi l’expression~: \lda{NON a OU b ET c}
-				doit se comprendre~: \lda{(NON a) OU (b ET c)}.
-				Vous pouvez toujours ajouter des parenthèses non nécessaires
-				pour vous assurer d’être bien compris.
+				L'opérateur \pc{NON} est prioritaire sur les opérateurs \pc{AND}
+				et \pc{OR}.
 
-			\paragraph{Évaluation court-circuitée.}\index{court-circuit}\label{court-circuit}
-			
-				Les opérateurs ET et OU sont des opérateurs court-circuités.
-				Cela signifie que le calcul s’arrête dès qu’on peut être sûr
-				de la réponse finale.
-				En particulier, si la première partie d’un ET est fausse,
-				on est sûr que le résultat sera faux quelle que soit la suite.
-				Et si la première partie d’un OU est vraie 
-				on est sûr que le résultat sera vrai.
+				L'opérateur \pc{AND} est prioritaire sur le \pc{OR}.
 				
-				Pourquoi un tel comportement~?
-				Cela permet de gagner du temps bien sûr,
-				mais cela permet également d’éviter des erreurs d’exécution.
+				Ainsi l’expression~: \pc{NON a OR b AND c}
+				doit se comprendre~: \pc{(NON a) OR (b AND c)}.
+				Il est toujours possible d'ajouter des parenthèse pour aider 
+				à la compréhension. 
+
+				\paragraph{Évaluation paresseuse} 
+				\index{court-circuit}\label{court-circuit}
+			
+				L'évaluation paresseuse (\textit{lazy evaluation}) ou évaluation
+				court-circuitée est une évaluation qui s'arrête dès que le 
+				résultat est connu. 
+			
+				Les opérateurs AND et OR sont des opérateurs court-circuités.
+				En particulier, si la première partie d’un AND est fausse, il
+				n'est pas nécessaire de regarder le deuxième opérande; le
+				résultat sera faux. De même si la première partie d'un OR est
+				vraie; le résultat sera vrai quelle que soit la valeur de la
+				deuxième partie. 
+
+				Cette manière de fonctionner permet de gagner du temps dans
+				l'évaluation et permet aussi d'éviter des erreurs. Ceci est vrai
+				dans les algorithmes et — surtout — dans beaucoup de langages 
+				de programmation. 
 				 
 				\textbf{Exemples.}
-				\begin{LDA}
+				\begin{pseudocode}
 					\Let ok \Gets 1/b < 0.1
 						\RComment provoque une erreur et un arrêt
 						de l’algorithme si \lda{b=0}. 
@@ -911,34 +983,43 @@ TODO
 					\Let ok \Gets 1/b < 0.1 ET b$\neq$0
 						\RComment provoque une erreur et un arrêt
 						de l’algorithme si \lda{b=0}. 
-				\end{LDA}
+				\end{pseudocode}
 				
 				Cette propriété sera abondamment utilisée dans le parcours
-				de tableaux.
+				de tableaux par exemple. 
+
 				
-			\begin{Exercice}{Simplifier des expressions booléennes}
+				\begin{Emphase}
+				\paragraph{Exercice: simplifier des expressions booléennes}
+
 				Voici quelques assignations correctes du point de vue de la
-				syntaxe mais contenant des lourdeurs d’écriture.
-				Trouvez des expressions plus simples
-				qui auront un effet équivalent.
+				syntaxe mais contenant des lourdeurs d’écriture.  Trouvez des
+				expressions plus simples qui auront un effet équivalent.
+				
 				\begin{itemize}
-					\item \lda{ok \Gets adulte = vrai}
-					\item \lda{ok \Gets adulte = faux}
-					\item \lda{ok \Gets etudiant = vrai ET jeune = faux}
-					\item \lda{ok \Gets NON (adulte = vrai) ET NON (adulte = faux)}
-					\item \lda{nbA3chiffres \Gets NON (nb$<$100 OU nb$\ge$1000)}
+					\item \pc{beautifulBoolean \Gets adulte == vrai}
+					\item \pc{beautifulBoolean \Gets adulte == faux}
+					\item \pc{beautifulBoolean \Gets etudiant == vrai 
+						AND jeune == faux}
+					\item \pc{beautifulBoolean \Gets NON (adulte == vrai) 
+						AND NON (adulte == faux)}
+					\item \pc{nbA3chiffres \Gets NON (nb$<$100 OR nb$\ge$1000)}
 				\end{itemize}		
-			\end{Exercice}
+			\end{Emphase}
 		
-			\begin{Exercice}{Expressions logiques}
+			\begin{Emphase}
+				\paragraph{Exercice: expressions logiques}
 				Pour chacune des phrases suivantes,
 				écrivez l’assignation qui lui correspond.
 				\begin{itemize}
-				\item J’irai au cinéma si le film me plait et que j’ai 20\texteuro{} en poche.
-				\item Je n’irai pas au cinéma si je n’ai pas 20\texteuro{} en poche.
-				\item Je brosserai le premier cours de la journée s’il commence à 8h et aussi si je n’ai pas dormi mes 8h.
+				\item J’irai au cinéma si le film me plait et que 
+					j’ai 20\texteuro{} en poche.
+				\item Je n’irai pas au cinéma si je n’ai pas 
+					20\texteuro{} en poche.
+				\item Je brosserai le premier cours de la journée 
+					s’il commence à 8h et aussi si je n’ai pas dormi mes 8h.
 				\end{itemize}
-			\end{Exercice}
+			\end{Emphase}
 			
 		%-------------------------------------------
 		\subsection{La division entière et le reste}
@@ -950,6 +1031,23 @@ TODO
 			\marginicon{definition}
 			La \textbf{division entière} consiste à effectuer une division
 			en ne gardant que la partie entière du résultat.
+			
+			Pour rappel, lorsque l'on fait une division entière, le
+			\textbf{dividende} \pc{D} est divisé par le \textbf{diviseur} \pc{d}
+			pour donner un \textbf{quotient} \pc{q} et, éventuellement, un
+			\textbf{reste} \pc{r}.
+
+			\[
+				D = d * q + r 
+			\]\[
+				\frac{D}{d} = q 
+			\]
+			\begin{flushright}
+				et, éventuellement un reste  $r$				
+			\end{flushright}
+			
+			{\Huge\bf TODO}
+			
 			Dans ce cours, nous la noterons \lda{DIV}.
 			Dit autrement, \lda{a DIV b}
 			indique combien de fois on peut \emph{mettre} b dans a.
