@@ -19,7 +19,10 @@ Au travers de ce TD nous vous montrerons comment Git aide à réaliser ces
 objectifs.
 
 ## Pré-requis
-Utilisation basique de la ligne de commande sur Git Bash et linux1
+Utilisation basique :
+* de la ligne de commande sur Git Bash et linux1,
+* de Netbeans,
+* du langage Java.
 
 ## Savoirs terminaux
 Voici les commandes que vous connaitrez à la fin de ce TD.
