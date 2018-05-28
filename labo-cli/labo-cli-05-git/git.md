@@ -10,7 +10,8 @@ Git est un logiciel de gestion de versions ("revision control" ou "version
 control"). Ce type de logiciels, et git en particulier, est utilisé par de
 nombreux développeurs, tant en solitaire qu'en équipes, notamment pour :
 
-* revenir et comparer différentes versions de leur code
+* revenir et comparer différentes versions de leur code ou tout document 
+stocké comme un texte,
 * comprendre l'apparition de bugs éventuels
 * travailler en équipe
 
@@ -38,7 +39,7 @@ Revenez-y en fin de TD pour vérifier que vous comprenez chacune d'elle.
     git remote [-a] -v
     git remote update
 
-Nous décrirons également `.gitignore`.
+Nous décrirons également le fichier `.gitignore`.
 
 
 # Contenu
@@ -50,17 +51,17 @@ et décidez que la version précédente était meilleure.
 
 La façon la plus courante de s'en sortir est simplement de faire des copies de
 votre travail avant (ou après) chaque modification importante. Si vous écrivez
-un fichier `monTravail.doc` et que tout va bien, les versions se succèdent
+un fichier `monTravail.txt` et que tout va bien, les versions se succèdent
 simplement et ça doit donner ceci :
 
-    monTravail-version-du-3-juin.doc
-    monTravail-version-du-12-juin.doc
-    monTravail-version-du-13-juin.doc
-    monTravail.doc <= Ceci est la version finale.
+    monTravail-version-du-3-juin.txt
+    monTravail-version-du-12-juin.txt
+    monTravail-version-du-13-juin.txt
+    monTravail.txt <= Ceci est la version finale.
 
 FIXME : prévoir un petit graphe type
 digraph versions-lineaire {
-    "3 juin" -> "12 juin" -> "13 juin" -> "monTravail.doc"
+    "3 juin" -> "12 juin" -> "13 juin" -> "monTravail.txt"
 }
 
 Cela fonctionne assez bien mais nous verrons que même dans ce cas simple, Git
@@ -69,14 +70,14 @@ pourra nous aider.
 Cependant, en pratique, il est plus probable que vous obteniez des fichiers un
 peu comme ceci (dans l'ordre chronologique) :
 
-    monTravail-version-du-3-juin.doc
-    monTravail-version-du-12-juin.doc
-    monTravail-version-finale.doc
-    monTravail-version-finale-avec-remerciements.doc
-    monTravail-version-finale-corrigée.doc
-    monTravail-version-finale-corrigée-avec-remerciements.doc
-    monTravail-version-vraiment-finale.doc
-    monTravail.doc <= Hm, à quoi ça correspond déjà ?
+    monTravail-version-du-3-juin.txt
+    monTravail-version-du-12-juin.txt
+    monTravail-version-finale.txt
+    monTravail-version-finale-avec-remerciements.txt
+    monTravail-version-finale-corrigée.txt
+    monTravail-version-finale-corrigée-avec-remerciements.txt
+    monTravail-version-vraiment-finale.txt
+    monTravail.txt <= Hm, à quoi ça correspond déjà ?
 
 Ceci illustre un point : le processus de création n'est pas toujours linéaire,
 même quand on travaille tout seul. Essayez de représenter les liens logiques
@@ -94,7 +95,7 @@ FIXME : prévoir un petit graphe type
         remerciee [label="Avec remerciements"];
         finale [label="Version finale"];
         vraimentFinale [label="Vraiment finale"];
-        monTravail [label="monTravail.doc"];
+        monTravail [label="monTravail.txt"];
         juin3 -> juin12 -> finale [len=1.2];
         finale -> {corrigee, remerciee} -> vraimentFinale [len=1.7];
         monTravail -> monTravail [label="???"];
@@ -118,7 +119,7 @@ serveur `linux1`.
 
 Par ailleurs la conception de `Git` est telle que nous allons travailler *dans
 un répertoire dédié* à notre projet. Cela peut vous sembler étrange si vous
-pensez à l'exemple `monTravail.doc` (dans lequel il n'y a finalement qu'un
+pensez à l'exemple `monTravail.txt` (dans lequel il n'y a finalement qu'un
 document en plusieurs versions) mais d'un autre côté, un projet de programmation
 va généralement rassembler de nombreux fichiers qu'il est naturel de mettre dans
 un répertoire dédié.
