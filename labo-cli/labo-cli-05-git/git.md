@@ -257,18 +257,22 @@ Ce répertoire ne contiendra jamais rien d'autre que ces produits de compilation
 En conséquence de quoi, il n'est pas pertinent de les préserver dans nos
 commits. Nous allons donc le faire savoir à Git.
 
-ACTION:
-1. Créez un fichier, par exemple avec `touch qsdf`
-2. Vérifiez avec `git status`
-3. Indiquez à git d'ignorer `qsdf` avec: `echo qsdf > .gitignore`
-4. Vérifiez avec `git status`
-5. Nettoyez tout cela avec `rm qsdf .gitignore`
+
+ACTION: Avant chacune des étapes suivantes, utilisez `ls` et `git status` pour
+voir l'état de votre répertoire et de votre dépôt.
+1. Lancez: `touch qsdf`
+2. Indiquez à git d'ignorer `qsdf` avec: `echo qsdf > .gitignore`
+3. Nettoyez tout cela avec `rm qsdf .gitignore`.
 
 Qu'avez vous constaté ?
 
-R : à l'étape 4, `qsdf` a été ignoré, mais `.gitignore` est apparu.
+R : 
+1. `qsdf` est apparu.
+2. `qsdf` a été ignoré par Git (mais toujours présent), mais `.gitignore` est apparu.
+3. `qsdf` et ` .gitignore` ont disparu.
 
-Astuce : avez vous deviné/compris ce que fait `touch` ? Cherchez la réponse.
+Astuce : cherchez ce que fait `touch` sur l'Internet.
+Astuce : le sens du symbole `>` vous sera expliqué dans un TD ultérieur (c'est une redirection)
 
 Nous utiliserons ce fichier `.gitignore` pour éviter que certains types de
 fichiers apparaissent dans `git status`.
@@ -280,9 +284,9 @@ projet. En fait nous allons ignorer tout ce qui se trouvera dans le répertoire
 
 ACTION:
 1. Ignorez le répertoire `build` (de la même manière que nous avions ignoré `qsdf`).
-2. Incluez `.gitignore` dans un commit.
+2. Incluez `.gitignore` dans un commit dont le message est ".gitignore: new file"
 
-R: 
+R:
 
     echo build > .gitignore
     git add .gitignore
