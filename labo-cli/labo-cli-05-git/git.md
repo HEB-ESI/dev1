@@ -310,12 +310,13 @@ par Netbeans. Vous pouvez committer ces changements.
 
 ACTION:
 
-1. Modifiez votre code sous Netbeans (et testez avec F6) pour que votre application affiche "Hello, World !" sur la sortie standard.
+1. Modifiez votre code sous Netbeans (et testez avec F6) pour que votre
+   application affiche "Hello, World !" sur la sortie standard.
 2. Retournez dans Git Bash, et utilisez `git status` pour constater que votre
    fichier .java a été modifié
 3. Créez un commit incluant ce fichier `.java`.
 
-Astuce: Tapez `sout` suivi d'un appui sur la touche TAB pour insérer
+Astuce: Dans Netbeans, tapez `sout` suivi d'un appui sur la touche TAB pour insérer
 automatiquement de quoi écrire sur la sortie standard.
 
 #### Créez un test pour votre programme de la façon suivante :
