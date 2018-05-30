@@ -1,0 +1,225 @@
+%=====================================================================
+%						style-esi/td.sty
+%
+%	Style LaTeX pour un document de type article comme un td
+%=====================================================================
+
+%=====================================================================
+%	Dépendences
+%=====================================================================
+
+% --- Pour configurer les couleurs utilisées (avec parcimonie). 
+\usepackage{style-esi/color}
+
+% --- Pour les box avec background (colbox, coltbox) ...
+\usepackage{style-esi/common}
+
+% --- Utilise le logo qui doit se trouver dans le même dossier.
+% --- style-esi/logo.png (ou une autre extension)
+
+% --- Utilisé dans le texte de la licence
+\usepackage{style-esi/links}
+
+% --- On éclaircit encore la couleur claire du thème
+\colorlet{collight}{collight!50!white}
+
+%=====================================================================
+%	La géométrie des pages
+% 	Régler les marges des pages + pas de header
+% 	http://www.ctan.org/pkg/geometry
+%	L'opttion showframe montre les marges
+%=====================================================================
+
+\usepackage[
+	%showframe,
+	hscale=0.7, vscale=0.85, footskip=1em
+	]{geometry}
+
+% On remplace le retrait de la 1ère ligne d'un paragraphe
+% par un espace entre les paragraphes
+\usepackage{parskip}
+
+%=====================================================================
+%	Les éléments de la première page
+%=====================================================================
+
+% -------------------------------------------------------------
+% 	Gestion de l'entête et du pied de page
+% 	On modifie le style plain
+% 	- pas d'entête
+% 	- pied de page avec cours + n° leçon + n° page
+% 	La 1ère page sera mise en style empty
+% 	http://www.ctan.org/pkg/fancyhdr
+% -------------------------------------------------------------
+
+\usepackage{fancyhdr}
+\pagestyle{plain}	
+\fancypagestyle{plain}{				% Redéfinir le style plain
+	\fancyhf{} 						% Enlever tout
+	\fancyfoot[R]{					% Infos discrètes en bas à droite
+		\vspace{1\baselineskip}
+		\textcolor{gray}{\scriptsize\scours\ -- \ldocument\ --\ page \thepage}
+	}									
+	\renewcommand{\headrulewidth}{0pt} % pas de ligne en entête
+}
+
+% --------------------------------------------------------------------
+%	\siglecours{texte} 
+%	\libellecours{texte}
+%		définit le sigle (resp. le libelle) 
+%		du cours (UE ou AA) qui sera utilisé plus tard
+%		dans le titre / l'entête et comme pied de page
+%	Ex: 
+%		- \siglecours{DEV1}
+%		- \siglecours{DEV2-ALG}
+%		- \libellecours{Développement} 
+%		- \libellecours{Algorithmique}
+% --------------------------------------------------------------------
+
+\newcommand{\siglecours}[1]{\def\scours{#1}}
+\newcommand{\libellecours}[1]{\def\lcours{#1}}
+
+% --------------------------------------------------------------------
+%	\libelledocument{texte}
+%		définit le libelle du document qui sera utilisé plus tard
+%		dans le titre et comme pied de page
+%	Ex: 
+%		- \libelledocument{TD1 -- Netbeans}
+% --------------------------------------------------------------------
+
+\newcommand{\libelledocument}[1]{\def\ldocument{#1}}
+
+% --------------------------------------------------------------------
+%	\sigleprof{prof}
+%		Définit le sigle du prof (ou des profs)
+%		Sera utilisé dans l'entête
+% --------------------------------------------------------------------
+
+\newcommand{\sigleprof}[1]{\def\sprof{#1}}
+
+% --------------------------------------------------------------------
+%	\entete{date}{sigle cours}{profs} 	
+%		affiche un entête avec le Logo de l'école, 
+%		le nom de l'école, la date...
+% --------------------------------------------------------------------
+
+\newcommand{\entete}{%
+	\thispagestyle{empty}
+	%\hskip-15mm
+	%\begin{minipage}{187mm}
+		\begin{minipage}[t]{3cm}
+			\includegraphics[width=3cm]{style-esi/logo}
+		\end{minipage}
+		\quad
+		\begin{minipage}[t]{6cm}
+			\vspace*{-4\baselineskip}
+			\large{\textsf{%
+				%\color{gray}
+				Haute École de Bruxelles-Brabant\\
+				École Supérieure d'Informatique\\
+				Bachelor en Informatique
+			}}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{3cm}
+			\vspace*{-4\baselineskip}
+			\begin{flushright}
+			\large{\textsf{\makeatletter{}\@date\makeatother\\\scours\\\sprof}}
+			\end{flushright}
+		\end{minipage}
+	%\end{minipage}
+	\vskip6mm
+}
+
+% --------------------------------------------------------------------
+%	\titre[sous-titre] 	
+%		affiche un cadre avec les infos données
+%		et un éventuel sous-titre.
+% --------------------------------------------------------------------
+
+\DeclareDocumentCommand \titre { o }{%
+	\begin{center}
+	\sffamily\bfseries\large \scours{} -- \lcours
+	\end{center}
+	\begin{tcolorbox}[
+		colback=white, colframe=gray, 
+		boxrule=1pt, arc=8pt,
+		center, halign=center,
+		]
+		\bfseries\sffamily\LARGE \ldocument\\
+		\IfNoValueTF {#1}
+			{}
+			{%	
+				\vskip-2mm\halfrule\\\vskip-3mm
+				\mdseries\itshape\sffamily\Large #1
+			}
+	\end{tcolorbox}
+	\pagestyle{plain}
+}
+
+\newcommand{\halfrule}{%
+	\centering{\color{lightgray}\rule[.4em]{.5\linewidth}{0.4pt}}
+}
+
+% --------------------------------------------------------------------
+%	\begin{consigne}
+%		Texte des consignes	
+%	\end{consigne}
+% --------------------------------------------------------------------
+
+\newtcolorbox{consigne}{%
+	blanker,
+	before skip=10mm,after skip=10mm,
+	borderline west={1mm}{-4mm}{lightgray},
+	title=Consignes, coltitle=black, fonttitle=\sffamily\bfseries\large
+}
+
+
+% --------------------------------------------------------------------
+% 	Affiche la date de dernière édition en bas de page.
+% --------------------------------------------------------------------
+
+\newcommand{\lastedit}{
+	\begin{textblock}{5}(15,28.5)
+	\begin{flushright}
+	\tiny{\color{gray}Version du document\\\today}
+	\end{flushright}
+	\end{textblock}
+}
+
+% ===================================================
+%	OLD STUFF
+% ===================================================
+
+%
+%% Permet d'avoir les numéros de (sub)sections dans la marge
+%% Tiré de "Latex Howtos" de Sébastien Combéfis
+%% -------------------------------------------------------------
+%\makeatletter
+%\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\quad}}
+%\makeatother
+
+%
+%% Remonter le texte d'une ligne
+%\newcommand{\remonter}{\vskip-\baselineskip}
+%
+%% Permet de mettre des commentaires dans le source
+%%\excludecomment{mycomment} permet de les cacher
+%\usepackage{comment}
+%\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+%\definecolor{viridian}{rgb}{0.25, 0.51, 0.43}
+%\specialcomment{mycomment}{%
+%	\begingroup\sffamily\color{airforceblue}\textbf{Commentaire}\par%
+%}{%
+%	\endgroup%
+%}
+%\specialcomment{solutions}{\begingroup\color{viridian}\large\par}{\endgroup}
+%\specialcomment{hidebox}{\begingroup}{\endgroup}
+%
+%
+%%
+%% inclusion de pages pdf
+%%\includepdf[pages=12-30,frame=true, scale=.85, offset=0 10,pagecommand={}]
+%%{doc/tanenbaum5-protocols-239-275.pdf}
+%\usepackage{pdfpages}
+%

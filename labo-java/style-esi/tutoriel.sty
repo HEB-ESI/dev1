@@ -1,0 +1,33 @@
+% =====================================================================
+%						style-esi/tutoriel.sty
+% =====================================================================
+%	Définit la notion de tutoriel numéroté et titré.
+% =====================================================================
+
+% =====================================================================
+%	\begin{Tutoriel}{titre}
+%		Énoncé de tutoriel
+%	\end{Tutoriel}
+%
+%	Crée un tutoriel numéroté avec un titre.
+%	Si on donne un titre vide ({}), alors pas de titre
+%	et l'énoncé commence directement sur la même ligne
+%
+%	Définit également une version * qui affiche un visuel (une ligne)
+%	à la fin (utile quand le contenu est long)
+%
+%	Dans un tutoriel, on peut utiliser
+%	\begin{steps}
+%	\item action à effectuer par celui qui suit le tuto
+%	\end{steps}
+%	Comme un itemize mais avec un "bullet" différent
+% =====================================================================
+
+\usepackage{style-esi/numbered}
+\newnumbered{Tutoriel}
+
+% Crée un itemize spécial pour les tutos (bullet adapté)
+\usepackage{enumitem}
+\usepackage{fontawesome}
+\newlist{steps}{itemize}{3}
+\setlist[steps]{label=\faEdit}
