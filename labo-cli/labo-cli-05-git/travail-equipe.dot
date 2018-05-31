@@ -1,0 +1,3 @@
+digraph equipe2 {
+   Machine1 -> Gitlab -> Machine2 -> Gitlab -> Machine1 [len=1.2]
+}
