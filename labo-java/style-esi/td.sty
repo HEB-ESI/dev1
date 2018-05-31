@@ -188,6 +188,19 @@
 }
 
 % ===================================================
+%   Style des listes en tout genre
+% ===================================================
+% 	Mis ici et pas dans common car fait bugger
+%	le enumerate dans beamer !?
+
+\usepackage{enumitem}
+% On modifie le look pour 'description'
+\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
+% Pour les itemize : un triangle
+\setlist[itemize]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}
+
+
+% ===================================================
 %	OLD STUFF
 % ===================================================
 

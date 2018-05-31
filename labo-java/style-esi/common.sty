@@ -14,7 +14,9 @@
 
 % --- Package utilisé pour réaliser les fonds colorés 
 % --- many = charge qq extensions utilisées
-\usepackage[many]{tcolorbox}	
+% ---	mais bug sur vieilles versions du package
+% --- sknis = juste celle que j'utilise apparemment
+\usepackage[skins]{tcolorbox}	
 
 % --- Pour utiliser l'option varwidth dans tcolorbox
 \usepackage{varwidth}
@@ -240,14 +242,4 @@
 	\colbox[][size=tight,fontupper=\tiny,opacityfill=.6]%
 		{\href{#1}{crédit image}}%
 }
-
-% ===================================================
-%   Style des listes en tout genre
-% ===================================================
-
-\usepackage{enumitem}
-% On modifie le lokk pour 'description'
-\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
-% Pour les itemize : un triangle
-\setlist[itemize]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}
 

@@ -103,18 +103,6 @@
 	\\Version du \today.
 }
 
-%=====================================================================
-%	Table des matières.
-%=====================================================================
-
-%\usepackage{tocloft}
-
-% ===================================================
-%   Style des chapitres
-% 	Pour un plus beau style pour le titre de chapitre
-% ===================================================
-\usepackage[Lenny]{fncychap}
-
 % ===================================================
 %   Entête et pied de page
 %	header : section en extérieur
@@ -143,13 +131,53 @@
 \usepackage{emptypage}
 
 %=====================================================================
-%	Permet d'avoir les numéros de (sub)sections dans la marge
-%	Tiré de "Latex Howtos" de Sébastien Combéfis
+%   Style des titres : \part, \chapter, \section, \subsection
+%	Numéros en marge : tiré de "Latex Howtos" de Sébastien Combéfis 
 %=====================================================================
 
-\makeatletter
-\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\quad}}
-\makeatother
+\usepackage[explicit]{titlesec}
+
+\titleformat{\part}[display]
+	{\thispagestyle{empty}\centering\normalfont\Large\color{colmain}}% 
+	{\titlerule[3pt]\vspace{3pt}\titlerule[1pt]\vspace{3pt}{\partname}}%
+	{5pt}%
+	{\Huge\bfseries#1\\\rule{\textwidth}{2pt}}
+
+\titleformat{\chapter}[hang]{\sffamily\bfseries\color{colmain}}%
+	{%
+		\colbox[center,dark][colframe=white,coltext=white]%
+		{\chaptertitlename\\\\\Huge \thechapter}
+	}%
+	{2em}
+	{\begin{minipage}[b]{12cm}\normalfont\bfseries\huge{}#1\end{minipage}}
+
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+\titleformat{\section}[hang]{\normalfont\Large\bfseries\color{colmain}}%
+	{%
+		\protect\makebox[0pt][r]{\colbox[center,dark][colframe=white,coltext=white,size=small]{\thesection}\hspace{7px}}	
+	}%
+	{-5px}
+	{#1}
+
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries\color{colmain}}%
+	{%
+		\protect\makebox[0pt][r]{\colbox[center,dark][colframe=white,coltext=white,size=small]{\thesubsection}\hspace{7px}}	
+	}%
+	{-5px}
+	{#1}
+
+% ===================================================
+%   Style des listes en tout genre
+% ===================================================
+% 	Mis ici et pas dans common car fait bugger
+%	le enumerate dans beamer !?
+
+\usepackage{enumitem}
+% On modifie le look pour 'description'
+\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
+% Pour les itemize : un triangle
+\setlist[itemize]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}
 
 %=====================================================================
 %	Un index

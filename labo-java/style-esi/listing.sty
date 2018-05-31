@@ -12,12 +12,25 @@
 %
 %	Les options sont passées à listings.
 %	Par exemple: 
-%	- basicstyle=\scriptsize\tt
 %	- linerange=8-12
 %	- emph={id}
 %
 %	Mettre {} pour le langage s'il n'y en a pas.
-%	Par défaut les codes sont en \small\tt.
+%	Par défaut les codes sont en \small\fontfamily{lmvtt}.
+%	lmvtt est une police de look typewriter mais à largeur variable.
+%
+%	Si vous voulez changer la taille, vous pouvez le faire
+%	via un changement de taille à l'extérieur ou via l'option
+%	\basicstyle mais ne pas oublier de mettre la référence à la police
+%	variable. Ex: \basicstyle=\scriptsize\fontfamily{lmvtt}.
+%
+%	On a également ajouté
+%	\begin{Code}[options]{langage}
+%		code
+%	\end{Code}
+%	et \console[options]{fichier}
+%	pour afficher des outputs de console.
+% 	Pour eux, pas de police à largeur variable.
 %=====================================================================
 
 %=====================================================================
@@ -65,7 +78,7 @@
 \DeclareDocumentCommand \texto { m }{\lstinline[style=lstesi]{#1}}
 
 %---------------------------------------------------------------------
-%	\listing[options]{}langage}{fichier}
+%	\listing[options]{langage}{fichier}
 %	Insertion de code externe
 %	Au niveau de la mise en page, on ajoute des n° de lignes
 %	ainsi que le nom du fichier en bas à droite.
@@ -75,8 +88,9 @@
 \DeclareDocumentCommand \listing { s O{} m m }{%
 	\lstinputlisting[style=lstesiext,language={#3},#2]{#4}%
 	\IfBooleanF {#1}{%
-		\vskip -1.5em
-		\par\hfill{\tiny{\color{gray}\url{#4}}\noindent}\vskip.5em\par%
+		\vskip -1.5em%
+		\hfill{\tiny{\color{gray}\url{#4}}\noindent}%
+		\vskip -.5em\par%
 	}
 }
 
@@ -91,12 +105,33 @@
 \lstnewenvironment{Code}[2][]%
 	{\lstset{style=lstesibg,language={#2},#1}}%
 	{}
+
+%---------------------------------------------------------------------
+%	\begin{Console}[options]
+%		affichage
+%	\end{Console}
+%	Affichage décoré d'un texte issu d'une console
+%---------------------------------------------------------------------
+
+\lstnewenvironment{Console}[1][]%
+	{\lstset{
+		style=console, 
+		,#1}}%
+	{}
+
+%---------------------------------------------------------------------
+%	\console[options]{fichier}
+%	Comme Console mais le texte est dans un fichier externe.
+%---------------------------------------------------------------------
 	
+\DeclareDocumentCommand \console { O{} m }{%
+	\lstinputlisting[style=console,#1]{#2}%
+}
 %=====================================================================
 %	Les couleurs à utiliser
 %=====================================================================
 
-\usepackage{xcolor}
+%\usepackage{xcolor}	% --- Déjà chargé par common
 \definecolor{kwcolor}{RGB}{35, 106, 185}	% bleu
 \definecolor{kwcolor2}{RGB}{19, 56, 99}		% bleu foncé
 \definecolor{strcolor}{RGB}{85, 158, 84}	% vert
@@ -105,22 +140,8 @@
 %	Look général pour les codes
 %=====================================================================
 
-% --- code interne (inline et environnement)
-\lstdefinestyle{lstesi}{
-	basicstyle=\small\tt,				% Police code
-	lineskip=-1pt,   					% pour rapprocher les lignes
-	showstringspaces=false,				% Pas de |_| pour les espaces
-	tabsize=4,							% taille de tabulation
-	columns=fullflexible,				% moins large !?
-	breaklines=true,					% coupe les lignes trop longues
-	breakatwhitespace=true,				% Ne coupe qu'aux espace,
-	%prebreak={},
-	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},	  
-	autogobble=true,					% Enlève le plus d'espace possible à gauche 
-	keywordstyle=\color{kwcolor},		% -- Couleurs des différents éléments
-	commentstyle=\color{gray},
-	stringstyle=\color{strcolor},
-	emphstyle={\color{colalert}\bfseries},	% Style pour les \emph={}
+% --- french : permet les accents
+\lstdefinestyle{french}{
 	% -- Accents OK avec listing externe
 	% -- mais difficile si inline
 	% -- OK avec le truc de literate
@@ -137,20 +158,75 @@
 		{œ}{{\oe}}1	                
 }
 
+% --- wrap : permet les passages à la ligne jolis de longues phrases 
+\lstdefinestyle{wrap}{
+	breaklines=true,					% coupe les lignes trop longues
+	breakatwhitespace=true,				% Ne coupe qu'aux espace,
+	%prebreak={},
+	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}}
+}
+
+% --- number : numérote les lignes 
+\lstdefinestyle{number}{
+	numbersep=6pt,				% 10 par défaut
+	numbers=left,
+	numberstyle=\tiny\color{gray}
+}
+
+% --- codecolor : définition couleurs code
+\lstdefinestyle{codecolor}{
+	keywordstyle=\color{kwcolor},		% -- Couleurs des différents éléments
+	commentstyle=\color{gray},
+	stringstyle=\color{strcolor},
+	emphstyle={\color{colalert}\bfseries}	% Style pour les \emph={}}
+}
+
+% --- base : configuration de base espaces (tab, espace, espace vertical...)
+\lstdefinestyle{base}{
+	lineskip=-1pt,   					% pour rapprocher les lignes
+	showstringspaces=false,				% Pas de |_| pour les espaces
+	tabsize=4,							% taille de tabulation
+	columns=fullflexible,				% moins large !?
+	autogobble=true,					% Enlève le plus d'espace possible à gauche 
+}
+
+% --- code interne (inline et environnement)
+\lstdefinestyle{lstesi}{
+	basicstyle=\small\fontfamily{lmvtt},% Police code
+	style=base,
+	style=french,
+	style=wrap,
+	style=codecolor
+}
+
 % --- code avec bg
 \lstdefinestyle{lstesibg}{
 	style=lstesi,						% On se base sur lstesi
 	backgroundcolor=\color{collight},	% couleur de fond,
+	xleftmargin=4pt,					% Ajoute un peu de marge horizontale
+	xrightmargin=4pt,
 	frameround=tttt, frame=trbl, framerule=0pt
 }
 
 % --- code externe (fichier inclus)
 \lstdefinestyle{lstesiext}{
-	style=lstesibg,				% On se base sur lstesi
-	xleftmargin={0.3cm},		% On ajoute des numéros de lignes
-	numbers=left,
-	numberstyle=\tiny\color{gray}
+	style=lstesibg,
+	style=number
 }
+
+% --- console
+\lstdefinestyle{console}{
+	style=base,
+	style=french,
+	style=wrap,
+	backgroundcolor=\color{collight},	% couleur de fond,
+	xleftmargin=12pt,					% Ajoute un peu de marge horizontale
+	xrightmargin=4pt,
+	framesep=8pt,
+	frameround=tttt, frame=leftline, framerule=3pt, rulecolor=\color{colmain},
+	basicstyle=\small\tt
+}
+
 
 %=====================================================================
 %	HTML est assez basique
