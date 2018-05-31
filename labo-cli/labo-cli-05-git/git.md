@@ -20,9 +20,15 @@ objectifs.
 
 ## Pré-requis
 Utilisation basique :
-* de la ligne de commande sur Git Bash et linux1,
-* de Netbeans,
-* du langage Java.
+
+* de la ligne de commande sur Git Bash et linux1
+  * éditer des fichiers
+  * lancer des commandes
+  * copier-coller depuis Windows vers linux1,
+* de Netbeans
+  * créer un projet Java
+* du langage Java
+  * écriture sur la sortie standard
 
 ## Savoirs terminaux
 Voici les commandes que vous connaitrez à la fin de ce TD.
@@ -38,6 +44,7 @@ Revenez-y en fin de TD pour vérifier que vous comprenez chacune d'elle.
     git diff [--cached]
     git diff <commit1> <commit2>
     git merge <branch>
+    gitk
     git remote add <name> <url>
     git remote [-a] -v
     git remote update
