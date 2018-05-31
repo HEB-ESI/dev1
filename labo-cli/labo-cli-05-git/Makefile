@@ -1,5 +1,11 @@
-git.pdf: git.md
-	pandoc -s -o git.pdf git.md
+PNGFILES=montravailLineaire.png montravailNonLineaire.png travail-equipe.png branche-without-merge.png branche-with-merge.png
 
-git.html: git.md
-	pandoc -s -o git.html git.md
+all: git.pdf git.html
+
+.PHONY: all
+
+git.pdf git.html: %: git.md $(PNGFILES)
+	pandoc -s -o $@ $<
+
+$(PNGFILES): %.png: %.dot
+	neato -Tpng $< > $@

@@ -1,0 +1,13 @@
+digraph versionsNonLineaire {
+    minlen=1000;
+    juin3 [label="3 juin"];
+    juin12 [label="12 juin"];
+    corrigee [label="Corrigée"];
+    remerciee [label="Avec remerciements"];
+    finale [label="Version finale"];
+    vraimentFinale [label="Vraiment finale"];
+    monTravail [label="monTravail.doc"];
+    juin3 -> juin12 -> finale [len=1.2];
+    finale -> {corrigee, remerciee} -> vraimentFinale [len=1.7];
+    monTravail -> monTravail [label="???"];
+}
