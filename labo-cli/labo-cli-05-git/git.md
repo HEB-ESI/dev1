@@ -69,10 +69,7 @@ simplement et ça doit donner ceci :
     monTravail-version-du-13-juin.txt
     monTravail.txt <= Ceci est la version finale.
 
-FIXME : prévoir un petit graphe type
-digraph versions-lineaire {
-    "3 juin" -> "12 juin" -> "13 juin" -> "monTravail.txt"
-}
+![](montravailLineaire.png)
 
 Cela fonctionne assez bien mais nous verrons que même dans ce cas simple, Git
 pourra nous aider.
@@ -95,21 +92,7 @@ entre les différentes versions.
 
 Voici une telle représentation :
 
-FIXME : prévoir un petit graphe type
-
-    digraph versionsNonLineaire {
-        minlen=1000;
-        juin3 [label="3 juin"];
-        juin12 [label="12 juin"];
-        corrigee [label="Corrigée"];
-        remerciee [label="Avec remerciements"];
-        finale [label="Version finale"];
-        vraimentFinale [label="Vraiment finale"];
-        monTravail [label="monTravail.txt"];
-        juin3 -> juin12 -> finale [len=1.2];
-        finale -> {corrigee, remerciee} -> vraimentFinale [len=1.7];
-        monTravail -> monTravail [label="???"];
-    }
+![](montravailNonLineaire.png)
 
 En première approche, le travail avec Git ressemblera au travail sans Git :
 
@@ -138,7 +121,7 @@ Commençons par créer et aller dans le répertoire `~/dev1/td-git/ex1/` (utilis
 
 ## Création d'un dépôt Git et de commits
 ### Initialisation : git init
-Initialisons un "dépôt Git" dans notre répertoire de travail~:
+ACTION: Initialisons un "dépôt Git" dans notre répertoire de travail :
 
     git init
 
@@ -146,7 +129,12 @@ Voyez-vous ce qui a changé dans le répertoire courant ?
 
 Si vous ne voyez pas, pensez aux fichiers cachés.
 
-R: un répertoire `.git` est apparu (voir `ls -a`)
+R: un répertoire `.git` est apparu (voir `ls -a`).
+
+Le répertoire `.git` est le dépôt Git proprement dit. C'est lui qui contiendra
+les différentes sauvegardes (nous diront "commit"). Le répertoire courant, quant
+à lui, est appelé "répertoire de travail".
+
 
 Astuce : pour voir tous les fichiers (y compris dans les sous-répertoires) du
 répertoire courant, utilisez: `find . -type f`. Essayez aussi `find .` tout seul
@@ -267,6 +255,7 @@ commits. Nous allons donc le faire savoir à Git.
 
 ACTION: Avant chacune des étapes suivantes, utilisez `ls` et `git status` pour
 voir l'état de votre répertoire et de votre dépôt.
+
 1. Lancez: `touch qsdf`
 2. Indiquez à git d'ignorer `qsdf` avec: `echo qsdf > .gitignore`
 3. Nettoyez tout cela avec `rm qsdf .gitignore`.
@@ -274,6 +263,7 @@ voir l'état de votre répertoire et de votre dépôt.
 Qu'avez vous constaté ?
 
 R : 
+
 1. `qsdf` est apparu.
 2. `qsdf` a été ignoré par Git (mais toujours présent), mais `.gitignore` est apparu.
 3. `qsdf` et ` .gitignore` ont disparu.
@@ -290,6 +280,7 @@ projet. En fait nous allons ignorer tout ce qui se trouvera dans le répertoire
 `build`. 
 
 ACTION:
+
 1. Ignorez le répertoire `build` (de la même manière que nous avions ignoré `qsdf`).
 2. Incluez `.gitignore` dans un commit dont le message est ".gitignore: new file"
 
