@@ -3,69 +3,61 @@
 %=========================
 % Les styles
 %=========================
-\input{../style/esi.sty}
-\input{../style/listing.sty}
-\input{../style/exercice.sty}
-\input{../style/links.sty}
-\input{../style/constantes.sty}
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
 
-
-%=========================
-% Titre et sous-titre
-%=========================
-\newcommand{\unitname}{\emph{TD2 - Alternatives}}
-\newcommand{\unitnum}{}
-\newcommand{\titre}{}
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 2 -- Alternatives}
+\sigleprof{}
 
 
 
 \begin{document}
 
-	\logo
-	\entete
-	\licence
-	\lastedit
-	\maketitle
-	\setcounter{tocdepth}{3}
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
 
 	%===================
 	%  Contenu
 	%====================	
-	Dans ce TD vous trouverez xxx
+	Dans ce TD vous trouverez une introduction à la manipulation des nombres réels,
+	aux expressions booléennes et à l'instruction \texttt{if/else}.
 	\tableofcontents
 
 	\newpage
 
 %===================
-\section{Entiers, réels et booléens}
+\section{Les réels}
 %====================	
 
 
-	Au td1 nous avons joué avec des entiers, nous allons maintenant 
-	manipuler des nombres réels et des booléens.
+	Au TD1 nous avons travaillé avec des entiers, nous allons maintenant 
+	manipuler des nombres réels.
 
 	En java les \emph{réels} se représentent avec un point. 
 	Par exemple 12,3 s'écrira 12.3.
 
-	En informatique, on appelle \emph{booléens} les deux valeurs 'vrai' et 'faux'. 
-	En java les booléens se représentent par \texttt{true} et \texttt{false}.  
- 
-	Dans l'exemple ci-dessous, la classe \texttt{Expression} se trouve dans le package 
-	\texttt{esi.dev1.td2}.
+	Les variables pour représenter un entier sont de type \texttt{int}.
+	Pour les réels les variables sont de type \texttt{double}:
+	
+	\code{java}{double taille = 1.92;}
 
- 	\listing{java}{code/Expression.java}
-
-	\`A la ligne 6, le programme affichera le texte entre guillemets: \texttt{12,3 + 13,5 =}
-
-	\`A la ligne 7, le programme affichera le résultat de la somme de 12,3 et de 13,5 c'est-à-dire
-	\texttt{27.8}
-
-	\`A la ligne 9, le programme affichera le texte entre guillemets: \texttt{ 17 <= 20 ?}
-
-	\`A la ligne 10, le programme affichera la valeur de l'expression $17\leq 20$ c'est-à-dire \texttt{true}.
+	Pour lire un entier on utilise la méthode \texttt{nextInt()} du scanner.
+	Pour lire un réel on utilise la méthode \texttt{nextDouble()}.
+	
+	\code{java}{double y = clavier.nextDouble();}
 
 
-	En java les \emph{opérateurs} permettant de manipuler les réels sont~:
+	Les \emph{opérateurs} permettant de manipuler les réels sont~:
 	\begin{itemize}
 		\item l'addition: \texttt{+}
 		\item la soustraction: \texttt{-}
@@ -73,115 +65,364 @@
 		\item la division: \texttt{/}
 	\end{itemize} 
 
-	On pourra donc écrire: 
+	\bigskip
+ 	\listing{java}{\detokenize{code/Calculs.java}}
+
 	\begin{itemize}
-		\item \texttt{12.3-13.5}
-		\item \texttt{12.3*13.5}
-		\item \texttt{12.3/13.5}
+		\item \`A la ligne 3, on importe le Scanner afin de pouvoir lire les entrées de l'utilisateur.
+		\item \`A la ligne 8, on initialise le Scanner, il scanne \emph{l'entrée standard}: 
+			\texttt{System.in}.
+
+		\item \`A la ligne 10, on déclare une variable nommée x, de type \texttt{int} (un nombre entier). 
+			On lui assigne la valeur entrée par l'utilisateur~: \code{java}{clavier.nextInt()}.
+
+		\item \`A la ligne 11, on déclare une variable nommée y, de type \texttt{double} (un nombre réel).
+			On lui assigne la valeur entrée par l'utilisateur~: \code{java}{clavier.nextInt()}.
+
+		\item Aux lignes 13 à 19 le programme affiche le résultat des différents calculs.
+
 	\end{itemize}
 
-	Le opérateurs pour comparer les entiers et les réels sont~:
+	Le tableau suivant reprend les différences entre entiers et réels~:
+	\begin{center}
+		\begin{tabular}{| c | c | c | c |}
+			\hline
+			& type & opérateurs & lecture \\
+			\hline
+			Entier & \texttt{int} & +, - *, /, \% & \texttt{nextInt()} \\
+			Réel & \texttt{double} & +, - *, / & \texttt{nextDouble()} \\
+			\hline			
+		\end{tabular}
+	\end{center}
 
+\begin{Exercice}{Calculs avec des réels et entiers}
+	Créez un package \texttt{g12345.dev1.td2} où vous remplacez \texttt{g12345} par votre identifiant.
+	Dans ce package créez une classe \texttt{Exercice1}.
+	Dans cette classe créez un programme qui affiche la valeur des expressions suivantes:
+	
+	\begin{itemize}		
+		\item \texttt{12.3+13.5}
+		\item \texttt{12.3-13.5}
+		\item \texttt{12.3*13.5}
+		\item \texttt{2.0/3.0}
+		\item \texttt{2/3.0}
+		\item \texttt{2.0/3}
+		\item \texttt{2/3}
+		\item \texttt{2.0/0}
+		\item \texttt{2/0}
+	\end{itemize}
+\end{Exercice}
+
+\begin{Exercice}{Périmètre et aire d'un cercle}
+	Dans une classe \texttt{Cercle} écrivez un programme
+	qui demande à l'utilisateur le rayon d'un cercle (un réel)
+	et affiche son périmètre et son aire.
+	
+	Rappel: Le périmètre se calcule par la formule $2\pi r$ et 
+	l'aire par la formule $2 \pi r^2$ où $\pi$ vaut environ 3.141593.
+\end{Exercice}
+
+
+
+\section{Les conditions}
+
+	En informatique, on appelle \emph{booléens} les deux valeurs 'vrai' et 'faux'. 
+	En java les booléens se représentent par \texttt{true} (vrai) et \texttt{false} (faux).  
+
+	Une condition est une expression dont la valeur s'évalue à \texttt{true} ou \texttt{false}.
+	Voici quelques exemples de conditions:
+	\begin{itemize}
+		\item \code{java}{age < 18}~:   \texttt{age} a une valeur inférieure à 18~;
+		\item \code{java}{nb >= 0}~:  \texttt{nb} est supérieur à 0~;
+		\item \code{java}{b*b - 4*a*c < 0}~:le delta $b^2-4ac$ est négatif~;
+		\item \code{java}{nb >= 0 \&\& nb <=100}~: le nombre \texttt{nb} est compris entre 0 et 100~;
+		\item \code{java}{a < b}~:  la valeur de la variable \texttt{a} est inférieure à celle de \texttt{b}.
+	\end{itemize}
+
+
+	Pour construire une condition on utilisera les opérateurs de comparaison sur les entiers et sur les réels:
+	
 	\begin{itemize}
 		\item plus petit: \texttt{<}
 		\item plus petit ou égal: \texttt{<=}
 		\item plus grand: \texttt{>}
 		\item plus grand ou égal: \texttt{>=}
 		\item  égal: \texttt{==}
+		\item  différent: \texttt{!=}
 	\end{itemize} 
 
-	On pourra donc écrire: 
+	Et on combinera des conditions avec les \emph{opérateurs booléens}~:
 	\begin{itemize}
-		\item \texttt{12.3 <= 13.5}
-		\item \texttt{12.3 > 13.5}
-		\item \texttt{17 == (15+3)}
-	\end{itemize}
-	Ces expressions valent respectivement \texttt{true}, \texttt{false} et \texttt{false}.
-
-	\hspeparator
-
-\Exercice{}
-	Créez un package \texttt{esi.dev1.td2}.
-	Dans ce package créez une classe \texttt{Exercice1}.
-	Dans cette classe créer un programme qui affiche la valeur des expressions suivantes:
-	
-	\begin{itemize}		
-		\item \texttt{12.3-13.5}
-		\item \texttt{12.3*13.5}
-		\item \texttt{12.3/13.5}
+		\item Le \emph{ET} logique s'écrit \texttt{\&\&}.
+			
+			Exemple~: \texttt{nb >= 0 \&\& nb <= 100} vérifie si \texttt{nb} est compris entre 0 et 100.
+			Cette condition sera vraie si \texttt{nb >= 0} ET si \texttt{nb <= 0}. 
+			
+		\item Le \emph{OU} logique s'écrit \texttt{||}. 
+			
+			Exemple~: \texttt{a < b || a < c} sera vraie si \texttt{a < b} ou bien si \texttt{a < c} (ou les deux).
+			
+		\item La négation s'écrit \texttt{!}. 
 		
-		\item \texttt{17 <= 20}
-		\item \texttt{12.3 > 13.5}
-		\item \texttt{17 == (15+3)}
-		\item \texttt{12.3*13.5 <= 13.4*12.4}
-		\item \texttt{12.3 * 13.5 >= 6*(13.4 + 12.4)}
+			Exemple~: \texttt{! (a < b)} sera vraie si \texttt{a < b} est faux, c'est-à-dire si \texttt{a >= b}.
 	\end{itemize}
+	
+
+	\begin{Exercice}{Conditions}
+		Dans une classe \texttt{Conditions} écrivez un programme qui affiche la valeur des expressions suivantes:
+		\begin{itemize}
+			\item \texttt{10 < 20} (écrivez simplement: \code{java}{System.out.println(10 < 20);})
+			\item \texttt{10 > 20}
+			\item \texttt{10 == 10.0}
+			\item \texttt{20.0/2 != 10.0}
+			\item \texttt{true}  (écrivez simplement: \code{java}{System.out.println(true);})
+			\item \texttt{false} 
+			\item \texttt{!true} 
+			\item \texttt{!false} 
+			\item \texttt{true \&\& true} 
+			\item \texttt{true \&\& false} 
+			\item \texttt{false \&\& true} 
+			\item \texttt{false \&\& false} 
+			\item \texttt{true || true} 
+			\item \texttt{true || false} 
+			\item \texttt{false || true} 
+			\item \texttt{false || false} 
+		\end{itemize}
+	\end{Exercice}
+
+	\begin{Exercice}{Conditions}
+		Dans une classe \texttt{Conditions2} écrivez un programme qui demande à l'utilisateur 
+		3 nombres entiers a, b et c et affiche la valeurs des expressions suivantes:
+		\begin{itemize}
+			\item \texttt{a\%2 == 0}  (a est divisible par 2 et donc pair)
+			\item \texttt{a\%2 == 1}  (a est impair)
+			\item \texttt{a\%b == 0}  (a est divisible par b)
+			\item \texttt{a < b}
+			\item \texttt{a <= b \&\& a <= c} (a est le minimum)
+			\item \texttt{(a < b \&\& b < c) || (a > b \&\& b > c)} (b est strictement compris entre a et c)
+		\end{itemize}
+	\end{Exercice}
 
 
+\section{Les alternatives: \texttt{if/else}}
 
-%===================
-\section{Variables entières, réelles et booléennes}
-%====================	
-
-
-	Au td1 nous avons vu que les variables permettant de manipuler des entiers 
-	se \emph{déclarent} avec le type \texttt{int}. 
+	L'instruction \texttt{if} permet d'exécuter des instructions si une certaine condition est vérifiée.
 	
-	Par exemple l'instruction~:
-	
-	\texttt{int longueur = 12;}
-	
-	déclare une variable de type entier nommée \texttt{longueur} à laquelle on \emph{assigne}
-	la valeur 12.
-	
-	En java les variables de type \emph{réel}  se déclarent avec le type \texttt{double}. 
-	
-	Par exemple:
-	
-	\texttt{double taille = 1.92;}
-	
-	déclare une variable de type réel nommée \texttt{taille} à laquelle on \emph{assigne}
-	la valeur $1,92$.
-
-	En java les variables de type \emph{booléen}  se déclarent avec le type \texttt{boolean}. 
-	
-	Par exemple~:
-	
-	\texttt{boolean jeSuisContent = true;}
-
-	déclare une variable de type booléen nommée \texttt{jeSuisContent} à laquelle on \emph{assigne}
-	la valeur \texttt{true}. Ou encore~: 
-	
-	\texttt{boolean majeur = age > 18;}
-	
-	déclare une variable de type booléen nommée \texttt{majeur} à laquelle on \emph{assigne}
-	la valeur de l'expression \texttt{age > 18}, \texttt{majeur} vaudra \texttt{true} si la variable \texttt{age} 
-	a une valeur supérieure à 18 (au moment ou s'exécute cette instruction). 
-
-	On peut également stocker du texte dans des variables.
-	En java les variables contenant du texte sont de type \texttt{String}.
+	Le programme suivant affichera "ce nombre est positif" 
+	si \texttt{nb} est plus grand ou égal à 0 et n'affichera rien dans le cas contraire.
 	 
-	Par exemple~:
+	 \listing{java}{code/Positif.java}
 
-	\texttt{String nom = "John";}
+	L'instruction \texttt{if/else} permet d'exécuter des instructions si une certaine condition est vérifiée
+	et d'autres instructions si la condition n'est pas vérifiée. On peut traduire 'else' par 'sinon'.
+	
+	On peut remplacer le \texttt{if} du programme précédent par le \texttt{if/else} suivant~:
+	
+	\begin{Code}{java}
+		if(nb >= 0) {
+			System.out.println("ce nombre est positif.");
+		} else {
+			System.out.println("ce nombre est négatif.");
+		}
+	\end{Code}
 
-	déclare une variable de type texte nommée \texttt{nom} à laquelle on \emph{assigne}
-	la valeur \texttt{"John"}.
+	Le programme affichera "ce nombre est positif" 
+	si \texttt{nb} est plus grand ou égal à 0 et "ce nombre est négatif" sinon.
 
 
-	Dans l'exemple ci-dessous, la classe \texttt{Variables} se trouve dans le package 
-	\texttt{esi.dev1.td2}.
+	Il est aussi possible d'utiliser une succession de \texttt{if/else}~:
+		
+	\begin{Code}{java}
+		if(nb > 0) {
+			System.out.println("ce nombre est positif.");
+		} else if(nb < 0) {
+			System.out.println("ce nombre est négatif.");
+		} else {
+			System.out.println("ce nombre est nul.");
+		}
+	\end{Code}
 
 	
- 	\listing{java}{code/Variables.java}
+	\begin{Exercice}{Majeur - \texttt{if}}
+		Dans une classe \texttt{Majeur} écrivez un programme qui demande à l'utilisateur 
+		son age et affiche s'il est majeur (s'il a plus de 18 ans). 
+		S'il n'est pas majeur le programme n'affiche rien.
+		
+		Exemple: si l'utilisateur entre 19 le programme affiche "vous êtes majeur". 
+	\end{Exercice}
 
-	Notez l'utilisation de \texttt{print} et \texttt{println} cette dernière instruction affiche 
-	le texte entre guillement
-	\emph{et} passe à la ligne alors que le \texttt{print} simple ne passe pas à la ligne. 
+	\begin{Exercice}{Pair ou impair - \texttt{if/else}}
+		Dans une classe \texttt{Parité} écrivez un programme qui demande à l'utilisateur 
+		un nombre entier et affiche "ce nombre est pair" ou "ce nombre est impair" selon le cas.
+				
+		Exemple: si l'utilisateur entre -23 le programme affiche "ce nombre est impair". 
 
+		Astuce: un nombre est pair si le reste de la division par 2 vaut 0.
+	\end{Exercice}
 
-
+	\begin{Exercice}{Maximum de 2 nombres}
+		Dans une classe \texttt{Maximum} écrivez un programme qui demande à l'utilisateur deux nombres réels
+		et affiche le plus grand des deux.
+		
+		Exemple: si l'utilisateur entre 7,5 et 2,3 le programme affiche 7,5. 
+	\end{Exercice}
 	
+	\begin{Exercice}{Maximum de 3 nombres}
+		Dans une classe \texttt{Maximum3} écrivez un programme qui demande à l'utilisateur 
+		trois nombres réels et affiche le maximum des trois.
+		
+		Exemple: si l'utilisateur entre 7,5, 17,9 et 2,3 le programme affiche 17,9. 
+	\end{Exercice}
+
+	\begin{Exercice}{Le type de triangle}
+ 		Dans une classe \texttt{TypeTriangle} écrivez un programme qui demande à l'utilisateur 
+		 la longueur des 3 côtés d'un triangle et affiche s'il est~: 
+		 équilatéral (tous égaux), isocèle (2 égaux) ou quelconque.
+		 
+		 Exemple: si l'utilisateur entre 2,5, 5 et 5 le programme affiche "le triangle est isocèle". 
+	\end{Exercice}
 	
 
 \end{document}
+
+
+%%===================
+%\section{Variables entières, réelles et booléennes}
+%%====================	
+%
+%
+%	Au td1 nous avons vu que les variables permettant de manipuler des entiers 
+%	se \emph{déclarent} avec le type \texttt{int}. 
+%	
+%	Par exemple l'instruction~:
+%	
+%	\code{java}{int longueur = 12;}
+%	
+%	déclare une variable de type entier nommée \texttt{longueur} à laquelle on \emph{assigne}
+%	la valeur 12.
+%	
+%	\begin{itemize}
+%		\item Les variables de type \emph{réel}  se déclarent avec le type \texttt{double}. 
+%	
+%			Par exemple:
+%	
+%			\code{java}{double taille = 1.92;}
+%	
+%			déclare une variable de type réel nommée \texttt{taille} à laquelle on \emph{assigne}
+%			la valeur $1,92$.
+%
+%%		\item Les variables de type \emph{booléen}  se déclarent avec le type \texttt{boolean}. 
+%%	
+%%			Par exemple~:
+%%	
+%%			\code{java}{boolean jeSuisContent = true;}
+%%
+%%			déclare une variable de type booléen nommée \texttt{jeSuisContent} à laquelle on \emph{assigne}
+%%			la valeur \texttt{true}. %Ou encore~: 
+%%%	
+%%%			\code{java}{boolean majeur = age > 18;}
+%%%	
+%%%			déclare une variable de type booléen nommée \texttt{majeur} à laquelle on \emph{assigne}
+%%%			la valeur de l'expression \texttt{age > 18}, \texttt{majeur} vaudra \texttt{true} si la variable \texttt{age} 
+%%%			a une valeur supérieure à 18 (au moment ou s'exécute cette instruction). 
+%%
+%%		\item On peut également stocker du texte dans des variables.
+%%			Les variables contenant du texte sont de type \texttt{String},
+%%			on dit également \emph{chaîne de caractères}.
+%%	 
+%%			Par exemple~:
+%%
+%%			\code{java}{String prénom = "John";}
+%%
+%%			déclare une variable de type chaîne de caractères nommée \texttt{prénom} 
+%%			à laquelle on \emph{assigne} la valeur \texttt{"John"}.
+%	\end{itemize}
+%
+%	L'exemple suivant illustre ces notions. 
+%
+%	
+% 	\listing{java}{code/Personne1.java}
+%
+%	Notez l'utilisation de \texttt{print} et \texttt{println} cette dernière instruction affiche 
+%	le texte entre guillements
+%	\emph{et} passe à la ligne alors que le \texttt{print} simple ne passe pas à la ligne. 
+%
+%
+%	\begin{Exercice}{Une personne} %TODO
+%		Dans votre package \texttt{g12345.dev1.td2} créez une classe \texttt{Personne}.
+%		Dans cette classe déclarez les variables :
+%	
+%		\begin{itemize}		
+%			\item \texttt{prénom} de type \texttt{String}
+%			\item \texttt{nom} de type \texttt{String}
+%			\item \texttt{année} de type \texttt{int}
+%			\item \texttt{poids} de type \texttt{double}
+%			\item \texttt{taille} de type \texttt{double}
+%		\end{itemize}
+%		
+%		Initialisez les avec des valeurs de votre choix, par exemple le prénom et 
+%		le nom seront "John" et "Smith".
+%		
+%		Le programme affiche "Bonjour", suivi du prénom et du nom, 
+%		de l'âge de la personne (2018-année), son poids et sa taille. 
+%	\end{Exercice}
+
+%\section{Lecture de réels et de textes}
+%
+%	Pour lire un entier au clavier il faut 
+%	\begin{itemize} 
+%		\item importer le \texttt{Scanner}: \code{java}{import java.util.Scanner;}
+%		\item initialiser le \texttt{Scanner}: \code{java}{Scanner clavier = new Scanner(System.in);}
+%		\item lire un entier: \code{java}{int nb = clavier.nextInt();}
+%	\end{itemize}
+%	
+%	Pour lire un réel on utilise la méthode \texttt{nextDouble()}~: 
+%	\code{java}{double taille = clavier.nextDouble();}
+%	
+%	Pour lire une chaine de caractères on utilise la méthode \texttt{next()} ou \texttt{nextLine()}~: 
+%	
+%	\code{java}{String prénom = clavier.next();}
+%	
+%		
+% 	\listing{java}{code/Personne2.java}
+%
+%	\begin{Exercice}{Une personne (suite)}
+%		Modifiez votre programme de l'exercice précédent afin de demander à l'utilisateur
+%		des valeurs pour le prénom, le nom, l'année, la taille et le poids.
+%	\end{Exercice}
+%	
+%	Le programme suivant demande à l'utilisateur d'entrée le rayon d'un cercle et affiche son aire.
+% 	\listing{java}{code/AireCercle.java}
+%
+%	\begin{itemize}
+%		\item \`A la ligne 9 on lit un réel au clavier. 
+%		\item Attention lorsqu'on entre un réel au clavier il faut suivre les conventions du système.
+%			Si votre système est en français, il faudra écrire le nombre avec une virgule (par exemple 50,5), 
+%			s'il est en anglais ce sera avec un point (par exemple 50.5).
+%		 
+%		\item \`A la ligne 10 on déclare une variable de type réel qui se nomme \texttt{PI}
+%		et on lui assigne la valeur 3.141596. 
+%	\end{itemize}
+%	
+
+
+\section{Exercices supplémentaires}
+
+	\begin{Exercice}{Les intérêts}
+		Dans une classe \texttt{Placement} écrivez un programme qui demande un montant (un nombre réel)
+		à l'utilisateur et affiche les intérêts reçus après 1 an pour un montant placé en banque à du 2\% d'intérêt.
+	\end{Exercice}
+
+	\begin{Exercice}{Prix TTC}
+		Dans une classe \texttt{TTC} écrivez un programme qui demande à l'utilisateur:
+		\begin{itemize}
+			\item le prix unitaire d’un produit hors TVA (un réel), 
+			\item le taux de TVA en \% (un entier) 
+			\item la quantité de produit vendue à un client (un entier)
+		\end{itemize}
+		et affiche le prix total à payer par ce client.
+		
+		Exemple: si le client achète 5 drones au prix de 1000 euros hors TVA et que la TVA est de 21\%,
+				le programme affichera 5105 euros.
+	\end{Exercice}
+
