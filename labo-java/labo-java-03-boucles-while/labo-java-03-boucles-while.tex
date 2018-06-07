@@ -1,0 +1,226 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 3 -- Boucles}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Dans ce TD vous trouverez une introduction aux boucles et à l'instruction \texttt{while}.
+	Ensuite nous verrons comment lire une série de données.
+	 
+	\tableofcontents
+
+	\newpage
+
+%===================
+\section{Boucle - \texttt{while}}
+%====================	
+
+ 	\listing{java}{code/Boucle.java}
+	Le code ci-dessus affiche les nombres de 1 à 10.
+	Ce programme s'exécute comme suit~:
+	\begin{itemize}
+		\item  le programme commence à la ligne 6 où la variable $i$ de type entier est déclarée et initialisée à 1~;
+		\item  ensuite, la condition du \texttt{while} de la ligne 7 est évaluée, sa valeur est vrai car $i$ vaut 1 et est donc inférieur à 10~;
+		\item puisque la condition est vraie le \emph{corps} de la boucle s'exécute:
+			\begin{itemize}
+				\item la ligne 8 affiche la valeur de l'entier $i$: 1
+				\item la ligne 9 assigne la valeur 2 à i (c'est la valeur de l'expression $i+1$)
+			\end{itemize}
+		\item l'exécution du corps de la boucle étant terminé le programme retourne à l'instruction 7, 
+			et évalue à nouveau la condition avec la nouvelle valeur de i qui vaut maintenant 2.
+		\item  la condition de la ligne 7 étant vraie (car $i$ vaut 2 et est donc inférieur à 10) on exécute à nouveau le corps de la boucle~;
+		\item le programme continue ainsi jusqu'à ce que $i$ atteigne la valeur 11. 
+			\`A ce moment la condition du \texttt{while} est évaluée à faux et l'instruction 
+			\texttt{while} prend fin.
+			Comme aucune instruction ne suit ce \texttt{while}, le programme se termine.
+	\end{itemize}
+
+ 
+	\begin{Exercice}{Suites d'entiers}	
+		Dans votre package créez un classe \texttt{Exercice2}.
+		Dans cette classe écrivez un programme qui demande à l'utilisateur un nombre entier $n$ et affiche:
+		\begin{itemize}
+			\item  les nombres de 1 à n~;
+			\item  les nombres pairs qui sont compris entre 1 et n~;
+			\item les nombres de -n à n~;
+			\item les multiples de 5 qui sont compris entre 1 et n ;
+			\item les multiples de n compris entre 1 et 100.
+		\end{itemize}
+	\end{Exercice}
+
+	\begin{Exercice}{Ligne}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		la longueur d'une ligne et affiche une ligne (une suite de tirets \texttt{'-'}) de cette longueur.
+		
+		Par exemple, si l'utilisateur entre 10, le programme affiche
+		
+		\begin{verbatim}
+		----------
+		\end{verbatim}
+		
+		Astuce: utiliser la méthode \texttt{System.out.print('-')} et non pas \texttt{System.out.println('-')}.
+	\end{Exercice}
+ 
+ \section{Lecture de données multiples}
+ 
+ 	Dans cette section nous allons voir comment demander une série de données à l'utilisateur.
+	Par exemple demander d'entrer la température de chaque jour du mois écoulé afin d'en calculer la moyenne.
+	Il y a plusieurs manières de procéder, nous allons en voir 3.
+
+	\subsection{Variante 1 : le nombre de valeurs est fixe}
+
+		Dans cette variante le nombre de valeurs à lire est connu et fixé au moment de l'écriture du 
+		programme. Ce nombre sera le même chaque fois que l'on
+		lancera le programme.
+		Par exemple on va traiter 10 entiers. 	
+			
+ 		\listing{java}{code/LectureMultiple1.java}
+
+		\begin{Exercice}{Moyenne}\label{ex:moyenne}
+			\'Ecrivez un programme qui demande à l'utilisateur $5$ valeurs
+			 et affiche la somme de ces valeurs et la moyenne de ces valeurs.
+			 
+			 Par exemple si l'utilisateur entre 15,  20, 10, 12 et 18, 
+			 le programme affichera 75 (somme) et 15 (moyenne).
+		\end{Exercice}
+
+		\begin{Exercice}{Pair ou impair}\label{ex:pair}
+			\'Ecrivez un programme qui demande 10 nombres entiers à l'utilisateur et 
+			pour chacun de ces nombres affiche, au fur et à mesure, s'il est pair ou impair. 
+		\end{Exercice}
+	
+	\subsection{Variante 2 : le nombre de valeurs est connu}
+	
+		Ici le nombre de valeurs à lire est demandé à l'utilisateur.
+		Ce nombre peut être différent à chaque exécution du programme mais il sera connu
+		avant de commencer la lecture des valeurs.
+		 
+ 		\listing{java}{code/LectureMultiple2.java}
+
+		\begin{Exercice}{Moyenne}
+			Modifiez l'Exercice \ref{ex:moyenne} afin que le programme demande
+			 à l'utilisateur le nombre $n$ de valeurs qu'il veut introduire,
+			lise ces $n$ valeurs au clavier et affiche la somme et la moyenne. 
+		\end{Exercice}
+
+		\begin{Exercice}{Positifs, négatifs et nuls}
+			\'Ecrire un programme qui demande à l'utilisateur 
+			le nombre $n$ de valeurs qu'il veut introduire,
+			lit ces $n$ valeurs au clavier et affiche le nombres de valeurs positives, 
+			le nombre de valeurs négatives et le nombre de valeurs nulles. 
+			
+			Exemple, si l'utilisateur entre les 8 valeurs:
+			
+			\texttt{ 5 9 -1 0 12 -7 -4 3}
+			
+			le programme affiche
+			
+			\begin{verbatim}
+				positifs : 4
+				négatifs : 3
+				nuls : 1
+			\end{verbatim}
+		\end{Exercice}
+
+
+
+
+
+	\subsection{Variante 3 : valeur sentinelle}
+	
+		Dans cette variante, l'utilisateur entre une série de nombres et une valeur spéciale permet d'indiquer
+		la fin des données. Par exemple si l'utilisateur doit entrer des nombres positifs on pourra utiliser -1
+		comme valeur de fin. Cette valeur spéciale s'appelle \emph{valeur sentinelle}.
+ 		\listing{java}{code/LectureMultiple3.java}
+
+		\begin{Exercice}{Premier et dernier}
+			\'Ecrivez un programme qui demande à l'utilisateur une série de nombres positifs 
+			qui se termine par -1 (valeur sentinelle). 
+			Le programme affiche le premier et le dernier nombre de la série.
+		
+			Exemple, si l'utilisateur entre
+			
+			\texttt{ 5 9 1 0 12 7 4 3 -1}
+
+			le programme affiche
+			
+			\begin{verbatim}
+				premier : 5
+				dernier : 3
+			\end{verbatim}
+
+		\end{Exercice}
+
+		\begin{Exercice}{Maximum}
+			\'Ecrivez un programme qui demande à l'utilisateur une série de nombres positifs 
+			qui se termine par -1 (valeur sentinelle). 
+			Le programme affiche le maximum de la série.
+			
+			Par exemple, si l'utilisateur entre
+			
+			\texttt{ 5 9 1 0 12 7 4 3 -1}
+
+			le programme affiche
+			
+			\begin{verbatim}
+				maximum : 12
+			\end{verbatim}
+		\end{Exercice}
+
+
+	\section{Exercices Récapitulatifs}
+
+		\begin{Exercice}{Maximum et minimum}
+			\'Ecrivez un programme qui demande à l'utilisateur le nombre $n$ de valeurs qu'il veut introduire,
+			lit ces $n$ valeurs au clavier et affiche le maximum et le minimum. 
+			
+			Attention les valeurs peuvent être négatives.
+		\end{Exercice}
+
+
+		\begin{Exercice}{Comparer le premier et le dernier}
+			\'Ecrivez un programme qui demande à l'utilisateur une série de nombres positifs 
+			qui se termine par -1 (valeur sentinelle). 
+			Le programme affiche l'un des messages suivants~:
+			\begin{itemize}
+				\item Le premier est inférieur au dernier
+				\item Le premier est égal au dernier
+				\item Le premier est supérieur au dernier
+				\item Le série est vide (si le premier nombre entré est -1)
+			\end{itemize}			
+		\end{Exercice}
+
+		\begin{Exercice}{Série croissante}
+			\'Ecrivez un programme qui demande à l'utilisateur une série de nombres positifs 
+			qui se termine par -1 (valeur sentinelle) et affiche si cette série est strictement croissante ou non.
+			On suppose que la série contient au moins 2 nombres.
+		\end{Exercice}
+
+
+
+\end{document}
