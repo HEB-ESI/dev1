@@ -171,21 +171,21 @@
 %-----------------------------------------------
 \algdef{SE}[IF]{If}{EndIf}[1]
   {\printandpush\algorithmicif\ #1\ \algorithmicthen}
-  {\popandprint\algorithmicend\ \algorithmicif}%
+  {\popandprint\algorithmicend\ }%
 \algdef{C}[IF]{IF}{ElsIf}[1]
   {\popandprint\pushindent\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
 \algdef{Ce}[ELSE]{IF}{Else}{EndIf}
   {\popandprint\pushindent\algorithmicelse}%
 \algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]
-  {\printandpush\algorithmicswitch\ #1 \K{ vaut}}
-  {\popandprint\algorithmicend\ \algorithmicswitch}%
+  {\printandpush\algorithmicswitch\pushindent\ #1 }
+  {\popandprint\algorithmicend\ }%
 \algdef{C}[SWITCH]{SWITCH}{Case}[1]
-  {\popandprint\pushindent\ #1:}%
+  {\popandprint\pushindent #1:}%
 
-\algrenewcommand\algorithmicif{\textbf{si}}
-\algrenewcommand\algorithmicthen{\textbf{alors}}
-\algrenewcommand\algorithmicelse{\textbf{sinon}}
-\algnewcommand\algorithmicswitch{\textbf{selon que}}
+\algrenewcommand\algorithmicif{\textbf{if}}
+\algrenewcommand\algorithmicthen{\textbf{then}}
+\algrenewcommand\algorithmicelse{\textbf{else}}
+\algnewcommand\algorithmicswitch{\textbf{switch}}
 
 %-----------------------------------------------
 % Boucles

@@ -11,7 +11,9 @@
 	pouvons représenter un algorithme de plusieurs manières; en langue français,
 	en pseudo-code ou avec un organigramme. 
 
+	\newpage
 	\minitoc
+	\newpage
 	
 	%================================================
 	\section{Exercice résolu~: un problème simple}
@@ -517,7 +519,7 @@ aString = hello;
 					\textbf{Une assignation n’est ni une égalité, 
 					ni une définition}.
 					
-					Ainsi, l’assignation \ps{cpt \Gets cpt + 1} ne veut pas dire
+					Ainsi, l’assignation \pc{cpt \Gets cpt + 1} ne veut pas dire
 					que $\textrm{cpt}$ et $\textrm{cpt} + 1$ sont égaux, ce qui
 					est mathématiquement faux mais que la \emph{nouvelle} valeur
 					de \pc{cpt} doit être calculée en ajoutant 1 à sa valeur
@@ -722,9 +724,10 @@ aString = hello;
 
 				Les opérateurs sont classés par priorité.  Cela permet de savoir
 				dans quel ordre les exécuter.  Par exemple, la multiplication
-				est prioritaire par rapport à l’addition.  C’est pourquoi
-				l’expression \Verb_a + b * c_ est équivalente à \Verb_a + (b
-				* c)_ et pas à \Verb_(a + b) * c_.  Les parenthèses permettent
+				est prioritaire par rapport à l'addition.  C’est pourquoi
+				l'expression \Verb_a + b * c_ est équivalente à 
+				\Verb_a + (b * c)_ et pas à \Verb_(a + b) * c_.  
+				Les parenthèses permettent
 				de modifier ou de souligner la priorité.  
 		
 		\end{description}
@@ -803,8 +806,8 @@ perfect = errors == 0;
 				écrivez l’assignation qui lui correspond.
 				\begin{itemize}
 				\item 
-					La variable booléenne \lda{négatif}
-					doit indiquer si le nombre \lda{montant} est négatif.
+					La variable booléenne \pc{négatif}
+					doit indiquer si le nombre \pc{montant} est négatif.
 				\item
 					Un groupe est complet s’il contient exactement 20 personnes.
 				\item
@@ -987,7 +990,7 @@ perfect = errors == 0;
 						de l’algorithme si \pc{b=0}. 
 					\Let ok \Gets b$\neq$0 ET 1/b < 0.1
 						\RComment donne la valeur \pc{faux} à \pc{ok} 
-						si \lda{b=0} (court-circuit). 
+						si \pc{b=0} (court-circuit). 
 					\Let ok \Gets 1/b < 0.1 ET b$\neq$0
 						\RComment provoque une erreur et
 						un arrêt si \pc{b=0}. 
@@ -1802,7 +1805,7 @@ System.out.println(rectangleArea(122, 3.78);
 				\Write{rectangleArea(length, width)}
 			\end{pseudocode}
 	
-			L’instruction \lda{\K{read}} signifie que l’utilisateur va, à cet
+			L’instruction \pc{\K{read}} signifie que l’utilisateur va, à cet
 			endroit de l’algorithme, être sollicité pour donner une valeur qui
 			sera affectée à une variable.  À nouveau, la façon dont il va
 			indiquer cette valeur (au clavier dans une application texte, via un
