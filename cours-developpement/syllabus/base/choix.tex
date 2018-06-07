@@ -1,0 +1,619 @@
+%===========================================
+\chapter{Une question de choix}
+%===========================================
+
+	Dans la section \ref{codestudio} (p. \pageref{codestudio}) nous proposions
+	une initiation ludique aux algorithmes.  Vous avez eu l’occasion d’y aborder
+	les alternatives.  Par exemple, vous avez indiqué au zombie quelque chose
+	comme~: \og{}S’il existe un chemin à gauche alors tourner à gauche\fg{}.
+	
+	Les \textbf{alternatives}\index{alternatives} permettent de n’exécuter des
+	instructions que si une certaine \emph{condition} est vérifiée.  Avec le
+	zombie, par exemple, vous testiez son environnement~; dans nos algorithmes
+	et dans nos programmes, nous allons tester les données.
+	
+	Les algorithmes et les programmes vus jusqu’à présent ne proposent qu’un
+	seul \og{}chemin\fg{}, une seule \og{}histoire\fg{}.  À chaque exécution de
+	l’algorithme, les mêmes instructions s’exécutent dans le même ordres.  Les
+	alternatives permettent de créer des histoires différentes, d’adapter les
+	instructions aux valeurs concrètes des données.  
+
+	\minitoc 
+
+%===========================================
+\section{Le si (\textit{if-then})}
+\index{si}\index{if}
+%===========================================
+		
+	Il existe des situations où des instructions ne doivent pas toujours être
+	exécutées et un test va nous permettre de le savoir.
+	
+	\paragraph{Exemple.}
+
+	Supposons que la variable \pc{nb} contienne un nombre positif ou négatif.
+	Et supposons que l’on veuille le rendre positif. Il faudra tester son signe
+	et, s’il est négatif, l'inverster.  Par contre, s’il est positif, il n’y
+	a rien à faire.  Voici comment écrire, graphiquement et en pseudocode, un 
+	algorithme~:
+	
+	\qquad
+	\begin{minipage}{6cm}
+		\begin{tikzpicture}[node distance = 2cm, auto]
+			\node (start) [startstop] {Start};
+			\node (dec1) [decision, below of=start, yshift=-1cm] {nb < 0};
+			\draw [arrow] (start) -- (dec1);
+			\node (proc1) [process, below of=dec1, yshift=-2cm] {nb = -nb};
+			\node (stop) [startstop, below of=proc1] {End};
+			\draw [arrow] (dec1) -- node[anchor=south, xshift=-5mm] {true} (proc1);
+			\draw [arrow] (dec1) .. controls (4.5,-6) 
+				.. node[anchor=east] {false} (stop);
+			\draw [arrow] (proc1) -- (stop);
+		\end{tikzpicture}	
+	\end{minipage}
+	\quad
+	\begin{minipage}{6cm}
+		\begin{pseudocode}[1]
+			\If{nb<0}
+				\Let nb \Gets -nb
+			\EndIf
+		\end{pseudocode}
+	\end{minipage}
+
+	Traçons l'algorithme dans deux cas différents pour bien illustrer 
+	son déroulement.
+	
+	\begin{center}
+	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}
+					|*{2}{>{\centering\arraybackslash}m{1cm}}|}
+		\hline
+		\rowcolor{black!40}
+			\verb_#_  & nb & test \\			
+		\hline
+			  & -3                   & {}   \\
+			1 & {\color{gray}$\mid$} & vrai \\
+			2 & 3                    & {}   \\
+		\hline
+	\end{tabular}
+	\qquad
+	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}
+					|*{2}{>{\centering\arraybackslash}m{1cm}}|}
+		\hline
+		\rowcolor{black!40}
+			\verb_#_  & nb & test \\			
+		\hline
+			  & 3                    & {}   \\
+			1 & {\color{gray}$\mid$} & faux \\
+		\hline
+	\end{tabular}
+	\end{center}
+	
+	La condition peut être n’importe quelle expression (calcul)
+	dont le résultat est un booléen (vrai ou faux).
+
+	\marginicon{attention}
+	\textbf{Remarque}
+	Attention, la confusion est fréquente.
+
+	Un \og{}si\fg{} n’est pas une règle que l’ordinateur doit apprendre et
+	exécuter à chaque fois que l’occasion se présente.  La condition n’est
+	testée que lorsqu’on arrive à cet endroit de l’algorithme.
+	
+	En langage Java, le \emph{si} s'écrit comme suit~:
+
+	\begin{grammaire}
+		if ( \grammarrule{Expression} ) \grammarrule{Statement}
+	\end{grammaire}
+
+	\begin{enumerate}
+		\item \grammarrule{Expression} représente une expression booléenne. 
+			c'est-à-dire ayant comme valeur \pc{true} ou \pc{false}.
+		\item \grammarrule{Statement} représente une instruction ou un 
+			\textbf{bloc} d'instructions. Un bloc \index{bloc} d'instructions 
+			est toujours délimités par une paire d'accolades. 
+	\end{enumerate}
+
+	Le test précédent pourrait s'écrire comme suit~:
+
+	\begin{java}
+if (nb < 0)
+	nb = -nb;
+	\end{java}
+
+	Pour s'éviter des erreurs, nous utiliserons toujours le bloc d'instructions
+	et nous écrirons~:
+
+	\begin{java}
+if (nb < 0){
+	nb = -nb;
+}
+	\end{java}
+
+	\begin{Emphase}
+		\paragraph{Exercice de compréhension}
+		Tracez  l'algorithme ou le programme avec les valeurs fournies et donnez
+		la valeur de retour.
+		
+		\begin{pseudocode}
+		\Algo{exercice}{a, b~: entiers}{entier}
+			\Decl{c}{entier}
+			\Let c \Gets 2 * a
+			\If{c > b}
+				\Let c \Gets c - b
+			\EndIf
+			\Return c
+		\EndAlgo
+		\end{pseudocode}		
+		
+		\begin{java}
+public static int exercice(int a, int b){
+	int c;
+	c = 2 * a;
+	if (c > b){
+		c = c-b;
+	}
+	return c;
+}
+		\end{java}
+		
+		\begin{multicols}{2}
+		\begin{itemize}
+		\item \lda{exercice(2, 5)} = \_\_\_
+		\item \lda{exercice(4, 1)} = \_\_\_
+		\end{itemize}
+		\end{multicols}	
+	\end{Emphase}
+
+
+	\pagebreak[4]
+%===============================
+\section{Le si-sinon (\textit{if-then-else})}
+\index{if-else}\index{si-sinon}
+%===============================
+	
+	La construction \pc{si-sinon} permet d’exécuter certaines instructions ou
+	d’autres en fonction d’un test.  Pour illustrer cette instruction, nous
+	allons nous pencher sur un grand classique, la recherche de maximum.
+	
+	\paragraph{Exemple.}
+	
+	Pour déterminer le le maximum de deux nombres, c’est-à-dire la plus grande
+	des deux valeurs, il y aura deux chemins possibles.  Le maximum devra
+	prendre la valeur du premier nombre ou du second selon que le premier est
+	plus grand que le second ou pas.
+	
+	\begin{center}
+		\begin{tikzpicture}[node distance = 2cm, auto]
+			\node (start) [startstop] {Start};
+			\node (dec1) [decision, below of=start, yshift=-1cm] {nb1 > nb2};
+			\draw [arrow] (start) -- (dec1);
+			\node (proc1) [process, below of=dec1, yshift=-2cm, xshift=-2cm] 
+				{max = nb1};
+			\node (proc2) [process, below of=dec1, yshift=-2cm, xshift=2cm] 
+				{max = nb2};
+			\node (stop) [startstop, below of=dec1, yshift=-5cm] {End};
+			\draw [arrow] (dec1) -- node[anchor=west, xshift=-10mm] {true} (proc1);
+			\draw [arrow] (dec1) -- node[anchor=east, xshift=-1mm] {false} (proc2);
+			\draw [arrow] (proc1) -- (stop);
+			\draw [arrow] (proc2) -- (stop);
+		\end{tikzpicture}	
+	\end{center}
+	
+
+	\begin{pseudocode}[1]
+			\If{nb1>nb2}
+				\Let max \Gets nb1
+			\Else
+				\Let max \Gets nb2
+			\EndIf
+	\end{pseudocode}
+
+	Traçons-le dans différentes situations.
+	
+	\begin{tabular}{|>{\centering\arraybackslash}m{6mm}
+					|*{4}{>{\centering\arraybackslash}m{1cm}}|}
+		\hline
+		\rowcolor{gray!40}
+			\verb_#_  & nb1 & nb2 & max & test \\			
+		\hline
+			  & 3 & 2 & indéfini & {} \\
+			1 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & indéfini & vrai \\
+			2 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & 3        & {} \\
+		\hline
+	\end{tabular}
+	\quad
+	\begin{tabular}{|>{\centering\arraybackslash}m{6mm}
+					|*{4}{>{\centering\arraybackslash}m{1cm}}|}
+		\hline
+		\rowcolor{gray!40}
+			\verb_#_  & nb1 & nb2 & max & test \\			
+		\hline
+			  & 4 & 42 & indéfini & {} \\
+			1 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & indéfini & faux \\
+			4 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & 42        & {} \\
+		\hline
+	\end{tabular}
+	
+	Le cas où les deux nombres sont égaux est également géré.
+	
+	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}
+					|*{4}{>{\centering\arraybackslash}m{1cm}}|}
+		\hline
+		\rowcolor{gray!40}
+			\verb_#_  & nb1 & nb2 & max & test \\			
+		\hline
+			  & 4 & 4 & indéfini & {} \\
+			1 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & indéfini & faux \\
+			4 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & 4        & {} \\
+		\hline
+	\end{tabular}
+
+	En langage Java, le \emph{si-sinon} s'écrit~:
+
+	\begin{grammaire}
+		\grammarrule{IfThenElseStatement:}
+		    if ( \grammarrule{Expression} )
+		        \grammarrule{Statement}
+		    else
+		        \grammarrule{Statement}
+	\end{grammaire}
+
+	Le test précédent peut donc s'écrire en supposant les variables déclarées~:
+
+	\begin{java}
+if (nb1 > nb2){		
+	max = nb1;
+} else {
+	max = nb2;
+}
+	\end{java}
+	
+	\begin{Emphase}
+		\paragraph{Exercice de compréhension}
+
+		Tracez ces algorithmes ou programmes avec les valeurs fournies et donnez
+		la valeur de retour.
+	
+		\begin{pseudocode}
+		\Algo{exercice}{a, b : integer}{integer}
+			\Decl{c}{integer}
+			\If{a > b}
+				\Let c \Gets a DIV b
+			\Else
+				\Let c \Gets b MOD a	
+			\EndIf
+			\Return c
+		\EndAlgo
+		\end{pseudocode}
+
+		\begin{java}
+public static int exercice(int a, int b){
+	int c;
+	if (a > b){
+		c = a/b;
+	} else {
+		c = b%a;
+	}
+}
+		\end{java}
+	
+		\begin{multicols}{2}
+		\begin{itemize}
+		\item \lda{exerciceB(2, 3)} = \_\_\_
+		\item \lda{exerciceB(4, 1)} = \_\_\_
+		\end{itemize}
+		\end{multicols}
+	
+		\begin{pseudocode}
+		\Algo{exercice}{x1, x2~: integer}{integer}
+			\Decl{ok}{boolean}
+			\Let ok \Gets x1 > x2
+			\If{ok}
+				\Let ok \Gets ok ET x1 == 4
+			\Else
+				\Let ok \Gets ok OU x2 == 3
+			\EndIf
+			\If{ok}
+				\Let x1 \Gets x1 * 1000
+			\EndIf
+			\Return x1 + x2
+		\EndAlgo
+		\end{pseudocode}
+
+		\begin{java}
+public static int exercice(int x1, int x2){
+	boolean ok;
+	ok = x1 > x2;
+	if (ok){
+		ok = ok && x1 == 4;
+	} else {
+		ok = ok || x2 == 3;
+	}
+	return x1 + x2;
+}
+		\end{java}
+		
+		\medskip
+		\begin{multicols}{2}
+		\begin{itemize}
+		\item \pc{exercice(2, 3)} = \_\_\_
+		\item \pc{exercice(4, 1)} = \_\_\_	
+		\end{itemize}
+		\end{multicols}	
+		
+	\end{Emphase}	
+	
+
+%============================
+\section{Le si-sinon-si}
+\index{si-sinon-si}
+%============================
+
+	Avec cette construction, il est possible d'indiquer à un endroit de
+	l’algorithme plus de deux chemins possibles.  Partons à nouveau d’un exemple
+	pour illustrer cette instruction.
+	
+	\paragraph{Exemple.} On voudrait mettre dans la chaine \pc{signe} la valeur
+	\pc{"positif"}, \pc{"négatif"} ou \pc{"nul"} selon qu’un nombre donné est
+	positif, négatif ou nul.
+	
+	\begin{center}
+		\begin{tikzpicture}[node distance = 2cm, auto]
+			\node (start) [startstop] {Start};
+			\node (dec1) [decision, below of=start, yshift=-.5cm, 
+				text width=.5cm] {};
+			\draw [arrow] (start) -- (dec1);
+			\node (proc1) [process, below of=dec1, yshift=-2cm, xshift=-4cm] 
+				{s = "positif"};
+			\node (proc2) [process, below of=dec1, yshift=-2cm] 
+				{s = "nul"};
+			\node (proc3) [process, below of=dec1, yshift=-2cm, xshift=4cm] 
+				{s = "négatif"};
+			\node (stop) [startstop, below of=dec1, yshift=-5cm] {End};
+			\draw [arrow] (dec1) -- 
+				node[anchor=west, xshift=-17mm] {nb>0} (proc1);
+			\draw [arrow] (dec1) -- 
+				node[anchor=east, xshift=-1mm] {nb == 0} (proc2);
+			\draw [arrow] (dec1) -- 
+				node[anchor=east, xshift=-1mm] {nb<0} (proc3);
+			\draw [arrow] (proc1) -- (stop);
+			\draw [arrow] (proc2) -- (stop);
+			\draw [arrow] (proc3) -- (stop);
+		\end{tikzpicture}	
+	\end{center}
+
+
+		\begin{pseudocode}[1]
+			\If{nb>0}
+				\Let signe \Gets "positif"
+			\ElsIf{nb==0}
+				\Let signe \Gets "nul"
+			\Else
+				\Let signe \Gets "négatif"
+			\EndIf
+		\end{pseudocode}
+	
+	Traçons-le
+	
+	\begin{tabular}{|*{2}{>{\centering\arraybackslash}m{4mm}}
+					 *{2}{>{\centering\arraybackslash}m{9mm}}|}
+		\hline
+		\rowcolor{black!40}
+			\verb_#_  & nb & signe & test \\			
+		\hline
+			  & 2                    & indéfini             & {}   \\
+			1 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & vrai \\
+			2 & {\color{gray}$\mid$} & "positif"            & {}   \\
+		\hline
+	\end{tabular}
+	
+	\begin{tabular}{|*{2}{>{\centering\arraybackslash}m{4mm}}
+					 *{2}{>{\centering\arraybackslash}m{9mm}}|}
+		\hline
+		\rowcolor{black!40}
+			\verb_#_  & nb & signe & test \\			
+		\hline
+			  & 0                    & indéfini             & {}   \\
+			1 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & faux \\
+			3 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & vrai \\
+			4 & {\color{gray}$\mid$} & "nul"                & {}   \\
+		\hline
+	\end{tabular}
+	\quad
+	\begin{tabular}{|*{2}{>{\centering\arraybackslash}m{4mm}}
+					 *{2}{>{\centering\arraybackslash}m{9mm}}|}
+		\hline
+		\rowcolor{black!40}
+			\verb_#_  & nb & signe & test \\			
+		\hline
+			  & -5                   & indéfini             & {}   \\
+			1 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & faux \\
+			3 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & faux \\
+			6 & {\color{gray}$\mid$} & "négatif"            & {}   \\
+		\hline
+	\end{tabular}
+
+	En langage Java, il n'y a pas de structure particulière pour ce test. Le
+	\bc{if-then-else} fait bien l'affaire. Seule l'indentation change un peu 
+	pour plus de lisibilité. Ce test peut donc s'écrire — en supposant toujours
+	que les variables sont déclarées — comme ceci~:
+
+	\begin{java}
+if (nb > 0){
+	s = "positif";
+} else if (nb == 0) {
+	s = "nul";
+} else {
+	s = "négatif";
+}
+	\end{java}
+
+	\paragraph{Remarques.}
+	\begin{itemize}
+	\item
+		Pour le dernier cas, on se contente
+		d’un \pc{\K{sinon}} sans indiquer la condition~;
+		ce serait inutile, elle serait toujours vraie.
+	\item
+		Le \pc{\K{si}} et le \pc{\K{si-sinon}} 
+		peuvent être vus comme des cas particuliers du 
+		\lda{\K{si-sinon-si}}.
+	\item
+		On pourrait écrire la même chose 
+		avec des \pc{\K{si-sinon}} imbriqués
+		mais le \pc{\K{si-sinon-si}} est plus lisible.
+		
+		\begin{pseudocode}
+			\If{nb>0}
+				\Let signe \Gets "positif"
+			\Else
+				\If{nb=0}
+					\Let signe \Gets "nul"
+				\Else
+					\Let signe \Gets "négatif"
+				\EndIf
+			\EndIf
+		\end{pseudocode}
+	\item Lorsqu’une condition est testée, on sait que toutes celles au-dessus se
+		sont avérées fausses.  Cela permet parfois de simplifier la condition.
+
+		\textbf{Exemple.}
+		Supposons que le prix unitaire d’un produit (\lda{prixUnitaire})
+		dépende de la quantité achetée (\lda{quantité}). 
+		En dessous de 10 unités, on le paie 10\texteuro{} l’unité.
+		De 10 à 99 unités, on le paie 8\texteuro{} l’unité.
+		À partir de 100 unités, on paie 6\texteuro{} l’unité.
+		
+		\begin{pseudocode}
+			\If{quantité<10}
+				\Let prixUnitaire \Gets 10
+				\ElsIf{quantité<100} \RComment{On sait que ce n’est pas <10}
+								\Let\RComment {inutile de le tester}
+				\Let prixUnitaire \Gets 8
+			\Else
+				\Let prixUnitaire \Gets 6
+			\EndIf
+		\end{pseudocode}
+	\end{itemize}
+
+	\pagebreak[4]
+%=====================
+\section{Le selon-que (\textit{switch})}
+\index{selon-que}\index{switch}
+%=====================
+
+	Cette nouvelle instruction permet d’écrire plus lisiblement \emph{certains}
+	\pc{\K{si-sinon-si}}, plus précisément quand le choix d’une branche dépend
+	de la valeur précise d’une variable (ou d’une expression).
+
+	\paragraph{Exemple.}
+	
+	Imaginons qu’une variable (\pc{dayNumber}) contienne un numéro de jour de la
+	semaine et qu’on veuille mettre dans une variable (\pc{dayName}) le nom du
+	jour correspondant ("lundi" pour 1, "mardi" pour 2\dots)
+	
+	Une solution avec un \pc{\K{si-sinon-si}} est possible 
+	mais le \pc{\K{selon-que}} (\textit{switch}) est plus lisible.
+
+		\begin{pseudocode}
+			\Switch{dayNumber}
+				\Case{1} dayName \Gets "lundi"
+				\Case{2} dayName \Gets "mardi"
+				\Case{3} dayName \Gets "mercredi"
+				\Case{4} dayName \Gets "jeudi"
+				\Case{5} dayName \Gets "vendredi"
+				\Case{6} dayName \Gets "samedi"
+				\Case{7} dayName \Gets "dimanche"
+			\EndSwitch
+		\end{pseudocode}
+
+	remplace avantageusement
+
+	\begin{wrong}
+		\begin{pseudocode}
+			\If{dayNumber=1}
+				\Let dayName \Gets "lundi"
+			\ElsIf{dayNumber=2}
+				\Let dayName \Gets "mardi"
+			\ElsIf{dayNumber=3}
+				\Let dayName \Gets "mercredi"
+			\ElsIf{dayNumber=4}
+				\Let dayName \Gets "jeudi"
+			\ElsIf{dayNumber=5}
+				\Let dayName \Gets "vendredi"
+			\ElsIf{dayNumber=6}
+				\Let dayName \Gets "samedi"
+			\Else
+				\Let dayName \Gets "dimanche"
+			\EndIf
+		\end{pseudocode}
+	\end{wrong}
+
+	En langage Java, le \textit{switch} s'écrit (grammaire simplifiée)~:
+
+	\begin{grammaire}
+		\grammarrule{SwitchStatement:}
+		    switch ( \grammarrule{Expression} ) \grammarrule{SwitchBlock}
+
+		\grammarrule{SwitchBlock:}
+		    \grammarrule{SwitchLabels Statement}
+
+		\grammarrule{SwitchLabel:}
+		    case \grammarrule{ConstantExpression}:
+		    default:
+	\end{grammaire}
+
+	\begin{itemize}
+		\item l'expression ne peut pas être de n'importe quel type. À ce stade, 
+			elle peut être, un entier ou une chaine;
+		\item \textit{Statement} peut être une instuction ou plusieurs;
+		\item \textit{SwitchLabels} (avec un \textit{s}) se sont plusieurs 
+			«~\texttt{case}~»
+	\end{itemize}
+
+	Le \textit{switch} précédent s'écrit~:
+
+	\begin{java}
+switch (dayNumber) {
+	case 1: 
+		dayName = "lundi"; 
+	case 2: 
+		dayName = "mardi"; 
+	case 3: 
+		dayName = "mercredi"; 
+	case 4: 
+		dayName = "jeudi"; 
+	case 5: 
+		dayName = "vendredi"; 
+	case 6: 
+		dayName = "samedi"; 
+	case 7: 
+		dayName = "dimanche";
+}
+	\end{java}
+		
+	\paragraph{Remarques.}
+	\begin{itemize}
+	\item
+		Il peut y avoir plusieurs valeurs pour un cas donné.
+	\item
+		Il peut y avoir un cas par défaut, \pc{default}
+		qui sera exécuté si la valeur n’est pas reprise par ailleurs.
+	\end{itemize}
+	
+	La syntaxe générale est~:
+	
+	\begin{pseudocode}
+		\Switch{expression}
+			\Case{liste${}_1$ de valeurs séparées par des virgules }
+				\Stmt Instructions
+			\Case{liste${}_2$ de valeurs séparées par des virgules }
+				\Stmt Instructions
+			\Empty \dots
+			\Case{liste${}_k$ de valeurs séparées par des virgules }
+				\Stmt Instructions
+			\Case{\K{default }}
+				\Stmt Instructions
+		\EndSwitch
+	\end{pseudocode}
+	
+	
