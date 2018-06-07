@@ -335,3 +335,178 @@
 				à savoir, la cote et la pondération de chaque examen), calculer 
 				la moyenne globale exprimée en pourcentage.
 			\end{Exercice}
+
+
+
+			\section{Division entière}
+			
+			\begin{Exercice}{Calculs}
+				Voici quelques petits calculs à compléter
+				faisant intervenir la division entière et le reste.
+				Par exemple~: "14 DIV 3 = 4 reste 2"
+				signifie que 14 DIV 3 = 4 et 14 MOD 3 = 2.
+				
+				\begin{multicols}{2}
+					\begin{itemize}
+					\item 11 DIV 3 = \_\_\ reste\ \_\_
+					\item 3 DIV 11 = \_\_\ reste\ \_\_
+					\item 11 DIV \_\_ = 2\ reste\ 3
+					\item \_\_ DIV 3 = 3\ reste\ 1
+					\end{itemize}
+				\end{multicols}
+			\end{Exercice}
+
+			\begin{Exercice}{Les prix ronds}
+				Voici un algorithme qui reçoit une somme d’argent exprimée en centimes
+				et qui calcule le nombre (entier) de centimes qu’il
+				faudrait ajouter à la somme pour tomber sur un prix rond en euros.
+				Testez-le avec des valeurs numériques. Est-il correct~?
+				
+				\begin{LDA}
+				\Algo{versPrixRond}{\Par{prixCentimes}{entier}}{entier}
+					\Return 100 - (prixCentimes MOD 100)
+				\EndAlgo
+				\end{LDA}
+				
+				\begin{center}
+				\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				test \no & prixCentimes & réponse correcte & valeur retournée & Correct~? \\\hline
+				\hline 
+				1 & 130 & 70 &  & \\\hline
+				2 & 40  & 60 &  & \\\hline
+				3 & 99  & 1  &  & \\\hline
+				4 & 100 & 0  &  & \\\hline
+				\end{tabular}
+				\end{center}
+				
+			\end{Exercice}
+			
+		%---------------------
+		\subsection{Exercices récapitulatifs sur les difficultés de calcul}
+		%---------------------
+		\label{prem-ex-cplx}
+		
+			Les exercices qui suivent n’ont pas tous été déjà analysés
+			et ils demandent des calculs faisant intervenir
+			des divisions entières, des restes et/ou des expressions booléennes.
+			Comme d’habitude, écrivez la spécification
+			si ça n’a pas encore été fait,
+			donnez des exemples, rédigez un algorithme
+			et vérifiez-le.
+		
+			\begin{Exercice}{Nombre multiple de 5}
+				\marginicon{java}
+				\label{algo:mult5}
+				Calculer si un nombre entier donné est un multiple de 5.
+				\paragraph{Solution.}
+				Dans ce problème,
+				il y a une donnée, le nombre à tester.
+				La réponse est un booléen
+				qui est à vrai si le nombre donné est un multiple de 5.
+				\begin{center}
+				\flowalgod{nombre (entier)}{multiple5}{booléen}
+				\end{center}
+				\textbf{Exemples.}
+				\begin{multicols}{4}
+					\begin{itemize}
+					\item \lda{multiple5(4)} donne faux
+					\item \lda{multiple5(15)} donne vrai
+					\item \lda{multiple5(0)} donne vrai
+					\item \lda{multiple5(-10)} donne vrai
+					\end{itemize}
+				\end{multicols}
+				La technique pour vérifier si un nombre est
+				un multiple de 5 est de vérifier que le reste
+				de la division par 5 donne 0.
+				Ce qui donne~:
+				\begin{LDA}[1]
+					\Algo{multiple5}{\Par{nombre}{entier}}{booléen}
+						\Return nombre MOD 5 = 0
+					\EndAlgo
+				\end{LDA}
+				Vérifions sur nos exemples~:
+				\begin{center}
+				\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				test \no & nombre & réponse correcte & valeur retournée & Correct~? \\\hline
+				\hline 
+				1 & 4   & faux & faux & {\color{ForestGreen}$\checkmark$} \\\hline
+				2 & 15  & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
+				3 & 0   & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
+				4 & -10 & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
+				\end{tabular}
+				\end{center}
+			\end{Exercice}
+
+			\begin{Exercice}{Nombre entier positif se terminant par un 0}
+				Calculer si un nombre donné se termine par un 0.
+			\end{Exercice}
+	
+			\begin{Exercice}{Les centaines}
+				Calculer la partie \emph{centaine}
+				d’un nombre entier positif quelconque.
+			\end{Exercice}
+	
+			\begin{Exercice}{Somme des chiffres}
+				Calculer la somme des chiffres
+				d’un nombre entier positif inférieur à 1000.
+			\end{Exercice}
+		
+			\begin{Exercice}{Conversion secondes en heures}
+				Étant donné un temps écoulé depuis minuit.
+				Si on devait exprimer ce temps sous la forme
+				habituelle (heure, minute et seconde),
+				que vaudrait la partie "heure".
+		
+				Ex~:~10000 secondes donnera 2 heures.
+				
+				Aide~: L’heure n’est qu’un nombre exprimé en base 60~!
+			\end{Exercice}
+		
+			\begin{Exercice}{Conversion secondes en minutes}
+				Étant donné un temps écoulé depuis minuit.
+				Si on devait exprimer ce temps sous la forme
+				habituelle (heure, minute et seconde),
+				que vaudrait la partie "minute".
+		
+				Ex~:~10000 secondes donnera 46 minutes.
+			\end{Exercice}
+		
+			\begin{Exercice}{Conversion secondes en secondes}
+				Étant donné un temps écoulé depuis minuit.
+				Si on devait exprimer ce temps sous la forme
+				habituelle (heure, minute et seconde),
+				que vaudrait la partie "seconde".
+		
+				Ex~:~10000 secondes donnera 40 secondes.
+			\end{Exercice}	
+
+			\begin{Exercice}{Un double aux dés}
+				\marginicon{java}
+				Écrire un algorithme qui simule le lancer de deux dés
+				et indique s’il y a eu un double 
+				(les deux dés montrant une face identique).
+			\end{Exercice}
+		
+			\begin{Exercice}{Année bissextile}
+				\marginicon{java}
+				\label{ex:bissextile}
+				Écrire un algorithme qui vérifie si une année est bissextile. 
+				Pour rappel, les années bissextiles sont les années multiples de 4. 
+				Font exception, les multiples de 100 
+				(sauf les multiples de 400 qui sont bien bissextiles). 
+				Ainsi $2012$ et $2400$ sont bissextiles mais pas $2010$ ni $2100$.
+			\end{Exercice}
+			 		 
+
+
+			\begin{Exercice}{Conversion en heures-minutes-secondes}
+				\marginicon{java}
+				Écrire un algorithme qui permet à l’utilisateur
+				de donner le nombre de secondes écoulées depuis minuit
+				et qui affiche le moment de la journée correspondant
+				en heures-minutes-secondes.
+				Par exemple, si on est 3726 secondes après minuit
+				alors il est 1h2'6''.
+			\end{Exercice}

@@ -900,6 +900,14 @@ perfect = errors == 0;
 				\end{itemize}
 			\end{multicols}
 			\end{small}
+
+			En Java, le \pc{AND} (ET) s'écrit \pc{\&\&}
+			\footnote{\pc{\&} est le caractère \textit{ampersand} (esperluette 
+			en français)}
+			et le \pc{OR} (OU), \pc{||}
+			\footnote{\pc{|} est le caractère \textit{pipe} (barre verticale 
+			en français)}.
+
 	
 			Écrire des calculs utilisant ces opérateurs n’est pas facile
 			car le français nous induit souvent en erreur
@@ -970,19 +978,19 @@ perfect = errors == 0;
 				Cette manière de fonctionner permet de gagner du temps dans
 				l'évaluation et permet aussi d'éviter des erreurs. Ceci est vrai
 				dans les algorithmes et — surtout — dans beaucoup de langages 
-				de programmation. 
+				de programmation. Java utilise cette évaluation paresseuse.  
 				 
 				\textbf{Exemples.}
 				\begin{pseudocode}
 					\Let ok \Gets 1/b < 0.1
 						\RComment provoque une erreur et un arrêt
-						de l’algorithme si \lda{b=0}. 
+						de l’algorithme si \pc{b=0}. 
 					\Let ok \Gets b$\neq$0 ET 1/b < 0.1
-						\RComment donne la valeur \lda{faux} à \lda{ok} 
+						\RComment donne la valeur \pc{faux} à \pc{ok} 
 						si \lda{b=0} (court-circuit). 
 					\Let ok \Gets 1/b < 0.1 ET b$\neq$0
-						\RComment provoque une erreur et un arrêt
-						de l’algorithme si \lda{b=0}. 
+						\RComment provoque une erreur et
+						un arrêt si \pc{b=0}. 
 				\end{pseudocode}
 				
 				Cette propriété sera abondamment utilisée dans le parcours
@@ -1031,8 +1039,10 @@ perfect = errors == 0;
 			\marginicon{definition}
 			La \textbf{division entière} consiste à effectuer une division
 			en ne gardant que la partie entière du résultat.
+			Le \textbf{reste} de la division entière de a par b
+			est ce qui n’a pas été repris dans la division… ce qu'il reste. 
 			
-			Pour rappel, lorsque l'on fait une division entière, le
+			Lorsque l'on fait une division entière, le
 			\textbf{dividende} \pc{D} est divisé par le \textbf{diviseur} \pc{d}
 			pour donner un \textbf{quotient} \pc{q} et, éventuellement, un
 			\textbf{reste} \pc{r}.
@@ -1045,17 +1055,22 @@ perfect = errors == 0;
 			\begin{flushright}
 				et, éventuellement un reste  $r$				
 			\end{flushright}
+				
+			Dans nos algorithmes, nous noterons la division entière \pc{DIV} et le
+			reste \pc{MOD}. $a$ \pc{DIV} $b$ est le quotient de la division et
+			$a$ \pc{MOD} $b$ — nous dirons \textit{a modulo b} — est le reste de
+			cette division.  
+
+			En Java, la division se note $/$ et le reste $\%$.
 			
-			{\Huge\bf TODO}
+			Par exemple, imaginons qu’une classe comprenne 14 étudiants et
+			étudiantes qu’il faut réunir par 3 dans le cadre d’un travail de
+			groupe.  Il est possible de former 4 groupes mais il restera
+			2 étudiants et étudiantes ne pouvant former un groupe complet.
+			C’est le reste de la division de 14 par 3.
 			
-			Dans ce cours, nous la noterons \lda{DIV}.
-			Dit autrement, \lda{a DIV b}
-			indique combien de fois on peut \emph{mettre} b dans a.
-			
-			\begin{minipage}{2cm}
 			\textbf{Exemples}~:	
-			\\
-			\end{minipage}
+			
 			\begin{minipage}{9cm}
 			\begin{multicols}{2}
 			\begin{itemize}
@@ -1063,31 +1078,6 @@ perfect = errors == 0;
 				\item 8 DIV 2 vaut 4
 				\item 6 DIV 6 vaut 1
 				\item 6 DIV 7 vaut 0
-			\end{itemize}
-			\end{multicols}
-			\end{minipage}
-			
-			\marginicon{definition}
-			Le \textbf{reste} de la division entière de a par b
-			est ce qui n’a pas été repris dans la division.
-			On va le noter \lda{a MOD b}
-			et on dira \emph{a modulo b}.
-	
-			Un exemple vous aidera à comprendre.	
-			Imaginons qu’une classe comprend 14 étudiants
-			qu’il faut réunir par 3
-			dans le cadre d’un travail de groupe.
-			On peut former 4 groupes 
-			mais il restera 2 étudiants ne pouvant former un groupe complet.
-			C’est le reste de la division de 14 par 3.
-			
-			\begin{minipage}{2cm}
-			\textbf{Exemples}~:	
-			\\
-			\end{minipage}
-			\begin{minipage}{9cm}
-			\begin{multicols}{2}
-			\begin{itemize}
 				\item 7 MOD 2 vaut 1
 				\item 8 MOD 2 vaut 0
 				\item 6 MOD 6 vaut 0
@@ -1096,62 +1086,18 @@ perfect = errors == 0;
 			\end{multicols}
 			\end{minipage}
 
-			\begin{Exercice}{Calculs}
-				Voici quelques petits calculs à compléter
-				faisant intervenir la division entière et le reste.
-				Par exemple~: "14 DIV 3 = 4 reste 2"
-				signifie que 14 DIV 3 = 4 et 14 MOD 3 = 2.
-				
-				\begin{multicols}{2}
-					\begin{itemize}
-					\item 11 DIV 3 = \_\_\ reste\ \_\_
-					\item 3 DIV 11 = \_\_\ reste\ \_\_
-					\item 11 DIV \_\_ = 2\ reste\ 3
-					\item \_\_ DIV 3 = 3\ reste\ 1
-					\end{itemize}
-				\end{multicols}
-			\end{Exercice}
-
-			\begin{Exercice}{Les prix ronds}
-				Voici un algorithme qui reçoit une somme d’argent exprimée en centimes
-				et qui calcule le nombre (entier) de centimes qu’il
-				faudrait ajouter à la somme pour tomber sur un prix rond en euros.
-				Testez-le avec des valeurs numériques. Est-il correct~?
-				
-				\begin{LDA}
-				\Algo{versPrixRond}{\Par{prixCentimes}{entier}}{entier}
-					\Return 100 - (prixCentimes MOD 100)
-				\EndAlgo
-				\end{LDA}
-				
-				\begin{center}
-				\begin{tabular}{|c|c|c|c|c|}
-				\hline
-				test \no & prixCentimes & réponse correcte & valeur retournée & Correct~? \\\hline
-				\hline 
-				1 & 130 & 70 &  & \\\hline
-				2 & 40  & 60 &  & \\\hline
-				3 & 99  & 1  &  & \\\hline
-				4 & 100 & 0  &  & \\\hline
-				\end{tabular}
-				\end{center}
-				
-			\end{Exercice}
 			
 			
-		\subsection{Tester la divisibilité}
+		\subsubsection{Utilité - Tester la divisibilité}
 		%-------------------------------------
 		
-			Les deux opérateurs \lda{MOD} et \lda{DIV}
-			sont-ils vraiment utiles~?
-			Oui~! Ils vont servir pour tester si un nombre
-			est un multiple d’un autre et pour extraire
-			des chiffres d’un nombre.
-			Commençons par la divisibilité.
+			Les deux opérateurs \pc{MOD} et \pc{DIV}, respectivement \pc{/} et
+			\pc{\%}, permettent de tester si un nombre est un multiple d’un
+			autre.
 
-			Imaginons qu’on veuille tester qu’un nombre est pair.
-			Qu’est-ce qu’un nombre pair~? Un nombre qui est multiple de 2.
-			C’est-à-dire dont le reste de la division par 2 est nul.
+			Si l'on veut par exemple savoir si un nombre est \textbf{pair}
+			— pour rappel, un nombre pair est un multiple de 2 — il suffit 
+			de vérifier que le reste de la division par 2 est nul.
 			
 			\[
 			\textrm{nb pair} 
@@ -1159,15 +1105,25 @@ perfect = errors == 0;
 				\quad\equiv\quad \textrm{nb MOD 2 = 0} 
 			\]
 			
-			On peut donc écrire~: \lda{pair \Gets nb MOD 2 = 0}.
+			En supposant que \pc{isOdd} (\textit{odd} pour pair et \textit{even}
+			pour impair) est une varibale booléenne, nous pourrions donc
+			écrire~: \pc{isOdd \Gets nb MOD 2 == 0}.
 
-		\subsection{Extraire les chiffres d’un nombre}
+			Et, en langage java~:
+
+			\begin{java}
+boolean isOdd;
+isOdd = nb % 2 == 0;
+			\end{java}
+
+		\subsubsection{Utilité - Extraire les chiffres d’un nombre}
 		%------------------------------------------------
 		
 			Faisons une petite expérience numérique.
 			\begin{center}
 			\begin{tabular}{|l|r|}\hline
-				calcul & résultat \\\hline
+				\rowcolor{black!20}
+				calcul & résultat \\
 				\hline
 				65536 MOD 10 & 6 \\  
 				65536 MOD 100 & 36 \\  
@@ -1177,7 +1133,8 @@ perfect = errors == 0;
 			\end{tabular}
 			\qquad
 			\begin{tabular}{|l|l|}\hline
-				calcul & résultat \\\hline
+				\rowcolor{black!20}
+				calcul & résultat \\
 				\hline
 				65536 DIV 10 & 6553 \\  
 				65536 DIV 100 & 655 \\  
@@ -1187,32 +1144,35 @@ perfect = errors == 0;
 			\end{tabular}
 			\end{center}
 		
-			On voit que les DIV et MOD avec des puissances de 10
-			permettent de garder les chiffres de droite (MOD)
-			ou d’enlever les chiffres de droite (DIV).
-			Combinés, ils permettent d’extraire n’importe quel
+			Nous voyons que les divisions entières (\pc{DIV}) et les restes
+			(\pc{MOD}) avec des puissances de 10 permettent de conserver les
+			chiffres de droite (division entière, MOD) ou d'enlever les chiffres
+			de droite (DIV).  Combinés, ils permettent d’extraire n’importe quel
 			chiffre d’un nombre.
 			
 			\textbf{Exemple}~: (65536 DIV 100) MOD 10 = 5.
 
+
+		
 		%---------------------
-		\subsection{Le hasard}\index{hasard}\index{aléatoire}
+		\subsection{Le hasard et les nombres aléatoires}
+		\index{hasard}\index{aléatoire}
 		%---------------------
 			
-			Il existe de nombreuses applications 
-			qui font intervenir le hasard.
-			Par exemple dans les jeux où on doit mélanger des cartes,
-			lancer des dés, 
-			faire apparaitre des ennemis de façon aléatoire\dots
+			Il existe de nombreuses applications qui font intervenir le hasard.
+		
+			Par exemple dans les jeux où il est nécessaire de mélanger des
+			cartes, lancer des dés, faire apparaitre des ennemis de façon
+			aléatoire\dots
 			
-			Le vrai hasard n’existe pas en algorithmique
+			Le vrai hasard n’existe pas en informatique
 			puisqu’il s’agit de suivre des étapes précises
-			dans un ordre fixé.
-			Pourtant, on peut concevoir des algorithmes
+			dans un ordre fixé et que la machine est déterministe. 
+			Pourtant, on peut concevoir des algorithmes et des programmes 
 			qui \emph{simulent} le hasard%
 			\footnote{%
-				On parle de pseudo-hasard
-				ou d’algorithmes pseudo-aléatoires.
+				Pour être précis, nous devrions dire pseudo-hasard
+				ou algorithmes et programmes pseudo-aléatoires.
 			}.
 			À partir d’un nombre donné%
 			\footnote{%
@@ -1220,207 +1180,60 @@ perfect = errors == 0;
 				de l’environnement 
 				(par exemple, l’horloge interne).
 			}
-			(qu’on appelle \emph{graine} ou \emph{seed} en anglais)
+			(appelé \emph{graine} ou \emph{seed} en anglais)
 			ils fournissent une suite de nombres qui \emph{ont l’air}
 			aléatoires.			
-			Concevoir de tels algorithmes est très compliqué
-			et dépasse largement le cadre de ce cours.
-			Heureusement, la plupart des langages informatiques proposent de base
-			une façon d'obtenir un tel nombre aléatoire.
 
-			Nous allons juste supposer qu’on dispose,
-			sans devoir l’écrire,
-			d’un algorithme qui fournit un nombre réel aléatoire entre 0 inclus et 1 exclu.
+			Concevoir de tels algorithmes est très compliqué et dépasse
+			largement le cadre de ce cours.  Heureusement, la plupart des
+			langages informatiques proposent de base une façon d'obtenir un tel
+			nombre aléatoire.
+
+			En Java, il suffit d'écrire
+			\footnote{Nous verrons plus tard qu'il existe une autre manière 
+				de faire en utilisant la classe \pc{Random}}
+
+			\begin{java}
+int number = Math.random();				
+			\end{java}
+
+			pour obtenir un nombre (pseudo-)aléatoire compris entre 0 et 1 
+			strictement. C'est-à-dire strictement plus petit que 1. 
+
+			Dans nos algorithmes, nous pouvons toujours supposer qu'il existe un
+			tel algorithme sans devoir l'écrire. 
 
 			\begin{center}
-				\flowalgor{hasard}{réel (entre 0 inclus et 1 exclu)}
+				\flowalgor{random}{réel (entre 0 inclus et 1 exclu)}
 			\end{center}
 			
-			À partir de cet algorithme,
-			on peut gérer de nombreuses autres situations
+			À partir de cet algorithme et de cette méthode découlent ces deux
+			autres «~algorithmes~»:
 
-\clearpage
-			\subsubsection{Un entier entre 0 inclus et n exclu}
+			\begin{itemize}
+				\item un entier entre 0 inclus et n exclu
+
+					\begin{pseudocode}
+						\Algo{random}{\Par{n}{integer}}{integer}
+						\Return random() * n	
+						\RComment le nombre réel est tronqué
+						\EndAlgo 
+					\end{pseudocode}
+
+				\item un entier entre min et max inclus
 			
-				Si on veut un nombre aléatoire entre 0 (inclus) et n (exclu),
-				l'algorithme suivant fera l'affaire
-
-				\begin{LDA}
-					\Algo{hasard}{\Par{n}{entier}}{entier}
-					\Return hasard() * n		// le nombre réel est tronqué
+				\begin{pseudocode}
+					\Algo{random}{\Par{min}{integer}, \Par{max}{integer}}{integer}
+					\Return random(max-min+1) + min
 					\EndAlgo
-				\end{LDA}
-				
-				Dans la suite du cours,
-				vous pourrez considérer que vous disposez de cet algorithme
-				\begin{center}
-					\flowalgod{n (entier)}{hasard}{entier (entre 0 inclus et n exclu)}
-				\end{center}
-
-			\subsubsection{Un entier entre min et max inclus}
+				\end{pseudocode}
 			
-				Si on veut un entier entre deux bornes (min et max) données,
-				on peut se baser sur l'algorithme précédent
+			\end{itemize}
 			
-				\begin{LDA}
-					\Algo{hasard}{\Par{min}{entier}, \Par{max}{entier}}{entier}
-					\Return hasard(max-min+1) + min
-					\EndAlgo
-				\end{LDA}
-			
-				Dans la suite du cours,
-				vous pourrez considérer que vous disposez de cet algorithme
-				\begin{center}
-					\flowalgodd{min (entier)}{max (entier)}{hasard}{entier (entre min et max inclus)}
-				\end{center}
 
-			\begin{Exercice}{Chiffre aléatoire}
-				Écrivez un algorithme qui simule le lancer d'un dé à 6 faces.
-			\end{Exercice}
-						
-%			\textbf{Exemple.}
-%			\begin{LDA}
-%				\LComment{Simule le lancer d’un dé}
-%				\Algo{dé}{}{entier}
-%					\Return hasard(1,6)
-%				\EndAlgo
-%			\end{LDA}
-
-%			\begin{Exercice}{Chiffre aléatoire}
-%				Écrivez un algorithme qui donne un chiffre
-%				(de 0 à 9 donc) aléatoire.
-%			\end{Exercice}
-
-%			\begin{Exercice}{Nombre aléatoire entre min et max}
-%				\marginicon{java}
-%				Écrivez un algorithme
-%				qui donne un nombre entier aléatoire
-%				compris entre \lda{min} et \lda{max} inclus.
-%				\begin{LDA}
-%				\Entete{hasard}{\Par{min, max}{entiers}}{entier}
-%				\end{LDA}
-%			\end{Exercice}
-			
-		%---------------------
-		\subsection{Exercices récapitulatifs sur les difficultés de calcul}
-		%---------------------
-		\label{prem-ex-cplx}
-		
-			Les exercices qui suivent n’ont pas tous été déjà analysés
-			et ils demandent des calculs faisant intervenir
-			des divisions entières, des restes et/ou des expressions booléennes.
-			Comme d’habitude, écrivez la spécification
-			si ça n’a pas encore été fait,
-			donnez des exemples, rédigez un algorithme
-			et vérifiez-le.
-		
-			\begin{Exercice}{Nombre multiple de 5}
-				\marginicon{java}
-				\label{algo:mult5}
-				Calculer si un nombre entier donné est un multiple de 5.
-				\paragraph{Solution.}
-				Dans ce problème,
-				il y a une donnée, le nombre à tester.
-				La réponse est un booléen
-				qui est à vrai si le nombre donné est un multiple de 5.
-				\begin{center}
-				\flowalgod{nombre (entier)}{multiple5}{booléen}
-				\end{center}
-				\textbf{Exemples.}
-				\begin{multicols}{4}
-					\begin{itemize}
-					\item \lda{multiple5(4)} donne faux
-					\item \lda{multiple5(15)} donne vrai
-					\item \lda{multiple5(0)} donne vrai
-					\item \lda{multiple5(-10)} donne vrai
-					\end{itemize}
-				\end{multicols}
-				La technique pour vérifier si un nombre est
-				un multiple de 5 est de vérifier que le reste
-				de la division par 5 donne 0.
-				Ce qui donne~:
-				\begin{LDA}[1]
-					\Algo{multiple5}{\Par{nombre}{entier}}{booléen}
-						\Return nombre MOD 5 = 0
-					\EndAlgo
-				\end{LDA}
-				Vérifions sur nos exemples~:
-				\begin{center}
-				\begin{tabular}{|c|c|c|c|c|}
-				\hline
-				test \no & nombre & réponse correcte & valeur retournée & Correct~? \\\hline
-				\hline 
-				1 & 4   & faux & faux & {\color{ForestGreen}$\checkmark$} \\\hline
-				2 & 15  & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
-				3 & 0   & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
-				4 & -10 & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
-				\end{tabular}
-				\end{center}
-			\end{Exercice}
-
-			\begin{Exercice}{Nombre entier positif se terminant par un 0}
-				Calculer si un nombre donné se termine par un 0.
-			\end{Exercice}
-	
-			\begin{Exercice}{Les centaines}
-				Calculer la partie \emph{centaine}
-				d’un nombre entier positif quelconque.
-			\end{Exercice}
-	
-			\begin{Exercice}{Somme des chiffres}
-				Calculer la somme des chiffres
-				d’un nombre entier positif inférieur à 1000.
-			\end{Exercice}
-		
-			\begin{Exercice}{Conversion secondes en heures}
-				Étant donné un temps écoulé depuis minuit.
-				Si on devait exprimer ce temps sous la forme
-				habituelle (heure, minute et seconde),
-				que vaudrait la partie "heure".
-		
-				Ex~:~10000 secondes donnera 2 heures.
-				
-				Aide~: L’heure n’est qu’un nombre exprimé en base 60~!
-			\end{Exercice}
-		
-			\begin{Exercice}{Conversion secondes en minutes}
-				Étant donné un temps écoulé depuis minuit.
-				Si on devait exprimer ce temps sous la forme
-				habituelle (heure, minute et seconde),
-				que vaudrait la partie "minute".
-		
-				Ex~:~10000 secondes donnera 46 minutes.
-			\end{Exercice}
-		
-			\begin{Exercice}{Conversion secondes en secondes}
-				Étant donné un temps écoulé depuis minuit.
-				Si on devait exprimer ce temps sous la forme
-				habituelle (heure, minute et seconde),
-				que vaudrait la partie "seconde".
-		
-				Ex~:~10000 secondes donnera 40 secondes.
-			\end{Exercice}	
-
-			\begin{Exercice}{Un double au dés}
-				\marginicon{java}
-				Écrire un algorithme qui simule le lancer de deux dés
-				et indique s’il y a eu un double 
-				(les deux dés montrant une face identique).
-			\end{Exercice}
-		
-			\begin{Exercice}{Année bissextile}
-				\marginicon{java}
-				\label{ex:bissextile}
-				Écrire un algorithme qui vérifie si une année est bissextile. 
-				Pour rappel, les années bissextiles sont les années multiples de 4. 
-				Font exception, les multiples de 100 
-				(sauf les multiples de 400 qui sont bien bissextiles). 
-				Ainsi $2012$ et $2400$ sont bissextiles mais pas $2010$ ni $2100$.
-			\end{Exercice}
-			 		 
-	%===================================
-	\section{Des algorithmes de qualité}
-	%===================================
+	%======================================================================
+	\section{Des algorithmes et des programmes de qualité}
+	%======================================================================
 	
 		Dans la section précédente,
 		nous avons vu qu’il est possible de décomposer un calcul en étapes.
@@ -1429,15 +1242,20 @@ perfect = errors == 0;
 		
 			\begin{quote}
 				\textbf{Puisqu’il existe plusieurs algorithmes 
-				qui résolvent un problème, lequel préférer~?}
+				qui résolvent un problème, lequel préférer~? Quelle traduction 
+				dans un langage de programmation (Java) privilégier~?}
 			\end{quote}
 		
-		Répondre à cette question, 
-		c’est se demander ce qui fait la qualité d’un algorithme
-		ou d’un programme informatique.
-		Quels sont les critères qui permettent de juger~?
+		Répondre à cette question, c’est se demander ce qui fait la qualité d’un
+		algorithme ou d’un programme informatique.  Quels sont les critères qui
+		permettent de juger~?
 		
 		C’est un vaste sujet mais nous voudrions aborder les principaux.
+
+		La connaissance de l'algorithmique permet d'écrire des algorithmes de 
+		qualité. La connaissance d'un langage — qui est une autre compétence —
+		permet d'écrire des programmes de qualité. Les qualités de l'un n'étant 
+		pas nécessairement celles de l'autre. 
 		
 		%------------------------------------------
 		\subsection{L’efficacité}\index{efficacité}
@@ -1456,12 +1274,11 @@ perfect = errors == 0;
 		\subsection{La lisibilité}\index{lisibilité}
 		%-------------------------------------------
 		
-			La \textbf{lisibilité}
-			indique si une personne qui lit l’algorithme
-			(ou le programme)
-			peut facilement percevoir comment il fonctionne.
-			C’est crucial car un algorithme (un programme) 
-			est \textbf{souvent lu} par de nombreuses personnes~:
+			La \textbf{lisibilité} indique si une personne qui lit l’algorithme
+			ou le programme peut facilement percevoir comment il fonctionne.
+			C’est crucial car un algorithme ou un programme est \textbf{souvent
+			lu} par de nombreuses personnes~:
+			
 			\begin{itemize}
 			\item
 				celles qui doivent se convaincre de sa validité
@@ -1481,28 +1298,28 @@ perfect = errors == 0;
 				et, accessoirement, celles qui doivent le coter~;)
 			\end{itemize}
 			
-			C’est un critère \textbf{très important}
-			qu’il ne faut surtout pas sous-évaluer.
-			Vous en ferez d’ailleurs l’amère expérience~:
-			si vous négligez la lisibilité d’un algorithme,
-			vous-même ne le comprendrez plus quand vous le relirez
-			quelque temps plus tard~!
+			C’est un critère \textbf{très important} qu’il ne faut surtout pas
+			sous-évaluer.  Vous en ferez d’ailleurs l’amère expérience~: si vous
+			négligez la lisibilité de votre algorithme ou de votre programme,
+			vous-même ne le comprendrez plus quand vous le relirez quelque temps
+			plus tard~!
 			
-			Comparer la lisibilité de deux algorithmes
-			n’est pas une tâche évidente car c’est une notion subjective.
-			Il faut se demander quelle version va être le plus facilement
-			comprise par la majorité des lecteurs.		
-			La section \vref{lisibilite}
-			explique ce qui peut être fait pour rendre ses algorithmes
-			plus lisibles.
+			Comparer la lisibilité de deux algorithmes ou de deux programmes
+			n’est pas une tâche évidente car c’est une notion subjective.  Il
+			faut se demander quelle version va être le plus facilement comprise
+			par la majorité des lecteurs. La section \vref{lisibilite}
+			explique ce qui peut être fait pour rendre ses algorithmes plus
+			lisibles. À ces recommandations s'ajouteront les \textbf{conventions
+			d'écriture} propres à chaque langage qu'il faudra aussi respecter. 
 				
 		%---------------------------------------	
 		\subsection{La rapidité}\index{rapidité}
 	    %---------------------------------------
 	    
-			La \textbf{rapidité}
-			indique si l’algorithme (le programme)
-			permet d’arriver plus ou moins vite au résultat.
+			%{\Huge\bf TODO}
+			
+			La \textbf{rapidité} indique si l’algorithme ou le programme permet
+			d’arriver plus ou moins vite au résultat.
 			
 			C’est un critère qui est souvent sur-évalué, 
 			essentiellement pour deux raisons.
@@ -1526,67 +1343,75 @@ perfect = errors == 0;
 					de faire évoluer l’algorithme.
 			\end{itemize}
 		
-			Ce critère est un cas particulier de l’\emph{efficience}
-			qui traite de la gestion économe des ressources.
-			Nous reparlerons de rapidité
-			dans le chapitre consacré à la \emph{complexité}
-			des algorithmes.
-		
+			Ce critère est un cas particulier de l’\emph{efficience} qui traite
+			de la gestion économe des ressources.  Nous reparlerons de rapidité
+			dans le chapitre consacré à la \emph{complexité} des algorithmes.
+
+			Le langage Java est réputé lent. C'est une affirmation péremptoire
+			et peut-être périmée. Bien sûr, comme le \textit{bytecode} est
+			interprèté, il est nécessaire de charger la machine virtuelle. La
+			gestion de la mémoire prise en charge par le langage a aussi un
+			certain cout. Hormis ces deux aspects, la rapidité d'un programme
+			dépend surtout de la qualité du code… et donc du développeur.  
+
+			L'important, dans ce premier cours de développement est d'écrire des 
+			programmes lisibles et  respectant les conventions d'écriture. 
+			
 		%---------------------	
 		\subsection{La taille}
 		%---------------------
 		
-			Nous voyons parfois des étudiants contents d’avoir
-			pu écrire un algorithme en moins de lignes.
-			Ce critère n’a \textbf{aucune importance}~;
-			un algorithme plus court n’est pas nécessairement
-			plus rapide ni plus lisible.
+			Nous voyons parfois des étudiants et des étudiantes contentes
+			d’avoir pu écrire un algorithme en moins de lignes.  Ce critère n’a
+			\textbf{aucune importance}~; un algorithme plus court n’est pas
+			nécessairement plus rapide ni plus lisible.
+
+			Lors de la traduction en langage Java, certaines formes d'écriture
+			— plus courtes — seront privilégiées. Nous y reviendrons et — au fur
+			et à mesure de l'apprentissage — elles deviendront vite évidentes.
 		
 		%----------------------		
 		\subsection{Conclusion}
 		%----------------------		
 			
-			Tout ces critères n’ont pas le même poids.
-			Le point le plus important est bien sûr d’écrire
-			un algorithme correct mais ne vous arrêtez pas là~!
-			Demandez-vous s’il n’est pas possible de le retravailler
-			pour améliorer sa lisibilité%
+			Tous ces critères n’ont pas le même poids.  Le point le plus
+			important est bien sûr d’écrire des algorithmes et des programmes
+			corrects mais ne vous arrêtez pas là~!  Demandez-vous s’il n’est pas
+			possible de le retravailler pour améliorer sa lisibilité%
 			\footnote{%
-				On appelle \emph{refactorisation}
-				l’opération qui consiste à modifier
-				un algorithme ou un code
-				sans changer ce qu’il fait
-				dans le but,
-				notamment, de le rendre plus lisible.
+				On appelle \emph{refactorisation} l’opération qui consiste
+				à modifier un algorithme ou un code sans changer ce qu’il fait
+				dans le but, notamment, de le rendre plus lisible.
 			}.
 		
-	%======================
-	\section{Améliorer la lisibilité d’un algorithme}\label{lisibilite}\index{lisibilité}
-	%======================
+	%============================================
+	\section{Améliorer la lisibilité}
+	\label{lisibilite}\index{lisibilité}
+	%============================================
 		
-		On vient de le voir, la lisibilité est une qualité essentielle
-		que doivent avoir nos algorithmes.
-		Qu’est ce qui permet d’améliorer la lisibilité d’un algorithme~?
+		Comme nous venons de le voir, la lisibilité est une qualité essentielle
+		que doivent avoir nos algorithmes et nos programmes.  Qu’est ce qui
+		permet d’améliorer la lisibilité d’un algorithme~?
+
+		\subsection{Mise en page des algorithmes}
 		
-		\begin{enumerate}
-		\item
 			Il y a d’abord la \textbf{mise en page} qui aide le lecteur
 			à avoir une meilleure vue d’ensemble de l’algorithme,
 			à en repérer rapidement la structure générale.
 			Ainsi, dans ce syllabus~:
 			\begin{itemize}
 			\item 
-				Les mots imposés 
-				(on parle de \emph{mots-clés}\index{mots-clés})
+				Les mots imposés ou, tout au moins importants, 
+				\index{mots-clés}
 				sont mis en évidence (en gras%
 				\footnote{%
 					Difficile de mettre en gras avec un bic.
 					Dans une version écrite vous pouvez~:
-					souligner le mot, l’écrire en majuscule
+					souligner ou surligner le mot, l’écrire en majuscule
 					ou le mettre en couleur.%
 				}).
 			\item
-				On écrit une seule instruction par ligne.
+				Une seule instruction se trouve par ligne.
 			\item
 				Les instructions à l’intérieur de l’algorithme sont 
 				\emph{indentées}\index{indentation}
@@ -1602,40 +1427,81 @@ perfect = errors == 0;
 			
 			\textbf{Exemples à ne pas suivre.}
 			\\
+			\\
 			\begin{wrong}
-				\begin{LDA}
+				\begin{pseudocode}
 					\Entete{duréeTrajet}{\Par{vitesseMS, distanceKM}{réels}}{réel}
 					\Decl{distanceM}{réel}
 					\Let distanceM \Gets 1000 * distanceKM
 					\Return distanceM / vitesseMS
-					\Stmt \K{Fin algorithme}
-				\end{LDA}
+				\end{pseudocode}
 			\end{wrong}
 			
 			\begin{wrong}
-				\begin{LDA}
+				\begin{pseudocode}
 					\Algo{duréeTrajet}{\Par{vitesseMS, distanceKM}{réels}}{réel}
 						\Decl{distanceM}{réel}
 						\Let \quad distanceM \Gets 1000 * distanceKM
 						\qquad \K{retourner} distanceM / vitesseMS
 					\EndAlgo
-				\end{LDA}
+				\end{pseudocode}
 			\end{wrong}
 	
 			Il faudra préférer
 			
 			\begin{correct}
-				\begin{LDA}
+				\begin{pseudocode}
 				\Algo{duréeTrajet}{\Par{vitesseMS, distanceKM}{réels}}{réel}
 					\Decl{distanceM}{réel}
 					\Let distanceM \Gets 1000 * distanceKM
 					\Return distanceM / vitesseMS
 				\EndAlgo
-				\end{LDA}
+				\end{pseudocode}
 			\end{correct}
 			\medskip
+	
+		\subsection{Écriture des programmes}
+
+			Pour l'écriture d'un programme, les règles sont semblables.
+			L'utilisation d'un éditeur de code% 
+			\footnote{%
+				Un éditeur de code est un programme aidant à l'édition de code
+				qu'il ne faut pas confondre avec un éditeur de texte. Des
+				éditeurs de codes connus; \textit{gVim}, \textit{Notepad++}
+			} ou d'un IDE (Environnement de Développement Intégré)%
+			\footnote{
+				Des IDE connus; \textit{Netbeans}, \textit{Eclipse}…
+			}
+			aide à l'écriture de programmes lisibles et respectant les
+			conventions. 
 		
-		\item
+			\begin{itemize}
+				\item Le code est indenté comme les algorithmes.
+				\item Une seule instruction par ligne.
+				\item La longueur des lignes n'excède pas 80 caractères%
+					\footnote{
+						Ce n'est pas la largeur de l'écran qui détermine la 
+						longueur des lignes. La limite à 80 caractères permet 
+						un code plus lisible. Elle permet aussi de pouvoir lire
+						plus vite le code en limitant le mouvement des yeux de 
+						gauche à droite. 
+					}.
+				\item S'il est nécessaire de couper une ligne trop longue, 
+					celle-ci est coupée avant un opérateur ou après une virgule.
+			\end{itemize}
+
+			\begin{java}
+public static boolean iDoNothing(double beautifulDouble, 
+		int firstInteger, boolean isItReallyTrue){
+	double notSoBeautiful = beautifulDouble * firstInteger; 
+	return notSoBeautiful > 100 && notSoBeautiful < 10000
+		|| isItReallyTrue;
+}
+			\end{java}
+
+
+		\subsection{Choix des noms}
+			
 			Il y a, ensuite, l’écriture des instructions elles-mêmes.
 			Ainsi~:
 			\begin{itemize}
@@ -1644,15 +1510,14 @@ perfect = errors == 0;
 				(d’algorithmes, de paramètres, de variables\dots)
 			\item
 				Il faut décomposer (ou au contraire fusionner)
-				des calculs pour arriver au résultat qu’on jugera
+				des calculs pour arriver au résultat jugé
 				le plus lisible.
 			\item 
-				On peut introduire des commentaires et/ou
-				des constantes. 
-				Deux concepts que nous allons développer maintenant.
+				Il est également possible d'introduire des commentaires et/ou
+				des constantes. Deux concepts que nous allons développer 
+				maintenant.
 			\end{itemize}
 			
-		\end{enumerate}
 				
 		%------------------------------------------------
 		\subsection{Les commentaires}\index{commentaires}
@@ -1669,52 +1534,77 @@ perfect = errors == 0;
 			Habituellement, on distingue deux sortes de commentaires~:
 			\begin{itemize}
 			\item
-				Ceux placés \textbf{au-dessus} de l’algorithme
-				qui expliquent \textbf{ce que fait} l’algorithme
+				Ceux placés \textbf{au-dessus} de l’algorithme ou du programme
+				qui expliquent \textbf{ce qu'il fait} 
 				et dans quelles \textbf{conditions} il fonctionne
 				(les contraintes sur les paramètres).
-				On parle aussi de \textbf{documentation}.
+				\par C'est la documentation \textbf{documentation}.
 			\item
-				Ceux placés \textbf{dans} l’algorithme
+				Ceux placés \textbf{dans} l’algorithme ou le programme
 				qui expliquent \textbf{comment} il le fait.
 			\end{itemize}
 			
-			Commenter correctement un programme
-			est une tâche qui n’est pas évidente et qu’il faut travailler.
-			Il faut arriver à apporter au lecteur
-			une information \textbf{utile}
-			qui n’apparait pas directement dans le code.
-			Par exemple, il est contre-productif de répéter
-			ce que l’instruction dit déjà.
-			Voici quelques mauvais commentaires
+			Commenter correctement un programme est une tâche qui n’est pas
+			évidente et qu’il faut travailler.  Il faut arriver à apporter au
+			lecteur une information \textbf{utile} qui n’apparait pas
+			directement dans le code.  Par exemple, il est contre-productif de
+			répéter ce que l’instruction dit déjà. Il faut supposer que le 
+			lecteur connait le langage et l'algorithmique.   
+
+			Dans nos algorithmes, les commentaires commencent par \pc{//}. 
+
+			En langage Java, il y a trois manières de commenter~:
+
+			\begin{enumerate}
+				\item \pc{//} en début de ligne;
+				\item le commentaire sur plusieurs lignes en commençant par 
+					\pc{/*} et en le terminant par \pc{*/};
+					
+					\pc{/* <commentaire> */} 
+
+				\item le commentaire sur plusieurs lignes en commençant par 
+					\pc{/**} et en le terminant par \pc{*/}. Dans ce cas, 
+					c'est un commentaire destiné à la documentation 
+					\textit{javadoc}. Nous y reviendrons. \index{javadoc}
+			\end{enumerate}
+			
+			Voici quelques mauvais 	commentaires
 			
 			\begin{wrong}
-				\begin{LDA}
+				\begin{pseudocode}
 					\LComment{Exemples de mauvais commentaires}
-					\Decl{longueur}{réel} \RComment{La longueur est un réel\quad.}
-					\Let somme \Gets 0 \RComment{On initialise la somme à 0} 
-				\end{LDA}
+					\Decl{length}{real} \RComment{La longueur est un réel\quad.}
+					\Let sum \Gets 0 \RComment{On initialise la somme à 0} 
+				\end{pseudocode}
 			\end{wrong}
-			
-			Notez qu’un excès de commentaires peut être le révélateur
-			des problèmes de lisibilité du code lui-même.
-			Par exemple, un choix judicieux de noms de variables 
-			peut s’avérer bien plus efficace que des commentaires. 
-			Ainsi, l’instruction
+
+				\begin{java}
+double length 		// La longeur est un réel
+/* La somme est initialisée à 0. 
+   Ce sera toujours le cas. */
+int sum = 0;
+				\end{java}
+		
+				\paragraph{Remarque}
+
+				Un excès de commentaires peut être le révélateur des problèmes
+				de lisibilité du code lui-même.  Par exemple, un choix judicieux
+				de noms de variables peut s’avérer bien plus efficace que des
+				commentaires.  Ainsi, l’instruction
 	
 			\begin{correct}
-				\begin{LDA}
-				\Let nouveauCapital \Gets ancienCapital * (1 + taux / 100)
-				\end{LDA}
+				\begin{pseudocode}
+				\Let newCapital \Gets oldCapital * (1 + rate / 100)
+				\end{pseudocode}
 			\end{correct}
 	
 			dépourvue de commentaires est bien préférable aux lignes suivantes~:
 	
 			\begin{wrong}
-				\begin{LDA}
-				\Let c1 \Gets c0 * (1 + t / 100) \RComment calcul du nouveau capital\quad.
+				\begin{pseudocode}
+				\Let c1 \Gets c0 * (1 + r / 100) \RComment calcul du nouveau capital\quad.
 				\Empty \RComment c1 est le nouveau capital, c0 est l’ancien capital, t est le taux
-				\end{LDA}
+				\end{pseudocode}
 			\end{wrong}
 			
 			\bigskip
@@ -1728,45 +1618,41 @@ perfect = errors == 0;
 				devienne superflu.
 			\end{quote}
 
-			\paragraph{Exemple.}
+			\paragraph{Exemples.}
 			Voici comment on pourrait documenter un de nos algorithmes.
-			\begin{LDA}
-				\LComment{Calcule la surface d’un rectangle dont on donne la largeur et la longueur.}
+			\begin{pseudocode}
+				\LComment{Calcule la surface d’un rectangle dont 
+				on donne la largeur et la longueur.}
 				\LComment{On considère que les données ne sont pas négatives.}
-				\Algo{surfaceRectangle}{\Par{longueur, largeur}{réels}}{réel}
-					\Return longueur * largeur
+				\Algo{rectangleArea}{\Par{length, width}{reals}}{real}
+					\Return length* width
 				\EndAlgo
-			\end{LDA}
-			
-			\begin{Exercice}{Commenter la durée du trajet}
-				Commentez l’algorithme qui calcule la durée d’un trajet
-				(exercice \vref{algo:durée}).
-			\end{Exercice}
+			\end{pseudocode}
+
+			\begin{java}
+/* 
+ * Calcule la surface d'un rectangle dont on donne la largeur et 
+ * la longueur.
+ * 
+ * Les données ne sont pas négatives.
+ */
+public static double rectangleArea (double length, double width){
+	return length * width;
+}
+			\end{java}
 			
 		%--------------------------------------------
 		\subsection{Constantes}\index{constantes}
 		%--------------------------------------------
 	
-			Une \textbf{constante} est une information pour laquelle nom, type et
-			valeur sont figés. La liste des constantes utilisées dans un algorithme
-			apparaitra dans la section déclaration des variables%
-			\footnote{%
-				Ou en dehors des algorithmes s’il s’agit d’une
-				constante universelle partagée par plusieurs algorithmes.%
-			} 
-			sous la forme suivante%
-			\footnote{%
-				L’usage est d’utiliser des noms en majuscule.%
-			}~:
+			Une \textbf{constante} est une information pour laquelle nom, type
+			et valeur sont figés. 
+
+			L'usage est d'écrire les constantes en majuscules. 
+			
 	
-			\begin{LDA}
-				\Const{PI}{3,1415}
-				\Const{SEUIL\_RÉUSSITE}{10}
-				\Const{ESI}{{\textquotedbl}École Supérieure d’Informatique{\textquotedbl}}
-			\end{LDA}
-	
-			Il est inutile de spécifier leur type, celui-ci
-			étant défini implicitement par la valeur de la constante.	
+			Il est inutile de spécifier leur type — mais c'est autorisé
+			— celui-ci étant défini implicitement par la valeur de la constante.	
 			L’utilisation de constantes dans vos algorithmes présente
 			les avantages suivants~:
 			\begin{itemize}
@@ -1779,179 +1665,221 @@ perfect = errors == 0;
 				(modification légale du seuil de réussite par exemple).
 			\end{itemize}
 			
-			\begin{Exercice}{Utiliser une constante}
+			\textbf{Exemples}
+			
+			\begin{pseudocode}
+				\Const{PI}{3,1415}
+				\Const{SEUIL\_RÉUSSITE}{10}
+				\Const{ESI}{{\textquotedbl}École Supérieure d’Informatique{\textquotedbl}}
+			\end{pseudocode}
+
+			\begin{java}
+public static final double PI = 3.1415;
+public static final int PASS_LEVEL = 10;
+public static final String ESI = "École supérieure d'Informatique";
+			\end{java}
+
+			\paragraph{Remarque}
+
+			En Java, définir une constante $\pi$ est un mauvais choix. Cette 
+			constante existe déjà. Elle est accessible directement 
+			par \pc{Math.PI}.
+
+		
+			\begin{Emphase}
+				\paragraph{Exercice}
+				Utiliser une constante.
 				Trouvez un algorithme que vous avez écrit
 				où l’utilisation de constante
 				pourrait améliorer la lisibilité de votre solution.
-			\end{Exercice}
+			\end{Emphase}
 			
 	%=====================================
-	\section{Interagir avec l’utilisateur}
+	\section{Appel d'algorithme, appel de méthode}
 	%=====================================
 	
-		Reprenons l’algorithme \lda{surfaceRectangle}
-		qui nous a souvent servi d’exemple.
-		Il permet de calculer la surface d’un rectangle
-		dont on connait la longueur et la largeur.
-		Mais d’où viennent ces données~?
-		Et que faire du résultat~?
+		Reprenons l’algorithme \pc{rectangleArea} qui nous a souvent servi
+		d’exemple.  Il permet de calculer la surface d’un rectangle dont on
+		connait la longueur et la largeur.  Mais d’où viennent les données~?  Et
+		que faire du résultat~?
 		
-		Tout d’abord, un algorithme peut utiliser 
-		(on dit \textbf{appeler}\index{appel}) un autre algorithme%
-		\footnote{%
-			Cet autre algorithme doit exister \emph{quelque part}~:
-			sur la même page, une autre page, un autre document,
-			peu importe.
-			Quand on codera cet algorithme,
-			les contraintes seront plus fortes
-			car il faudra que l’ordinateur
-			trouve cet autre bout de code
-			pour pouvoir l’exécuter.
-		}.
-		Pour ce faire, il doit spécifier les valeurs des paramètres~;
-		il peut alors utiliser le résultat.
-		L’appel s’écrit ainsi~:
-		
-		\begin{LDA}
-			\Let surface \Gets surfaceRectangle(122,3.78) \RComment{On appelle l’algorithme surfaceRectangle}
-		\end{LDA}
-		
-		L’appel d’un algorithme est considéré comme une expression,
-		un calcul qui, comme toute expression,
-		possède une valeur (la valeur retournée)
-		et peut intervenir dans un calcul plus grand, 
-		être assignée à une variable\dots
+		Tout d’abord, un algorithme ou un programme peut utiliser 
+		(on dit \textbf{appeler}\index{appel}) un autre algorithme ou programme.
 	
+		Cet autre algorithme doit exister \emph{quelque part}~: sur la même
+		page, une autre page, un autre document, peu importe.
+		
+		En Java, la contrainte est un peu plus forte. Les programmes ne sont 
+		pas écrits sur une feuille mais rassemblés dans un ou plusieurs fichiers.
+		Dans un premier temps, nous écrirons nos programmes dans un seul fichier.
+		Ce fichier représentera une \emph{classe}\index{classe}. 
+
+		\begin{itemize}
+			\item Les instructions qui définissent une classe sont:
+				\begin{java}
+public class MyClass{
+	// statements
+}
+				\end{java}
+			\item La classe \pc{MyClass} doit se trouver dans le fichier 
+				\texttt{MyClass.java}
+		\end{itemize}
+
+		Pour pouvoir appeler une méthode en Java, il faudra qu'elle existe dans
+		la même classe\footnote{Nous relâcherons assez vite cette contrainte}.
+		
+
+		L’appel d'un algorithme s’écrit ainsi~:
+		
+		\begin{pseudocode}
+			\Let area \Gets rectangleArea(122,3.78) 
+				\RComment{On appelle l’algorithme}
+		\end{pseudocode}
+
+		L'appel d'une méthode s'écrit ainsi~:
+
+		\begin{java}
+double area = rectangleArea(122, 3.78);			
+		\end{java}
+		
+		L’appel d’un algorithme est considéré comme une expression, un calcul
+		qui, comme toute expression, possède une valeur (la valeur retournée) et
+		peut intervenir dans un calcul plus grand, être assignée à une
+		variable\dots
+	
+	%=====================================
+	\section{Interagir avec l'utilisateur}
+	%=====================================
 		%-----------------------------------------
 		\subsection{Afficher un résultat}\index{afficher}
 		%-----------------------------------------
 		
-			Si on veut écrire un programme concret (en Java par exemple)
-			qui permet de calculer des surfaces de rectangles,
-			il faudra bien que ce programme communique le résultat
-			à l’utilisateur du programme.
-			On va l’indiquer avec la commande \lda{\K{afficher}}. 
-			Ce qui donne~:
+			Un programme concret (en Java par exemple) qui permet de calculer
+			des surfaces de rectangles devra communiquer le résultat
+			à l’utilisateur du programme.  Nous allons renseigner un affichage
+			par la commande \pc{\K{print}}.  Ce qui donne~:
 			
-			\begin{LDA}
-				\Let surface \Gets surfaceRectangle(122,3.78)
-				\Write{surface}
-			\end{LDA}
+			\begin{pseudocode}
+				\Write{rectangleArea(122, 3.78)}
+			\end{pseudocode}
 	
-			ou, plus simplement~:
+			L’instruction \pc{\K{print}} signifie que l’algorithme doit, à cet
+			endroit de l’algorithme communiquer une information à l’utilisateur.
+			La façon dont il va communiquer cette information (à l’écran dans
+			une application texte, via une application graphique, sur un cadran
+			de calculatrice ou de montre, sur une feuille de papier imprimée,
+			via un synthétiseur vocal\dots) ne nous intéresse pas ici.
+
+			En langage Java, un affichage sur la \emph{sortie standard}, la 
+			console ou encore dans le terminal se fait comme suit~:
+
+			\begin{java}
+System.out.println(rectangleArea(122, 3.78);				
+			\end{java}
 		
-			\begin{LDA}
-				\Write{surfaceRectangle(122,3.78)}
-			\end{LDA}
-	
-			L’instruction \lda{\K{afficher}} signifie 
-			que l’algorithme doit, à cet endroit de l’algorithme
-			communiquer une information à l’utilisateur.
-			La façon dont il va communiquer cette information 
-			(à l’écran dans une application texte, 
-			via une application graphique,
-			sur un cadran de calculatrice ou de montre,
-			sur une feuille de papier imprimée,
-			via un synthétiseur vocal\dots)
-			ne nous intéresse pas ici%
-			\footnote{%
-				Ce sera bien sûr une question importante
-				quand il s’agira de traduire l’algorithme en un programme.%
-			}.		
+			Les affichages et les demandes peuvent aussi se faire à l'aide 
+			d'un organigramme et d'un parallélogramme.  
+
+			\begin{center}
+				\begin{tikzpicture}[node distance=2cm]
+				\node (io) [io, text width=6cm] 
+					{Afficher rectangleArea(122, 3.78)};
+				\end{tikzpicture}
+			\end{center}
 	
 		%-----------------------------------------
-		\subsection{Demander des valeurs}\index{demander}
+		\subsection{Demander des valeurs}
+		\index{demander}\index{read}
 		%-----------------------------------------
 	
-			Le bout d’algorithme qu’on vient d’écrire
-			n’est pas encore très utile puisqu’il calcule
-			toujours la surface du même rectangle.
-			Il serait intéressant de demander à l’utilisateur
-			ce que valent la longueur et la largeur.
-			C’est le but de la commande \lda{\K{demander}}. 
+			Il serait maintenant intéressant de demander à l’utilisateur ce que
+			valent la longueur et la largeur.  C’est le but de la commande
+			\pc{\K{read}}. 
 	
-			\begin{LDA}
-				\Read{longueur}
-				\Read{largeur}
-				\Write{surfaceRectangle(longueur, largeur)}
-			\end{LDA}
+			\begin{pseudocode}
+				\Read{length}
+				\Read{width}
+				\Write{rectangleArea(length, width)}
+			\end{pseudocode}
 	
-			L’instruction \lda{\K{demander}}
-			signifie que l’utilisateur va,
-			à cet endroit de l’algorithme,
-			être sollicité pour donner une valeur 
-			qui sera affectée à une variable.
-			À nouveau, la façon dont il va indiquer cette valeur
-			(au clavier dans une application texte, 
-			via un champ de saisie ou une liste déroulante 
-			dans une application graphique,
-			via une interface tactile,
-			via des boutons physiques,
-			via la reconnaissance vocale\dots)
-			ne nous intéresse pas ici.
+			L’instruction \lda{\K{read}} signifie que l’utilisateur va, à cet
+			endroit de l’algorithme, être sollicité pour donner une valeur qui
+			sera affectée à une variable.  À nouveau, la façon dont il va
+			indiquer cette valeur (au clavier dans une application texte, via un
+			champ de saisie ou une liste déroulante dans une application
+			graphique, via une interface tactile, via des boutons physiques, via
+			la reconnaissance vocale\dots) ne nous intéresse pas ici.
+
+			En langage Java, trois instructions seront nécessaires pour 
+			pouvoir faire une lecture au clavier pour un programme s'exécutant
+			dans la console%
+			\footnote{Pour une application graphique, c'est encore un 
+			peu plus compliqué.}.
+
+			\begin{java}
+import java.util.Scanner;
+// ...
+Scanner keyboard = new Scanner(System.in);
+// ...
+double length = keyboard.nextDouble();
+			\end{java}
 	
-			On peut combiner les demandes~:
-			
-			\begin{LDA}
-				\Read{longueur, largeur}
-				\Write{surfaceRectangle(longueur, largeur)}
-			\end{LDA}
-		
 		%-----------------------------------------
 		\subsection{Préférer les paramètres}
 		%-----------------------------------------
 			
-			Un algorithme avec paramètres 
-			est toujours plus intéressant
-			qu’un algorithme qui demande les données
-			et affiche le résultat
-			car il peut être utilisé (appelé) dans un autre algorithme
-			pour résoudre une partie du problème.
+			Un algorithme avec paramètres est toujours plus intéressant qu’un
+			algorithme qui demande les données et affiche le résultat car il
+			peut être utilisé (appelé) dans un autre algorithme pour résoudre
+			une partie du problème. C'est exactement pareil pour un programme;
+			on privilégiera des méthodes recevant des valeurs en arguments que 
+			des méthodes qui demandent les données à l'utilisateur. Cette demande
+			sera faites à un autre moment. 
 
-			Supposons qu'on dispose de cet algorithme pour le calcul de la surface d'un rectangle.
-			\begin{center}
-				\flowalgodd{longueur (réel)}{surface (réel)}{surfaceRectangle}{réel}
-			\end{center}
-			
-			Rien n’empêche d’écrire, à partir de là,
-			un algorithme qui interagit avec l’utilisateur
-			et fait appel à l’algorithme qui réalise le calcul.
-			
-			\paragraph{Exemple :}
-				Écrire un algorithme qui calcule et affiche la surface d'un triangle 
-				dont la longueur et la largeur dont demandés à l'utilisateur.
-				
-			\paragraph{Spécification.}
-			\begin{center}
-				\flowalgo{TestSurface}
-			\end{center}
-			\begin{itemize}
-				\item \textbf{Donnée} et \textbf{Résultat} : aucun
-				\item \textbf{Demande} : la longueur et la largeur
-				\item \textbf{Affiche} : la surface du triangle
-			\end{itemize}
-			
-			Remarquez qu'on distingue bien une valeur qui est une donnée de l'algorithme
-			(passée en paramètre) et une valeur qui est demandée à l'utilisateur.
-			De même, on distingue le résultat d'un algorithme (ce qui est retourné)
-			de ce qui est affiché à l'utilisateur.
-			
-			\paragraph{Solution.}
-						
-			\begin{LDA}
-				\Algo{TestSurface}{}{}
-					\Decl{longueur, largeur}{réels}
-					\Read{longueur, largeur}
-					\Write{surfaceRectangle(longueur, largeur)}
+			L'exemple du rectangle pourrait s'écrire de manière un peu plus 
+			complète comme suit~:
+
+			\begin{pseudocode}
+				\LComment{Calcule la surface d’un rectangle dont 
+				on donne la largeur et la longueur.}
+				\LComment{On considère que les données ne sont pas négatives.}
+				\Algo{rectangleArea}{\Par{length, width}{reals}}{real}
+					\Return length* width
 				\EndAlgo
-			\end{LDA}
+				
+				\Algo{AreaTest}{}{}
+					\Decl{length, width}{reals}
+					\Read{length, width}
+					\Write{rectangleArea(length, width)}
+				\EndAlgo
+			\end{pseudocode}
 
-			\begin{Exercice}{Conversion en heures-minutes-secondes}
-				\marginicon{java}
-				Écrire un algorithme qui permet à l’utilisateur
-				de donner le nombre de secondes écoulées depuis minuit
-				et qui affiche le moment de la journée correspondant
-				en heures-minutes-secondes.
-				Par exemple, si on est 3726 secondes après minuit
-				alors il est 1h2'6''.
-			\end{Exercice}
+			Et voici une traduction en langage Java~:
+
+			\begin{java}
+import java.util.Scanner;
+				
+public class AreaTest {
+	/* 
+	 * Calcule la surface d'un rectangle dont on donne la largeur et 
+	 * la longueur.
+	 * 
+	 * Les données ne sont pas négatives.
+	 */
+	public static double rectangleArea(double length, double width){
+		return length * width;
+	}
+
+	public static void main(String[] args){
+		double length;
+		double width;
+		Scanner keyboard = new Scanner(System.in);
+
+		System.out.println("Entre la longueur: ");
+		length = keyboard.nextDouble();
+		System.out.println("Entre la largeur: ");
+		width = keyboard.nextDouble();
+
+		System.out.println("Surface: " + rectangleArea(length, width);
+
+			\end{java}
