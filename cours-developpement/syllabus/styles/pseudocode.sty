@@ -25,11 +25,16 @@
 \usepackage{environ} % Merci à astalavista pour ce truc :)
 \NewEnviron{pseudocode}[1][0]{%
 	\begin{flushleft}
-	\begin{tcolorbox}[colback=gray!15,% background
-                  colframe=gray,% frame colour
-                  leftrule=.6em,
-                  arc=2mm,
-                  sharp corners=northwest
+	\begin{tcolorbox}[
+			colback=gray!15,
+            colframe=gray,
+            leftrule=.6em,
+            arc=2mm,
+            sharp corners=northwest,
+            enhanced,
+            title=pseudocode,
+    		fonttitle=\itshape,
+			attach boxed title to bottom right={yshift=2mm, xshift=-7mm},
                  ]
 		\begin{minipage}{0.97\linewidth}
 		\begin{sffamily}
