@@ -51,7 +51,8 @@
 
 
 % Pour colorer les numéros de lignes dans les algos
-\algrenewcommand{\alglinenumber}[1]{\color{red!85!black}\makebox[7pt]{\footnotesize#1:}\ }
+\algrenewcommand{\alglinenumber}[1]
+	{\color{orange!85!black}\makebox[7pt]{\footnotesize#1:}\ }
 
 % ==============================================================================
 % Le code suivant permet d'avoir des lignes verticales pour délimiter les blocs. 
@@ -103,6 +104,9 @@
 \algnewcommand\algorithmicalgo{\textbf{algorithm}}
 \algrenewcommand\algorithmicend{\textbf{}}
 \newcommand{\Par}[2]{#1 : #2}
+\newcommand{\In}{\ensuremath{\downarrow}}
+\newcommand{\Out}{\ensuremath{\uparrow}}
+\newcommand{\InOut}{\In{}\Out{}}
 \newcommand{\Gives}{\ \ensuremath{\rightarrow}{}}
 \renewcommand{\Return}{\LState\algorithmicreturn\ }
 %\algrenewcommand\algorithmicreturn{\textbf{return}}

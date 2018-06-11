@@ -495,11 +495,73 @@ if (nb > 0){
 		\end{pseudocode}
 	\end{itemize}
 
+
+%==========================================
+\section{Expression booléenne}
+\index{expression booléenne}
+%==========================================
+
+Nous avons dit que dans un test, l'\textit{expression} était une expression
+booléenne et nous avons vu quelques opérateurs intervenants dans ces
+expressions.  Revenons plus en détail sur ce concept. 
+
+\marginicon{definition}
+\textbf{Denifition.} Une expression booléenne est une expression — c'est-à-dire
+le résultat d'un calcul — dont la valeur est booléenne~: \pc{true} ou
+\pc{false}. 
+
+Une telle expression se compose grâce~: 
+
+\begin{enumerate}
+	\item aux opérateurs relationnels (\textit{relational operator} ou 
+		\textit{comparators}\index{comparators});
+		
+		Un opérateur relationnel est un opérateur dont la valeur
+		est booléenne et les opérandes numériques. 
+
+		\begin{grammaire}
+			\grammarrule{RelationalOperator:}
+			    \grammarrule{(one of)}
+			    < > <= >=
+		\end{grammaire}
+		
+	\item aux opérateurs d'égalité (\textit{equality operators});
+
+		Un d'égalité est un opérateur dont la valeur
+		est booléenne et les opérandes de même type (à conversion près). 
+
+		\begin{grammaire}
+			\grammarrule{EqualityOperator:}
+			    \grammarrule{(one of)}
+			    == != 
+		\end{grammaire}
+
+	\item au complément logique (\textit{logical complement operator}) et 
+		aux opérateurs conditionnels 
+		(\textit{conditionals operators}\index{conditionals operators});
+
+		Le complément logique et les opérateurs conditionnels sont des
+		opérateurs dont la valeur est booléenne et le ou les opérandes également
+		booléens. 
+
+		Le \pc{\&\&} est prioritaire sur le \pc{||}.
+
+		\begin{grammaire}
+			\grammarrule{LogicalComplementOperator:}
+			    !
+			\grammarrule{ConditionalOperator:}
+			    \grammarrule{(one of)}
+			     || &&
+		\end{grammaire}
+\end{enumerate}
+
+
+
 	\pagebreak[4]
-%=====================
+%==========================================
 \section{Le selon-que (\textit{switch})}
 \index{selon-que}\index{switch}
-%=====================
+%==========================================
 
 	Cette nouvelle instruction permet d’écrire plus lisiblement \emph{certains}
 	\pc{\K{si-sinon-si}}, plus précisément quand le choix d’une branche dépend
