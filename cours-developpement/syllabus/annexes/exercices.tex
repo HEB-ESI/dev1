@@ -818,3 +818,181 @@
 		retourne vrai si vous êtes bien stationné et faux sinon.
 	\end{Exercice}
 
+%===================
+\section{Exercices, modules et références}
+%===================
+
+todo: revoir les exercices avec des paramètres en sortie. 
+
+	\begin{Exercice}{Tracer des algorithmes}
+		Indiquer quels nombres sont successivement affichés 
+		lors de l’exécution des algorithmes ex1, ex2, ex3 et ex4.
+	
+		\begin{pc}
+		\Algo{ex1}{}{}
+			\Decl{x, y}{entiers}
+			\Stmt addition(3, 4, x)
+			\Write x
+			\Let x \Gets 3
+			\Let y \Gets 5
+			\Stmt addition(x, y, y)
+			\Write y
+		\EndAlgo
+		\Empty
+		\Algo{addition}{a\In, b\In, c\Out~:~entiers}{}
+			\Decl{somme}{entier}
+			\Let somme \Gets a + b
+			\Let c \Gets somme
+		\EndAlgo
+		\end{pc}
+	
+		\begin{pc}
+		\Algo{ex2}{}{}
+			\Decl{a, b}{entiers}
+			\Stmt addition(3, 4, a) \Comment voir ci-dessus
+			\Write a
+			\Let a \Gets 3
+			\Let b \Gets 5
+			\Stmt soustraction(b, a, b)
+			\Write b
+		\EndAlgo
+		\Empty
+		\Algo{soustraction}{a\In, b\In, c\Out~:~entiers}{}
+			\Let c \Gets a - b
+		\EndAlgo
+		\end{pc}
+	
+		\begin{pc}
+		\Algo{ex3}{}{}
+			\Decl{a, b, c}{entiers}
+			\Stmt calcul(3, 4, c)
+			\Write c
+			\Let a \Gets 3
+			\Let b \Gets 4
+			\Let c \Gets 5
+			\Stmt calcul(b, c, a)
+			\Write a, b, c
+		\EndAlgo
+		\Empty
+		\Algo{calcul}{a\In, b\In, c\Out~:~entiers}{}
+			\Let a \Gets 2 * a
+			\Let b \Gets 3 * b
+			\Let c \Gets a + b
+		\EndAlgo
+		\end{pc}
+	
+		\begin{pc}
+		\Algo{ex4}{}{}
+			\Decl{a, b, c}{entiers}
+			\Let a \Gets 3
+			\Let b \Gets 4
+			\Let c \Gets f(b)
+			\Write c
+			\Stmt calcul2(a, b, c)
+			\Write a, b, c
+		\EndAlgo
+		\Empty
+		\Algo{calcul2}{a\In, b\In, c\Out~:~entiers}{}
+			\Let a \Gets f(a)
+			\Let c \Gets 3 * b
+			\Let c \Gets a + c
+		\EndAlgo
+		\Empty
+		\Algo{f}{a\In~:~entier}{entier}
+			\Decl{b}{entier}
+			\Let b \Gets 2 * a + 1
+			\Return b
+		\EndAlgo
+		\end{pc}	
+	\end{Exercice}
+	
+	\begin{Exercice}{Appels de module}
+		Parmi les instructions suivantes (où les variables
+		\pc{a}, \pc{b} et \pc{c}
+		sont des entiers), lesquelles font correctement appel 
+		à l’algorithme d’en-tête suivant~?
+	
+		\begin{pc}
+			\Entete{PGCD}{a\In,b\In~:~entiers}{entier}
+		\end{pc}
+	
+		\begin{pc}
+		\Stmt [1] a \Gets PGCD(24, 32)
+		\Stmt [2] a \Gets PGCD(a, 24)
+		\Stmt [3] b \Gets 3 * PGCD(a + b, 2*c) + 120
+		\Stmt [4] PGCD(20, 30)
+		\Stmt [5] a \Gets PGCD(a, b, c)
+		\Stmt [6] a \Gets PGCD(a, b) + PGCD(a, c)
+		\Stmt [7] a \Gets PGCD(a, PGCD(a, b))
+		\Stmt [8] \Read PGCD(a, b)
+		\Stmt [9] \Write PGCD(a, b)
+		\Stmt [10] PGCD(a, b) \Gets c
+		\end{pc}
+	\end{Exercice}
+	
+	\begin{Exercice}{Maximum de 4 nombres}
+		Écrivez un algorithme qui calcule le maximum de 4 nombres.
+	\end{Exercice}
+
+	\begin{Exercice}{Écart entre 2 durées}
+		Étant donné deux durées données chacune par trois
+		nombres (heure, minute, seconde),
+		écrire un algorithme qui calcule
+		le délai écoulé entre ces deux durées en heure(s), minute(s),
+		seconde(s) sachant que la deuxième durée donnée 
+		est plus petite que la première.
+	\end{Exercice}
+	
+\begin{comment}
+	\begin{Exercice}{Réussir GEN1}
+		Reprenons l’exercice \vref{algo:réussirGEN1}.
+		Cette fois-ci on ne veut rien afficher
+		mais fournir deux résultats~:
+		un booléen indiquant si l’étudiant a réussi ou pas
+		et un entier indiquant sa cote (qui n’a de sens que s’il a réussi). 
+	\end{Exercice}
+\end{comment}
+
+	\begin{Exercice}{Tirer une carte}
+		\marginicon{java}
+		L’exercice suivant a déjà été résolu. 
+		Refaites une solution modulaire.
+		
+		Écrire un algorithme qui affiche l’intitulé d’une carte
+		tirée au hasard dans un paquet de 52 cartes.
+		Par exemple, "As de cœur", "3 de pique", "Valet de carreau"
+		ou encore "Roi de trèfle".
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre de jours dans un mois}
+		Écrire un algorithme qui donne le nombre de jours dans un mois.
+		Il reçoit en paramètre le numéro du mois (1 pour janvier\dots)
+		ainsi que l’année.
+		Pour le mois de février, 
+		il faudra répondre 28 ou 29 selon que l’année fournie
+		est bissextile ou pas.
+		Vous devez réutiliser au maximum ce que vous avez déjà fait
+		lors d’exercices précédents (cf. exercice \vref{ex:bissextile}).
+	\end{Exercice}
+
+	\begin{Exercice}{Valider une date}
+		Écrire un algorithme qui valide 
+		une date donnée par trois entiers~:~ l’année, le mois et le jour.
+		Vous devez réutiliser au maximum ce que vous avez déjà fait
+		lors d’exercices précédents.
+	\end{Exercice}
+	
+	\begin{Exercice}{Généraliser un algorithme}
+		Dans l’exercice \vref{algo:mult5},
+		nous avons écrit un algorithme 
+		pour tester si un nombre est divisible par 5.
+		Si on vous demande à présent
+		un algorithme pour tester si un nombre est divisible par 3,
+		vous le feriez sans peine.
+		Idem pour tester la divisibilité par 2, 4, 6, 7, 8, 9\dots{}
+		mais vous vous lasseriez bien vite.
+		
+		N’est-il pas possible d’écrire un seul algorithme,
+		plus général, qui résolve tous ces problèmes d’un coup~?  
+	\end{Exercice}
+	
