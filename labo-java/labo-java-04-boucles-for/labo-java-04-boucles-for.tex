@@ -1,0 +1,174 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 4 -- Boucles \texttt{for}}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Ce TD introduit l'instruction \texttt{for} ainsi que la notion de chaîne de caractères et le type
+	associé \texttt{String}.
+	 
+	\tableofcontents
+
+	\newpage
+
+%===================
+\section{Boucle - \texttt{for}}
+%====================	
+
+ 	\listing{java}{code/BoucleFor.java}
+	Le code ci-dessus affiche les nombres de 1 à 10.
+	Ce programme s'exécute comme suit~:
+	\begin{itemize}
+		\item  le programme commence à l'instruction \texttt{for} de la ligne 5~:
+			\begin{itemize}
+				\item l'initialisation \code{java}{int i = 1} est d'abord exécutée: 
+					la variable $i$ de type entier est déclarée et initialisée à 1~;
+				\item  ensuite, la condition du \texttt{for} \code{java}{i<=10}
+					est évaluée, sa valeur est vrai car $i$ vaut 1 et est donc inférieur à 10~;
+				\item puisque la condition est vraie le \emph{corps} de la boucle s'exécute, 
+					la ligne 6 affiche la valeur de l'entier $i$: 1. 
+					Et l'incrément \code{java}{i = i +1} est exécuté, $i$ vaut 2 maintenant~;
+				\item la condition est à nouveau évaluée avec la nouvelle valeur de i qui vaut maintenant 2~;
+				\item etc...
+				\item le programme continue ainsi jusqu'à ce que $i$ atteigne la valeur 11. 
+					\`A ce moment la condition est évaluée à faux et l'instruction 
+					\texttt{for} prend fin.
+			\end{itemize}
+		\item	Comme aucune instruction ne suit ce \texttt{for}, le programme se termine.
+
+	\end{itemize}
+
+ 
+	\begin{Exercice}{Suites d'entiers}	
+		Dans votre package créez un classe \texttt{Exercice1}.
+		Dans cette classe écrivez un programme qui demande à l'utilisateur un nombre entier $n$ et affiche
+		à l'aide d'une boucle \texttt{for}:
+		\begin{itemize}
+			\item  les nombres de 1 à n~;
+			\item  les nombres pairs qui sont compris entre 1 et n~;
+			\item les nombres de -n à n~;
+			\item les multiples de 5 qui sont compris entre 1 et n ;
+			\item les multiples de n compris entre 1 et 100.
+		\end{itemize}
+	\end{Exercice}
+
+	\begin{Exercice}{Ligne}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		la longueur d'une ligne et affiche une ligne (une suite de tirets \texttt{'-'}) de cette longueur.
+		
+		Par exemple, si l'utilisateur entre 10, le programme affiche
+		
+		\begin{verbatim}
+		----------
+		\end{verbatim}
+		
+		Astuce: utiliser la méthode \texttt{System.out.print('-')} et non pas \texttt{System.out.println('-')}.
+	\end{Exercice}
+ 
+ 
+%===================
+\section{Les chaînes de caractères}
+%===================
+ 
+ 	Un caractère se représente en Java avec des simples guillemets.
+	Par exemple, \texttt{'a'} représente le caractère a et \texttt{'1'} représente le caractère 1 (et non pas l'entier 1).
+	Une variable de type \texttt{char} permet de manipuler les caractères.
+	On écrira par exemple \code{java}{char lettre = 'a';} 
+	
+	En Java, le texte est représenté par une chaîne de caractères (une suite de caractères). 
+	Le type associé est \texttt{String}.
+	Une variable de type \texttt{String} permet de stocker et manipuler une chaine de caractères~:
+	\code{java}{String mot = "Bonjour";}
+
+	\bigskip
+	  \listing{java}{code/Texte.java}
+
+
+	\begin{Exercice}{Voyelle}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		un mot et affiche si la première lettre est une voyelle ou non.
+	\end{Exercice}
+
+	\begin{Exercice}{Consonne}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		un mot et affiche si la première lettre est une consonne ou non.
+		
+		Astuce: une lettre est une consonne si ce n'est pas une voyelle.
+	\end{Exercice}
+
+	
+	\begin{Exercice}{Première == dernière ?}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		un mot et affiche si oui la première lettre est la même que la dernière ou non.
+		
+		Par exemple, si l'utilisateur entre "java", le programme affiche
+		
+		\begin{verbatim}
+		avaj
+		\end{verbatim}
+	\end{Exercice}
+
+	\begin{Exercice}{Miroir}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		un mot et affiche son miroir.
+		
+		Par exemple, si l'utilisateur entre "java", le programme affiche
+		
+		\begin{verbatim}
+		avaj
+		\end{verbatim}
+	\end{Exercice}
+
+
+	\begin{Exercice}{Voyelles}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		un mot et affiche les voyelles.
+		
+		Par exemple, si l'utilisateur entre "programmation", le programme affiche
+		
+		\begin{verbatim}
+		oaaio
+		\end{verbatim}
+	\end{Exercice}
+
+\section{Exercices Récapitulatifs}
+
+
+	\begin{Exercice}{Palindrome}
+		Un palindrome est un mot dont la succession de lettres est la même 
+		de gauche à droite et de droite à gauche. 
+		\'Eté, ressasser ou kayak sont des palindromes.
+		  	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		un mot et affiche si ce mot est un palindrome ou non.
+	\end{Exercice}
+
+	
+
+
+\end{document}
