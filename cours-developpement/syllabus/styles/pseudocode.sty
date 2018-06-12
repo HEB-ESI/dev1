@@ -25,11 +25,16 @@
 \usepackage{environ} % Merci à astalavista pour ce truc :)
 \NewEnviron{pseudocode}[1][0]{%
 	\begin{flushleft}
-	\begin{tcolorbox}[colback=gray!15,% background
-                  colframe=gray,% frame colour
-                  leftrule=.6em,
-                  arc=2mm,
-                  sharp corners=northwest
+	\begin{tcolorbox}[
+			colback=gray!15,
+            colframe=gray,
+            leftrule=.6em,
+            arc=2mm,
+            sharp corners=northwest,
+            enhanced,
+            title=pseudocode,
+    		fonttitle=\itshape,
+			attach boxed title to bottom right={yshift=2mm, xshift=-7mm},
                  ]
 		\begin{minipage}{0.97\linewidth}
 		\begin{sffamily}
@@ -46,7 +51,8 @@
 
 
 % Pour colorer les numéros de lignes dans les algos
-\algrenewcommand{\alglinenumber}[1]{\color{red!85!black}\makebox[7pt]{\footnotesize#1:}\ }
+\algrenewcommand{\alglinenumber}[1]
+	{\color{orange!85!black}\makebox[7pt]{\footnotesize#1:}\ }
 
 % ==============================================================================
 % Le code suivant permet d'avoir des lignes verticales pour délimiter les blocs. 
@@ -98,6 +104,9 @@
 \algnewcommand\algorithmicalgo{\textbf{algorithm}}
 \algrenewcommand\algorithmicend{\textbf{}}
 \newcommand{\Par}[2]{#1 : #2}
+\newcommand{\In}{\ensuremath{\downarrow}}
+\newcommand{\Out}{\ensuremath{\uparrow}}
+\newcommand{\InOut}{\In{}\Out{}}
 \newcommand{\Gives}{\ \ensuremath{\rightarrow}{}}
 \renewcommand{\Return}{\LState\algorithmicreturn\ }
 %\algrenewcommand\algorithmicreturn{\textbf{return}}
@@ -171,21 +180,21 @@
 %-----------------------------------------------
 \algdef{SE}[IF]{If}{EndIf}[1]
   {\printandpush\algorithmicif\ #1\ \algorithmicthen}
-  {\popandprint\algorithmicend\ \algorithmicif}%
+  {\popandprint\algorithmicend\ }%
 \algdef{C}[IF]{IF}{ElsIf}[1]
   {\popandprint\pushindent\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
 \algdef{Ce}[ELSE]{IF}{Else}{EndIf}
   {\popandprint\pushindent\algorithmicelse}%
 \algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]
-  {\printandpush\algorithmicswitch\ #1 \K{ vaut}}
-  {\popandprint\algorithmicend\ \algorithmicswitch}%
+  {\printandpush\algorithmicswitch\pushindent\ #1 }
+  {\popandprint\algorithmicend\ }%
 \algdef{C}[SWITCH]{SWITCH}{Case}[1]
-  {\popandprint\pushindent\ #1:}%
+  {\popandprint\pushindent #1:}%
 
-\algrenewcommand\algorithmicif{\textbf{si}}
-\algrenewcommand\algorithmicthen{\textbf{alors}}
-\algrenewcommand\algorithmicelse{\textbf{sinon}}
-\algnewcommand\algorithmicswitch{\textbf{selon que}}
+\algrenewcommand\algorithmicif{\textbf{if}}
+\algrenewcommand\algorithmicthen{\textbf{then}}
+\algrenewcommand\algorithmicelse{\textbf{else}}
+\algnewcommand\algorithmicswitch{\textbf{switch}}
 
 %-----------------------------------------------
 % Boucles

@@ -32,8 +32,10 @@ Ressources pour toute l'UE DEV1.
 
 *(Ajouter ici son nom dès lors que l'on fait un commit)*
 
-Pierre Bettens <pbettens@he2b.be>   
+Frédéric Servais <fservais@he2b.be>
 Nicolas Pettiaux <npettiaux@he2b.be>   
+Nicolas Richard <nrichard@he2b.be>
+Pierre Bettens <pbettens@he2b.be>   
 
 
 

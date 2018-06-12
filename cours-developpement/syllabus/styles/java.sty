@@ -12,6 +12,7 @@
 
 %\@ifpackageloaded{monbeaupackage}{}{\usepackage{monbeaupackage}}
 \@ifpackageloaded{tcolorbox}{}{\usepackage[most,listings]{tcolorbox}}
+\@ifpackageloaded{environ}{}{\usepackage{environ}}
 \tcbuselibrary{listingsutf8}
 
 \newtcblisting{java}{
@@ -30,9 +31,43 @@
 		stepnumber=3,
 		numbersep=4pt,
 	},
-	arc=2mm,
-    %sharp corners=northeast,
-    %rightrule=.6em
     sharp corners=northwest,
-    leftrule=.6em
+    leftrule=.6em,
+    enhanced,
+    title=java,
+    coltitle=red,
+    fonttitle=\bfseries,
+	attach boxed title to bottom right={yshift=5mm, xshift=-7mm},
+	boxed title style={colback=white},
+}
+
+% usage
+%
+%\begin{grammaire}
+%	if ( \grammarrule{Expression} ) \grammarrule{Statement}
+%\end{grammaire}
+%
+% pour les tabulations, utiliser des espaces
+%
+
+\newcommand{\grammarrule}[1]{\textrm{\textit{#1}}}
+
+\@ifpackageloaded{alltt}{}{\usepackage{alltt}}
+\newenvironment{grammaire}
+{%
+	\begin{flushleft}
+	\begin{tcolorbox}[blanker,
+			borderline west={3pt}{0pt}{gray!10},
+			top=1em,
+			bottom=1em,
+			left=1em,
+                 ]
+	\begin{minipage}{0.97\linewidth}
+    \begin{alltt}
+    \large
+}{%
+	\end{alltt}
+	\end{minipage}
+	\end{tcolorbox}
+	\end{flushleft}
 }
