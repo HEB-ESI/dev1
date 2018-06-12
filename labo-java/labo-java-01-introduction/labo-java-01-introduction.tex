@@ -60,7 +60,7 @@
 
 		\item Créez un nouveau projet~: 
 		
-			Pour cela, cliquez sur \og File \fg en haut à gauche et ensuite, sur nouveau projet. 
+			Pour cela, cliquez sur \og File \fg~en haut à gauche et ensuite, sur nouveau projet. 
 			%Vous pouvez également utiliser le raccourci clavier CTRL + MAJ + N.
 			
 			\bigskip
@@ -76,7 +76,7 @@
 			
 			Dans NetBeans tout programme doit se trouver au sein d'un projet.
 			Le projet contient le code de votre programme mais également les 
-			information annexes comme le langage utilisé (ici Java), 
+			informations annexes comme le langage utilisé (ici Java), 
 			la version du langage (ici nous utilisons Java 8), 
 			et d'autres informations que vous découvrirez au fur et à mesure.
 
@@ -88,7 +88,7 @@
 
 		\item Créez un package~: 
 		
-			faites un clique droit sur le dossier contenant les sources de votre projet, 
+			faites un clic droit sur le dossier contenant les sources de votre projet, 
 			comme illustré dans l'image ci-dessous, et ajoutez un nouveau package Java.
 		
 			\bigskip
@@ -103,7 +103,7 @@
 				\includegraphics[width=\textwidth]{images/nb_newproject_package2}
 			\end{center}
 			
-			En Java, un package (paquet) permet de regrouper certaines partie de votre code
+			En Java, un package (paquet) permet de regrouper certaines parties de votre code
 			et ainsi d'ordonner votre projet.
 
 			Remarquez que ce package a été ajouté dans les sources de votre projet. 
@@ -117,7 +117,7 @@
 
 		\item Créez une classe~:
 		
-			comme illustré sur l'image ci-dessous faites un clique droit sur votre package 
+			comme illustré sur l'image ci-dessous faites un clic droit sur votre package 
 			et ajoutez une nouvelle classe\footnote{Pour le moment, 
 			on va simplement dire que c'est un fichier dans lequel se trouve du code Java.}. 
 			Nommez cette classe {Hello}
@@ -133,19 +133,19 @@
 		\item Ouvrez le fichier \texttt{Hello.java}~:
 		
 			double-cliquez sur votre classe \texttt{Hello}. 
-			Le code se trouvant dans ce fichier apparaît
+			Le code se trouvant dans ce fichier apparaît.
 			
-			%TODO: enlever le nettoyage ?
-			Si vous voyez le code suivant, 
-			veillez à l'effacer\footnote{Nous n'aimons pas le voir, il ne sert à rien}. 
+%			%TODO: enlever le nettoyage ?
+%			Si vous voyez le code suivant, 
+%			veillez à l'effacer\footnote{Nous n'aimons pas le voir, il ne sert à rien}. 
+%			
+%			\begin{center}
+%				\includegraphics[width=\textwidth]{images/nb_newproject_header}
+%			\end{center}
+%			
+%			Faites la même chose pour le code contenant \texttt{/**...@author...*/}.
 			
-			\begin{center}
-				\includegraphics[width=\textwidth]{images/nb_newproject_header}
-			\end{center}
-			
-			Faites la même chose pour le code contenant \texttt{/**...@author...*/}.
-			
-			Maintenant que c'est fait, ajoutez le code suivant en respectant bien les 
+			Ajoutez le code suivant en respectant bien les 
 			minuscules et les majuscules~:
 	
 			\begin{Code}{java}
@@ -190,7 +190,7 @@
 
 	%Exercices
 	\begin{Exercice}{Ligne}
-		Dans votre package \texttt{g12345.dev1.td1} créez une classe \texttt{Ligne}.
+		Dans votre package \texttt{g12345.dev1.td1} créez une classe \texttt{Exercice1}.
 		Dans cette classe écrivez un programme  (et donc dans la fonction \texttt{main} de cette classe) 
 		qui affiche 10 tirets les uns à la suite des autres:
 
@@ -198,7 +198,7 @@
 	\end{Exercice}
 	
 	\begin{Exercice}{Carré}
-		Dans une classe \texttt{Carré}, écrivez un programme qui affiche un carré d'étoiles de 5 de côté:
+		Dans une classe \texttt{Exercice2} (dans votre package \texttt{g12345.dev1.td1}), écrivez un programme qui affiche un carré d'étoiles de 5 de côté:
 
 		\begin{verbatim}
 		*****
@@ -210,7 +210,7 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Pyramide}
-		Dans une classe \texttt{Pyramide}, écrivez un programme qui affiche une pyramide d'étoiles comme ceci:
+		Dans une classe \texttt{Exercice3}, écrivez un programme qui affiche une pyramide d'étoiles comme ceci:
 
 		\begin{verbatim}
 		   *
@@ -242,10 +242,11 @@
 
 
 	\begin{Exercice}{Petits calculs}
-		Dans une classe \texttt{Calculs}, écrivez un programme qui affiche la somme la valeur des expressions
+		Dans une classe \texttt{Exercice4}, écrivez un programme qui affiche la somme la valeur des expressions
 		suivantes:
 		\begin{itemize}
 			\item	 \texttt{10 + 32}
+			\item	 \texttt{10 - 32}
 			\item  \texttt{2 * 21}
 			\item  \texttt{234\%57}
 			\item  \texttt{((2*2)+(3*3))/25}
@@ -276,7 +277,7 @@
 
 
 	\begin{Exercice}{Petits calculs avec 2 variables} 		
-		Dans un classe \texttt{Variables1} déclarez 2 variables~: 
+		Dans un classe \texttt{Exercice5} déclarez 2 variables~: 
 		\texttt{a}, \texttt{b} et initialisez-les avec les valeurs 51 et 17.
 		
 		Ensuite affichez sur la sortie standard la valeur de :
@@ -291,7 +292,7 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Petits calculs avec 3 variables} 
-		Dans un classe \texttt{Variables2} déclarez 3 variables~: 
+		Dans un classe \texttt{Exercice6} déclarez 3 variables~: 
 		\texttt{a}, \texttt{b} et \texttt{c} et initialisez avec les valeurs 2, 3 et 4 respectivement.
 		
 		Ensuite affichez sur la sortie standard la valeur de :
@@ -318,18 +319,19 @@
 
 
 	\begin{Exercice}{Aire d'un carré}
-		Dans une classe \texttt{AireCarré}, écrivez un programme qui demande 
+		\'Ecrivez un programme qui demande 
 		le côté d'un carré à l'utilisateur et affiche l'aire de ce carré.
 	\end{Exercice}
 
 	\begin{Exercice}{Petits calculs avec 2 nombres lus au clavier} 
-		Dans une classe \texttt{Calculs2}, écrivez un programme qui demande 
+		\'Ecrivez un programme qui demande 
 		deux nombres entiers, \texttt{a} et \texttt{b}, à l'utilisateur et affiche la valeur de :
 		\begin{itemize}
 		 	\item a+b
 			\item a-b
 			\item a*b
 			\item a/b
+			\item a\%b
 			\item a*a+b*b
 		\end{itemize} 
 	\end{Exercice}
@@ -337,32 +339,56 @@
 
 \section{Exercices Récapitulatifs}
 
-	\begin{Exercice}{Triangle}
-		Dans une classe \texttt{Triangle}, écrivez un programme qui affiche un triangle d'étoiles comme ceci:
-
-		\begin{verbatim}
-		*
-		**
-		***
-		****
-		***
-		**
-		*
-		\end{verbatim}
-	\end{Exercice}
+%	\begin{Exercice}{Triangle}
+%		\'Ecrivez un programme qui affiche un triangle d'étoiles comme ceci:
+%
+%		\begin{verbatim}
+%		*
+%		**
+%		***
+%		****
+%		***
+%		**
+%		*
+%		\end{verbatim}
+%	\end{Exercice}
 		
+	\begin{Exercice}{Centaines, dizaines, unités} 
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		un nombre \texttt{nb} compris entre 0 et 1000 et affiche la valeur des expressions suivantes:
+		\begin{itemize}
+			\item \texttt{nb\%10} - les unités
+			\item \texttt{(nb/10)\%10} - les dizaines
+			\item \texttt{(nb/100)\%10} - les centaines
+		\end{itemize}
+		Par exemple, si l'utilisateur entre 362 votre programme affiche
+		\begin{verbatim}
+		2
+		6
+		3
+		\end{verbatim}
+	\end{Exercice}	
+
+	\begin{Exercice}{Miroir} 
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		un nombre \texttt{nb} compris entre 1000 et 9999 et affiche la valeur miroir:
+
+		Par exemple, si l'utilisateur entre 7362 votre programme affiche 2637.
+	\end{Exercice}	
+
 	
 	\begin{Exercice}{Secondes en minutes} 
-		Dans une classe \texttt{SecondesEnMinutes}, écrivez un programme qui demande 
+		\'Ecrivez un programme qui demande 
 		un nombre de secondes à l'utilisateur
 		et qui affiche le nombre de minutes que cela représente.
 
 		Par exemple: 
-		si l'utilisateur entre 217 secondes, le programme affiche 3. 
+		si l'utilisateur entre 217 secondes, le programme affiche 3, 
+		car 217 secondes correspond à 3 minutes et 37 secondes.
 	\end{Exercice}
 
 	\begin{Exercice}{Temps en secondes} 
-		Dans une classe \texttt{TempsEnSecondes}, écrivez un programme qui demande 
+		\'Ecrivez un programme qui demande 
 		une nombre d'heures, un nombre de minutes et un nombre de secondes
 		et qui affiche le nombre de secondes totales.
 		
@@ -377,7 +403,7 @@
 
 	\newpage
 	\begin{Exercice}{Felix}
-		Dans une classe \texttt{Felix}, écrivez un programme qui affiche le dessin suivant:
+		\'Ecrivez un programme qui affiche le dessin suivant:
 
 	\begin{verbatim}
 	                          :                      :M
