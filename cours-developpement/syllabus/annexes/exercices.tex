@@ -996,3 +996,422 @@ todo: revoir les exercices avec des paramètres en sortie.
 		plus général, qui résolve tous ces problèmes d’un coup~?  
 	\end{Exercice}
 	
+	\subsection{Exercices - structures itératives - while}
+	% =====================================
+
+		\begin{Exercice}{Compréhension d’algorithmes}
+			Quels sont les affichages réalisés lors de l’exécution
+			des algorithmes suivants~?
+			
+			\begin{minipage}[t]{40mm}
+				\begin{LDA}
+				\Algo{boucle1}{}{}
+					\Decl{x}{entier}
+					\Let x \Gets 0
+					\While{x < 12}
+						\Let x \Gets x + 2	
+					\EndWhile
+					\Write x
+				\EndAlgo
+				\end{LDA}
+			\end{minipage}
+			\ 
+			\begin{minipage}[t]{45mm}
+				\begin{LDA}
+				\Algo{boucle2}{}{}
+					\Decl{ok}{booléen}
+					\Decl{x}{entier}
+					\Let ok \Gets vrai
+					\Let x \Gets 5
+					\While{ok}
+						\Let x \Gets x + 7	
+						\Let ok \Gets x MOD 11 $\neq$ 0	
+					\EndWhile
+					\Write x
+				\EndAlgo
+				\end{LDA}
+			\end{minipage}
+			\ 
+			\begin{minipage}[t]{50mm}
+				\begin{LDA}
+				\Algo{boucle3}{}{}
+					\Decl{ok}{booléen}
+					\Decl{cpt, x}{entiers}
+					\Let x \Gets 10
+					\Let cpt \Gets 0
+					\Let ok \Gets vrai
+					\While{ok ET cpt < 3}
+						\If{x MOD 2 = 0}
+							\Let x \Gets x + 1
+							\Let ok \Gets x < 20
+						\Else
+							\Let x \Gets x + 3
+							\Let cpt \Gets cpt + 1
+						\EndIf
+					\EndWhile
+					\Write x
+				\EndAlgo
+				\end{LDA}
+			\end{minipage}
+		\end{Exercice}
+
+		\begin{Exercice}{Afficher des nombres}
+		\marginicon{java}
+			En utilisant un \lda{\algorithmicwhile},
+			écrire un algorithme qui reçoit un entier $n$ positif et affiche
+			\begin{enumerate}[label=\alph*)]
+			\item les nombres de 1 à $n$~;
+			\item les nombres de 1 à $n$ en ordre décroissant~;
+			\item les nombres impairs de 1 à $n$~;
+			\item les nombres de -n à n~;
+			\item les multiples de 5 de 1 à n~;
+			\item les multiples de n de 1 à 100.
+			\end{enumerate}
+		\end{Exercice}
+
+		
+	\subsection{Exercices - itérative - for}
+	% =====================================
+
+		\begin{Exercice}{Compréhension d’algorithmes}
+			Quels sont les affichages réalisés lors de l’exécution
+			des algorithmes suivants~?
+			
+			\begin{minipage}[t]{6cm}
+				\begin{LDA}
+				\Algo{boucle5}{}{}
+					\Decl{x}{entier}
+					\Decl{ok}{booléen}
+					\Let x \Gets 3
+					\Let ok \Gets vrai
+					\For{i}{1}{5}
+						\Let x \Gets x + i
+						\Let ok \Gets ok ET (x MOD 2 = 0)
+					\EndFor
+					\If{ok}
+						\Write x
+					\Else
+						\Write 2 * x
+					\EndIf
+				\EndAlgo
+				\end{LDA}
+			\end{minipage}
+			\quad
+			\begin{minipage}[t]{6cm}
+				\begin{LDA}
+				\Algo{boucle6}{}{}
+					\Decl{fin}{entiers}
+					\For{i}{1}{3}
+						\Let fin \Gets 6 * i - 11
+						\For[3]{j}{1}{fin}
+							\Write 10 * i + j
+						\EndFor
+					\EndFor
+				\EndAlgo
+				\end{LDA}
+			\end{minipage}
+
+		\end{Exercice}
+
+		\begin{Exercice}{Afficher des nombres}
+			\marginicon{java}
+			Reprenons un exercice déjà donné avec le \lda{\algorithmicwhile}.
+			En utilisant un \lda{\algorithmicfor},
+			écrire un algorithme qui reçoit un entier $n$ positif et affiche
+			\begin{enumerate}[label=\alph*)]
+			\item les nombres de 1 à $n$~;
+			\item les nombres de 1 à $n$ en ordre décroissant~;
+			\item les nombres de -n à n~;
+			\item les multiples de 5 de 1 à n~;
+			\item les multiples de n de 1 à 100.
+			\end{enumerate}
+		\end{Exercice}
+
+
+	\subsection{Exercices- do while}
+	%===================================================
+	
+		\begin{Exercice}{Compréhension d’algorithmes}
+			Quels sont les affichages réalisés lors de l’exécution
+			des algorithmes suivants~?
+
+			\begin{LDA}
+				\Algo{boucle4}{}{}
+					\Decl{pair, grand}{booléens}
+					\Decl{p, x}{entiers}
+					\Let x \Gets 1
+					\Let p \Gets 1
+					\Repeat
+						\Let p \Gets 2 * p
+						\Let x \Gets x + p
+						\Let pair \Gets x MOD 2 = 0
+						\Let grand \Gets x > 15
+					\EndRepeat{NON pair ET NON grand}
+					\Write x
+				\EndAlgo
+			\end{LDA}		
+		
+		\end{Exercice}
+
+		\begin{Exercice}{Afficher des nombres}
+		\marginicon{java}
+			Reprenons un exercice déjà fait avec le \lda{\algorithmicwhile}
+			et le \lda{\algorithmicfor}
+			en utilisant cette fois un \lda{\algorithmicrepeat} \lda{\algorithmicwhile}.
+			Écrire un algorithme qui reçoit un entier $n$ positif et affiche
+			\begin{enumerate}[label=\alph*)]
+			\item les nombres de 1 à $n$~;
+			\item les nombres de 1 à $n$ en ordre décroissant~;
+			\item les nombres de -n à n~;
+			\item les multiples de 5 de 1 à n~;
+			\item les multiples de n de 1 à 100.
+			\end{enumerate}
+		\end{Exercice}
+
+		\subsection{Exercices récapitulatif sur les structures répétitives}
+
+
+		\begin{Exercice}{Afficher les nombres impairs}
+			Écrire un algorithme qui demande une série
+			de valeurs entières à l’utilisateur
+			et qui affiche celles qui sont impaires.
+			L’algorithme commence par demander à l’utilisateur
+			le nombre de valeurs qu’il désire donner.
+		\end{Exercice}
+		
+		\begin{Exercice}{Compter les nombres impairs}
+			Écrire un algorithme qui demande une série
+			de valeurs entières à l’utilisateur
+			et qui lui affiche le nombre de valeurs impaires
+			qu’il a donné.
+			Après chaque valeur entrée,
+			l’algorithme demande à l’utilisateur s’il y en a encore d’autres.
+		\end{Exercice}
+
+		\begin{Exercice}{Choix de la valeur sentinelle}
+			Quelle valeur sentinelle prendrait-on 
+			pour additionner une série de cotes d’interrogations~? 
+			Une série de températures~?
+		\end{Exercice}
+
+		\begin{Exercice}{Afficher les nombres impairs}
+			\marginicon{java}
+			Écrire un algorithme qui demande une série
+			de valeurs entières non nulles à l’utilisateur
+			et qui affiche celles qui sont impaires.
+			La fin des données sera signalée 
+			par la valeur sentinelle 0.
+		\end{Exercice}
+
+		\begin{Exercice}{Compter le nombre de réussites}
+			\marginicon{java}
+			Écrire un algorithme qui demande une série
+			de cotes (entières, sur 20) à l’utilisateur
+			et qui affiche le pourcentage de réussites.
+			La fin des données sera signalée 
+			par une valeur sentinelle que vous pouvez choisir.
+		\end{Exercice}
+
+		\begin{Exercice}{Suites}
+		\marginicon{java}
+			Écrire les algorithmes qui affichent
+			les $n$ premiers termes des suites suivantes.
+			À vous de voir quel est, parmi les 2 modèles 
+			décrits dans les exemples précédents, le 
+			modèle de solution
+			le plus adapté.
+			\begin{enumerate}[label=\alph*)]
+			\item -1, -2, -3, -4, -5, -6\dots
+			\item 1, 3, 6, 10, 15, 21, 28\dots
+			\item 1, 0, 1, 0, 1, 0, 1, 0\dots
+			\item 1, 2, 0, 1, 2, 0, 1, 2\dots
+			\item 1, 2, 3, 1, 2, 3, 1, 2\dots
+			\item 1, 2, 3, 2, 1, 2, 3, 2\dots
+			\end{enumerate}			
+		\end{Exercice}
+
+                   
+				
+% ================================
+\section{Exercices récapitulatifs - boucles}
+% ================================
+
+	Pour tous ces exercices,
+	nous vous donnons peu d’indications sur la solution à
+	mettre en \oe{}uvre.
+	À vous de jouer\dots{}
+	
+	\begin{Exercice}{Lire un nombre}
+		\marginicon{java}
+		Écrire un algorithme 
+		qui demande à l’utilisateur un nombre entre 1 et $n$
+		et le retourne.
+		Si la valeur donnée n’est pas dans l’intervalle souhaité,
+		l’utilisateur est invité à rentrer une nouvelle valeur
+		jusqu’à ce qu’elle soit correcte.
+		\begin{LDA}
+			\Entete{lireNb}{\Par{n}{entier}}{entier}
+		\end{LDA}
+		
+		\paragraph{Solution.}
+		Si la valeur donnée par l’utilisateur était toujours
+		correcte, il suffirait d’écrire~:
+		\begin{LDA}
+			\Algo{lireNb}{\Par{n}{entier}}{entier}
+				\Decl{val}{entier}
+				\Read{val}
+				\Return val
+			\EndAlgo
+		\end{LDA}
+		Pour tenir compte des entrées invalides, 
+		il faut ajouter une boucle qui
+		prévient que la valeur est mauvaise et la redemande.
+		Et ceci, tant que c’est incorrect. 
+		Ce qui donne~:
+		\begin{LDA}
+			\Algo{lireNb}{\Par{n}{entier}}{entier}
+				\Decl{val}{entier}
+				\Read{val}
+				\While{val<1 OU val>n}
+					\Write "valeur incorrecte"
+					\Read{val}
+				\EndWhile
+				\Return val
+			\EndAlgo
+		\end{LDA}
+		La solution qu’on obtient est proche d’une lecture répétée
+		avec valeur sentinelle.
+		Dans ce cas, la valeur sentinelle est toute valeur correcte.
+	\end{Exercice}
+
+	\begin{Exercice}{Lancé de dés}
+		\marginicon{java}
+		Écrire un algorithme qui lance $n$ fois un dé
+		et compte le nombre de fois qu’une certaine valeur est obtenue.
+		\begin{LDA}
+			\Entete{lancerDé}{\Par{n}{entier}, \Par{val}{entier}}{entier}
+		\end{LDA}
+	\end{Exercice}
+	
+	\begin{Exercice}{Factorielle}
+		\marginicon{java}
+		Écrire un algorithme qui retourne la factorielle de $n$ (entier positif ou
+		nul). Rappel~: la factorielle de $n$, notée $n$!, est le produit des $n$
+		premiers entiers strictement positifs. 
+		
+		Par convention, 0! = 1.
+	\end{Exercice}
+
+	\begin{Exercice}{Produit de 2 nombres}
+		Écrire un algorithme qui retourne le produit de deux entiers quelconques
+		sans utiliser l’opérateur de multiplication, mais en minimisant le
+		nombre d’opérations.
+	\end{Exercice}
+
+	\begin{Exercice}{Table de multiplication}
+		\marginicon{java}
+		\begin{minipage}[t]{10cm}
+			Écrire un algorithme qui affiche la table de multiplication
+			des nombres de 1 à 10
+			(cf. l’exemple ci-contre).
+
+			\medskip
+			Attention~! Nous somme en algorithmique, 
+			ne vous préoccupez pas de la mise en page de ce qui est affiché.
+			Ce sera une question importante quand vous traduirez 
+			l’algorithme dans un langage de programmation mais pas ici. 
+		\end{minipage}
+		\qquad
+		\begin{minipage}[t]{4cm}
+		\begin{verbatim}
+			1 x 1 = 1
+			1 x 2 = 2
+			...
+			1 x 10 = 10
+			2 x 1 = 2
+			...
+			10 x 9 = 90
+			10 x 10 = 100
+		\end{verbatim}
+		\end{minipage}		
+	\end{Exercice}
+	
+	\begin{Exercice}{Double 6}
+		\marginicon{java}
+		Écrire un algorithme qui lance de façon répétée deux dés.
+		Il s’arrête lorsqu’il obtient un double 6
+		et retourne le nombre de lancés effectués.
+	\end{Exercice}
+	
+	\begin{Exercice}{Nombre premier}
+		\marginicon{java}
+		Écrire un algorithme qui vérifie si un entier positif est un
+		\textbf{nombre premier}. 
+		
+		Rappel~:~un nombre est premier s’il n’est divisible que par 1 et par
+		lui-même. Le premier nombre premier est 2.
+	\end{Exercice}
+	
+	\begin{Exercice}{Nombres premiers}
+		\marginicon{java}
+		Écrire un algorithme qui affiche les nombres premiers inférieurs ou
+		égaux à un entier positif donné. Le module de cet algorithme fera appel
+		de manière répétée mais économique à celui de l’exercice précédent.
+	\end{Exercice}
+
+	\begin{Exercice}{Somme de chiffres}
+		\marginicon{java}
+		Écrire un algorithme qui calcule la somme des chiffres qui forment un
+		nombre naturel $n$. Attention, on donne au départ \textbf{le} nombre et
+		pas ses chiffres. Exemple~: 133045 doit donner comme résultat 16,
+		car 1 + 3 + 3 + 0 + 4 + 5 = 16.
+	\end{Exercice}
+	
+	\begin{Exercice}{Nombre parfait}
+		\marginicon{java}
+		Écrire un algorithme qui vérifie si un entier positif est un
+		\textbf{nombre parfait}, c’est-à-dire un nombre égal à la somme de ses
+		diviseurs (sauf lui-même). 
+		
+		Par exemple, 6 est parfait car 6 = 1 + 2 + 3. 
+		De même, 28 est parfait car 28 = 1 + 2 + 4 + 7 + 14.
+	\end{Exercice}
+	
+	\begin{Exercice}{Décomposition en facteurs premiers}
+		Écrire un algorithme qui affiche la décomposition 
+		d’un entier en facteurs premiers. 
+		Par exemple, $1001880$ donnerait comme décomposition
+		$2^3 * 3^2 * 5 * 11^2 * 23$.
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre miroir}
+		\marginicon{java}
+		Le miroir d’un nombre est le nombre obtenu
+		en lisant les chiffres de droite à gauche.
+		Ainsi le nombre miroir de $4209$ est $9024$.
+		Écrire un algorithme qui calcule le miroir
+		d’un nombre entier positif donné.
+	\end{Exercice}
+	
+	\begin{Exercice}{Palindrome}
+		\marginicon{java}
+		Écrire un algorithme qui vérifie si un entier donné 
+		forme un palindrome ou non. 
+		Un nombre palindrome est un nombre qui lu dans un sens 
+		(de gauche à droite) est identique au nombre lu dans l’autre sens 
+		(de droite à gauche). 
+		Par exemple, $1047401$ est un nombre palindrome.
+	\end{Exercice}
+	
+	\begin{Exercice}{Jeu de la fourchette}
+		\marginicon{java}
+		Écrire un algorithme qui simule le jeu de la
+		fourchette. Ce jeu consiste à essayer de découvrir un nombre quelconque
+		compris entre 1 et 100 inclus, tiré au sort par l’ordinateur. 
+		L’utilisateur a droit à huit essais
+		maximum. À chaque essai, l’algorithme devra afficher un message
+		indicatif «~nombre donné trop petit~» ou «~nombre donné trop grand~».
+		En conclusion, soit «~bravo, vous avez trouvé en [nombre] essai(s)~» soit
+		«~désolé, le nombre était [valeur]~».
+	\end{Exercice}
+	
