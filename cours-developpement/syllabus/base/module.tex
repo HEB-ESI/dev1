@@ -623,10 +623,10 @@
 	\begin{wrapfigure}{r}{.3\linewidth}
 		\begin{center}
 		\begin{tikzpicture}
-			\node[draw] (ref) (0,0) rectangle (1,1) {};
-			\draw (0,.7) node[above of=ref, yshift=-.6cm]{\Large \texttt{s}};
-			\node[draw, below of=ref, right] (string) at (0,0) {Hello}; 
-			\draw[->] (ref) -- (string);
+			\node[draw, minimum width=.5cm, 
+				minimum height=.5cm,label={above:\texttt{s}}] (ref) {};
+    		\node[draw, below of=ref, right] (string) at (0,0) {Hello};
+    		\draw[->] (ref.center) -- (string);
 		\end{tikzpicture}
 		\end{center}
 	\end{wrapfigure}
@@ -647,11 +647,15 @@
 		
 	\begin{center}
 		\begin{tikzpicture}
-			\node[draw] (ref) (0,0) rectangle (1,1);
-			\draw (0,.7) node[above of=ref, yshift=-.6cm]{\Large \texttt{s}};
-			\node[draw, below of=ref, right] (string) at (0,0) 
-			{I would just like to say hello}; 
-			\draw[->] (ref) -- (string);
+			\node[draw, minimum width=.5cm, 
+				minimum height=.5cm,label={above:\texttt{s}}] (ref) {};
+    		\node[draw, below of=ref, right] (string) at (0,0) {I would just like to say hello}; 
+    		\draw[->] (ref.center) -- (string);
+			
+			%\node[draw] (ref) (0,0) rectangle (1,1);
+			%\draw (0,.7) node[above of=ref, yshift=-.6cm]{\Large \texttt{s}};
+			%\node[draw, below of=ref, right] (string) at (0,0) 
+			%\draw[->] (ref) -- (string);
 		\end{tikzpicture}
 	\end{center}
 	
