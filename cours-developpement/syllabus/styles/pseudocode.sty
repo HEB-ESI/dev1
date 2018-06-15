@@ -210,18 +210,18 @@
 %-----------------------------------------------
 \algdef{SE}[WHILE]{While}{EndWhile}[1]
   {\printandpush\algorithmicwhile\ #1\ \algorithmicdo}
-  {\popandprint\algorithmicend\ \algorithmicwhile}%
+  {\popandprint\algorithmicend\ }%
 \algdef{SE}[FOR]{For}{EndFor}[4][1]
-  {\printandpush\algorithmicfor\ #2 \K{de} #3 \K{à} #4\ifthenelse{\equal{#1}{1}}{}{ \K{par} #1}\ \algorithmicdo}
-  {\popandprint\algorithmicend\ \algorithmicfor}%
+  {\printandpush\algorithmicfor\ #2 \K{from} #3 \K{until} #4\ifthenelse{\equal{#1}{1}}{}{ \K{by} #1}\ \algorithmicdo}
+  {\popandprint\algorithmicend\ }%
 \algdef{SE}[REPEAT]{Repeat}{EndRepeat}
   {\printandpush\algorithmicrepeat}[1]
   {\popandprint\algorithmicwhile\ #1}%
 
-\algrenewcommand\algorithmicwhile{\textbf{tant que}}
-\algrenewcommand\algorithmicfor{\textbf{pour}}
-\algrenewcommand\algorithmicrepeat{\textbf{faire}}
-\algrenewcommand\algorithmicdo{\textbf{faire}}
+\algrenewcommand\algorithmicwhile{\textbf{while}}
+\algrenewcommand\algorithmicfor{\textbf{for}}
+\algrenewcommand\algorithmicrepeat{\textbf{do}}
+\algrenewcommand\algorithmicdo{\textbf{}}
 
 
 %-----------------------------------------------
