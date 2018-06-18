@@ -192,12 +192,12 @@
 				(if1) {Condition true ?};
 			\draw[arrow] (start) -- (if1);
 			\node[process, below of=if1, yshift=-1.3cm] (pro1) {Instructions};
-			\draw[arrow] (if1) -- node[anchor=south left] {yes} (pro1);
+			\draw[arrow] (if1) -- node[anchor=south, left] {yes} (pro1);
 			\draw[arrow] (pro1.west) 
 				.. controls(-3,-3) 
 				.. (if1);
 			\node[startstop, below of=pro1, yshift=-1cm] (stop) {End};
-			\draw[arrow] (if1.right) 
+			\draw[arrow] (if1.east) 
 				.. controls(4,-4.5) 
 				.. node[anchor=east] {no} (stop);
 		\end{tikzpicture}	
@@ -358,14 +358,14 @@ public static void count(int n){
 			\draw[arrow] (start) -- (pro0);
 			\draw[arrow] (pro0) -- (if1);
 			\node[process, below of=if1, yshift=-1.3cm] (pro1) {Instructions};
-			\draw[arrow] (if1) -- node[anchor=south left] {yes} (pro1);
+			\draw[arrow] (if1) -- node[anchor=south, left] {yes} (pro1);
 			\node[process, below of=pro1] (pro2) {variable = variable + pas};
 			\draw[arrow] (pro2.west) 
 				.. controls(-3,-3) 
 				.. (if1);
 			\draw[arrow] (pro1) -- (pro2);
 			\node[startstop, below of=pro2, yshift=-1cm] (stop) {End};
-			\draw[arrow] (if1.right) 
+			\draw[arrow] (if1.east) 
 				.. controls(5.5,-5.5) 
 				.. node[anchor=east] {no} (stop);
 		\end{tikzpicture}	
@@ -617,7 +617,7 @@ public static void printOdd(int n){
 				(if1) {condition vraie ?};
 			\draw[arrow] (start) -- (pro0);
 			\draw[arrow] (pro0) -- (if1);
-			\draw[arrow] (if1.right) 
+			\draw[arrow] (if1.east) 
 				.. controls(5,-4)
 				.. node[anchor=east] {yes} (pro0.east);
 			\node[startstop, below of=if1, yshift=-1.6cm] (stop) {End};

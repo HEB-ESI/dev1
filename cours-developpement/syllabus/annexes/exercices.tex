@@ -505,7 +505,7 @@
 				\marginicon{java}
 				Écrire un algorithme qui permet à l’utilisateur
 				de donner le nombre de secondes écoulées depuis minuit
-				et qui affiche le moment de la journée correspondant
+				et qui affiche le moment de la journée correspopcnt
 				en heures-minutes-secondes.
 				Par exemple, si on est 3726 secondes après minuit
 				alors il est 1h2'6''.
@@ -805,7 +805,7 @@
 		et 0,08 \texteuro{} au-delà. 
 		Écrivez un algorithme 
 		qui reçoit le nombre de photocopies effectuées 
-		et qui affiche la facture correspondante.
+		et qui affiche la facture correspopcnte.
 	\end{Exercice}
 
 	\begin{Exercice}{Le stationnement alternatif}
@@ -828,7 +828,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 		Indiquer quels nombres sont successivement affichés 
 		lors de l’exécution des algorithmes ex1, ex2, ex3 et ex4.
 	
-		\begin{pc}
+		\begin{pseudocode}
 		\Algo{ex1}{}{}
 			\Decl{x, y}{entiers}
 			\Stmt addition(3, 4, x)
@@ -844,9 +844,9 @@ todo: revoir les exercices avec des paramètres en sortie.
 			\Let somme \Gets a + b
 			\Let c \Gets somme
 		\EndAlgo
-		\end{pc}
+		\end{pseudocode}
 	
-		\begin{pc}
+		\begin{pseudocode}
 		\Algo{ex2}{}{}
 			\Decl{a, b}{entiers}
 			\Stmt addition(3, 4, a) \Comment voir ci-dessus
@@ -860,9 +860,9 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\Algo{soustraction}{a\In, b\In, c\Out~:~entiers}{}
 			\Let c \Gets a - b
 		\EndAlgo
-		\end{pc}
+		\end{pseudocode}
 	
-		\begin{pc}
+		\begin{pseudocode}
 		\Algo{ex3}{}{}
 			\Decl{a, b, c}{entiers}
 			\Stmt calcul(3, 4, c)
@@ -879,9 +879,9 @@ todo: revoir les exercices avec des paramètres en sortie.
 			\Let b \Gets 3 * b
 			\Let c \Gets a + b
 		\EndAlgo
-		\end{pc}
+		\end{pseudocode}
 	
-		\begin{pc}
+		\begin{pseudocode}
 		\Algo{ex4}{}{}
 			\Decl{a, b, c}{entiers}
 			\Let a \Gets 3
@@ -903,7 +903,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 			\Let b \Gets 2 * a + 1
 			\Return b
 		\EndAlgo
-		\end{pc}	
+		\end{pseudocode}	
 	\end{Exercice}
 	
 	\begin{Exercice}{Appels de module}
@@ -912,11 +912,11 @@ todo: revoir les exercices avec des paramètres en sortie.
 		sont des entiers), lesquelles font correctement appel 
 		à l’algorithme d’en-tête suivant~?
 	
-		\begin{pc}
+		\begin{pseudocode}
 			\Entete{PGCD}{a\In,b\In~:~entiers}{entier}
-		\end{pc}
+		\end{pseudocode}
 	
-		\begin{pc}
+		\begin{pseudocode}
 		\Stmt [1] a \Gets PGCD(24, 32)
 		\Stmt [2] a \Gets PGCD(a, 24)
 		\Stmt [3] b \Gets 3 * PGCD(a + b, 2*c) + 120
@@ -927,7 +927,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\Stmt [8] \Read PGCD(a, b)
 		\Stmt [9] \Write PGCD(a, b)
 		\Stmt [10] PGCD(a, b) \Gets c
-		\end{pc}
+		\end{pseudocode}
 	\end{Exercice}
 	
 	\begin{Exercice}{Maximum de 4 nombres}
@@ -1004,7 +1004,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 			des algorithmes suivants~?
 			
 			\begin{minipage}[t]{40mm}
-				\begin{LDA}
+				\begin{pseudocode}
 				\Algo{boucle1}{}{}
 					\Decl{x}{entier}
 					\Let x \Gets 0
@@ -1013,11 +1013,11 @@ todo: revoir les exercices avec des paramètres en sortie.
 					\EndWhile
 					\Write x
 				\EndAlgo
-				\end{LDA}
+				\end{pseudocode}
 			\end{minipage}
 			\ 
 			\begin{minipage}[t]{45mm}
-				\begin{LDA}
+				\begin{pseudocode}
 				\Algo{boucle2}{}{}
 					\Decl{ok}{booléen}
 					\Decl{x}{entier}
@@ -1029,11 +1029,11 @@ todo: revoir les exercices avec des paramètres en sortie.
 					\EndWhile
 					\Write x
 				\EndAlgo
-				\end{LDA}
+				\end{pseudocode}
 			\end{minipage}
 			\ 
 			\begin{minipage}[t]{50mm}
-				\begin{LDA}
+				\begin{pseudocode}
 				\Algo{boucle3}{}{}
 					\Decl{ok}{booléen}
 					\Decl{cpt, x}{entiers}
@@ -1051,13 +1051,13 @@ todo: revoir les exercices avec des paramètres en sortie.
 					\EndWhile
 					\Write x
 				\EndAlgo
-				\end{LDA}
+				\end{pseudocode}
 			\end{minipage}
 		\end{Exercice}
 
 		\begin{Exercice}{Afficher des nombres}
 		\marginicon{java}
-			En utilisant un \lda{\algorithmicwhile},
+			En utilisant un \pc{\algorithmicwhile},
 			écrire un algorithme qui reçoit un entier $n$ positif et affiche
 			\begin{enumerate}[label=\alph*)]
 			\item les nombres de 1 à $n$~;
@@ -1078,7 +1078,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 			des algorithmes suivants~?
 			
 			\begin{minipage}[t]{6cm}
-				\begin{LDA}
+				\begin{pseudocode}
 				\Algo{boucle5}{}{}
 					\Decl{x}{entier}
 					\Decl{ok}{booléen}
@@ -1094,11 +1094,11 @@ todo: revoir les exercices avec des paramètres en sortie.
 						\Write 2 * x
 					\EndIf
 				\EndAlgo
-				\end{LDA}
+				\end{pseudocode}
 			\end{minipage}
 			\quad
 			\begin{minipage}[t]{6cm}
-				\begin{LDA}
+				\begin{pseudocode}
 				\Algo{boucle6}{}{}
 					\Decl{fin}{entiers}
 					\For{i}{1}{3}
@@ -1108,15 +1108,15 @@ todo: revoir les exercices avec des paramètres en sortie.
 						\EndFor
 					\EndFor
 				\EndAlgo
-				\end{LDA}
+				\end{pseudocode}
 			\end{minipage}
 
 		\end{Exercice}
 
 		\begin{Exercice}{Afficher des nombres}
 			\marginicon{java}
-			Reprenons un exercice déjà donné avec le \lda{\algorithmicwhile}.
-			En utilisant un \lda{\algorithmicfor},
+			Reprenons un exercice déjà donné avec le \pc{\algorithmicwhile}.
+			En utilisant un \pc{\algorithmicfor},
 			écrire un algorithme qui reçoit un entier $n$ positif et affiche
 			\begin{enumerate}[label=\alph*)]
 			\item les nombres de 1 à $n$~;
@@ -1135,7 +1135,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 			Quels sont les affichages réalisés lors de l’exécution
 			des algorithmes suivants~?
 
-			\begin{LDA}
+			\begin{pseudocode}
 				\Algo{boucle4}{}{}
 					\Decl{pair, grand}{booléens}
 					\Decl{p, x}{entiers}
@@ -1149,15 +1149,15 @@ todo: revoir les exercices avec des paramètres en sortie.
 					\EndRepeat{NON pair ET NON grand}
 					\Write x
 				\EndAlgo
-			\end{LDA}		
+			\end{pseudocode}		
 		
 		\end{Exercice}
 
 		\begin{Exercice}{Afficher des nombres}
 		\marginicon{java}
-			Reprenons un exercice déjà fait avec le \lda{\algorithmicwhile}
-			et le \lda{\algorithmicfor}
-			en utilisant cette fois un \lda{\algorithmicrepeat} \lda{\algorithmicwhile}.
+			Reprenons un exercice déjà fait avec le \pc{\algorithmicwhile}
+			et le \pc{\algorithmicfor}
+			en utilisant cette fois un \pc{\algorithmicrepeat} \pc{\algorithmicwhile}.
 			Écrire un algorithme qui reçoit un entier $n$ positif et affiche
 			\begin{enumerate}[label=\alph*)]
 			\item les nombres de 1 à $n$~;
@@ -1219,7 +1219,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 			À vous de voir quel est, parmi les 2 modèles 
 			décrits dans les exemples précédents, le 
 			modèle de solution
-			le plus adapté.
+			le plus pcpté.
 			\begin{enumerate}[label=\alph*)]
 			\item -1, -2, -3, -4, -5, -6\dots
 			\item 1, 3, 6, 10, 15, 21, 28\dots
@@ -1249,26 +1249,26 @@ todo: revoir les exercices avec des paramètres en sortie.
 		Si la valeur donnée n’est pas dans l’intervalle souhaité,
 		l’utilisateur est invité à rentrer une nouvelle valeur
 		jusqu’à ce qu’elle soit correcte.
-		\begin{LDA}
+		\begin{pseudocode}
 			\Entete{lireNb}{\Par{n}{entier}}{entier}
-		\end{LDA}
+		\end{pseudocode}
 		
 		\paragraph{Solution.}
 		Si la valeur donnée par l’utilisateur était toujours
 		correcte, il suffirait d’écrire~:
-		\begin{LDA}
+		\begin{pseudocode}
 			\Algo{lireNb}{\Par{n}{entier}}{entier}
 				\Decl{val}{entier}
 				\Read{val}
 				\Return val
 			\EndAlgo
-		\end{LDA}
+		\end{pseudocode}
 		Pour tenir compte des entrées invalides, 
 		il faut ajouter une boucle qui
 		prévient que la valeur est mauvaise et la redemande.
 		Et ceci, tant que c’est incorrect. 
 		Ce qui donne~:
-		\begin{LDA}
+		\begin{pseudocode}
 			\Algo{lireNb}{\Par{n}{entier}}{entier}
 				\Decl{val}{entier}
 				\Read{val}
@@ -1278,7 +1278,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 				\EndWhile
 				\Return val
 			\EndAlgo
-		\end{LDA}
+		\end{pseudocode}
 		La solution qu’on obtient est proche d’une lecture répétée
 		avec valeur sentinelle.
 		Dans ce cas, la valeur sentinelle est toute valeur correcte.
@@ -1288,9 +1288,9 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\marginicon{java}
 		Écrire un algorithme qui lance $n$ fois un dé
 		et compte le nombre de fois qu’une certaine valeur est obtenue.
-		\begin{LDA}
+		\begin{pseudocode}
 			\Entete{lancerDé}{\Par{n}{entier}, \Par{val}{entier}}{entier}
-		\end{LDA}
+		\end{pseudocode}
 	\end{Exercice}
 	
 	\begin{Exercice}{Factorielle}
