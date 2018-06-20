@@ -40,7 +40,7 @@
 %====================	
 
 
-	Au TD1 nous avons travaillé avec des entiers, nous allons maintenant 
+	Au td1 nous avons travaillé avec des entiers, nous allons maintenant 
 	manipuler des nombres réels.
 
 	En java les \emph{réels} se représentent avec un point. 
@@ -77,7 +77,7 @@
 			On lui assigne la valeur entrée par l'utilisateur~: \code{java}{clavier.nextInt()}.
 
 		\item \`A la ligne 11, on déclare une variable nommée y, de type \texttt{double} (un nombre réel).
-			On lui assigne la valeur entrée par l'utilisateur~: \code{java}{clavier.nextInt()}.
+			On lui assigne la valeur entrée par l'utilisateur~: \code{java}{clavier.nextDouble()}.
 
 		\item Aux lignes 13 à 19 le programme affiche le résultat des différents calculs.
 
@@ -108,13 +108,21 @@
 		\item \texttt{2/3.0}
 		\item \texttt{2.0/3}
 		\item \texttt{2/3}
-		\item \texttt{2.0/0}
+		\item \texttt{2.0/0.0}
 		\item \texttt{2/0}
 	\end{itemize}
+	
+	Notez la différence de résultat entre les expressions \texttt{2.0/3.0} qui est une division entre réels 
+	et \texttt{2/3} qui est une division entre entier (et donc une division entière).
+	
+	Notez également la différence de résultat entre les 2 dernières expressions qui sont des divisions par zéro.
+	La première est une division entre réels,
+	la seconde est une division entre entiers.
+	
 \end{Exercice}
 
 \begin{Exercice}{Périmètre et aire d'un cercle}
-	Dans une classe \texttt{Cercle} écrivez un programme
+	Dans une classe \texttt{Exercice2} écrivez un programme
 	qui demande à l'utilisateur le rayon d'un cercle (un réel)
 	et affiche son périmètre et son aire.
 	
@@ -188,6 +196,8 @@
 			\item \texttt{false || true} 
 			\item \texttt{false || false} 
 		\end{itemize}
+		
+		Qu'affiche votre programme pour chacune des expressions ci-dessus ?
 	\end{Exercice}
 
 	\begin{Exercice}{Conditions}

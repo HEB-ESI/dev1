@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Positif {
 
     public static void main(String[] args) {
-        Scanner clavier = new Scanner();
+        Scanner clavier = new Scanner(System.in);
         
         System.out.print("Entrez un nombre entier: ");
         int nb = clavier.nextInt();
