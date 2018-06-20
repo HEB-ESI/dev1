@@ -1414,4 +1414,123 @@ todo: revoir les exercices avec des paramètres en sortie.
 		En conclusion, soit «~bravo, vous avez trouvé en [nombre] essai(s)~» soit
 		«~désolé, le nombre était [valeur]~».
 	\end{Exercice}
+
+
+	\section{Tableaux}
+
+
+		\begin{Exercice}{Déclarer et initialiser}
+			Écrire un algorithme qui déclare un tableau de 100 chaines
+			et met votre nom dans la 3\ieme{} case du tableau.
+		\end{Exercice}
 	
+		\begin{Exercice}{Initialiser un tableau à son indice}
+			Écrire un algorithme qui déclare un tableau de 100 entiers
+			et initialise chaque élément à la valeur de son indice.
+			Ainsi, la case numéro $i$ contiendra la valeur $i$.
+		\end{Exercice}
+
+		\begin{Exercice}{Initialiser un tableau aux valeurs de 1 à 100}
+			Écrire un algorithme qui déclare un tableau de 100 entiers
+			et y met les nombres de 1 à 100.
+		\end{Exercice}
+
+		\begin{Exercice}{Compréhension}
+			Expliquez la différence entre \lda{tab[i] \Gets tab[i+1]}
+			et \lda{tab[i] \Gets tab[i]+1}.
+		\end{Exercice}
+	
+
+		
+			\begin{Exercice}{Trouver les entêtes}
+				Écrire les entêtes (et uniquement les entêtes)
+				des algorithmes qui résolvent les problèmes suivants~:
+				\begin{enumerate}[label=\alph*)]
+				\item
+					Écrire un algorithme qui 
+					inverse le signe de tous les éléments négatifs dans un tableau d’entiers.
+				\item
+					Écrire un algorithme qui
+					donne le nombre d’éléments négatifs dans un tableau d’entiers.
+				\item
+					Écrire un algorithme qui
+					détermine si un tableau d’entiers contient au moins un nombre négatif.
+				\item
+					Écrire un algorithme qui
+					détermine si un tableau de chaines contient
+					une chaine donnée en paramètre.
+				\item
+					Écrire un algorithme qui
+					détermine si un tableau de chaines contient
+					au moins deux occurrences de la même chaine,
+					quelle qu’elle soit.
+				\item
+					Écrire un algorithme qui 
+					retourne un tableau donnant les $n$ premiers nombres premiers,
+					où $n$ est un paramètre de l’algorithme.
+				\item
+					Écrire un algorithme qui 
+					reçoit un tableau d’entiers
+					et retourne un tableau de booléens de la même taille
+					où la case $i$ indique si oui ou non
+					le nombre reçu dans la case $i$ est strictement positif.
+				\end{enumerate}
+			\end{Exercice}
+		
+				
+			\begin{Exercice}{Inverser le signe des éléments}
+				Écrire un algorithme qui 
+				inverse le signe de tous les éléments négatifs dans un tableau d’entiers.
+			\end{Exercice}
+
+			\begin{Exercice}{Somme}
+				\marginicon{java}
+				Écrire un algorithme qui reçoit en paramètre le tableau
+				\lda{tabEnt} de $n$ entiers 
+				et qui retourne la somme de ses éléments.
+			\end{Exercice}
+
+			\begin{Exercice}{Nombre d’éléments d’un tableau}
+				Écrire un algorithme qui reçoit en paramètre le tableau
+				\lda{tabRéels} de $n$ réels et qui
+				retourne le nombre d’éléments du tableau.
+			\end{Exercice}
+			
+			\begin{Exercice}{Compter les éléments négatifs}
+				Écrire un algorithme qui
+				donne le nombre d’éléments négatifs dans un tableau d’entiers.
+			\end{Exercice}
+
+				
+			\begin{Exercice}{Y a-t-il une copie parfaite~?}
+				\marginicon{java}
+				Écrire un algorithme qui reçoit en paramètre le tableau
+				\lda{cotes} de $n$ entiers représentant les cotes des étudiants 
+				et qui retourne un booléen 
+				indiquant s’il contient \textbf{au moins} une fois la valeur 20. 
+			\end{Exercice}
+
+			\begin{Exercice}{Y a-t-il une seule copie parfaite~?}
+				\marginicon{java}
+				Écrire un algorithme qui reçoit en paramètre le tableau
+				\lda{cotes} de $n$ entiers représentant les cotes des étudiants 
+				et qui retourne un booléen 
+				indiquant s’il contient \textbf{exactement} une fois la valeur 20. 
+			\end{Exercice}
+		
+		\begin{Exercice}{Lancers de deux dés}
+			\marginicon{java}
+			Écrire un algorithme qui lance $n$ fois deux dés
+			et compte le nombre de fois que chaque somme apparait.
+			\begin{LDA}
+				\Entete{lancers2Dés}{\Par{n}{entier}}{\Array[2]{12}{entiers}}
+			\end{LDA}
+		\end{Exercice}
+			
+		\begin{Exercice}{Nombre de jours dans un mois}
+				\marginicon{java}
+			Écrire un algorithme qui reçoit un numéro de mois (de 1 à 12)
+			ainsi qu’une année et donne le nombre de jours dans ce mois
+			(en tenant compte des années bissextiles).
+			N’hésitez pas à réutiliser des algorithmes déjà écrits.
+		\end{Exercice}

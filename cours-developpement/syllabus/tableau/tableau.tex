@@ -1,0 +1,790 @@
+%======================
+\chapter{Les tableaux}
+%======================
+
+	Dans ce chapitre nous étudions les tableaux, une structure qui peut contenir
+	plusieurs exemplaires de données similaires.
+
+	\minitoc
+	\clearpage
+	% =============================
+	\section{Utilité des tableaux}
+	% =============================
+	
+		Nous allons introduire la notion de tableau à partir d’un exemple 
+		dans lequel l’utilité de cette structure de données 
+		apparaitra de façon naturelle.
+	
+		\textbf{Exemple.}
+		Statistiques de ventes.
+		\begin{quote}	
+		
+			Un gérant d’une entreprise commerciale souhaite connaitre l’impact
+			d’une journée de promotion publicitaire sur la vente de dix de ses
+			produits.  
+			
+			Pour ce faire, les numéros de ces produits (numérotés de
+			0 à 9 pour simplifier) ainsi que les quantités vendues pendant cette
+			journée de promotion sont encodés au fur et à mesure de leurs
+			ventes.  En fin de journée, le vendeur entrera la valeur -1 pour
+			signaler la fin de l’introduction des données.  Ensuite, les
+			statistiques des ventes seront affichées.
+		
+		\end{quote}
+
+		La démarche générale se décompose en trois parties~:
+		\begin{itemize}
+		
+			\item le traitement de début de journée, qui consiste
+				essentiellement à mettre les compteurs des quantités vendues
+				pour chaque produit à 0~;
+		
+			\item le traitement itératif durant toute la journée~: au fur et
+				à mesure des ventes, il convient de les enregistrer,
+				c’est-à-dire d’ajouter au compteur des ventes d’un produit la
+				quantité vendue de ce produit~; ce traitement itératif
+				s’interrompra lorsque la valeur -1 sera introduite~;
+		
+			\item le traitement final, consistant à communiquer les valeurs des
+				compteurs pour chaque produit.
+		
+	\end{itemize}
+	
+		Vous trouverez sur la page suivante une version possible de cet
+		algorithme.
+	
+		\vfill
+		\begin{pseudocode}
+		\LComment Calcule et affiche la quantité vendue de 10 produits.
+		\Algo{statistiquesVentesSansTableau}{}{}
+			\Empty
+			\Decl{cpt0, cpt1, cpt2, cpt3, cpt4, cpt5, cpt6, cpt7, cpt8, cpt9}{entiers}
+			\Decl{numéroProduit, quantité}{entiers}
+			\Empty
+			\Let cpt0 \Gets 0
+			\Let cpt1 \Gets 0
+			\Let cpt2 \Gets 0
+			\Let cpt3 \Gets 0
+			\Let cpt4 \Gets 0
+			\Let cpt5 \Gets 0
+			\Let cpt6 \Gets 0
+			\Let cpt7 \Gets 0
+			\Let cpt8 \Gets 0
+			\Let cpt9 \Gets 0
+			\Empty
+			\Write "Introduisez le numéro du produit~:"
+			\Read numéroProduit
+			\Empty
+			\While{numéroProduit $\neq$ -1}
+			\Empty
+				\Write "Introduisez la quantité vendue~:"
+				\Read quantité
+				\Empty
+				\Switch{numéroProduit \K{vaut}}
+					\Stmt 0~: cpt0 \Gets cpt0 + quantité
+					\Stmt 1~: cpt1 \Gets cpt1 + quantité
+					\Stmt 2~: cpt2 \Gets cpt2 + quantité
+					\Stmt 3~: cpt3 \Gets cpt3 + quantité
+					\Stmt 4~: cpt4 \Gets cpt4 + quantité
+					\Stmt 5~: cpt5 \Gets cpt5 + quantité
+					\Stmt 6~: cpt6 \Gets cpt6 + quantité
+					\Stmt 7~: cpt7 \Gets cpt7 + quantité
+					\Stmt 8~: cpt8 \Gets cpt8 + quantité
+					\Stmt 9~: cpt9 \Gets cpt9 + quantité
+				\EndSwitch
+				\Empty
+				\Write "Introduisez le numéro du produit~:"
+				\Read numéroProduit
+				\Empty
+			\EndWhile
+			\Empty
+			\Write "quantité vendue de produit 0~:", cpt0
+			\Write "quantité vendue de produit 1~:", cpt1
+			\Write "quantité vendue de produit 2~:", cpt2
+			\Write "quantité vendue de produit 3~:", cpt3
+			\Write "quantité vendue de produit 4~:", cpt4
+			\Write "quantité vendue de produit 5~:", cpt5
+			\Write "quantité vendue de produit 6~:", cpt6
+			\Write "quantité vendue de produit 7~:", cpt7
+			\Write "quantité vendue de produit 8~:", cpt8
+			\Write "quantité vendue de produit 9~:", cpt9
+			\Empty
+		\EndAlgo
+		\end{pseudocode}
+
+		\index{tableau}
+		Que se passerait-il si le nombre de produits à traiter était de 20, voire
+		1000~? Une simplification de l'écriture s'impose.  La solution est
+		apportée par un nouveau type de variables~: les \textbf{variables
+		indicées} ou \textbf{tableaux} (\textit{arrays} en anglais).
+	
+		Au lieu d’avoir à manier dix compteurs distincts
+		(\pc{cpt0}, \pc{cpt1}, etc.), 
+		nous allons envisager une seule «~grande~» variable 
+		\pc{cpt} compartimentée en dix «~cases~» ou «~sous-variables~»
+		(appelées aussi les «~éléments~» du tableau). 
+		Elles se distingueront les unes des autres par un numéro 
+		(un «~indice~»)~: 
+		\pc{cpt0} deviendrait ainsi \pc{cpt[0]}, 
+		\pc{cpt1} deviendrait \pc{cpt[1]}, 
+		et ainsi de suite jusqu’à
+		\pc{cpt9} qui deviendrait \pc{cpt[9]}.
+	
+		\begin{center}
+			\begin{tabular}{*{11}{>{\centering\arraybackslash}m{5mm}}}
+				{} &
+				\lda{cpt[0]} &
+				\lda{cpt[1]} &
+				\lda{cpt[2]} &
+				\lda{cpt[3]} &
+				\lda{cpt[4]} &
+				\lda{cpt[5]} &
+				\lda{cpt[6]} &
+				\lda{cpt[7]} &
+				\lda{cpt[8]} &
+				\lda{cpt[9]} 
+				\\\hhline{~*{10}{-}}
+				\multicolumn{1}{m{5mm}|}{\lda{cpt}} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~} &
+				\multicolumn{1}{m{5mm}|}{~}
+				\\\hhline{~*{10}{-}}
+			\end{tabular}
+		\end{center}
+	
+		Un des intérêts de cette notation est la possibilité de faire apparaitre
+		une variable entre les crochets, par exemple \pc{cpt[i]}, ce qui permet
+		une grande économie de lignes de code.
+		
+		Voici la version de notre solution avec tableau.
+	
+		\begin{pseudocode}
+		\label{tableau:tab1DStock10Articles}
+		\LComment Calcule et affiche la quantité vendue de 10 produits.
+		\Algo{statistiquesVentesAvecTableau}{}{}
+			\Empty
+			\Decl{cpt}{\Array{10}{entiers}}
+			\Decl{i, numéroProduit, quantité}{entiers}
+			\Empty
+			\For{i}{0}{9}
+				\Let cpt[i] \Gets 0
+			\EndFor
+			\Empty
+			\Write "Introduisez le numéro du produit~:"
+			\Read numéroProduit
+			\Empty
+			\While{numéroProduit $\neq$ -1}
+			\Empty
+				\Write "Introduisez la quantité vendue~:"
+				\Read quantité
+				\Empty
+				\Let cpt[numéroProduit] \Gets cpt[numéroProduit] + quantité
+				\Empty
+				\Write "Introduisez le numéro du produit~:"
+				\Read numéroProduit
+				\Empty
+			\EndWhile
+			\Empty
+			\For{i}{0}{9}
+				\Write "quantité vendue de produit ", i, ": ", cpt[i]
+			\EndFor
+			\Empty
+		\EndAlgo
+		\end{pseudocode}
+		
+	% ====================
+	\section{Définitions}
+	% ====================
+	
+		\marginicon{definition}\index{tableau}
+		Un \textbf{tableau} est une suite d’éléments de même type 
+		portant tous le même nom mais se distinguant 
+		les uns des autres par un indice.
+	
+		L’\textbf{indice} est un entier\index{tableau (indice)}
+		donnant la position d’un élément dans la suite. 
+		Cet indice varie entre la position du premier élément 
+		et la position du dernier élément, 
+		ces positions correspondant aux bornes de l’indice.
+		Notons qu’il n’y a pas de «~trou~»~: 
+		tous les éléments existent entre le premier et le dernier indice.
+	
+		La \textbf{taille} d’un tableau\index{tableau (taille)} est le nombre de
+		ses éléments.  Attention, la taille d’un tableau ne peut pas être
+		modifiée pendant son utilisation, elle est déterminée à la création du
+		tableau.
+
+		Un tableau est de type \textbf{référence}\index{référence}.
+	
+	% ======================================================
+	\section{Déclaration - création - initialisation}
+	% ======================================================
+
+		\marginicon{definition}
+		Afin de pouvoir utiliser un tableau, il sera nécessaire de distinguer~:
+		\begin{itemize}
+
+			\item la \textbf{déclaration} qui consiste à signaler qu'une
+				variable est un tableau. Dans un programme, cette déclaration
+				a pour effet de réserver un emplacement mémoire qui contiendra
+				une référence vers les cases du tableau. 
+
+			\item la \textbf{création} du tableau consiste a réserver
+				l'emplacement mémoire qui contiendra les différentes valeurs.
+				Pour le créer, il faut connaitre sa taille. 
+
+			\item l'\textbf{initialisation} du tableau consiste à donner ses
+				premières valeurs aux différents éléments du tableau.
+		
+		\end{itemize}
+
+
+		\index{déclaration}
+		\index{création}
+		Nous supposerons dans la suite que \pc{size} est le nombre d’éléments 
+		et \pc{Type} est le type des éléments que l’on trouvera dans le tableau.  
+		
+		Dans nos algorithmes, pour déclarer un tableau, nous écrirons~:
+
+		\begin{pseudocode}
+			\Decl{\textit{Identifier}}{\Array{}{\textit{Type}}}
+			\Empty
+			\LComment{Par exemple}
+			\Decl{myArray}{\Array{}{integer}}
+		\end{pseudocode}
+		
+		La création d'un tableau s'écrira~:
+
+		\begin{pseudocode}
+			\Let name \Gets \Array{\textit{size}}{\textit{Type}}
+
+			\Empty
+			\LComment{Par exemple}
+			\Let myArray \Gets \Array{10}{integer}
+		\end{pseudocode}
+
+		Pour déclarer et créer un tableau, nous écrirons en choisissant la
+		formulation longue ou courte ~:
+	
+		\begin{pseudocode}
+			\Decl{\textit{Identifier}}{\Array{}{\textit{Type}}}
+				\Gets \Array{\textit{size}}{\textit{Type}}
+			\Decl{Identifier}{\Array{\textit{size}}{\textit{Type}}}
+
+			\Empty
+			\LComment{Par exemple}
+			\Decl{myArray}{\Array{}{real}}
+				\Gets \Array{10}{real}
+			\Decl{otherArray}{\Array{1000}{integer}}
+		\end{pseudocode}
+
+		
+		Tous les types sont permis mais tous les éléments sont du même type. 
+
+	En langage Java, c'est assez semblable. Les caractères associés aux
+	tableaux, sont la paire de crochets~; \pc{[]}. Pour déclarer un tableau,
+	nous écrirons~:
+
+	\begin{grammaire}
+		\grammarrule{ArrayDeclarationExpression:}
+		    \grammarrule{Type}[] \grammarrule{Identifier}
+	\end{grammaire}
+		
+	Pour créer un tableau, préalablement déclarer, nous écrirons~:
+
+	\begin{grammaire}
+		\grammarrule{ArrayCreationExpression:}
+		    new \grammarrule{Type}[\grammarrule{Expression}]
+	\end{grammaire}
+
+		
+	L'accès aux éléments d'un tableau se fait grâce aux crochets pour nos
+	algorithmes, en langage Java et dans beaucoup d'autres langages. Comme
+	suit~:
+
+	\begin{pseudocode}
+		\Stmt myArray[i]	\Comment{élément du tableau 'myArray' à l’indice i}
+	\end{pseudocode}
+		
+	La première case du tableau porte l’indice \pc{0}%
+	\footnote{%
+			Nous considérons que la première case du tableau
+			porte le numéro 0 comme c’est le cas dans beaucoup de langages
+			de programmation (comme Java par exemple).
+			Plus loin, nous verrons une notation alternative
+			qui permet de choisir un autre numéro de début pour le tableau,
+			plus naturel pour certains problèmes.
+	},
+	la dernière l’indice \pc{size-1}.  C’est considéré comme une erreur
+	d’indiquer un indice qui ne correspond pas à une case du tableau (trop petit
+	ou trop grand).  Par exemple, si on déclare et crée le tableau \pc{myArray}~:
+	\pc{\Decl{myArray}{\Array{100}{integers}}}	\\	
+	il est interdit d’utiliser \pc{myArray[-1]} ou \pc{myArray[100]}. 
+
+	\index{initialisation}
+	L'initialisation d'un tableau, c'est-à-dire l'assignation de ses premières
+	valeurs, peut se faire élément par élément en utilisant les crochets ou en 
+	utilisant une notation compacte entre accolades \pc{{}}.
+		
+	\begin{pseudocode}
+		\Let myArray \Gets \{2, 3, 7\} 
+		\RComment{équivalent à myArray[0] \Gets 2, myArray[1] \Gets 3, }
+		\Let\RComment{myArray[3] \Gets 7}
+		\Let myArray \Gets \{0, \dots, 0\} 
+		\RComment{tous les éléments du tableau sont initialisés à 0}
+	\end{pseudocode}
+	
+	Il est également possible d'utiliser cette initialisation «~entre accolade~»
+	en langage Java. Elle s'appelle \textit{ArrayInitializer}. Par contre, seule 
+	la première forme est autorisée.
+
+	\begin{grammaire}
+		\grammarrule{ArrayInitializer:}
+		    \{ \grammarrule{[VariableInitializerList]} \}
+
+		\grammarrule{VariableInitializerList:}
+		    \grammarrule{Expression} \grammarrule{[}, \grammarrule{Expression ]} 
+	\end{grammaire}
+
+	\paragraph{Exemples}
+
+	\begin{pseudocode}
+		\Decl{myArray}{\Array{3}{integers}}
+		\RComment{déclaration et création}
+		\Let myArray \Gets \{2, 3, 7\}
+		\RComment{initialisation}
+	\end{pseudocode}
+
+	\begin{java}
+		int[] myArray;
+		myArray = new int[3];
+		myArray[0] = 2;
+		myArray[1] = 3;
+		myArray[2] = 7;
+
+		myArray = new int[] {-1, 3, 12, 5};
+
+		int[] myArray2 = {3, 14, 15, 92};
+		
+	\end{java}
+
+	\begin{description}
+
+		\item[ligne 7] Pour utiliser un \textit{ArrayInitializer}, il faut créer
+			et initialiser le tableau dans la même instruction. Dans ce cas, le
+			langage interdit de renseigner le nombre d'éléments du tableau… le
+			compilateur peut le déduire.
+
+			Cette instruction crée un nouveau tableau qui écrase l'autre. 
+
+		\item[ligne 9] Lorsque l'on initialise le tableau avec un
+			\textit{ArrayInitializer} lors de la déclaration, la partie création
+			peut être omise.
+	
+	\end{description}
+
+	\paragraph{Remarque.} Chaque élément d’un tableau doit être manié avec la
+	même précaution qu’une variable simple, c’est-à-dire qu’on ne peut utiliser
+	un élément du tableau qui n’aurait pas été préalablement affecté ou
+	initialisé.
+
+		
+
+	% ==============================
+	\section{Tableau et paramètres}
+	% ==============================
+	
+		Le type \emph{tableau} étant un type à part entière, il est tout-à-fait
+		éligible comme type pour les paramètres et la valeur de retour d’un
+		algorithme.  De manière générale là où pouvait apparaitre un type
+		(entier, pseudo-réel…) peut apparaitre un tableau.  Toujours.  Voyons
+		cela en détail.  
+
+		Nous avons vu dans la section \ref{paramètres} p.~\pageref{paramètres}
+		les différentes sortes de paramètres. Voyons ce qu'il en est pour
+		chacun d'eux lorsque ce paramètre est un tableau. 
+
+
+		\subsection{Un tableau comme paramètre en entrée}
+				
+		\In : indique que l’algorithme va consulter les valeurs du tableau reçu
+		en paramètre.  Les éléments doivent donc avoir été initialisés avant
+		d’appeler l’algorithme. Exemple~:
+			
+		\begin{pseudocode}
+			\LComment{Affiche les éléments d’un tableau}
+			\Algo{display}{\Par{myArray\In}{\Array{10}{integers}}}{} 
+				\For{i}{0}{9}
+					\Write myArray[i]
+				\EndFor
+			\EndAlgo 
+
+			\Empty
+			\LComment{Utilisations possible}
+			\Decl{aArray}{\Array{10}{integers}}
+			\Let aArray \Gets \{2,3,5,7,11,13,17,19,23,29\}
+			\Stmt display(aArray)
+		\end{pseudocode}
+	
+		Rappelons qu’il s’agit du passage par défaut si aucune flèche n’est
+		indiquée.
+				
+
+		\subsection{Un tableau comme paramètre en entrée-sortie}
+
+		\In\Out : indique que l’algorithme va consulter/modifier les valeurs du
+		tableau reçu en paramètre. Exemple~:
+			
+		\begin{pseudocode}
+			\LComment{Inverse le signe des éléments du tableau}
+			\Algo{reverseSigne}{\Par{myArray\In\Out}{\Array{10}{integers}}}{} 
+				\For{i}{0}{9}
+					\Let myArray[i] \Gets -myArray[i]
+				\EndFor
+			\EndAlgo 
+
+			\Empty
+			\LComment{Utilisation possible}
+			\Decl{aArray}{\Array{}{integers}}
+			\Let aArray \Gets	
+				{\Array{}{integers}}
+				\{2,-3,5,-7,11,13,17,-19,23,29\}
+			\Stmt reverseSigne(aArray)
+		\end{pseudocode}
+
+
+		\subsection{Un tableau comme paramètre en langage Java}
+
+		En langage Java, le passage de paramètres se fait toujours par valeur.
+		Comme un tableau est de type référence, c'est bien la valeur de la
+		référence qui est passée en paramètre. En ce sens, il sera possible de
+		modifier les valeurs d'un tableau reçu mais pas de remplacer le tableau
+		reçu par un autre. Exemples~:
+
+\begin{java}
+	public static void reverseSigne(int[] is){
+		for (int i=0; i < is.length; i = i + 1){
+			is[i] = -is[i];
+		}
+	}
+
+	// Utilisation
+	int[] myArray = {2,-3,5,-7,11,13,17,-19,23,29};
+	reverseSigne(myArray);
+\end{java}
+
+\marginicon{dont}
+\begin{java}
+	public static void fail(double[] ds){
+		ds = new double[] {2, 2.61};
+	}
+
+
+	// Utilisation
+	double[] myArray = {1, 3.14};
+	fail(myArray);
+	// 3.14 et pas 2.61
+	System.out.println("Value: " + myArray[1]);		
+
+\end{java}
+
+
+
+		\subsection{Un tableau comme type de retour}
+
+		Comme pour n’importe quel autre type, un algorithme ou un programme peut
+		retourner un tableau.  Ce sera à lui de le déclarer et de lui donner des
+		valeurs.  Exemple~:
+			
+		\begin{pseudocode}
+			\LComment{Retourne un tableau initialisé de 10 entiers}
+			\Algo{create}{}{\Array{}{integers}}
+				\Decl{myArray}{\Array{10}{integers}}
+				\For{i}{0}{9}
+					\Let myArray[i] \Gets i
+				\EndFor
+				\Return myArray
+			\EndAlgo 
+			\Empty
+			\LComment{Utilisation possible}
+			\Decl{aArray}{\Array{}{integers}}
+			\Let aArray \Gets create()
+		\end{pseudocode}
+
+\begin{java}
+	public int[] create(){
+		is[] = new int[10];
+		for (int i=0; i < 10; i = i + 1){
+			is[i] = i;
+		}
+		return is;
+	}
+
+
+	// Utilisation possible
+	int[] aArray = create();
+\end{java}
+
+		\subsection{Paramétrer la taille}
+		%---------------------------------
+		
+		Un tableau connait sa taille dès lors qu'elle existe c'est-à-dire qu'il
+		est créé. Elle est accessible grâce au mot \pc{length} comme suit~:
+
+		\begin{pseudocode}
+			\Decl{myArray}{\Array{10}{reals}}
+			\Decl{size}{integer} \Gets myArray.length
+			\Empty
+			\Decl{otherArray}{\Array{}{reals}} \Gets \{3.14, 2.71\}
+			\Decl{otherSize}{integer} \Gets otherArray.length
+		\end{pseudocode}
+
+		\begin{java}
+			double[] myArray;
+			int size = myArray.length;
+
+			double[] otherArray = {3.14, 2.71};
+			int otherSize = otherArray.length;
+		\end{java}
+
+		Un tableau peut être passé en paramètre à un algorithme ou à une méthode
+		et ce, quelle que soit la taille du tableau passé en paramètre.
+		L'algorithme ou la méthode aura comme paramètre un tableau qui connait
+		sa taille. Lorsque l'algorithme ou la méthode recevra le paramètre
+		effectif, la taille sera déterminée. 
+
+		\textbf{Exemple~:}
+			
+			\begin{pseudocode}
+				\LComment{Affiche un tableau de taille quelconque}
+				\Algo{display}{\Par{myArray}{\Array{}{integers}}}{}
+					\Write "Tableau de ", myArray.length, " éléments".
+					\For{i}{0}{myArray.length - 1} 
+						\RComment{Attention ! le dernier élément}
+						\RComment{est à l’indice taille -1}
+						\Write myArray[i]
+					\EndFor
+				\EndAlgo
+				\Empty
+				\Empty
+				\LComment{Utilisation possible}
+				\Decl{entiers}{\Array{2}{entiers}}
+				\Stmt entiers[0] \Gets 56
+				\Stmt entiers[1] \Gets -3
+				\Stmt afficher(entiers)
+				\Stmt entiers \Gets\Array{}{integers} \{6, 12, 18\}
+				\Stmt afficher(entiers)
+			\end{pseudocode}
+			
+			La fiche \vref{fiche:tab-passage-param} récapitule tout ça.
+
+	% ==============================================
+	\section{Parcours d’un tableau} 
+	\label{Les parcours de tableaux}
+	% ==============================================
+
+		Dans la plupart des problèmes que vous rencontrerez vous serez amenés
+		à parcourir un tableau.  Il est important de maitriser ce parcours.
+		Examinons les situations courantes et voyons quelles solutions
+		conviennent.
+	
+		\begin{description}
+
+			\item[Parcours complet]
+		
+			Nous avons déjà vu dans les exemples comment parcourir tous les
+			éléments d’un tableau.  Une boucle \pc{pour} fait généralement
+			l'affaire.  La fiche \vref{fiche:tab-parcours-complet} décrit
+			comment afficher tous les éléments d’un tableau.  Il est possible de
+			faire autre chose avec ces éléments~: les sommer, les comparer\dots
+
+			\item[Parcours partiel]
+		
+			Parfois, il n'est pas nécessaire de parcourir le tableau jusqu’au
+			bout car un arrêt prématuré survient dès qu'une condition est
+			remplie. 
+			
+			Par exemple~: recherche d'un élément et arrêt dès qu'il est trouvé~;
+			vérification que toutes les valeurs sont non nulles mais l'on vient
+			d'en trouver une~; vérification que la suite des éléments est
+			positives alors que l'on vient d'en trouver un négatif ou nul.
+	
+			Pour résoudre ce problème, la structure \pc{tant que} avec un test
+			d'arrêt fait bien l'affaire. 
+			
+			La fiche \vref{fiche:tab-parcours-partiel} détaille un parcours
+			partiel.
+	
+		\end{description}
+	
+	% ==============================================
+	\section{Taille logique\index{taille logique} et 
+	taille physique\index{taille physique}} 
+	% ==============================================
+
+		Parfois, la taille du tableau n'est pas connue à l'avance.
+		
+		Imaginons, par exemple, qu’il s’agisse de demander des valeurs
+		à l’utilisateur et de les stocker dans un tableau pour un traitement
+		ultérieur.  Supposons que l’utilisateur va indiquer la fin des données
+		par une valeur sentinelle.  Impossible de savoir, à priori, combien de
+		valeurs il va entrer et, par conséquent, la taille à donner au tableau.
+		
+		Une solution est de créer un tableau suffisamment grand
+		pour tous les cas%
+		\footnote{%
+			En tout cas, 
+			suffisamment grand pour tous les cas qu’on accepte
+			de prendre en compte; il faudra bien fixer une limite.
+		} 
+		quitte à n’en n’utiliser qu’une partie.
+		
+		Mais comment savoir quelle est la partie du tableau
+		qui est effectivement utilisée~?
+		
+		Comprenez bien qu’il \textbf{n’y a pas de concept de case vide}.  Rien
+		ne différencie une case utilisée d’une case non utilisée.  La manière de
+		s'en sortir est de stocker les valeurs dans la partie basse du tableau
+		(à gauche) et de retenir dans une variable le nombre de cases
+		effectivement utilisées.
+			
+		\marginicon{definition}
+		La \textbf{taille physique} d’un tableau 
+		est le nombre de cases qu’il contient.
+		Sa \textbf{taille logique}
+		est le nombre de cases actuellement utilisées.
+	
+		\paragraph{Exemple.}
+		Voici un tableau qui ne contient pour l’instant que quatre nombres.
+		\begin{center}
+			\begin{tabular}{*{10}{|>{\centering\arraybackslash}m{5mm}}|}
+				\hline
+				10 & 4 & 3 & 7 & ? & ? & ? & ? & ? & ? \\
+				\hline
+			\end{tabular}
+			\\\medskip
+			\pc{taillePhysique = 10}
+			\qquad
+			\pc{tailleLogique = 4}
+		\end{center}
+
+		Les cases indiquées par "?" ne sont pas vides~;
+		elles peuvent être non initialisées
+		(et il n'est pas possible de tester si une case est non initialisée)
+		ou bien contenir une valeur qui n’est pas pertinente.
+		
+		\paragraph{Exemple.}
+		L’algorithme suivant demande des valeurs positives à l’utilisateur et
+		les stocke dans un tableau (maximum 1000).  Toute valeur négative ou
+		nulle est une valeur sentinelle.
+		
+		\begin{pseudocode}
+			\Algo{stockValues}{}{}
+				\Decl{myArray}{\Array{1000}{integers}}
+				\Decl{nbValues}{integer} \RComment{C’est la taille logique}
+				\Decl{value}{integer}
+				\Let nbValues \Gets 0
+				\Read value
+				\While{value > 0 AND nbValues < myArray.length}
+					\Let myArray[nbValues] \Gets value
+					\Let nbValues \Gets nbValues + 1
+					\Read value
+				\EndWhile
+				\If{value > 0}		
+					\RComment{Pourquoi tester value et pas nbValues~?}
+					\Write "La limite physique a été atteinte"
+				\EndIf
+			\EndAlgo
+		\end{pseudocode}
+
+		Lors de l'implémentation de l'algorithme dans un langage de
+		programmation, si la limite physique du tableau est atteinte, une erreur
+		d'exécution va survenir. Une telle erreur survient dès que le programme
+		essaie d'accéder à une case mémoire «~qui n'existe pas~». Traduisez
+		l'exemple en Java sans le \pc{if} final et regardez l'erreur générée.
+		Nous y reviendrons au laboratoire. 
+
+		
+	% ==============================================
+	\section{Les tableaux ont comme premier indice 0} 
+	% ==============================================
+
+		Les tableaux ont comme premier indice 0, Un tableau de taille \pc{n}
+		a toujours ses indices allant de \pc{0} à \pc{n-1}. 
+
+		Parfois le problème à résoudre donne envie d'avoir des indices dont le
+		premier ne commence pas à 0. Par exemple allant de 1 à 7. Dans ces cas,
+		il est toujours possible de s'arranger pour commencer à partir de 0. 
+
+		\paragraph{Exemple.}
+		Imaginons l’algorithme qui permet de convertir un numéro
+		de jour en son intitulé~: 1 donne "lundi", 2 donne "mardi",
+		\dots{}
+		Une solution possible, sans tableau, serait~:
+		
+		\begin{pseudocode}
+			\Algo{dayName}{\Par{dayNumber}{integer}}{String}
+				\Switch{dayNumber}
+				\Case{1} \algorithmicreturn{} "lundi"
+				\Case{2} \algorithmicreturn{} "mardi"
+				\Case{3} \algorithmicreturn{} "mercredi"
+				\Case{4} \algorithmicreturn{} "jeudi"
+				\Case{5} \algorithmicreturn{} "vendredi"
+				\Case{6} \algorithmicreturn{} "samedi"
+				\Case{7} \algorithmicreturn{} "dimanche"
+				\EndSwitch
+			\EndAlgo
+		\end{pseudocode}
+		
+		Mais une solution plus élégante passe par l’utilisation d’un tableau.
+		Appelons-le \pc{dayString} et stockons-y les noms des jours
+		comme illustré ci-dessous.
+
+		\begin{center}
+			\footnotesize
+			\begin{tabular}{ccccccc}
+				1 & 2 & 3 & 4 & 5 & 6 & 7
+				\\\hline
+				\multicolumn{1}{|c|}{"lundi"} &
+				\multicolumn{1}{c|}{"mardi"} &
+				\multicolumn{1}{c|}{"mercredi"} &
+				\multicolumn{1}{c|}{"jeudi"} &
+				\multicolumn{1}{c|}{"vendredi"} &
+				\multicolumn{1}{c|}{"samedi"} &
+				\multicolumn{1}{c|}{"dimanche"}
+				\\\hline
+			\end{tabular}
+		\end{center}
+
+
+		Si le tableau commence à l'indice 1 jusqu'à l'indice 7, pour obtenir le
+		nom d’un jour, il suffirait d’écrire~: \pc{dayString[dayNumber]}.
+		
+		Comme les tableaux commencent toujours à l'indice 0, il faudra plutôt
+		considérer le tableau ci-dessous et écrire \pc{dayString[dayNumber-1]}.
+		
+		\begin{center}
+			\footnotesize
+			\begin{tabular}{ccccccc}
+				0 &1 & 2 & 3 & 4 & 5 & 6 
+				\\\hline
+				\multicolumn{1}{|c|}{"lundi"} &
+				\multicolumn{1}{c|}{"mardi"} &
+				\multicolumn{1}{c|}{"mercredi"} &
+				\multicolumn{1}{c|}{"jeudi"} &
+				\multicolumn{1}{c|}{"vendredi"} &
+				\multicolumn{1}{c|}{"samedi"} &
+				\multicolumn{1}{c|}{"dimanche"}
+				\\\hline
+			\end{tabular}
+		\end{center}
+
+		
+		
