@@ -133,18 +133,18 @@
 		\begin{center}
 			\begin{tabular}{*{11}{>{\centering\arraybackslash}m{5mm}}}
 				{} &
-				\lda{cpt[0]} &
-				\lda{cpt[1]} &
-				\lda{cpt[2]} &
-				\lda{cpt[3]} &
-				\lda{cpt[4]} &
-				\lda{cpt[5]} &
-				\lda{cpt[6]} &
-				\lda{cpt[7]} &
-				\lda{cpt[8]} &
-				\lda{cpt[9]} 
+				\pc{cpt[0]} &
+				\pc{cpt[1]} &
+				\pc{cpt[2]} &
+				\pc{cpt[3]} &
+				\pc{cpt[4]} &
+				\pc{cpt[5]} &
+				\pc{cpt[6]} &
+				\pc{cpt[7]} &
+				\pc{cpt[8]} &
+				\pc{cpt[9]} 
 				\\\hhline{~*{10}{-}}
-				\multicolumn{1}{m{5mm}|}{\lda{cpt}} &
+				\multicolumn{1}{m{5mm}|}{\pc{cpt}} &
 				\multicolumn{1}{m{5mm}|}{~} &
 				\multicolumn{1}{m{5mm}|}{~} &
 				\multicolumn{1}{m{5mm}|}{~} &
@@ -325,7 +325,9 @@
 	la dernière l’indice \pc{size-1}.  C’est considéré comme une erreur
 	d’indiquer un indice qui ne correspond pas à une case du tableau (trop petit
 	ou trop grand).  Par exemple, si on déclare et crée le tableau \pc{myArray}~:
-	\pc{\Decl{myArray}{\Array{100}{integers}}}	\\	
+	\begin{pseudocode}
+		\Decl{myArray}{\Array{100}{integers}}
+	\end{pseudocode}
 	il est interdit d’utiliser \pc{myArray[-1]} ou \pc{myArray[100]}. 
 
 	\index{initialisation}
