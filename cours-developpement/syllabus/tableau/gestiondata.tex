@@ -1,0 +1,1227 @@
+%==========================================
+%\chapter{Gérer les données dans un tableau}
+\chapter{Algorithmes d'insertions et de recherches}
+%==========================================
+
+	Souvent lorsque les applications stockent des données. Ces données changent. 
+	Il est nécessaire d'en ajouter, de modifier certaines, d'en rechercher, d'en
+	supprimer. 
+
+	\minitoc
+	\clearpage
+
+	\textbf{Exemple}	Imaginons qu'une école organise un événement libre et
+	gratuit pour les étudiants et les étudiantes.  Mais pour y assister, il est
+	nécessaire de s’inscrire. Nous voulons fournir ce qu’il faut pour~:
+	
+	\begin{itemize}
+	\item inscrire un ou une étudiant·e~;
+	\item vérifier l'inscription~;
+	\item désinscrire~;
+	\item afficher la liste des personnes inscrites.
+	\end{itemize}
+
+	Nous allons, pour l'exemple, stocker les numéros d'étudiants et d'étudiantes
+	dans un tableau%
+	\footnote{%
+		Ce n'est bien sûr pas la bonne manière de faire pour une application 
+		réelle pour laquelle nous utiliserions probablement une base de données…
+		mais c'est une autre histoire… et un autre cours. 
+	}.
+	Comme le tableau ne sera généralement pas rempli, nous allons créer un
+	tableau «~trop grand~» et gérer sa taille logique.  Nous avons deux
+	variables~:
+	
+	\begin{itemize}
+	\item \pc{registered}~: le tableau des numéros d’étudiants
+	\item \pc{nRegistered}~: le nombre d’étudiant·es actuellement inscrit·es 
+		(la taille logique du tableau)
+	\end{itemize}
+	
+	Nous allons envisager deux cas~:
+	\begin{enumerate}
+	\item les numéros seront placés dans le tableau sans ordre imposé;
+	\item les numéros seront placés dans l’ordre.		
+	\end{enumerate}
+	
+	% ==============================================
+	\section{Insertion dans un tableau non trié} 
+	% ==============================================
+		
+		Les valeurs sont stockées dans le tableau 
+		dans un ordre quelconque.
+		Par exemple~:
+		\begin{center}
+			\pc{registered} = 
+			\smallskip
+			\begin{tabular}{*{10}{|>{\centering\arraybackslash}m{8mm}}|}
+				\hline
+				42010 & 41390 & 43342 & 42424 & ? & ? & ? & ? & \dots \\
+				\hline
+			\end{tabular}
+			\smallskip
+			\pc{nRegistered = 4}
+		\end{center}
+
+		Il y a pour le moment quatre personnes inscrites dont les numéros sont
+		ceux repris dans les quatre premières cases du tableau.
+		
+		\subsection{Inscription}
+		%---------------------------------------------
+		
+			Pour inscrire un étudiant ou une étudiante, il suffit de l’ajouter
+			à la suite dans le tableau.  Par exemple, en partant de la situation
+			décrite ci-dessus, l’inscription de l’étudiant numéro 42123 aboutit
+			à la situation suivante~:
+
+			\begin{center}
+				\pc{registered} = 
+				\smallskip
+				\begin{tabular}{*{10}{|>{\centering\arraybackslash}m{8mm}}|}
+					\hline
+					42010 & 41390 & 43342 & 42424 & 42123 & ? & ? & ? & \dots \\
+					\hline
+				\end{tabular}
+				\smallskip
+				\pc{nRegistered = 5}
+			\end{center}
+			
+			L’algorithme est assez simple~:
+			
+			\begin{pseudocode}
+				\LComment{Inscrit un étudiant de numéro donné.}
+				\Algo{register}{\Par{registered\In\Out}{\Array{}{integers}}, 
+					\Par{nRegistered\In\Out}{integer},
+					\\\hfill \Par{number\In}{integer}}{}
+					\LComment{On peut imaginer vérifier que l’étudiant n’est 
+					pas déjà inscrit}
+					\LComment{On peut imaginer vérifier qu’il reste 
+					de la place}
+					\LComment{(c-à-d que le tableau n’est pas plein)}
+					\Let registered[nRegistered] \Gets number
+					\Let nRegistered \Gets nRegistered + 1
+				\EndAlgo
+			\end{pseudocode}
+
+			En langage Java, il n'est pas possible de passer \pc{nRegistered} en 
+			entrée sortie puisque le passage de paramètre se fait par valeur et 
+			que \pc{int} est un type primitif. Il faudra que ce soit en valeur de 
+			retour. Nous pourrions écrire~:
+
+			\begin{java}
+	public static int register(int[] registered, int nRegistered,
+			int number){
+		// idem
+		registered[nRegistered] = number;
+		return nRegistered + 1;
+	}
+			\end{java}
+
+			Dans ce cas, c'est bien le code appelant qui devra maintenir la 
+			valeur de la taille logique à jour. 
+		
+		\subsection{Vérifier une inscription}
+		%---------------------------------------------
+	
+			Pour vérifier si un étudiant est déjà inscrit,
+			il faut le rechercher dans la partie utilisée du tableau.
+			Cette recherche se fait via un parcours avec sortie
+			prématurée. 
+			
+			L'algorithme ne va pas se contenter de retourner un booléen
+			précisant si le numéro est trouvé mais va retourner l'indice dans le
+			tableau de ce numéro, -1 sinon. 
+			
+			\begin{pseudocode}
+				\LComment{Vérifie si un étudiant est inscrit 
+				et donne sa position (-1 si non inscrit)}
+				\Algo{check}{\Par{registered\In}{\Array{n}{integers}}, 
+					\Par{nRegistered\In}{integer}, 
+					\\\hfill\Par{number\In}{integer}}{integer}
+					\Decl{i}{integer}
+					\Let i \Gets 0
+					\While{i < nRegistered ET registered[i] $\ne$ number}
+						\Let i \Gets i + 1
+					\EndWhile
+					\If{i < nRegistered}
+						\Return i
+					\Else
+						\Return -1
+					\EndIf
+				\EndAlgo
+			\end{pseudocode}
+
+			La traduction en langage Java ne pose aucune difficulté et est
+			laissée en exercice. 
+			
+			La fiche \vref{fiche:tab-recherche-non-triee} reprend cet algorithme
+			dans un cadre plus général.
+
+		\subsection{Désinscription}
+		%---------------------------------------------
+		
+			Pour désinscrire un étudiant, il faut le trouver dans le tableau et
+			l’enlever.  Attention, il ne peut pas y avoir de trou dans un
+			tableau (il n’y a pas de case vide).  Le plus simple est d’y
+			déplacer le dernier élément.  Par exemple, reprenons la situation
+			après inscription de l’étudiant numéro 42123.
+
+			\begin{center}
+				\pc{registered} = 
+				\smallskip
+				\begin{tabular}{*{10}{|>{\centering\arraybackslash}m{8mm}}|}
+					\hline
+					42010 & 41390 & 43342 & 42424 & 42123 & ? & ? & ? & \dots \\
+					\hline
+				\end{tabular}
+				\smallskip
+				\pc{nRegistered = 5}
+			\end{center}
+
+			La désinscription de l’étudiant numéro 41390 donnerait ce qui suit.
+			
+			Nous avons volontairement indiqué le 42123 en 5\ieme{} position.  Il
+			est toujours là mais ne sera pas considéré par les algorithmes
+			puisque cette case est au-delà de la taille logique (donnée par la
+			variable \pc{nRegistered}).  
+
+			\begin{center}
+				\pc{registered} = 
+				\smallskip
+				\begin{tabular}{*{10}{|>{\centering\arraybackslash}m{8mm}}|}
+					\hline
+					42010 & 42123 & 43342 & 42424 & 42123 & ? & ? & ? & \dots \\
+					\hline
+				\end{tabular}
+				\smallskip
+				\pc{nRegistered = 4}
+			\end{center}
+			
+			L’algorithme est assez simple à écrire en utilisant la recherche
+			écrite juste avant~:
+			
+			\begin{pseudocode}
+				\LComment{Désinscrit l’étudiant donné}
+				\Algo{unsubscribe}{
+						\Par{registered\In\Out}{\Array{}{integers}}, 
+						\\\hfill\Par{nRegistered\In\Out}{integer}, 
+						\Par{number\In}{integer}
+						}{}
+					\Decl{pos}{integer}
+					\Let pos \Gets check(registered, nRegistered, number)
+					\LComment{On pourrait vérifier et générer une erreur 
+					si l’étudiant n’est pas inscrit}
+					\Let registered[pos] \Gets registered[nRegistered-1]
+					\Let nRegistered \Gets nRegistered - 1					
+				\EndAlgo
+			\end{pseudocode}
+		
+			Comme précédement, en langage Java, il n'est pas possible de passer
+			\pc{nRegistered} en entrée sortie.  Il faudra que ce soit en valeur
+			de retour. Nous pourrions écrire~:
+
+			\begin{java}
+	public static int unsubscribe(int[] registered, 
+			int nRegistered, int number){
+		int pos = check(registered, nRegistered, number);
+		registered[pos] = registered[nRegistered - 1];
+		return nRegistered - 1;
+	}
+			\end{java}
+
+		\subsection{Exercices}
+		%---------------------------------------------
+		
+		\begin{enumerate}
+			
+			\item Éviter la double inscription.
+
+				Comment modifier l’algorithme d’inscription
+				pour s’assurer qu’un étudiant ne s’inscrive pas deux fois~?
+
+			\item Limiter le nombre d'inscriptions.
+
+				Comment modifier l’algorithme d’inscription pour refuser une
+				inscription si le nombre maximal de participant est atteint en
+				supposant que ce maximum est égal à la taille physique du
+				tableau~?
+
+			\item Vérifier la désinscription. 
+
+				Que se passerait-il avec l’algorithme
+				de désinscription tel qu’il est
+				si on demande à désinscrire un étudiant non inscrit~?
+				Que suggérez-vous comme changement~?
+
+			\item Optimiser la désinscription.
+
+				Dans l’algorithme de désinscription tel qu’il est,
+				voyez-vous un cas où on effectue une opération inutile~?
+				Avez-vous une proposition pour l’éviter~?
+		
+		\end{enumerate}
+
+	% ==============================================
+	\section{Insertion dans un tableau trié} 
+	% ==============================================
+
+		Imaginons à présent que nous maintenons un ordre
+		dans les données du tableau.
+		
+		En reprenant l’exemple utilisé pour les données non triées,
+		nous avons~:
+		\begin{center}
+			\pc{registered} = 
+			\smallskip
+			\begin{tabular}{*{10}{|>{\centering\arraybackslash}m{8mm}}|}
+				\hline
+				41390 & 42010 & 42424 & 43342 & ? & ? & ? & ? & \dots \\
+				\hline
+			\end{tabular}
+			\smallskip
+			\pc{nRegistered = 4}
+		\end{center}
+	
+		— Qu’est-ce que ça change au niveau des algorithmes~?  \\
+		— Beaucoup~!
+
+		Par exemple, plus question de placer un nouvel inscrit à la suite des
+		autres; il faut trouver sa place.
+		
+		\subsection{Rechercher la position d’une inscription}
+		%----------------------------------------------------
+
+			Tous les algorithmes que nous allons voir dans le cadre de données
+			triées ont une partie en commun~: la recherche de la position du
+			numéro, s’il est présent ou de la position où il aurait dû être s’il
+			est absent.  Commençons par cela.
+			
+			L’algorithme est assez proche de celui de la vérification d’une
+			inscription vu précédemment si ce n’est que l'algorithme peut
+			s’arrêter dès qu'un numéro plus grand est trouvé. Nous allons
+			décomposer l'algorithme en deux parties~: la première pour la
+			recherche de la position à laquelle devrait se trouver le numéro et
+			la seconde pour vérifier que c'est bien le bon numéro qui se trouve
+			à cette position. En effet, lorsque le numéro n'est pas présent dans
+			le tableau, c'est un numéro plus grand qui s'y trouve.   
+
+			\begin{pseudocode}
+				\LComment{Recherche un étudiant.}
+				\LComment{return: la position où a été trouvé l’étudiant}
+				\LComment{        ou -1 s'il est pas inscrit}
+				\Algo{find}{
+						\Par{registered\In}{\Array{}{integers}}, 
+						\Par{nRegistered\In}{integer}, 
+						\\\hfill\Par{number\In}{integer}
+						}{integer}
+					\Decl{pos}{integer} \Gets 
+						findPosition(registered, nRegistered, number)
+					\If{registered[pos] == number}
+						\Return pos
+					\Else
+						\Return -1
+					\EndIf
+				\EndAlgo
+				
+				\Empty
+				\LComment{Recherche une position}
+				\LComment{return: la position a laquelle est }
+				\LComment{ou devrait être le numéro}
+				\Algo{findPosition}{
+						\Par{registered\In}{\Array{}{integers}}, 
+						\Par{nRegistered\In}{integer}, 
+						\\\hfill\Par{number\In}{integer}
+						}{integer}
+					\Decl{pos}{integer} \Gets 0
+					\While{pos < nRegistered AND registered[pos] < number}
+						\Let pos \Gets pos + 1
+					\EndWhile
+					\Return pos
+				\EndAlgo
+			\end{pseudocode}
+			
+			Comprenez-vous pourquoi~:
+			\begin{itemize}
+			\item
+				\pc{registered[nRegistered] < number} contien un '<' dans la 
+				condition du tant que et pas un '$\neq$'~?
+			\item
+				la condition du \pc{if} est composée de deux parties
+				et utilise un =~?
+			\end{itemize}
+
+			La liste étant triée il faut s'arrêter de chercher dès que la valeur
+			n'est plus inférieure à la valeur cherchée. Dès qu'elle est plus
+			grande c'est que la valeur \textbf{n'est pas} dans la liste. 
+
+			De même pour la condition du \pc{if}, il faut d'abord tester si la
+			recherche n'est pas arrivée à la fin du nombre d'inscrits et
+			d'inscrites. Ensuite, il faut voir si le numéro à la position
+			trouvée est bien le bon. 
+
+			La traduction en Java est immédiate. Le \pc{if} tel que présenté
+			dans l'algorithm peut se réécrire grâce à l'opérateur
+			ternaire\index{ternaire} de Java. Profitons en pour le présenter. 
+
+			\begin{grammaire}
+				\grammarrule{ConditionalExpression:}
+				    \grammarrule{Condition} ? \grammarrule{Expression} : \grammarrule{Expression}
+			\end{grammaire}
+
+			Si la condition est vraie, l'expression prend la première valeur et
+			si la condition est fausse, ce sera la seconde valeur. Par exemple~:
+			\pc{heure < 12 ? ``matin'' : ``soir''} vaut ``soir'' si \pc{heure}
+			vaut 15. 
+			
+			\begin{java}
+	/** 
+	 * Recherche une inscription dans le tableau.
+	 * 
+	 * @param registered le tableau d'inscrit·es
+	 * @param nRegistered le nombre d'inscrit·es
+	 * @param number le numéro à chercher
+	 * @return la position dans le tableau, -1 si non présent
+	 */
+	public static int find(int[] registered, int nRegistered, 
+			int number){
+		int pos = findPosition(registered, nRegistered, number);
+		return registered[pos] == number ? pos : -1;
+	}
+
+	/**
+	 * Recherche la position que le nombre soit présent ou pas. 
+	 * @param registered le tableau d'inscrit·es
+	 * @param nRegistered le nombre d'inscrit·es
+	 * @param number le numéro à chercher
+	 * @return la position à laquelle est ou devrait être le numéro. 
+	 */
+	public static int findPosition{int[] registered, int nRegistered,
+			int number){
+		int pos = 0;
+		while (pos < nRegistered && registered[pos] < number){
+			pos = pos + 1;
+		}
+		return pos;
+	}
+			\end{java}
+
+		\subsection{Inscrire un étudiant}
+		%---------------------------------------------
+				
+			L’inscription d’un étudiant se fait en trois étapes~:
+			\begin{enumerate}
+			\item
+				recherche de l’étudiant via l’algorithme vu à l'instant,
+				ce qui nous donne la place où le placer;
+
+				Nous ne vérifions pas si l'étudiant ou l'étudiante est déjà 
+				présent·e dans le tableau. 
+
+			\item
+				libération de la place pour l’y mettre;
+				
+				Cette opération n’est pas triviale.  Si vous tenez des cartes en
+				main, il est facile d’insérer une nouvelle carte à n’importe
+				quelle position.  Avec un tableau, il en va tout autrement~;
+				pour insérer un élément à un endroit donné, il faut décaler tous
+				les suivants d’une position sur la droite.
+			
+			\item
+				placer l’élément à la position libérée.
+			\end{enumerate} 
+			
+			Ce qui nous donne~:
+			
+			\begin{pseudocode}
+				\LComment{Inscrit un étudiant de numéro donné.}
+				\Algo{subscribe}{
+						\Par{registered\In\Out}{\Array{}{integers}}, 
+						\Par{nRegistered\In\Out}{integer}, 
+						\\\hfill\Par{number\In}{integer}
+						}{}
+					\Decl{pos}{integer}
+					\Stmt pos \Gets findPosition(registered, nRegistered, number)
+					\Stmt shiftRight(registered, pos, nRegistered-1)
+					\Let registered[pos] \Gets number
+					\Let nRegistered \Gets nRegistered + 1
+				\EndAlgo
+				\Empty
+				\LComment{Décale d’une position à droite les éléments 
+					entre la position début et fin}
+				\Algo{shiftRight}{
+						\Par{tab\In\Out}{\Array{}{integers}}, 
+						\Par{begin\In}{integer}, 
+						\Par{end\In}{integer}
+						}{}
+					\For[-1]{i}{end}{begin}
+						\Let tab[i+1] \Gets tab[i]
+					\EndFor
+				\EndAlgo
+			\end{pseudocode}
+	
+			En langage Java, la traduction est immédiate~:
+
+			\begin{java}
+/**
+ * Inscrit un ou une étudiant·e.
+ * 
+ * @param registered le tableau d'inscrit·es
+ * @param nRegistered le nombre d'inscrit·es
+ * @param number le numéro à chercher
+ */
+public static void subscribe(int[] registred, int nRegistered,
+				int number){
+	int pos = findPosition(registered, nRegistered, number);
+	shiftRight(registred,pos, nRegistered);
+	registered[pos] = number;
+	nRegistered = nRegistered + 1;
+}
+
+/**
+ * Décale les éléments du tableau de begin à end un à droite.
+ * @param tab le tableau
+ * @param begin l'indice de départ
+ * @param end l'indice de fin
+ */
+public shiftRight(int[] tab, int begin, int end){
+	for (int i = end, i >= begin; i = i - 1){
+		tab[i + 1] = tab[i];
+	}
+}
+			\end{java}
+
+			
+		\subsection{Désinscription}
+		%---------------------------------------------
+		
+			Ici, il va falloir décaler vers la gauche
+			les éléments qui suivent celui à supprimer.
+
+			\begin{pseudocode}
+				\LComment{désinscrit l’étudiant donné}
+				\Algo{unsubscribe}{
+						\Par{registered\In\Out}{\Array{n}{integers}}, 
+						\Par{nRegistered\In\Out}{integer}, 
+						\\\hfill\Par{number\In}{integer}
+						}{}
+					\Decl{pos}{integer}
+					\Stmt pos \Gets findPosition(registered, nRegistered, number)
+					\Stmt shiftLeft(registered, pos, nRegistered-1)
+					\Let nRegistered \Gets nRegistered - 1					
+				\EndAlgo
+
+				\Empty
+				\LComment{Décale d’une position à gauche les éléments entre 
+					la position début et fin}
+				\Algo{shiftLeft}{
+						\Par{tab\In\Out}{\Array{n}{integers}}, 
+						\\\hfill\Par{begin\In}{integer}, 
+						\Par{end\In}{integer}
+						}{}
+					\For{i}{begin}{end}
+						\Let tab[i-1] \Gets tab[i]
+					\EndFor
+				\EndAlgo
+			\end{pseudocode}
+			
+			La fiche \vref{fiche:tab-recherche-triee} reprend cet algorithme
+			dans un cadre plus général.
+
+			En langage Java, la traduction est immédiate~:
+
+			\begin{java}
+/**
+ * Désinscrit un ou une étudiant·e.
+ * 
+ * @param registered le tableau d'inscrit·es
+ * @param nRegistered le nombre d'inscrit·es
+ * @param number le numéro à chercher
+ */
+public static void subscribe(int[] registred, int nRegistered,
+				int number){
+	int pos = findPosition(registered, nRegistered, number);
+	shiftLeft(registred,pos, nRegistered);
+	nRegistered = nRegistered - 1;
+}
+
+/**
+ * Décale les éléments du tableau de begin à end un à gauche
+ * (et écrase donc le premier).
+ * @param tab le tableau
+ * @param begin l'indice de départ
+ * @param end l'indice de fin
+ */
+public shiftLeft(int[] tab, int begin, int end){
+	for (int i = begin, i <= end; i = i + 1){
+		tab[i - 1] = tab[i];
+	}
+}
+			\end{java}
+
+		\subsection{Intérêt de trier les valeurs~?}
+		%---------------------------------------------
+
+			Est-ce que trier les valeurs est vraiment intéressant~?
+			
+			La recherche est un peu plus rapide. En moyenne deux fois plus
+			rapide si l'élément ne s'y trouve pas. Par contre, l'ajout et la
+			suppression d'un élément sont plus lents.  Les algorithmes sont plus
+			complexes à écrire et à comprendre.  Le gain ne parait pas évident
+			et en effet, en l’état, il ne l’est pas.
+			
+			Mais c’est sans compter un autre algorithme de recherche, beaucoup
+			plus rapide, la recherche dichotomique, que nous allons voir
+			maintenant.
+			
+	% ==============================================
+	\section{La recherche dichotomique\index{recherche dichotomique}} 
+	% ==============================================
+
+		La recherche dichotomique est un algorithme de recherche d’une valeur
+		dans un tableau trié.  Il a pour essence de réduire à chaque étape la
+		taille de l’ensemble de recherche de moitié, jusqu’à ce qu’il ne reste
+		qu’un seul élément dont la valeur devrait être celle recherchée, sauf
+		bien entendu en cas d’inexistence de cette valeur dans l’ensemble de
+		départ. 
+	
+		Pour l’expliquer, nous allons considérer un tableau d’entiers
+		complètement rempli.  Il sera facile d’adapter la solution à un tableau
+		partiellement rempli (avec une taille logique) ou un tableau contenant
+		tout autre type de valeurs qui peut s’ordonner.
+		
+		{\sffamily\bfseries\upshape
+		Description de l’algorithme}
+	
+		Soit \pc{value} la valeur recherchée dans une zone délimitée 
+		par les indices \pc{leftIndex} et \pc{rightIndex}. 
+		Il faut commencer par déterminer l’élément médian, 
+		c’est-à-dire celui qui se trouve «~au milieu~» 
+		de la zone de recherche%
+		\footnote{%
+			Cet élément médian n’est pas tout à fait au milieu 
+			dans le cas d’une zone contenant un nombre pair d’éléments.
+		}~; 
+		son indice sera déterminé par la formule
+	
+		{\centering
+		\pc{medianIndex \Gets (leftIndex + rightIndex) DIV 2}\par{}
+		}
+
+		\marginicon{definition}
+		L'algorithme compare alors \pc{value} avec la valeur de cet élément
+		médian~; il est possible que ce soit la valeur cherchée; sinon, il
+		partage la zone de recherche en deux parties~: une qui \textbf{ne
+		contient certainement pas} la valeur cherchée et une qui
+		\textbf{pourrait la contenir}.  C’est cette deuxième partie qui devient
+		la nouvelle zone de recherche.  Il adapte \pc{leftIndex} ou
+		\pc{rightIndex} en conséquence.  L'algorithme réitère le processus
+		jusqu’à ce que la valeur cherchée soit trouvée ou que la zone de
+		recherche soit réduite à sa plus simple expression, c’est-à-dire un seul
+		élément.
+			
+		{\sffamily\bfseries\upshape
+		Exemple de recherche fructueuse}
+
+		Supposons que l’on recherche la valeur \textbf{23} dans un tableau de 20
+		entiers.  La zone ombrée représente à chaque fois la partie de
+		recherche, qui est au départ le tableau trié dans son entièreté.  Au
+		départ, \pc{leftIndex} vaut 0 et \pc{rightIndex} vaut 19.
+
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{*{20}
+			{>{\centering\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{0} &
+		 \textcolor{gray}{1} &
+		 \textcolor{gray}{2} &
+		 \textcolor{gray}{3} &
+		 \textcolor{gray}{4} &
+		 \textcolor{gray}{5} &
+		 \textcolor{gray}{6} &
+		 \textcolor{gray}{7} &
+		 \textcolor{gray}{8} &
+		 \textcolor{gray}{9} &
+		 \textcolor{gray}{10} &
+		 \textcolor{gray}{11} &
+		 \textcolor{gray}{12} &
+		 \textcolor{gray}{13} &
+		 \textcolor{gray}{14} &
+		 \textcolor{gray}{15} &
+		 \textcolor{gray}{16} &
+		 \textcolor{gray}{17} &
+		 \textcolor{gray}{18} &
+		 \textcolor{gray}{19}
+			 \\
+		\end{tabular}
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{\cellcolor{gray!25}  1} &
+			{\cellcolor{gray!25}  3} &
+			{\cellcolor{gray!25}  5} &
+			{\cellcolor{gray!25}  7} &
+			{\cellcolor{gray!25}  7} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25} 10} &
+			{\cellcolor{gray!25} 10} &
+			{\cellcolor{gray!25} 15} &
+			{\cellcolor{gray!25} 16} &
+			{\cellcolor{gray!25} 20} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 25} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 29} &
+			{\cellcolor{gray!25} 29}\\\hline
+		\end{tabular}
+		\end{center}
+		
+		\bigskip
+
+		\textit{Première étape}~:
+		\pc{medianIndex \Gets (0 + 19) DIV 2}, c’est-à-dire 9. 
+		
+		Comme la valeur en position 9 est 15, 
+		la valeur cherchée doit se trouver à sa droite, et
+		on prend comme nouvelle zone de recherche celle délimitée par
+		\pc{leftIndex} qui vaut 10 et \pc{rightIndex} qui vaut 19.
+		
+		\medskip
+		
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{*{20}{>{\centering\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{0} &
+		 \textcolor{gray}{1} &
+		 \textcolor{gray}{2} &
+		 \textcolor{gray}{3} &
+		 \textcolor{gray}{4} &
+		 \textcolor{gray}{5} &
+		 \textcolor{gray}{6} &
+		 \textcolor{gray}{7} &
+		 \textcolor{gray}{8} &
+		 \textcolor{gray}{9} &
+		 \textcolor{gray}{10} &
+		 \textcolor{gray}{11} &
+		 \textcolor{gray}{12} &
+		 \textcolor{gray}{13} &
+		 \textcolor{gray}{14} &
+		 \textcolor{gray}{15} &
+		 \textcolor{gray}{16} &
+		 \textcolor{gray}{17} &
+		 \textcolor{gray}{18} &
+		 \textcolor{gray}{19}
+			 \\
+		\end{tabular}
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{ 1} &
+			{  3} &
+			{  5} &
+			{  7} &
+			{  7} &
+			{  9} &
+			{  9} &
+			{ 10} &
+			{ 10} &
+			{ 15} &
+			{\cellcolor{gray!25} 16} &
+			{\cellcolor{gray!25} 20} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 25} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 29} &
+			{\cellcolor{gray!25} 29}\\\hline
+		\end{tabular}
+		\end{center}
+
+		\bigskip
+
+		\textit{Deuxième étape}~:
+		\pc{medianIndex \Gets (10 + 19) DIV 2}, c’est-à-dire 14. 
+		
+		Comme on y trouve la valeur 25, 
+		on garde les éléments situés à la gauche de celui-ci~; 
+		la nouvelle zone de recherche est [10, 13].
+				
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{*{20}{>{\centering\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{0} &
+		 \textcolor{gray}{1} &
+		 \textcolor{gray}{2} &
+		 \textcolor{gray}{3} &
+		 \textcolor{gray}{4} &
+		 \textcolor{gray}{5} &
+		 \textcolor{gray}{6} &
+		 \textcolor{gray}{7} &
+		 \textcolor{gray}{8} &
+		 \textcolor{gray}{9} &
+		 \textcolor{gray}{10} &
+		 \textcolor{gray}{11} &
+		 \textcolor{gray}{12} &
+		 \textcolor{gray}{13} &
+		 \textcolor{gray}{14} &
+		 \textcolor{gray}{15} &
+		 \textcolor{gray}{16} &
+		 \textcolor{gray}{17} &
+		 \textcolor{gray}{18} &
+		 \textcolor{gray}{19}
+			 \\
+		\end{tabular}
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{ 1} &
+			{  3} &
+			{  5} &
+			{  7} &
+			{  7} &
+			{  9} &
+			{  9} &
+			{ 10} &
+			{ 10} &
+			{ 15} &
+			{\cellcolor{gray!25} 16} &
+			{\cellcolor{gray!25} 20} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 23} &
+			{ 25} &
+			{ 28} &
+			{ 28} &
+			{ 28} &
+			{ 29} &
+			{ 29}\\\hline
+		\end{tabular}
+		\end{center}
+
+		\bigskip
+
+		\textit{Troisième étape}~:
+		\pc{medianIndex \Gets (10 + 13) DIV 2}, c’est-à-dire 11 
+		où se trouve l’élément 20. 
+		La zone de recherche devient
+		\pc{leftIndex} vaut 12 et \pc{rightIndex} vaut 13.
+
+		
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{0} &
+		 \textcolor{gray}{1} &
+		 \textcolor{gray}{2} &
+		 \textcolor{gray}{3} &
+		 \textcolor{gray}{4} &
+		 \textcolor{gray}{5} &
+		 \textcolor{gray}{6} &
+		 \textcolor{gray}{7} &
+		 \textcolor{gray}{8} &
+		 \textcolor{gray}{9} &
+		 \textcolor{gray}{10} &
+		 \textcolor{gray}{11} &
+		 \textcolor{gray}{12} &
+		 \textcolor{gray}{13} &
+		 \textcolor{gray}{14} &
+		 \textcolor{gray}{15} &
+		 \textcolor{gray}{16} &
+		 \textcolor{gray}{17} &
+		 \textcolor{gray}{18} &
+		 \textcolor{gray}{19}
+			 \\
+		\end{tabular}
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{ 1} &
+			{  3} &
+			{  5} &
+			{  7} &
+			{  7} &
+			{  9} &
+			{  9} &
+			{ 10} &
+			{ 10} &
+			{ 15} &
+			{ 16} &
+			{ 20} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 23} &
+			{ 25} &
+			{ 28} &
+			{ 28} &
+			{ 28} &
+			{ 29} &
+			{ 29}\\\hline
+		\end{tabular}
+		\end{center}
+
+		\bigskip
+
+		\textit{Quatrième étape~:}
+		\pc{medianIndex \Gets (12 + 13) DIV 2}, 
+		c’est-à-dire 12 où se trouve la valeur cherchée~; 
+		la recherche est terminée.
+
+	{\sffamily\bfseries\upshape
+	Exemple de recherche infructueuse}
+
+		Recherchons à présent la valeur \textbf{8}. 
+		Les étapes de la recherche vont donner successivement
+		
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{0} &
+		 \textcolor{gray}{1} &
+		 \textcolor{gray}{2} &
+		 \textcolor{gray}{3} &
+		 \textcolor{gray}{4} &
+		 \textcolor{gray}{5} &
+		 \textcolor{gray}{6} &
+		 \textcolor{gray}{7} &
+		 \textcolor{gray}{8} &
+		 \textcolor{gray}{9} &
+		 \textcolor{gray}{10} &
+		 \textcolor{gray}{11} &
+		 \textcolor{gray}{12} &
+		 \textcolor{gray}{13} &
+		 \textcolor{gray}{14} &
+		 \textcolor{gray}{15} &
+		 \textcolor{gray}{16} &
+		 \textcolor{gray}{17} &
+		 \textcolor{gray}{18} &
+		 \textcolor{gray}{19}
+			 \\
+		\end{tabular}
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{\cellcolor{gray!25}  1} &
+			{\cellcolor{gray!25}  3} &
+			{\cellcolor{gray!25}  5} &
+			{\cellcolor{gray!25}  7} &
+			{\cellcolor{gray!25}  7} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25} 10} &
+			{\cellcolor{gray!25} 10} &
+			{\cellcolor{gray!25} 15} &
+			{\cellcolor{gray!25} 16} &
+			{\cellcolor{gray!25} 20} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 23} &
+			{\cellcolor{gray!25} 25} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 28} &
+			{\cellcolor{gray!25} 29} &
+			{\cellcolor{gray!25} 29}\\\hline
+		\end{tabular}
+		\end{center}
+
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{\cellcolor{gray!25}  1} &
+			{\cellcolor{gray!25}  3} &
+			{\cellcolor{gray!25}  5} &
+			{\cellcolor{gray!25}  7} &
+			{\cellcolor{gray!25}  7} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25} 10} &
+			{\cellcolor{gray!25} 10} &
+			{ 15} &
+			{ 16} &
+			{ 20} &
+			{ 23} &
+			{ 23} &
+			{ 25} &
+			{ 28} &
+			{ 28} &
+			{ 28} &
+			{ 29} &
+			{ 29}\\\hline
+		\end{tabular}
+		\end{center}
+
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{ 1} &
+			{  3} &
+			{  5} &
+			{  7} &
+			{  7} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25}  9} &
+			{\cellcolor{gray!25} 10} &
+			{\cellcolor{gray!25} 10} &
+			{ 15} &
+			{ 16} &
+			{ 20} &
+			{ 23} &
+			{ 23} &
+			{ 25} &
+			{ 28} &
+			{ 28} &
+			{ 28} &
+			{ 29} &
+			{ 29}\\\hline
+		\end{tabular}
+		\end{center}
+
+		\begin{center}
+		\scriptsize
+		\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+			\hline
+			{ 1} &
+			{  3} &
+			{  5} &
+			{  7} &
+			{  7} &
+			{\cellcolor{gray!25}  9} &
+			{  9} &
+			{ 10} &
+			{ 10} &
+			{ 15} &
+			{ 16} &
+			{ 20} &
+			{ 23} &
+			{ 23} &
+			{ 25} &
+			{ 28} &
+			{ 28} &
+			{ 28} &
+			{ 29} &
+			{ 29}\\\hline
+		\end{tabular}
+		\end{center}
+
+		\smallskip
+
+		Arrivé à ce stade, la zone de recherche s’est réduite à un seul élément.
+		Ce n’est pas celui qu’on recherche mais c’est à cet endroit qu’il se
+		serait trouvé~; c’est donc là qu’on pourra éventuellement l’insérer.  Le
+		paramètre de sortie prend la valeur 5.
+
+		{\sffamily\bfseries
+		Algorithme}
+		
+		\begin{pseudocode}
+			\Algo{dichotomousResearch}{
+					\\\hfill
+					\Par{myArray\In}{\Array{}{integers}}, 
+					\Par{value\In}{integer}, 
+					\Par{pos\InOut}{integer}
+					}{boolean}
+				\Decl{rightIndex, leftIndex, medianIndex}{integer}
+				\Decl{candidate}{integer}
+				\Decl{isFind}{boolean}
+				\Empty
+				\Let leftIndex \Gets 0
+				\Let rightIndex \Gets myArray.length - 1
+				\Let isFind \Gets false
+				\Empty
+				\While{NON isFind AND leftIndex {${\leq}$} rightIndex}
+					\Let medianIndex \Gets (leftIndex + rightIndex) DIV 2
+					\Let candidate \Gets myArray[medianIndex]
+					\If{candidate == value} 
+						\Let isFind \Gets vrai
+					\ElsIf{candidate < value}
+						\Let leftIndex \Gets medianIndex + 1
+						\RComment on garde la partie droite
+					\Else
+						\Let rightIndex \Gets medianIndex – 1
+						\RComment on garde la partie gauche
+					\EndIf
+				\EndWhile
+				\Empty
+				\If{isFind}
+					\Let pos \Gets medianIndex
+				\Else
+					\Let pos \Gets leftIndex
+					\RComment dans le cas où la valeur n’est pas trouvée,
+					\Empty 
+					\RComment on vérifiera que leftIndex donne la valeur 
+					où elle pourrait être insérée.
+				\EndIf
+				\Empty
+				\Return isFind
+			\EndAlgo
+		\end{pseudocode}
+
+		La traduction de l'algorithme en Java est laissé à titre d'exercice. La
+		difficulté réside dans le choix de la valeur de retour et du paramètre
+		en entrée/sortie \pc{pos}. En Java, il faudra choisir de ne pas obtenir
+		un booléen mais bien l'indice de la valeur si elle est trouvée et -1
+		sinon. Nous ne pourrons pas avoir recevoir l'indice «~à insérer~» dans
+		le cas ou la valeur ne se trouve pas dans le tableau.
+
+		\clearpage
+	% ==============================================
+	\section{Introduction à la complexité} 
+	% ==============================================
+
+		\begin{quote}
+		
+			L’algorithme de recherche dichotomique est beaucoup plus rapide que
+			l’algorithme de recherche linéaire. 
+	
+		\end{quote}
+		
+		Mais qu’est-ce que cela veut dire exactement~? \\
+		En est-on sûr~? \\
+		Comment le mesure-t-on~? \\
+		Quels critères utilise-t-on~? \\
+
+		De façon générale, comment comparer la vitesse de deux algorithmes
+		différents qui résolvent le même problème.
+		
+		\subsection{Une approche pratique~: la simulation numérique}
+		%--------------------------------------------------
+	
+			Une manière naïve de comparer la rapidité des algorithmes serait de
+			les traduire dans un langage de programmation, de les exécuter et de
+			comparer les temps d'exécution.
+
+			Cette technique pose toutefois quelques problèmes~:			
+			\begin{itemize}
+				
+				\item il faut que les programmes soient exécutés 
+					dans des environnements strictement identiques 
+					ce qui n’est pas toujours le cas ou facile à vérifier;
+				
+				\item certains environnements peuvent être favorables à un
+					algorithme par rapport à l’autre ce qui ne serait pas le cas
+					d’un autre environnement;
+					
+					Par exemple, certaines architectures
+					sont plus rapides dans les calculs entiers
+					mais moins dans les calculs flottants.
+				
+				\item le test ne porte que sur un (voir quelques uns) jeu(x) de
+					tests.  
+					
+					Comment en tirer un enseignement général~?\\
+					Que se passerait-il avec des données plus importantes~?\\
+					Avec des données différentes~?
+		
+			\end{itemize}	
+
+			En fait, un chiffre précis ne nous intéresse pas.  Ce qui est
+			vraiment intéressant, c’est de savoir comment l’algorithme va se
+			comporter avec de grandes données.  C’est ce qu’apporte l’approche
+			suivante.
+		
+		\subsection{Une approche théorique~: la complexité}
+		%--------------------------------------------------
+		
+			Le principe de cette approche est de déduire de l'algorithme le
+			nombre d’opérations de base à effectuer en fonction de la
+			\textbf{taille} du problème à résoudre et en déduire comment il va
+			se comporter sur de «~gros~» problèmes~?
+		
+			Dans le cas de la recherche dans un tableau, la taille du problème
+			est la taille du tableau dans lequel l'élément est cherché.  Nous
+			pouvons considérer que l’opération de base est la comparaison avec
+			un élément du tableau. 
+			
+			La question est alors la suivante~: pour un tableau de taille $n$,
+			à combien de comparaisons faut-il procéder pour trouver l’élément
+			(ou se rendre compte de son absence)~?
+		
+			{\bfseries
+			Pour la recherche linéaire}
+		
+				Cela dépend évidemment de la position de la valeur à trouver. 
+				Dans le meilleur des cas c’est 1, 
+				dans le pire c’est $n$ mais on peut dire, 
+				qu’en moyenne, 
+				cela entraine «~$n/2$~» comparaisons 
+				(que ce soit pour la trouver ou se rendre compte de son absence).
+		
+			{\bfseries
+			Pour la recherche dichotomique}
+		
+				Ici, la zone de recherche est divisée par 2, à chaque étape. 
+				Imaginons une liste de 64 éléments~: 
+				après 6 étapes, on arrive à un élément isolé. 
+				Pour une liste de taille $n$, 
+				on peut en déduire que le nombre de comparaisons 
+				est au maximum l’exposant qu’il faut donner à 2 pour obtenir $n$, 
+				soit «~$\log_2(n)$~».
+		
+			{\sffamily\bfseries\upshape
+			Comparaisons}
+		
+			Voici un tableau comparatif du nombre de comparaisons en fonction de
+			la taille $n$
+		
+			\begin{center}
+				\small
+				\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			\rowcolor{black!40}
+			$n$ & 10 & 100 & 1000 & 10.000 & 100.000 & 1 million \\
+			\hline
+			recherche linéaire & 5 & 50 & 500 & 5.000 & 50.000 & 500.000 \\
+			\hline
+			recherche dichotomique & 4 & 7 & 10 & 14 & 17 & 20 \\
+			\hline
+			\end{tabular}
+			\end{center}
+			
+			Nous pouvons voir que c’est surtout pour des grands problèmes que la
+			recherche dichotomique montre toute son efficacité.  Et nous voyons
+			aussi que l'important pour mesurer la complexité est l’ordre de
+			grandeur du nombre de comparaisons. 
+		
+			Nous dirons que la recherche simple est un algorithme de complexité
+			linéaire (c’est-à-dire que le nombre d’opérations est de l’ordre de
+			$n$ ou proportionnel à $n$ ou encore que doubler la taille du
+			problème fait doubler aussi le temps de calcul). Ceci se note en
+			langage plus mathématique~: \textbf{$O(n)$} (prononcé «~grand $O$ de
+			$n$~»). 
+			
+			Pour la recherche dichotomique, la complexité est logarithmique.
+			Elle se note \\$O(\log_2(n))$ ce qui veut dire que doubler la taille
+			du problème augmente d'une seule itération la boucle. C'est un
+			fameux gain. 
+			
+			Comparons les complexités les plus courantes.
+			\begin{center}
+			\small
+			\begin{tabular}{|c|l|l|l|l|l|l|l|}
+			\hline
+			\rowcolor{black!40}
+			$n$ & 10 & 100 & 1000 & $10^4$ & $10^5$ & $10^6$ & $10^9$ \\
+			\hline
+			$O(1)$ & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+			\hline
+			$O(\log_2(n))$ & 4 & 7 & 10 & 14 & 17 & 20 & 30\\
+			\hline
+			$O(n)$ & 10 & 100 & 1000 & $10^4$ & $10^5$ & $10^6$ & $10^9$ \\
+			\hline
+			$O(n^2)$ & 100 & $10^4$ & $10^6$ & $10^8$ & $10^10$ & $10^{12}$ & $10^{18}$ \\
+			\hline
+			$O(n^3)$ & 1000 & $10^6$ & $10^9$ & $10^{12}$ & $10^{15}$ & $10^{18}$ & $10^{27}$ \\
+			\hline
+			$O(2^n)$ & 1024 & $10^{30}$ & $10^{301}$ & $10^{3010}$ & $10^{30102}$ 
+			& $10^{301029}$ & {\tiny $10^{301029995}$} \\
+			\hline
+			\end{tabular}
+			\end{center}
+		
+			Nous pouvons en conclure que si trouver un algorithme qui résout un
+			algorithme est sans doute bien, trouver un algorithme qui a une
+			complexité exponentielle ne sert à rien en pratique. 
+
+			Par exemple un algorithme de recherche de complexité exponentielle,
+			exécuté sur une machine pouvant effectuer un milliard de
+			comparaisons par secondes, prendrait plus de dix mille milliards
+			d’années pour trouver une valeur dans un tableau de 100 éléments.
