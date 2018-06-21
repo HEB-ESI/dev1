@@ -9,6 +9,7 @@
 \usepackage{style-esi/exercice}
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
+\usepackage{booktabs}
 
 \date{2018 -- 2019}
 \siglecours{DEV1}
@@ -136,15 +137,17 @@
 
 	Pour construire une condition on utilisera les opérateurs de comparaison sur les entiers et sur les réels:
 	
-	\begin{itemize}
-		\item plus petit: \texttt{<}
-		\item plus petit ou égal: \texttt{<=}
-		\item plus grand: \texttt{>}
-		\item plus grand ou égal: \texttt{>=}
-		\item  égal: \texttt{==}
-		\item  différent: \texttt{!=}
-	\end{itemize} 
-
+        \begin{center}
+	\begin{tabular}{lll}\toprule
+          signification            & symbole  & exemple\\ \midrule
+		plus petit         & <        & \code{java}{a < 10}\\
+		plus petit ou égal & <=       & \code{java}{a <= 10} \\
+		plus grand         & >        & \code{java}{a > 18} \\
+		plus grand ou égal & >=       & \code{java}{a >= 21} \\
+		 égal              & ==       & \code{java}{a == 4}\\
+		 différent         & !=       & \code{java}{a != 42}\\ \bottomrule
+	\end{tabular} 
+      \end{center}
 	Et on combinera des conditions avec les \emph{opérateurs booléens}~:
 	\begin{itemize}
 		\item Le \emph{ET} logique s'écrit \texttt{\&\&}.
