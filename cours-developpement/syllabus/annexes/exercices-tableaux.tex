@@ -1,0 +1,207 @@
+%======================
+%\chapter{Exercices sur les tableaux}
+%======================
+
+	Voici quelques exercices
+	qui reprennent les différentes notions vues sur les tableaux.
+	Pour chacun d’entre-eux~:
+	\begin{itemize}
+	\item
+		demandez-vous quel est le problème le plus proche déjà
+		rencontré et voyez comment adapter la solution~;
+	\item
+		indiquez la complexité de votre solution~;
+	\item
+		décomposez votre solution en plusieurs algorithmes 
+		si ça peut améliorer la lisibilité~;
+	\item
+		testez votre solution dans le cas général
+		et dans les éventuels cas particuliers.
+	\end{itemize}
+	
+	\begin{Exercice}{Renverser un tableau}
+		\marginicon{java}
+		Écrire un algorithme qui reçoit en paramètre 
+		le tableau \lda{tabCar} de $n$ caractères, 
+		et qui «~renverse~» ce tableau, 
+		c’est-à-dire qui permute le premier élément avec le dernier, 
+		le deuxième élément avec l’avant-dernier et ainsi de suite.
+	\end{Exercice}
+	
+	\begin{Exercice}{Tableau symétrique~?}
+		Écrire un algorithme qui reçoit en paramètre 
+		le tableau \lda{tabChaines} de $n$ chaines 
+		et qui vérifie si ce tableau est symétrique, 
+		c’est-à-dire si le premier élément est identique au dernier, 
+		le deuxième à l’avant-dernier et ainsi de suite.
+	\end{Exercice}
+		
+	\begin{Exercice}{Maximum}
+		\marginicon{java}
+		Écrire un algorithme qui reçoit en paramètre le tableau
+		\lda{tabEnt} de $n$ entiers et qui
+		retourne la plus \textbf{grande} valeur de ce tableau.
+	\end{Exercice}
+		
+	\begin{Exercice}{Minimum}
+		\marginicon{java}
+		Écrire un algorithme qui reçoit en paramètre le tableau
+		\lda{tabEnt} de $n$ entiers et qui
+		retourne la plus \textbf{petite} valeur de ce tableau. Idem pour le minimum.
+	\end{Exercice}
+	
+	\begin{Exercice}{Indice du maximum/minimum}
+		\label{ex:indiceminmax}
+		\marginicon{java}
+		Écrire un algorithme qui reçoit en paramètre 
+		le tableau \lda{tabEnt} de $n$ entiers 
+		et qui retourne l’indice de l’élément contenant 
+		la plus grande valeur de ce tableau. 
+		En cas d’ex-æquo, c’est l’indice le plus petit qui sera renvoyé.
+		
+		Que faut-il changer pour renvoyer l’indice le plus grand~?
+		Et pour retourner l’indice du minimum~? 
+		Réécrire l’algorithme de l’exercice précédent en utilisant celui-ci.
+	\end{Exercice}
+		
+	\begin{Exercice}{Tableau ordonné~?}
+		\marginicon{java}
+		Écrire un algorithme qui reçoit en paramètre 
+		le tableau \lda{valeurs} de $n$ entiers 
+		et qui vérifie si ce tableau est ordonné 
+		(strictement) croissant sur les valeurs. 
+		L’algorithme retournera \lda{vrai} si le tableau est ordonné,
+		\lda{faux} sinon.
+	\end{Exercice}
+	
+	\begin{Exercice}{Remplir un tableau}
+		On souhaite remplir un tableau de 20 éléments avec
+		les entiers de 1 à 5, chaque nombre étant répété quatre fois.
+		On voudrait deux variantes :
+		\begin{enumerate}[label=\alph*)]
+		\item
+			D'abord une version
+			où les nombres identiques sont groupés :
+			d'abord tous les 1 puis tous les 2, \dots
+			
+			\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{0.20cm}|}}
+			\hline
+			1 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 3 & 3 & 3 & 3 & 4 & 4 & 4 & 4 & 5 & 5 & 5 & 5\\
+			\hline
+			\end{tabular}
+		\item
+			Ensuite une version où on trouve dans le tableau
+			les valeurs 1, 2, 3, 4, 5 qui se suivent, quatre fois.
+			
+			\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{0.20cm}|}}
+			\hline
+			1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 & 5 \\
+			\hline
+			\end{tabular}
+		\end{enumerate}
+		\smallskip
+		\textbf{Remarque} : 
+		Il existe de nombreuses façons de résoudre ce problème.
+		On peut par exemple utiliser deux boucles imbriquées.
+		On peut aussi adapter un algorithme de génération de suites.
+	\end{Exercice}
+	
+	\begin{Exercice}{Positions du minimum}
+		\marginicon{java}
+		Écrire un algorithme qui reçoit en paramètre le tableau
+		\lda{cotes} de $n$ entiers et qui
+		affiche le ou les indice(s) des éléments 
+		contenant la valeur minimale du tableau.
+	
+		\begin{enumerate}[label=\alph*)]
+		\item 
+			Écrire une première version «~classique~» avec deux parcours de tableau
+		\item
+			Écrire une deuxième version qui ne parcourt qu’une seule fois 
+			\lda{cotes} en
+			stockant dans un deuxième tableau (de quelle taille~?)
+			les indices du plus petit élément
+			rencontrés (ce tableau étant à chaque fois réinitialisé lorsqu’un
+			nouveau minimum est rencontré)
+		\item
+			Écrire une troisième version qui \textbf{retourne} 
+			le tableau contenant les indices.
+			Écrire également un algorithme 
+			qui appelle cette version puis affiche les indices reçus. 
+		\end{enumerate}
+	\end{Exercice}
+	
+	\begin{Exercice}{Occurrence des chiffres}
+		\marginicon{java}
+		Écrire un algorithme qui reçoit 
+		un nombre entier positif ou nul en paramètre
+		et qui retourne un tableau de 10 entiers
+		indiquant, pour chacun de ses chiffres, 
+		le nombre de fois qu’il apparait dans ce nombre. 
+		Ainsi, pour le nombre 10502851125, on retournera
+		le tableau \{2,3,2,0,0,3,0,0,1,0\}.
+	\end{Exercice}
+	
+	\begin{Exercice}{Les doublons}
+		\marginicon{java}
+		Écrire un algorithme qui vérifie 
+		si un tableau de chaines
+		contient au moins 2 éléments égaux.
+	\end{Exercice}	
+	\bigskip
+	
+	\begin{Exercice}{Le crible d’Ératosthène}
+		\begin{quote}
+			\og{} Le crible d’Ératosthène est un procédé 
+			qui permet de trouver tous les nombres premiers inférieurs 
+			à un certain entier naturel donné N.
+			L’algorithme procède par élimination~: 
+			il s’agit de supprimer d’une table des entiers de 2 à N 
+			tous les multiples d’un entier. 
+			En supprimant tous les multiples, 
+			à la fin il ne restera que les entiers qui ne sont multiples d’aucun entier, 
+			et qui sont donc les nombres premiers.
+			On commence par rayer les multiples de 2, 
+			puis à chaque fois on raye les multiples du plus petit entier restant.
+			On peut s’arrêter lorsque le carré du plus petit entier restant 
+			est supérieur au plus grand entier restant, car dans ce cas, 
+			tous les non-premiers ont déjà été rayés précédemment.\fg{}
+			(source~: Wikipédia)
+		\end{quote}
+		Le tableau dont il est question peut être un simple tableau
+		de booléens; le booléen en position "i" indiquant 
+		si le nombre "i" est premier ou pas.
+
+		Écrire un algorithme qui reçoit un entier $n$
+		et affiche tous les entiers premiers de $1$ à $n$.
+	\end{Exercice}
+	
+	\begin{Exercice}{Mastermind}
+		\marginicon{java}
+		Dans le jeu du Mastermind, 
+		un joueur A doit trouver une combinaison de $n$ pions de couleur, 
+		choisie et tenue secrète par un autre joueur B. 
+		Cette combinaison peut contenir éventuellement des pions de même couleur. 
+		À chaque proposition du joueur A, 
+		le joueur B indique le nombre de pions de la proposition 
+		qui sont corrects et bien placés 
+		et le nombre de pions corrects mais mal placés. 
+		
+		Les propositions du joueur A, 
+		ainsi que la combinaison secrète du joueur B
+		sont contenues dans des tableaux de $n$ composantes de type chaine.
+		
+		Écrire l’algorithme suivant qui renvoie dans les variables
+		\lda{bienPlacés} et \lda{malPlacés}
+		respectivement le nombre de pions bien placés et mal placés 
+		dans la «~proposition~» du joueur A en la comparant 
+		à la «~solution~» cachée du joueur B.
+	
+		\begin{LDA}
+		\Entete{testerProposition}{
+			\Par{proposition\In, solution\In}{\Array{n}{chaines}}, 
+			\\\hfill 
+			\Par{bienPlacés\Out, malPlacés\Out}{entiers}}{}
+		\end{LDA}
+	\end{Exercice}
+	

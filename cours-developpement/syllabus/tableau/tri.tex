@@ -1,0 +1,994 @@
+%===============
+\chapter{Algorithmes de tris}\index{tri}
+%===============
+
+	Dans ce chapitre nous voyons quelques algorithmes simples pour trier un
+	ensemble d’informations~: recherche des maxima, tri par insertion et tri
+	bulle dans un tableau.  Des algorithmes plus efficaces seront vus en
+	deuxième année.
+
+	\minitoc
+
+%===================
+\section{Motivation}
+%===================
+
+	Dans le chapitre précédent, nous avons vu que la recherche d’information est
+	beaucoup plus rapide dans un tableau trié grâce à l’algorithme de recherche
+	dichotomique.  Nous avons vu comment \textbf{garder} un ensemble trié en
+	insérant toute nouvelle valeur au \emph{bon} endroit.
+
+	Dans certaines situations, nous serons amené à devoir trier toute une
+	collection de valeurs. Par exemple un tableau.
+
+	\begin{enumerate}
+	
+		\item 
+			D’abord les situations impliquant le classement total d’un ensemble de
+			données «~brutes~», c’est-à-dire complètement désordonnées. 
+			
+			Prenons pour exemple les feuilles récoltées en vrac à l’issue d’un
+			examen~; il y a peu de chances que celles-ci soient remises
+			à l’examinateur de manière ordonnée~; celui-ci devra donc procéder
+			au tri de l’ensemble des copies, par exemple par ordre alphabétique
+			des noms des étudiants ou des étudiantes, ou par numéro de groupe, etc.
+	
+		\item 
+			Enfin, les situations qui consistent à devoir retrier des données
+			préalablement ordonnées sur un autre critère. 
+			
+			Prenons l’exemple d’un paquet de copies d’examen déjà triées sur
+			l’ordre alphabétique des noms des étudiants et des étudiantes, et
+			qu’il faut retrier cette fois-ci sur les numéros de groupe. Il est
+			clair qu’une méthode efficace veillera à conserver l’ordre
+			alphabétique déjà présent dans la première situation afin que les
+			copies apparaissent dans cet ordre dans chacun des groupes.
+
+	\end{enumerate}
+	
+	Le dernier cas illustre un classement sur une \textbf{clé complexe}
+	(ou \textbf{composée}) impliquant la comparaison de plusieurs champs
+	d’une même structure~: le premier classement se fait sur le numéro de
+	groupe, et à numéro de groupe égal, l’ordre se départage sur le nom de
+	la personne. Nous dirons de cet ensemble qu’il est classé en \textbf{majeur}
+	sur le numéro de groupe et en \textbf{mineur} sur le nom d’étudiant.
+	\index{majeur}\index{mineur}
+
+	Notons que certains tris sont dits \textbf{stables} parce qu’en cas de tri
+	sur une nouvelle clé, l’ordre de la clé précédente est préservé pour des
+	valeurs identiques de la nouvelle clé, ce qui évite de faire des
+	comparaisons sur les deux champs à la fois. Les méthodes nommées \textbf{tri
+	par insertion}, \textbf{tri bulle} et \textbf{tri par recherche de minima
+	successifs} (que nous allons aborder dans ce chapitre) sont stables.
+
+	Certains tris sont évidemment plus performants que d’autres. Le choix d’un
+	tri particulier dépend de la taille de l’ensemble à trier et de la manière
+	dont il se présente, c’est-à-dire déjà plus ou moins ordonné.  La
+	performance quant à elle se juge sur deux critères~: 
+	\begin{itemize}
+		\item le nombre de tests effectués (comparaisons de valeurs) et;
+		\item le nombre de transferts de valeurs réalisés. 
+	\end{itemize}
+	
+	
+	Les algorithmes classiques de tri présentés dans ce chapitre le sont surtout
+	à titre pédagogique. Ils ont tous une «~complexité en $n^2$~», ce qui veut
+	dire que si $n$ est le nombre d’éléments à trier, le nombre d’opérations
+	élémentaires (tests et transferts de valeurs) est proportionnel à $n^2$. Ils
+	conviennent donc pour des ensembles de taille «~raisonnable~», mais peuvent
+	devenir extrêmement lents à l’exécution pour le tri de grands ensembles,
+	comme par exemple les données de l’annuaire téléphonique. Plusieurs
+	solutions existent, comme la méthode de tri \textbf{Quicksort}. Cet
+	algorithme très efficace faisant appel à la récursivité et qui sera étudié
+	en deuxième année a une complexité en $n \log(n)$. 
+
+	\marginicon{attention} 
+	
+	Dans ce chapitre, les algorithmes traiteront du tri dans un \textbf{tableau
+	d’entiers à une dimension}. Toute autre situation peut bien entendu se
+	ramener à celle-ci moyennant la définition de la relation d’ordre propre au
+	type de données utilisé. Ce sera par exemple l’ordre alphabétique pour les
+	chaines de caractères, l’ordre chronologique pour des objets \pc{Date} ou
+	\pc{Moment} (que nous verrons plus tard), etc. De plus, le seul ordre
+	envisagé sera l’ordre \textbf{croissant} des données. Plus loin, nous
+	envisagerons le tri d’autres structures de données.
+
+	Enfin, dans toutes les méthodes de tri abordées, nous supposerons la taille
+	physique du tableau à trier égale à sa taille logique, celle-ci n’étant pas
+	modifiée par l’action de tri. Nous supposons trier tout le tableau. 
+
+
+
+%==========================
+\clearpage
+\section{Tri par insertion}
+%===========================
+
+	Cette méthode de tri repose sur le principe d’insertion de valeurs dans
+	un tableau ordonné. 
+
+	\paragraph{Description de l’algorithme.}
+	
+	Le tableau à trier sera à chaque étape subdivisé en deux sous-tableaux~:
+	le premier cadré à gauche contiendra des éléments déjà ordonnés, et le
+	second, cadré à droite, ceux qu’il reste à insérer dans le sous-tableau
+	trié. Celui-ci verra sa taille s’accroitre au fur et à mesure des
+	insertions, tandis que celle du sous-tableau des éléments non triés
+	diminuera progressivement.
+
+	Au départ de l’algorithme, le sous-tableau trié est le premier élément
+	du tableau. Comme il ne possède qu’un seul élément, ce sous-tableau est
+	donc bien ordonné~! Chaque étape consiste ensuite à prendre le premier
+	élément du sous-tableau non trié et à l’insérer à la bonne place dans
+	le sous-tableau trié.
+
+	Prenons comme exemple un tableau \pc{tab} de 20 entiers. 	
+	Au départ, le sous-tableau trié est formé du premier élément, 
+	\pc{tab[0]}, qui vaut 20~:
+
+	\begin{center}
+	\scriptsize
+	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{\scriptsize 0} &
+		 \textcolor{gray}{\scriptsize 1} &
+		 \textcolor{gray}{\scriptsize 2} &
+		 \textcolor{gray}{\scriptsize 3} &
+		 \textcolor{gray}{\scriptsize 4} &
+		 \textcolor{gray}{\scriptsize 5} &
+		 \textcolor{gray}{\scriptsize 6} &
+		 \textcolor{gray}{\scriptsize 7} &
+		 \textcolor{gray}{\scriptsize 8} &
+		 \textcolor{gray}{\scriptsize 9} &
+		 \textcolor{gray}{\scriptsize 10} &
+		 \textcolor{gray}{\scriptsize 11} &
+		 \textcolor{gray}{\scriptsize 12} &
+		 \textcolor{gray}{\scriptsize 13} &
+		 \textcolor{gray}{\scriptsize 14} &
+		 \textcolor{gray}{\scriptsize 15} &
+		 \textcolor{gray}{\scriptsize 16} &
+		 \textcolor{gray}{\scriptsize 17} &
+		 \textcolor{gray}{\scriptsize 18} &
+		 \textcolor{gray}{\scriptsize 19}
+		 \\
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+		\hline
+		{\cellcolor{gray!25}20} &
+		{ 12} &
+		{ 18} &
+		{ 17} &
+		{ 15} &
+		{ 14} &
+		{ 15} &
+		{ 16} &
+		{ 18} &
+		{ 17} &
+		{ 12} &
+		{ 14} &
+		{ 16} &
+		{ 18} &
+		{ 15} &
+		{ 15} &
+		{ 19} &
+		{ 11} &
+		{ 11} &
+		{ 13}\\\hline
+	\end{tabular}
+	\end{center}
+
+	\medskip
+	
+	L’étape suivante consiste à insérer \pc{tab[1]}, qui vaut 12, dans ce
+	sous-tableau de taille~2~:
+
+	\begin{center}
+	\scriptsize
+	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{\scriptsize 0} &
+		 \textcolor{gray}{\scriptsize 1} &
+		 \textcolor{gray}{\scriptsize 2} &
+		 \textcolor{gray}{\scriptsize 3} &
+		 \textcolor{gray}{\scriptsize 4} &
+		 \textcolor{gray}{\scriptsize 5} &
+		 \textcolor{gray}{\scriptsize 6} &
+		 \textcolor{gray}{\scriptsize 7} &
+		 \textcolor{gray}{\scriptsize 8} &
+		 \textcolor{gray}{\scriptsize 9} &
+		 \textcolor{gray}{\scriptsize 10} &
+		 \textcolor{gray}{\scriptsize 11} &
+		 \textcolor{gray}{\scriptsize 12} &
+		 \textcolor{gray}{\scriptsize 13} &
+		 \textcolor{gray}{\scriptsize 14} &
+		 \textcolor{gray}{\scriptsize 15} &
+		 \textcolor{gray}{\scriptsize 16} &
+		 \textcolor{gray}{\scriptsize 17} &
+		 \textcolor{gray}{\scriptsize 18} &
+		 \textcolor{gray}{\scriptsize 19}
+		 \\
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+		\hline
+		{\cellcolor{gray!25}12} &
+		{\cellcolor{gray!25}20} &
+		{18} &
+		{ 17} &
+		{ 15} &
+		{ 14} &
+		{ 15} &
+		{ 16} &
+		{ 18} &
+		{ 17} &
+		{ 12} &
+		{ 14} &
+		{ 16} &
+		{ 18} &
+		{ 15} &
+		{ 15} &
+		{ 19} &
+		{ 11} &
+		{ 11} &
+		{ 13}\\\hline
+	\end{tabular}
+	\end{center}
+
+	\medskip
+
+	Ensuite, c’est au tour de \pc{tab[2]}, qui vaut 18, d’être inséré~:
+
+	\begin{center}
+	\scriptsize
+	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{\scriptsize 0} &
+		 \textcolor{gray}{\scriptsize 1} &
+		 \textcolor{gray}{\scriptsize 2} &
+		 \textcolor{gray}{\scriptsize 3} &
+		 \textcolor{gray}{\scriptsize 4} &
+		 \textcolor{gray}{\scriptsize 5} &
+		 \textcolor{gray}{\scriptsize 6} &
+		 \textcolor{gray}{\scriptsize 7} &
+		 \textcolor{gray}{\scriptsize 8} &
+		 \textcolor{gray}{\scriptsize 9} &
+		 \textcolor{gray}{\scriptsize 10} &
+		 \textcolor{gray}{\scriptsize 11} &
+		 \textcolor{gray}{\scriptsize 12} &
+		 \textcolor{gray}{\scriptsize 13} &
+		 \textcolor{gray}{\scriptsize 14} &
+		 \textcolor{gray}{\scriptsize 15} &
+		 \textcolor{gray}{\scriptsize 16} &
+		 \textcolor{gray}{\scriptsize 17} &
+		 \textcolor{gray}{\scriptsize 18} &
+		 \textcolor{gray}{\scriptsize 19}
+		 \\
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+		\hline
+		{\cellcolor{gray!25}12} &
+		{\cellcolor{gray!25}18} &
+		{\cellcolor{gray!25}20} &
+		{ 17} &
+		{ 15} &
+		{ 14} &
+		{ 15} &
+		{ 16} &
+		{ 18} &
+		{ 17} &
+		{ 12} &
+		{ 14} &
+		{ 16} &
+		{ 18} &
+		{ 15} &
+		{ 15} &
+		{ 19} &
+		{ 11} &
+		{ 11} &
+		{ 13}\\\hline
+	\end{tabular}
+	\end{center}
+	
+	\medskip
+
+	Et ainsi de suite jusqu’à insertion du dernier élément dans le
+	sous-tableau trié. 
+
+	\paragraph{Algorithme.}
+
+	L'algorithme combine combine la recherche de la position d’insertion et le
+	décalage concomitant de valeurs.
+
+	\begin{pseudocode}
+		\LComment Trie le tableau reçu en paramètre (via un tri par insertion).
+		\Algo{insertionSort}{\Par{myArray\InOut}{\Array{n}{integers}}}{}
+			\Decl{i, j, value}{integers}
+			\For{i}{1}{n-1}
+				\Let value \Gets myArray[i]
+				\LComment recherche de l’endroit où insérer value dans le 
+				\LComment sous-tableau trié et décalage simultané des éléments
+				\Let j \Gets i - 1
+				\While{j ${\geq}$ 0 ET value < myArray[j]}
+					\Let myArray[j+1] \Gets myArray[j]
+					\Let j \Gets j – 1
+				\EndWhile
+				\Let myArray[j+1] \Gets value
+			\EndFor
+		\EndAlgo
+	\end{pseudocode}
+
+	L'algorithme se traduit en Java sans aucune difficulté. 
+
+	\begin{java}
+/**
+ * Tri par insertion. 
+ *
+ * @param myArray tableau à trier
+ */
+public static insertionSort(int[] myArray){
+	int j, value;
+	for (int i = 1; i < myArray.length; i = i + 1){
+		value = myArray[i];
+		j = i - 1;
+		while (j >= 0 && value < myArray[j]){
+			myArray[j + 1] = myArray[j];
+			j = j - 1;
+		}
+		myArray[j + 1] = value;
+	}
+}
+	\end{java}
+
+%================================================
+\clearpage
+\section{Tri par sélection des minima successifs}
+%=================================================
+	
+	Dans ce tri, l'algorithme recherche à chaque étape la plus petite valeur de
+	l’ensemble non encore trié et la place immédiatement à sa position
+	définitive.
+
+	\paragraph{Description de l’algorithme.}
+
+	Prenons par exemple un tableau de 20 entiers. 
+	
+	La première étape consiste à rechercher la valeur minimale du tableau. Il
+	s’agit de l’élément d’indice 9 et de valeur 17.
+	
+	\begin{center}
+		\scriptsize
+	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{\scriptsize 0} &
+		 \textcolor{gray}{\scriptsize 1} &
+		 \textcolor{gray}{\scriptsize 2} &
+		 \textcolor{gray}{\scriptsize 3} &
+		 \textcolor{gray}{\scriptsize 4} &
+		 \textcolor{gray}{\scriptsize 5} &
+		 \textcolor{gray}{\scriptsize 6} &
+		 \textcolor{gray}{\scriptsize 7} &
+		 \textcolor{gray}{\scriptsize 8} &
+		 \textcolor{gray}{\scriptsize 9} &
+		 \textcolor{gray}{\scriptsize 10} &
+		 \textcolor{gray}{\scriptsize 11} &
+		 \textcolor{gray}{\scriptsize 12} &
+		 \textcolor{gray}{\scriptsize 13} &
+		 \textcolor{gray}{\scriptsize 14} &
+		 \textcolor{gray}{\scriptsize 15} &
+		 \textcolor{gray}{\scriptsize 16} &
+		 \textcolor{gray}{\scriptsize 17} &
+		 \textcolor{gray}{\scriptsize 18} &
+		 \textcolor{gray}{\scriptsize 19}
+		 \\
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+		\hline
+		{20} &
+		{ 52} &
+		{ 61} &
+		{ 47} &
+		{ 82} &
+		{ 64} &
+		{ 95} &
+		{ 66} &
+		{ 84} &
+		{\cellcolor{gray!25}17} &
+		{ 32} &
+		{ 24} &
+		{ 46} &
+		{ 48} &
+		{ 75} &
+		{ 55} &
+		{ 19} &
+		{ 61} &
+		{ 21} &
+		{ 30}\\\hline
+	\end{tabular}
+	\end{center}
+
+	\bigskip
+	Celui-ci devrait donc apparaitre en 1\iere{} position du tableau.  Or cette
+	position est occupée par la valeur 20.  Comment procéder dès lors pour ne
+	perdre aucune valeur et sans faire appel à un second tableau~?  La solution
+	est simple, il suffit d’échanger le contenu des deux éléments d’indices 0 et
+	9~:
+	
+	\begin{center}
+		\scriptsize 
+	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{\scriptsize 0} &
+		 \textcolor{gray}{\scriptsize 1} &
+		 \textcolor{gray}{\scriptsize 2} &
+		 \textcolor{gray}{\scriptsize 3} &
+		 \textcolor{gray}{\scriptsize 4} &
+		 \textcolor{gray}{\scriptsize 5} &
+		 \textcolor{gray}{\scriptsize 6} &
+		 \textcolor{gray}{\scriptsize 7} &
+		 \textcolor{gray}{\scriptsize 8} &
+		 \textcolor{gray}{\scriptsize 9} &
+		 \textcolor{gray}{\scriptsize 10} &
+		 \textcolor{gray}{\scriptsize 11} &
+		 \textcolor{gray}{\scriptsize 12} &
+		 \textcolor{gray}{\scriptsize 13} &
+		 \textcolor{gray}{\scriptsize 14} &
+		 \textcolor{gray}{\scriptsize 15} &
+		 \textcolor{gray}{\scriptsize 16} &
+		 \textcolor{gray}{\scriptsize 17} &
+		 \textcolor{gray}{\scriptsize 18} &
+		 \textcolor{gray}{\scriptsize 19}
+		 \\
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+		\hline
+		{\cellcolor{gray!25}17} &
+		{ 52} &
+		{ 61} &
+		{ 47} &
+		{ 82} &
+		{ 64} &
+		{ 95} &
+		{ 66} &
+		{ 84} &
+		{ 20} &
+		{ 32} &
+		{ 24} &
+		{ 46} &
+		{ 48} &
+		{ 75} &
+		{ 55} &
+		{ 19} &
+		{ 61} &
+		{ 21} &
+		{ 30}\\\hline
+	\end{tabular}
+	\end{center}
+
+	\bigskip 
+	Le tableau se subdivise à présent en deux sous-tableaux, 
+	un sous-tableau déjà trié 
+	(pour le moment réduit au seul élément $tab[0]$) 
+	et le sous-tableau des autres valeurs non encore triées 
+	(de l’indice 1 à 19).
+	On recommence ce processus dans ce second sous-tableau~: 
+	le minimum est à présent l’élément d’indice 16 et de valeur 19.
+	Celui-ci viendra donc en 2\ieme{} position, 
+	échangeant sa place avec la valeur 52 qui s’y trouvait~:
+
+	\bigskip
+	\begin{center}
+	\scriptsize 
+	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{1pt}}}
+		 \textcolor{gray}{\scriptsize 0} &
+		 \textcolor{gray}{\scriptsize 1} &
+		 \textcolor{gray}{\scriptsize 2} &
+		 \textcolor{gray}{\scriptsize 3} &
+		 \textcolor{gray}{\scriptsize 4} &
+		 \textcolor{gray}{\scriptsize 5} &
+		 \textcolor{gray}{\scriptsize 6} &
+		 \textcolor{gray}{\scriptsize 7} &
+		 \textcolor{gray}{\scriptsize 8} &
+		 \textcolor{gray}{\scriptsize 9} &
+		 \textcolor{gray}{\scriptsize 10} &
+		 \textcolor{gray}{\scriptsize 11} &
+		 \textcolor{gray}{\scriptsize 12} &
+		 \textcolor{gray}{\scriptsize 13} &
+		 \textcolor{gray}{\scriptsize 14} &
+		 \textcolor{gray}{\scriptsize 15} &
+		 \textcolor{gray}{\scriptsize 16} &
+		 \textcolor{gray}{\scriptsize 17} &
+		 \textcolor{gray}{\scriptsize 18} &
+		 \textcolor{gray}{\scriptsize 19}
+		 \\
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{1pt}|}}
+		\hline
+		{\cellcolor{gray!25}17} &
+		{\cellcolor{gray!25}19} &
+		{ 61} &
+		{ 47} &
+		{ 82} &
+		{ 64} &
+		{ 95} &
+		{ 66} &
+		{ 84} &
+		{ 20} &
+		{ 32} &
+		{ 24} &
+		{ 46} &
+		{ 48} &
+		{ 75} &
+		{ 55} &
+		{ 52} &
+		{ 61} &
+		{ 21} &
+		{ 30}\\\hline
+	\end{tabular}
+	\end{center}
+
+	Le sous-tableau trié est maintenant formé des deux premiers éléments, et le
+	sous-tableau non trié par les 18 éléments suivants. 
+	
+	Et ainsi de suite, jusqu’à obtenir un sous-tableau trié comprenant tout le
+	tableau.  En pratique l’arrêt se fait une étape avant car lorsque le
+	sous-tableau non trié n’est plus que de taille 1, il contient nécessairement
+	le maximum de l’ensemble.
+
+	\paragraph{Algorithme.}
+	
+	\begin{pseudocode}
+		\LComment Trie le tableau reçu en paramètre 
+		(via un tri par sélection des minima successifs).
+		\Algo{selectionSort}{\Par{myArray\InOut}{\Array{}{integers}}}{}
+			\Decl{i, minIndex}{integer}
+			\For{i}{0}{myArray.length – 2}
+			\RComment i correspond à l’étape 
+			\RComment de l’algorithme
+				\Let minIndex \Gets searchMinIndex( myArray, i, 
+					myArray.length - 1 )
+				\Stmt swap( myArray[i], myArray[minIndex] )
+			\EndFor
+		\EndAlgo
+
+		\Empty
+		\LComment Retourne l’indice du minimum entre les indices début 
+		et fin du tableau reçu.
+		\Algo{searchMinIndex}{
+			\Par{myArray\In}{\Array{}{integers}}, 
+			\\\hfill\Par{début\In, fin\In}{integers}}{integer}
+			\Decl{minIndex, i}{integers}
+			\Let minIndex \Gets début
+			\For{i}{début+1}{fin}
+				\If{myArray[i] < myArray[minIndex]}
+					\Let minIndex \Gets i
+				\EndIf
+			\EndFor
+			\Return minIndex
+		\EndAlgo
+
+		\Empty
+		\LComment {Échange le contenu de 2 variables.}
+		\Algo{swap}{\Par{a\InOut, b\InOut}{integers}}{}
+			\Decl{aux}{integer}
+			\Let aux \Gets a
+			\Let a \Gets b
+			\Let b \Gets aux
+		\EndAlgo
+	\end{pseudocode}
+
+	Les deux premiers algorithmes se traduisent sans difficulté en Java. Le
+	troisième ne peut pas se traduire en l'état. Il faudra soit échanger les
+	valeurs dans la méthode \pc{selectionSort}, soit écrire une méthode
+	\pc{swap} recevant en paramètre, un tableau et deux indices. 
+
+	\clearpage
+%==================
+\section{Tri bulle}
+%===================
+	
+	Il s’agit d’un tri par \textbf{permutations} 
+	ayant pour but d’amener à chaque étape à la «~surface~» 
+	du sous-tableau non trié 
+	(on entend par là l’élément d’indice minimum) 
+	la valeur la plus petite, 
+	appelée la \textbf{bulle}. 
+	La caractéristique de cette méthode est que les
+	comparaisons ne se font qu’entre éléments consécutifs du tableau.
+
+	\paragraph{Description de l’algorithme}
+
+	Prenons pour exemple un tableau de taille 14. En partant de la fin du
+	tableau, on le parcourt vers la gauche en comparant chaque couple de
+	valeurs consécutives. Quand deux valeurs sont dans le désordre, on les
+	permute. Le premier parcours s’achève lorsqu’on arrive à l’élément
+	d’indice 0 qui contient alors la «~bulle~»,
+	c’est-à-dire la plus petite valeur du tableau, soit 1 dans l'exemple~:
+
+	\begin{center}
+	\begin{tabular}{*{14}{>{\centering\sffamily\itshape\arraybackslash}m{0.25cm}}}
+		 \textcolor{gray}{\scriptsize 0} &
+		 \textcolor{gray}{\scriptsize 1} &
+		 \textcolor{gray}{\scriptsize 2} &
+		 \textcolor{gray}{\scriptsize 3} &
+		 \textcolor{gray}{\scriptsize 4} &
+		 \textcolor{gray}{\scriptsize 5} &
+		 \textcolor{gray}{\scriptsize 6} &
+		 \textcolor{gray}{\scriptsize 7} &
+		 \textcolor{gray}{\scriptsize 8} &
+		 \textcolor{gray}{\scriptsize 9} &
+		 \textcolor{gray}{\scriptsize 10} &
+		 \textcolor{gray}{\scriptsize 11} &
+		 \textcolor{gray}{\scriptsize 12} &
+		 \textcolor{gray}{\scriptsize 13} 
+		\\
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  1} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  3} &
+		{  6} &
+		{  5} &
+		{\cellcolor{gray!25}4}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  1} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  3} &
+		{  6} &
+		{\cellcolor{gray!25}4} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  1} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  3} &
+		{\cellcolor{gray!25}4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  1} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{\cellcolor{gray!25}3} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  1} &
+		{  7} &
+		{ 12} &
+		{\cellcolor{gray!25}3} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  1} &
+		{  7} &
+		{\cellcolor{gray!25}3} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  1} &
+		{\cellcolor{gray!25}3} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{\cellcolor{gray!25}1} &
+		{  3} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{\cellcolor{gray!25}1} &
+		{  8} &
+		{  3} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{\cellcolor{gray!25}1} &
+		{  4} &
+		{  8} &
+		{  3} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{ 12} &
+		{\cellcolor{gray!25}1} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  3} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{  5} &
+		{\cellcolor{gray!25}1} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  3} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		{10} &
+		{\cellcolor{gray!25}1} &
+		{  5} &
+		{ 12} &
+		{ 15} &
+		{  4} &
+		{  8} &
+		{  3} &
+		{  7} &
+		{ 12} &
+		{ 11} &
+		{  4} &
+		{  6} &
+		{  5}\\\hline
+	\end{tabular}
+	\\
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		\cellcolor{gray!25}1 & 
+		10 & 
+		5 & 
+		12 & 
+		15 &
+		4 &
+		8 &
+		3 &
+		7 &
+		12 &
+		11 &
+		4 &
+		6 &
+		5
+		\\\hline
+	\end{tabular}
+	\end{center}
+
+	\medskip
+	Ceci achève le premier parcours. On recommence à présent le même
+	processus dans le sous-tableau débutant au deuxième élément, ce qui
+	donnera le contenu suivant~:
+
+	\begin{center}
+	\begin{tabular}{|*{14}{>{\centering\arraybackslash}m{0.25cm}|}}
+		\hline
+		\cellcolor{gray!25}1 & \cellcolor{gray!25}3 & 10 & 5 & 12 & 15 & 4 & 8 & 4 & 7 & 12 & 11 & 5 & 6
+		\\\hline
+	\end{tabular}
+	\end{center}
+
+	\medskip
+	Et ainsi de suite.
+	Au total, il y aura $n-1$ étapes.
+
+	\clearpage
+	\paragraph{Algorithme.}
+
+	Dans cet algorithme, la variable \pc{bubbleIndex} est à
+	la fois le compteur d’étapes et aussi l’indice de l’élément récepteur
+	de la bulle à la fin d’une étape donnée.
+	
+	\begin{pseudocode}
+	\LComment Trie le tableau reçu en paramètre (via un tri bulle).
+		\Algo{bubbleSort}{\Par{myArray\InOut}{\Array{}{integers}}}{}
+			\Decl{bubbleIndex, i}{integers}
+			\For{bubbleIndex}{0}{myArray.length - 2}
+				\For[-1]{i}{myArray.length – 2}{bubbleIndex}
+					\If{myArray[i] > myArray[i + 1]}
+						\Stmt swap( myArray[i], myArray[i + 1] )
+						\RComment voir algorithme précédent
+					\EndIf
+				\EndFor
+			\EndFor
+		\EndAlgo
+	\end{pseudocode}
+
+	Hormis la méthode \pc{swap}, la traduction en langage Java est triviale. 
+
+%=========================
+\section{Cas particuliers}
+%==========================
+
+	{\sffamily\bfseries\upshape
+	Tri partiel}
+
+		Parfois, un tri complet de l’ensemble n'est pas utile au problème. Il
+		n'est nécessaire d'avoir que les «~$k$~» plus petites (ou plus grandes)
+		valeurs. Le tri par recherche des minima et le tri bulle sont
+		particulièrement adaptés à cette situation~; il suffit de les arrêter
+		plus tôt. Par contre, le tri par insertion est inefficace car il ne
+		permet pas un arrêt anticipé.
+
+	{\sffamily\bfseries\upshape
+	Sélection des meilleurs}
+
+		Une autre situation courante est la suivante~: un ensemble de valeurs
+		sont traitées (lues, calculées\dots) et il ne faut garder que les
+		$k$ plus petites (ou plus grandes).
+		
+		L’algorithme est plus simple à écrire si on utilise
+		une position supplémentaire en fin de tableau. Notons aussi qu’il faut
+		tenir compte du cas où il y a moins de valeurs que le nombre de valeurs
+		voulues~; c’est pourquoi on ajoute une variable indiquant le nombre
+		exact de valeurs dans le tableau.
+
+		Exemple~:
+		on lit un ensemble de valeurs strictement positives (un 0 indique la fin
+		de la lecture) et on ne garde que les $k$ plus petites valeurs.
+
+		\begin{pseudocode}
+			\Algo{bests}{\Par{smallers\InOut}{\Array{k+1}{integers}}, 
+					}{nbValues}
+				\Decl{val}{integer}
+				\Let nbValues \Gets 0
+				\Read val
+				\While{val ${\geq}$ 0}
+					\Stmt insert( val, smallers, nbValues )
+					\Read val
+				\EndWhile
+			\EndAlgo
+		\end{pseudocode}
+		
+		\begin{pseudocode}			
+			\Algo{insert}{\Par{val\In}{integer}, 
+				\Par{smallers\InOut}{\Array{k+1}{integers}}, 
+				\\\hfill\Par{nbValues\InOut}{integer}}{}
+				\Decl{i}{integer}
+				\Let i \Gets nbValues - 1
+				\While{i ${\geq}$ 0 AND val < smallers[i]}
+					\Let smallers[i + 1] \Gets smallers[i]
+					\Let i \Gets i - 1
+				\EndWhile
+				\Let smallers[i + 1] \Gets val
+				\If{nbValues < k}
+					\Let nbValues \Gets nbValues + 1
+				\EndIf
+			\EndAlgo
+		\end{pseudocode}
+
+%====================
+\section{Références}
+%====================
+
+	\begin{itemize}
+		\item {
+			\url{http://interstices.info/jcms/c_6973/les-algorithmes-de-tri}
+
+			\textit{Ce site permet de visualiser les méthodes de tris en
+			fonctionnement. Il présente tous les tris vus en première plus quelques
+			autres comme le «~tri rapide~» («~quicksort~») que vous verrez en
+			deuxième année.}}
+	\end{itemize}
