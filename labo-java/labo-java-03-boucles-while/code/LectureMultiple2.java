@@ -1,6 +1,8 @@
 package esi.dev1.td3;
 
-public class LectureMultiple1 {
+import java.util.Scanner;
+
+public class LectureMultiple2 {
 
     public static void main(String[] args) {
         Scanner clavier = new Scanner(System.in);

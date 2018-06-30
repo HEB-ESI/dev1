@@ -48,12 +48,12 @@
 	Par exemple 12,3 s'écrira 12.3.
 
 	Les variables pour représenter un entier sont de type \texttt{int}.
-	Pour les réels les variables sont de type \texttt{double}:
+	Pour les nombres à virgule les variables sont de type \texttt{double}:
 	
 	\code{java}{double taille = 1.92;}
 
 	Pour lire un entier on utilise la méthode \texttt{nextInt()} du scanner.
-	Pour lire un réel on utilise la méthode \texttt{nextDouble()}.
+	Pour lire un nombre à virgule on utilise la méthode \texttt{nextDouble()}.
 	
 	\code{java}{double y = clavier.nextDouble();}
 
@@ -68,10 +68,10 @@
 		\item \`A la ligne 8, on initialise le Scanner, il scanne \emph{l'entrée standard}: 
 			\texttt{System.in}.
 
-		\item \`A la ligne 10, on déclare une variable nommée x, de type \texttt{int} (un nombre entier). 
+		\item \`A la ligne 10, on déclare une variable nommée x, de type \texttt{int}. 
 			On lui assigne la valeur entrée par l'utilisateur~: \code{java}{clavier.nextInt()}.
 
-		\item \`A la ligne 11, on déclare une variable nommée y, de type \texttt{double} (un nombre réel).
+		\item \`A la ligne 11, on déclare une variable nommée y, de type \texttt{double}.
 			On lui assigne la valeur entrée par l'utilisateur~: \code{java}{clavier.nextDouble()}.
 
 		\item Aux lignes 13 à 19 le programme affiche le résultat des différents calculs.
@@ -90,7 +90,7 @@
 %		\end{tabular}
 %	\end{center}
 
-\begin{Exercice}{Calculs avec des réels et entiers}
+\begin{Exercice}{Calculs}
 	Créez un package \texttt{g12345.dev1.td2} où vous remplacez \texttt{g12345} par votre identifiant.
 	Dans ce package créez une classe \texttt{Exercice1}.
 	Dans cette classe créez un programme qui affiche la valeur des expressions suivantes:
@@ -106,7 +106,7 @@
 
 \begin{Exercice}{Périmètre et aire d'un cercle}
 	Dans une classe \texttt{Exercice2} écrivez un programme
-	qui demande à l'utilisateur le rayon d'un cercle (un réel)
+	qui demande à l'utilisateur le rayon d'un cercle (un nombre à virgule)
 	et affiche son périmètre et son aire.
 	
 	Rappel: le périmètre se calcule par la formule $2\pi r$ et 
@@ -130,29 +130,29 @@
 		\item \code{java}{age < 18}~:  vaut \texttt{true} si \texttt{age} a une valeur inférieure à 18 et \texttt{false} sinon~;
 		\item \code{java}{nb >= 0}~:  vaut \texttt{true} si \texttt{nb} est supérieur à 0~;
 		\item \code{java}{b*b - 4*a*c < 0}~: vaut \texttt{true} si $b^2-4ac$ est négatif~;
-		\item \code{java}{nb >= 0 && nb <=100}~: vaut \texttt{true} si le nombre \texttt{nb} est compris entre 0 et 100~;
+		\item \code{java}{(nb >= 0) && (nb <=100)}~: vaut \texttt{true} si le nombre \texttt{nb} est compris entre 0 et 100~;
 		\item \code{java}{a < b}~:  vaut \texttt{true} si la valeur de la variable \texttt{a} est inférieure à celle de \texttt{b}.
 	\end{itemize}
 
 
-	Pour construire une condition on utilisera les opérateurs de comparaison sur les entiers et sur les réels:
+	Pour construire une condition on utilisera les opérateurs de comparaison de nombres:
 	
         \begin{center}
 	\begin{tabular}{lll}\toprule
           signification            & symbole  & exemple\\ \midrule
-		plus petit         & <        & \code{java}{a < 10}\\
-		plus petit ou égal & <=       & \code{java}{a <= 10} \\
-		plus grand         & >        & \code{java}{a > 18} \\
-		plus grand ou égal & >=       & \code{java}{a >= 21} \\
-		 égal              & ==       & \code{java}{a == 4}\\
-		 différent         & !=       & \code{java}{a != 42}\\ \bottomrule
+		plus petit         & <        & \code{java}{age < 18}\\
+		plus petit ou égal & <=       & \code{java}{age <= 10} \\
+		plus grand         & >        & \code{java}{age > 18} \\
+		plus grand ou égal & >=       & \code{java}{age >= 21} \\
+		 égal              & ==       & \code{java}{i == 4}\\
+		 différent         & !=       & \code{java}{nb != 42}\\ \bottomrule
 	\end{tabular} 
       \end{center}
 	Et on combinera des conditions avec les \emph{opérateurs booléens}~:
 	\begin{itemize}
 		\item Le \emph{ET} logique s'écrit \texttt{\&\&}.
 			
-			Exemple~: \code{java}{nb >= 0 && nb <= 100} vérifie si \texttt{nb} est compris entre 0 et 100.
+			Exemple~: \code{java}{(nb >= 0) && (nb <= 100)} vérifie si \texttt{nb} est compris entre 0 et 100.
 			Cette condition sera vraie si \code{java}{nb >= 0} ET si \code{java}{nb <= 0}. 
 			
 		\item Le \emph{OU} logique s'écrit \texttt{||}. 
@@ -185,7 +185,7 @@
 			\item \texttt{a\%2 == 1}  (a est impair)
 			\item \texttt{a\%b == 0}  (a est divisible par b)
 			\item \texttt{a < b}
-			\item \texttt{a <= b \&\& a <= c} (a est le minimum)
+			\item \texttt{(a <= b) \&\& (a <= c)} (a est le minimum)
 			\item \texttt{(a < b \&\& b < c) || (a > b \&\& b > c)} (b est strictement compris entre a et c)
 		\end{itemize}
 	\end{Exercice}
@@ -248,7 +248,7 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Maximum de 2 nombres}
-		\'Ecrivez un programme qui demande à l'utilisateur deux nombres réels
+		\'Ecrivez un programme qui demande à l'utilisateur deux nombres
 		et affiche le plus grand des deux.
 		
 		Exemple: si l'utilisateur entre 7,5 et 2,3 le programme affiche 7,5. 
@@ -262,14 +262,14 @@
 
 
 	\begin{Exercice}{Les intérêts}
-		\'Ecrivez un programme qui demande un montant (un nombre réel)
+		\'Ecrivez un programme qui demande un montant (un nombre à virgule)
 		à l'utilisateur et affiche les intérêts reçus après 1 an pour un montant placé en banque à du 2\% d'intérêt.
 	\end{Exercice}
 
 	\begin{Exercice}{Prix TTC}
 		\'Ecrivez un programme qui demande à l'utilisateur:
 		\begin{itemize}
-			\item le prix unitaire d’un produit hors TVA (un réel), 
+			\item le prix unitaire d’un produit hors TVA, 
 			\item le taux de TVA en \% (un entier) 
 			\item la quantité de produit vendue à un client (un entier)
 		\end{itemize}
@@ -281,7 +281,7 @@
 
 	\begin{Exercice}{Maximum de 3 nombres}
 		\'Ecrivez un programme qui demande à l'utilisateur 
-		trois nombres réels et affiche le maximum des trois.
+		trois nombres  et affiche le maximum des trois.
 		
 		Exemple: si l'utilisateur entre 7,5, 17,9 et 2,3 le programme affiche 17,9. 
 	\end{Exercice}
@@ -294,7 +294,7 @@
 		 Exemple: si l'utilisateur entre 2,5, 5 et 5 le programme affiche "le triangle est isocèle". 
 	\end{Exercice}
 	
-	\begin{Exercice}{Divisions entière et réel}
+	\begin{Exercice}{Divisions entière et à virgule}
 		Créez un programme qui affiche la valeur des expressions suivantes:
 	
 		\begin{itemize}		
@@ -306,18 +306,20 @@
 			\item \texttt{2/0}
 		\end{itemize}
 	
-		Notez la différence de résultat entre les expressions \texttt{2.0/3.0} qui est une division entre réels 
-		et \texttt{2/3} qui est une division entre entier (et donc une division entière).
+		Notez la différence de résultat entre les expressions \texttt{2.0/3.0} qui est une division entre nombres à virgule 
+		et \texttt{2/3} qui est une division entre entiers (et donc une division entière).
 	
 		Notez également la différence de résultat entre les 2 dernières expressions qui sont des divisions par zéro.
-		La première est une division entre réels,
+		La première est une division entre nombres à virgule,
 		la seconde est une division entre entiers.
 	\end{Exercice}
 	
 	\begin{Exercice}{Conditions}
 		\'Ecrivez un programme qui affiche la valeur des expressions suivantes:
 		\begin{itemize}
+			\item \texttt{9.99 == 10.0}
 			\item \texttt{9.999999999999999999999999 == 10.0}
+			\item \texttt{9.999999999999999999999999 == 10.00000000000001}
 			\item \texttt{true}  (écrivez simplement: \code{java}{System.out.println(true);})
 			\item \texttt{false} 
 			\item \texttt{!true} 

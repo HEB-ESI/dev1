@@ -44,14 +44,14 @@
 	Le code ci-dessus affiche les nombres de 1 à 10.
 	Ce programme s'exécute comme suit~:
 	\begin{itemize}
-		\item  le programme commence à l'instruction \texttt{for} de la ligne 5~:
+		\item  le programme commence à l'instruction \texttt{for} de la ligne 6~:
 			\begin{itemize}
 				\item l'initialisation \code{java}{int i = 1} est d'abord exécutée: 
 					la variable $i$ de type entier est déclarée et initialisée à 1~;
 				\item  ensuite, la condition du \texttt{for} \code{java}{i<=10}
 					est évaluée, sa valeur est vrai car $i$ vaut 1 et est donc inférieur à 10~;
 				\item puisque la condition est vraie le \emph{corps} de la boucle s'exécute, 
-					la ligne 6 affiche la valeur de l'entier $i$: 1. 
+					la ligne 7 affiche la valeur de l'entier $i$: 1. 
 					Et l'incrément \code{java}{i = i +1} est exécuté, $i$ vaut 2 maintenant~;
 				\item la condition est à nouveau évaluée avec la nouvelle valeur de i qui vaut maintenant 2~;
 				\item etc...
@@ -65,7 +65,7 @@
 
  
 	\begin{Exercice}{Suites d'entiers}	
-		Dans votre package créez un classe \texttt{Exercice1}.
+		Dans un package \texttt{g12345.dev1.td3} créez un classe \texttt{Exercice1}.
 		Dans cette classe écrivez un programme qui demande à l'utilisateur un nombre entier $n$ et affiche
 		à l'aide d'une boucle \texttt{for}:
 		\begin{itemize}
@@ -75,27 +75,13 @@
 			\item les multiples de 5 qui sont compris entre 1 et n ;
 			\item les multiples de n compris entre 1 et 100.
 		\end{itemize}
-	\end{Exercice}
-
-	\begin{Exercice}{Ligne}	
-		\'Ecrire un programme qui demande à l'utilisateur 
-		la longueur d'une ligne et affiche une ligne (une suite de tirets \texttt{'-'}) de cette longueur.
-		
-		Par exemple, si l'utilisateur entre 10, le programme affiche
-		
-		\begin{verbatim}
-		----------
-		\end{verbatim}
-		
-		Astuce: utiliser la méthode \texttt{System.out.print('-')} et non pas \texttt{System.out.println('-')}.
-	\end{Exercice}
- 
+	\end{Exercice} 
  
 %===================
 \section{Les chaînes de caractères}
 %===================
  
- 	Un caractère se représente en Java avec des simples guillemets.
+ 	Un caractère se représente en Java avec des guillemets simples.
 	Par exemple, \texttt{'a'} représente le caractère a et \texttt{'1'} représente le caractère 1 (et non pas l'entier 1).
 	Une variable de type \texttt{char} permet de manipuler les caractères.
 	On écrira par exemple \code{java}{char lettre = 'a';} 
@@ -124,13 +110,10 @@
 	
 	\begin{Exercice}{Première == dernière ?}	
 		\'Ecrire un programme qui demande à l'utilisateur 
-		un mot et affiche si oui la première lettre est la même que la dernière ou non.
+		un mot et affiche si la première lettre est la même que la dernière ou non.
 		
-		Par exemple, si l'utilisateur entre "java", le programme affiche
-		
-		\begin{verbatim}
-		avaj
-		\end{verbatim}
+		Par exemple, si l'utilisateur entre "java", le programme affiche que la première et 
+		la dernière lettre ne sont pas égales.
 	\end{Exercice}
 
 	\begin{Exercice}{Miroir}	
@@ -158,14 +141,34 @@
 
 \section{Exercices Récapitulatifs}
 
+	\begin{Exercice}{Une phrase}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		une phrase et affiche si la première lettre est une majuscule et la dernière un point.
+		
+		Par exemple si l'utilisateur entre "Bonjour Marco." votre programme affichera que c'est une phrase.
+		Consulter Internet pour savoir comment vérifier qu'un caractère est une majuscule. 
+		
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre de voyelles et de consonnes}	
+		\'Ecrire un programme qui demande à l'utilisateur 
+		un mot et affiche le nombre de voyelles et de consonnes dans ce mot.
+		
+		Par exemple, si l'utilisateur entre "programmation", le programme affiche "5 voyelles et 8 consonnes".	
+	\end{Exercice}
+
 
 	\begin{Exercice}{Palindrome}
 		Un palindrome est un mot dont la succession de lettres est la même 
 		de gauche à droite et de droite à gauche. 
-		\'Eté, ressasser ou kayak sont des palindromes.
+		Les mots été, ressasser ou kayak sont des palindromes.
 		  	
 		\'Ecrire un programme qui demande à l'utilisateur 
 		un mot et affiche si ce mot est un palindrome ou non.
+	\end{Exercice}
+
+	\begin{Exercice}{Transformer un \texttt{for} en \texttt{while}}
+		Modifier vos solutions aux deux exercices précédents afin d'utiliser des \texttt{while} à la place des \texttt{for}. 
 	\end{Exercice}
 
 	

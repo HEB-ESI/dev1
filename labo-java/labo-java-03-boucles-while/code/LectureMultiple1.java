@@ -1,5 +1,7 @@
 package esi.dev1.td3;
 
+import java.util.Scanner;
+
 public class LectureMultiple1 {
 
     public static void main(String[] args) {
@@ -15,7 +17,6 @@ public class LectureMultiple1 {
             i = i+1;
         }
         
-        System.out.println("vous avez rentré : "+ n +" valeurs");
         System.out.println("La somme de toutes ces valeurs: "+ somme);
     }
 }
