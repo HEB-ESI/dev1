@@ -1,0 +1,60 @@
+%=====================================================================
+%						style-esi/evaluation.sty
+%
+%	Style LaTeX pour des évaluations à l'ÉSI.
+%	C'est comme un document normal mais avec un cadre pour
+%	les infos de l'étudiant et un autre pour les points.
+%
+% 	auteurs:
+% 		Marco Codutti, mai 2013, mai 2018 
+% 		Pierre Bettens, novembre 2017
+%=====================================================================
+
+%=====================================================================
+%	Dépendences
+%=====================================================================
+
+% --- Commun à tous documents de type article
+\usepackage{style-esi/td}
+
+% --- Pour les questions
+\usepackage{style-esi/question}
+
+%=====================================================================
+%	Les éléments de la première page
+%=====================================================================
+
+% --------------------------------------------------------------------
+%	\infosetd 	affiche un cadre pour que l'étudiants entre ses infos
+%				ainsi qu'un cadre pour les points
+% --------------------------------------------------------------------
+
+\newcommand{\infosetd}[1]{
+	\thispagestyle{empty}
+	\vspace*{-3\baselineskip}
+	\hskip-2cm
+	\begin{minipage}{188mm}
+		\begin{colxbox}[width=12cm, drop lifted shadow, nobeforeafter, colback=collight]
+			\sffamily
+			\medskip
+			Nom : {\color{lightgray}{\hrulefill}}
+		
+			\medskip
+			Prénom : {\color{lightgray}{\hrulefill}}
+		
+			\medskip
+			
+			Identifiant~: {\color{lightgray}{\hrulefill}}
+			\quad
+			Groupe : {\color{lightgray}{\hrulefill}}
+			%\quad
+			%Enseignant : {\color{lightgray}{\hrulefill}}
+		\end{colxbox}
+		\hfill
+		\begin{colxbox}[width=4cm,drop lifted shadow, nobeforeafter, colback=collight]
+			\vskip14.5mm
+			\hfill {\Large\bfseries/#1}
+		\end{colxbox}
+	\end{minipage}
+	\vskip6mm
+}

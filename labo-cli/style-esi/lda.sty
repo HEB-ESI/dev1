@@ -1,0 +1,271 @@
+%=================================================================
+% Adaptation du package algorithmicx pour écrire des algos à l'ESI
+%=================================================================
+
+\usepackage{algpseudocode}		% Perme d'écrire des algorithmes
+%\usepackage{xcolor}			% Déjà chargé par common
+
+% ==============================================================
+% \begin{LDA}		// \begin{LDA}[1] pour des n° de lignes
+%      ...
+% \end{LDA}
+%
+% \lda{...}
+% ==============================================================
+
+\usepackage{environ} % Merci à astalavista pour ce truc :)
+\NewEnviron{LDA}[1][0]{%
+	\begin{flushleft}
+	\fcolorbox{gray}{gray!10}{%
+		\begin{minipage}{0.97\linewidth}
+		\begin{sffamily}
+		\begin{algorithmic}[#1]
+		\small
+				\BODY
+		\end{algorithmic}
+		\end{sffamily}
+		\end{minipage}
+	}
+	\end{flushleft}
+}
+\newcommand{\lda}{\textsf}
+
+
+% Pour colorer les numéros de lignes dans les algos
+\algrenewcommand{\alglinenumber}[1]{\color{gray}\makebox[7pt]{\footnotesize#1:}\ }
+
+% ==============================================================================
+% Le code suivant permet d'avoir des lignes verticales pour délimiter les blocs. 
+% cf: http://tex.stackexchange.com/questions/52473/is-it-possible-to-have-connecting-loop-lines-like-algorithm2e-in-algorithmic
+% J'ai changé la ligne (plus grosse et grise)
+% ==============================================================================
+
+% --- Définitions techniques pour avoir les lignes
+\makeatletter
+\definecolor{rulecolor}{gray}{0.7} % This is the vertical rule that is inserted
+\def\therule{\makebox[\algorithmicindent][l]{\hspace*{.4em}{\color{rulecolor}\vrule height .75\baselineskip width 0.05em depth .25\baselineskip}}}%
+
+\newtoks\therules% Contains rules
+\therules={}% Start with empty token list
+\def\appendto#1#2{\expandafter#1\expandafter{\the#1#2}}% Append to token list
+\def\gobblefirst#1{% Remove (first) from token list
+  #1\expandafter\expandafter\expandafter{\expandafter\@gobble\the#1}}%
+\def\LState{\State\unskip\the\therules}% New line-state
+\def\pushindent{\appendto\therules\therule}%
+\def\popindent{\gobblefirst\therules}%
+\def\printindent{\unskip\the\therules}%
+\def\printandpush{\printindent\pushindent}%
+\def\popandprint{\popindent\printindent}%
+
+
+% ==============================================================================
+% Modifications de style
+% ==============================================================================
+\algrenewcommand\textproc{\textit} % Nom de module en italique plutôt qu'en small caps
+
+
+% ================================================================================
+%   Les éléments d'un pseudocode
+% ================================================================================
+
+%-----------------------------------------------
+% \Algo{nom}{[paramètres]}{[type_retour]}
+% 	[\Return valeur]
+% \EndAlgo 
+%
+% paramètres : \Par{noms}{type}[, ...]
+% \In, \Out et \InOut
+%
+% \Entete{nom}{[paramètres]}{[type_retour]}
+%-----------------------------------------------
+\algblockdefx[ALGO]{Algo}{EndAlgo}[3]%
+  {\printandpush\algorithmicalgo\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+  {\popandprint\algorithmicend\ \algorithmicalgo}
+\algnewcommand\algorithmicalgo{\textbf{algorithme}}
+\algrenewcommand\algorithmicend{\textbf{fin}}
+\newcommand{\Par}[2]{#1 : #2}
+\newcommand{\In}{\ensuremath{\downarrow}}
+\newcommand{\Out}{\ensuremath{\uparrow}}
+\newcommand{\InOut}{\In{}\Out{}}
+\newcommand{\Gives}{\ \ensuremath{\rightarrow}{}}
+\renewcommand{\Return}{\LState\algorithmicreturn\ }
+\algrenewcommand\algorithmicreturn{\textbf{retourner}}
+
+\newcommand{\Entete}[3]{\Stmt \algorithmicalgo\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+
+%-----------------------------------------------
+% déclaration de variables locales / constantes
+% \Decl{var}{Type}
+% \Const{var}{valeur}
+%-----------------------------------------------
+\newcommand{\Decl}[2]{\LState #1 : #2}
+\newcommand{\Const}[2]{\LState\K{constante}\ #1 = #2}
+
+%-----------------------------------------------
+% assignation
+% \Let var \Gets expr
+%-----------------------------------------------
+\newcommand{\Let}{\LState}
+\newcommand{\Gets}{\ensuremath{\gets}\ }
+
+%-----------------------------------------------
+% Quelques instructions de base
+% \Read var
+% \Write val
+% \Error motif
+%-----------------------------------------------
+\newcommand{\Open}{\LState\textbf{ouvrir}\ }
+\newcommand{\Close}{\LState\textbf{fermer}\ }
+\newcommand{\Read}{\LState\textbf{demander}\ }
+\newcommand{\Readf}{\LState\textbf{lire}\ }
+\newcommand{\Write}{\LState\textbf{afficher}\ }
+\newcommand{\Writef}{\LState\textbf{écrire}\ }
+\newcommand{\Error}{\LState\textbf{erreur}\ }
+
+%-----------------------------------------------
+% Pour un contrôle fin
+% \Empty 	pour une ligne vide
+% \Stmt		pour un début de commande non prévue
+% \K{mot}	pour mettre un mot comme un mot clé
+% \Indent	pour indenter ce qui suit
+% \Suite	pour une continuation de ligne (2x indenté)
+%-----------------------------------------------
+\newcommand{\Empty}{\LState}
+\newcommand{\Stmt}{\LState}
+\newcommand{\K}[1]{\textbf{#1}} % Keyword
+\newcommand{\Indent}{\expandafter\hskip\algorithmicindent\relax}
+\newcommand{\Suite}{\Stmt\Indent\Indent}
+
+%-----------------------------------------------
+% Les commentaires
+% \Comment ...		// commentaire
+% \LComment ...		// commentaire seule sur 1 ligne
+% \RComment ...		// commentaire indenté à droite
+%-----------------------------------------------
+\algrenewcommand{\algorithmiccomment}[1]{{\small\hskip1em// #1}}
+\newcommand{\LComment}{\Empty\hskip-1em\Comment}
+\newcommand{\RComment}{\hfill\Comment}
+
+%-----------------------------------------------
+% Alternatives
+%
+% \If{condition}
+% \ElsIf{condition}
+% \Else
+% \EndIf
+%
+% \Switch{expr}
+% \Case{val}
+% \EndSwitch
+%-----------------------------------------------
+\algdef{SE}[IF]{If}{EndIf}[1]
+  {\printandpush\algorithmicif\ #1\ \algorithmicthen}
+  {\popandprint\algorithmicend\ \algorithmicif}%
+\algdef{C}[IF]{IF}{ElsIf}[1]
+  {\popandprint\pushindent\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
+\algdef{Ce}[ELSE]{IF}{Else}{EndIf}
+  {\popandprint\pushindent\algorithmicelse}%
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]
+  {\printandpush\algorithmicswitch\ #1 \K{ vaut}}
+  {\popandprint\algorithmicend\ \algorithmicswitch}%
+\algdef{C}[SWITCH]{SWITCH}{Case}[1]
+  {\popandprint\pushindent\ #1:}%
+
+\algrenewcommand\algorithmicif{\textbf{si}}
+\algrenewcommand\algorithmicthen{\textbf{alors}}
+\algrenewcommand\algorithmicelse{\textbf{sinon}}
+\algnewcommand\algorithmicswitch{\textbf{selon que}}
+
+%-----------------------------------------------
+% Boucles
+%
+% \While{cond}
+% \EndWhile
+%
+% \For{i}{1}{n}	// ou For[pas]{i}{1}{n}
+% \EndFor
+%
+% \Repeat
+% \EndRepat{condition}
+%-----------------------------------------------
+\algdef{SE}[WHILE]{While}{EndWhile}[1]
+  {\printandpush\algorithmicwhile\ #1\ \algorithmicdo}
+  {\popandprint\algorithmicend\ \algorithmicwhile}%
+\algdef{SE}[FOR]{For}{EndFor}[4][1]
+  {\printandpush\algorithmicfor\ #2 \K{de} #3 \K{à} #4\ifthenelse{\equal{#1}{1}}{}{ \K{par} #1}\ \algorithmicdo}
+  {\popandprint\algorithmicend\ \algorithmicfor}%
+\algdef{SE}[REPEAT]{Repeat}{EndRepeat}
+  {\printandpush\algorithmicrepeat}[1]
+  {\popandprint\algorithmicwhile\ #1}%
+
+\algrenewcommand\algorithmicwhile{\textbf{tant que}}
+\algrenewcommand\algorithmicfor{\textbf{pour}}
+\algrenewcommand\algorithmicrepeat{\textbf{faire}}
+\algrenewcommand\algorithmicdo{\textbf{faire}}
+
+
+%-----------------------------------------------
+% Structures
+% \Struct
+% 	\Decl{champ}{type}
+% \EndStruct
+%-----------------------------------------------
+\algdef{SE}[STRUCT]{Struct}{EndStruct}[1]
+  {\printandpush\algorithmicstruct\ #1}
+  {\popandprint\algorithmicend\ \algorithmicstruct}%
+
+\algnewcommand\algorithmicstruct{\textbf{structure}}
+
+%-----------------------------------------------
+% Tableaux
+% \Array{n}{T}
+%-----------------------------------------------
+\newcommand{\Array}[3][0]{%
+	tableau~%
+	\ifthenelse{\equal{#1}{0}}{de~#2~#3}{[#1~à~#2] de #3}%	
+}
+
+%-----------
+% Classe
+%-----------
+\algdef{SE}[CLASS]{Class}{EndClass}[1]
+  {\printandpush\algorithmicclass\ #1}
+  {\popandprint\algorithmicend\ \algorithmicclass}%
+% Bloc customisable
+\algdef{SE}[CUSTOM]{Custom}{EndCustom}
+  {\printandpush}
+  {\popandprint}
+% Bloc
+%\algdef{SE}[BLOC]{Block}{EndBlock}[1]
+%  {\printandpush \algorithmicblock\ #1}
+%  {\popandprint \algorithmicend\ \algorithmicblock}
+% Module
+%\algblockdefx[MODULE]{Module}{EndModule}[3]%
+%  {\printandpush\algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+%  {\popandprint\algorithmicend\ \algorithmicprocedure}
+% Méthode
+\algblockdefx[METHOD]{Method}{EndMethod}[3]%
+  {\printandpush\algorithmicmethod\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+  {\popandprint\algorithmicend\ \algorithmicmethod}
+% Constructeur
+\algblockdefx[CONSTR]{Constr}{EndConstr}[2]%
+  {\printandpush\algorithmicconstr\ \textproc{#1}(#2)}
+  {\popandprint\algorithmicend\ \algorithmicconstr}
+% Parties privées/publiques
+\algdef{C}[CLASS]{CLASS}{Private}{\popandprint\pushindent\ privé:}%
+\algdef{C}[CLASS]{CLASS}{Public}{\popandprint\pushindent\ public:}%
+% Signatures de module / méthode / constructeur
+\newcommand{\ModuleSign}[3]{\Stmt \algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+\newcommand{\MethodSign}[3]{\Stmt \algorithmicmethod\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+\newcommand{\ConstrSign}[2]{\Stmt \algorithmicconstr\ \textproc{#1}(#2)}
+\algnewcommand\algorithmicclass{\textbf{classe}}
+\algnewcommand\algorithmicmethod{\textbf{méthode}}
+\algnewcommand\algorithmicconstr{\textbf{constructeur}}
+  
+% ==============================================================================
+% Ajouts propres pour la francisation des termes prédéfinis + nouveaux termes
+% ==============================================================================
+%\algnewcommand\algorithmicblock{\textbf{bloc}}
+%\algnewcommand\algorithmicbegin{\textbf{début}}
+%\algrenewcommand\algorithmicprocedure{\textbf{algorithme}}
+%\algrenewcommand\algorithmicfunction{\textbf{algorithme}}
