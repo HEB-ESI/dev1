@@ -1,0 +1,287 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+%\marginsectiontrue
+\usepackage{booktabs}
+\usepackage{pifont}  
+
+
+
+\definecolor{verylightgray}{rgb}{0.98,0.98,0.98}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires d'environnement}
+\libelledocument{TD 03 -- Exercices pr\'eparatoires }
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================
+	\begin{consigne}
+	Afin d'arriver au laboratoire dans les meilleures conditions, il est bien de revoir la mati\`ere qui sera mise en pratique.
+         C'est pourquoi nous vous fournissons quelques exercices pr\'eparatoires \`a faire \`a la maison pour vous permettre d'\'evaluer si vous \^etes pr\^et.  
+	\end{consigne}
+	
+	\tableofcontents
+
+	\newpage
+
+
+				
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+ \section{Exercices pr\'eparatoires au TD3} 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  	Ces exercices pr\'eparatoires sont compos\'es d'une r\'evision des tds pr\'ec\'edents et de la th\'eorie \`a revoir.  
+	
+				
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%          
+        \subsection{Rappel des tds pr\'ec\'edents}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%			
+		\begin{Exercice}{Les commandes linux} 
+            		Quelle commande linux permet de faire l'action suivante ?
+			\begin{itemize}
+				\item se d\'econnecter  \textcolor{gray}{\underline{\hspace*{3em}}} 
+				\item changer son mot de passe  \textcolor{gray}{\underline{\hspace*{5em}}} 
+				\item nettoyer l'\'ecran  \textcolor{gray}{\underline{\hspace*{3em}}} 
+				\item voir le contenu d'un dossier au format long \textcolor{gray}{\underline{\hspace*{2em}}}  \textcolor{gray}{\underline{\hspace*{2em}}} 
+				\item cr\'eer un r\'epertoire  \textcolor{gray}{\underline{\hspace*{3em}}} 
+				\item d\'eplacer un fichier  \textcolor{gray}{\underline{\hspace*{2em}}} 
+				\item connaitre les groupes d'un utilisateur  \textcolor{gray}{\underline{\hspace*{5em}}} 
+				\item modifier le groupe d'un fichier  \textcolor{gray}{\underline{\hspace*{3em}}} 
+				\item modifier le propri\'etaire d'un fichier (par le super-utilisateur!) \textcolor{gray}{\underline{\hspace*{3em}}} 
+				\item retirer la permission de traverser le r\'epertoire \verb@tds@ \`a tous \textcolor{gray}{\underline{\hspace*{3em}}}  \textcolor{gray}
+					{\underline{\hspace*{2em}}}  \textcolor{gray}{\underline{\hspace*{2em}}} 
+				\item placer le fichier \verb@Hello.java@ dans le groupe \verb@etudiants1@ \textcolor{gray}{\underline{\hspace*{3em}}}  \textcolor{gray}	
+					{\underline{\hspace*{10em}}}  \textcolor{gray}{\underline{\hspace*{10em}}} 
+			\end{itemize}
+				
+		\end{Exercice}	
+		
+		\begin{Exercice}{Les permissions} 
+            		Remplissez les blancs avec la permission minimale correcte (r, w, x ou -),
+			\begin{enumerate}
+				\item pour que le r\'epertoire \verb@/home/gxxxxx/td3@ permette \`a un autre \'etudiant d'y cr\'eer le fichier  \verb@/home/gxxxxx/td3/fichier@\par
+				 \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}	
+				 {\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}
+				 {\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}} 
+				 
+				\item pour que le r\'epertoire \verb@/home/gxxxxx/td3@ permette \`a un autre \'etudiant d'acc\'eder au fichier \verb@/home/gxxxxx/td3/fichier@
+					dont il connait le chemin
+					\par
+					 \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}
+				 	{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}
+				 	{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}} 
+			\end{enumerate}
+				
+		\end{Exercice}
+		
+			
+		\begin{Exercice}{ Modifiez les permissions} 
+		        \begin{itemize}
+				\item pour que le fichier \verb@/home/gxxxxx/td3/fichier@ puisse \^etre lu et modifi\'e par votre professeur et vous m\^eme mais seulement lu par les autres 						\'etudiants 
+					\par
+					 \textcolor{gray}{\underline{\hspace*{3em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}	
+					 {\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{16em}}} 
+				\item \`A quel groupe ce fichier doit-il appartenir ?
+					\par
+				 	\textcolor{gray}{\underline{\hspace*{10em}}} 
+					
+				\item Quelle commande permet de modifier le groupe du fichier afin de l'adapter \`a ce qui est demand\'e ci-dessus ?
+					\par \textcolor{gray}{\underline{\hspace*{3em}}}  \textcolor{gray}{\underline{\hspace*{10em}}} 
+			\end{itemize}
+				
+		\end{Exercice}	
+		\clearpage
+		
+		\begin{Exercice}{Chemins absolus et relatifs} 
+            		Parmi les propositions suivantes, lesquelles repr\'esentent des chemins absolus ?
+           		 \begin{itemize} 
+        
+           			 \item[ \ding{"6F} ] \verb@/usr/local/java/@
+        
+           			 \item[ \ding{"6F} ] \verb@/home/g31000/td3@
+        
+           			 \item[ \ding{"6F} ] \verb@g31000/td3@
+        
+           			 \item[ \ding{"6F} ] \verb@~/td3@
+        
+           			 \item[ \ding{"6F} ] \verb@td3@
+        
+          			  \item[ \ding{"6F} ] \verb@~g31000/td3@
+        
+           		 \end{itemize} 
+		 \end{Exercice}
+%        \subsection{Survol du langage}
+%			
+%		\subparagraph{Structure d'un programme} 
+%		
+%                \textcolor{white}{.} \par
+%            Quelles structures g\'en\'erales d'un programme sont correctes 
+%							(c-\`a-d qu'il doit compiler et respecter les conventions) parmi les suivantes ?
+%						
+%            \begin{itemize} 
+%        
+%            \item[ \ding{"6F} ]  
+%							code 1
+%							\begin{verbatim}
+%    public class exercice {
+%        // put methods here  
+%    }\end{verbatim}
+%        
+%            \item[ \ding{"6F} ]  
+%							code 2
+%							\begin{verbatim}
+%    public CLASS Exercice {
+%        // put methods here  
+%    }\end{verbatim}
+%        
+%            \item[ \ding{"6F} ] 
+%							code 3 
+%							\begin{verbatim}
+%    public class Exercice {  
+%        // put methods here  
+%    }\end{verbatim}
+%        
+%            \item[ \ding{"6F} ]  
+%							code 4 
+%							\begin{verbatim}
+%    public class MonExercice {  
+%        // put methods here  
+%    }\end{verbatim}
+%        
+%            \item[ \ding{"6F} ]  
+%							code 5 
+%							\begin{verbatim}
+%    PUBLIC CLASS EXERCICE { 
+%        // put methods here  
+%    }\end{verbatim}
+%        
+%            \end{itemize} 
+%        
+%			
+%		\subparagraph{Nom d'un programme} 
+%		
+%                \textcolor{white}{.} \par
+%            Quels noms doivent avoir les fichiers dans lesquels sont plac\'es les programmes suivants :\begin{Java}
+%    public class Exercice {  
+%        // Methods    
+%    }						\end{Java} \textcolor{gray}{\underline{\hspace*{10em}}} \begin{Java}
+%    public class SommeChiffres {
+%        // Methods    
+%    }						\end{Java} \textcolor{gray}{\underline{\hspace*{16em}}} \begin{Java}
+%    public class sommechiffres {    
+%        // Methods    
+%    }						\end{Java} \textcolor{gray}{\underline{\hspace*{16em}}} 
+%			
+%		\subparagraph{Compiler/ex\'ecuter} 
+%		
+%                \textcolor{white}{.} \par
+%             
+%							Quelle commande permet de compiler le fichier nomm\'e \verb@SommeChiffres.java@ ?  
+%							\par
+%				 \textcolor{gray}{\underline{\hspace*{3em}}}  \textcolor{gray}{\underline{\hspace*{16em}}} \par
+%				
+%							Quelle commande permet d'ex\'ecuter ce programme ?  
+%							\par
+%				 \textcolor{gray}{\underline{\hspace*{3em}}}  \textcolor{gray}{\underline{\hspace*{10em}}} 
+%			
+%		\subparagraph{M\'ethode principale} 
+%		
+%                \textcolor{white}{.} \par
+%            
+%								Comment s'\'ecrit l'ent\^ete de la m\'ethode principale (1 mot par case) ?
+%							
+%            \par
+%         \textcolor{gray}{\underline{\hspace*{5em}}}  \textcolor{gray}{\underline{\hspace*{5em}}}  \textcolor{gray}{\underline{\hspace*{3em}}}  \textcolor{gray}{\underline{\hspace*{3em}}}  
+%							(            
+%							 \textcolor{gray}{\underline{\hspace*{5em}}}  \textcolor{gray}{\underline{\hspace*{2em}}}  \textcolor{gray}{\underline{\hspace*{3em}}}  
+%							)   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\subsection{Th\'eorie} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		Avant de venir au prochain labo, lisez attentivement le point 20 du guide visuel.  
+				
+            	\par
+        
+			
+		\begin{Exercice}{Joker} 
+            		\begin{enumerate}
+				\item La commande \verb@rm td*.java@ supprime le(s) fichier(s) :
+						
+            				\begin{itemize} 
+        
+           					 \item[ \ding{"6F} ]  td.java
+						
+        
+           					 \item[ \ding{"6F} ]  td2
+						
+        
+           					 \item[ \ding{"6F} ]  td2.java
+						
+        
+           					 \item[ \ding{"6F} ]  td3Prepa.java
+						
+        
+           					 \item[ \ding{"6F} ]  td3.java
+						
+        
+            					\item[ \ding{"6F} ]  td10.java
+						
+        
+           				 \end{itemize} 
+        
+		
+				\item La commande \verb@rm td?.java@ supprime le(s) fichier(s) :
+						
+           				 \begin{itemize} 
+        
+           					 \item[ \ding{"6F} ]  td.java
+						
+        
+           					 \item[ \ding{"6F} ]  td2
+						
+        
+           					 \item[ \ding{"6F} ]  td2.java
+						
+        
+            					\item[ \ding{"6F} ]  td3Prepa.java
+						
+        
+           					 \item[ \ding{"6F} ]  td3.java
+						
+        
+           					 \item[ \ding{"6F} ]  td10.java
+						
+        
+           				 \end{itemize} 
+		\end{enumerate}
+            \end{Exercice}
+%        \subsection{Algorithmes}  
+%					Assurez-vous de venir au laboratoire 
+%					avec vos solutions des exercices 
+%					de votre cours d'algorithmique.  
+				
+           
+        
+\end{document}
+			
