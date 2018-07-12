@@ -1,0 +1,296 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 5 -- Méthodes}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Ce TD introduit les notions de méthode, entête et déclaration, paramètre, et valeur de retour, l'instruction \texttt{return}
+	 ainsi que le type \texttt{boolean}.
+	 
+	\tableofcontents
+
+	\newpage
+
+%===================
+\section{Introduction}
+%====================	
+
+	Une méthode est une construction qui permet de décomposer une solution sous forme de petit module.
+	Dans l'exemple ci-dessous la méthode \texttt{périmètre} de la classe \texttt{Cercle} calcule le périmètre d'un cercle 
+	étant donné son rayon.
+	
+	
+ 	\listing{java}{code/Cercle.java}
+
+	\emph{L'entête}\footnote{aussi appelée \emph{déclaration} de la méthode. } de cette méthode, \code{java}{static double périmètre(double rayon)},  nous signale que:
+	\begin{itemize}
+		\item cette méthode s'appelle \texttt{périmètre}~;
+		\item elle reçoit en paramètre un \texttt{double} qui sera manipulé par son nom \texttt{rayon}~;
+		\item elle retourne une valeur de type \texttt{double}.
+	\end{itemize}
+	Nous verrons ultérieurement la signification du mot clef \texttt{static}, qui doit toujours se trouver au début de l'entête des méthodes
+	que vous écrivez. Une méthode non-static a un tout autre sens que nous verrons en dev2.
+
+	Le \emph{corps} de la méthode est ici très simple, il \emph{retourne} (à l'aide de l'instruction  \texttt{return})
+	 la valeur reçue en paramètre (le rayon) multiplié par 2*3.141596.
+	Le type de la valeur retournée doit être compatible avec le type déclaré dans l'entête, 
+	ici cela doit être un \texttt{double}.	
+	
+	La méthode principale \emph{appelle}  cette méthode avec la valeur 10 comme rayon. 
+
+
+	 \begin{Exercice}{Périmètre et aire d'un cercle}
+		
+		Créer un package \texttt{g12345.dev1.td5} et, dans celui-ci, une classe \texttt{MathUtil}.
+		Dans la classe \texttt{MathUtil} écrivez les 2 méthodes suivantes: 
+		\begin{itemize}
+			\item	\code{java}{double périmètreCercle(double rayon)} 
+				qui reçoit le rayon (un double) en paramètre et retourne le périmètre du cercle.
+			\item \code{java}{double aireCercle(double rayon)} 
+				qui reçoit un rayon en paramètre et retourne l'aire du cercle.
+		\end{itemize}
+		
+		Rappel: l'aire d'un cercle se calcule par la formule: $\pi r^2$ ou  $r$ est le rayon du cercle.
+		
+		Attention: n'oubliez pas le mot-clef \texttt{static} au début de l'entête de vos méthodes.
+		
+		Dans la méthode principale testez ces 2 méthodes comme cela est fait dans l'exemple ci-dessus avec la méthode 
+		\texttt{périmètre}.
+	\end{Exercice} 
+
+
+%===================
+\section{Appel d'une méthode}
+%====================	
+
+	Dans l'exemple ci-dessus la méthode principale fait appel à la méthode périmètre en utilisant le nom 
+	et en fournissant une valeur pour le paramètre~: 
+	\code{java}{périmètre(10)}.
+	
+	Il est possible de faire appel à une méthode depuis une \emph{autre classe}.
+	
+ 	\listing{java}{code/CercleApp.java}
+
+	La méthode principale de la classe \texttt{CercleApp} fait appel à la méthode \texttt{périmètre}
+	de la classe \texttt{Cercle} en utilisant le nom de la classe suivi d'un point et du nom de la méthode: \texttt{Cercle.périmètre(10)}.
+	
+	 \begin{Exercice}{Périmètre et aire d'un cercle}
+		
+		Dans une classe \texttt{CercleApp} écrivez un programme (et donc une méthode \texttt{main})
+		qui demande à l'utilisateur le rayon d'un cercle et affiche son périmètre et son aire.
+		
+		Votre programme fera appel aux méthodes \texttt{périmètreCercle} et \texttt{aireCercle} de la classe
+		\texttt{MathUtil} écrites précédemment.
+	\end{Exercice} 
+	
+
+%===================
+\section{Méthodes à plusieurs paramètres}
+%====================	
+
+ 	\listing{java}{code/Maximum.java}
+	
+	Dans la classe \texttt{Maximum} ci-dessus sont définies 2 méthodes: \texttt{max2} et \texttt{max3}.
+	Dans l'entête de la méthode \texttt{max2} on constate que cette méthode 
+	\begin{itemize}
+		\item s'appelle \texttt{max2}~;
+		\item reçoit \emph{en paramètres} deux entiers, ces entiers seront manipulés grâce à leur nom \texttt{a} et \texttt{b}~;
+		\item \emph{retourne} un entier.
+	\end{itemize}
+		
+
+	La méthode principale fait un appel à la méthode \texttt{max2} avec les paramètres effectifs 10 et 6 
+	et affiche la valeur retournée par la méthode max2: 10.
+	
+	 Dans l'entête de la méthode \texttt{max3} on constate que cette méthode 
+	\begin{itemize}
+		\item s'appelle \texttt{max3}~;
+		\item reçoit \emph{en paramètres} trois entiers, ces entiers seront manipulés grâce à leur nom \texttt{a}, \texttt{b} et \texttt{c}~;
+		\item \emph{retourne} un entier.
+	\end{itemize}
+
+	Cette méthode fait appel par deux fois à la méthode \texttt{max2}.
+	
+	La méthode principale fait un appel à la méthode \texttt{max3} avec les paramètres effectifs 10, 6 et 19 
+	et affiche la valeur retournée: 19.
+
+ 
+ 	\begin{Exercice}{Minimum}
+		Dans la classe \texttt{MathUtil} écrivez les 2 méthodes suivantes~:		
+		\begin{itemize}
+			\item \code{java}{double min2(double x, double y)} qui reçoit deux doubles en paramètres et retourne le minimum.
+			\item \code{java}{double min3(double x, double y, double z)} qui reçoit trois doubles en paramètres et retourne le minimum.
+		\end{itemize}
+		
+		Dans la méthode principale testez ces 2 méthodes comme cela est fait dans l'exemple ci-dessus avec les fonctions 
+		\texttt{max2} et \texttt{max3}.
+	\end{Exercice} 
+		
+		
+
+	 \begin{Exercice}{Moyenne}
+		Dans la classe \texttt{MathUtil} ajoutez la méthode 
+		\texttt{double moyenne(double x, double y)} qui reçoit deux doubles en paramètres et retourne leur moyenne.
+		
+		Par exemple si la méthode reçoit 10.5 et 15.5 elle retourne 13.
+		
+		Testez-la dans la méthode principale.
+	\end{Exercice} 
+
+\section{Méthodes et chaînes de caractères}
+
+	Les méthodes peuvent traiter n'importe quel type de données.
+	Les méthodes de cette section traitent des chaînes de caractères. 
+
+ 	\listing{java}{code/Mot.java}
+
+	La méthode \texttt{premièreLettre} reçoit en paramètre une chaine de caractères et retourne la première lettre de ce mot.
+
+	\begin{Exercice}{Première et dernière lettre}
+		Créez une classe \texttt{ChaineUtil} et ajoutez-y les méthodes suivantes~: 
+		\begin{itemize}
+			\item \code{java}{char premièreLettre(String mot)} 
+				qui reçoit une chaîne de caractères en paramètre et retourne sa première lettre.
+				
+				Par exemple si la méthode reçoit "Java" elle retournera 'J'.
+			\item \code{java}{char dernièreLettre(String mot)} 
+				qui reçoit une chaîne de caractères en paramètre et retourne sa dernière lettre.
+				
+				Par exemple si la méthode reçoit "Java" elle retournera 'a'.
+		\end{itemize}
+		
+		Testez-les dans la méthode principale.
+	\end{Exercice} 
+
+
+
+\section{Méthodes et booléens}
+
+	Nous avons vu que les \emph{booléens} sont les deux valeurs \texttt{true} (vrai) et \texttt{false} (faux). 
+	Le type associé aux booléens est \texttt{boolean}.
+	
+	Une méthode retournant vrai ou faux sera de type \texttt{boolean} comme illustré dans l'exemple suivant.
+	 	\listing{java}{code/Pair.java}
+	La méthode \texttt{estPair} retourne la valeur de l'expression \code{java}{(nb\%2)==0}, 
+	cette expression est vraie si \texttt{nb} est pair et faux sinon.
+	
+	La condition de l'instruction \texttt{if}, \code{java}{estPair(10)}, sera vraie si l'appel à la méthode retourne vrai (et donc si \texttt{10} est pair)
+	 et faux sinon.
+
+	 \begin{Exercice}{Divisible}
+		Dans la classe \texttt{MathUtil} ajoutez la méthode 
+		\code{java}{boolean estDivisible(int a, int b)} qui reçoit deux entiers en paramètres et 
+		retourne vrai si le premier est divisible par le second.
+		
+		Par exemple si la méthode reçoit 10 et 5 elle retourne \texttt{true}, car 10 est divisible par 5.
+		
+		Testez-la dans la méthode principale.
+	\end{Exercice} 
+
+%	\begin{Exercice}{Bissextile}
+%		
+%		Une année bissextile comporte 366 jours au lieu de 365. 
+%		Une année est bissextile 
+%		\begin{itemize}
+%			\item si elle est divisible par 4 et non divisible par 100, ou
+%			\item si elle est divisible par 400.
+%		\end{itemize}
+%		
+%		Par exemple, les années 2000 (car divisible par 400) et 2008 (car divisible par 4 mais pas par 100)
+%		 sont bissextiles.
+%		 Par contre, les années 1900, 2018 ou encore 2003 ne le sont pas.
+%	
+%		Dans une classe \texttt{DateUtil} ajoutez la méthode 
+%		\code{java}{boolean estBissextile(int année)} qui reçoit une année en paramètre et 
+%		retourne vrai si cette année est une année bissextile et faux sinon.
+%				
+%		Testez votre méthode dans la méthode principale avec les valeurs 2000, 2008, 1900, 2018 et 2003.
+%	\end{Exercice} 
+
+	
+\section{Exercices récapitulatifs}
+				
+	 \begin{Exercice}{Valeur absolue}
+		
+		Dans la classe \texttt{MathUtil} ajoutez la méthode 
+		\texttt{abs} qui reçoit un entier en paramètre et retourne sa valeur absolue.
+		
+		Par exemple si la méthode reçoit -4 elle retourne 4, et si elle reçoit 10 elle retourne 10.
+		
+		Testez-la dans la méthode principale avec une valeur négative et ensuite une valeur positive.
+		
+%		Astuce: utilisez l'instruction \texttt{if} dans votre méthode. 
+	\end{Exercice} 
+					
+	\begin{Exercice}{Décomposition, recomposition}
+		Dans la classe \texttt{MathUtil} ajoutez les méthodes suivantes~: 
+		\begin{itemize}
+			\item \code{java}{int unité(int nb)} qui reçoit un entier en paramètre et retourne la valeur des unités de cet entier.
+				Par exemple si la méthode reçoit 123 elle retournera 3.
+			\item \code{java}{int dizaine(int nb)} qui reçoit un entier en paramètre et retourne la valeur des dizaines de cet entier.
+				Par exemple si la méthode reçoit 123 elle retournera 2.
+			\item \code{java}{int centaine(int nb)} qui reçoit un entier en paramètre et retourne la valeur des centaines de cet entier.
+				Par exemple si la méthode reçoit 123 elle retournera 1.
+			\item \code{java}{int miroir(int nb)} qui reçoit un nombre compris entre 100 et 999 et retourne son miroir.
+				Par exemple si la méthode reçoit 123 elle retournera 321.
+				
+				Astuce: utilisez judicieusement les méthodes \texttt{unité}, \texttt{dizaine} et \texttt{centaine}.
+		\end{itemize}
+		Testez-les dans la méthode principale.
+	\end{Exercice} 
+	
+	\begin{Exercice}{Voyelles et consonnes}
+		Dans la classe \texttt{ChaineUtil} ajoutez les méthodes suivantes~: 
+		\begin{itemize}
+			\item \code{java}{int nombreVoyelles(String mot)} 
+				qui reçoit une chaîne de caractères en paramètre et retourne le nombre de voyelles de ce mot.
+				
+				Par exemple si la méthode reçoit "Programmation" elle retournera 5.
+			\item \code{java}{int nombreConsonnes(String mot)} 
+				qui reçoit une chaîne de caractères en paramètre et retourne le nombre de consonnes de ce mot.
+				
+				Par exemple si la méthode reçoit "Programmation" elle retournera 8.
+		\end{itemize}
+		Testez-les dans la méthode principale.
+	\end{Exercice} 
+
+	 \begin{Exercice}{Palindrome}
+		Dans la classe \texttt{ChaineUtil} ajoutez la méthode 
+		\code{java}{boolean estPalindrome(String mot)} qui reçoit une chaîne de caractères en paramètre et 
+		retourne vrai si cette chaîne est un palindrome.
+		
+		Par exemple si la méthode reçoit "été" elle retourne \texttt{true}.
+		
+		Testez-la dans la méthode principale avec un palindrome et ensuite avec un mot qui n'en est pas un.
+	\end{Exercice} 
+
+
+
+
+
+\end{document}
