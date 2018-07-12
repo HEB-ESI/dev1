@@ -7,6 +7,6 @@ public class Cercle {
     }
     
     public static void main(String[] args) {
-        System.out.print("Le périmètre d'un cercle de rayon 10 est: "+ périmètre(10));        
+        System.out.println("Le périmètre d'un cercle de rayon 10 est: "+ périmètre(10));
     }
 }

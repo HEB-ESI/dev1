@@ -8,9 +8,9 @@ public class Pair {
     
     public static void main(String[] args) {
         if(estPair(10)) {
-            System.out.println("10 est pair")
+            System.out.println("10 est pair");
         } else {
-            System.out.println("10 est impair")
+            System.out.println("10 est impair");
         }
     }
 }
