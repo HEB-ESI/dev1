@@ -1,0 +1,441 @@
+% ====================================================================
+\chapter{Les variables structurées et les classes}
+% ====================================================================
+
+Dans la résolution de problème, l'écriture d'algorithmes et de programmes nous
+ne pourrons pas nous contenter des types de données simples. Nous allons devoir
+manipuler des donneés plus complexes. C'est là qu'interviennent les structures 
+en algorithmique et les classes en langage orienté objet.
+
+Comme un tableau, une structure permet de stocker plusieurs valeurs.  Mais,
+à l’inverse des tableaux, chaque valeur peut être de type différent et est
+désignée par un nom et pas par un numéro.
+		
+Cela permet de créer un nouveau type permettant de représenter des données qui
+ne peuvent s’inscrire dans les types simples déjà vus.  Par exemple~:
+
+\begin{itemize}
+
+	\item Une \textbf{date} est composée de trois éléments (le jour, le mois,
+		l’année). Le mois peut s’exprimer par un entier (15/10/2015) ou par une
+		chaine (15~octobre~2015).
+	
+	\item Un \textbf{moment} de la journée est un triple d’entiers (heures,
+		minutes, secondes).
+		
+	\item La localisation d’un \textbf{point} dans un plan nécessite la
+		connaissance de deux coordonnées cartésiennes (l’abscisse \textit{x} et
+		l’ordonnée \textit{y}) ou polaires (le rayon \textit{r} et l’angle
+		\textit{$\theta$}).
+	
+	\item Une \textbf{adresse} est composée de plusieurs données~:~ un nom de
+		rue, un numéro de maison, parfois un numéro de boite postale, un code
+		postal, le nom de la localité, un nom ou code de pays pour une adresse
+		à l’étranger\dots
+	
+\end{itemize}
+	
+\minitoc
+
+\section{Structure et classe}
+\index{structure}
+\index{classe}
+
+Pour stocker et manipuler de tels ensembles de données, nous utiliserons des
+\textbf{types structurés} ou \textbf{structures}.  Une \textbf{structure} est
+donc un ensemble fini d’éléments pouvant être de types distincts.  Chaque
+élément de cet ensemble, appelé \textbf{champ} (\textit{field}) ou
+\textbf{attribut} (\textit{attribute}) de la structure, possède un nom unique.
+		
+Notez qu’un attribut d’une structure peut lui-même être une structure.  Par
+exemple, une \textbf{carte d’identité} inclut parmi ses informations une
+\textbf{date} de naissance, l’\textbf{adresse} de son propriétaire\dots
+	
+Les langages orientés objet permettent de déclarer leurs propres types. Cette
+déclaration se fera au sein d'une \textbf{classe}. 
+
+Comme nous l'avons déjà vu lorsque nous écrivions notre premier programme (cfr.
+section \ref{helloworld} p~\pageref{helloworld}) chaque programme Java se trouve
+dans une classe. Nous allons faire cohabiter des fichiers Java contenant une
+méthode principale (\pc{main}) et des méthodes statiques et d'autres fichiers
+Java définissant une classe qui représente un objet, une structure. Cette section
+ne fera qu'effleurer la notion d'objet que nous détaillerons dans le cours DEV2 
+«~Développement II~». 
+
+	% ===================================
+	\subsection{Définition d’une structure}
+	% ===================================
+	
+		\marginicon{definition}
+		La définition d’un type structuré adoptera le modèle suivant~:
+	
+		\begin{pseudocode}
+		\Struct{StructureName}
+			\Decl{fieldName1}{type1}
+			\Decl{fieldName2}{type2}
+			\Stmt \dots
+			\Decl{fieldNameN}{typeN}
+		\EndStruct
+		\end{pseudocode}
+	
+		\pc{fieldName1}, \dots, \pc{fieldNameN} sont les noms des
+		différents attributs (ou champs) de la structure, et \pc{type1}, \dots,
+		\pc{typeN} les types de ces attributs.  Tous les types peuvent être
+		envisagés~: les types «~simples~» (integer, real, boolean, string), les
+		tableaux et même d’autres types structurés dont la structure aura été
+		préalablement définie.
+	
+		Pour exemple, nous définissons ci-dessous quatre
+		types structurés que nous utiliserons souvent par la suite~:
+	
+		\begin{minipage}{.5\linewidth}
+		\begin{pseudocode}
+		\Struct{Date}
+			\Decl{day}{integer}
+			\Decl{month}{integer}
+			\Decl{year}{integer}
+		\EndStruct
+		\end{pseudocode}
+		\end{minipage}
+	\ 
+		\begin{minipage}{.5\linewidth}
+		\begin{pseudocode}
+		\Struct{Moment}
+			\Decl{hour}{integer}
+			\Decl{minute}{integer}
+			\Decl{second}{integer}
+		\EndStruct
+		\end{pseudocode}
+		\end{minipage}
+
+
+		\begin{minipage}{.5\linewidth}
+		\begin{pseudocode}
+		\Struct{Point}
+			\Decl{x}{real}
+			\Decl{y}{real}
+		\EndStruct{}
+		\Empty
+		\end{pseudocode}
+		\end{minipage}
+	\ 
+		\begin{minipage}{.5\linewidth}
+		\begin{pseudocode}
+		\Struct{Student}
+			\Decl{name}{string}
+			\Decl{matricule}{integer}
+			\Decl{section}{string}
+			\EndStruct{}
+		\end{pseudocode}
+	\end{minipage}
+
+
+	\subsection{Définition d'une classe}
+
+	Sans surprise, le mot clé utilisé sera \pc{class} et une classe se définit
+	comme suit (dans une version très simplifiée de la grammaire)~:
+
+	\begin{grammaire}
+		\grammarrule{ClassDeclaration:}
+		    [public] class \grammarrule{Identifier}
+    		    \grammarrule{ClassBody}
+
+		\grammarrule{ClassBody:}
+		    \grammarrule{FieldDeclaration}
+		    \grammarrule{…}
+	\end{grammaire}
+
+	\textit{FieldDeclaration} est une série de déclarations habituelles de
+	variables de la forme \pc{Type Identifier;}.
+
+	Définir une classe \pc{Date} équivalente à la structure ci-dessus, aura
+	l'allure suivante~:
+
+	\begin{java}
+public class Date{
+	int day;
+	int month;
+	int year;
+}
+	\end{java}
+
+
+	
+	% =====================================================
+	\section{Déclaration d’une variable}
+	% =====================================================
+	
+		Une fois un type structuré ou une classe défini, 
+		la déclaration de variables de ce type 
+		est identique à celle des variables simples. 
+		Par exemple~:
+	
+		\begin{pseudocode}
+		\Decl{birthday, dDay}{Date}
+		\Decl{departure, arrival, aBeautifullMoment}{Moment}
+		\Decl{a, b, gravity}{Point}
+		\end{pseudocode}
+
+		\begin{java}
+Date birthday;
+Date Dday;
+Moment departure, arrival, aBeautifullMoment;
+Point a, b;
+Point gravity;
+		\end{java}
+	
+	% ====================================================
+	\section{Utilisation des variables de type structuré}
+	% ====================================================
+	
+		En général, pour manipuler une variable structurée ou en modifier le
+		contenu, il faut agir au niveau de ses champs en utilisant les
+		opérations permises selon leur type.  Pour accéder à l’un des champs
+		d’une variable structurée, il faut mentionner le nom de ce champ ainsi
+		que celui de la variable dont il fait partie.  Nous utiliserons la
+		notation «~pointée~»~:
+	
+		\begin{pseudocode}
+			\Stmt variableName.fieldName
+		\end{pseudocode}
+	
+		Exemples d’instructions utilisant les variables
+		déclarées au paragraphe précédent~:
+	
+		\begin{pseudocode}
+		\Let birthday.day \Gets 15
+		\Let birthday.month \Gets 10
+		\Let birthday.year \Gets 2014
+		\Let arrival.hour \Gets departure.hour + 2
+		\Let gravity.x \Gets (a.x + b.x) / 2
+		\end{pseudocode}
+
+		Il est également possible d'utiliser une variable structurée
+		de manière globale (c’est-à-dire d’une façon qui agit simultanément sur
+		chacun de ses champs).  Le cas le plus courant est l’affectation interne
+		entre deux variables structurées de même type, par exemple~:
+	
+		\begin{pseudocode}
+		\Let arrival \Gets departure
+		\end{pseudocode}
+	
+		qui résume les trois instructions suivantes~:
+	
+		\begin{pseudocode}
+		\Let arrival.heure \Gets departure.heure
+		\Let arrival.minute \Gets departure.minute
+		\Let arrival.seconde \Gets departure.seconde
+		\end{pseudocode}
+		
+		
+		Par facilité d’écriture, l'assignation peut se faire en une seule fois
+		via des «~\{\}~». 
+		
+		Exemple~:
+	
+		\begin{pseudocode}
+		\Let birthday \Gets \{19, 5, 1955\}
+		\end{pseudocode}
+	
+		Une variable structurée peut aussi être le paramètre ou la valeur de
+		retour d’un algorithme.  Par exemple, l’entête d’un algorithme renvoyant
+		le nombre de secondes écoulées entre une heure de départ et d’arrivée
+		serait~:
+	
+		\begin{pseudocode}
+		\Entete{secondsElapsed}{\Par{departure\In, arrival\In}{Moment}}{integer}
+		\end{pseudocode}
+	
+		On pourra aussi lire ou afficher une variable structurée%
+		\footnote{%
+			Bien que, dans certains langages, 
+			ces opérations devront être décomposées en une lecture ou
+			écriture de chaque champ de la structure.
+		}.
+	
+		\begin{pseudocode}
+		\Read aMoment
+		\Write aMoment
+		\end{pseudocode}
+	
+		Par contre, il n’est pas autorisé d’utiliser les opérateurs de
+		comparaison ({\textless}, {\textgreater}) pour comparer des variables
+		structurées (même de même type), car une relation d’ordre n’accompagne
+		pas toujours les structures utilisées.  En effet, s’il est naturel de
+		vouloir comparer des dates ou des moments, comment définir une relation
+		d’ordre avec les points du plan ou avec des cartes d’identités~?
+	
+		Si le besoin de comparer des variables structurées se fait sentir, il
+		faudra dans ce cas écrire des modules de comparaison adaptés aux
+		structures utilisées.
+
+		\textbf{Et en langage Java ?}
+
+		Pour une classe définie comme dans la section précédente, Java permet 
+		de déclarer une variable de ce type et d'accéder aux attributs avec une
+		notation pointée. 
+
+		\begin{java}
+Date birthday = new Date();
+birthday.day = 15;
+// ... 
+		\end{java}
+
+		Notez la présence de \textbf{\pc{new Date()}}. Instruction obligatoire,
+		le \textbf{constructeur} réserve un emplacement mémoire destiné
+		à recevoir les valeurs de chaque attribut. En langage orienté objet,
+		nous disons que le constructeur, crée — ou instancie — l'objet. 
+
+		Nous verrons en DEV2 «~Développement II~» que de donner l'accès publique
+		— c'est-à-dire à tous — aux attributs via \pc{birthday.day} par exemple)
+		n'est pas la bonne pratique. Il vaut mieux mettre en œuvre
+		\textbf{l'encapsulation} qui consiste à rendre les attributs privés
+		(inaccessibles en dehors de la classe) et de fournir des méthodes
+		— appelées accesseurs — donnant ces accès. \index{encapsulation}
+
+		Java permet d'utiliser une variable de manière globale puisque c'est une 
+		variable de type référence. Nous pourrons bien sûr écrire~:
+
+		\begin{java}
+arrival = departure;			
+		\end{java}
+
+		\textbf{Notez bien} que cette assignation est une copie de référence et
+		que les deux variables références le même objet. Modifier l'un, modifie
+		l'autre. En ce sens, c'est différent de ce que nous faisons dans nos
+		algorithmes. 
+
+		L'assignation globale telle que présentée précédemment dans les
+		algorithmes ne pourra se faire qu'en écrivant explicitement un
+		constructeur\footnote{Spoiler. Votre IDE peut vous aider dans cette
+		tâche.} recevant les valeurs utiles en paramètres. Un
+		\textbf{constructeur}\index{constructeur}~:
+
+		\begin{itemize}
+			\item a le même nom que la classe;
+			\item n'a pas de type de retour;
+			\item construit l'objet~; réserve l'emplacement mémoire nécessaire;
+			\item est appelé grâce au mot clé \textbf{\pc{new}}
+		\end{itemize}
+
+		La classe \pc{Date}, précédemment écrite, pourrait s'écrire~:
+
+		\begin{java}
+public class Date{
+	int day;
+	int month;
+	int year;
+
+	public Date(){
+		// permet d'instancier une date sans valeurs de départ
+	}
+
+	public Date(int aDay, int aMonth, int aYear){
+		day = aDay;
+		month = aMonth;
+		year = aYear;
+	}
+}
+		\end{java}
+
+
+		… et l'assignation globable~:
+
+		\begin{java}
+Date birthday = new Date{19, 5, 1955};		
+		\end{java}
+
+		Une classe définie par l'utilisateur — comme la classe \pc{Date} — peut
+		être un paramètre d'une méthode ou un type de retour. 
+
+		Pour la lecture, il faudra lire chaque attribut séparément et créer
+		l'objet — grâce au constructeur — ensuite. 
+
+		Pour afficher la valeur d'un objet, il est nécessaire~:
+
+		\begin{description}
+
+			\item[là où l'on veut l'affichage] de faire une simple demande
+				d'affichage d'une variable 
+
+\begin{java}
+System.out.println(birthday);
+\end{java}
+
+			\item[dans la classe] d'ajouter une méthode \pc{toString} (et
+				il faut impérativement respecter le nom)\footnote{Comme pour le 
+				constructeur, votre IDE peut vous aider.}
+
+				\begin{java}
+// ...
+public String toString(){
+	return day + "/" + month + "/" + year;
+}
+				\end{java}
+
+		\end{description}
+
+		Nous avons montré ici, ce qu'il faut faire en langage Java pour pouvoir
+		utiliser l'équivalent des structures en algorithmique. La notion de
+		classe dans les langages orientés objets est beaucoup plus large et
+		s'accompagne de concepts essentiels de programmation tels que
+		l'encapsulation, le plymorphisme et l'héritage. Ces concepts seront
+		abordés en DEV2 - «~Développement II~».
+	
+	% ==========================================================
+	\section{Remarque}
+	% ==========================================================
+	
+		Tous les exemples ci-dessus présentent des champs simples (entier ou
+		chaine) mais il n'y a en fait aucune contrainte : un champ peut-être un
+		tableau ou même une autre structure.
+		
+		Par exemple, la structure suivante définit une personne qui possède, en
+		plus de son nom, une date de naissance (la structure \pc{Date}) et
+		3 numéros de téléphone (un tableau de 3 chaines).
+		
+		\begin{pseudocode}
+			\Struct{Person}
+			\Decl{name}{string}
+			\Decl{birthday}{Date}
+			\Decl{phoneNumbers}{\Array{3}{string}}
+			\EndStruct
+		\end{pseudocode}
+
+		Et voici un exemple d'utilisation.
+
+		\begin{pseudocode}
+			\Decl{me}{Person}
+			\Let me.birthday.day \Gets 23
+			\Let me.phoneNumbers[0] \Gets "0444/42.42.42"
+		\end{pseudocode}
+		
+		En langage Java, cet exemple peut être immédiatement traduit par~:
+
+		\begin{java}
+public class Person{
+	String name;
+	Date birthday;
+	String[] phoneNumbers;
+
+	public Person(){
+		birthday = new Date();
+		phoneNumbers = new String(3);
+	}
+}
+		\end{java}
+
+		\paragraph{Notez bien} la nécessité de créer le tableau et l'objet date
+		dans le constructeur. 
+
+		L'exemple d'utilisation devient~:
+
+		\begin{java}
+Person me = new Person();
+me.birthday.day = 23;
+me.phoneNumbers[0] = "0444/42.42.42";
+		\end{java}
+
+		À nouveau, nous verrons les bonnes pratiques dans le prochain cours de 
+		développement. 
+	
