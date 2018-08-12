@@ -1,5 +1,5 @@
 % ====================
-\chapter{Les chaines}\index{chaine}
+\chapter{Les chaines et les \texttt{String}}\index{chaine}
 % ====================
 
 	Dans ce chapitre, nous allons apprendre à manipuler du texte en étudiant les
@@ -69,11 +69,12 @@
 	D’autres encore, comme C, ont un type caractère mais pas de type chaine
 	à proprement parler; ils sont vus comme des tableaux de caractères. 
 
-	Dans nos algorithmes nous introduirons un type \pc{character} (caractère)
-	mais sans le distinguer clairement d’une chaine.  Ainsi, un caractère pourra
-	être utilisé comme une chaine et une chaine d’un seul caractère pourra être
-	considéré comme un caractère.  En somme, \pc{character} n’est qu’un
-	raccourci pour dire~: \emph{une chaine de longueur 1}. 
+	Dans nos algorithmes — mais pas dans nos programmes Java — nous introduirons
+	un type \pc{character} (caractère) mais sans le distinguer clairement d’une
+	chaine.  Ainsi, un caractère pourra être utilisé comme une chaine et une
+	chaine d’un seul caractère pourra être considéré comme un caractère.  En
+	somme, \pc{character} n’est qu’un raccourci pour dire~: \emph{une chaine de
+	longueur 1}. 
 	
 \section{Le contenu d’une chaine}
 %=================================
@@ -145,7 +146,7 @@ public static boolean contains(String word, char letter){
 	Ainsi, "algo" deviendra "ogla".
 	
 	\begin{pseudocode}
-		\Algo{mirror}{\Par{\InOut word}{string}}{string}
+		\Algo{mirror}{\Par{\In word}{string}}{string}
 			\Decl{mirror}{string}
 			\Let mirror \Gets ""
 			\For{i}{1}{word.length}
@@ -155,6 +156,29 @@ public static boolean contains(String word, char letter){
 		\EndAlgo
 	\end{pseudocode}
 
+	Cet algorithme se traduit immédiatement en langage Java par~:
+
+	\begin{java}
+public static String mirror(String word){
+	String mirror = "";
+	for (int i = 0; i < word.length(); i = i + 1){
+		mirror = word[i] + mirror;
+	}
+	return mirror;
+}
+	\end{java}
+
+	L'instruction de la ligne 4 concatène un caractère (\pc{word[i]}) avec une
+	chaine (\pc{mirror}) ce qui n'est, à priori, pas possible. Dans ce cas, Java
+	convertit le caractère en une chaine avant d'effectuer la concaténation de
+	manière tout à fait transparente. 
+
+	Dans cette instruction à la ligne 4 toujours, il y a création d'une nouvelle
+	chaine de caractère à chaque itération de la boucle. Si l'on veut gagner un
+	peu de place en mémoire, il est possible de créer une chaine de la bonne
+	taille dès le début et d'y placer les caractères dans l'ordre qui nous
+	convient au fur et à mesure. Ce serait mieux n'est-ce pas ? 
+	
 	En langage Java, ce n'est pas immédiat de remplacer un caractère par un
 	autre dans une chaine. Ceci parce que \pc{character} et \pc{String} sont
 	deux types différents. De plus, l'un est de type primitif comme nous l'avons
@@ -183,6 +207,16 @@ public static String mirror(String word){
 	return sb.toString();
 }
 	\end{java}
+
+	\begin{itemize}
+		\item instruction 2~: création d'un espace de la mème longueur que la 
+			chaine \pc{word};
+
+		\item instruction 4~: placement du caractère à la position d'indice $i$
+			dans \pc{word} à la position d'indice «~taille du mot - $i$ -1~»
+			dans le \pc{StringBuilder}.
+
+	\end{itemize}
 	
 
 \section{Manipuler les caractères}
@@ -240,8 +274,8 @@ Character.isUpperCase(c);   // true
 		Elle retourne vrai pour les dix caractères 
 		'0', '1', '2', '3', '4', '5', '6', '7', '8' et '9'%
 		\footnote{%
-			Et aussi pour les chiffres dans d'autres langues, cfr. javadoc, 
-			\url{https://docs.oracle.com/javase/9/docs/api/java/lang/Character.html#isDigit-char-}
+			Et aussi pour les chiffres dans d'autres langues, cfr. javadoc, % 
+			\url{https://docs.oracle.com/javase/9/docs/api/java/lang/Character.html#isDigit-char-}%
 		}
 
 		\begin{java}
@@ -342,6 +376,8 @@ public static int letterIndex(char c){
 	return Character.toLowerCase(c) - 0x61 + 1;
 }
 		\end{java}
+
+		… mais ça sort un peu du cadre de ce premier cours de développement. 
 		
 	\end{description}
 	
@@ -369,8 +405,8 @@ public static int letterIndex(char c){
 \section{Chaine et nombre}
 %=========================
 
-	Si une chaine contient un nombre,
-	on doit pouvoir le convertir, et inversement.
+	Si une chaine contient un nombre, il doit être possible de le convertir, et
+	inversement.
 
 	\begin{description}
 	
@@ -414,9 +450,9 @@ double d = Double.parseDouble(s);
 		En langage Java, il existe également une méthode \pc{substring}~:
 
 		\begin{java}
-String s = "Karine, Jenny et Vicky sont belles";			
-System.out.println(s.substring(8,34)); 
-	// Jenny et Vicky sont belles
+String s = "Karine, Jenny et Vicky paraissent belles";			
+System.out.println(s.substring(8,40)); 
+	// Jenny et Vicky paraissent belles
 		\end{java}
 	
 	\end{description}
@@ -436,7 +472,6 @@ System.out.println(s.substring(8,34));
 	\end{itemize}
 
 	
-\clearpage
 \section{Recherche de sous-chaine}
 % ==================================
 	
