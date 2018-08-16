@@ -1,0 +1,52 @@
+%================================
+\begin{Fiche}{Maximum dans un tableau}
+%================================
+\label{fiche:tab-max}
+
+\Section{Problème}
+	Trouver la valeur maximale dans un tableau d’entiers.
+
+\Section{Spécification}
+	
+	\textbf{Données}~: le tableau à analyser
+
+	\textbf{Résultat}~: la valeur du maximum
+
+\Section{Solution}
+
+	Il faut veiller à initialiser le maximum avec la première valeur du tableau
+	pour parcourir le reste du tableau à la recherche d’une valeur plus grande.
+	
+	\begin{pseudocode}
+		\Algo{max}{\Par{is}{\Array{}{integer}}}{integer}
+			\Decl{max}{integer}
+			\Let max \Gets is[0]
+			\For{i}{1}{is.length - 1}
+				\If{is[i] > max}
+					\Let max \Gets is[i]
+				\EndIf
+			\EndFor
+			\Return max
+		\EndAlgo
+	\end{pseudocode}
+
+\Section{Variante}
+
+	Si c'est la position et non la valeur qui nous intéresse, une solution 
+	serait~:
+
+	\begin{pseudocode}
+		\Algo{max}{\Par{is}{\Array{}{integer}}}{integer}
+			\Decl{maxIndex}{integer}
+			\Let maxIndex \Gets 0
+			\For{i}{1}{is.length - 1}
+				\If{is[i]>is[maxIndex]}
+					\Let maxIndex \Gets i
+				\EndIf
+			\EndFor
+			\Return maxIndex
+		\EndAlgo
+	\end{pseudocode}
+	
+	
+\end{Fiche}
