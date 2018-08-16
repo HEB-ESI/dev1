@@ -1,0 +1,115 @@
+%================================
+\begin{Fiche}{Tableau non trié}
+%================================
+\label{fiche:tab-recherche-non-triee}
+
+\Section{Problème}
+	
+	Rechercher, ajouter, supprimer des données non triées dans un tableau
+	d’entiers non triés.
+
+\Section{Rechercher}
+
+	Retourner l'indice d'une donnée trouvée dans un tableau non trié ou -1 si
+	elle n'est pas trouvée. 
+
+	Nous supposons que le tableau n'est pas rempli, l'algorithme recevra donc 
+	une valeur représentant le nombre d'éléments du tableau. Cette valeur est
+	inférieure à la taille du tableau bien sûr. 
+	
+	\textbf{Données}~: le tableau à analyser, le nombre d'éléments dans ce
+	tableau (taille logique), la valeur à rechercher
+		
+	\textbf{Résultat}~: la position de l'élément si il est dans le tableau et -1
+	sinon
+	
+		\begin{pseudocode}
+			\LComment{Vérifie si un nombre est dans un tableau 
+			et donne sa position (-1 sinon)}
+			\Algo{indexValue}{\Par{is\In}{\Array{}{integers}}, 
+					\\\hfill\Par{nbValues\In}{integer}, 
+					\Par{value\In}{integer}}{integer}
+				\Decl{i}{integer}
+				\Let i \Gets 0
+				\While{i < nbValues AND is[i] $\ne$ value}
+					\Let i \Gets i + 1
+				\EndWhile
+				\If{i < nbValues}
+					\Return i
+				\Else
+					\Return -1
+				\EndIf
+			\EndAlgo
+		\end{pseudocode}
+
+\Section{Ajouter}
+	Ajouter une donnée non encore présente dans le tableau de données non triées
+	
+	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
+	tableau, la valeur à ajouter
+		
+	\textbf{Résultat}~: le tableau reçu est modifié en lui ajoutant la valeur si
+	elle n'y était pas déjà
+	
+		\begin{pseudocode}
+			\LComment{Ajoute un nombre non encore présente dans le isleau.}
+			\Algo{add}{\Par{is\In\Out}{\Array{}{integer}}, 
+				\\\hfill\Par{nValues\In\Out}{integer}, \Par{value\In}{integer}}{}
+				\If{nValues $<$ is.length 
+						AND indexValue(is, nValues, value) $\ne$ -1}
+					\Let is[nValues] \Gets value
+					\Let nValues \Gets nValues + 1
+				\EndIf
+			\EndAlgo
+		\end{pseudocode}
+
+		\paragraph{Remarque} Si l'algorithme précédent se traduit immédiatement
+		en langage Java, ce n'est pas le cas de celui-ci. Pourquoi ? 
+	
+		Le passage de paramètre se faisant par valeur (cfr. chapitre
+		\ref{chap:insertion-recherche} p.~\pageref{chap:insertion-recherche}),
+		la taille logique du tableau doit être retournée et maintenue à jour par
+		le code appelant. En langage Java, cet algorithme aurait l'allure
+		suivante~:
+
+		\begin{java}
+public static int add(int[] is, int nValues, int value){
+	if (nValues < is.length() 
+			&& indexValue(is, nValues, value) != -1){
+		is[nValues] = value;
+		nValues = nValues + 1;
+	}
+	return nValues;
+}
+		\end{java}
+
+
+\Section{Supprimer}
+	Supprimer une donnée d'un tableau de données non triées
+	
+	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
+	tableau, la valeur à supprimer
+		
+	\textbf{Résultat}~: le tableau reçu est modifié en lui supprimant la valeur
+		
+		\begin{pseudocode}
+			\LComment{Supprime un nombre donné dans le tableau.}
+			\Algo{delete}{
+				\Par{is\In\Out}{\Array{n}{integer}}, 
+				\\\hfill\Par{nValues\In\Out}{integer}, 
+				\Par{value\In}{integer}
+			}{}
+				\Decl{index}{integer}
+				\Let index \Gets indexValue(is, nValues, value)
+				\If{index $\ne$ -1}
+					\Let is[index] \Gets is[nValues-1]
+					\Let nValues \Gets nValues - 1
+				\EndIf			
+			\EndAlgo
+		\end{pseudocode}
+
+%\Section{Variante}
+
+
+	
+\end{Fiche}
