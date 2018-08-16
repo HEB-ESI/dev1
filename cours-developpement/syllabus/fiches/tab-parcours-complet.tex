@@ -1,0 +1,37 @@
+%================================
+\begin{Fiche}{Parcours complet d’un tableau}
+%================================
+\label{fiche:tab-parcours-complet}
+
+\Section{Problème}
+	Afficher tous les éléments d’un tableau d’entiers.
+
+\Section{Spécification}
+	
+	\begin{itemize}
+	\item \textbf{Données}~: le tableau à afficher
+	\item \textbf{Résultat}~: aucun.
+	\item \textbf{Affiche} : les éléments du tableau, dans l'ordre.
+	\end{itemize}
+
+\Section{Solution}
+
+	Puisqu’on parcourt tout le tableau, on peut utiliser une boucle \emph{pour}
+	(\pc{for}).
+	
+	\begin{pseudocode}
+		\Algo{display}{\Par{is}{\Array{}{integer}}}{}
+			\For{i}{0}{is.length - 1}
+				\Write is[i]
+			\EndFor
+		\EndAlgo
+	\end{pseudocode}
+
+\Section{Quand l’utiliser~?}
+
+	Ce type de solution peut être utilisé à chaque fois qu’il est nécessaire
+	d'examiner \textbf{tous} les éléments d’un tableau, quel que soit le
+	traitement voulu~: les afficher, les sommer, les comparer\dots
+	
+	
+\end{Fiche}
