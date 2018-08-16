@@ -1,0 +1,58 @@
+%======================================
+\begin{Fiche}{Maximum de deux nombres}
+%======================================
+\label{fiche:max2nb}
+
+\Section{Problème}
+	Quel est le maximum de deux nombres~?
+
+\Section{Analyse}
+
+	Voilà un classique de l’algorithmique.  Attention~! On ne veut pas savoir
+	\emph{lequel} est le plus grand mais juste la valeur.  Il n’y a donc pas
+	d’ambigüité si les deux nombres sont égaux.
+
+	\textbf{Données}~: deux nombres réels.
+		
+	\textbf{Résultat}~: un réel contenant la plus grande des deux valeurs données.
+
+	\begin{center}	
+		\flowalgodd{nb1 (real)}{nb2 (real)}{max2}{real}
+	\end{center}
+
+\Section{Exemples}
+
+	\vspace*{-3mm}
+	\begin{multicols}{3}
+		\begin{itemize}
+		\item \pc{max2(-3, 4)} donne $4$
+		\item \pc{max2(7, 4)} donne $7$
+		\item \pc{max2(4, 4)} donne $4$
+		\end{itemize}
+	\end{multicols}
+	\vspace*{-6mm}
+	
+\Section{Solution}
+
+	\begin{pseudocode}
+	\Algo{max2}{\Par{nb1}{real}, \Par{nb2}{real}}{real}
+		\Decl{max}{real}
+		\If{nb1 > nb2}
+			\Let max \Gets nb1
+		\Else
+			\Let max \Gets nb2
+		\EndIf
+		\Return max
+	\EndAlgo
+	\end{pseudocode}
+
+	Attention à éviter les mauvaises écritures 
+	expliquées à l’annexe \vref{B-ass-val}.
+
+	
+\Section{Quand l’utiliser~?}
+
+	Cet algorithme peut bien sûr être facilement adapté à la recherche du
+	minimum.
+		
+\end{Fiche}
