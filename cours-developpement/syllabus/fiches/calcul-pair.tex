@@ -1,0 +1,52 @@
+%===================================
+\begin{Fiche}{Un nombre pair}
+%===================================
+\label{fiche:calcul-pair}
+
+\Section{Problème}
+Un nombre reçu en paramètre est-il pair\footnote{\textit{Even} en anglais et \textit{odd} pour impair.}~?
+
+\Section{Spécification}
+
+	\textbf{Données}~: le nombre entier dont on veut savoir si il est pair.
+		
+	\textbf{Résultat}~: un booléen à \textit{vrai} si le \textit{nombre} est pair et \textit{faux} sinon.
+
+	\begin{center}	
+		\flowalgod{number (integer)}{isEven}{boolean}
+	\end{center}
+
+\Section{Exemples}
+
+	\begin{itemize}
+	\item \pc{isEven(2016)} donne $vrai$
+	\item \pc{isEven(2015)} donne $faux$
+	\end{itemize}
+	
+\Section{Solution}
+
+	Un nombre est pair si il est multiple de 2. 
+	C’est-à-dire si le reste de sa division par 2 vaut 0.
+	%\[
+		%estPair\ est\ vrai\ \equiv nombre\ MOD\ 2 = 0
+	%\]
+
+	\begin{pseudocode}
+		\Algo{isEven}{\Par{number}{integer}}{boolean}
+			\Return number MOD 2 == 0
+		\EndAlgo
+	\end{pseudocode}
+
+	Attention à éviter les mauvaises écritures expliquées à l’annexe
+	\vref{B-ass-bool}~: pas de \pc{\K{si-sinon}}.
+	
+\Section{Quand l’utiliser~?}
+
+	À chaque fois qu’un résultat booléen dépend d’un calcul simple.
+	Si le calcul est plus compliqué, on peut le décomposer comme
+	indiqué dans la fiche \vref{fiche:calcul-complexe}.
+	
+	On peut également s’inspirer de cette solution
+	quand il faut donner sa valeur à une variable booléenne.
+		
+\end{Fiche}
