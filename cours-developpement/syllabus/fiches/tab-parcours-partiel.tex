@@ -1,0 +1,104 @@
+%================================
+\begin{Fiche}{Parcours partiel d’un tableau}
+%================================
+\label{fiche:tab-parcours-partiel}
+
+\Section{Problème}
+	Recherche d’un zéro dans un tableau.
+
+\Section{Spécification}
+	
+	\textbf{Données}~: le tableau à tester
+		
+	\textbf{Résultat}~: 
+		un booléen à vrai si il existe une valeur nulle dans le tableau.
+	
+	\begin{center}	
+		\flowalgod{is (tableau d’entiers)}{containsNulValue}{booléen}
+	\end{center}
+
+\Section{Solution}
+
+	Contrairement au parcours complet (cf. fiche
+	\vref{fiche:tab-parcours-complet}) nous allons utiliser un \emph{tant que} 
+	(\pc{while}) car nous voulons arrêter l'algorithme dès que la valeur cherchée
+	est trouvée.
+	
+	Il existe essentiellement deux solutions, avec ou sans variable booléenne.
+	En général, la solution [A] sera plus claire si le test est court.
+
+	\subsubsection*{[A] Sans variable booléenne}
+	
+		\begin{pseudocode}
+			\Algo{containsNulValue}{\Par{is}{\Array{}{integer}}}{boolean}
+				\Decl{i}{integer}
+				\Let i \Gets 0
+				\While{i < is.length AND is[i] $\neq$ 0}
+					\Let i \Gets i + 1
+				\EndWhile
+				\Return i < n \RComment Si i<n -> arrêt prématuré 
+					\Let\RComment c-à-d que l'on a trouvé un 0.
+			\EndAlgo
+		\end{pseudocode}
+	
+		Il faut être attentif à \textbf{ne pas inverser} les deux parties du
+		test.  Il faut absolument vérifier que l’indice est bon avant de tester
+		la valeur à cet indice.  Revoyez la notion de court-circuit
+		(\vref{court-circuit} ).
+		
+	\subsubsection*{[B] Avec variable booléenne}
+
+		\begin{pseudocode}
+			\Algo{containsNulValue}{\Par{is}{\Array{}{integer}}}{boolean}
+				\Decl{i}{integer}
+				\Decl{isZero}{boolean}
+				\Let isZero \Gets false
+				\Let i \Gets 0
+				\While{i < is.length AND NON isZero}
+					\Let isZero \Gets is[i] ==  0
+					\Let i \Gets i + 1
+				\EndWhile
+				\Return isZero
+			\EndAlgo
+		\end{pseudocode}
+
+		Au sortir de la boucle, l’indice \pc{i} ne désigne pas l’élément qui
+		nous a permis d’arrêter mais le suivant.  Si nécessaire, on peut
+		remplacer l’intérieur de la boucle par~:
+
+		\begin{pseudocode}
+			\If{is[i] ==  0}
+				\Let isZero \Gets true
+			\Else
+				\Let i \Gets i + 1
+			\EndIf
+		\end{pseudocode}
+		
+		Dans notre exemple, nous cherchons un élément particulier (un 0).  Dans
+		le cas où l'on vérifie si tous les éléments possèdent une certaine
+		propriété (être positifs par exemple), nous veillerons à adapter le nom
+		du booléen et son utilisation (par exemple un booléen appelé
+		\pc{areAllPositives}, initialisé à \pc{true} avec un \pc{\dots AND
+		areAllPositives} dans le test.
+
+		Dans tous les cas, faites attention à ne pas utiliser \pc{is[i]} si
+		vous n’êtes pas sûr du \pc{i}.  C’est particulièrement vrai après la
+		boucle.
+
+		Attention aussi à éviter les mauvaises pratiques 
+		expliquées à l’annexe \vref{B-for-break}.
+		
+					
+\Section{Quand l’utiliser~?}
+
+	Ce type de solution peut être utilisé pour tout parcours d'un tableau où un
+	arrêt prématuré est possible. 
+
+	\begin{itemize}
+	\item Est-ce que tous les éléments sont positifs~?
+	\item Est-ce que les élément sont triés~?
+	\item Est-ce qu’un élément précis est présent~?
+	\item \dots
+	\end{itemize}
+	
+\end{Fiche}
