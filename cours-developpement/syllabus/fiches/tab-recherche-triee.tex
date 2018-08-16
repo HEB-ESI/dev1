@@ -1,0 +1,153 @@
+%================================
+\begin{Fiche}{Tableau trié}
+%================================
+\label{fiche:tab-recherche-triee}
+
+\Section{Problème}
+	
+	Rechercher, ajouter, supprimer des données triées dans un tableau d’entiers
+	triés.
+
+\Section{Rechercher}
+
+	Rechercher la position où a été trouvé l’élément ou la position où il aurait
+	dû être
+	
+	\textbf{Données}~: le tableau à analyser, le nombre d'éléments dans ce
+	tableau, la valeur à rechercher
+		
+	\textbf{Résultat}~: la position où a été trouvée la valeur ou la position où
+	elle aurait dû être
+
+		\begin{pseudocode}
+				\LComment{Recherche un élément.}
+				\LComment{- index~: indique la position où a été trouvée la valeur}
+				\LComment{ou la position où elle aurait dû être}
+				\Algo{findIndex}{
+						\Par{is\In}{\Array{}{integer}}, 
+						\Par{nValues\In}{integer}, 
+						\\\hfill\Par{value\In}{integer},
+						}{index integer}
+					\Decl{index}{integer} \Gets 0
+					\While{index < nValues AND is[index] < value}
+						\Let index \Gets index + 1
+					\EndWhile
+					\Return index
+				\EndAlgo
+		\end{pseudocode}
+
+\Section{Vérifier} 
+
+	Rechercher l'indice d'une donnée trouvée dans un tableau trié ou -1 si elle
+	n'est pas trouvée
+	
+	\textbf{Données}~: le tableau à analyser, le nombre d'éléments dans ce
+	tableau, la valeur à rechercher
+		
+	\textbf{Résultat}~: la position de l'élément si il est dans le tableau et -1
+	sinon
+	
+	Cette opération est triviale.
+			
+		\begin{pseudocode}
+			\LComment{Vérifie si un nombre est dans un tableau d'entiers trié}
+			\LComment{et donne sa position (-1 si non présent)}
+			\Algo{verify}{
+				\Par{is\In}{\Array{}{integers}}, 
+				\Par{nValues\In}{integer}, 
+				\\\hfill
+				\Par{value\In}{integer}
+			}{integer}
+				\Decl{index}{integer}
+				\Decl{isFound}{boolean}
+				\Stmt index \Gets findIndex( is, nValues, value)
+				\If{is[index] == value}
+					\Return index
+				\Else
+					\Return -1
+				\EndIf
+			\EndAlgo
+		\end{pseudocode}
+
+\Section{Ajouter}
+
+	Ajouter une donnée non encore présente dans le tableau de données triées.
+	
+	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
+	tableau, la valeur à ajouter
+		
+	\textbf{Résultat}~: le tableau reçu est modifié en lui ajoutant la valeur si
+	elle n'y était pas déjà
+	
+		\begin{pseudocode}
+				\LComment{Ajouter un nombre donné.}
+				\Algo{add}{
+						\Par{is\In\Out}{\Array{}{integer}}, 
+						\Par{nValues\In}{integer}, 
+						\\\hfill\Par{value\In}{integer}
+						}{integer}
+					\Decl{index}{integer}
+					\Decl{isFound}{boolean}
+					\If{verify(is, nValues, value) == -1}
+						\Stmt index \Gets findIndex(is, nValues, value)
+						\Stmt shiftRight(is, index, nValues)
+						\Let is[index] \Gets value
+						\Let nValues \Gets nValues + 1
+					\EndIf
+					\Return nValues
+				\EndAlgo
+				\Empty
+				\LComment{Décale d’une position à droite les éléments}
+				\LComment{entre la position début et fin}
+				\Algo{shiftRight}{
+						\Par{is\In\Out}{\Array{}{integer}}, 
+						\Par{begin\In}{integer}, 
+						\Par{end\In}{integer}
+						}{}
+					\For[-1]{i}{end}{begin}
+						\Let is[i+1] \Gets is[i]
+					\EndFor
+				\EndAlgo
+			\end{pseudocode}
+
+
+\Section{Supprimer}
+	Supprimer une donnée d'un tableau de données triées
+	
+	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
+	tableau, la valeur à supprimer
+		
+	\textbf{Résultat}~: le tableau reçu est modifié en lui supprimant la valeur
+		
+		\begin{pseudocode}
+			\LComment{supprimer l'élément donné}
+			\Algo{delete}{
+				\Par{is\In\Out}{\Array{}{integer}}, 
+				\Par{nValues\In\Out}{integer}, 
+				\\\hfill\Par{value\In}{integer}
+			}{integer}
+				\Decl{index}{integer}
+				\Decl{isFound}{boolean}
+				\If{verify(is, nValues, value) $\neq$ -1}
+					\Stmt index \Gets findIndex(is, nValues, value)
+					\Stmt shiftLeft(is, index + 1, nValues)
+					\Let nValues \Gets nValues - 1	
+				\EndIf
+				\Return nValues
+			\EndAlgo
+			\Empty
+			\LComment{Décale d’une position à gauche les éléments }
+			\LComment{entre la position début et fin}
+			\Algo{shiftLeft}{
+				\Par{tab\In\Out}{\Array{}{integers}}, 
+				\Par{begin\In}{integer}, 
+				\Par{end\In}{integer}
+			}{}
+				\For{i}{begin}{end}
+					\Let is[i-1] \Gets is[i]
+				\EndFor
+			\EndAlgo
+			\end{pseudocode}
+
+
+\end{Fiche}
