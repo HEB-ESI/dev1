@@ -1,0 +1,90 @@
+%================================
+\begin{Fiche}{Passage d’un tableau en paramètre}
+%================================
+\label{fiche:tab-passage-param}
+
+\Section{Problème}
+
+	Le type \emph{tableau} étant un type à part entière, il est tout-à-fait
+	éligible comme type pour les paramètres et la valeur de retour d’un
+	algorithme.
+
+\Section{Passer un tableau en paramètre}
+		\begin{itemize}
+			\item \In : 
+				indique que l’algorithme va consulter les valeurs du tableau
+				reçu en paramètre.  Les éléments doivent donc avoir été
+				initialisés avant d’appeler l’algorithme. Exemple~:
+			
+				\begin{pseudocode}
+					\LComment{Affiche les éléments d’un tableau de n entiers}
+					\Algo{display}{\Par{is\In}{\Array{}{integer}}}{} 
+						\For{i}{0}{is.length - 1}
+							\Write is[i]
+						\EndFor
+					\EndAlgo 
+					
+					\LComment{Utilisation possible}
+					\Decl{myIntegers}{\Array{10}{entiers}}
+					\Let myIntegers \Gets \{2,3,5,7,11,13,17,19,23,29\}
+					\Stmt afficher(myIntegers)
+				\end{pseudocode}
+				
+				\textbf{Rappel} C'est  le passage de paramètre par défaut si
+				aucune flèche n’est indiquée.
+				
+			\item \In\Out :
+				indique que l’algorithme va consulter/modifier les valeurs 
+				du tableau reçu en paramètre. Exemple~:
+			
+				\begin{pseudocode}
+					\LComment{Inverse le signe des éléments d'un tableau de 
+						n entiers}
+					\Algo{oppositeValues}{\Par{is\In\Out}{\Array{}{integer}}}{} 
+						\For{i}{0}{is.length - 1}
+							\Let is[i] \Gets -is[i]
+						\EndFor
+					\EndAlgo 
+		
+					\LComment{Utilisation possible}
+					\Decl{myIntegers}{\Array{5}{entiers}}
+					\Let myIntegers \Gets \{2,-3,5,-7,11\}
+					\Stmt oppositeValues(myIntegers)
+				\end{pseudocode}
+
+			\end{itemize}
+
+			\paragraph{Rappel Java~:} Un tableau Java étant un type référence,
+			c'est toujours la valeur de la référence qui est passée en
+			paramètre.  En ce sens, un passage en entrée ou en entrée / sortie
+			est identique en Java et le tableau doit toujours exister
+			c'est-à-dire avoir été créé au préalable. 
+
+		\Section{Retourner un tableau}
+		%---------------------------------
+			
+			Comme pour n’importe quel autre type, un algorithme peut retourner
+			un tableau.  Ce sera à lui de le déclarer et de lui donner des
+			valeurs.
+
+			\textbf{Exemple~:}
+			\begin{pseudocode}
+				\LComment Crée un tableau d’entiers de taille n, 
+					l’initialise à 0 et le retourne.
+				\Algo{create}{n : integer}{\Array{n}{integer}}
+					\Decl{is}{\Array{n}{integer}}
+					\For{i}{0}{n-1}
+						\Let is[i] \Gets 0
+					\EndFor
+					\Return is
+				\EndAlgo
+				\Empty
+				\LComment{Utilisation possible}
+				\Algo{test}{}{}
+					\Decl{myIntegers}{\Array{}{integer}}
+					\Let myIntegers \Gets create(20)
+					\Stmt display(myIntegers)
+				\EndAlgo
+			\end{pseudocode}
+	
+\end{Fiche}
