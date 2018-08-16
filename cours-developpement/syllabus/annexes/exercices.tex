@@ -2,432 +2,430 @@
 
 \minitoc
 
-%----------------------------------------------
-\section{Spécifier le problème, exercices}
-%----------------------------------------------
-	
-		Pour les exercices suivants, 
-		nous vous demandons d’imiter la démarche décrite dans ce chapitre, 
-		à savoir~:
-		\begin{itemize}
-			\item Déterminer quelles sont les données~;
-				leur donner un nom et un type.
-			\item Déterminer quel est le type du résultat.
-			\item Déterminer un nom pertinent pour l’algorithme.
-			\item Fournir un résumé graphique.
-			\item Donner des exemples.
-		\end{itemize}
-	
-		\begin{Exercice}{Somme de 2 nombres}
-			Calculer la somme de deux nombres donnés.
-			\paragraph{Solution.}%
-			\footnote{%
-				Nous allons de temps en temps 
-				fournir des solutions.
-				En algorithmique,
-				il y a souvent \textbf{plus qu’une} solution possible.
-				Ce n’est donc pas parce que vous avez trouvé autre chose
-				que c’est mauvais.
-				Mais il peut y avoir des solutions \textbf{meilleures}
-				que d’autres; 
-				n’hésitez jamais à montrer la vôtre
-				à votre professeur pour avoir son avis.
-			}
-			Il y a ici clairement 2 données.
-			Comme elles n’ont pas de rôle précis,
-			on peut les appeler simplement \pc{nombre1}
-			et \pc{nombre2}
-			(\pc{nb1} et \pc{nb2} sont aussi de bons choix).
-			L’énoncé ne dit pas si les nombres sont entiers ou pas;
-			restons le plus général possible en prenant des réels.
-			Le résultat sera de même type que les données.
-			Le nom de l’algorithme pourrait être simplement \pc{somme}.
-			Ce qui donne~:
-			\begin{center}
-				\flowalgodd{nombre1 (réel)}{nombre2 (réel)}{somme}{réel}
-			\end{center}			 
-			Et voici quelques exemples numériques~:	
-				\pc{somme(3, 2)} donne $5$      \quad
-				\pc{somme(-3, 2)} donne $-1$    \quad
-				\pc{somme(3, 2.5)} donne $5.5$  \quad
-				\pc{somme(-2.5, 2.5)} donne $0$.
-		\end{Exercice}
-	
-		\begin{Exercice}{Moyenne de 2 nombres}
-			Calculer la moyenne de deux nombres donnés.
-		\end{Exercice}
-		
-		\begin{Exercice}{Surface d’un triangle}
-			Calculer la surface d’un triangle connaissant sa base et sa hauteur.
-		\end{Exercice}
-	
-		\begin{Exercice}{Périmètre d’un cercle}
-			Calculer le périmètre d’un cercle dont on donne le rayon. 
-		\end{Exercice}
-	
-		\begin{Exercice}{Surface d’un cercle}
-			Calculer la surface d’un cercle dont on donne le rayon. 
-		\end{Exercice}
-	
-		\begin{Exercice}{TVA}
-			Si on donne un prix hors TVA, il faut lui ajouter 21\% 
-			pour obtenir le prix TTC. Écrire un algorithme qui permet 
-			de passer du prix HTVA au prix TTC.
-		\end{Exercice}
-	
-		\begin{Exercice}{Les intérêts}
-			Calculer les intérêts reçus après 1 an pour un montant placé en 
-			banque à du 2\% d’intérêt.
-		\end{Exercice}
-	
-		\begin{Exercice}{Placement}
-			Étant donné le montant d’un capital placé (en \texteuro) 
-			et le taux d’intérêt annuel (en \%), 
-			calculer la nouvelle valeur de ce capital après un an.
-		\end{Exercice}
-	
-		\begin{Exercice}{Prix TTC}
-			Étant donné le prix unitaire d’un produit
-			(hors TVA), le taux de TVA (en \%) et la quantité de produit vendue à
-			un client, calculer le prix total à payer par ce client.
-		\end{Exercice}
-	
-		\begin{Exercice}{Durée de trajet}
-			Étant donné la vitesse moyenne en \textbf{m/s}
-			d’un véhicule et la distance parcourue en \textbf{km} par ce véhicule,
-			calculer la durée en secondes du trajet de ce véhicule.
-		\end{Exercice}
-	
-		\begin{Exercice}{Allure et vitesse}
-			L’allure d’un coureur est le temps qu’il met pour parcourir 1~km
-			(par exemple, $4'37''$).
-			On voudrait calculer sa vitesse (en km/h) à partir de son allure.
-			Par exemple, la vitesse d’un coureur ayant une allure de
-			$4'37''$ est de $13$~km/h. 
-		\end{Exercice}
-	
-		\begin{Exercice}{Somme des chiffres}
-			Calculer la somme des chiffres
-			d’un nombre entier de 3 chiffres.
-		\end{Exercice}
-	
-		\begin{Exercice}{Conversion HMS en secondes}
-			Étant donné un moment dans la journée donné
-			par trois nombres, à savoir, heure, minute et seconde, calculer le
-			nombre de secondes écoulées depuis minuit.
-		\end{Exercice}
-	
-		\begin{Exercice}{Conversion secondes en heures}
-			Étant donné un temps écoulé depuis minuit.
-			Si on devait exprimer ce temps sous la forme
-			habituelle (heure, minute et seconde),
-			que vaudrait la partie "heure".
-	
-			Ex~:~10000 secondes donnera 2 heures.
-		\end{Exercice}
-	
-		\begin{Exercice}{Conversion secondes en minutes}
-			Étant donné un temps écoulé depuis minuit.
-			Si on devait exprimer ce temps sous la forme
-			habituelle (heure, minute et seconde),
-			que vaudrait la partie "minute".
-	
-			Ex~:~10000 secondes donnera 46 minutes.
-		\end{Exercice}
-	
-		\begin{Exercice}{Conversion secondes en secondes}
-			Étant donné un temps écoulé depuis minuit.
-			Si on devait exprimer ce temps sous la forme
-			habituelle (heure, minute et seconde),
-			que vaudrait la partie "seconde".
-	
-			Ex~:~10000 secondes donnera 40 secondes.
-		\end{Exercice}	
-	
-		\begin{Exercice}{Cote moyenne}
-			Étant donné les résultats (cote entière sur
-			20) de trois examens passés par un étudiant (exprimés par six nombres,
-			à savoir, la cote et la pondération de chaque examen), calculer 
-			la moyenne globale exprimée en pourcentage.
-		\end{Exercice}
 
 
-%-------------------------------------------
-\section{Premiers algorithmes et programmes, exercices}
+\section{Exercices~: spécifier le problème}
+
+Pour ces premiers exercices, nous vous demandons d’imiter la démarche décrite
+dans le chapitre \ref{refpblm}, à savoir~:
+
+\begin{itemize}
+	\item déterminer quelles sont les données~;
+		leur donner un nom et un type~;
+	\item déterminer quel est le type du résultat~;
+	\item déterminer un nom pertinent pour l’algorithme~;
+	\item fournir un résumé graphique~;
+	\item donner des exemples.
+\end{itemize}
+
+\begin{Exercice}{Somme de 2 nombres}
+	Calculer la somme de deux nombres donnés.
+	\paragraph{Solution.}%
+	\footnote{%
+		Nous allons de temps en temps 
+		fournir des solutions.
+		En algorithmique,
+		il y a souvent \textbf{plusieurs} solutions possibles.
+		Ce n’est donc pas parce que vous avez trouvé une autre façon de faire qu'elle est fausse.
+		Mais il peut y avoir des solutions \textbf{meilleures}
+		que d’autres; 
+		n’hésitez jamais à montrer la vôtre
+		à votre professeur pour avoir son avis.
+	}
+	Il y a ici clairement 2 données.
+	Comme elles n’ont pas de rôle précis,
+	on peut les appeler simplement \pc{nombre1}
+	et \pc{nombre2}
+	(\pc{nb1} et \pc{nb2} sont aussi de bons choix).
+	L’énoncé ne dit pas si les nombres sont entiers ou pas;
+	restons le plus général possible en prenant des réels.
+	Le résultat sera de même type que les données.
+	Le nom de l’algorithme pourrait être simplement \pc{somme}.
+	Ce qui donne~:
+	\begin{center}
+		\flowalgodd{nombre1 (réel)}{nombre2 (réel)}{somme}{réel}
+	\end{center}			 
+	Et voici quelques exemples numériques~:	
+	\pc{somme(3, 2)} donne $5$      \quad
+	\pc{somme(-3, 2)} donne $-1$    \quad
+	\pc{somme(3, 2.5)} donne $5.5$  \quad
+	\pc{somme(-2.5, 2.5)} donne $0$.
+\end{Exercice}
+
+\begin{Exercice}{Moyenne de 2 nombres}
+	Calculer la moyenne de deux nombres donnés.
+\end{Exercice}
+
+\begin{Exercice}{Surface d’un triangle}
+	Calculer la surface d’un triangle connaissant sa base et sa hauteur.
+\end{Exercice}
+
+\begin{Exercice}{Périmètre d’un cercle}
+	Calculer le périmètre d’un cercle dont on donne le rayon. 
+\end{Exercice}
+
+\begin{Exercice}{Surface d’un cercle}
+	Calculer la surface d’un cercle dont on donne le rayon. 
+\end{Exercice}
+
+\begin{Exercice}{TVA}
+	Si on donne un prix hors TVA, il faut lui ajouter 21\% 
+	pour obtenir le prix TTC. Écrire un algorithme qui permet 
+	de passer du prix HTVA au prix TTC.
+\end{Exercice}
+
+\begin{Exercice}{Les intérêts}
+	Calculer les intérêts reçus après 1 an pour un montant placé en 
+	banque à du 2\% d’intérêt.
+\end{Exercice}
+
+\begin{Exercice}{Placement}
+	Étant donné le montant d’un capital placé (en \texteuro) 
+	et le taux d’intérêt annuel (en \%), 
+	calculer la nouvelle valeur de ce capital après un an.
+\end{Exercice}
+
+\begin{Exercice}{Prix TTC}
+	Étant donné le prix unitaire d’un produit
+	(hors TVA), le taux de TVA (en \%) et la quantité de produit vendue à
+	un client, calculer le prix total à payer par ce client.
+\end{Exercice}
+
+\begin{Exercice}{Durée de trajet}
+	Étant donné la vitesse moyenne en \textbf{m/s}
+	d’un véhicule et la distance parcourue en \textbf{km} par ce véhicule,
+	calculer la durée en secondes du trajet de ce véhicule.
+\end{Exercice}
+
+\begin{Exercice}{Allure et vitesse}
+	L’allure d’un coureur est le temps qu’il met pour parcourir 1~km
+	(par exemple, $4'37''$).
+	On voudrait calculer sa vitesse (en km/h) à partir de son allure.
+	Par exemple, la vitesse d’un coureur ayant une allure de
+	$4'37''$ est de $13$~km/h. 
+\end{Exercice}
+
+\begin{Exercice}{Somme des chiffres}
+	Calculer la somme des chiffres
+	d’un nombre entier de 3 chiffres.
+\end{Exercice}
+
+\begin{Exercice}{Conversion HMS en secondes}
+	Étant donné un moment dans la journée donné
+	par trois nombres, à savoir, heure, minute et seconde, calculer le
+	nombre de secondes écoulées depuis minuit.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes en heures}
+	Étant donné un temps écoulé depuis minuit.
+	Si on devait exprimer ce temps sous la forme
+	habituelle (heure, minute et seconde),
+	que vaudrait la partie "heure".
+
+	Ex~:~10000 secondes donnera 2 heures.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes en minutes}
+	Étant donné un temps écoulé depuis minuit.
+	Si on devait exprimer ce temps sous la forme
+	habituelle (heure, minute et seconde),
+	que vaudrait la partie "minute".
+
+	Ex~:~10000 secondes donnera 46 minutes.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes en secondes}
+	Étant donné un temps écoulé depuis minuit.
+	Si on devait exprimer ce temps sous la forme
+	habituelle (heure, minute et seconde),
+	que vaudrait la partie "seconde".
+
+	Ex~:~10000 secondes donnera 40 secondes.
+\end{Exercice}	
+
+\begin{Exercice}{Cote moyenne}
+	Étant donné les résultats (cote entière sur
+	20) de trois examens passés par un étudiant (exprimés par six nombres,
+	à savoir, la cote et la pondération de chaque examen), calculer 
+	la moyenne globale exprimée en pourcentage.
+\end{Exercice}
+
+
+
+\section{Exercices~: premiers algorithmes et programmes}
 \label{prem-ex-simple}
-%-------------------------------------------
 
-			\begin{Exercice}{Moyenne de 2 nombres}
-				\marginicon{java}
-				Calculer la moyenne de deux nombres donnés.
-			\end{Exercice}
-			
-			\begin{Exercice}{Surface d’un triangle}
-				\marginicon{java}
-				Calculer la surface d’un triangle 
-				connaissant sa base et sa hauteur.
-			\end{Exercice}
-		
-			\begin{Exercice}{Périmètre d’un cercle}
-				\marginicon{java}
-				Calculer le périmètre d’un cercle dont on donne le rayon. 
-			\end{Exercice}
-		
-			\begin{Exercice}{Surface d’un cercle}
-				\marginicon{java}
-				Calculer la surface d’un cercle dont on donne le rayon. 
-			\end{Exercice}
-		
-			\begin{Exercice}{TVA}
-				\marginicon{java}
-				Si on donne un prix hors TVA, il faut lui ajouter 21\% 
-				pour obtenir le prix TTC. Écrire un algorithme qui permet 
-				de passer du prix HTVA au prix TTC.
-			\end{Exercice}
-		
-			\begin{Exercice}{Les intérêts}
-				\marginicon{java}
-				Calculer les intérêts reçus après 1 an 
-				pour un montant placé en banque à du 2\% d’intérêt.
-			\end{Exercice}
-		
-			\begin{Exercice}{Placement}
-				\marginicon{java}
-				Étant donné le montant d’un capital placé (en \texteuro) 
-				et le taux d’intérêt annuel (en \%), calculer la
-				nouvelle valeur de ce capital après un an.
-			\end{Exercice}
-		
-			\begin{Exercice}{Conversion HMS en secondes}
-				\marginicon{java}
-				Étant donné un moment dans la journée donné
-				par trois nombres, à savoir, heure, minute et seconde, calculer le
-				nombre de secondes écoulées depuis minuit.
-			\end{Exercice}
+Dans ces exercices, nous vous proposons d'écrire un algorithme et de le traduire
+en un programme Java. 
+
+\begin{Exercice}{Moyenne de 2 nombres}	
+	Calculer la moyenne de deux nombres donnés.
+\end{Exercice}
+
+\begin{Exercice}{Surface d’un triangle}
+	Calculer la surface d’un triangle 
+	connaissant sa base et sa hauteur.
+\end{Exercice}
+
+\begin{Exercice}{Périmètre d’un cercle}
+	Calculer le périmètre d’un cercle dont on donne le rayon. 
+\end{Exercice}
+
+\begin{Exercice}{Surface d’un cercle}
+	Calculer la surface d’un cercle dont on donne le rayon. 
+\end{Exercice}
+
+\begin{Exercice}{TVA}
+	Si on donne un prix hors TVA, il faut lui ajouter 21\% 
+	pour obtenir le prix TTC. Écrire un algorithme qui permet 
+	de passer du prix HTVA au prix TTC.
+\end{Exercice}
+
+\begin{Exercice}{Les intérêts}	
+	Calculer les intérêts reçus après 1 an 
+	pour un montant placé en banque à du 2\% d’intérêt.
+\end{Exercice}
+
+\begin{Exercice}{Placement}
+	Étant donné le montant d’un capital placé (en \texteuro) 
+	et le taux d’intérêt annuel (en \%), calculer la
+	nouvelle valeur de ce capital après un an.
+\end{Exercice}
+
+\begin{Exercice}{Conversion HMS en secondes}
+	Étant donné un moment dans la journée donné
+	par trois nombres, à savoir, heure, minute et seconde, calculer le
+	nombre de secondes écoulées depuis minuit.
+\end{Exercice}
+
+\begin{Exercice}{Prix TTC}
+	Étant donné le prix unitaire d’un produit
+	(hors TVA), le taux de TVA (en \%) 
+	et la quantité de produit vendue à un client, 
+	calculer le prix total à payer par ce client.
+\end{Exercice}
+
+
+
+\section{Exercices~: tracer un algorithme}
+
+Nous vous proposons de tracer vos algorithmes comme présenté dans le chapitre 
+\ref{premalgo} dans la section \ref{tracer}, page \pageref{tracer}.
+
+
+\begin{Exercice}{Tracer des bouts de code}
+	Suivez l’évolution des variables pour les bouts
+	d’algorithmes donnés.
+
+	\begin{minipage}{4cm}
+		\begin{pseudocode}[1]
+			\Decl{a, b, c}{entiers}
+			\Let a \Gets 42
+			\Let b \Gets 24
+			\Let c \Gets a + b
+			\Let c \Gets c - 1
+			\Let a \Gets 2 * b
+			\Let c \Gets c + 1
+		\end{pseudocode}
+	\end{minipage}
+	\quad%
+	\begin{minipage}{7cm}
+		\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{3}{>{\centering\arraybackslash}m{2cm}}|}
+			\hline
+			\verb_#_ & {a} & {b} & {c}\\
+			\hline
+			1 & {} & {} & {} \\
+			2 & {} & {} & {} \\
+			3 & {} & {} & {} \\
+			4 & {} & {} & {} \\
+			5 & {} & {} & {} \\
+			6 & {} & {} & {} \\
+			7 & {} & {} & {} \\
+			\hline
+		\end{tabular}
+	\end{minipage}
+
+	\bigskip
+	\begin{minipage}{4cm}
+		\begin{pseudocode}[1]
+			\Decl{a, b, c}{entiers}
+			\Let a \Gets 2
+			\Let b \Gets a$^3$
+			\Let c \Gets b - a$^2$
+			\Let a \Gets $\sqrt{c}$
+			\Let a \Gets a / a
+		\end{pseudocode}
+	\end{minipage}
+	\quad%
+	\begin{minipage}{7cm}
+		\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{3}{>{\centering\arraybackslash}m{2cm}}|}
+			\hline
+			\verb_#_ & {a} & {b} & {c}\\
+			\hline
+			1 & {} & {} & {} \\
+			2 & {} & {} & {} \\
+			3 & {} & {} & {} \\
+			4 & {} & {} & {} \\
+			5 & {} & {} & {} \\
+			6 & {} & {} & {} \\
+			\hline
+		\end{tabular}
+	\end{minipage}	
+\end{Exercice}
+
+\begin{Exercice}{Calcul de vitesse}
+
+	Soit le problème suivant :
+	\og
+	Calculer la vitesse (en km/h) d’un véhicule 
+	dont on donne la durée du parcours (en secondes) 
+	et la distance parcourue (en mètres).
+	\fg.
+
+	Voici \textit{une} solution : 
+	\begin{pseudocode}[1]
+		\Algo{vitesseKMH}{\Par{distanceM, duréeS}{réels}}{réel}
+		\Decl{distanceKM, duréeH}{réels}
+		\Let distanceKM \Gets 1000 * distanceM
+		\Let duréeH \Gets 3600 * duréeS
+		\Return $\frac{\textrm{distanceKM}}{\textrm{duréeH}}$
+	\EndAlgo
+\end{pseudocode}
+
+L’algorithme, s’il est correct, devrait donner
+une vitesse de 1~km/h pour une distance de 1000~mètres
+et une durée de 3600~secondes.
+Testez cet algorithme avec cet exemple.
+
+\begin{center}
+	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{5}{>{\centering\arraybackslash}m{2cm}}|}
+		\hline
+		\verb_#_  &  &  & & &  \\			
+		\hline
+		1 & & & & & \\
+		2 & & & & & \\
+		3 & & & & & \\
+		4 & & & & & \\
+		5 & & & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Si vous trouvez qu’il n’est pas correct,
+voyez ce qu’il faudrait changer pour le corriger.
+\end{Exercice}
+
+\begin{Exercice}{Allure et vitesse}
+
+	L’allure d’un coureur est le temps qu’il met pour parcourir 1~km (par exemple,
+	$4'37''$).  On voudrait calculer sa vitesse (en km/h) à partir de son allure.
+	Par exemple, la vitesse d’un coureur ayant une allure de $4'37''$ est de
+	$12,996389892$~km/h. 
+
+\end{Exercice}
+
+\begin{Exercice}{Cote moyenne}
+
+	Étant donné les résultats (cote entière sur
+	20) de trois examens passés par un étudiant (exprimés par six nombres, à savoir,
+	la cote et la pondération de chaque examen), calculer la moyenne globale
+	exprimée en pourcentage.  
+
+\end{Exercice}
+
+
+
+
+
+\section{Exercices~: division entière, quotient et reste}
+
+\begin{Exercice}{Calculs}
+
+	Voici quelques petits calculs à compléter faisant intervenir la division entière
+	et le reste.  Par exemple~: "14 DIV 3 = 4 reste 2" signifie que 14 DIV 3 = 4 et
+	14 MOD 3 = 2.
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item 11 DIV 3 = \_\_\ reste\ \_\_
+			\item 3 DIV 11 = \_\_\ reste\ \_\_
+			\item 11 DIV \_\_ = 2\ reste\ 3
+			\item \_\_ DIV 3 = 3\ reste\ 1
+		\end{itemize}
+	\end{multicols}
+\end{Exercice}
+
+\begin{Exercice}{Les prix ronds}
+	Voici un algorithme qui reçoit une somme d’argent exprimée en centimes
+	et qui calcule le nombre (entier) de centimes qu’il
+	faudrait ajouter à la somme pour tomber sur un prix rond en euros.
+	Testez-le avec des valeurs numériques. Est-il correct~?
+
+	\begin{pseudocode}
+		\Algo{versPrixRond}{\Par{prixCentimes}{entier}}{entier}
+		\Return 100 - (prixCentimes MOD 100)
+	\EndAlgo
+\end{pseudocode}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		test \no & prixCentimes & réponse correcte & valeur retournée & Correct~? \\\hline
+		\hline 
+		1 & 130 & 70 &  & \\\hline
+		2 & 40  & 60 &  & \\\hline
+		3 & 99  & 1  &  & \\\hline
+		4 & 100 & 0  &  & \\\hline
+	\end{tabular}
+\end{center}
+
+\end{Exercice}
+
+\bigskip
+\begin{Emphase}
 	
-			\begin{Exercice}{Prix TTC}
-				\marginicon{java}
-				Étant donné le prix unitaire d’un produit
-				(hors TVA), le taux de TVA (en \%) 
-				et la quantité de produit vendue à un client, 
-				calculer le prix total à payer par ce client.
-			\end{Exercice}
+	\paragraph{Remarque}
+	Les exercices qui suivent n’ont pas tous été déjà analysés et ils demandent
+	des calculs faisant intervenir des divisions entières, des restes et/ou des
+	expressions booléennes.  Comme d’habitude, écrivez la spécification si ça
+	n’a pas encore été fait, donnez des exemples, rédigez un algorithme et
+	vérifiez-le.
 
+\end{Emphase}
 
-\section{Tracer un algorithme}
+		\begin{Exercice}{Nombre multiple de 5}
 
-
-			\begin{Exercice}{Tracer des bouts de code}
-				Suivez l’évolution des variables pour les bouts
-				d’algorithmes donnés.
-	
-				\begin{minipage}{4cm}
-				\begin{pseudocode}[1]
-					\Decl{a, b, c}{entiers}
-					\Let a \Gets 42
-					\Let b \Gets 24
-					\Let c \Gets a + b
-					\Let c \Gets c - 1
-					\Let a \Gets 2 * b
-					\Let c \Gets c + 1
-				\end{pseudocode}
-				\end{minipage}
-				\quad%
-				\begin{minipage}{7cm}
-					\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{3}{>{\centering\arraybackslash}m{2cm}}|}
-					\hline
-					\verb_#_ & {a} & {b} & {c}\\
-					\hline
-					1 & {} & {} & {} \\
-					2 & {} & {} & {} \\
-					3 & {} & {} & {} \\
-					4 & {} & {} & {} \\
-					5 & {} & {} & {} \\
-					6 & {} & {} & {} \\
-					7 & {} & {} & {} \\
-					\hline
-					\end{tabular}
-				\end{minipage}
-				
-				\bigskip
-				\begin{minipage}{4cm}
-				\begin{pseudocode}[1]
-					\Decl{a, b, c}{entiers}
-					\Let a \Gets 2
-					\Let b \Gets a$^3$
-					\Let c \Gets b - a$^2$
-					\Let a \Gets $\sqrt{c}$
-					\Let a \Gets a / a
-				\end{pseudocode}
-				\end{minipage}
-				\quad%
-				\begin{minipage}{7cm}
-					\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{3}{>{\centering\arraybackslash}m{2cm}}|}
-					\hline
-					\verb_#_ & {a} & {b} & {c}\\
-					\hline
-					1 & {} & {} & {} \\
-					2 & {} & {} & {} \\
-					3 & {} & {} & {} \\
-					4 & {} & {} & {} \\
-					5 & {} & {} & {} \\
-					6 & {} & {} & {} \\
-					\hline
-					\end{tabular}
-				\end{minipage}	
-			\end{Exercice}
-		
-			\begin{Exercice}{Calcul de vitesse}
-				\marginicon{java}
-				Soit le problème suivant :
-				\og
-					Calculer la vitesse (en km/h) d’un véhicule 
-					dont on donne la durée du parcours (en secondes) 
-					et la distance parcourue (en mètres).
-				\fg.
-				
-				Voici \textit{une} solution : 
-				\begin{pseudocode}[1]
-				\Algo{vitesseKMH}{\Par{distanceM, duréeS}{réels}}{réel}
-					\Decl{distanceKM, duréeH}{réels}
-					\Let distanceKM \Gets 1000 * distanceM
-					\Let duréeH \Gets 3600 * duréeS
-					\Return $\frac{\textrm{distanceKM}}{\textrm{duréeH}}$
-				\EndAlgo
-				\end{pseudocode}
-
-				L’algorithme, s’il est correct, devrait donner
-				une vitesse de 1~km/h pour une distance de 1000~mètres
-				et une durée de 3600~secondes.
-				Testez cet algorithme avec cet exemple.
-
-				\begin{center}
-				\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{5}{>{\centering\arraybackslash}m{2cm}}|}
-					\hline
-						\verb_#_  &  &  & & &  \\			
-					\hline
-						1 & & & & & \\
-						2 & & & & & \\
-						3 & & & & & \\
-						4 & & & & & \\
-						5 & & & & & \\
-					\hline
-				\end{tabular}
-				\end{center}
-				
-				Si vous trouvez qu’il n’est pas correct,
-				voyez ce qu’il faudrait changer pour le corriger.
-			\end{Exercice}
-		
-			\begin{Exercice}{Allure et vitesse}
-				\marginicon{java}
-				L’allure d’un coureur est le temps qu’il met pour parcourir 1~km
-				(par exemple, $4'37''$).
-				On voudrait calculer sa vitesse (en km/h) à partir de son allure.
-				Par exemple, la vitesse d’un coureur ayant une allure de
-				$4'37''$ est de $12,996389892$~km/h. 
-			\end{Exercice}
-		
-			\begin{Exercice}{Cote moyenne}
-				\marginicon{java}
-				Étant donné les résultats (cote entière sur
-				20) de trois examens passés par un étudiant (exprimés par six nombres,
-				à savoir, la cote et la pondération de chaque examen), calculer 
-				la moyenne globale exprimée en pourcentage.
-			\end{Exercice}
-
-
-
-			\section{Division entière}
-			
-			\begin{Exercice}{Calculs}
-				Voici quelques petits calculs à compléter
-				faisant intervenir la division entière et le reste.
-				Par exemple~: "14 DIV 3 = 4 reste 2"
-				signifie que 14 DIV 3 = 4 et 14 MOD 3 = 2.
-				
-				\begin{multicols}{2}
-					\begin{itemize}
-					\item 11 DIV 3 = \_\_\ reste\ \_\_
-					\item 3 DIV 11 = \_\_\ reste\ \_\_
-					\item 11 DIV \_\_ = 2\ reste\ 3
-					\item \_\_ DIV 3 = 3\ reste\ 1
-					\end{itemize}
-				\end{multicols}
-			\end{Exercice}
-
-			\begin{Exercice}{Les prix ronds}
-				Voici un algorithme qui reçoit une somme d’argent exprimée en centimes
-				et qui calcule le nombre (entier) de centimes qu’il
-				faudrait ajouter à la somme pour tomber sur un prix rond en euros.
-				Testez-le avec des valeurs numériques. Est-il correct~?
-				
-				\begin{pseudocode}
-				\Algo{versPrixRond}{\Par{prixCentimes}{entier}}{entier}
-					\Return 100 - (prixCentimes MOD 100)
-				\EndAlgo
-				\end{pseudocode}
-				
-				\begin{center}
-				\begin{tabular}{|c|c|c|c|c|}
-				\hline
-				test \no & prixCentimes & réponse correcte & valeur retournée & Correct~? \\\hline
-				\hline 
-				1 & 130 & 70 &  & \\\hline
-				2 & 40  & 60 &  & \\\hline
-				3 & 99  & 1  &  & \\\hline
-				4 & 100 & 0  &  & \\\hline
-				\end{tabular}
-				\end{center}
-				
-			\end{Exercice}
-			
-		%---------------------
-		\subsection{Exercices récapitulatifs sur les difficultés de calcul}
-		%---------------------
-		\label{prem-ex-cplx}
-		
-			Les exercices qui suivent n’ont pas tous été déjà analysés
-			et ils demandent des calculs faisant intervenir
-			des divisions entières, des restes et/ou des expressions booléennes.
-			Comme d’habitude, écrivez la spécification
-			si ça n’a pas encore été fait,
-			donnez des exemples, rédigez un algorithme
-			et vérifiez-le.
-		
-			\begin{Exercice}{Nombre multiple de 5}
-				\marginicon{java}
-				\label{algo:mult5}
-				Calculer si un nombre entier donné est un multiple de 5.
-				\paragraph{Solution.}
-				Dans ce problème,
-				il y a une donnée, le nombre à tester.
-				La réponse est un booléen
-				qui est à vrai si le nombre donné est un multiple de 5.
-				\begin{center}
+			\label{algo:mult5}
+			Calculer si un nombre entier donné est un multiple de 5.
+			\paragraph{Solution.}
+			Dans ce problème,
+			il y a une donnée, le nombre à tester.
+			La réponse est un booléen
+			qui est à vrai si le nombre donné est un multiple de 5.
+			\begin{center}
 				\flowalgod{nombre (entier)}{multiple5}{booléen}
-				\end{center}
-				\textbf{Exemples.}
-				\begin{multicols}{4}
-					\begin{itemize}
+			\end{center}
+			\textbf{Exemples.}
+			\begin{multicols}{4}
+				\begin{itemize}
 					\item \pc{multiple5(4)} donne faux
 					\item \pc{multiple5(15)} donne vrai
 					\item \pc{multiple5(0)} donne vrai
 					\item \pc{multiple5(-10)} donne vrai
-					\end{itemize}
-				\end{multicols}
-				La technique pour vérifier si un nombre est
-				un multiple de 5 est de vérifier que le reste
-				de la division par 5 donne 0.
-				Ce qui donne~:
-				\begin{pseudocode}[1]
-					\Algo{multiple5}{\Par{nombre}{entier}}{booléen}
-						\Return nombre MOD 5 = 0
-					\EndAlgo
-				\end{pseudocode}
-				Vérifions sur nos exemples~:
-				\begin{center}
-				\begin{tabular}{|c|c|c|c|c|}
+				\end{itemize}
+			\end{multicols}
+			La technique pour vérifier si un nombre est
+			un multiple de 5 est de vérifier que le reste
+			de la division par 5 donne 0.
+			Ce qui donne~:
+			\begin{pseudocode}[1]
+				\Algo{multiple5}{\Par{nombre}{entier}}{booléen}
+				\Return nombre MOD 5 == 0
+			\EndAlgo
+		\end{pseudocode}
+		Vérifions sur nos exemples~:
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|}
 				\hline
 				test \no & nombre & réponse correcte & valeur retournée & Correct~? \\\hline
 				\hline 
@@ -435,104 +433,107 @@
 				2 & 15  & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
 				3 & 0   & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
 				4 & -10 & vrai & vrai & {\color{ForestGreen}$\checkmark$} \\\hline
-				\end{tabular}
-				\end{center}
-			\end{Exercice}
+			\end{tabular}
+		\end{center}
+	\end{Exercice}
 
-			\begin{Exercice}{Nombre entier positif se terminant par un 0}
-				Calculer si un nombre donné se termine par un 0.
-			\end{Exercice}
-	
-			\begin{Exercice}{Les centaines}
-				Calculer la partie \emph{centaine}
-				d’un nombre entier positif quelconque.
-			\end{Exercice}
-	
-			\begin{Exercice}{Somme des chiffres}
-				Calculer la somme des chiffres
-				d’un nombre entier positif inférieur à 1000.
-			\end{Exercice}
-		
-			\begin{Exercice}{Conversion secondes en heures}
-				Étant donné un temps écoulé depuis minuit.
-				Si on devait exprimer ce temps sous la forme
-				habituelle (heure, minute et seconde),
-				que vaudrait la partie "heure".
-		
-				Ex~:~10000 secondes donnera 2 heures.
-				
-				Aide~: L’heure n’est qu’un nombre exprimé en base 60~!
-			\end{Exercice}
-		
-			\begin{Exercice}{Conversion secondes en minutes}
-				Étant donné un temps écoulé depuis minuit.
-				Si on devait exprimer ce temps sous la forme
-				habituelle (heure, minute et seconde),
-				que vaudrait la partie "minute".
-		
-				Ex~:~10000 secondes donnera 46 minutes.
-			\end{Exercice}
-		
-			\begin{Exercice}{Conversion secondes en secondes}
-				Étant donné un temps écoulé depuis minuit.
-				Si on devait exprimer ce temps sous la forme
-				habituelle (heure, minute et seconde),
-				que vaudrait la partie "seconde".
-		
-				Ex~:~10000 secondes donnera 40 secondes.
-			\end{Exercice}	
+	\begin{Exercice}{Nombre entier positif se terminant par un 0}
+		Calculer si un nombre donné se termine par un 0.
+	\end{Exercice}
 
-			\begin{Exercice}{Un double aux dés}
-				\marginicon{java}
-				Écrire un algorithme qui simule le lancer de deux dés
-				et indique s’il y a eu un double 
-				(les deux dés montrant une face identique).
-			\end{Exercice}
-		
-			\begin{Exercice}{Année bissextile}
-				\marginicon{java}
-				\label{ex:bissextile}
-				Écrire un algorithme qui vérifie si une année est bissextile. 
-				Pour rappel, les années bissextiles sont les années multiples de 4. 
-				Font exception, les multiples de 100 
-				(sauf les multiples de 400 qui sont bien bissextiles). 
-				Ainsi $2012$ et $2400$ sont bissextiles mais pas $2010$ ni $2100$.
-			\end{Exercice}
-			 		 
+	\begin{Exercice}{Les centaines}
+		Calculer la partie \emph{centaine}
+		d’un nombre entier positif quelconque.
+	\end{Exercice}
 
+	\begin{Exercice}{Somme des chiffres}
+		Calculer la somme des chiffres
+		d’un nombre entier positif inférieur à 1000.
+	\end{Exercice}
 
-			\begin{Exercice}{Conversion en heures-minutes-secondes}
-				\marginicon{java}
-				Écrire un algorithme qui permet à l’utilisateur
-				de donner le nombre de secondes écoulées depuis minuit
-				et qui affiche le moment de la journée correspopcnt
-				en heures-minutes-secondes.
-				Par exemple, si on est 3726 secondes après minuit
-				alors il est 1h2'6''.
-			\end{Exercice}
+	\begin{Exercice}{Conversion secondes en heures}
+		Étant donné un temps écoulé depuis minuit.
+		Si on devait exprimer ce temps sous la forme
+		habituelle (heure, minute et seconde),
+		que vaudrait la partie "heure".
+
+		Ex~:~10000 secondes donnera 2 heures.
+
+		Aide~: L’heure n’est qu’un nombre exprimé en base 60~!
+	\end{Exercice}
+
+	\begin{Exercice}{Conversion secondes en minutes}
+		Étant donné un temps écoulé depuis minuit.
+		Si on devait exprimer ce temps sous la forme
+		habituelle (heure, minute et seconde),
+		que vaudrait la partie "minute".
+
+		Ex~:~10000 secondes donnera 46 minutes.
+	\end{Exercice}
+
+	\begin{Exercice}{Conversion secondes en secondes}
+		Étant donné un temps écoulé depuis minuit.
+		Si on devait exprimer ce temps sous la forme
+		habituelle (heure, minute et seconde),
+		que vaudrait la partie "seconde".
+
+		Ex~:~10000 secondes donnera 40 secondes.
+	\end{Exercice}	
+
+	\begin{Exercice}{Un double aux dés}
+
+		Écrire un algorithme qui simule le lancer de deux dés
+		et indique s’il y a eu un double 
+		(les deux dés montrant une face identique).
+	\end{Exercice}
+
+	\begin{Exercice}{Année bissextile}
+
+		\label{ex:bissextile}
+		Écrire un algorithme qui vérifie si une année est bissextile.
+
+		Pour rappel, les années bissextiles sont les années multiples de 4. 
+		Font exception, les multiples de 100 
+		(sauf les multiples de 400 qui sont bien bissextiles). 
+		Ainsi $2012$ et $2400$ sont bissextiles mais pas $2010$ ni $2100$.
+	\end{Exercice}
 
 
-\section{Choix}			
+
+	\begin{Exercice}{Conversion en heures-minutes-secondes}
+
+		Écrire un algorithme qui permet à l’utilisateur
+		de donner le nombre de secondes écoulées depuis minuit
+		et qui affiche le moment de la journée correspopcnt
+		en heures-minutes-secondes.
+		Par exemple, si on est 3726 secondes après minuit
+		alors il est 1h2'6''.
+	\end{Exercice}
 
 
-	\begin{Exercice}{Compréhension}
+
+
+\section{Exercices~: structures alternatives (choix)}			
+
+
+\begin{Exercice}{Compréhension}
 		Tracez cet algorithme avec les valeurs fournies et donnez la valeur de retour.
 		\begin{pseudocode}
-		\Algo{exerciceA}{a, b~: entiers}{entier}
+			\Algo{exerciceA}{a, b~: entiers}{entier}
 			\Decl{c}{entier}
 			\Let c \Gets 2 * a
 			\If{c > b}
-				\Let c \Gets c - b
-			\EndIf
-			\Return c
-		\EndAlgo
-		\end{pseudocode}		
-		\begin{multicols}{2}
-		\begin{itemize}
+			\Let c \Gets c - b
+		\EndIf
+		\Return c
+	\EndAlgo
+\end{pseudocode}		
+\begin{multicols}{2}
+	\begin{itemize}
 		\item \pc{exerciceA(2, 5)} = \_\_\_
 		\item \pc{exerciceA(4, 1)} = \_\_\_
-		\end{itemize}
-		\end{multicols}	
+	\end{itemize}
+\end{multicols}	
 	\end{Exercice}
 
 	\begin{Exercice}{Simplification d’algorithmes}
@@ -540,122 +541,122 @@
 		du point de vue de la syntaxe 
 		mais contenant des lourdeurs d’écriture.
 		Simplifiez-les.
-		
-		\begin{pseudocode}
-		\If{ok = vrai}
-			\Write nombre
-		\EndIf
-		\end{pseudocode}
-	
-		\begin{pseudocode}
-		\If{ok = faux}
-			\Write nombre
-		\EndIf
-		\end{pseudocode}
-	
-		\begin{pseudocode}
-		\If{ok = vrai OU ok = faux}
-			\Write nombre
-		\EndIf
-		\end{pseudocode}
-	
-		\begin{pseudocode}
-		\If{ok = vrai ET ok = faux}
-			\Write nombre
-		\EndIf
-		\end{pseudocode}
-	\end{Exercice}
 
-	\begin{Exercice}{Compréhension}
-		Tracez ces algorithmes avec les valeurs fournies et donnez la valeur de retour.
-	
 		\begin{pseudocode}
-		\Algo{exerciceB}{b, a : entiers}{entier}
-			\Decl{c}{entier}
-			\If{a > b}
-				\Let c \Gets a DIV b
-			\Else
-				\Let c \Gets b MOD a	
-			\EndIf
-			\Return c
-		\EndAlgo
+			\If{ok = vrai}
+			\Write nombre
+		\EndIf
+	\end{pseudocode}
+
+	\begin{pseudocode}
+		\If{ok = faux}
+		\Write nombre
+	\EndIf
+\end{pseudocode}
+
+\begin{pseudocode}
+	\If{ok = vrai OU ok = faux}
+	\Write nombre
+\EndIf
 		\end{pseudocode}
-	
-		\begin{multicols}{2}
-		\begin{itemize}
-		\item \pc{exerciceB(2, 3)} = \_\_\_
-		\item \pc{exerciceB(4, 1)} = \_\_\_
-		\end{itemize}
-		\end{multicols}
-	
+
 		\begin{pseudocode}
-		\Algo{exerciceC}{x1, x2~: entiers}{entier}
+			\If{ok = vrai ET ok = faux}
+			\Write nombre
+		\EndIf
+	\end{pseudocode}
+\end{Exercice}
+
+\begin{Exercice}{Compréhension}
+	Tracez ces algorithmes avec les valeurs fournies et donnez la valeur de retour.
+
+	\begin{pseudocode}
+		\Algo{exerciceB}{b, a : entiers}{entier}
+		\Decl{c}{entier}
+		\If{a > b}
+		\Let c \Gets a DIV b
+		\Else
+		\Let c \Gets b MOD a	
+	\EndIf
+	\Return c
+\EndAlgo
+		\end{pseudocode}
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item \pc{exerciceB(2, 3)} = \_\_\_
+				\item \pc{exerciceB(4, 1)} = \_\_\_
+			\end{itemize}
+		\end{multicols}
+
+		\begin{pseudocode}
+			\Algo{exerciceC}{x1, x2~: entiers}{entier}
 			\Decl{ok}{booléen}
 			\Let ok \Gets x1 > x2
 			\If{ok}
-				\Let ok \Gets ok ET x1 = 4
+			\Let ok \Gets ok ET x1 = 4
 			\Else
-				\Let ok \Gets ok OU x2 = 3
-			\EndIf
-			\If{ok}
-				\Let x1 \Gets x1 * 1000
-			\EndIf
-			\Return x1 + x2
-		\EndAlgo
+			\Let ok \Gets ok OU x2 = 3
+		\EndIf
+		\If{ok}
+		\Let x1 \Gets x1 * 1000
+	\EndIf
+	\Return x1 + x2
+\EndAlgo
 		\end{pseudocode}
-		
+
 		\medskip
 		\begin{multicols}{2}
-		\begin{itemize}
-		\item \pc{exerciceC(2, 3)} = \_\_\_
-		\item \pc{exerciceC(4, 1)} = \_\_\_	
-		\end{itemize}
+			\begin{itemize}
+				\item \pc{exerciceC(2, 3)} = \_\_\_
+				\item \pc{exerciceC(4, 1)} = \_\_\_	
+			\end{itemize}
 		\end{multicols}	
-		
+
 	\end{Exercice}	
-	
+
 	\begin{Exercice}{Simplification d’algorithmes}
 		Voici quelques extraits d’algorithmes corrects du point de vue de la
 		syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
 		Remplacer chacune de ces portions d’algorithme par un minimum
 		d’instructions qui auront un effet équivalent.
-	
+
 		\begin{minipage}[t]{7cm}
 			\begin{pseudocode}
-			\If{condition}
+				\If{condition}
 				\Let ok \Gets vrai
-			\Else
+				\Else
 				\Let ok \Gets faux
 			\EndIf
-			\end{pseudocode}
-		\end{minipage}
-		\quad
-		\begin{minipage}[t]{7cm}		
-			\begin{pseudocode}
+		\end{pseudocode}
+	\end{minipage}
+	\quad
+	\begin{minipage}[t]{7cm}		
+		\begin{pseudocode}
 			\If{a $>$ b}
-				\Let ok \Gets faux
+			\Let ok \Gets faux
 			\Else
-				\If{a $\leq$ b}
-					\Let ok \Gets vrai
-				\EndIf
-			\EndIf
-			\end{pseudocode}
+			\If{a $\leq$ b}
+			\Let ok \Gets vrai
+		\EndIf
+	\EndIf
+\end{pseudocode}
 		\end{minipage}
 	\end{Exercice}
 
 	\begin{Exercice}{Maximum de 2 nombres}
-		\marginicon{java}
+
 		Écrire un algorithme qui, étant donné deux nombres quelconques,
 		recherche et retourne le plus grand des deux. Attention~! On ne veut
 		pas savoir si c’est le premier ou le deuxième qui est
 		le plus grand mais bien quelle est cette plus grande valeur. Le
 		problème est donc bien défini même si les deux nombres sont
 		identiques.
-		
+
 		\textbf{Solution.}
 		Une solution complète est disponible dans la fiche \vref{fiche:max2nb}.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Calcul de salaire}
 		Dans une entreprise, 
 		une retenue spéciale de 15\% est pratiquée 
@@ -665,205 +666,205 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Fonction de Syracuse}
-		\marginicon{java}
+
 		Écrire un algorithme qui, étant donné un entier $n$ quelconque,
 		retourne le résultat de la fonction
 		$f(n)=
-			\left\{
+		\left\{
 			\begin{array}{rl}
 				n/2 & si \ n \ est\ pair\\
 				3n+1 & si \ n \ est \ impair
 			\end{array}
 			\right.$
-	\end{Exercice}
+		\end{Exercice}
 
-	\begin{Exercice}{Tarif réduit ou pas}
-		Dans une salle de cinéma,
-		le tarif plein pour une place est de 8\texteuro{}.
-		Les personnes ayant droit au tarif réduit payent 7\texteuro{}.
-		Écrire un algorithme qui reçoit un booléen
-		indiquant si la personne peut bénéficier du tarif réduit
-		et qui retourne le prix à payer.
-	\end{Exercice}
-		
-	\begin{Exercice}{Maximum de 3 nombres}
-		\marginicon{java}
-		Écrire un algorithme qui, étant donné trois nombres quelconques,
-		recherche et retourne le plus grand des trois.
-	\end{Exercice}
-	
-	\begin{Exercice}{Le signe}
-		\marginicon{java}
-		Écrire un algorithme qui \textbf{affiche} un message indiquant
-		si un entier est strictement négatif, nul ou strictement
-		positif.
-	\end{Exercice}
+		\begin{Exercice}{Tarif réduit ou pas}
+			Dans une salle de cinéma,
+			le tarif plein pour une place est de 8\texteuro{}.
+			Les personnes ayant droit au tarif réduit payent 7\texteuro{}.
+			Écrire un algorithme qui reçoit un booléen
+			indiquant si la personne peut bénéficier du tarif réduit
+			et qui retourne le prix à payer.
+		\end{Exercice}
 
-	\begin{Exercice}{Le type de triangle}
-		Écrire un algorithme qui indique si un triangle
-		dont on donne les longueurs de ces 3 cotés est~:
-		équilatéral (tous égaux), isocèle (2 égaux)
-		ou quelconque.
-	\end{Exercice}
+		\begin{Exercice}{Maximum de 3 nombres}
 
-	\begin{Exercice}{Dés identiques}
-		Écrire un algorithme qui lance trois dés
-		et indique si on a obtenu 3 dés de valeur identique,
-		2 ou aucun.
-	\end{Exercice}
+			Écrire un algorithme qui, étant donné trois nombres quelconques,
+			recherche et retourne le plus grand des trois.
+		\end{Exercice}
 
-	\begin{Exercice}{Grade}
-		\marginicon{java}
-		Écrire un algorithme qui retourne le grade d’un étudiant 
-		suivant la moyenne qu’il a obtenue.
-		
-		Un étudiant ayant obtenu 
-		\begin{itemize}
-			\item moins de 50\% n’a pas réussi~;
-			\item de 50\% inclus à 60\% exclu a réussi~;
-			\item de 60\% inclus à 70\% exclu a une satisfaction~;
-			\item de 70\% inclus à 80\% exclu a une distinction~;
-			\item de 80\% inclus à 90\% exclu a une grande distinction~;
-			\item de 90\% inclus à 100\% inclus a la plus grande distinction.
-		\end{itemize}
-	\end{Exercice}
+		\begin{Exercice}{Le signe}
+
+			Écrire un algorithme qui \textbf{affiche} un message indiquant
+			si un entier est strictement négatif, nul ou strictement
+			positif.
+		\end{Exercice}
+
+		\begin{Exercice}{Le type de triangle}
+			Écrire un algorithme qui indique si un triangle
+			dont on donne les longueurs de ces 3 cotés est~:
+			équilatéral (tous égaux), isocèle (2 égaux)
+			ou quelconque.
+		\end{Exercice}
+
+		\begin{Exercice}{Dés identiques}
+			Écrire un algorithme qui lance trois dés
+			et indique si on a obtenu 3 dés de valeur identique,
+			2 ou aucun.
+		\end{Exercice}
+
+		\begin{Exercice}{Grade}
+
+			Écrire un algorithme qui retourne le grade d’un étudiant 
+			suivant la moyenne qu’il a obtenue.
+
+			Un étudiant ayant obtenu 
+			\begin{itemize}
+				\item moins de 50\% n’a pas réussi~;
+				\item de 50\% inclus à 60\% exclu a réussi~;
+				\item de 60\% inclus à 70\% exclu a une satisfaction~;
+				\item de 70\% inclus à 80\% exclu a une distinction~;
+				\item de 80\% inclus à 90\% exclu a une grande distinction~;
+				\item de 90\% inclus à 100\% inclus a la plus grande distinction.
+			\end{itemize}
+		\end{Exercice}
 
 
-	\begin{Exercice}{Numéro du jour}
-		\marginicon{java}
-		Écrire un algorithme qui retourne le numéro du jour de la semaine
-		reçu en paramètre (1 pour "lundi", 2 pour "mardi"\dots).
-	\end{Exercice}
+		\begin{Exercice}{Numéro du jour}
 
-	\begin{Exercice}{Tirer une carte}
-		\marginicon{java}
-		Écrire un algorithme qui affiche l’intitulé d’une carte
-		tirée au hasard dans un paquet de 52 cartes.
-		Par exemple, "As de cœur", "3 de pique", "Valet de carreau"
-		ou encore "Roi de trèfle".
-		
-		\textbf{Remarque}. Il est plus facile de déterminer séparément
-		chacune des deux caractéristiques de la carte : couleur et valeur.
-	\end{Exercice}
-	
-	\begin{Exercice}{Nombre de jours dans un mois}
-		Écrire un algorithme qui retourne le nombre de jours dans un mois. 
-		Le mois est lu sous forme d’un entier (1 pour janvier\dots).
-		On considère dans cet exercice que le mois de février
-		comprend toujours 28 jours.
-	\end{Exercice}
-		
-	\begin{Exercice}{Réussir DEV1}
-		\marginicon{java}
-		Pour réussir l’UE (unité d’enseignement) DEV1,
-		il faut que la cote attribuée à cette UE 
-		soit supérieure ou égale à 50\%.
-		Cette cote tient compte de votre examen intégré
-		et de vos interrogations.
-		Écrire un algorithme 
-		qui reçoit la cote finale (sur 100)
-		d’un étudiant pour l’UE DEV1
-		et qui indique si l’étudiant a réussi cette UE.
-	\end{Exercice}	
-		
-\begin{comment}
-	\begin{Exercice}{Réussir GEN1}
-		\marginicon{java}
-		\label{algo:réussirGEN1}
-		l'UE (Unité d'enseignement) GEN1 est composée de trois AA (activité d’apprentissage) :
-		Mathématique, Communication anglophone et Comptabilité%
-		\footnote{%
-			Sans parler de Méthodologie qui ne donne pas lieu à une évaluation.
-		}.
-		Pour réussir cette unité d’enseignement,
-		il faut que la cote attribuée à chaque AA soit supérieure ou égale à 50\%.
-		Si c'est le cas, la cote attribuée à l'UE est une moyenne \textbf{pondérée}
-		des trois cotes d'AA 
-		(avec la pondération 6 pour Mathématique et 2 pour les autres AA).
-		
-		Écrire un algorithme qui reçoit les 3 cotes (sur 20) d’AA d’un étudiant
-		pour l’UE GEN1 et qui \textbf{affiche} un message
-		indiquant si l’étudiant a réussi ou pas cette UE.
-		S’il a réussi, l’algorithme affiche également la cote d'UE (sur 20).
-	\end{Exercice}		
-\end{comment}
+			Écrire un algorithme qui retourne le numéro du jour de la semaine
+			reçu en paramètre (1 pour "lundi", 2 pour "mardi"\dots).
+		\end{Exercice}
 
-	\begin{Exercice}{La fourchette}
-		\marginicon{java}
-		Écrire un algorithme qui, étant donné trois nombres, 
-		retourne vrai si le premier des trois 
-		appartient à l’intervalle donné par le plus petit et le plus grand 
-		des deux autres (bornes exclues) et faux sinon. 
-		Qu’est-ce qui change si on inclut les bornes~?
-	\end{Exercice}
+		\begin{Exercice}{Tirer une carte}
 
-	\begin{Exercice}{Le prix des photocopies}
-		\marginicon{java}
-		Un magasin de photocopies facture 0,10 \texteuro{} 
-		les dix premières photocopies, 
-		0,09 \texteuro{} les vingt suivantes 
-		et 0,08 \texteuro{} au-delà. 
-		Écrivez un algorithme 
-		qui reçoit le nombre de photocopies effectuées 
-		et qui affiche la facture correspopcnte.
-	\end{Exercice}
+			Écrire un algorithme qui affiche l’intitulé d’une carte
+			tirée au hasard dans un paquet de 52 cartes.
+			Par exemple, "As de cœur", "3 de pique", "Valet de carreau"
+			ou encore "Roi de trèfle".
 
-	\begin{Exercice}{Le stationnement alternatif}
-		\marginicon{java}
-		Dans une rue où se pratique le stationnement alternatif, 
-		du 1 au 15 du mois, on se gare du côté des maisons ayant un numéro impair, 
-		et le reste du mois, on se gare de l’autre côté. 
-		Écrire un algorithme qui, sur base de la date du jour et du numéro de maison
-		devant laquelle vous vous êtes arrêté, 
-		retourne vrai si vous êtes bien stationné et faux sinon.
-	\end{Exercice}
+			\textbf{Remarque}. Il est plus facile de déterminer séparément
+			chacune des deux caractéristiques de la carte : couleur et valeur.
+		\end{Exercice}
 
-%===================
-\section{Exercices, modules et références}
-%===================
+		\begin{Exercice}{Nombre de jours dans un mois}
+			Écrire un algorithme qui retourne le nombre de jours dans un mois. 
+			Le mois est lu sous forme d’un entier (1 pour janvier\dots).
+			On considère dans cet exercice que le mois de février
+			comprend toujours 28 jours.
+		\end{Exercice}
 
-todo: revoir les exercices avec des paramètres en sortie. 
+		\begin{Exercice}{Réussir DEV1}
 
-	\begin{Exercice}{Tracer des algorithmes}
-		Indiquer quels nombres sont successivement affichés 
-		lors de l’exécution des algorithmes ex1, ex2, ex3 et ex4.
-	
-		\begin{pseudocode}
-		\Algo{ex1}{}{}
-			\Decl{x, y}{entiers}
-			\Stmt addition(3, 4, x)
-			\Write x
-			\Let x \Gets 3
-			\Let y \Gets 5
-			\Stmt addition(x, y, y)
-			\Write y
-		\EndAlgo
-		\Empty
-		\Algo{addition}{a\In, b\In, c\Out~:~entiers}{}
+			Pour réussir l’UE (unité d’enseignement) DEV1,
+			il faut que la cote attribuée à cette UE 
+			soit supérieure ou égale à 50\%.
+			Cette cote tient compte de votre examen intégré
+			et de vos interrogations.
+			Écrire un algorithme 
+			qui reçoit la cote finale (sur 100)
+			d’un étudiant pour l’UE DEV1
+			et qui indique si l’étudiant a réussi cette UE.
+		\end{Exercice}	
+
+		\begin{comment}
+		\begin{Exercice}{Réussir GEN1}
+
+			\label{algo:réussirGEN1}
+			l'UE (Unité d'enseignement) GEN1 est composée de trois AA (activité d’apprentissage) :
+			Mathématique, Communication anglophone et Comptabilité%
+			\footnote{%
+				Sans parler de Méthodologie qui ne donne pas lieu à une évaluation.
+			}.
+			Pour réussir cette unité d’enseignement,
+			il faut que la cote attribuée à chaque AA soit supérieure ou égale à 50\%.
+			Si c'est le cas, la cote attribuée à l'UE est une moyenne \textbf{pondérée}
+			des trois cotes d'AA 
+			(avec la pondération 6 pour Mathématique et 2 pour les autres AA).
+
+			Écrire un algorithme qui reçoit les 3 cotes (sur 20) d’AA d’un étudiant
+			pour l’UE GEN1 et qui \textbf{affiche} un message
+			indiquant si l’étudiant a réussi ou pas cette UE.
+			S’il a réussi, l’algorithme affiche également la cote d'UE (sur 20).
+		\end{Exercice}		
+		\end{comment}
+
+		\begin{Exercice}{La fourchette}
+
+			Écrire un algorithme qui, étant donné trois nombres, 
+			retourne vrai si le premier des trois 
+			appartient à l’intervalle donné par le plus petit et le plus grand 
+			des deux autres (bornes exclues) et faux sinon. 
+			Qu’est-ce qui change si on inclut les bornes~?
+		\end{Exercice}
+
+		\begin{Exercice}{Le prix des photocopies}
+
+			Un magasin de photocopies facture 0,10 \texteuro{} 
+			les dix premières photocopies, 
+			0,09 \texteuro{} les vingt suivantes 
+			et 0,08 \texteuro{} au-delà. 
+			Écrivez un algorithme 
+			qui reçoit le nombre de photocopies effectuées 
+			et qui affiche la facture correspopcnte.
+		\end{Exercice}
+
+		\begin{Exercice}{Le stationnement alternatif}
+
+			Dans une rue où se pratique le stationnement alternatif, 
+			du 1 au 15 du mois, on se gare du côté des maisons ayant un numéro impair, 
+			et le reste du mois, on se gare de l’autre côté. 
+			Écrire un algorithme qui, sur base de la date du jour et du numéro de maison
+			devant laquelle vous vous êtes arrêté, 
+			retourne vrai si vous êtes bien stationné et faux sinon.
+		\end{Exercice}
+
+
+
+
+
+\section{Exercices~: modules et méthodes}
+
+		\begin{Exercice}{Tracer des algorithmes}
+			Indiquer quels nombres sont successivement affichés 
+			lors de l’exécution des algorithmes ex1, ex2, ex3 et ex4.
+
+			\begin{pseudocode}
+				\Algo{ex1}{}{}
+				\Decl{x, y}{entiers}
+				\Stmt addition(3, 4, x)
+				\Write x
+				\Let x \Gets 3
+				\Let y \Gets 5
+				\Stmt addition(x, y, y)
+				\Write y
+			\EndAlgo
+			\Empty
+			\Algo{addition}{a\In, b\In, c\Out~:~entiers}{}
 			\Decl{somme}{entier}
 			\Let somme \Gets a + b
 			\Let c \Gets somme
 		\EndAlgo
-		\end{pseudocode}
-	
-		\begin{pseudocode}
+	\end{pseudocode}
+
+	\begin{pseudocode}
 		\Algo{ex2}{}{}
-			\Decl{a, b}{entiers}
-			\Stmt addition(3, 4, a) \Comment voir ci-dessus
-			\Write a
-			\Let a \Gets 3
-			\Let b \Gets 5
-			\Stmt soustraction(b, a, b)
-			\Write b
-		\EndAlgo
-		\Empty
-		\Algo{soustraction}{a\In, b\In, c\Out~:~entiers}{}
-			\Let c \Gets a - b
-		\EndAlgo
+		\Decl{a, b}{entiers}
+		\Stmt addition(3, 4, a) \Comment voir ci-dessus
+		\Write a
+		\Let a \Gets 3
+		\Let b \Gets 5
+		\Stmt soustraction(b, a, b)
+		\Write b
+	\EndAlgo
+	\Empty
+	\Algo{soustraction}{a\In, b\In, c\Out~:~entiers}{}
+	\Let c \Gets a - b
+\EndAlgo
 		\end{pseudocode}
-	
+
 		\begin{pseudocode}
-		\Algo{ex3}{}{}
+			\Algo{ex3}{}{}
 			\Decl{a, b, c}{entiers}
 			\Stmt calcul(3, 4, c)
 			\Write c
@@ -875,61 +876,61 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\EndAlgo
 		\Empty
 		\Algo{calcul}{a\In, b\In, c\Out~:~entiers}{}
-			\Let a \Gets 2 * a
-			\Let b \Gets 3 * b
-			\Let c \Gets a + b
-		\EndAlgo
-		\end{pseudocode}
-	
-		\begin{pseudocode}
-		\Algo{ex4}{}{}
-			\Decl{a, b, c}{entiers}
-			\Let a \Gets 3
-			\Let b \Gets 4
-			\Let c \Gets f(b)
-			\Write c
-			\Stmt calcul2(a, b, c)
-			\Write a, b, c
-		\EndAlgo
-		\Empty
-		\Algo{calcul2}{a\In, b\In, c\Out~:~entiers}{}
-			\Let a \Gets f(a)
-			\Let c \Gets 3 * b
-			\Let c \Gets a + c
+		\Let a \Gets 2 * a
+		\Let b \Gets 3 * b
+		\Let c \Gets a + b
+	\EndAlgo
+\end{pseudocode}
+
+\begin{pseudocode}
+	\Algo{ex4}{}{}
+	\Decl{a, b, c}{entiers}
+	\Let a \Gets 3
+	\Let b \Gets 4
+	\Let c \Gets f(b)
+	\Write c
+	\Stmt calcul2(a, b, c)
+	\Write a, b, c
+\EndAlgo
+\Empty
+\Algo{calcul2}{a\In, b\In, c\Out~:~entiers}{}
+\Let a \Gets f(a)
+\Let c \Gets 3 * b
+\Let c \Gets a + c
 		\EndAlgo
 		\Empty
 		\Algo{f}{a\In~:~entier}{entier}
-			\Decl{b}{entier}
-			\Let b \Gets 2 * a + 1
-			\Return b
-		\EndAlgo
-		\end{pseudocode}	
+		\Decl{b}{entier}
+		\Let b \Gets 2 * a + 1
+		\Return b
+	\EndAlgo
+\end{pseudocode}	
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Appels de module}
 		Parmi les instructions suivantes (où les variables
 		\pc{a}, \pc{b} et \pc{c}
 		sont des entiers), lesquelles font correctement appel 
 		à l’algorithme d’en-tête suivant~?
-	
+
 		\begin{pseudocode}
 			\Entete{PGCD}{a\In,b\In~:~entiers}{entier}
 		\end{pseudocode}
-	
+
 		\begin{pseudocode}
-		\Stmt [1] a \Gets PGCD(24, 32)
-		\Stmt [2] a \Gets PGCD(a, 24)
-		\Stmt [3] b \Gets 3 * PGCD(a + b, 2*c) + 120
-		\Stmt [4] PGCD(20, 30)
-		\Stmt [5] a \Gets PGCD(a, b, c)
-		\Stmt [6] a \Gets PGCD(a, b) + PGCD(a, c)
-		\Stmt [7] a \Gets PGCD(a, PGCD(a, b))
-		\Stmt [8] \Read PGCD(a, b)
-		\Stmt [9] \Write PGCD(a, b)
-		\Stmt [10] PGCD(a, b) \Gets c
+			\Stmt [1] a \Gets PGCD(24, 32)
+			\Stmt [2] a \Gets PGCD(a, 24)
+			\Stmt [3] b \Gets 3 * PGCD(a + b, 2*c) + 120
+			\Stmt [4] PGCD(20, 30)
+			\Stmt [5] a \Gets PGCD(a, b, c)
+			\Stmt [6] a \Gets PGCD(a, b) + PGCD(a, c)
+			\Stmt [7] a \Gets PGCD(a, PGCD(a, b))
+			\Stmt [8] \Read PGCD(a, b)
+			\Stmt [9] \Write PGCD(a, b)
+			\Stmt [10] PGCD(a, b) \Gets c
 		\end{pseudocode}
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Maximum de 4 nombres}
 		Écrivez un algorithme qui calcule le maximum de 4 nombres.
 	\end{Exercice}
@@ -942,8 +943,8 @@ todo: revoir les exercices avec des paramètres en sortie.
 		seconde(s) sachant que la deuxième durée donnée 
 		est plus petite que la première.
 	\end{Exercice}
-	
-\begin{comment}
+
+	\begin{comment}
 	\begin{Exercice}{Réussir GEN1}
 		Reprenons l’exercice \vref{algo:réussirGEN1}.
 		Cette fois-ci on ne veut rien afficher
@@ -951,13 +952,13 @@ todo: revoir les exercices avec des paramètres en sortie.
 		un booléen indiquant si l’étudiant a réussi ou pas
 		et un entier indiquant sa cote (qui n’a de sens que s’il a réussi). 
 	\end{Exercice}
-\end{comment}
+	\end{comment}
 
 	\begin{Exercice}{Tirer une carte}
-		\marginicon{java}
+
 		L’exercice suivant a déjà été résolu. 
 		Refaites une solution modulaire.
-		
+
 		Écrire un algorithme qui affiche l’intitulé d’une carte
 		tirée au hasard dans un paquet de 52 cartes.
 		Par exemple, "As de cœur", "3 de pique", "Valet de carreau"
@@ -981,7 +982,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 		Vous devez réutiliser au maximum ce que vous avez déjà fait
 		lors d’exercices précédents.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Généraliser un algorithme}
 		Dans l’exercice \vref{algo:mult5},
 		nous avons écrit un algorithme 
@@ -991,184 +992,189 @@ todo: revoir les exercices avec des paramètres en sortie.
 		vous le feriez sans peine.
 		Idem pour tester la divisibilité par 2, 4, 6, 7, 8, 9\dots{}
 		mais vous vous lasseriez bien vite.
-		
+
 		N’est-il pas possible d’écrire un seul algorithme,
 		plus général, qui résolve tous ces problèmes d’un coup~?  
 	\end{Exercice}
-	
-	\subsection{Exercices - structures itératives - while}
-	% =====================================
 
-		\begin{Exercice}{Compréhension d’algorithmes}
-			Quels sont les affichages réalisés lors de l’exécution
-			des algorithmes suivants~?
-			
-			\begin{minipage}[t]{40mm}
-				\begin{pseudocode}
+
+
+
+
+\section{Exercices~: structures itératives}
+
+\subsection{while}
+
+	\begin{Exercice}{Compréhension d’algorithmes}
+		Quels sont les affichages réalisés lors de l’exécution
+		des algorithmes suivants~?
+
+		\begin{minipage}[t]{.5\linewidth}
+			\begin{pseudocode}
 				\Algo{boucle1}{}{}
-					\Decl{x}{entier}
-					\Let x \Gets 0
-					\While{x < 12}
-						\Let x \Gets x + 2	
-					\EndWhile
-					\Write x
-				\EndAlgo
+				\Decl{x}{entier}
+				\Let x \Gets 0
+				\While{x < 12}
+				\Let x \Gets x + 2	
+			\EndWhile
+			\Write x
+		\EndAlgo
+	\end{pseudocode}
+\end{minipage}
+\ 
+\begin{minipage}[t]{.5\linewidth}
+	\begin{pseudocode}
+		\Algo{boucle2}{}{}
+		\Decl{ok}{booléen}
+		\Decl{x}{entier}
+		\Let ok \Gets vrai
+		\Let x \Gets 5
+		\While{ok}
+		\Let x \Gets x + 7	
+		\Let ok \Gets x MOD 11 $\neq$ 0	
+	\EndWhile
+	\Write x
+\EndAlgo
 				\end{pseudocode}
 			\end{minipage}
-			\ 
-			\begin{minipage}[t]{45mm}
+			
+
+
 				\begin{pseudocode}
-				\Algo{boucle2}{}{}
-					\Decl{ok}{booléen}
-					\Decl{x}{entier}
-					\Let ok \Gets vrai
-					\Let x \Gets 5
-					\While{ok}
-						\Let x \Gets x + 7	
-						\Let ok \Gets x MOD 11 $\neq$ 0	
-					\EndWhile
-					\Write x
-				\EndAlgo
-				\end{pseudocode}
-			\end{minipage}
-			\ 
-			\begin{minipage}[t]{50mm}
-				\begin{pseudocode}
-				\Algo{boucle3}{}{}
+					\Algo{boucle3}{}{}
 					\Decl{ok}{booléen}
 					\Decl{cpt, x}{entiers}
 					\Let x \Gets 10
 					\Let cpt \Gets 0
 					\Let ok \Gets vrai
 					\While{ok ET cpt < 3}
-						\If{x MOD 2 = 0}
-							\Let x \Gets x + 1
-							\Let ok \Gets x < 20
-						\Else
-							\Let x \Gets x + 3
-							\Let cpt \Gets cpt + 1
-						\EndIf
-					\EndWhile
-					\Write x
-				\EndAlgo
-				\end{pseudocode}
-			\end{minipage}
+					\If{x MOD 2 = 0}
+					\Let x \Gets x + 1
+					\Let ok \Gets x < 20
+					\Else
+					\Let x \Gets x + 3
+					\Let cpt \Gets cpt + 1
+				\EndIf
+			\EndWhile
+			\Write x
+		\EndAlgo
+	\end{pseudocode}
 		\end{Exercice}
 
 		\begin{Exercice}{Afficher des nombres}
-		\marginicon{java}
+
 			En utilisant un \pc{\algorithmicwhile},
 			écrire un algorithme qui reçoit un entier $n$ positif et affiche
 			\begin{enumerate}[label=\alph*)]
-			\item les nombres de 1 à $n$~;
-			\item les nombres de 1 à $n$ en ordre décroissant~;
-			\item les nombres impairs de 1 à $n$~;
-			\item les nombres de -n à n~;
-			\item les multiples de 5 de 1 à n~;
-			\item les multiples de n de 1 à 100.
+				\item les nombres de 1 à $n$~;
+				\item les nombres de 1 à $n$ en ordre décroissant~;
+				\item les nombres impairs de 1 à $n$~;
+				\item les nombres de -n à n~;
+				\item les multiples de 5 de 1 à n~;
+				\item les multiples de n de 1 à 100.
 			\end{enumerate}
 		\end{Exercice}
 
-		
-	\subsection{Exercices - itérative - for}
-	% =====================================
+
+
+
+\subsection{for}
 
 		\begin{Exercice}{Compréhension d’algorithmes}
 			Quels sont les affichages réalisés lors de l’exécution
 			des algorithmes suivants~?
-			
-			\begin{minipage}[t]{6cm}
+
 				\begin{pseudocode}
-				\Algo{boucle5}{}{}
+					\Algo{boucle5}{}{}
 					\Decl{x}{entier}
 					\Decl{ok}{booléen}
 					\Let x \Gets 3
 					\Let ok \Gets vrai
 					\For{i}{1}{5}
-						\Let x \Gets x + i
-						\Let ok \Gets ok ET (x MOD 2 = 0)
-					\EndFor
-					\If{ok}
-						\Write x
-					\Else
-						\Write 2 * x
-					\EndIf
+					\Let x \Gets x + i
+					\Let ok \Gets ok ET (x MOD 2 = 0)
+				\EndFor
+				\If{ok}
+				\Write x
+				\Else
+				\Write 2 * x
+			\EndIf
+		\EndAlgo
+	\end{pseudocode}
+	
+	\begin{pseudocode}
+		\Algo{boucle6}{}{}
+		\Decl{fin}{entiers}
+		\For{i}{1}{3}
+		\Let fin \Gets 6 * i - 11
+		\For[3]{j}{1}{fin}
+		\Write 10 * i + j
+	\EndFor
+\EndFor
 				\EndAlgo
-				\end{pseudocode}
-			\end{minipage}
-			\quad
-			\begin{minipage}[t]{6cm}
-				\begin{pseudocode}
-				\Algo{boucle6}{}{}
-					\Decl{fin}{entiers}
-					\For{i}{1}{3}
-						\Let fin \Gets 6 * i - 11
-						\For[3]{j}{1}{fin}
-							\Write 10 * i + j
-						\EndFor
-					\EndFor
-				\EndAlgo
-				\end{pseudocode}
-			\end{minipage}
+			\end{pseudocode}
 
-		\end{Exercice}
+	\end{Exercice}
 
-		\begin{Exercice}{Afficher des nombres}
-			\marginicon{java}
-			Reprenons un exercice déjà donné avec le \pc{\algorithmicwhile}.
-			En utilisant un \pc{\algorithmicfor},
-			écrire un algorithme qui reçoit un entier $n$ positif et affiche
-			\begin{enumerate}[label=\alph*)]
+	\begin{Exercice}{Afficher des nombres}
+
+		Reprenons un exercice déjà donné avec le \pc{\algorithmicwhile}.
+		En utilisant un \pc{\algorithmicfor},
+		écrire un algorithme qui reçoit un entier $n$ positif et affiche
+		\begin{enumerate}[label=\alph*)]
 			\item les nombres de 1 à $n$~;
 			\item les nombres de 1 à $n$ en ordre décroissant~;
 			\item les nombres de -n à n~;
 			\item les multiples de 5 de 1 à n~;
 			\item les multiples de n de 1 à 100.
-			\end{enumerate}
-		\end{Exercice}
+		\end{enumerate}
+	\end{Exercice}
 
 
-	\subsection{Exercices- do while}
-	%===================================================
-	
-		\begin{Exercice}{Compréhension d’algorithmes}
-			Quels sont les affichages réalisés lors de l’exécution
-			des algorithmes suivants~?
 
-			\begin{pseudocode}
-				\Algo{boucle4}{}{}
-					\Decl{pair, grand}{booléens}
-					\Decl{p, x}{entiers}
-					\Let x \Gets 1
-					\Let p \Gets 1
-					\Repeat
-						\Let p \Gets 2 * p
-						\Let x \Gets x + p
-						\Let pair \Gets x MOD 2 = 0
-						\Let grand \Gets x > 15
-					\EndRepeat{NON pair ET NON grand}
-					\Write x
-				\EndAlgo
-			\end{pseudocode}		
-		
+
+\subsection{do while}
+
+	\begin{Exercice}{Compréhension d’algorithmes}
+		Quels sont les affichages réalisés lors de l’exécution
+		des algorithmes suivants~?
+
+		\begin{pseudocode}
+			\Algo{boucle4}{}{}
+			\Decl{pair, grand}{booléens}
+			\Decl{p, x}{entiers}
+			\Let x \Gets 1
+			\Let p \Gets 1
+			\Repeat
+			\Let p \Gets 2 * p
+			\Let x \Gets x + p
+			\Let pair \Gets x MOD 2 = 0
+			\Let grand \Gets x > 15
+		\EndRepeat{NON pair ET NON grand}
+		\Write x
+	\EndAlgo
+\end{pseudocode}		
+
 		\end{Exercice}
 
 		\begin{Exercice}{Afficher des nombres}
-		\marginicon{java}
+
 			Reprenons un exercice déjà fait avec le \pc{\algorithmicwhile}
 			et le \pc{\algorithmicfor}
 			en utilisant cette fois un \pc{\algorithmicrepeat} \pc{\algorithmicwhile}.
 			Écrire un algorithme qui reçoit un entier $n$ positif et affiche
 			\begin{enumerate}[label=\alph*)]
-			\item les nombres de 1 à $n$~;
-			\item les nombres de 1 à $n$ en ordre décroissant~;
-			\item les nombres de -n à n~;
-			\item les multiples de 5 de 1 à n~;
-			\item les multiples de n de 1 à 100.
+				\item les nombres de 1 à $n$~;
+				\item les nombres de 1 à $n$ en ordre décroissant~;
+				\item les nombres de -n à n~;
+				\item les multiples de 5 de 1 à n~;
+				\item les multiples de n de 1 à 100.
 			\end{enumerate}
 		\end{Exercice}
 
-		\subsection{Exercices récapitulatif sur les structures répétitives}
+
+		
+\subsection{Exercices récapitulatifs sur les structures répétitives}
 
 
 		\begin{Exercice}{Afficher les nombres impairs}
@@ -1178,7 +1184,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 			L’algorithme commence par demander à l’utilisateur
 			le nombre de valeurs qu’il désire donner.
 		\end{Exercice}
-		
+
 		\begin{Exercice}{Compter les nombres impairs}
 			Écrire un algorithme qui demande une série
 			de valeurs entières à l’utilisateur
@@ -1195,7 +1201,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\end{Exercice}
 
 		\begin{Exercice}{Afficher les nombres impairs}
-			\marginicon{java}
+
 			Écrire un algorithme qui demande une série
 			de valeurs entières non nulles à l’utilisateur
 			et qui affiche celles qui sont impaires.
@@ -1204,7 +1210,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\end{Exercice}
 
 		\begin{Exercice}{Compter le nombre de réussites}
-			\marginicon{java}
+
 			Écrire un algorithme qui demande une série
 			de cotes (entières, sur 20) à l’utilisateur
 			et qui affiche le pourcentage de réussites.
@@ -1213,7 +1219,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\end{Exercice}
 
 		\begin{Exercice}{Suites}
-		\marginicon{java}
+
 			Écrire les algorithmes qui affichent
 			les $n$ premiers termes des suites suivantes.
 			À vous de voir quel est, parmi les 2 modèles 
@@ -1221,43 +1227,43 @@ todo: revoir les exercices avec des paramètres en sortie.
 			modèle de solution
 			le plus pcpté.
 			\begin{enumerate}[label=\alph*)]
-			\item -1, -2, -3, -4, -5, -6\dots
-			\item 1, 3, 6, 10, 15, 21, 28\dots
-			\item 1, 0, 1, 0, 1, 0, 1, 0\dots
-			\item 1, 2, 0, 1, 2, 0, 1, 2\dots
-			\item 1, 2, 3, 1, 2, 3, 1, 2\dots
-			\item 1, 2, 3, 2, 1, 2, 3, 2\dots
+				\item -1, -2, -3, -4, -5, -6\dots
+				\item 1, 3, 6, 10, 15, 21, 28\dots
+				\item 1, 0, 1, 0, 1, 0, 1, 0\dots
+				\item 1, 2, 0, 1, 2, 0, 1, 2\dots
+				\item 1, 2, 3, 1, 2, 3, 1, 2\dots
+				\item 1, 2, 3, 2, 1, 2, 3, 2\dots
 			\end{enumerate}			
 		\end{Exercice}
 
-                   
-				
-% ================================
-\section{Exercices récapitulatifs - boucles}
-% ================================
+\bigskip
+\begin{Emphase}
 
-	Pour tous ces exercices,
-	nous vous donnons peu d’indications sur la solution à
-	mettre en \oe{}uvre.
-	À vous de jouer\dots{}
-	
-	\begin{Exercice}{Lire un nombre}
-		\marginicon{java}
-		Écrire un algorithme 
-		qui demande à l’utilisateur un nombre entre 1 et $n$
-		et le retourne.
-		Si la valeur donnée n’est pas dans l’intervalle souhaité,
-		l’utilisateur est invité à rentrer une nouvelle valeur
-		jusqu’à ce qu’elle soit correcte.
-		\begin{pseudocode}
-			\Entete{lireNb}{\Par{n}{entier}}{entier}
-		\end{pseudocode}
-		
-		\paragraph{Solution.}
-		Si la valeur donnée par l’utilisateur était toujours
-		correcte, il suffirait d’écrire~:
-		\begin{pseudocode}
-			\Algo{lireNb}{\Par{n}{entier}}{entier}
+	\paragraph{Remarque}
+
+	Pour les exercices qui suivent, nous vous donnons peu d’indications sur la
+	solution à mettre en \oe{}uvre.  À vous de jouer\dots{}
+
+\end{Emphase}
+\bigskip
+
+		\begin{Exercice}{Lire un nombre}
+
+			Écrire un algorithme 
+			qui demande à l’utilisateur un nombre entre 1 et $n$
+			et le retourne.
+			Si la valeur donnée n’est pas dans l’intervalle souhaité,
+			l’utilisateur est invité à rentrer une nouvelle valeur
+			jusqu’à ce qu’elle soit correcte.
+			\begin{pseudocode}
+				\Entete{lireNb}{\Par{n}{entier}}{entier}
+			\end{pseudocode}
+
+			\paragraph{Solution.}
+			Si la valeur donnée par l’utilisateur était toujours
+			correcte, il suffirait d’écrire~:
+			\begin{pseudocode}
+				\Algo{lireNb}{\Par{n}{entier}}{entier}
 				\Decl{val}{entier}
 				\Read{val}
 				\Return val
@@ -1270,35 +1276,35 @@ todo: revoir les exercices avec des paramètres en sortie.
 		Ce qui donne~:
 		\begin{pseudocode}
 			\Algo{lireNb}{\Par{n}{entier}}{entier}
-				\Decl{val}{entier}
-				\Read{val}
-				\While{val<1 OU val>n}
-					\Write "valeur incorrecte"
-					\Read{val}
-				\EndWhile
-				\Return val
-			\EndAlgo
-		\end{pseudocode}
-		La solution qu’on obtient est proche d’une lecture répétée
-		avec valeur sentinelle.
-		Dans ce cas, la valeur sentinelle est toute valeur correcte.
+			\Decl{val}{entier}
+			\Read{val}
+			\While{val<1 OU val>n}
+			\Write "valeur incorrecte"
+			\Read{val}
+		\EndWhile
+		\Return val
+	\EndAlgo
+\end{pseudocode}
+La solution qu’on obtient est proche d’une lecture répétée
+avec valeur sentinelle.
+Dans ce cas, la valeur sentinelle est toute valeur correcte.
 	\end{Exercice}
 
 	\begin{Exercice}{Lancé de dés}
-		\marginicon{java}
+
 		Écrire un algorithme qui lance $n$ fois un dé
 		et compte le nombre de fois qu’une certaine valeur est obtenue.
 		\begin{pseudocode}
 			\Entete{lancerDé}{\Par{n}{entier}, \Par{val}{entier}}{entier}
 		\end{pseudocode}
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Factorielle}
-		\marginicon{java}
+
 		Écrire un algorithme qui retourne la factorielle de $n$ (entier positif ou
 		nul). Rappel~: la factorielle de $n$, notée $n$!, est le produit des $n$
 		premiers entiers strictement positifs. 
-		
+
 		Par convention, 0! = 1.
 	\end{Exercice}
 
@@ -1309,7 +1315,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 	\end{Exercice}
 
 	\begin{Exercice}{Table de multiplication}
-		\marginicon{java}
+
 		\begin{minipage}[t]{10cm}
 			Écrire un algorithme qui affiche la table de multiplication
 			des nombres de 1 à 10
@@ -1323,7 +1329,7 @@ todo: revoir les exercices avec des paramètres en sortie.
 		\end{minipage}
 		\qquad
 		\begin{minipage}[t]{4cm}
-		\begin{verbatim}
+			\begin{verbatim}
 			1 x 1 = 1
 			1 x 2 = 2
 			...
@@ -1332,51 +1338,51 @@ todo: revoir les exercices avec des paramètres en sortie.
 			...
 			10 x 9 = 90
 			10 x 10 = 100
-		\end{verbatim}
+			\end{verbatim}
 		\end{minipage}		
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Double 6}
-		\marginicon{java}
+
 		Écrire un algorithme qui lance de façon répétée deux dés.
 		Il s’arrête lorsqu’il obtient un double 6
 		et retourne le nombre de lancés effectués.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Nombre premier}
-		\marginicon{java}
+
 		Écrire un algorithme qui vérifie si un entier positif est un
 		\textbf{nombre premier}. 
-		
+
 		Rappel~:~un nombre est premier s’il n’est divisible que par 1 et par
 		lui-même. Le premier nombre premier est 2.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Nombres premiers}
-		\marginicon{java}
+
 		Écrire un algorithme qui affiche les nombres premiers inférieurs ou
 		égaux à un entier positif donné. Le module de cet algorithme fera appel
 		de manière répétée mais économique à celui de l’exercice précédent.
 	\end{Exercice}
 
 	\begin{Exercice}{Somme de chiffres}
-		\marginicon{java}
+
 		Écrire un algorithme qui calcule la somme des chiffres qui forment un
 		nombre naturel $n$. Attention, on donne au départ \textbf{le} nombre et
 		pas ses chiffres. Exemple~: 133045 doit donner comme résultat 16,
 		car 1 + 3 + 3 + 0 + 4 + 5 = 16.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Nombre parfait}
-		\marginicon{java}
+
 		Écrire un algorithme qui vérifie si un entier positif est un
 		\textbf{nombre parfait}, c’est-à-dire un nombre égal à la somme de ses
 		diviseurs (sauf lui-même). 
-		
+
 		Par exemple, 6 est parfait car 6 = 1 + 2 + 3. 
 		De même, 28 est parfait car 28 = 1 + 2 + 4 + 7 + 14.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Décomposition en facteurs premiers}
 		Écrire un algorithme qui affiche la décomposition 
 		d’un entier en facteurs premiers. 
@@ -1385,16 +1391,16 @@ todo: revoir les exercices avec des paramètres en sortie.
 	\end{Exercice}
 
 	\begin{Exercice}{Nombre miroir}
-		\marginicon{java}
+
 		Le miroir d’un nombre est le nombre obtenu
 		en lisant les chiffres de droite à gauche.
 		Ainsi le nombre miroir de $4209$ est $9024$.
 		Écrire un algorithme qui calcule le miroir
 		d’un nombre entier positif donné.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Palindrome}
-		\marginicon{java}
+
 		Écrire un algorithme qui vérifie si un entier donné 
 		forme un palindrome ou non. 
 		Un nombre palindrome est un nombre qui lu dans un sens 
@@ -1402,9 +1408,9 @@ todo: revoir les exercices avec des paramètres en sortie.
 		(de droite à gauche). 
 		Par exemple, $1047401$ est un nombre palindrome.
 	\end{Exercice}
-	
+
 	\begin{Exercice}{Jeu de la fourchette}
-		\marginicon{java}
+
 		Écrire un algorithme qui simule le jeu de la
 		fourchette. Ce jeu consiste à essayer de découvrir un nombre quelconque
 		compris entre 1 et 100 inclus, tiré au sort par l’ordinateur. 
@@ -1416,190 +1422,197 @@ todo: revoir les exercices avec des paramètres en sortie.
 	\end{Exercice}
 
 
-	\section{Tableaux}
 
 
-		\begin{Exercice}{Déclarer et initialiser}
-			Écrire un algorithme qui déclare un tableau de 100 chaines
-			et met votre nom dans la 3\ieme{} case du tableau.
-		\end{Exercice}
-	
-		\begin{Exercice}{Initialiser un tableau à son indice}
-			Écrire un algorithme qui déclare un tableau de 100 entiers
-			et initialise chaque élément à la valeur de son indice.
-			Ainsi, la case numéro $i$ contiendra la valeur $i$.
-		\end{Exercice}
 
-		\begin{Exercice}{Initialiser un tableau aux valeurs de 1 à 100}
-			Écrire un algorithme qui déclare un tableau de 100 entiers
-			et y met les nombres de 1 à 100.
-		\end{Exercice}
 
-		\begin{Exercice}{Compréhension}
-			Expliquez la différence entre \pc{tab[i] \Gets tab[i+1]}
-			et \pc{tab[i] \Gets tab[i]+1}.
-		\end{Exercice}
-	
 
-		
-			\begin{Exercice}{Trouver les entêtes}
-				Écrire les entêtes (et uniquement les entêtes)
-				des algorithmes qui résolvent les problèmes suivants~:
-				\begin{enumerate}[label=\alph*)]
-				\item
-					Écrire un algorithme qui 
-					inverse le signe de tous les éléments négatifs dans un tableau d’entiers.
-				\item
-					Écrire un algorithme qui
-					donne le nombre d’éléments négatifs dans un tableau d’entiers.
-				\item
-					Écrire un algorithme qui
-					détermine si un tableau d’entiers contient au moins un nombre négatif.
-				\item
-					Écrire un algorithme qui
-					détermine si un tableau de chaines contient
-					une chaine donnée en paramètre.
-				\item
-					Écrire un algorithme qui
-					détermine si un tableau de chaines contient
-					au moins deux occurrences de la même chaine,
-					quelle qu’elle soit.
-				\item
-					Écrire un algorithme qui 
-					retourne un tableau donnant les $n$ premiers nombres premiers,
-					où $n$ est un paramètre de l’algorithme.
-				\item
-					Écrire un algorithme qui 
-					reçoit un tableau d’entiers
-					et retourne un tableau de booléens de la même taille
-					où la case $i$ indique si oui ou non
-					le nombre reçu dans la case $i$ est strictement positif.
-				\end{enumerate}
-			\end{Exercice}
-		
-				
-			\begin{Exercice}{Inverser le signe des éléments}
+\section{Exercices~: tableaux}
+
+
+	\begin{Exercice}{Déclarer et initialiser}
+		Écrire un algorithme qui déclare un tableau de 100 chaines
+		et met votre nom dans la 3\ieme{} case du tableau.
+	\end{Exercice}
+
+	\begin{Exercice}{Initialiser un tableau à son indice}
+		Écrire un algorithme qui déclare un tableau de 100 entiers
+		et initialise chaque élément à la valeur de son indice.
+		Ainsi, la case numéro $i$ contiendra la valeur $i$.
+	\end{Exercice}
+
+	\begin{Exercice}{Initialiser un tableau aux valeurs de 1 à 100}
+		Écrire un algorithme qui déclare un tableau de 100 entiers
+		et y met les nombres de 1 à 100.
+	\end{Exercice}
+
+	\begin{Exercice}{Compréhension}
+		Expliquez la différence entre \pc{tab[i] \Gets tab[i+1]}
+		et \pc{tab[i] \Gets tab[i]+1}.
+	\end{Exercice}
+
+
+
+	\begin{Exercice}{Trouver les entêtes}
+		Écrire les entêtes (et uniquement les entêtes)
+		des algorithmes qui résolvent les problèmes suivants~:
+		\begin{enumerate}[label=\alph*)]
+			\item
 				Écrire un algorithme qui 
 				inverse le signe de tous les éléments négatifs dans un tableau d’entiers.
-			\end{Exercice}
-
-			\begin{Exercice}{Somme}
-				\marginicon{java}
-				Écrire un algorithme qui reçoit en paramètre le tableau
-				\pc{tabEnt} de $n$ entiers 
-				et qui retourne la somme de ses éléments.
-			\end{Exercice}
-
-			\begin{Exercice}{Nombre d’éléments d’un tableau}
-				Écrire un algorithme qui reçoit en paramètre le tableau
-				\pc{tabRéels} de $n$ réels et qui
-				retourne le nombre d’éléments du tableau.
-			\end{Exercice}
-			
-			\begin{Exercice}{Compter les éléments négatifs}
+			\item
 				Écrire un algorithme qui
 				donne le nombre d’éléments négatifs dans un tableau d’entiers.
-			\end{Exercice}
+			\item
+				Écrire un algorithme qui
+				détermine si un tableau d’entiers contient au moins un nombre négatif.
+			\item
+				Écrire un algorithme qui
+				détermine si un tableau de chaines contient
+				une chaine donnée en paramètre.
+			\item
+				Écrire un algorithme qui
+				détermine si un tableau de chaines contient
+				au moins deux occurrences de la même chaine,
+				quelle qu’elle soit.
+			\item
+				Écrire un algorithme qui 
+				retourne un tableau donnant les $n$ premiers nombres premiers,
+				où $n$ est un paramètre de l’algorithme.
+			\item
+				Écrire un algorithme qui 
+				reçoit un tableau d’entiers
+				et retourne un tableau de booléens de la même taille
+				où la case $i$ indique si oui ou non
+				le nombre reçu dans la case $i$ est strictement positif.
+		\end{enumerate}
+	\end{Exercice}
 
-				
-			\begin{Exercice}{Y a-t-il une copie parfaite~?}
-				\marginicon{java}
-				Écrire un algorithme qui reçoit en paramètre le tableau
-				\pc{cotes} de $n$ entiers représentant les cotes des étudiants 
-				et qui retourne un booléen 
-				indiquant s’il contient \textbf{au moins} une fois la valeur 20. 
-			\end{Exercice}
 
-			\begin{Exercice}{Y a-t-il une seule copie parfaite~?}
-				\marginicon{java}
-				Écrire un algorithme qui reçoit en paramètre le tableau
-				\pc{cotes} de $n$ entiers représentant les cotes des étudiants 
-				et qui retourne un booléen 
-				indiquant s’il contient \textbf{exactement} une fois la valeur 20. 
-			\end{Exercice}
-		
-		\begin{Exercice}{Lancers de deux dés}
-			\marginicon{java}
-			Écrire un algorithme qui lance $n$ fois deux dés
-			et compte le nombre de fois que chaque somme apparait.
-			\begin{pseudocode}
-				\Entete{lancers2Dés}{\Par{n}{entier}}{\Array[2]{12}{entiers}}
-			\end{pseudocode}
-		\end{Exercice}
-			
-		\begin{Exercice}{Nombre de jours dans un mois}
-				\marginicon{java}
-			Écrire un algorithme qui reçoit un numéro de mois (de 1 à 12)
-			ainsi qu’une année et donne le nombre de jours dans ce mois
-			(en tenant compte des années bissextiles).
-			N’hésitez pas à réutiliser des algorithmes déjà écrits.
-		\end{Exercice}
-			
-		\subsection{Exercices - insertion, suppression}
-		%---------------------------------------------
-			
-			\begin{Exercice}{Éviter la double inscription}
-				Comment modifier l’algorithme d’inscription
-				pour s’assurer qu’un étudiant ne s’inscrive pas deux fois~?
-			\end{Exercice}
+	\begin{Exercice}{Inverser le signe des éléments}
+		Écrire un algorithme qui 
+		inverse le signe de tous les éléments négatifs dans un tableau d’entiers.
+	\end{Exercice}
 
-			\begin{Exercice}{Limite au nombre d’inscriptions}
-				Comment modifier l’algorithme d’inscription
-				pour refuser une inscription si le nombre maximal
-				de participants est atteint
-				en supposant que ce maximum est égal à la taille physique du tableau~?
-			\end{Exercice}
+	\begin{Exercice}{Somme}
 
-			\begin{Exercice}{Vérifier la désinscription}
-				Que se passerait-il avec l’algorithme
-				de désinscription tel qu’il est
-				si on demande à désinscrire un étudiant non inscrit~?
-				Que suggérez-vous comme changement~?
-			\end{Exercice}
+		Écrire un algorithme qui reçoit en paramètre le tableau
+		\pc{tabEnt} de $n$ entiers 
+		et qui retourne la somme de ses éléments.
+	\end{Exercice}
 
-			\subsection{Calcul de complexité}
+	\begin{Exercice}{Nombre d’éléments d’un tableau}
+		Écrire un algorithme qui reçoit en paramètre le tableau
+		\pc{tabRéels} de $n$ réels et qui
+		retourne le nombre d’éléments du tableau.
+	\end{Exercice}
 
-			\begin{Exercice}{Calcul de complexités}
-				Quelle est la complexité d’un algorithme qui~:		
-				\begin{enumerate}[label=\alph*)]
-				\item 
-					recherche le maximum d’un tableau de $n$ éléments~?
-				\item 
-					remplace par 0 toutes les occurrences du maximum 
-					d’un tableau de $n$ éléments~?
-				\item 
-					vérifie si un tableau contient deux éléments égaux~?
+	\begin{Exercice}{Compter les éléments négatifs}
+		Écrire un algorithme qui
+		donne le nombre d’éléments négatifs dans un tableau d’entiers.
+	\end{Exercice}
+
+
+	\begin{Exercice}{Y a-t-il une copie parfaite~?}
+
+		Écrire un algorithme qui reçoit en paramètre le tableau
+		\pc{cotes} de $n$ entiers représentant les cotes des étudiants 
+		et qui retourne un booléen 
+		indiquant s’il contient \textbf{au moins} une fois la valeur 20. 
+	\end{Exercice}
+
+	\begin{Exercice}{Y a-t-il une seule copie parfaite~?}
+
+		Écrire un algorithme qui reçoit en paramètre le tableau
+		\pc{cotes} de $n$ entiers représentant les cotes des étudiants 
+		et qui retourne un booléen 
+		indiquant s’il contient \textbf{exactement} une fois la valeur 20. 
+	\end{Exercice}
+
+	\begin{Exercice}{Lancers de deux dés}
+
+		Écrire un algorithme qui lance $n$ fois deux dés
+		et compte le nombre de fois que chaque somme apparait.
+		\begin{pseudocode}
+			\Entete{lancers2Dés}{\Par{n}{entier}}{\Array[2]{12}{entiers}}
+		\end{pseudocode}
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre de jours dans un mois}
+
+		Écrire un algorithme qui reçoit un numéro de mois (de 1 à 12)
+		ainsi qu’une année et donne le nombre de jours dans ce mois
+		(en tenant compte des années bissextiles).
+		N’hésitez pas à réutiliser des algorithmes déjà écrits.
+	\end{Exercice}
+
+
+
+
+	\begin{Exercice}{Éviter la double inscription}
+		Comment modifier l’algorithme d’inscription
+		pour s’assurer qu’un étudiant ne s’inscrive pas deux fois~?
+	\end{Exercice}
+
+	\begin{Exercice}{Limite au nombre d’inscriptions}
+		Comment modifier l’algorithme d’inscription
+		pour refuser une inscription si le nombre maximal
+		de participants est atteint
+		en supposant que ce maximum est égal à la taille physique du tableau~?
+	\end{Exercice}
+
+	\begin{Exercice}{Vérifier la désinscription}
+		Que se passerait-il avec l’algorithme
+		de désinscription tel qu’il est
+		si on demande à désinscrire un étudiant non inscrit~?
+		Que suggérez-vous comme changement~?
+	\end{Exercice}
+
+
+	\begin{Exercice}{Calcul de complexités}
+		Quelle est la complexité d’un algorithme qui~:		
+		\begin{enumerate}[label=\alph*)]
+			\item 
+				recherche le maximum d’un tableau de $n$ éléments~?
+			\item 
+				remplace par 0 toutes les occurrences du maximum 
+				d’un tableau de $n$ éléments~?
+			\item 
+				vérifie si un tableau contient deux éléments égaux~?
 				%\item 
 				%	trie par recherche des minima successifs~?
-				\item 
-					vérifie si les éléments d’un tableau forment un palindrome~?
-				\item
-					cherche un élément dans un tableau 
-					en essayant des cases au hasard jusqu’à le trouver~?
-				\end{enumerate}
-			\end{Exercice}
+			\item 
+				vérifie si les éléments d’un tableau forment un palindrome~?
+			\item
+				cherche un élément dans un tableau 
+				en essayant des cases au hasard jusqu’à le trouver~?
+		\end{enumerate}
+	\end{Exercice}
 
-			\begin{Exercice}{Gestion des données}
-				Comparer les algorithmes d’ajout, 
-				de recherche et de suppression
-				de valeurs dans le cas d’un tableau trié
-				et d’un tableau non trié.
-			\end{Exercice}
-			
-			\begin{Exercice}{Réflexion}
-				L’algorithme de recherche dichotomique 
-				est-il toujours à préférer à
-				l’algorithme de recherche linéaire~?
-			\end{Exercice}
+	\begin{Exercice}{Gestion des données}
+		Comparer les algorithmes d’ajout, 
+		de recherche et de suppression
+		de valeurs dans le cas d’un tableau trié
+		et d’un tableau non trié.
+	\end{Exercice}
+
+	\begin{Exercice}{Réflexion}
+		L’algorithme de recherche dichotomique 
+		est-il toujours à préférer à
+		l’algorithme de recherche linéaire~?
+	\end{Exercice}
+
+
+
+	\input{annexes/exercices-tableaux}
+
+
+
 	
-
-
-			\section{Exercices tableaux}
-			\input{annexes/exercices-tableaux}
-
-
-\section{Exercices - chaine}
-%==================
+	
+	
+	
+\section{Exercices~: chaine et String}
 
 	\begin{Exercice}{Calcul de fraction}
 		Écrire un algorithme 
@@ -1610,60 +1623,63 @@ todo: revoir les exercices avec des paramètres en sortie.
 		On peut considérer que la fraction donnée est correcte, 
 		elle est composée de 2 entiers séparés 
 		par le caractère de division '/'.
-		
+
 		\paragraph{Solution.}
 		Voici une solution possible.
-		\begin{LDA}
-			\Algo{calculerFraction}{\Par{fraction}{chaine}}{réel}
-				\Decl{posFraction, numérateur, dénominateur}{entiers}
-				\Let posFraction \Gets position(fraction,"/")
-				\Let numérateur \Gets nombre(souschaine(fraction,1,posFraction-1))
-				\Let dénominateur \Gets nombre(souschaine(fraction,posFraction+1,long(fraction)-posFraction))
-				\Return numérateur / dénominateur
-			\EndAlgo
-		\end{LDA}
-	\end{Exercice}
-	
-	\begin{Exercice}{Conversion de nom}
-		Écrire un algorithme 
-		qui reçoit le nom complet d’une personne 
-		dans une chaine sous la forme "nom, prénom" 
-		et la renvoie au format "prénom nom" 
-		(sans virgule séparatrice). 
-		Exemple~: "De Groote, Jan" deviendra "Jan De Groote".	
-	\end{Exercice}
-	
-	\begin{Exercice}{Gauche et droite}
-		Écrire un algorithme \lda{gauche} 
-		et un \lda{droite}
-		qui retourne la chaine formée respectivement 
-		des n premiers et des n derniers caractères d’une chaine donnée.	
-	\end{Exercice}
-	
-	\begin{Exercice}{Grammaire}
-		Écrire un algorithme 
-		qui met un mot en « ou » au pluriel. 
-		Pour rappel, 
-		un mot en « ou » prend un « s » à l’exception des 7 mots 
-		bijou, caillou, chou, genou, hibou, joujou et pou qui prennent 
-		un « x » au pluriel. 
-		Exemple~: un clou, des clous, un hibou, des hiboux. 
-		Si le mot soumis à l’algorithme n’est pas un mot en « ou », 
-		un message adéquat sera affiché.
-	\end{Exercice}
+		\begin{pseudocode}
+			\Algo{calculerFraction}{\Par{fraction}{string}}{real}
+			\Decl{posFraction, numérateur, dénominateur}{integer}
+			\Let posFraction \Gets position(fraction,"/")
+			\Let numérateur \Gets nombre(souschaine(fraction,1,posFraction-1))
+			\Let dénominateur \Gets nombre(souschaine(
+				\Let\Indent fraction,
+				\Let\Indent posFraction+1,
+				\Let\Indent long(fraction)-posFraction))
+			\Return numérateur / dénominateur
+		\EndAlgo
+	\end{pseudocode}
+\end{Exercice}
 
-	\begin{Exercice}{Normaliser une chaine}
-		Écrire un module qui reçoit une chaine et retourne une autre chaine,
-		version normalisée de la première.
-		Par normalisée, on entend~:~enlever tout ce qui n’est pas une lettre 
-		et tout mettre en majuscule.
-		\\Exemple~:~"Le <COBOL>, c’est la santé~!" devient "LECOBOLCESTLASANTE".
-	\end{Exercice}
-		
-	\begin{Exercice}{Les palindromes}
-		Cet exercice a déjà été réalisé pour des entiers, 
-		en voici 2 versions « chaine »~! 
-		\begin{enumerate}[label=\alph*)]
+\begin{Exercice}{Conversion de nom}
+	Écrire un algorithme 
+	qui reçoit le nom complet d’une personne 
+	dans une chaine sous la forme "nom, prénom" 
+	et la renvoie au format "prénom nom" 
+	(sans virgule séparatrice). 
+	Exemple~: "De Groote, Jan" deviendra "Jan De Groote".	
+\end{Exercice}
+
+\begin{Exercice}{Gauche et droite}
+	Écrire un algorithme \pc{gauche} 
+	et un \pc{droite}
+	qui retourne la chaine formée respectivement 
+	des n premiers et des n derniers caractères d’une chaine donnée.	
+\end{Exercice}
+
+\begin{Exercice}{Grammaire}
+	Écrire un algorithme 
+	qui met un mot en « ou » au pluriel. 
+	Pour rappel, 
+	un mot en « ou » prend un « s » à l’exception des 7 mots 
+	bijou, caillou, chou, genou, hibou, joujou et pou qui prennent 
+	un « x » au pluriel. 
+	Exemple~: un clou, des clous, un hibou, des hiboux. 
+	Si le mot soumis à l’algorithme n’est pas un mot en « ou », 
+	un message adéquat sera affiché.
+\end{Exercice}
+
+\begin{Exercice}{Normaliser une chaine}
+	Écrire un module qui reçoit une chaine et retourne une autre chaine,
+	version normalisée de la première.
+	Par normalisée, on entend~:~enlever tout ce qui n’est pas une lettre 
+	et tout mettre en majuscule.
+	\\Exemple~:~"Le <COBOL>, c’est la santé~!" devient "LECOBOLCESTLASANTE".
+\end{Exercice}
+
+\begin{Exercice}{Les palindromes}
+	Cet exercice a déjà été réalisé pour des entiers, 
+	en voici 2 versions « chaine »~! 
+	\begin{enumerate}[label=\alph*)]
 		\item 
 			Écrire un algorithme qui vérifie 
 			si un mot donné sous forme de chaine 
@@ -1678,119 +1694,126 @@ todo: revoir les exercices avec des paramètres en sortie.
 			Dans cette seconde version, 
 			on fait abstraction des majuscules/minuscules 
 			et on néglige les espaces et tout signe de ponctuation.
-		\end{enumerate}
-	\end{Exercice}
-	
-	\begin{Exercice}{Le chiffre de César}
-		\label{ex:cesar}
-		Depuis l’antiquité, les hommes politiques, les militaires, 
-		les hommes d’affaires cherchent à garder secret les messages
-		importants qu’ils doivent envoyer.
-		L’empereur César utilisait une technique (on dit un \emph{chiffrement})
-		qui porte à présent son nom~:
-		remplacer chaque lettre du message par la lettre qui se situe 
-		$k$ positions plus loin dans l’alphabet (cycliquement).
-		
-		Exemple~:~si $k$ vaut $2$, 
-		alors le texte clair "CESAR" devient "EGUCT" lorsqu’il est chiffré 
-		et le texte "ZUT" devient "BWV".
-		
-		Bien sûr, il faut que l’expéditeur du message et le récepteur
-		se soient mis d’accord sur la valeur de $k$.
-		
-		On vous demande d’écrire un algorithme qui reçoit une chaine ne contenant
-		que des lettres majuscules ainsi que la valeur de $k$ et qui retourne
-		la version chiffrée du message.
-	
-		On vous demande également d’écrire l’algorithme de déchiffrement.
-		Cet algorithme reçoit un message chiffré et la valeur de $k$ qui a été
-		utilisée pour le chiffrer et retourne le message en clair.
-		Attention~! Ce second algorithme est \textbf{très simple}.
-	\end{Exercice}
+	\end{enumerate}
+\end{Exercice}
 
-	\begin{Exercice}{Remplacement de sous-chaines}
-		Écrire un algorithme 
-		qui remplace dans une chaine donnée 
-		toutes les sous-chaines ch1 par la sous-chaine ch2. 
-		Attention, 
-		cet exercice est plus coriace qu’il n’y parait à première vue\dots~
-		Assurez-vous que votre code n’engendre pas de boucle infinie. 
-	\end{Exercice}	
-	
-	
+\begin{Exercice}{Le chiffre de César}
+	\label{ex:cesar}
+	Depuis l’antiquité, les hommes politiques, les militaires, 
+	les hommes d’affaires cherchent à garder secret les messages
+	importants qu’ils doivent envoyer.
+	L’empereur César utilisait une technique (on dit un \emph{chiffrement})
+	qui porte à présent son nom~:
+	remplacer chaque lettre du message par la lettre qui se situe 
+	$k$ positions plus loin dans l’alphabet (cycliquement).
+
+	Exemple~:~si $k$ vaut $2$, 
+	alors le texte clair "CESAR" devient "EGUCT" lorsqu’il est chiffré 
+	et le texte "ZUT" devient "BWV".
+
+	Bien sûr, il faut que l’expéditeur du message et le récepteur
+	se soient mis d’accord sur la valeur de $k$.
+
+	On vous demande d’écrire un algorithme qui reçoit une chaine ne contenant
+	que des lettres majuscules ainsi que la valeur de $k$ et qui retourne
+	la version chiffrée du message.
+
+	On vous demande également d’écrire l’algorithme de déchiffrement.
+	Cet algorithme reçoit un message chiffré et la valeur de $k$ qui a été
+	utilisée pour le chiffrer et retourne le message en clair.
+	Attention~! Ce second algorithme est \textbf{très simple}.
+\end{Exercice}
+
+\begin{Exercice}{Remplacement de sous-chaines}
+	Écrire un algorithme 
+	qui remplace dans une chaine donnée 
+	toutes les sous-chaines ch1 par la sous-chaine ch2. 
+	Attention, 
+	cet exercice est plus coriace qu’il n’y parait à première vue\dots~
+	Assurez-vous que votre code n’engendre pas de boucle infinie. 
+\end{Exercice}	
 
 
-		
-	% =====================================
-	\section{Exercices sur les structures}
-	% =====================================
-	
-		\begin{Exercice}{Conversion moment-secondes}
-			Écrire un module qui reçoit en paramètre un
-			moment d’une journée et qui retourne le nombre de secondes écoulées
-			depuis minuit jusqu’à ce moment.
-		\end{Exercice}
-		
-		\begin{Exercice}{Conversion secondes-moment}
-			Écrire un module qui reçoit en paramètre un
-			nombre de secondes écoulées dans une journée à partir de minuit et qui
-			retourne le moment correspondant de la journée.
-		\end{Exercice}
-		
-		\begin{Exercice}{Temps écoulé entre 2 moments}
-			Écrire un module qui reçoit en paramètres deux
-			moments d’une journée et qui retourne le nombre de secondes séparant
-			ces deux moments.
-		\end{Exercice}
-		
-		\begin{Exercice}{Milieu de 2 points}
-			Écrire un module recevant deux points du plan 
-			et qui retourne le point situé au milieu des deux.
-		\end{Exercice}
-		
-		\begin{Exercice}{Distance entre 2 points}
-			Écrire un module recevant les coordonnées de
-			deux points distincts du plan et qui retourne
-			la distance entre ces deux points.
-		\end{Exercice}
-		
-		\begin{Exercice}{Un cercle}
-			Définir un type \textbf{Cercle} pouvant décrire de façon
-			commode un cercle quelconque dans un espace à deux dimensions. 	
-			Écrire ensuite
-			
-			\begin{enumerate}[label=\alph*)]
-			\item {
-				un module calculant la surface du cercle reçu en paramètre~;}
-			\item {
+
+
+
+
+
+
+
+
+\section{Exercices~: structures et classes}
+
+Dans ces exercices nous supposons que vous avez au préalable écrit les
+structures et classes \pc{Moment}, \pc{Point}… telles que décrites dans le
+chapitre \ref{structures-classes} p~\pageref{structures-classes}.
+
+\begin{Exercice}{Conversion moment-secondes}
+	Écrire un module qui reçoit en paramètre un
+	moment d’une journée et qui retourne le nombre de secondes écoulées
+	depuis minuit jusqu’à ce moment.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes-moment}
+	Écrire un module qui reçoit en paramètre un
+	nombre de secondes écoulées dans une journée à partir de minuit et qui
+	retourne le moment correspondant de la journée.
+\end{Exercice}
+
+\begin{Exercice}{Temps écoulé entre 2 moments}
+	Écrire un module qui reçoit en paramètres deux
+	moments d’une journée et qui retourne le nombre de secondes séparant
+	ces deux moments.
+\end{Exercice}
+
+\begin{Exercice}{Milieu de 2 points}
+	Écrire un module recevant deux points du plan 
+	et qui retourne le point situé au milieu des deux.
+\end{Exercice}
+
+\begin{Exercice}{Distance entre 2 points}
+	Écrire un module recevant les coordonnées de
+	deux points distincts du plan et qui retourne
+	la distance entre ces deux points.
+\end{Exercice}
+
+\begin{Exercice}{Un cercle}
+	Définir un type \textbf{Cercle} pouvant décrire de façon
+	commode un cercle quelconque dans un espace à deux dimensions. 	
+	Écrire ensuite
+
+	\begin{enumerate}[label=\alph*)]
+		\item {
+			un module calculant la surface du cercle reçu en paramètre~;}
+		\item {
 				un module recevant 2 points en paramètre et retournant le cercle dont le
-				diamètre est le segment reliant ces 2 points~;}
-			\item {
-				un module qui détermine si un point donné est dans un cercle~;}
-			\item {
+			diamètre est le segment reliant ces 2 points~;}
+		\item {
+			un module qui détermine si un point donné est dans un cercle~;}
+		\item {
 				un module qui indique si 2 cercles ont une intersection.
 			}
-			\end{enumerate}
-		\end{Exercice}
-		
-		
-		\begin{Exercice}{Un rectangle}
-			\marginicon{java}
-			Définir un type \textbf{Rectangle} pouvant décrire de façon
-			commode un rectangle dans un espace à deux dimensions et dont les côtés
-			sont parallèles aux axes des coordonnées. 	
-			Écrire ensuite
-		
-			\begin{enumerate}[label=\alph*)]
-			\item {
-				un module calculant le périmètre d’un rectangle reçu en paramètre~;}
-			\item {
-				un module calculant la surface d’un rectangle reçu en paramètre~;}
-			\item {
+	\end{enumerate}
+\end{Exercice}
+
+
+\begin{Exercice}{Un rectangle}
+
+	Définir un type \textbf{Rectangle} pouvant décrire de façon
+	commode un rectangle dans un espace à deux dimensions et dont les côtés
+	sont parallèles aux axes des coordonnées. 	
+	Écrire ensuite
+
+	\begin{enumerate}[label=\alph*)]
+		\item {
+			un module calculant le périmètre d’un rectangle reçu en paramètre~;}
+		\item {
+			un module calculant la surface d’un rectangle reçu en paramètre~;}
+		\item {
 				un module recevant en paramètre un rectangle R et les coordonnées
 				d’un point P, et renvoyant 
 				\textbf{vrai} si et seulement si le point P est à
-				l’intérieur du rectangle R~;}
+			l’intérieur du rectangle R~;}
 			%\item {
 				%un module recevant en paramètre un rectangle R et les coordonnées
 				%d’un point P, et renvoyant 
@@ -1800,11 +1823,17 @@ todo: revoir les exercices avec des paramètres en sortie.
 				%un module recevant en paramètre deux rectangles et renvoyant la valeur
 				%booléenne \textbf{vrai} si et seulement si ces deux rectangles ont une
 				%intersection.}
-			\end{enumerate}
-		\end{Exercice}
-		
-		\begin{Exercice}{Validation de date}
-			Écrire un algorithme qui valide une date reçue en paramètre 
-			sous forme d’une structure.
-		\end{Exercice}
+	\end{enumerate}
+\end{Exercice}
 
+\begin{Exercice}{Validation de date}
+	Écrire un algorithme qui valide une date reçue en paramètre 
+	sous forme d’une structure.
+\end{Exercice}
+
+
+
+
+
+\section{Exercices récapitulatifs}
+\input{annexes/exercices-recapitulatifs}

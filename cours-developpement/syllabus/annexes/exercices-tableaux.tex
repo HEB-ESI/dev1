@@ -1,7 +1,7 @@
-%======================
-%\chapter{Exercices sur les tableaux}
-%======================
 
+\bigskip
+\begin{Emphase}
+	\paragraph{Remarque}
 	Voici quelques exercices
 	qui reprennent les différentes notions vues sur les tableaux.
 	Pour chacun d’entre-eux~:
@@ -18,11 +18,13 @@
 		testez votre solution dans le cas général
 		et dans les éventuels cas particuliers.
 	\end{itemize}
+\end{Emphase}
+\bigskip
 	
 	\begin{Exercice}{Renverser un tableau}
-		\marginicon{java}
+		
 		Écrire un algorithme qui reçoit en paramètre 
-		le tableau \lda{tabCar} de $n$ caractères, 
+		le tableau \pc{tabCar} de $n$ caractères, 
 		et qui «~renverse~» ce tableau, 
 		c’est-à-dire qui permute le premier élément avec le dernier, 
 		le deuxième élément avec l’avant-dernier et ainsi de suite.
@@ -30,31 +32,31 @@
 	
 	\begin{Exercice}{Tableau symétrique~?}
 		Écrire un algorithme qui reçoit en paramètre 
-		le tableau \lda{tabChaines} de $n$ chaines 
+		le tableau \pc{tabChaines} de $n$ chaines 
 		et qui vérifie si ce tableau est symétrique, 
 		c’est-à-dire si le premier élément est identique au dernier, 
 		le deuxième à l’avant-dernier et ainsi de suite.
 	\end{Exercice}
 		
 	\begin{Exercice}{Maximum}
-		\marginicon{java}
+		
 		Écrire un algorithme qui reçoit en paramètre le tableau
-		\lda{tabEnt} de $n$ entiers et qui
+		\pc{tabEnt} de $n$ entiers et qui
 		retourne la plus \textbf{grande} valeur de ce tableau.
 	\end{Exercice}
 		
 	\begin{Exercice}{Minimum}
-		\marginicon{java}
+		
 		Écrire un algorithme qui reçoit en paramètre le tableau
-		\lda{tabEnt} de $n$ entiers et qui
+		\pc{tabEnt} de $n$ entiers et qui
 		retourne la plus \textbf{petite} valeur de ce tableau. Idem pour le minimum.
 	\end{Exercice}
 	
 	\begin{Exercice}{Indice du maximum/minimum}
 		\label{ex:indiceminmax}
-		\marginicon{java}
+		
 		Écrire un algorithme qui reçoit en paramètre 
-		le tableau \lda{tabEnt} de $n$ entiers 
+		le tableau \pc{tabEnt} de $n$ entiers 
 		et qui retourne l’indice de l’élément contenant 
 		la plus grande valeur de ce tableau. 
 		En cas d’ex-æquo, c’est l’indice le plus petit qui sera renvoyé.
@@ -65,13 +67,13 @@
 	\end{Exercice}
 		
 	\begin{Exercice}{Tableau ordonné~?}
-		\marginicon{java}
+		
 		Écrire un algorithme qui reçoit en paramètre 
-		le tableau \lda{valeurs} de $n$ entiers 
+		le tableau \pc{valeurs} de $n$ entiers 
 		et qui vérifie si ce tableau est ordonné 
 		(strictement) croissant sur les valeurs. 
-		L’algorithme retournera \lda{vrai} si le tableau est ordonné,
-		\lda{faux} sinon.
+		L’algorithme retournera \pc{vrai} si le tableau est ordonné,
+		\pc{faux} sinon.
 	\end{Exercice}
 	
 	\begin{Exercice}{Remplir un tableau}
@@ -84,20 +86,36 @@
 			où les nombres identiques sont groupés :
 			d'abord tous les 1 puis tous les 2, \dots
 			
-			\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{0.20cm}|}}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 			\hline
-			1 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 3 & 3 & 3 & 3 & 4 & 4 & 4 & 4 & 5 & 5 & 5 & 5\\
+			1 & 1 & 1 & 1 & 2 & 2 & 2 & 2 & 3 & 3 & 3 & 3 & 4 & 4 \\
 			\hline
 			\end{tabular}
+			\begin{flushright}
+			\par\hspace{3cm}
+			\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			4 & 4 & 5 & 5 & 5 & 5\\
+			\hline
+			\end{tabular}
+			\end{flushright}
 		\item
 			Ensuite une version où on trouve dans le tableau
 			les valeurs 1, 2, 3, 4, 5 qui se suivent, quatre fois.
 			
-			\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{0.20cm}|}}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 			\hline
-			1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 & 5 \\
+			1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 & 5 & 1 & 2 & 3 & 4 \\ 
 			\hline
 			\end{tabular}
+			\begin{flushright}
+			\par\hspace{3cm}
+			\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			5 & 1 & 2 & 3 & 4 & 5 \\
+			\hline
+			\end{tabular}
+			\end{flushright}
 		\end{enumerate}
 		\smallskip
 		\textbf{Remarque} : 
@@ -107,9 +125,9 @@
 	\end{Exercice}
 	
 	\begin{Exercice}{Positions du minimum}
-		\marginicon{java}
+		
 		Écrire un algorithme qui reçoit en paramètre le tableau
-		\lda{cotes} de $n$ entiers et qui
+		\pc{cotes} de $n$ entiers et qui
 		affiche le ou les indice(s) des éléments 
 		contenant la valeur minimale du tableau.
 	
@@ -118,7 +136,7 @@
 			Écrire une première version «~classique~» avec deux parcours de tableau
 		\item
 			Écrire une deuxième version qui ne parcourt qu’une seule fois 
-			\lda{cotes} en
+			\pc{cotes} en
 			stockant dans un deuxième tableau (de quelle taille~?)
 			les indices du plus petit élément
 			rencontrés (ce tableau étant à chaque fois réinitialisé lorsqu’un
@@ -132,7 +150,7 @@
 	\end{Exercice}
 	
 	\begin{Exercice}{Occurrence des chiffres}
-		\marginicon{java}
+		
 		Écrire un algorithme qui reçoit 
 		un nombre entier positif ou nul en paramètre
 		et qui retourne un tableau de 10 entiers
@@ -143,7 +161,7 @@
 	\end{Exercice}
 	
 	\begin{Exercice}{Les doublons}
-		\marginicon{java}
+		
 		Écrire un algorithme qui vérifie 
 		si un tableau de chaines
 		contient au moins 2 éléments égaux.
@@ -177,7 +195,7 @@
 	\end{Exercice}
 	
 	\begin{Exercice}{Mastermind}
-		\marginicon{java}
+		
 		Dans le jeu du Mastermind, 
 		un joueur A doit trouver une combinaison de $n$ pions de couleur, 
 		choisie et tenue secrète par un autre joueur B. 
@@ -192,16 +210,16 @@
 		sont contenues dans des tableaux de $n$ composantes de type chaine.
 		
 		Écrire l’algorithme suivant qui renvoie dans les variables
-		\lda{bienPlacés} et \lda{malPlacés}
+		\pc{bienPlacés} et \pc{malPlacés}
 		respectivement le nombre de pions bien placés et mal placés 
 		dans la «~proposition~» du joueur A en la comparant 
 		à la «~solution~» cachée du joueur B.
 	
-		\begin{LDA}
+		\begin{pseudocode}
 		\Entete{testerProposition}{
 			\Par{proposition\In, solution\In}{\Array{n}{chaines}}, 
 			\\\hfill 
 			\Par{bienPlacés\Out, malPlacés\Out}{entiers}}{}
-		\end{LDA}
+		\end{pseudocode}
 	\end{Exercice}
 	
