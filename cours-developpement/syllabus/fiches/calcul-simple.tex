@@ -1,0 +1,65 @@
+%==============================
+\begin{Fiche}{Un calcul simple}
+%==============================
+\label{fiche:calcul-simple}
+
+\Section{Le problème}
+Calculer la surface d’un rectangle à partir de sa longueur et sa largeur.
+	
+\Section{Spécification}
+
+	\textbf{Données} (toutes réelles et non négatives)~:
+		\begin{itemize}
+			\item la longueur du rectangle~;
+			\item sa largeur.
+		\end{itemize}
+		
+	\textbf{Résultat}~: un réel représentant la surface du rectangle.
+
+	\begin{center}	
+		\flowalgodd{length (real)}{width (real)}{rectangleArea}{real}
+	\end{center}
+
+\Section{Exemples}
+
+	\begin{itemize}
+	\item \pc{rectangleArea(3, 2)} donne $6$
+	\item \pc{rectangleArea(3.5, 1)} donne $3.5$
+	\end{itemize}
+
+\Section{Solution}
+
+	La surface d’un rectangle est obtenue en multipliant
+	la largeur par la longueur.
+	\[
+		\textrm{surface} = \textrm{longueur} * \textrm{largeur}
+	\]
+
+	\begin{pseudocode}
+		\Algo{rectangleArea}{\Par{length, width}{real}}{real}
+			\Return length * width
+		\EndAlgo
+	\end{pseudocode}
+
+\Section{Vérification}
+
+	\begin{center}
+		\begin{tabular}{|c|cccc|c|}
+		\hline
+		\rowcolor{black!40}
+		test \no & longueur & largeur & réponse attendue & réponse fournie & {} \\
+		\hline 
+		1 & 3   & 2 & 6   & 6   & {\color{ForestGreen}$\checkmark$} \\\hline
+		2 & 3.5 & 1 & 3.5 & 3.5 & {\color{ForestGreen}$\checkmark$} \\\hline
+		\end{tabular}
+	\end{center}				
+
+\Section{Quand l’utiliser~?}
+
+	Ce type de solution peut être utilisé à chaque fois
+	que la réponse s’obtient par un calcul simple sur les données.
+	Si le calcul est plus complexe, 
+	il peut être utile de le décomposer pour accroitre la lisibilité
+	(cf. fiche \vref{fiche:calcul-complexe}) 
+	
+\end{Fiche}
