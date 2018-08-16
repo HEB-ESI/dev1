@@ -1,0 +1,124 @@
+%================================
+\begin{Fiche}{Tri d’un tableau}
+%================================
+\label{fiche:tri}
+
+\noindent Trier un tableau d’entiers par ordre croissant.
+
+\Section{Spécification}
+	
+	\textbf{Données}~: le tableau non trié, à trier.
+		
+	\textbf{Résultat}~: ce même tableau trié.
+
+\Section{Solution}
+
+\subsection*{Le tri par insertion}
+		
+	\begin{pseudocode}
+		\LComment Trie le tableau reçu en paramètre (via un tri par insertion).
+		\Algo{insertionSort}{\Par{myArray\InOut}{\Array{}{integers}}}{}
+			\Decl{i, j, value}{integers}
+			\For{i}{1}{myArray.length - 1}
+				\Let value \Gets myArray[i]
+				\LComment recherche de l’endroit où insérer value dans le 
+				\LComment sous-tableau trié et décalage simultané des éléments
+				\Let j \Gets i - 1
+				\While{j ${\geq}$ 0 AND value < myArray[j]}
+					\Let myArray[j+1] \Gets myArray[j]
+					\Let j \Gets j – 1
+				\EndWhile
+				\Let myArray[j+1] \Gets value
+			\EndFor
+		\EndAlgo
+	\end{pseudocode}
+
+	\begin{java}
+/**
+ * Tri par insertion. 
+ * @param myArray tableau à trier
+ */
+public static insertionSort(int[] myArray){
+	int j, value;
+	for (int i = 1; i < myArray.length; i = i + 1){
+		value = myArray[i];
+		j = i - 1;
+		while (j >= 0 && value < myArray[j]){
+			myArray[j + 1] = myArray[j];
+			j = j - 1;
+		}
+		myArray[j + 1] = value;
+	}
+}
+	\end{java}
+
+
+
+	
+\subsection*{Le tri par sélection des minima successifs}
+		
+	\begin{pseudocode}
+		\LComment Trie le tableau reçu en paramètre 
+		(via un tri par sélection des minima successifs).
+		\Algo{selectionSort}{\Par{myArray\InOut}{\Array{}{integers}}}{}
+			\Decl{i, minIndex}{integer}
+			\For{i}{0}{myArray.length – 2}
+			\RComment i correspond à l’étape 
+			\RComment de l’algorithme
+				\Let minIndex \Gets searchMinIndex( myArray, i, 
+					myArray.length - 1 )
+				\Stmt swap( myArray[i], myArray[minIndex] )
+			\EndFor
+		\EndAlgo
+
+		\Empty
+		\LComment Retourne l’indice du minimum entre les indices début 
+		et fin du tableau reçu.
+		\Algo{searchMinIndex}{
+			\Par{myArray\In}{\Array{}{integers}}, 
+			\\\hfill\Par{début\In, fin\In}{integers}}{integer}
+			\Decl{minIndex, i}{integers}
+			\Let minIndex \Gets début
+			\For{i}{début+1}{fin}
+				\If{myArray[i] < myArray[minIndex]}
+					\Let minIndex \Gets i
+				\EndIf
+			\EndFor
+			\Return minIndex
+		\EndAlgo
+
+		\Empty
+		\LComment {Échange le contenu de 2 variables.}
+		\Algo{swap}{\Par{a\InOut, b\InOut}{integers}}{}
+			\Decl{aux}{integer}
+			\Let aux \Gets a
+			\Let a \Gets b
+			\Let b \Gets aux
+		\EndAlgo
+	\end{pseudocode}
+
+
+
+
+	
+
+\subsection*{Le tri bulle}
+
+	\begin{pseudocode}
+	\LComment Trie le tableau reçu en paramètre (via un tri bulle).
+		\Algo{bubbleSort}{\Par{myArray\InOut}{\Array{}{integers}}}{}
+			\Decl{bubbleIndex, i}{integers}
+			\For{bubbleIndex}{0}{myArray.length - 2}
+				\For[-1]{i}{myArray.length – 2}{bubbleIndex}
+					\If{myArray[i] > myArray[i + 1]}
+						\Stmt swap( myArray[i], myArray[i + 1] )
+						\RComment voir algorithme précédent
+					\EndIf
+				\EndFor
+			\EndFor
+		\EndAlgo
+	\end{pseudocode}
+
+
+	
+\end{Fiche}
