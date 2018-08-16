@@ -1,0 +1,73 @@
+%================================
+\begin{Fiche}{Recherche dichotomique}
+%================================
+\label{fiche:dicho}
+
+\Section{Problème}
+
+	Trouver rapidement la position d’une valeur donnée dans un tableau
+	\textbf{trié} d’entiers.  Si la valeur n’est pas présente, on donnera la
+	position où elle aurait du se trouver.
+
+\Section{Spécification}
+	
+	\textbf{Données}~: 
+		le tableau à analyser
+		et la valeur recherchée
+		
+	\textbf{Résultat}~:
+		un booléen indiquant si la valeur a été trouvée
+		ec un entier indiquant
+			soit la position où la valeur a été trouvée
+			soit la position où elle aurait du être.
+
+\Section{Solution}
+
+		L’algorithme rapide que nous avons vu est la recherche
+		dichotomique.
+		
+		\begin{pseudocode}
+			\Algo{dichotomousResearch}{
+					\\\hfill
+					\Par{myArray\In}{\Array{}{integers}}, 
+					\Par{value\In}{integer}, 
+					\Par{pos\InOut}{integer}
+					}{boolean}
+				\Decl{rightIndex, leftIndex, medianIndex}{integer}
+				\Decl{candidate}{integer}
+				\Decl{isFind}{boolean}
+				\Empty
+				\Let leftIndex \Gets 0
+				\Let rightIndex \Gets myArray.length - 1
+				\Let isFind \Gets false
+				\Empty
+				\While{NON isFind AND leftIndex {${\leq}$} rightIndex}
+					\Let medianIndex \Gets (leftIndex + rightIndex) DIV 2
+					\Let candidate \Gets myArray[medianIndex]
+					\If{candidate == value} 
+						\Let isFind \Gets vrai
+					\ElsIf{candidate < value}
+						\Let leftIndex \Gets medianIndex + 1
+						\RComment on garde la partie droite
+					\Else
+						\Let rightIndex \Gets medianIndex – 1
+						\RComment on garde la partie gauche
+					\EndIf
+				\EndWhile
+				\Empty
+				\If{isFind}
+					\Let pos \Gets medianIndex
+				\Else
+					\Let pos \Gets leftIndex
+					\RComment dans le cas où la valeur n’est pas trouvée,
+					\Empty 
+					\RComment on vérifiera que leftIndex donne la valeur 
+					où elle pourrait être insérée.
+				\EndIf
+				\Empty
+				\Return isFind
+			\EndAlgo
+		\end{pseudocode}
+		
+	
+\end{Fiche}
