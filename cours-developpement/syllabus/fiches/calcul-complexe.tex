@@ -1,0 +1,88 @@
+%================================
+\begin{Fiche}{Un calcul complexe}
+%================================
+\label{fiche:calcul-complexe}
+
+\Section{Problème}
+
+	Calculer la vitesse moyenne (en km/h) d’un véhicule dont on donne la
+	distance parcourue (en mètres) et la durée du parcours (en secondes). 
+
+\Section{Spécification}
+	
+	\textbf{Données} (toutes réelles et non négatives)~:
+		\begin{itemize}
+		\item la distance parcourue par le véhicule (en m)~;
+		\item la durée du parcours (en s).
+		\end{itemize}
+		
+	\textbf{Résultat}~: la vitesse moyenne du véhicule (en km/h).
+
+	\begin{center}
+	\flowalgodd{meters (real)}{seconds (real)}{speed}{real}
+	\end{center}
+
+\Section{Exemples}
+
+	\begin{itemize}
+	\item \pc{speed(100,10)} donne $36$
+	\item \pc{speed(10000,3600)} donne $10$
+	\end{itemize}
+
+\Section{Solution}
+
+	La vitesse moyenne est liée à la distance et à la durée par la formule~:
+	\[
+		\textrm{vitesse} = \frac{\textrm{distance}}{\textrm{durée}}
+	\]
+
+	\begin{flushright}
+	pour autant que les unités soient cohérentes.
+	\end{flushright}
+
+	Ainsi pour obtenir une vitesse en km/h, il faut convertir la distance en
+	kilomètres et la durée en heures.  Ce qui donne~:
+		
+	\begin{pseudocode}
+		\Algo{speed}{\Par{meters, seconds}{real}}{real}
+			\Decl{km, hours}{real}
+			\Let km \Gets meters / 1000
+			\Let hours \Gets seconds / 3600
+			\Return km / hours
+		\EndAlgo
+	\end{pseudocode}
+
+\Section{Vérification}
+
+	\begin{center}
+		\begin{tabular}{|c|cccc|c|}
+		\hline
+			\rowcolor{black!40}
+		test \no & dist. (m) & durée (s) & réponse attendue 
+			& réponse fournie & {} \\
+		\hline 
+		1 & 100   & 10   & 36 & 36 & {\color{ForestGreen}$\checkmark$} \\\hline
+		2 & 10000 & 3600 & 10 & 10 & {\color{ForestGreen}$\checkmark$} \\\hline
+		\end{tabular}
+	\end{center}								
+
+\Section{Solution Java}
+
+\begin{java}
+public static double speed(double meters, double seconds){
+	double km;
+	double hours;
+	km = meters / 1000;
+	hours = seconds / 3600;
+	return km / hours;
+}
+\end{java}
+
+\Section{Quand l’utiliser~?}
+
+	Ce type de solution peut être utilisé à chaque fois que la réponse s’obtient
+	par un calcul complexe sur les données qu’il est bon de décomposer pour
+	aider à sa lecture.  Si le calcul est plutôt simple, on peut le garder en
+	une seule expression (cf. fiche \vref{fiche:calcul-simple}).
+	
+\end{Fiche}
