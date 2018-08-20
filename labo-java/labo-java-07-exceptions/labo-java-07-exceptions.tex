@@ -1,0 +1,136 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 7 -- Exceptions, Javadoc}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Ce TD introduit la notion \emph{d'exception} qui permet de lancer une alerte lorsqu'une erreur est détectée.
+	Ensuite nous verrons comment \emph{documenter} le code Java à l'aide de l'outil Javadoc.
+	
+		 
+	\tableofcontents
+
+	\newpage
+
+%====================
+\section{Les exceptions}
+%====================	
+
+	
+	
+	
+ 	\listing{java}{code/Cercle.java}
+
+	La méthode \texttt{périmètre} de la classe \texttt{Cercle} ci-dessus
+	reçoit en paramètre le rayon du cercle.
+	
+	Le périmètre d'un cercle n'a de sens que si le rayon est strictement positif.  
+	La méthode va \emph{lancer} une \texttt{IllegalArgumentException} dans la cas contraire. 
+	Lorsque cette erreur est lancée le programme s'arrête et affiche un message d'erreur.
+	Lorsqu'on exécute la classe \texttt{Cercle} on obtient le message suivant~:
+	\begin{Console}
+> java esi.dev1.td7.Cercle
+62.83185307179586
+Exception in thread "main" java.lang.IllegalArgumentException: Le rayon doit être positif: -3.0
+	at esi.dev1.td7.Cercle.périmètre(Cercle.java:13)
+	at esi.dev1.td7.Cercle.main(Cercle.java:20)
+\end{Console}
+
+	\begin{Exercice}{Calendrier~: méthodes robustes}
+		Dans votre projet calendrier, vérifiez que les paramètres des méthodes sont corrects et lancer une 
+		\texttt{IllegalArgumentException} avec un message adéquat sinon~:
+		\begin{itemize}
+			\item \code{java}{String nomMois(int mois)}: le mois est compris entre 1 et 12~;
+			\item \code{java}{void afficherTitre(int mois, int année)}: le mois est compris entre 1 et 12~;
+			\item \code{java}{void afficherMois(int décalage, int nombreJours)}: le décalage est compris entre 0 et 6 et 
+				le nombre de jours entre 1 et 31.
+			\item  \code{java}{int nombreJours(int mois, int année)}: le mois est compris entre 1 et 12~;
+			\item \code{java}{int numéroJour(int jour, int mois, int année)}: la date est correcte. 
+		\end{itemize}
+		
+		Vérifiez qu'une exception est lancée lorsque vous entrez un mois incorrect dans votre application.
+	\end{Exercice}
+
+%====================
+\section{Gérer les entrées de l'utilisateur}
+%====================	
+
+	Dans la classe \texttt{Saisie} ci-dessous, la méthode \texttt{lireEntier} demande à l'utilisateur d'entrée un entier.
+	Tant que l'utilisateur entre autre chose qu'un entier, la méthode lui demande à nouveau d'en entrer un. 
+	
+ 	\listing{java}{code/Saisie.java}
+
+	
+	
+	\begin{Exercice}{Lectures robustes}
+		Créez une classe \texttt{Lecture} et écrivez-y les méthodes suivantes~:
+		\begin{itemize}
+			\item \code{java}{int lireEntier(String message)}: comme dans l'exemple ci-dessus, lit et retourne un entier.
+				Tant que l'utilisateur n'entre pas un entier, la méthode lui demande à nouveau.
+			\item \code{java}{double lireDouble(String message)}: lit et retourne un double.
+				Tant que l'utilisateur n'entre pas un double, la méthode lui demande à nouveau.
+			\item \code{java}{int lireEntier(String message, int min, int max)}: lit et retourne un entier 
+				compris entre \texttt{min} et \texttt{max}.
+				Tant que l'utilisateur n'entre pas un entier compris entre \texttt{min} et \texttt{max}, 
+				la méthode lui demande à nouveau.
+				
+				Astuce: faites appel à la méthode \texttt{lireEntier}.
+		\end{itemize}
+	\end{Exercice}
+	
+	\begin{Exercice}{Calendrier avec lectures robustes}
+		Utilisez des méthodes robustes pour gérer les éventuelles erreurs de l'utilisateur dans votre application calendrier.
+	\end{Exercice}
+
+
+%====================
+\section{Documentation des méthodes}
+%====================	
+
+	Dans l'exemple du cercle ci-dessus la documentation de la méthode \texttt{périmètre} 
+	se trouve juste avant l'entête de la méthode entre les balises \texttt{/**} et \texttt{*/}.
+	Cette documentation suit le format \texttt{Javadoc} vu au cours.
+	
+	Pour générer le documentation faites un clic-droit sur l'icône du projet et choisissez 
+	\textbf{Generate Javadoc} dans le menu déroulant qui apparait. 
+	Un navigateur s'ouvre avec votre Javadoc. Dans la console (output) les éventuels 
+	erreurs et avertissements sont affichés.
+
+	\begin{Exercice}{Documentation du calendrier}
+		Documentez chaque méthode du projet calendrier et générez sa documentation.
+	\end{Exercice}
+
+	
+				
+
+
+
+
+
+
+\end{document}
