@@ -1,21 +1,18 @@
 %=====================================================================
-%						style-esi/slides.sty
+%						style-esi/slide.sty
 %
 %	Style pour des slides à l'ÉSI (à utiliser avec beamer)
+%	À priori, on peut utiliser directement la classe slide.cls
+%	(qui fait appel à ce style).
 %=====================================================================
 
 %=====================================================================
 %	Dépendences
 %=====================================================================
 
-% --- Pour configurer les couleurs utilisées dans les slides 
-\usepackage{style-esi/color}
-
-% --- Pour les box avec background (colbox, coltbox...)
-\usepackage{style-esi/common}
-
-% --- Utilise le logo qui doit se trouver dans le même dossier.
-% --- style-esi/logo.png (ou une autre extension)
+% --- Charge tous les packages de base communs à tout document
+% --- french, color, box...
+\RequirePackage{style-esi/common}
 
 %=====================================================================
 %  Aspect général du document
@@ -56,7 +53,7 @@
 % --- \soustitre{texte} crée un sous-titre dans le texte
 % --- Proche de \structure mais j'ai plus de contrôle pour le définir
 \newcommand{\soustitre}[1]{%
-	\par\bigskip{\color{colmain}\large\bfseries{}#1}\par\smallskip
+	\par\medskip{\color{colmain}\large\bfseries{}#1}
 }
 
 %=====================================================================
@@ -113,7 +110,7 @@
 		\begin{frame}[plain]
 			\BODY
 			\ifthenelse{\isempty{#1}}{}{
-				\begin{textblock*}{\linewidth}(20pt,.87\paperheight)
+				\begin{textblock*}{3cm}[1,1](.98\paperwidth,.98\paperheight)
 					\flushright
 					\credit{#1}
 				\end{textblock*}
@@ -133,12 +130,13 @@
 %			niveau 3 = triangle gris
 %---------------------------------------------------------------------
 
-\setbeamertemplate{itemize item}{\small$\diamondsuit$} 
+\setbeamertemplate{itemize item}{$\diamond$} 
 \setbeamertemplate{itemize subitem}[square]
 \setbeamertemplate{itemize subsubitem}[triangle]
 \setbeamercolor{itemize item}{fg=gray}
 \setbeamercolor{itemize subitem}{fg=gray}
 \setbeamercolor{itemize subsubitem}{fg=gray}
+\setbeamerfont{itemize subsubitem}{size=\small}
 
 %---------------------------------------------------------------------
 %	enumerate
@@ -158,15 +156,15 @@
 %	item en couleur colalert
 %---------------------------------------------------------------------
 
-\setbeamercolor{description item}{fg=colalert}
+\setbeamercolor{description item}{fg=colmain}
 \setbeamerfont{description item}{size=\normalsize,series=\bfseries}
 
 %---------------------------------------------------------------------
 %	Aère un peu plus en ajoutant de l'espace vertical entre les items.
 %---------------------------------------------------------------------
 
-\let\olditem\item
-\renewcommand{\item}{\vspace{.1em}\olditem} 
+%\let\olditem\item
+%\renewcommand{\item}{\vspace{.1em}\olditem} 
 
 %=====================================================================
 %	Varia
@@ -179,30 +177,3 @@
 \setbeamercolor*{alerted text}{fg=colalert}
 \setbeamerfont{alerted text}{series=\bfseries}
 
-%=====================================================================
-%	Old material
-%=====================================================================
-
-% --------------------------------------------------------------------
-%  \headline{left}{right}
-%  Modifie la headline pour afficher <left> et <right> 
-%  au lieu de section / subsection
-%  Exemple : \headline{\insertpart}{\insertsection}
-%		pour afficher la partie et la section.
-% --------------------------------------------------------------------
-
-%\newcommand{\headline}[2]{
-%	\setbeamertemplate{headline}
-%	{
-%	  \leavevmode\hbox{%
-%		  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]%
-%			  {palette secondary}%
-%			  \usebeamerfont{title in head/foot}#1\hspace*{2ex}
-%		  \end{beamercolorbox}%
-%		  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]%
-%			  {palette primary}%
-%			  \usebeamerfont{title in head/foot}\hspace*{2ex}#2
-%		  \end{beamercolorbox}%
-%	  }\vskip0pt%
-%	}
-%}

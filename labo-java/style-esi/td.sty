@@ -21,7 +21,7 @@
 \usepackage{style-esi/links}
 
 % --- On éclaircit encore la couleur claire du thème
-\colorlet{collight}{collight!50!white}
+%\colorlet{collight}{collight!50!white}
 
 %=====================================================================
 %	La géométrie des pages
@@ -32,7 +32,7 @@
 
 \usepackage[
 	%showframe,
-	hscale=0.7, vscale=0.85, footskip=1em
+	hscale=0.7, vscale=0.85, footskip=1em,
 	]{geometry}
 
 % On remplace le retrait de la 1ère ligne d'un paragraphe
@@ -113,6 +113,7 @@
 		\quad
 		\begin{minipage}[t]{6cm}
 			\vspace*{-4\baselineskip}
+			%\vspace{-2mm}
 			\large{\textsf{%
 				%\color{gray}
 				Haute École de Bruxelles-Brabant\\
@@ -121,7 +122,7 @@
 			}}
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{3cm}
+		\begin{minipage}[t]{4cm}
 			\vspace*{-4\baselineskip}
 			\begin{flushright}
 			\large{\textsf{\makeatletter{}\@date\makeatother\\\scours\\\sprof}}
@@ -179,12 +180,15 @@
 % 	Affiche la date de dernière édition en bas de page.
 % --------------------------------------------------------------------
 
+% absolute = position absolue et pas relative à l'emplacement courant.
+\usepackage[absolute]{textpos}
+
 \newcommand{\lastedit}{
-	\begin{textblock}{5}(15,28.5)
+	\begin{textblock*}{5cm}[1,1](\paperwidth-1cm,\paperheight-1cm)
 	\begin{flushright}
 	\tiny{\color{gray}Version du document\\\today}
 	\end{flushright}
-	\end{textblock}
+	\end{textblock*}
 }
 
 % ===================================================
@@ -195,22 +199,27 @@
 
 \usepackage{enumitem}
 % On modifie le look pour 'description'
-\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
+\setdescription{font=\sffamily\bfseries, style=nextline, leftmargin=8mm}
 % Pour les itemize : un triangle
-\setlist[itemize]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}
+\setlist[itemize]{label=$\triangleright$, leftmargin=8mm, itemsep=1mm}
+
+
+% ===================================================
+%   Config
+% ===================================================
+
+% Ajouter \marginsection dans le document
+% si on veut les numéros de (sub)sections dans la marge
+% Tiré de "Latex Howtos" de Sébastien Combéfis
+% -------------------------------------------------------------
+\newcommand{\marginsectiontrue}{%
+	\def\@seccntformat##1{\protect\makebox[0pt][r]{\csname the##1\endcsname\quad}}%
+}
 
 
 % ===================================================
 %	OLD STUFF
 % ===================================================
-
-%
-%% Permet d'avoir les numéros de (sub)sections dans la marge
-%% Tiré de "Latex Howtos" de Sébastien Combéfis
-%% -------------------------------------------------------------
-%\makeatletter
-%\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\quad}}
-%\makeatother
 
 %
 %% Remonter le texte d'une ligne

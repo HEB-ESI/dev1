@@ -16,13 +16,14 @@
 %	- emph={id}
 %
 %	Mettre {} pour le langage s'il n'y en a pas.
-%	Par défaut les codes sont en \small\fontfamily{lmvtt}.
-%	lmvtt est une police de look typewriter mais à largeur variable.
+%	Par défaut les codes sont en \small\vtt.
+%	\vtt  fait appe à la police lmvtt, 
+%		police de look typewriter mais à largeur variable.
 %
 %	Si vous voulez changer la taille, vous pouvez le faire
 %	via un changement de taille à l'extérieur ou via l'option
 %	\basicstyle mais ne pas oublier de mettre la référence à la police
-%	variable. Ex: \basicstyle=\scriptsize\fontfamily{lmvtt}.
+%	variable. Ex: \basicstyle=\scriptsize\vtt.
 %
 %	On a également ajouté
 %	\begin{Code}[options]{langage}
@@ -33,12 +34,9 @@
 % 	Pour eux, pas de police à largeur variable.
 %=====================================================================
 
-%=====================================================================
+%---------------------------------------------------------------------
 %	Dépendences :
-%=====================================================================
-
-% --- Pour configurer la couleur de fond des listings
-\usepackage{style-esi/color}
+%---------------------------------------------------------------------
 
 % --- Pour les box avec background (surligne)
 \usepackage{style-esi/common}
@@ -56,6 +54,17 @@
 % --- à gauche que l'environement.
 \usepackage{lstautogobble}
 
+% --- On définit un raccourci pour la police tt variable
+\newcommand{\vtt}{\fontfamily{lmvtt}}
+
+% Utilisé pour l'inclusion de listing
+% Chemin à ajouter en début pour la version publique (clicable dans le PDF)
+% Chemin à ajouter pour l'inclusion du source lors de la génération du PDF
+% À redéfinir via \renewcommand{\xxx}{nouvelle valeur}
+% (On n'est pas obligé de les utiliser)
+\newcommand{\listingpublicpath}{}
+\newcommand{\listingsrcpath}{}
+
 %---------------------------------------------------------------------
 %	\code[options]{langage}{code}
 %	Insertion de code interne en inline.
@@ -65,7 +74,8 @@
 
 \DeclareDocumentCommand \code { s O{} m m }{%
 	\IfBooleanTF {#1}%
-		{\lstinline[style=lstesi,language={#3},#2]{#4}}%
+		{\lstinline[style=lstesi,language={#3},#2]{\renewcommand{\listingpath}{https://github.com/HEB-ESI/dev1/tree/master/labo-java/labo-java-02-alternatives/code}
+		#4}}%
 		{\surligne{\lstinline[style=lstesi,language={#3},#2]{#4}}}%
 }
 
@@ -86,10 +96,10 @@
 %---------------------------------------------------------------------
 
 \DeclareDocumentCommand \listing { s O{} m m }{%
-	\lstinputlisting[style=lstesiext,language={#3},#2]{#4}%
+	\lstinputlisting[style=lstesiext,language={#3},#2]{\listingsrcpath#4}%
 	\IfBooleanF {#1}{%
 		\vskip -1.5em%
-		\hfill{\tiny{\color{gray}\url{#4}}\noindent}%
+		\hfill{\tiny{\color{colmain}\href{\listingpublicpath/#4}{#4}}\noindent}%
 		\vskip -.5em\par%
 	}
 }
@@ -192,7 +202,7 @@
 
 % --- code interne (inline et environnement)
 \lstdefinestyle{lstesi}{
-	basicstyle=\small\fontfamily{lmvtt},% Police code
+	basicstyle=\small\vtt,% Police code
 	style=base,
 	style=french,
 	style=wrap,
@@ -254,7 +264,7 @@
 	alsoletter={=},	% = reconnu comme une lettre
 					% nécessaire pour les attributs
 	morekeywords={[2]{					% Tous les attributs
-		accept=, accept-charset=, accesskey=, action=, align=, alt=, async=, autocomplete=, autofocus=, autoplay=, autosave=, bgcolor=, border=, buffered=, challenge=, charset=, checked=, cite=, class=, code=, codebase=, color=, cols=, colspan=, content=, contenteditable=, contextmenu=, controls=, coords=, data=, datetime=, default=, defer=, dir=, dirname=, disabled=, download=, draggable=, dropzone=, enctype=, for=, form=, formaction=, headers=, height=, hidden=, high=, href=, hreflang=, http-equiv=, icon=, id=, ismap=, itemprop=, keytype=, kind=, label=, lang=, language=, list=, loop=, low=, manifest=, max=, maxlength=, media=, method=, min=, multiple=, name=, novalidate=, onclick=, open=, optimum=, pattern=, ping=, placeholder=, poster=, preload=, pubdate=, radiogroup=, readonly=, rel=, required=, reversed=, rows=, rowspan=, sandbox=, scope=, scoped=, seamless=, selected=, shape=, size=, sizes=, span=, spellcheck=, src=, srcdoc=, srclang=, start=, step=, style=, summary=, tabindex=, target=, title=, type=, usemap=, value=, width=, wrap=, required
+		accept=, accept-charset=, accesskey=, action=, align=, alt=, async=, autocomplete=, autofocus=, autoplay=, autosave=, bgcolor=, border=, buffered=, challenge=, charset=, checked=, cite=, class=, code=, codebase=, color=, cols=, colspan=, content=, contenteditable=, contextmenu=, controls=, coords=, data=, datetime=, default=, defer=, dir=, dirname=, disabled=, download=, draggable=, dropzone=, enctype=, for=, form=, formaction=, headers=, height=, hidden=, high=, href=, hreflang=, http-equiv=, icon=, id=, ismap=, itemprop=, keytype=, kind=, label=, lang=, language=, list=, loop=, low=, manifest=, max=, maxlength=, media=, method=, min=, multiple=, name=, novalidate=, onclick=, onload=, onmouseover=, onkeydown=, open=, optimum=, pattern=, ping=, placeholder=, poster=, preload=, pubdate=, radiogroup=, readonly=, rel=, required=, reversed=, rows=, rowspan=, sandbox=, scope=, scoped=, seamless=, selected=, shape=, size=, sizes=, span=, spellcheck=, src=, srcdoc=, srclang=, start=, step=, style=, summary=, tabindex=, target=, title=, type=, usemap=, value=, width=, wrap=, required
 	}},	
 	keywordstyle={[2]{\color{kwcolor2}}},	% couleur des attributs
 }

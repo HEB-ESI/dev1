@@ -2,26 +2,38 @@
 %						style-esi/color.sty
 %
 %	Définit des couleurs à utiliser dans les divers documents
-%	- colmain	: couleur principale du thème
-%	- collight	: couleur plus claire, utilisée pour des fonds
-%	- colalert	: couleur pour mettre en évidence des éléments.
-%				  Ex: \alert dans beamer 
+%	- colmain	    : couleur principale du thème
+%	- collight	    : couleur plus claire, utilisée pour des fonds
+%	- colverylight  : couleur pour des fonds encore plus léger
+%                     par exemple quand l'étudiant doit écrire dessus
+%	- coldark		: couleur plus sombre
+%	- colverydark	: couleur encore plus sombre, presque noire
+%	- colalert	    : couleur pour mettre en évidence des éléments.
+%				     Ex: \alert dans beamer 
 %
 %	Si vous désirez d'autres couleurs, vous pouvez
 %	1) Modifier ce fichier
 %	2) Ou modifier les couleurs après coup via des \definecolor{...}
 %=====================================================================
 
-% --- L'option table ajoute des commandes comme \rowcolor
-\usepackage[table]{xcolor}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{color}[2018/06/10 Couleurs pour les documents à l'ESI]
 
-% -- Un bleu moyen
+% --- L'option table ajoute des commandes comme 
+% --- \rowcolors pour colorier une ligne d'un tableau.
+\RequirePackage[table]{xcolor}
+
+% -- Un bleu moyen avec ses nuances
 \definecolor{colmain}{RGB}{35, 106, 185}
 \definecolor{collight}{RGB}{234, 242, 251}
+\definecolor{coldark}{RGB}{24, 73, 129}
+\colorlet{colverylight}{collight!50!white}
+\definecolor{colverydark}{RGB}{16, 49, 86}
 \definecolor{colalert}{RGB}{184, 91, 20}
 
 % -- Couleur officielle ESI (bleu-cyan)
 %\definecolor{colmain}{HTML}{54A8D1}
 %\colorlet{collight}{colmain!10!white}
+%\colorlet{colverylight}{collight!50!white}
 %\colorlet{colalert}{-colmain}
 

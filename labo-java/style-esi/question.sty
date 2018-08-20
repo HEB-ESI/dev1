@@ -11,6 +11,16 @@
 %	\question{nb}	
 %		Crée une question à nb points
 %
+%	\titledquestion{nb}{titre}	
+%		Crée une question avec un titre et un nb points.
+%		Si vous ne voulez pas de points : {}
+%		(par ex pour donner des points à des sous-questions)
+%
+%	\marginpoints{nb}
+%		Affiche des points pour ce paragraphe.
+%		(par ex pour donner des points à des sous-questions)
+%
+%	obsolete:
 %	\begin{Question}{nb}{titre}
 %		Corps de la question
 %	\end{Question}
@@ -35,10 +45,13 @@
 	% Incrémenter le numéro de question
 	\refstepcounter{questionnum}									
 	% Calculer la largeur du numéro de question
-	\settowidth{\widthquestionnum}{\bfseries\large\,\thequestionnum\,\,\,~~~~}
+	\settowidth{\widthquestionnum}{\bfseries\large\,\thequestionnum}
 	\medskip
-	% Afficher le numéro de question
-	\hspace{-\widthquestionnum}{{\cadre{\color{colmain}\bfseries\large\,\thequestionnum\,}}}~~
+	% Afficher le numéro de question avec les bons espaces
+	\hskip -8mm%
+	\hskip -\widthquestionnum%
+	\cadre{\color{colmain}\bfseries\large\,\thequestionnum\,}%
+	\hskip 4mm%
 }
 
 % Affiche les points dans la marge
@@ -52,10 +65,25 @@
 % -----------------
 
 \DeclareDocumentCommand \question {m} {%
-	\printquestionnum
-	\marginpoints{#1}
+	\printquestionnum%
+	\ifthenelse{\equal{#1}{}}%
+		{\marginpar{}}%
+		{\marginpoints{#1}}
 }
 
+% \titledquestion{points}{titre}
+% -----------------
+\DeclareDocumentCommand \titledquestion {m m} {%
+	\printquestionnum
+	{\sffamily\large\bfseries #2}
+	\hfill
+	 \ifthenelse{\equal{#1}{}}%
+		{}%
+		{(#1{} point\ifthenelse{#1 > 1}{s}{})}
+	\par	
+}
+
+% OBSOLETE
 % \begin{Question}{points}{titre}
 % -------------------------------
 
@@ -63,7 +91,9 @@
 	\printquestionnum
 	{\sffamily\large\bfseries #2}
 	\hfill
-	(#1{} point\ifthenelse{#1 > 1}{s}{})
+	 \ifthenelse{\equal{#1}{}}%
+		{}%
+		{(#1{} point\ifthenelse{#1 > 1}{s}{})}
 	\par	
 }{}
 
@@ -73,11 +103,18 @@
 %	\textfield{texte}	
 %		Pour un texte à trou.
 %		Le texte est remplacé par un cadre pour la réponse
-%		dont la tailel s'adapte à la largeur du texte.
+%		dont la taille s'adapte à la largeur du texte.
 %
 %	\textbox{hauteur}	
 %		Crée une zone pour la réponse prenant tout la largeur
 %		et de hauteur donnée.
+%
+%	\begin{textboxwithtext}{hauteur}
+%		...
+%	\end{textboxwithtext}	
+%		Crée une zone pour la réponse prenant tout la largeur
+%		et de hauteur donnée mais avec du texte dedans.
+%		Utile quand on veut que l'étudiant complète une réponse
 %
 %	\begin{selectone}
 %		\item réponse 1
@@ -98,31 +135,69 @@
 %		des choix simples et multiples.
 % ===================================================
 
+\usepackage{fontawesome} 	% Pour les icones dans les QCM
+
+% pour \settowidth qui calcule la taille d'un texte
+\usepackage{calc}
+% contiendra la largeur du contenu du cartouche
+\newlength{\widthtf}		
+
 % \textfield
 \DeclareDocumentCommand \textfield {m} {%
-	\fcolorbox{gray}{collight}{\color{collight}#1#1}
+	\ifprintanswers%
+		\cadre[lightgray][colback=colverylight]{#1}%
+	\else%
+		\settowidth{\widthtf}{#1}%
+		\setlength{\widthtf}{\widthtf * \real{1.5}}%
+		\cadre[lightgray][colback=colverylight,coltext=colverylight]{Xg\hspace{\widthtf}gX}%
+	\fi%
 }
 
 % \textbox
-\DeclareDocumentCommand \textbox {m} {%
-	\fcolorbox{gray}{collight}{%
-		\begin{minipage}[c][#1][c]{\textwidth}
-			\textcolor{collight}{X}
-		\end{minipage}%
-	}%
+\DeclareDocumentCommand \textbox {m} {\par\colbox[full][height=#1,colback=colverylight]{}}
+
+\DeclareDocumentCommand \textboxoranswer {m m} {%
+	\par\colbox[full][height=#1,colback=colverylight]{\ifprintanswers{}#2\fi}%
 }
-	
+
+% \textboxwithtext
+\DeclareDocumentEnvironment{textboxwithtext} {m} 
+	{\begin{colxbox}[colframe=lightgray,colback=colverylight,height=#1]}
+	{\end{colxbox}}
+
 % select one et select many
 % --------------------------
 
 \usepackage{enumitem}
 
 % Bouton radio
-\newcommand{\radiobutton}{$\bigcirc$}
+\newcommand{\radiobutton}{\faCircleThin}
 \newlist{selectone}{itemize}{3}
 \setlist[selectone]{label=\radiobutton}
 
 % Checkbox
-\newcommand{\checkbox}{\fcolorbox{gray}{white}{{\begin{minipage}[c][0.8ex][c]{0.8ex}\ \ \end{minipage}}}}
+\newcommand{\checkbox}{\faSquareO}
 \newlist{selectmany}{itemize}{3}
 \setlist[selectmany]{label=\checkbox}
+
+% Boutons radio avec bonne réponse affichée à la demande
+\newcommand{\onefalse}{\item\radiobutton\ }
+\newcommand{\onetrue}{\item\ifprintanswers{}\faCheckCircle\else\radiobutton\fi\ }
+\newlist{selectoneanswer}{itemize}{3}
+\setlist[selectoneanswer]{label=}
+
+% Checbox avec bonnes réponses affichées à la demande
+\newcommand{\manyfalse}{\item\checkbox\ }
+\newcommand{\manytrue}{\item\ifprintanswers{}\faCheckSquareO\else\checkbox\fi\ }
+\newlist{selectmanyanswer}{itemize}{3}
+\setlist[selectmanyanswer]{label=}
+
+% ===================================================
+%	Gestion des solutions
+% ===================================================
+
+\newif\ifprintanswers
+
+\usepackage{environ} % Permet de définir un environnement en 1 partie
+\NewEnviron{Answer}{\ifprintanswers\BODY\fi}
+\DeclareDocumentCommand \answer {m} {\ifprintanswers{}#1\fi}
