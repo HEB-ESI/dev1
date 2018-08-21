@@ -29,12 +29,12 @@
 %				ainsi qu'un cadre pour les points
 % --------------------------------------------------------------------
 
+% absolute = position absolue et pas relative à l'emplacement courant.
+\usepackage[absolute]{textpos}
+
 \newcommand{\infosetd}[1]{
-	\thispagestyle{empty}
-	\vspace*{-3\baselineskip}
-	\hskip-2cm
-	\begin{minipage}{188mm}
-		\begin{colxbox}[width=12cm, drop lifted shadow, nobeforeafter, colback=collight]
+	\begin{textblock*}{0cm}(1cm,1cm)
+		\begin{colxbox}[width=12cm, drop lifted shadow, nobeforeafter, colback=colverylight]
 			\sffamily
 			\medskip
 			Nom : {\color{lightgray}{\hrulefill}}
@@ -50,11 +50,12 @@
 			%\quad
 			%Enseignant : {\color{lightgray}{\hrulefill}}
 		\end{colxbox}
-		\hfill
-		\begin{colxbox}[width=4cm,drop lifted shadow, nobeforeafter, colback=collight]
+	\end{textblock*}
+	\begin{textblock*}{4cm}[1,0](\paperwidth-1cm,1cm)
+		\begin{colxbox}[width=4cm,drop lifted shadow, nobeforeafter, colback=colverylight]
 			\vskip14.5mm
 			\hfill {\Large\bfseries/#1}
 		\end{colxbox}
-	\end{minipage}
-	\vskip6mm
+	\end{textblock*}
+	\vspace*{2cm}
 }

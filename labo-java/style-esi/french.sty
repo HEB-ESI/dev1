@@ -7,33 +7,36 @@
 %	mais-a-quoi-bon-servent-les-packages-fontenc-et-inputenc
 %=====================================================================
 
-%---------------------------------------------------------------------
-%	inputenc : encodage utilisé dans le source.
-%---------------------------------------------------------------------
-%	utf8 : permet d'écrire "é" au lieu de "\'e"
-%---------------------------------------------------------------------
-
-\usepackage[utf8]{inputenc}
+\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{style-esi/french}[2018/06/10 Documents français à l'ESI]
 
 %---------------------------------------------------------------------
-%	fontenc : police utilisée dans le PDF
+%	inputenc - encodage utilisé dans le source.
 %---------------------------------------------------------------------
-%	OT1 (défaut) : police 7 bits sans accents -> simulé en PDF ->
-%		a) copier-coller difficile
-%		b) césures mauvaises ?
-%	T1 : utilise une police 8bits avec accents
+%		utf8 : permet d'écrire "é" au lieu de "\'e"
 %---------------------------------------------------------------------
 
-\usepackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
 
 %---------------------------------------------------------------------
-%	babel : gère les langues
+%	fontenc - police utilisée dans le PDF
+%---------------------------------------------------------------------
+%		OT1 (défaut) : police 7 bits sans accents -> simulé en PDF ->
+%			a) copier-coller difficile
+%			b) césures mauvaises
+%		T1 : utilise une police 8 bits avec accents
+%---------------------------------------------------------------------
+
+\RequirePackage[T1]{fontenc}
+
+%---------------------------------------------------------------------
+%	babel - gère les langues
 %---------------------------------------------------------------------
 %	Utilise les textes adaptés à la langue (table des matières).
 %	Gère les césures de la langue et les règles de mise en page.
 %---------------------------------------------------------------------
 
-\usepackage[french]{babel}
+\RequirePackage[french]{babel}
 
 %--------------------------------------------------------------------
 %	Choix de la police
@@ -45,11 +48,12 @@
 %--------------------------------------------------------------------
 
 % --- lmodern : polices modernes.
-\usepackage{lmodern}
+\RequirePackage{lmodern}
 
 % --- kpfonts : une variante à lmodern
 % --- Avec l'option light, économise le toner
 % --- Semble plus large
 % --- Pas plus d'indice pour les départager ?
+% --- Oui ! lmodern contient une tt variable (lmvtt)
 %\usepackage[light]{kpfonts}
 

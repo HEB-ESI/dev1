@@ -31,6 +31,10 @@
 % contiendra la largeur du contenu du cartouche
 \newlength{\widthcartouche}		
 
+% à priori, numéro en marge
+\newif\ifmarginnumber
+\marginnumbertrue
+
 \newcommand{\newnumbered}[1]{%
 	% On crée un compteur
 	% Le test suivant indique que le compteur doit être réinitialisé
@@ -66,7 +70,8 @@
 	\medskip
 	% Afficher le numéro de question
 	\noindent
-	\hspace{-\widthcartouche}{{\cadre[colmain][colback=collight,boxrule=.5px]{\color{colmain}\bfseries\scriptsize #2{} \normalsize\arabic{#2}\,}}}~%
+	\ifmarginnumber\hspace{-\widthcartouche}\fi%
+	{{\cadre[colmain][colback=collight,boxrule=.5px]{\color{colmain}\bfseries\scriptsize #2{} \normalsize\arabic{#2}\,}}}~%
 	% Gestion de la présence ou nom du titre
 	\ifthenelse{\equal{#3}{}}{}{{\sffamily\large\bfseries~#3\smallskip\\}\nopagebreak}%
 }
