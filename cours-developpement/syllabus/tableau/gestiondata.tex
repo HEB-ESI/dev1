@@ -86,7 +86,8 @@
 				\smallskip
 				\pc{nRegistered = 5}
 			\end{center}
-			
+		
+			\clearpage
 			L’algorithme est assez simple~:
 			
 			\begin{pseudocode}
@@ -262,13 +263,13 @@
 		
 		\end{enumerate}
 
+		\clearpage
 	% ==============================================
 	\section{Insertion dans un tableau trié} 
 	% ==============================================
 
 		Imaginons à présent que nous maintenons un ordre
 		dans les données du tableau.
-		
 		En reprenant l’exemple utilisé pour les données non triées,
 		nous avons~:
 		\begin{center}
@@ -303,13 +304,11 @@
 			décomposer l'algorithme en deux parties~: la première pour la
 			recherche de la position à laquelle devrait se trouver le numéro et
 			la seconde pour vérifier que c'est bien le bon numéro qui se trouve
-			à cette position. En effet, lorsque le numéro n'est pas présent dans
-			le tableau, c'est un numéro plus grand qui s'y trouve.   
-
+			à cette position. 
+			
 			\begin{pseudocode}
 				\LComment{Recherche un étudiant.}
-				\LComment{return: la position où a été trouvé l’étudiant}
-				\LComment{        ou -1 s'il est pas inscrit}
+				\LComment{return: la position où a été trouvé l’étudiant ou -1 s'il est pas inscrit}
 				\Algo{find}{
 						\Par{registered\In}{\Array{}{integers}}, 
 						\Par{nRegistered\In}{integer}, 
@@ -324,10 +323,8 @@
 					\EndIf
 				\EndAlgo
 				
-				\Empty
 				\LComment{Recherche une position}
-				\LComment{return: la position a laquelle est }
-				\LComment{ou devrait être le numéro}
+				\LComment{return: la position a laquelle est ou devrait être le numéro}
 				\Algo{findPosition}{
 						\Par{registered\In}{\Array{}{integers}}, 
 						\Par{nRegistered\In}{integer}, 
@@ -1010,6 +1007,7 @@ public shiftLeft(int[] tab, int begin, int end){
 		serait trouvé~; c’est donc là qu’on pourra éventuellement l’insérer.  Le
 		paramètre de sortie prend la valeur 5.
 
+		\clearpage
 		{\sffamily\bfseries
 		Algorithme}
 		
@@ -1136,6 +1134,7 @@ public shiftLeft(int[] tab, int begin, int end){
 			à combien de comparaisons faut-il procéder pour trouver l’élément
 			(ou se rendre compte de son absence)~?
 		
+			\clearpage
 			{\bfseries
 			Pour la recherche linéaire}
 		
