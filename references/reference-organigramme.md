@@ -156,7 +156,6 @@ la méthode que l'on décrit.
 Le double rectangle sert à l'appel d'une procédure, méthode, fonction définie
 ailleurs. 
 
-**TODO revoir le style pour écrire au milieu**
 
 \bigskip
 \bigskip
