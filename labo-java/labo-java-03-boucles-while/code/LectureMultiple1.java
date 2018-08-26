@@ -8,13 +8,13 @@ public class LectureMultiple1 {
         Scanner clavier = new Scanner(System.in);
         
         int somme = 0;
-        int i = 1;
+        int nbValeurs = 0;
 
         System.out.println("Entrez 10 valeurs");
-        while(i <= 10) {
+        while(nbValeurs < 10) {
             int valeur = clavier.nextInt();
             somme = somme + valeur;
-            i = i+1;
+            nbValeurs = nbValeurs+1;
         }
         
         System.out.println("La somme de toutes ces valeurs: "+ somme);
