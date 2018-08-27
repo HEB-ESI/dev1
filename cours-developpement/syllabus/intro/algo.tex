@@ -56,7 +56,8 @@
 
 			\begin{center}
 			\begin{tikzpicture}[node distance=2cm]
-			\node (start) [startstop] {Circonférence d'un cercle};
+			\node (start) [startstop] {Circonférence d'un cercle en connaissant 
+				$r$};
 			\node (pro1) [process, below of=start] {$p = 2\pi r$};
 			\draw [arrow] (start) -- (pro1);
 			\node (stop) [startstop, below of=pro1] {Stop};
@@ -70,7 +71,6 @@
 			
 			\begin{pseudocode}
 				\Algo{circleCircumference}{\Par{radius}{real}}{real}
-					\Decl{var}{type}
 					\Return 2 $\pi$ ~radius
 				\EndAlgo
 			\end{pseudocode}
