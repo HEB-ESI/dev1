@@ -11,6 +11,16 @@
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
 
+\newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/tree/master/labo-java/td01-introduction}
+
+\newcommand{\solutionspublicpath}{\publicbasepath/solutions/}
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
+\renewcommand{\listingsrcpath}{code/}
+\marginnumberfalse
+\marginsectiontrue
+
+
+
 \date{2018 -- 2019}
 \siglecours{DEV1}
 \libellecours{Laboratoires Java I}
@@ -34,6 +44,14 @@
 	Dans ce TD vous ferez connaissance avec l'environnement intégré NetBeans et 
 	vous réaliserez vos premiers programmes en Java.
 
+	Les codes sources de ce TD se trouvent à l'adresse~: 
+	
+	\url{\listingpublicpath}
+	
+	Les solutions se trouvent à l'adresse~:
+	
+	\url{\solutionspublicpath}
+
 	\tableofcontents
 
 	\newpage
@@ -44,7 +62,6 @@
 
 	\begin{Tutoriel}{Premier programme Java avec NetBeans}
 	
-	%TODO: mettre à jour les captures d'écrans lorsque la nouvelle image sera dispo.
 	Vous allez être guidé pas à pas pour la création de votre tout premier programme Java.
 	
 	\begin{steps}
@@ -61,14 +78,16 @@
 		\item Créez un nouveau projet~: 
 		
 			Pour cela, cliquez sur \og File \fg~en haut à gauche et ensuite, sur nouveau projet. 
-			%Vous pouvez également utiliser le raccourci clavier CTRL + MAJ + N.
 			
 			\bigskip
 			\begin{center}
 				\includegraphics[width=\textwidth]{images/nb_newproject}
 			\end{center}
 			
-			Nommez ce projet \texttt{td-java} et décochez la case \texttt{Create Main Class}.
+			Dans la fenêtre \og New Project \fg~qui s'ouvre, choisissez \og Java Application \fg dans la liste \og Projects \fg~et cliquez le bouton \og Next \fg.
+			
+			A l'écran suivant \og New Java Application \fg~illustré ci-dessous, 
+			nommez le projet \texttt{td-java}, décochez la case \texttt{Create Main Class} et cliquer usr le bouton \og Finish \fg.
 			
 			\begin{center}
 				\includegraphics[width=\textwidth]{images/nb_newproject_name}
@@ -96,7 +115,7 @@
 				\includegraphics[width=\textwidth]{images/nb_newproject_package}
 			\end{center}
 
-			Nommez ce package \texttt{g12345.dev1.td1} où vous remplacez g12345 par votre identifiant~:
+			Nommez ce package \texttt{g12345.dev1.td1} où vous remplacez g12345 par votre identifiant et cliquer sur le bouton \og Finish\fg~:
 			
 			\bigskip
 			\begin{center}
@@ -159,13 +178,17 @@
 			\begin{center}
 				\includegraphics{images/nb_newproject_code}
 			\end{center}
+			Enregistrez vos modifications (control-s).
 			
 		\item Lancez le programme en cliquant sur la petite flèche \emph{run} 
 			
 			\includegraphics{images/nb_newproject_run}.
+			
+			Le résultat s'affiche dans la fenêtre intitulée \og Output \fg.
+			Vous devriez voir "Hello, World !" s'y afficher.
 
 		\item Créez un nouveau programme qui se nomme \texttt{"HelloPrénom"}. Celui-ci doit afficher \texttt{"Hello"} suivi de votre prénom.
-		Si vous essayez de le faire tourner en cliquant sur la flèche, vous ne verrez pas apparaître votre prénom. C'est parce que netbeans a retenu que le programme principale est le premier à avoir été lancé. Pour forcer netbeans à lancer le nouveau programme, faite un clique droit sur le fichier \texttt{HelloPrénom.java} et cliquez sur \texttt{Run File}.
+		Si vous essayez de le faire tourner en cliquant sur la flèche, vous ne verrez pas apparaître votre prénom. C'est parce que Netbeans a retenu que le programme principale est le premier à avoir été lancé. Pour forcer Netbeans à lancer le nouveau programme, faite un clique droit sur le fichier \texttt{HelloPrénom.java} et cliquez sur \texttt{Run File}. Vous devriez voir "Hello, John" s'afficher dans l'output.
 
 			\includegraphics{images/nb_newproject_run_othermain}
 
@@ -178,7 +201,7 @@
 %====================	
 
 	Le programme suivant affiche \texttt{Hello!} suivi de \texttt{Bonjour!}.
-	\listing{Java}{code/HelloBonjour.java}
+	\listing{Java}{HelloBonjour.java}
 
 	\begin{itemize}
 		\item La première ligne indique que la classe se trouve dans le package \texttt{esi.dev1.td1}
@@ -190,11 +213,18 @@
 		\item Le texte entre guillemets sera affiché sur la \emph{sortie standard}.
 	\end{itemize}
 
+	Le code source de la classe \texttt{HelloBonjour} (ainsi que tous les codes de ce TD) se trouvent à l'adresse~: 
+	
+	\url{\listingpublicpath}
+	
+	N'hésitez pas à tester les codes présentées dans les TDs sur votre machine.
+
+
 
 	%Exercices
 	\begin{Exercice}{Ligne}
 		Dans votre package \texttt{g12345.dev1.td1} créez une classe \texttt{Exercice1}.
-		Dans cette classe écrivez un programme  (et donc dans la fonction \texttt{main} de cette classe) 
+		Dans cette classe écrivez un programme  (et donc dans la méthode \texttt{main} de cette classe) 
 		qui affiche 10 tirets les uns à la suite des autres:
 
 		\texttt{- - - - - - - - - -}
@@ -231,7 +261,7 @@
 
 	Le programme suivant affiche la somme de 12345678 et 87654321.
 	
-	\listing{Java}{code/Expression.java}
+	\listing{Java}{Expression.java}
 
 	\begin{itemize}
 		\item	L'instruction de la ligne 6 affiche le texte entre guillemets~: \texttt{12345678+87654321 = }
@@ -263,14 +293,14 @@
 
 	Le programme suivant affiche l'aire d'un rectangle de longueur 12 et de largeur 4.
 	
-	\listing{Java}{code/Variables.java}
+	\listing{Java}{Variables.java}
 
 	\begin{itemize}
 		\item \`A la ligne 6 la variable \texttt{longueur} est \emph{déclarée} 
 			avec le type \texttt{int}, elle peut donc 'contenir' des entiers. 
 			Sur cette même ligne on lui \emph{assigne} la valeur 12.  
 
-		\item \`A la ligne 7 la variable \texttt{longueur} est \emph{déclarée} avec le type \texttt{int}. 
+		\item \`A la ligne 7 la variable \texttt{largeur} est \emph{déclarée} avec le type \texttt{int}. 
 			Sur cette même ligne on lui \emph{assigne} la valeur 4.
 	
 		\item \`A la ligne 9 on affiche le résultat de la multiplication de la valeur de la variable \texttt{longueur}, 
@@ -318,7 +348,7 @@
 		\item La lecture proprement dite: \texttt{int longueur = clavier.nextInt();}
 	\end{enumerate}
 
-	\listing{java}{code/AireRectangle.java}
+	\listing{java}{AireRectangle.java}
 
 
 	\begin{Exercice}{Aire d'un carré}

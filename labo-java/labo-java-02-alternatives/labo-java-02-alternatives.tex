@@ -11,7 +11,10 @@
 \usepackage{style-esi/tutoriel}
 \usepackage{booktabs}
 
-\renewcommand{\listingpublicpath}{https://github.com/HEB-ESI/dev1/tree/master/labo-java/labo-java-02-alternatives/code/}
+\newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/tree/master/labo-java/td02-alternatives}
+
+\newcommand{\solutionspublicpath}{\publicbasepath/solutions/}
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
 \renewcommand{\listingsrcpath}{code/}
 
 \date{2018 -- 2019}
@@ -20,7 +23,8 @@
 \libelledocument{TD 2 -- Alternatives}
 \sigleprof{}
 
-
+\marginnumberfalse
+\marginsectiontrue
 
 \begin{document}
 
@@ -35,6 +39,16 @@
 	%====================	
 	Dans ce TD vous trouverez une introduction à la manipulation des nombres à virgule,
 	aux expressions booléennes et à l'instruction \texttt{if/else}.
+	
+	Les codes sources de ce TD se trouvent à l'adresse~: 
+	
+	\url{\listingpublicpath}
+	
+	Les solutions se trouvent à l'adresse~:
+	
+		\url{\solutionspublicpath}
+
+	
 	\tableofcontents
 
 	\newpage

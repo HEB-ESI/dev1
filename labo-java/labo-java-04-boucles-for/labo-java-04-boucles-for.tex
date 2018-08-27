@@ -10,12 +10,19 @@
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
 
+\newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/tree/master/labo-java/td04-boucles-for}
+\newcommand{\solutionspublicpath}{\publicbasepath/solutions/}
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
+\renewcommand{\listingsrcpath}{code/}
+
 \date{2018 -- 2019}
 \siglecours{DEV1}
 \libellecours{Laboratoires Java I}
 \libelledocument{TD 4 -- Boucles \texttt{for}}
 \sigleprof{}
 
+\marginnumberfalse
+\marginsectiontrue
 
 
 \begin{document}
@@ -31,6 +38,15 @@
 	%====================	
 	Ce TD introduit l'instruction \texttt{for} ainsi que la notion de chaîne de caractères et le type
 	associé \texttt{String}.
+	
+	Les codes sources de ce TD se trouvent à l'adresse~: 
+	
+	\url{\listingpublicpath}
+	
+	Les solutions se trouvent à l'adresse~:
+	
+	\url{\solutionspublicpath}
+
 	 
 	\tableofcontents
 
@@ -40,7 +56,7 @@
 \section{Boucle - \texttt{for}}
 %====================	
 
- 	\listing{java}{code/BoucleFor.java}
+ 	\listing{java}{BoucleFor.java}
 	Le code ci-dessus affiche les nombres de 1 à 10.
 	Ce programme s'exécute comme suit~:
 	\begin{itemize}
@@ -65,7 +81,7 @@
 
  
 	\begin{Exercice}{Suites d'entiers}	
-		Dans un package \texttt{g12345.dev1.td3} créez un classe \texttt{Exercice1}.
+		Dans un package \texttt{g12345.dev1.td4} créez un classe \texttt{Exercice1}.
 		Dans cette classe écrivez un programme qui demande à l'utilisateur un nombre entier $n$ et affiche
 		à l'aide d'une boucle \texttt{for}:
 		\begin{itemize}
@@ -92,7 +108,7 @@
 	\code{java}{String mot = "Bonjour";}
 
 	\bigskip
-	  \listing{java}{code/Texte.java}
+	  \listing{java}{Texte.java}
 
 
 	\begin{Exercice}{Voyelle}	
