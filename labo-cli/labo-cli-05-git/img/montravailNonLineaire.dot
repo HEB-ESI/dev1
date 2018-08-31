@@ -6,7 +6,7 @@ digraph versionsNonLineaire {
     remerciee [label="Avec remerciements"];
     finale [label="Version finale"];
     vraimentFinale [label="Vraiment finale"];
-    monTravail [label="monTravail.doc"];
+    monTravail [label="monTravail.txt"];
     juin3 -> juin12 -> finale [len=1.2];
     finale -> {corrigee, remerciee} -> vraimentFinale [len=1.7];
     monTravail -> monTravail [label="???"];

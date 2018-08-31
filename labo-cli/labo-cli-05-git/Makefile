@@ -1,11 +1,19 @@
-PNGFILES=montravailLineaire.png montravailNonLineaire.png travail-equipe.png branche-without-merge.png branche-with-merge.png
+xcommentheader=\#+LATEX_HEADER_EXTRA: \usepackage{xcomment}\xcomment{tdaction,tdimportant}
+
 
 all: git.pdf git.html
+	@echo Done!
 
 .PHONY: all
 
-git.pdf git.html: %: git.md $(PNGFILES)
-	pandoc -s -o $@ $<
+git.pdf: git.org
+	emacs --batch git.org -f org-latex-export-to-pdf
 
-$(PNGFILES): %.png: %.dot
-	neato -Tpng $< > $@
+git.html: git.org
+	emacs --batch git.org -f org-html-export-to-html
+
+git-actions.pdf: git.org
+	echo '${xcommentheader}' > git-actions.org
+	cat git.org >> git-actions.org
+	emacs --batch git-actions.org -f org-latex-export-to-pdf
+	rm git-actions.org
