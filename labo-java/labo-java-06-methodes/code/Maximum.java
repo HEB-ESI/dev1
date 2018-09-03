@@ -1,4 +1,4 @@
-package esi.dev1.td5;
+package esi.dev1.td6;
 
 public class Maximum {
 
