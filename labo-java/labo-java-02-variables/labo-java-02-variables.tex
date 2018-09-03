@@ -1,0 +1,244 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+
+\usepackage{style-esi/french}
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+\newcommand{\publicbasepath}
+{https://git.esi-bru.be/dev1/labo-java/tree/master/td02-variables}
+
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
+\renewcommand{\listingsrcpath}{code/}
+\marginnumberfalse
+\marginsectiontrue
+
+
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 2 -- Variables}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Dans ce TD vous vous familiariserez avec la notion de variable et vous 
+	réaliserez vos premiers programmes intéractifs.
+
+	Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
+	
+	\url{\publicbasepath}	
+	
+	\tableofcontents
+
+	\newpage
+	
+%===================
+\section{Variables}
+%====================	
+
+	Le programme suivant affiche l'aire d'un rectangle de longueur 12 et de largeur 4.
+	
+	\listing{Java}{Variables.java}
+
+	\begin{itemize}
+		\item \`A la ligne 6 la variable \texttt{longueur} est \emph{déclarée} 
+			avec le type \texttt{int}, elle peut donc 'contenir' des entiers. 
+			Sur cette même ligne on lui \emph{assigne} la valeur 12.  
+
+		\item \`A la ligne 7 la variable \texttt{largeur} est \emph{déclarée} avec le type \texttt{int}. 
+			Sur cette même ligne on lui \emph{assigne} la valeur 4.
+	
+		\item \`A la ligne 9 on affiche le résultat de la multiplication de la valeur de la variable \texttt{longueur}, 
+			qui vaut 12, et de la valeur de la variable \texttt{largeur}, qui elle vaut 4.  
+  	\end{itemize}
+
+	Pour manipuler des nombres décimaux on utilise une variable de type 
+	\texttt{double}~:
+	
+	\code{java}{double taille = 1.92;}
+
+
+
+
+	\begin{Exercice}{Petits calculs avec 2 variables} 		
+		Créez un package \texttt{g12345.dev1.td2} où vous remplacez \texttt{g12345} par 
+		votre matricule.
+
+		Dans un classe \texttt{Exercice1} déclarez 2 variables de type \texttt{int}~: 
+		\texttt{a}, \texttt{b} et initialisez-les avec les valeurs 51 et 17.
+		
+		Ensuite affichez sur la sortie standard la valeur de :
+		\begin{itemize}
+		 	\item a+b
+			\item a-b
+			\item a*b
+			\item a/b
+			\item a\%b
+			\item a*a+b*b
+		\end{itemize} 
+	\end{Exercice}
+
+	\begin{Exercice}{Petits calculs avec 3 variables} 
+		Dans un classe \texttt{Exercice2} déclarez 3 variables de type \texttt{double}~: 
+		\texttt{a}, \texttt{b} et \texttt{c} et initialisez avec les valeurs 
+		2.5, 3.3 et 4.9 respectivement.
+		
+		Ensuite affichez sur la sortie standard la valeur de :
+		\begin{itemize}
+		 	\item 4 * a * c
+			\item b*b - 4*a*c
+		\end{itemize} 
+	\end{Exercice}
+
+
+\newpage
+%===================
+\section{Lecture au clavier}
+%====================	
+
+
+	En java la lecture au clavier se fait en 3 étapes.
+
+	\begin{enumerate}
+		\item \emph{Importer} le \emph{lecteur} (\texttt{Scanner}) ligne 3 du code ci-dessous.
+		\item \emph{Déclarer} et \emph{initialiser} le lecteur:  \texttt{Scanner clavier = new Scanner(System.in);}
+		\item La lecture proprement dite: \texttt{int longueur = clavier.nextInt();}
+	\end{enumerate}
+
+	\listing{java}{AireRectangle.java}
+
+	Pour lire un nombre décimal on utilise la méthode \texttt{nextDouble()}~:
+	
+	\code{java}{double longueur = clavier.nextDouble();}
+
+
+	\begin{Exercice}{Aire d'un carré}
+		Dans un classe \texttt{Exercice3} écrivez un programme qui demande 
+		le côté d'un carré (un nombre entier) à l'utilisateur et 
+		affiche l'aire de ce carré.
+	\end{Exercice}
+	
+	\begin{Exercice}{Périmètre et aire d'un cercle}
+		\'Ecrivez un programme
+		qui demande à l'utilisateur le rayon d'un cercle (un nombre décimal)
+		et affiche son périmètre et son aire.
+	
+		Rappel: le périmètre se calcule par la formule $2\pi r$ et 
+		l'aire par la formule $\pi r^2$ où vous utiliserez 3.141593 comme valeur
+		approchée de $\pi$.
+	
+		Attention: si votre système est configuré en français (cela s'appelle la 
+		\emph{locale}) 
+		vous devrez entrer ce nombre avec une virgule, s'il est en anglais ce sera avec
+		un point.
+	\end{Exercice}
+
+	\begin{Exercice}{Petits calculs avec 2 nombres lus au clavier} 
+		\'Ecrivez un programme qui demande 
+		deux nombres entiers, \texttt{a} et \texttt{b}, à l'utilisateur et affiche la 
+		valeur de :
+		\begin{itemize}
+		 	\item a+b
+			\item a-b
+			\item a*b
+			\item a/b
+			\item a\%b
+			\item a*a+b*b
+		\end{itemize} 
+	\end{Exercice}
+
+
+\section{Exercices Récapitulatifs}
+
+		
+	\begin{Exercice}{Centaines, dizaines, unités} 
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		un nombre entier \texttt{nb} compris entre 0 et 999 et affiche la valeur des 
+		expressions suivantes:
+		\begin{itemize}
+			\item \texttt{nb\%10} - les unités
+			\item \texttt{(nb/10)\%10} - les dizaines
+			\item \texttt{(nb/100)\%10} - les centaines
+		\end{itemize}
+		Par exemple, si l'utilisateur entre 362 votre programme affiche
+		\begin{verbatim}
+		2
+		6
+		3
+		\end{verbatim}
+	\end{Exercice}	
+
+	\begin{Exercice}{Miroir} 
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		un nombre \texttt{nb} compris entre 100 et 999 et affiche la valeur miroir:
+
+		Par exemple, si l'utilisateur entre 736 votre programme affiche 637.
+		
+		Astuce: utilisez la technique de l'exercice précédent afin d'extraire les
+		unités, les dizaines et les centaines.
+	\end{Exercice}	
+
+	
+	\begin{Exercice}{Secondes en minutes} 
+		\'Ecrivez un programme qui demande un nombre de secondes à l'utilisateur
+		et qui affiche le nombre de minutes que cela représente.
+
+		Par exemple: 
+		si l'utilisateur entre 217 secondes, le programme affiche 3, 
+		car 217 secondes correspond à 3 minutes et 37 secondes.
+	\end{Exercice}
+
+	\begin{Exercice}{Temps en secondes} 
+		\'Ecrivez un programme qui demande 
+		une nombre d'heures, un nombre de minutes et un nombre de secondes
+		et qui affiche le nombre de secondes totales.
+		
+		Par exemple: si l'utilisateur entre 2 heures, 10 minutes et 27 secondes, le 
+		programme affiche
+		7827. En effet 2 heures donnent 7200 secondes, 10 minutes sont 600 secondes 
+		auxquelles il faut ajouter les 27 secondes: 7200 + 600 + 27 = 7827. 
+	\end{Exercice}
+
+
+	\begin{Exercice}{Les intérêts}
+		\'Ecrivez un programme qui demande un montant (un nombre décimal)
+		à l'utilisateur et affiche les intérêts reçus après 1 an pour un montant placé 
+		en banque à du 2\% d'intérêt.
+	\end{Exercice}
+
+	\begin{Exercice}{Prix TTC}
+		\'Ecrivez un programme qui demande à l'utilisateur:
+		\begin{itemize}
+			\item le prix unitaire d’un produit hors TVA, 
+			\item le taux de TVA en \% (un entier) 
+			\item la quantité de produit vendue à un client (un entier)
+		\end{itemize}
+		et affiche le prix total à payer par ce client.
+		
+		Exemple: si le client achète 5 drones au prix de 1000 euros hors TVA et que la
+		TVA est de 21\%, le programme affichera 6050 euros.
+	\end{Exercice}
+
+
+
+\end{document}
