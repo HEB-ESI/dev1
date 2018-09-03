@@ -13,7 +13,7 @@
 
 \newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/labo-java/tree/master/td01-introduction}
 
-\newcommand{\solutionspublicpath}{\publicbasepath/solutions/}
+\newcommand{\sourcespublicpath}{\publicbasepath/}
 \renewcommand{\listingpublicpath}{\publicbasepath/code/}
 \renewcommand{\listingsrcpath}{code/}
 \marginnumberfalse
@@ -44,13 +44,10 @@
 	Dans ce TD vous ferez connaissance avec l'environnement intégré NetBeans et 
 	vous réaliserez vos premiers programmes en Java.
 
-	Les codes sources de ce TD se trouvent à l'adresse~: 
+	Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
 	
-	\url{\listingpublicpath}
+	\url{\sourcespublicpath}
 	
-	Les solutions se trouvent à l'adresse~:
-	
-	\url{\solutionspublicpath}
 
 	\tableofcontents
 
@@ -81,7 +78,7 @@
 			
 			\bigskip
 			\begin{center}
-				\includegraphics[width=\textwidth]{images/nb_newproject}
+				\includegraphics[width=.9\textwidth]{images/nb_newproject}
 			\end{center}
 			
 			Dans la fenêtre \og New Project \fg~qui s'ouvre, choisissez \og Java Application \fg dans la liste \og Projects \fg~et cliquez le bouton \og Next \fg.
@@ -90,7 +87,7 @@
 			nommez le projet \texttt{td-java}, décochez la case \texttt{Create Main Class} et cliquer usr le bouton \og Finish \fg.
 			
 			\begin{center}
-				\includegraphics[width=\textwidth]{images/nb_newproject_name}
+				\includegraphics[width=.9\textwidth]{images/nb_newproject_name}
 			\end{center}
 			
 			Dans NetBeans tout programme doit se trouver au sein d'un projet.
@@ -112,14 +109,14 @@
 		
 			\bigskip
 			\begin{center}
-				\includegraphics[width=\textwidth]{images/nb_newproject_package}
+				\includegraphics[width=.9\textwidth]{images/nb_newproject_package}
 			\end{center}
 
 			Nommez ce package \texttt{g12345.dev1.td1} où vous remplacez g12345 par votre identifiant et cliquer sur le bouton \og Finish\fg~:
 			
 			\bigskip
 			\begin{center}
-				\includegraphics[width=\textwidth]{images/nb_newproject_package2}
+				\includegraphics[width=.9\textwidth]{images/nb_newproject_package2}
 			\end{center}
 			
 			En Java, un package (paquet) permet de regrouper certaines parties de votre code
@@ -145,7 +142,7 @@
 			\bigskip
 			
 			\begin{center}
-				\includegraphics[width=\textwidth]{images/nb_newproject_new_class}
+				\includegraphics[width=.9\textwidth]{images/nb_newproject_new_class}
 			\end{center}
 
 
@@ -190,7 +187,9 @@
 		\item Créez un nouveau programme qui se nomme \texttt{"HelloPrénom"}. Celui-ci doit afficher \texttt{"Hello"} suivi de votre prénom.
 		Si vous essayez de le faire tourner en cliquant sur la flèche, vous ne verrez pas apparaître votre prénom. C'est parce que Netbeans a retenu que le programme principale est le premier à avoir été lancé. Pour forcer Netbeans à lancer le nouveau programme, faite un clique droit sur le fichier \texttt{HelloPrénom.java} et cliquez sur \texttt{Run File}. Vous devriez voir "Hello, John" s'afficher dans l'output.
 
-			\includegraphics{images/nb_newproject_run_othermain}
+		\begin{center}
+			\includegraphics[width=.9\textwidth]{images/nb_newproject_run_othermain}
+		\end{center}
 
 	\end{steps}
 
@@ -259,7 +258,7 @@
 \section{Expressions}
 %====================	
 
-	Le programme suivant affiche la somme de 12345678 et 87654321.
+	Le programme suivant affiche la somme des \emph{nombres entiers}  12345678 et 87654321.
 	
 	\listing{Java}{Expression.java}
 
@@ -269,214 +268,92 @@
 		\item L'instruction de la ligne 7 affiche le \emph{résultat du calcul} 
 			c'est-à-dire la somme de 12345678 et de 87654321~:  \texttt{99999999}
 	
-		\item Notez que l'\emph{expresssion} \texttt{12345678+87654321} 
+		\item Notez que l'\emph{expresssion} \texttt{12345678 + 87654321} 
 			de l'instruction de la ligne 7 ne se trouve \emph{pas} entre guillemets.
 	\end{itemize}
+	
+	Le nombre 12345678 est un nombre entier. Les nombres décimaux, aussi appelés flottants ou nombres à virgule, s'écrivent avec un point, par exemple: 12.3
 
 
 	\begin{Exercice}{Petits calculs}
-		Dans une classe \texttt{Exercice4}, écrivez un programme qui affiche la valeur des expressions
-		suivantes:
+		Dans une classe \texttt{Exercice4}, écrivez un programme qui affiche la valeur
+		des expressions	suivantes:
 		\begin{itemize}
-			\item	 \texttt{10 + 32}
-			\item	 \texttt{10 - 32}
-			\item  \texttt{2 * 21}
-			\item  \texttt{234\%57}
-			\item  \texttt{((2*2)+(3*3))/25}
+			\item \texttt{10 + 32}
+			\item \texttt{10 - 32}
+			\item \texttt{2 * 21}
+			\item \texttt{234\%57}
+			\item \texttt{((2*2)+(3*3))/25}	
+			\item \texttt{12.3+13.5}
+			\item \texttt{12.3-13.5}
+			\item \texttt{12.3*13.5}
+			\item \texttt{2.0/3.0}
 		\end{itemize}
-	\end{Exercice}
-	
-
-%===================
-\section{Variables}
-%====================	
-
-	Le programme suivant affiche l'aire d'un rectangle de longueur 12 et de largeur 4.
-	
-	\listing{Java}{Variables.java}
-
-	\begin{itemize}
-		\item \`A la ligne 6 la variable \texttt{longueur} est \emph{déclarée} 
-			avec le type \texttt{int}, elle peut donc 'contenir' des entiers. 
-			Sur cette même ligne on lui \emph{assigne} la valeur 12.  
-
-		\item \`A la ligne 7 la variable \texttt{largeur} est \emph{déclarée} avec le type \texttt{int}. 
-			Sur cette même ligne on lui \emph{assigne} la valeur 4.
-	
-		\item \`A la ligne 9 on affiche le résultat de la multiplication de la valeur de la variable \texttt{longueur}, 
-			qui vaut 12, et de la valeur de la variable \texttt{largeur}, qui elle vaut 4.  
-  	\end{itemize}
-
-
-
-	\begin{Exercice}{Petits calculs avec 2 variables} 		
-		Dans un classe \texttt{Exercice5} déclarez 2 variables~: 
-		\texttt{a}, \texttt{b} et initialisez-les avec les valeurs 51 et 17.
 		
-		Ensuite affichez sur la sortie standard la valeur de :
-		\begin{itemize}
-		 	\item a+b
-			\item a-b
-			\item a*b
-			\item a/b
-			\item a\%b
-			\item a*a+b*b
-		\end{itemize} 
 	\end{Exercice}
-
-	\begin{Exercice}{Petits calculs avec 3 variables} 
-		Dans un classe \texttt{Exercice6} déclarez 3 variables~: 
-		\texttt{a}, \texttt{b} et \texttt{c} et initialisez avec les valeurs 2, 3 et 4 respectivement.
-		
-		Ensuite affichez sur la sortie standard la valeur de :
-		\begin{itemize}
-		 	\item 4 * a * c
-			\item b*b - 4*a*c
-		\end{itemize} 
+	
+	\begin{Exercice}{Divisions entière et décimale}
+		Créez un programme qui affiche la valeur des expressions suivantes:
+	
+		\begin{itemize}		
+			\item \texttt{2.0/3.0}
+			\item \texttt{2/3}
+			\item \texttt{2/3.0}
+			\item \texttt{2.0/3}
+			\item \texttt{2.0/0.0}
+			\item \texttt{2/0}
+		\end{itemize}
+	
+		Notez la différence de résultat entre les expressions \texttt{2.0/3.0} qui est une division entre nombres décimaux 
+		et \texttt{2/3} qui est une division entre entiers (et donc une division entière).
+	
+		Notez également la différence de résultat entre les 2 dernières expressions qui sont des divisions par zéro.
+		La première est une division entre nombres décimaux,
+		la seconde est une division entre entiers.
 	\end{Exercice}
-
-%===================
-\section{Lecture au clavier}
-%====================	
-
-
-	En java la lecture au clavier se fait en 3 étapes.
-
-	\begin{enumerate}
-		\item \emph{Importer} le \emph{lecteur} (\texttt{Scanner}) ligne 3 du code ci-dessous.
-		\item \emph{Déclarer} et \emph{initialiser} le lecteur:  \texttt{Scanner clavier = new Scanner(System.in);}
-		\item La lecture proprement dite: \texttt{int longueur = clavier.nextInt();}
-	\end{enumerate}
-
-	\listing{java}{AireRectangle.java}
-
-
-	\begin{Exercice}{Aire d'un carré}
-		\'Ecrivez un programme qui demande 
-		le côté d'un carré à l'utilisateur et affiche l'aire de ce carré.
-	\end{Exercice}
-
-	\begin{Exercice}{Petits calculs avec 2 nombres lus au clavier} 
-		\'Ecrivez un programme qui demande 
-		deux nombres entiers, \texttt{a} et \texttt{b}, à l'utilisateur et affiche la valeur de :
-		\begin{itemize}
-		 	\item a+b
-			\item a-b
-			\item a*b
-			\item a/b
-			\item a\%b
-			\item a*a+b*b
-		\end{itemize} 
-	\end{Exercice}
-
-
-\section{Exercices Récapitulatifs}
-
-%	\begin{Exercice}{Triangle}
-%		\'Ecrivez un programme qui affiche un triangle d'étoiles comme ceci:
+%	\newpage
+%	\begin{Exercice}{Felix}
+%		\'Ecrivez un programme qui affiche le dessin suivant:
 %
-%		\begin{verbatim}
-%		*
-%		**
-%		***
-%		****
-%		***
-%		**
-%		*
-%		\end{verbatim}
-%	\end{Exercice}
-		
-	\begin{Exercice}{Centaines, dizaines, unités} 
-		\'Ecrivez un programme qui demande à l'utilisateur 
-		un nombre \texttt{nb} compris entre 0 et 1000 et affiche la valeur des expressions suivantes:
-		\begin{itemize}
-			\item \texttt{nb\%10} - les unités
-			\item \texttt{(nb/10)\%10} - les dizaines
-			\item \texttt{(nb/100)\%10} - les centaines
-		\end{itemize}
-		Par exemple, si l'utilisateur entre 362 votre programme affiche
-		\begin{verbatim}
-		2
-		6
-		3
-		\end{verbatim}
-	\end{Exercice}	
-
-	\begin{Exercice}{Miroir} 
-		\'Ecrivez un programme qui demande à l'utilisateur 
-		un nombre \texttt{nb} compris entre 1000 et 9999 et affiche la valeur miroir:
-
-		Par exemple, si l'utilisateur entre 7362 votre programme affiche 2637.
-	\end{Exercice}	
-
-	
-	\begin{Exercice}{Secondes en minutes} 
-		\'Ecrivez un programme qui demande 
-		un nombre de secondes à l'utilisateur
-		et qui affiche le nombre de minutes que cela représente.
-
-		Par exemple: 
-		si l'utilisateur entre 217 secondes, le programme affiche 3, 
-		car 217 secondes correspond à 3 minutes et 37 secondes.
-	\end{Exercice}
-
-	\begin{Exercice}{Temps en secondes} 
-		\'Ecrivez un programme qui demande 
-		une nombre d'heures, un nombre de minutes et un nombre de secondes
-		et qui affiche le nombre de secondes totales.
-		
-		Par exemple: si l'utilisateur entre 2 heures, 10 minutes et 27 secondes, le programme affiche
-		7827. En effet 2 heures donnent 7200 secondes, 10 minutes sont 600 secondes 
-		auxquelles il faut ajouter les 27 secondes: 7200 + 600 + 27 = 7827. 
-	\end{Exercice}
-
-	%TODO: ajoutez quelques exercices
-
-
-
-	\newpage
-	\begin{Exercice}{Felix}
-		\'Ecrivez un programme qui affiche le dessin suivant:
-
-	\begin{verbatim}
-	                          :                      :M
-	                         XMX                   .HMM>
-	                         MMMM.                dMMMM>
-	                        'MMMMMX     .....   dMMMMMMX
-	                        XMMMMMMMnMMMMMMMMMMMMMMMMMMM
-	                       :MMMMMMMMMMMMMMMMMMMMMMMMMMMM>
-	                       XMMMMM!"    "MMMMMM"`  `"MMMMM
-	                       MMMM#         4MMf        `MMMX
-	                      XMMM            MX          'MMM:
-	                     'MMM~            '>            MMM
-	                     MMMf       .     '>            `MMX
-	                    MMMM>     :MMM    '>   :MMM      MMMX
-	                   XMMMM      MMMM>   '>   XMMMX     MMMMk
-	                  MMMMMM>     MMMM~   'k   MMMMX     MMMMMh
-	                 MMMMMMMX     XMMM    XX   ?MMM     XMMMMMMM
-	                 MMMMMMMMk     ^`    X 'h    `     :MM##MMM~
-	                  ?MM>  ^?M.       .!    %.      .HM"   MM
-	                 .?M      '"%+++!".nMMMMn "%++!*" %.. 'M..
-	                  `?M>+%L         <MMMMMMMM>       :   XM"
-	                    'X   %        XMMMMMMMM>      X   'f
-	                      X   `M.      ?MMMMMM~    .HM   :`
-	                       %.  `MMMx.          .xHMMM   X
-	                  ..    `X  `MMMMMMMMMMMMMMMMMMM  :f
-	                :MMMMMMMh:.M. 4MM     "     MM" xMMMMMMMMMMh.
-	              :MMMMMMMMMMMMMMM: `%x.......x"`.HMMMMMMMMMMMMMM
-	            .MMMMMMMMMMMMMMMMMMMMhx.......xHMMMMMMMMMMMMMMMMM
-	    .nHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM`MMMMMMMMMMMMMMMMX
-	  :MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMdMMMMMMMMMMMMMMMMMMMM
-	 MMMMMMMMMMMMMMMMMMMM"``""MMMMMMMMMMMM!MMMMMMMMMMMMMMMMMMMM~
-	MMMMMMMMMMMMMMMMMMM!     XMMMMMMMMMMMf:HMMMMMMMMMMMMMMMMM!
-	M?MMMMMMMMMMMMMMMM`    :MMMMMMMMMMMM!MMMMMMMMMMMMMMMMMMM~
-	:MMMMMMMMMMMMMMMMX     MMMMMMMMMMMMXXMMMMMMMMMMMMMMMMM`
-	MMMMMMMMMMMMMMMMMX    'MMMMMMMMMMMMM!MMMMMMMMMMMMMMMMX
-	MMMMMMMMMMMMMMMMM~    'MMMMMMMMMMMMMM?MMMMMMMMMMMMMMM~
-	 #M)MMMMMMMM!MMM       MMMMMMMMMMMMMMMM/MMMMMMMMMMMM~
-	   ?MMMMMM"-"2MMMMMx   XMMMMMMMMMMMMMMMMX?**!:MMM"`
-	\end{verbatim}
-\end{Exercice}
+%	\begin{verbatim}
+%	                          :                      :M
+%	                         XMX                   .HMM>
+%	                         MMMM.                dMMMM>
+%	                        'MMMMMX     .....   dMMMMMMX
+%	                        XMMMMMMMnMMMMMMMMMMMMMMMMMMM
+%	                       :MMMMMMMMMMMMMMMMMMMMMMMMMMMM>
+%	                       XMMMMM!"    "MMMMMM"`  `"MMMMM
+%	                       MMMM#         4MMf        `MMMX
+%	                      XMMM            MX          'MMM:
+%	                     'MMM~            '>            MMM
+%	                     MMMf       .     '>            `MMX
+%	                    MMMM>     :MMM    '>   :MMM      MMMX
+%	                   XMMMM      MMMM>   '>   XMMMX     MMMMk
+%	                  MMMMMM>     MMMM~   'k   MMMMX     MMMMMh
+%	                 MMMMMMMX     XMMM    XX   ?MMM     XMMMMMMM
+%	                 MMMMMMMMk     ^`    X 'h    `     :MM##MMM~
+%	                  ?MM>  ^?M.       .!    %.      .HM"   MM
+%	                 .?M      '"%+++!".nMMMMn "%++!*" %.. 'M..
+%	                  `?M>+%L         <MMMMMMMM>       :   XM"
+%	                    'X   %        XMMMMMMMM>      X   'f
+%	                      X   `M.      ?MMMMMM~    .HM   :`
+%	                       %.  `MMMx.          .xHMMM   X
+%	                  ..    `X  `MMMMMMMMMMMMMMMMMMM  :f
+%	                :MMMMMMMh:.M. 4MM     "     MM" xMMMMMMMMMMh.
+%	              :MMMMMMMMMMMMMMM: `%x.......x"`.HMMMMMMMMMMMMMM
+%	            .MMMMMMMMMMMMMMMMMMMMhx.......xHMMMMMMMMMMMMMMMMM
+%	    .nHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM`MMMMMMMMMMMMMMMMX
+%	  :MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMdMMMMMMMMMMMMMMMMMMMM
+%	 MMMMMMMMMMMMMMMMMMMM"``""MMMMMMMMMMMM!MMMMMMMMMMMMMMMMMMMM~
+%	MMMMMMMMMMMMMMMMMMM!     XMMMMMMMMMMMf:HMMMMMMMMMMMMMMMMM!
+%	M?MMMMMMMMMMMMMMMM`    :MMMMMMMMMMMM!MMMMMMMMMMMMMMMMMMM~
+%	:MMMMMMMMMMMMMMMMX     MMMMMMMMMMMMXXMMMMMMMMMMMMMMMMM`
+%	MMMMMMMMMMMMMMMMMX    'MMMMMMMMMMMMM!MMMMMMMMMMMMMMMMX
+%	MMMMMMMMMMMMMMMMM~    'MMMMMMMMMMMMMM?MMMMMMMMMMMMMMM~
+%	 #M)MMMMMMMM!MMM       MMMMMMMMMMMMMMMM/MMMMMMMMMMMM~
+%	   ?MMMMMM"-"2MMMMMx   XMMMMMMMMMMMMMMMMX?**!:MMM"`
+%	\end{verbatim}
+%\end{Exercice}
 
 
 
