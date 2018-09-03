@@ -1,0 +1,244 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+\usepackage{booktabs}
+
+\newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/labo-java/tree/master/td03-alternatives}
+
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
+\renewcommand{\listingsrcpath}{code/}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 3 -- Alternatives}
+\sigleprof{}
+
+\marginnumberfalse
+\marginsectiontrue
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Dans ce TD vous trouverez une introduction 	aux expressions booléennes et à
+	l'instruction \texttt{if/else}.
+	
+	Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
+	
+	\url{\publicbasepath}	
+	
+
+	
+	\tableofcontents
+
+	\newpage
+
+
+\section{Les alternatives: \texttt{if/else}}
+
+	L'instruction \texttt{if} permet d'exécuter des instructions si une certaine condition est vérifiée.
+	
+	Le programme suivant affichera "ce nombre est positif" 
+	si \texttt{nb} est plus grand ou égal à 0 et n'affichera rien dans le cas contraire.
+	 
+	 \listing{java}{Positif.java}
+
+	L'instruction \texttt{if/else} permet d'exécuter des instructions si une certaine condition est vérifiée
+	et d'autres instructions si la condition n'est pas vérifiée. On peut traduire 'else' par 'sinon'.
+	
+	On peut remplacer le \texttt{if} du programme précédent par le \texttt{if/else} suivant~:
+	
+	\begin{Code}{java}
+		if(nb >= 0) {
+			System.out.println("ce nombre est positif.");
+		} else {
+			System.out.println("ce nombre est négatif.");
+		}
+	\end{Code}
+
+	Le programme affichera "ce nombre est positif" 
+	si \texttt{nb} est plus grand ou égal à 0 et "ce nombre est négatif" sinon.
+
+
+	Il est aussi possible d'utiliser une succession de \texttt{if/else}~:
+		
+	\begin{Code}{java}
+		if(nb > 0) {
+			System.out.println("ce nombre est positif.");
+		} else if(nb < 0) {
+			System.out.println("ce nombre est négatif.");
+		} else {
+			System.out.println("ce nombre est nul.");
+		}
+	\end{Code}
+
+	
+	\begin{Exercice}{Majeur - \texttt{if}}
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		son age et affiche s'il est majeur (s'il a plus de 18 ans). 
+		S'il n'est pas majeur le programme n'affiche rien.
+		
+		Exemple: si l'utilisateur entre 19 le programme affiche "vous êtes majeur". 
+	\end{Exercice}
+
+	\begin{Exercice}{Pair ou impair - \texttt{if/else}}
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		un nombre entier et affiche "ce nombre est pair" ou "ce nombre est impair" selon le cas.
+				
+		Exemple: si l'utilisateur entre -23 le programme affiche "ce nombre est impair". 
+
+		Astuce: un nombre est pair si le reste de la division par 2 vaut 0.
+	\end{Exercice}
+
+	\begin{Exercice}{Maximum de 2 nombres}
+		\'Ecrivez un programme qui demande à l'utilisateur deux nombres
+		et affiche le plus grand des deux.
+		
+		Exemple: si l'utilisateur entre 7,5 et 2,3 le programme affiche 7,5. 
+	\end{Exercice}
+	
+	\section{Les conditions}
+
+	En informatique, on appelle \emph{booléens} les deux valeurs 'vrai' et 'faux'. 
+	En java les booléens se représentent par \texttt{true} (vrai) et \texttt{false}
+	(faux).  
+
+	Une condition est une expression dont la valeur s'évalue à \texttt{true} ou 
+	\texttt{false}.
+	Voici quelques exemples de conditions:
+
+	\begin{itemize}
+		\item \code{java}{age < 18}~:  vaut \texttt{true} si \texttt{age} a une valeur 
+			inférieure à 18 et \texttt{false} sinon~;
+		\item \code{java}{nb >= 0}~:  vaut \texttt{true} si \texttt{nb} est supérieur à 
+			0~;
+		\item \code{java}{b*b - 4*a*c < 0}~: vaut \texttt{true} si $b^2-4ac$ est 	
+			négatif~;
+		\item \code{java}{(nb >= 0) && (nb <=100)}~: vaut \texttt{true} si le nombre 
+			\texttt{nb} est compris entre 0 et 100~;
+		\item \code{java}{a < b}~:  vaut \texttt{true} si la valeur de la variable 
+			\texttt{a} est inférieure à celle de \texttt{b}.
+	\end{itemize}
+
+
+	Pour construire une condition on utilisera les opérateurs de comparaison de nombres:
+	
+        \begin{center}
+	\begin{tabular}{lll}\toprule
+          signification            & symbole  & exemple\\ \midrule
+		plus petit         & <        & \code{java}{age < 18}\\
+		plus petit ou égal & <=       & \code{java}{age <= 10} \\
+		plus grand         & >        & \code{java}{age > 18} \\
+		plus grand ou égal & >=       & \code{java}{age >= 21} \\
+		 égal              & ==       & \code{java}{i == 4}\\
+		 différent         & !=       & \code{java}{nb != 42}\\ \bottomrule
+	\end{tabular} 
+      \end{center}
+	Et on combinera des conditions avec les \emph{opérateurs booléens}~:
+	\begin{itemize}
+		\item Le \emph{ET} logique s'écrit \texttt{\&\&}.
+			
+			Exemple~: \code{java}{(nb >= 0) && (nb <= 100)} vérifie si \texttt{nb} est compris entre 0 et 100.
+			Cette condition sera vraie si \code{java}{nb >= 0} ET si \code{java}{nb <= 0}. 
+			
+		\item Le \emph{OU} logique s'écrit \texttt{||}. 
+			
+			Exemple~: \code{java}{a < b || a < c} sera vraie si \code{java}{a < b} ou bien si \code{java}{a < c} (ou les deux).
+			
+		\item La négation s'écrit \texttt{!}. 
+		
+			Exemple~: \texttt{ !(a < b)} sera vraie si \code{java}{a < b} est faux, c'est-à-dire si \code{java}{a >= b}.
+	\end{itemize}
+	
+
+	\begin{Exercice}{Conditions}
+		\'Ecrivez un programme qui affiche la valeur des expressions suivantes:
+		\begin{itemize}
+			\item \texttt{10 < 20} (écrivez simplement: 
+				\code{java}{System.out.println(10 < 20);})
+			\item \texttt{10 > 20}
+			\item \texttt{1 == 2}
+			\item \texttt{20.0/2 != 10.0}
+		\end{itemize}
+		
+		Qu'affiche votre programme pour chacune des expressions ci-dessus ?
+	\end{Exercice}
+
+	\begin{Exercice}{Conditions}
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		3 nombres entiers a, b et c et affiche la valeurs des expressions suivantes:
+		\begin{itemize}
+			\item \texttt{a\%2 == 0}  (a est divisible par 2 c'est-à-dire a est pair)
+			\item \texttt{a\%2 == 1}  (a est impair)
+			\item \texttt{a\%b == 0}  (a est divisible par b)
+			\item \texttt{a < b}
+			\item \texttt{(a <= b) \&\& (a <= c)} (a est le minimum)
+			\item \texttt{(a < b \&\& b < c) || (a > b \&\& b > c)} (b est strictement compris entre a et c)
+		\end{itemize}
+	\end{Exercice}
+
+
+	
+
+\section{Exercices supplémentaires}
+
+
+	\begin{Exercice}{Maximum de 3 nombres}
+		\'Ecrivez un programme qui demande à l'utilisateur 
+		trois nombres  et affiche le maximum des trois.
+		
+		Exemple: si l'utilisateur entre 7,5, 17,9 et 2,3 le programme affiche 17,9. 
+	\end{Exercice}
+
+	\begin{Exercice}{Le type de triangle}
+ 		\'Ecrivez un programme qui demande à l'utilisateur 
+		 la longueur des 3 côtés d'un triangle et affiche s'il est~: 
+		 équilatéral (tous égaux), isocèle (2 égaux) ou quelconque.
+		 
+		 Exemple: si l'utilisateur entre 2,5, 5 et 5 le programme affiche "le triangle est isocèle". 
+	\end{Exercice}
+	
+	
+	\begin{Exercice}{Conditions}
+		\'Ecrivez un programme qui affiche la valeur des expressions suivantes:
+		\begin{itemize}
+			\item \texttt{9.99 == 10.0}
+			\item \texttt{9.999999999999999999999999 == 10.0}
+			\item \texttt{9.999999999999999999999999 == 10.00000000000001}
+			\item \texttt{true}  (écrivez simplement: \code{java}{System.out.println(true);})
+			\item \texttt{false} 
+			\item \texttt{!true} 
+			\item \texttt{!false} 
+			\item \texttt{true \&\& true} 
+			\item \texttt{true \&\& false} 
+			\item \texttt{false \&\& true} 
+			\item \texttt{false \&\& false} 
+			\item \texttt{true || true} 
+			\item \texttt{true || false} 
+			\item \texttt{false || true} 
+			\item \texttt{false || false} 
+		\end{itemize}
+		
+		Qu'affiche votre programme pour chacune des expressions ci-dessus ?
+	\end{Exercice}
+
+\end{document}
+
+
+
