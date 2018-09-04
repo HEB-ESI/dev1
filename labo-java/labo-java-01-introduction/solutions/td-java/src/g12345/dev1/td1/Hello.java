@@ -1,7 +1,8 @@
 package g12345.dev1.td1;
 
-public class HelloPrénom {
+public class Hello {
+
     public static void main(String[] args) {
-        System.out.println("Hello John !");
+        System.out.println("Hello, World!");
     }
 }
