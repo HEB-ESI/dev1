@@ -1,0 +1,325 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/exemple}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+%\marginsectiontrue
+\usepackage{booktabs}
+\usepackage{pifont} 
+%\usepackage{tabularx} 
+%\usepackage{multicol}
+%\usepackage{multirow}
+\usepackage{longtable}
+%\usepackage{array}
+
+\definecolor{verylightgray}{rgb}{0.98,0.98,0.98}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires d'environnement}
+\libelledocument{TD 4 -- Commandes grep, wc, find et variables d'environnement}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================
+	\begin{tcolorbox}[blanker,
+	before skip=10mm,after skip=10mm,
+	borderline west={1mm}{-4mm}{lightgray},
+	title=Objectifs, coltitle=black, fonttitle=\sffamily\bfseries\large]
+	Ce TD a pour objectif de vous familiariser avec :
+	\begin{itemize}
+		\item les commandes Unix \verb_grep_, \verb_wc_ et \verb_find_ ;
+		\item les variables d'environnement.  
+	\end{itemize}
+	\end{tcolorbox}
+	
+	\tableofcontents
+
+	\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	   
+\section{TD4 - Les commandes Unix grep, wc, find et les variables d'environnement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 \begin{consigne}
+	 	\begin{itemize}
+			%\item Ce TD est accompagn\'e d'exercices \`a faire \textbf{avant} de venir au laboratoire.
+			\item Prenez bien note des r\'eponses aux exercices ainsi que de la fa\c con dont vous avez trouv\'e ces r\'eponses.
+		\end{itemize}				
+	\end{consigne}
+	
+%%%%%%%%%%%%%%%%%%%%%%%	
+	\subsection{Recherche dans des fichiers (grep)}
+%%%%%%%%%%%%%%%%%%%%%%%%
+	
+		Vous avez d\'ej\`a \'ecrit pas mal de programmes et il devient parfois difficile de vous y retrouver. Vous allez \^etre amen\'es \`a vous poser des questions du genre :
+				
+            	\par
+        
+		\begin{itemize}
+				\item Dans quel fichier ai-je \'ecrit un programme qui calcule une surface ?
+				\item Dans quel fichier ai-je d\'ej\`a utilis\'e un double ?
+		\end{itemize}
+        
+            	\par
+        
+			
+		La commande \verb_grep_ peut venir \`a votre secours. Dans son utilisation la plus simple, elle permet d'extraire de fichiers toutes les lignes qui contiennent un certain texte (appel\'e 
+		\textit{pattern}).
+					
+		\par
+		Syntaxe : \,\verb|grep pattern fichier...|\,
+                 \par
+        
+			
+				
+           	\begin{Exemple}{}
+			Pour trouver dans quel fichier vous avez utilis\'e une variable nomm\'ee "surface", vous pouvez \'ecrire :
+				\begin{Console}
+					grep surface *.java
+				\end{Console}
+		\end{Exemple}
+            \par
+        
+
+        
+          	Lorsque vous appuyez sur la touche \,\verb|TAB|\,, le shell tente de compl\'eter le d\'ebut de commande que vous avez d\'ej\`a tap\'e. 
+		Si plusieurs possibilit\'es existent, elles sont affich\'ees si vous appuyez 2x sur  \,\verb|TAB|\,.  
+        
+            	\par
+        
+			
+		\begin{Exercice}{Recherche d'un pattern dans un fichier} 
+			\begin{enumerate}
+				\item Comment trouver les programmes Java du TD4 o\`u vous avez d\'ej\`a utilis\'e un "double" ?
+		 
+		 		\item Comment trouver, parmi \textbf{tous} les programmes Java que vous avez d\'ej\`a \'ecrits, ceux qui utilisent des entiers ?
+			\end{enumerate}
+			\fcolorbox{gray}{verylightgray}{
+			\begin{minipage}[c][1.2cm][c]{\textwidth}\textcolor{verylightgray}{X}\end{minipage}
+		}\par\medskip
+            \par
+
+		\end{Exercice}		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%			
+ 	\subsection{Compter (wc)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+		Vous vous demandez peut-\^etre combien de lignes fait un programme que vous avez \'ecrit
+		ou encore combien de lignes vous avez \'ecrites aujourd'hui.
+		La commande \verb_wc_ peut vous r\'epondre ; elle indique le nombre de lignes, de mots et de caract\`eres
+		contenus dans les fichiers donn\'es.
+		\par
+				
+		Syntaxe : \,\verb|wc fichier...|\,
+            \par
+           
+        
+			
+		\begin{Exemple}{}
+			La commande : \,\verb|wc Ex2.java|\, affiche le nombre de lignes, mots et caract\`eres contenus dans le fichier
+			\verb_Ex2.java_.
+
+		\end{Exemple}	
+		
+		\begin{Exercice}{Compter le nombre de lignes} 
+			\begin{enumerate}
+				
+				\item Comment afficher le nombres de lignes de tous vos fichiers Java de ce TD.
+						
+				\item Examinez les options de la commande et trouvez comment n'afficher \textbf{que}
+					le nombre de lignes et pas le nombre de mots et de caract\`eres.
+						
+				\item Une convention d'\'ecriture Java indique de ne pas d\'epasser la colonne 80 dans les programmes.
+					Trouvez l'option qui permet de v\'erifier que tous vos programmes actuels v\'erifient cette convention.
+			\end{enumerate}
+				
+			\fcolorbox{gray}{verylightgray}{
+			\begin{minipage}[c][3cm][c]{\textwidth}\textcolor{verylightgray}{X}\end{minipage}
+		}\par\medskip
+		
+		\end{Exercice}
+            \par
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+	\subsection{Recherche de fichier (find)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%			
+		\verb_find_ est une commande linux tr\`es puissante qui vous fera gagner beaucoup de temps.
+		Elle permet de rechercher dans une arborescence de fichiers ceux qui correspondent \`a un crit\`ere donn\'e (taille, droits, nom, dates...).
+		Elle permet \'egalement d'appliquer une commande \`a chacun des fichiers ainsi trouv\'es.
+			
+           	\par
+        
+		Attention \`a ne pas la confondre avec la commande \verb_grep_ qui va examiner le contenu des fichiers.
+			
+            	\par
+	
+		\begin{Tutoriel}{Rechercher un fichier} 
+		
+		        \begin{Console}
+				find ~ -name Ex.java
+			\end{Console}
+			\begin{steps}
+				\item Recherche, chez vous (\verb_~_), un fichier nomm\'e \verb_Ex.java_
+			\end{steps}
+		\end{Tutoriel}
+            	\par
+        
+			
+		\begin{Exercice}{}
+		
+			Trouvez avec la commande \verb_find_ tous les fichiers Java que vous avez d\'ej\`a \'ecrits.
+			
+            		\par
+        
+			\fcolorbox{gray}{verylightgray}{
+				\begin{minipage}[c][1cm][c]{\textwidth}\textcolor{verylightgray}{X}\end{minipage}
+			}\par\medskip
+				
+			Nous avons \'ecrit pour vous une classe \verb_Color_ mais nous ne savons plus tr\`es bien o\`u nous l'avons stock\'ee.
+			Nous nous rappelons juste l'avoir mise quelque part dans \verb_/eCours_.
+			Pouvez-vous la retrouver pour nous ?
+			
+            		\par
+        
+				\fcolorbox{gray}{verylightgray}{
+					\begin{minipage}[c][1cm][c]{\textwidth}\textcolor{verylightgray}{X}\end{minipage}
+				}\par\medskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%				
+	\subsection{Passer \`a la couleur}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%				
+			La classe \verb_Color_ que vous avez trouv\'ee \`a l'exercice pr\'ec\'edent offre quelques m\'ethodes pour colorier des textes :
+			
+            		\par
+        
+			\begin{itemize}
+				
+				\item \verb_String toRed(String text)_ qui colore le texte donn\'e en rouge.
+					C'est-\`a-dire que si on l'affiche \`a l'\'ecran, il apparaitra en rouge.
+				
+				\item Idem pour \verb_toGreen_, \verb_toBlue_, \verb_toYellow_, \verb_toPurple_
+					et \verb_toCyan_.
+				
+				\item Exemple d'utilisation dans la classe \verb_Color_ :
+					\begin{Code}{Java}{
+						System.out.println( toRed("Hello ") + toGreen("World !") );}
+					\end{Code}
+			\end{itemize}
+		
+		\end{Exercice}
+				
+			
+		\begin{Exercice}{}
+		
+			\begin{enumerate}
+				
+				\item Copiez notre fichier \verb_Color_ chez vous.
+				
+				\item Compilez-le.
+				
+				\item Pour apprendre \`a l'utiliser, cr\'eez une m\'ethode principale
+					qui lit deux nombres au clavier et affiche la valeur maximale.
+					\par
+				
+					Afin de rendre le programme plus agr\'eable \`a utiliser, chaque lecture sera pr\'ec\'ed\'ee
+					d'un message en couleur indiquant ce qui est demand\'e (ex: "Entrez un nombre entier").
+					La r\'eponse sera, elle aussi, affich\'ee en couleur.
+				
+			\end{enumerate}
+		\end{Exercice}
+        
+			
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+	\subsection{Les variables d'environnement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		Une \textit{variable d'environnement} est une variable associ\'ee \`a votre shell contenant un texte qui est accessible par toutes
+		les applications que vous lancez. G\'en\'eralement, elle permet de configurer certaines applications, d'en modifier le comportement.
+			
+            \par
+        
+			
+		\subparagraph{Le prompt} 
+		
+	         	\par
+        
+			Le \textit{prompt} (ou \textit{invite} en fran\c cais) est le texte qui apparait \`a gauche
+			de ce que vous tapez dans votre shell. Il est d\'etermin\'e par la variable d'environnement \verb_PS1_.
+			
+            		\par
+        
+			
+		\subparagraph{FAQ} 
+           		\par
+        			\textbf{Comment voir le contenu d'une variable d'environnement ?}
+           		 \par
+        
+			Gr\^ace \`a la commande : \,\verb|echo $NOM_VARIABLE|\,
+            		\par
+       			 \textbf{Puis-je changer son contenu?}
+            		\par
+        
+			Oui, via la commande : \verb@NOM_VARIABLE=nouvelle_valeur@
+            		\par
+        
+			
+		\begin{Exercice}{} 
+			Affichez la valeur de votre prompt. Vous remarquerez qu'il contient des codes qui seront remplac\'es par certaines valeurs. 
+			Par exemple, \verb_\w_ indique le dossier courant.
+		\end{Exercice}
+			
+            \par
+        
+			
+		\begin{Exercice}{}        
+			Modifiez la valeur de votre variable \verb_PS1_.
+			Par exemple, modifiez l'invite en "Bonjour ! ".
+		\end{Exercice}	
+           	\par
+        
+			
+		\begin{Tutoriel}{Expérience} 
+			\begin{steps}
+				\item D\'econnectez-vous de linux1, puis reconnectez-vous.
+				
+			\end{steps}
+			
+            \par
+        
+			Surprise, votre prompt a repris sa valeur d'origine ! Pour rendre une modification permanente, il faut ajouter la commande \`a votre fichier \verb@.bashrc@.
+			C'est un fichier cach\'e qui est ex\'ecut\'e par votre shell lors de votre connexion.
+		\end{Tutoriel}
+			
+            \par
+        
+			
+		\begin{Exercice}{}
+			Les possibilit\'es de configuration du prompt sont nombreuses : afficher l'heure, le nom de la machine, votre login,
+			utiliser des couleurs... 
+			Examinez la documentation pour configurer le prompt comme il vous plait. (\verb@man bash@, section \verb@PROMPT@)
+		\end{Exercice}	
+            \par
+
+
+
+				
+				
+\end{document}
+			
