@@ -189,12 +189,13 @@
   {\printandpush\algorithmicswitch\pushindent\ #1 }
   {\popandprint\algorithmicend\ }%
 \algdef{C}[SWITCH]{SWITCH}{Case}[1]
-  {\popandprint\pushindent #1:}%
+  {\popandprint\pushindent \algorithmiccase\ #1:}%
 
 \algrenewcommand\algorithmicif{\textbf{if}}
 \algrenewcommand\algorithmicthen{\textbf{then}}
 \algrenewcommand\algorithmicelse{\textbf{else}}
 \algnewcommand\algorithmicswitch{\textbf{switch}}
+\algnewcommand\algorithmiccase{\textbf{case}}
 
 %-----------------------------------------------
 % Boucles
