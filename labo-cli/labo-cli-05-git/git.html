@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-09-06 Thu 23:18 -->
+<!-- 2018-09-07 Fri 00:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git - the stupid content tracker</title>
@@ -237,32 +237,32 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7165520">1. Contexte</a>
+<li><a href="#org8c1abe2">1. Contexte</a>
 <ul>
-<li><a href="#org59c3332">1.1. But</a></li>
-<li><a href="#org60279e6">1.2. Pré-requis</a></li>
-<li><a href="#org27eb275">1.3. Savoirs terminaux</a></li>
-<li><a href="#orgebbca0f">1.4. Fonctionnement du document</a></li>
+<li><a href="#org9f22a32">1.1. But</a></li>
+<li><a href="#org4717db0">1.2. Pré-requis</a></li>
+<li><a href="#orgf40997f">1.3. Savoirs terminaux</a></li>
+<li><a href="#org7ac6443">1.4. Fonctionnement du document</a></li>
 </ul>
 </li>
-<li><a href="#orgbb6085b">2. Contenu</a>
+<li><a href="#orgcfd09b4">2. Contenu</a>
 <ul>
-<li><a href="#orgdbddedb">2.1. Introduction</a></li>
-<li><a href="#org8bfbc6b">2.2. Création d'un dépôt Git et de commits</a></li>
-<li><a href="#org32c382c">2.3. Affichage de l'historique et des commits</a></li>
-<li><a href="#orge50f1e5">2.4. Partage et collaboration : ajout de <i>remotes</i></a></li>
-<li><a href="#orgf9b29de">2.5. Les branches</a></li>
-<li><a href="#org13fb3a7">2.6. Lecture de l'historique (variante arborescente)</a></li>
-<li><a href="#orgc8140c9">2.7. diff et merge</a></li>
-<li><a href="#org696d23c">2.8. Lecture de l'historique (variante DAG)</a></li>
-<li><a href="#orgf140aa7">2.9. Gestion des conflits de fusion</a></li>
-<li><a href="#org1c8a19b">2.10. git et NetBeans</a></li>
+<li><a href="#org18bbc76">2.1. Introduction</a></li>
+<li><a href="#org8a3eaf4">2.2. Création d'un dépôt Git et de commits</a></li>
+<li><a href="#org6bacae5">2.3. Affichage de l'historique et des commits</a></li>
+<li><a href="#org654debd">2.4. Partage et collaboration : ajout de <i>remotes</i></a></li>
+<li><a href="#orgb5197f8">2.5. Les branches</a></li>
+<li><a href="#org056a84f">2.6. Lecture de l'historique (variante arborescente)</a></li>
+<li><a href="#org1a31b62">2.7. diff et merge</a></li>
+<li><a href="#orgb9be7e5">2.8. Lecture de l'historique (variante DAG)</a></li>
+<li><a href="#orgd84de15">2.9. Gestion des conflits de fusion</a></li>
+<li><a href="#orgdaa61a4">2.10. git et NetBeans</a></li>
 </ul>
 </li>
-<li><a href="#orgccea0a3">3. Annexe</a>
+<li><a href="#orgfbc9a24">3. Annexe</a>
 <ul>
-<li><a href="#org35f76f7">3.1. Notion de branche, version abstraite</a></li>
-<li><a href="#org5057180">3.2. Anatomie d'un commit</a></li>
+<li><a href="#org55332fa">3.1. Notion de branche, version abstraite</a></li>
+<li><a href="#org316feb2">3.2. Anatomie d'un commit</a></li>
 </ul>
 </li>
 </ul>
@@ -270,12 +270,12 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-org7165520" class="outline-2">
-<h2 id="org7165520"><span class="section-number-2">1</span> Contexte</h2>
+<div id="outline-container-org8c1abe2" class="outline-2">
+<h2 id="org8c1abe2"><span class="section-number-2">1</span> Contexte</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org59c3332" class="outline-3">
-<h3 id="org59c3332"><span class="section-number-3">1.1</span> But</h3>
+<div id="outline-container-org9f22a32" class="outline-3">
+<h3 id="org9f22a32"><span class="section-number-3">1.1</span> But</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Le but du TD est d'apprendre le maniement basique de Git.
@@ -302,8 +302,8 @@ objectifs.
 </div>
 </div>
 
-<div id="outline-container-org60279e6" class="outline-3">
-<h3 id="org60279e6"><span class="section-number-3">1.2</span> Pré-requis</h3>
+<div id="outline-container-org4717db0" class="outline-3">
+<h3 id="org4717db0"><span class="section-number-3">1.2</span> Pré-requis</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Les pré-requis sont l'utilisation basique :
@@ -337,8 +337,8 @@ En particulier, aucune connaissance (pratique ou théorique) de Git n'est requis
 </div>
 </div>
 
-<div id="outline-container-org27eb275" class="outline-3">
-<h3 id="org27eb275"><span class="section-number-3">1.3</span> Savoirs terminaux</h3>
+<div id="outline-container-orgf40997f" class="outline-3">
+<h3 id="orgf40997f"><span class="section-number-3">1.3</span> Savoirs terminaux</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Voici les commandes que vous connaitrez à la fin de ce TD. Revenez-y en
@@ -368,8 +368,8 @@ Nous décrirons également le fichier <code>.gitignore</code>.
 </div>
 </div>
 
-<div id="outline-container-orgebbca0f" class="outline-3">
-<h3 id="orgebbca0f"><span class="section-number-3">1.4</span> Fonctionnement du document</h3>
+<div id="outline-container-org7ac6443" class="outline-3">
+<h3 id="org7ac6443"><span class="section-number-3">1.4</span> Fonctionnement du document</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="tdaction">
 <p>
@@ -412,16 +412,16 @@ dehors des sentiers.
 </div>
 </div>
 
-<div id="outline-container-orgbb6085b" class="outline-2">
-<h2 id="orgbb6085b"><span class="section-number-2">2</span> Contenu</h2>
+<div id="outline-container-orgcfd09b4" class="outline-2">
+<h2 id="orgcfd09b4"><span class="section-number-2">2</span> Contenu</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgdbddedb" class="outline-3">
-<h3 id="orgdbddedb"><span class="section-number-3">2.1</span> Introduction</h3>
+<div id="outline-container-org18bbc76" class="outline-3">
+<h3 id="org18bbc76"><span class="section-number-3">2.1</span> Introduction</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org71e24cf" class="outline-4">
-<h4 id="org71e24cf"><span class="section-number-4">2.1.1</span> Notion de contrôle de version</h4>
+<div id="outline-container-orgea65ba3" class="outline-4">
+<h4 id="orgea65ba3"><span class="section-number-4">2.1.1</span> Notion de contrôle de version</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 Si vous avez déjà écrit un document un peu long, vous vous êtes sans
@@ -532,8 +532,8 @@ avec votre version</li>
 </div>
 </div>
 
-<div id="outline-container-orgd20f9f2" class="outline-4">
-<h4 id="orgd20f9f2"><span class="section-number-4">2.1.2</span> Environnement de travail</h4>
+<div id="outline-container-org3adecb9" class="outline-4">
+<h4 id="org3adecb9"><span class="section-number-4">2.1.2</span> Environnement de travail</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Dans l'école, Git est déjà installé, tant sur les machines Windows que
@@ -587,12 +587,12 @@ l'historique des commandes.
 </div>
 </div>
 
-<div id="outline-container-org8bfbc6b" class="outline-3">
-<h3 id="org8bfbc6b"><span class="section-number-3">2.2</span> Création d'un dépôt Git et de commits</h3>
+<div id="outline-container-org8a3eaf4" class="outline-3">
+<h3 id="org8a3eaf4"><span class="section-number-3">2.2</span> Création d'un dépôt Git et de commits</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orgba87bcd" class="outline-4">
-<h4 id="orgba87bcd"><span class="section-number-4">2.2.1</span> Initialisation : git init</h4>
+<div id="outline-container-org0f4331e" class="outline-4">
+<h4 id="org0f4331e"><span class="section-number-4">2.2.1</span> Initialisation : git init</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <div class="tdaction">
 <p>
@@ -635,8 +635,8 @@ Essayez aussi <code>find .</code> tout seul pour voir la différence.
 </div>
 </div>
 
-<div id="outline-container-orgf5fd108" class="outline-4">
-<h4 id="orgf5fd108"><span class="section-number-4">2.2.2</span> Intermède : créer un projet</h4>
+<div id="outline-container-orgf7123ba" class="outline-4">
+<h4 id="orgf7123ba"><span class="section-number-4">2.2.2</span> Intermède : créer un projet</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 Utiliser Git sans projet à construire, c'est un peu comme braquer une
@@ -677,8 +677,8 @@ sauvegarde du travail.
 </div>
 </div>
 
-<div id="outline-container-org35ed073" class="outline-4">
-<h4 id="org35ed073"><span class="section-number-4">2.2.3</span> Sélection des fichiers : git add</h4>
+<div id="outline-container-org5a69c1f" class="outline-4">
+<h4 id="org5a69c1f"><span class="section-number-4">2.2.3</span> Sélection des fichiers : git add</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <div class="tdaction">
 <p>
@@ -813,8 +813,8 @@ commit something to memory : to learn something well enough to remember it exact
 </div>
 </div>
 
-<div id="outline-container-org12f1b42" class="outline-4">
-<h4 id="org12f1b42"><span class="section-number-4">2.2.4</span> Sauvegarde d'une version : git commit</h4>
+<div id="outline-container-org04deb65" class="outline-4">
+<h4 id="org04deb65"><span class="section-number-4">2.2.4</span> Sauvegarde d'une version : git commit</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 Il est (presque) obligatoire, avec Git, de donner une description à nos
@@ -884,8 +884,8 @@ nothing to commit, working directory clean
 </div>
 </div>
 
-<div id="outline-container-orgc715f8f" class="outline-4">
-<h4 id="orgc715f8f"><span class="section-number-4">2.2.5</span> Laisser des fichiers de côté : <code>.gitignore</code></h4>
+<div id="outline-container-orgb225a07" class="outline-4">
+<h4 id="orgb225a07"><span class="section-number-4">2.2.5</span> Laisser des fichiers de côté : <code>.gitignore</code></h4>
 <div class="outline-text-4" id="text-2-2-5">
 <p>
 Il arrive d'avoir des fichiers que nous ne voulons pas suivre avec Git. (Il
@@ -971,8 +971,8 @@ git commit -m "Ignore le répertoire 'build'"
 </div>
 </div>
 
-<div id="outline-container-org5b7986e" class="outline-4">
-<h4 id="org5b7986e"><span class="section-number-4">2.2.6</span> Intermède : avancer dans le projet</h4>
+<div id="outline-container-org197e034" class="outline-4">
+<h4 id="org197e034"><span class="section-number-4">2.2.6</span> Intermède : avancer dans le projet</h4>
 <div class="outline-text-4" id="text-2-2-6">
 <p>
 Il est temps d'avancer dans votre projet en suivant les étapes suivantes:
@@ -999,7 +999,7 @@ automatiquement par Netbeans. Vous pouvez committer ces changements.
 </div>
 
 <ol class="org-ol">
-<li><a id="orgf02ad73"></a>Faites afficher "Hello, World !" à votre programme java.<br />
+<li><a id="org2a48118"></a>Faites afficher "Hello, World !" à votre programme java.<br />
 <div class="outline-text-5" id="text-2-2-6-1">
 <div class="tdaction">
 <ol class="org-ol">
@@ -1022,7 +1022,7 @@ pour insérer automatiquement de quoi écrire sur la sortie standard.
 </div>
 </li>
 
-<li><a id="orgb152c9d"></a>La suite du projet<br />
+<li><a id="org3dd4955"></a>La suite du projet<br />
 <div class="outline-text-5" id="text-2-2-6-2">
 <p>
 Nous développerons notre projet plus tard. Passons à autre chose.
@@ -1032,8 +1032,8 @@ Nous développerons notre projet plus tard. Passons à autre chose.
 </ol>
 </div>
 
-<div id="outline-container-org08674a7" class="outline-4">
-<h4 id="org08674a7"><span class="section-number-4">2.2.7</span> Une explication sur la notion de commit</h4>
+<div id="outline-container-org8c69948" class="outline-4">
+<h4 id="org8c69948"><span class="section-number-4">2.2.7</span> Une explication sur la notion de commit</h4>
 <div class="outline-text-4" id="text-2-2-7">
 <p>
 Un commit est un enregistrement de l'état de votre répertoire de travail
@@ -1065,7 +1065,7 @@ commit, et</li>
 <div class="tdastuce">
 <p>
 Pour en savoir plus, vous pourrez aller voir l'annexe
-<a href="#org5057180">Anatomie d'un commit</a>.
+<a href="#org316feb2">Anatomie d'un commit</a>.
 </p>
 
 </div>
@@ -1073,12 +1073,12 @@ Pour en savoir plus, vous pourrez aller voir l'annexe
 </div>
 </div>
 
-<div id="outline-container-org32c382c" class="outline-3">
-<h3 id="org32c382c"><span class="section-number-3">2.3</span> Affichage de l'historique et des commits</h3>
+<div id="outline-container-org6bacae5" class="outline-3">
+<h3 id="org6bacae5"><span class="section-number-3">2.3</span> Affichage de l'historique et des commits</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-orgc8d2198" class="outline-4">
-<h4 id="orgc8d2198"><span class="section-number-4">2.3.1</span> Affichage l'historique</h4>
+<div id="outline-container-orge83588d" class="outline-4">
+<h4 id="orge83588d"><span class="section-number-4">2.3.1</span> Affichage l'historique</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <div class="tdaction">
 <p>
@@ -1103,8 +1103,8 @@ n'a pas de parent).
 </div>
 </div>
 
-<div id="outline-container-org0785998" class="outline-4">
-<h4 id="org0785998"><span class="section-number-4">2.3.2</span> Lecture d'un commit</h4>
+<div id="outline-container-org2440a7b" class="outline-4">
+<h4 id="org2440a7b"><span class="section-number-4">2.3.2</span> Lecture d'un commit</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 Dans le log, notez que chaque commit commence par une ligne du type:
@@ -1223,8 +1223,8 @@ disponibles.
 </div>
 </div>
 
-<div id="outline-container-org5bbe2dd" class="outline-4">
-<h4 id="org5bbe2dd"><span class="section-number-4">2.3.3</span> Un outil graphique : <code>gitk</code></h4>
+<div id="outline-container-orga6da783" class="outline-4">
+<h4 id="orga6da783"><span class="section-number-4">2.3.3</span> Un outil graphique : <code>gitk</code></h4>
 <div class="outline-text-4" id="text-2-3-3">
 <div class="tdaction">
 <p>
@@ -1237,8 +1237,8 @@ historique. Nous l'utiliserons encore plus tard.
 </div>
 </div>
 
-<div id="outline-container-orge50f1e5" class="outline-3">
-<h3 id="orge50f1e5"><span class="section-number-3">2.4</span> Partage et collaboration : ajout de <i>remotes</i></h3>
+<div id="outline-container-org654debd" class="outline-3">
+<h3 id="org654debd"><span class="section-number-3">2.4</span> Partage et collaboration : ajout de <i>remotes</i></h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 Nous l'avons dit : Git permet de travailler en équipe.
@@ -1264,12 +1264,12 @@ etc.),&#x2026; ou Git, bien sûr.
 </div>
 </div>
 
-<div id="outline-container-org3288dcc" class="outline-4">
-<h4 id="org3288dcc"><span class="section-number-4">2.4.1</span> Les principes</h4>
+<div id="outline-container-orgb0713ae" class="outline-4">
+<h4 id="orgb0713ae"><span class="section-number-4">2.4.1</span> Les principes</h4>
 <div class="outline-text-4" id="text-2-4-1">
 </div>
 <ol class="org-ol">
-<li><a id="org0181993"></a>Principe de collaboration<br />
+<li><a id="orgb9f99eb"></a>Principe de collaboration<br />
 <div class="outline-text-5" id="text-2-4-1-1">
 <p>
 Le principe que nous allons détailler est le suivant:
@@ -1316,7 +1316,7 @@ N(N-1)/2 dans le premier cas, et N dans le second cas.
 </div>
 </li>
 
-<li><a id="org8307e52"></a>Principe technique<br />
+<li><a id="org7bfc6f0"></a>Principe technique<br />
 <div class="outline-text-5" id="text-2-4-1-2">
 <p>
 Techniquement, chaque dépôt Git peut être considéré comme étant un
@@ -1351,8 +1351,8 @@ acheter des livres et ne jamais les lire.
 </ol>
 </div>
 
-<div id="outline-container-org18a2dda" class="outline-4">
-<h4 id="org18a2dda"><span class="section-number-4">2.4.2</span> Gitlab</h4>
+<div id="outline-container-org4a3e0c6" class="outline-4">
+<h4 id="org4a3e0c6"><span class="section-number-4">2.4.2</span> Gitlab</h4>
 <div class="outline-text-4" id="text-2-4-2">
 <p>
 Les étapes à suivre sont :
@@ -1382,7 +1382,7 @@ Une fois tout mis en place, le travail ressemblera à :
 </div>
 
 <ol class="org-ol">
-<li><a id="org0926ee1"></a>Connexion à Gitlab<br />
+<li><a id="org78610b0"></a>Connexion à Gitlab<br />
 <div class="outline-text-5" id="text-2-4-2-1">
 <div class="tdaction">
 <p>
@@ -1428,7 +1428,7 @@ En attendant cet email, vous pouvez poursuivre le labo&#x2026;
 </div>
 </li>
 
-<li><a id="orgacc0362"></a>Création du dépôt sur Gitlab<br />
+<li><a id="org41496f9"></a>Création du dépôt sur Gitlab<br />
 <div class="outline-text-5" id="text-2-4-2-2">
 <div class="tdaction">
 <p>
@@ -1463,7 +1463,7 @@ project.
 </div>
 </div>
 </li>
-<li><a id="orgc372d61"></a>Indiquez à Git l'emplacement du serveur: <code>git remote</code><br />
+<li><a id="org0d86f14"></a>Indiquez à Git l'emplacement du serveur: <code>git remote</code><br />
 <div class="outline-text-5" id="text-2-4-2-3">
 <div class="tdaction">
 <p>
@@ -1505,7 +1505,7 @@ Vérifiez avec <code>git remote -v</code> que l'URL est correcte.
 </div>
 </li>
 
-<li><a id="org16374f6"></a>Déposez votre travail sur le dépôt distant.<br />
+<li><a id="org81507a0"></a>Déposez votre travail sur le dépôt distant.<br />
 <div class="outline-text-5" id="text-2-4-2-4">
 <p>
 Nous allons indiquer à Git deux choses :
@@ -1538,12 +1538,12 @@ git push -u esi-gitlab master
 <p>
 Le paramètre <code>-u</code> indique à Git qu'il faudra encore utiliser ce dépôt
 distant à l'avenir. Le mot <code>master</code> va rester mystérieux jusqu'à ce que
-nous parlions de <a href="#orgf9b29de">branches</a>.
+nous parlions de <a href="#orgb5197f8">branches</a>.
 </p>
 </div>
 </li>
 
-<li><a id="orge98b762"></a>Vérifiez que tout est en ligne<br />
+<li><a id="org31a387a"></a>Vérifiez que tout est en ligne<br />
 <div class="outline-text-5" id="text-2-4-2-5">
 <p>
 Retournez sur le site Web Gitlab, rafraichissez la page et vérifiez que
@@ -1554,12 +1554,12 @@ vous retrouvez vos commits.
 </ol>
 </div>
 
-<div id="outline-container-org05eb2ab" class="outline-4">
-<h4 id="org05eb2ab"><span class="section-number-4">2.4.3</span> linux1</h4>
+<div id="outline-container-org2a0314c" class="outline-4">
+<h4 id="org2a0314c"><span class="section-number-4">2.4.3</span> linux1</h4>
 <div class="outline-text-4" id="text-2-4-3">
 </div>
 <ol class="org-ol">
-<li><a id="org8147dbe"></a>Connexion à linux1<br />
+<li><a id="orga82c3eb"></a>Connexion à linux1<br />
 <div class="outline-text-5" id="text-2-4-3-1">
 <div class="tdaction">
 <p>
@@ -1577,7 +1577,7 @@ Créez puis allez dans le répertoire <code>~/mesprojets/</code>.
 </div>
 </li>
 
-<li><a id="orgc1b397d"></a>Créer un dépôt et récupérer le contenu du dépôt Gitlab<br />
+<li><a id="org47cc32a"></a>Créer un dépôt et récupérer le contenu du dépôt Gitlab<br />
 <div class="outline-text-5" id="text-2-4-3-2">
 <p>
 Nous allons maintenant créer un dépôt sur <code>linux1</code> <i>et</i> y rapatrier le
@@ -1627,8 +1627,8 @@ git remote rename origin esi-gitlab
 </ol>
 </div>
 
-<div id="outline-container-org6250d8b" class="outline-4">
-<h4 id="org6250d8b"><span class="section-number-4">2.4.4</span> Et ensuite&#x2026;</h4>
+<div id="outline-container-org2344d3d" class="outline-4">
+<h4 id="org2344d3d"><span class="section-number-4">2.4.4</span> Et ensuite&#x2026;</h4>
 <div class="outline-text-4" id="text-2-4-4">
 <p>
 Nous avons utilisé <code>linux1</code> comme "autre machine". Vous pourriez
@@ -1662,16 +1662,16 @@ dépôt est déjà présent).</li>
 </div>
 </div>
 
-<div id="outline-container-orgf9b29de" class="outline-3">
-<h3 id="orgf9b29de"><span class="section-number-3">2.5</span> Les branches</h3>
+<div id="outline-container-orgb5197f8" class="outline-3">
+<h3 id="orgb5197f8"><span class="section-number-3">2.5</span> Les branches</h3>
 <div class="outline-text-3" id="text-2-5">
 </div>
-<div id="outline-container-orge87de38" class="outline-4">
-<h4 id="orge87de38"><span class="section-number-4">2.5.1</span> Les principes</h4>
+<div id="outline-container-orgacb4e29" class="outline-4">
+<h4 id="orgacb4e29"><span class="section-number-4">2.5.1</span> Les principes</h4>
 <div class="outline-text-4" id="text-2-5-1">
 </div>
 <ol class="org-ol">
-<li><a id="org4f8e095"></a>Notion de branche<br />
+<li><a id="orgb68747e"></a>Notion de branche<br />
 <div class="outline-text-5" id="text-2-5-1-1">
 <p>
 Jusqu'à présent vous avez
@@ -1757,7 +1757,7 @@ qui avance, mais <code>nom-de-branche</code> ne bouge pas).</li>
 
 <div class="tdastuce">
 <p>
-Pour en savoir plus sur la notion de branche, lisez l'annexe <a href="#org35f76f7">3.1</a>.
+Pour en savoir plus sur la notion de branche, lisez l'annexe <a href="#org55332fa">3.1</a>.
 </p>
 
 </div>
@@ -1767,8 +1767,8 @@ Pour en savoir plus sur la notion de branche, lisez l'annexe <a href="#org35f76f
 </div>
 
 
-<div id="outline-container-org214eabc" class="outline-4">
-<h4 id="org214eabc"><span class="section-number-4">2.5.2</span> Modification du projet (linux1)</h4>
+<div id="outline-container-org92e8955" class="outline-4">
+<h4 id="org92e8955"><span class="section-number-4">2.5.2</span> Modification du projet (linux1)</h4>
 <div class="outline-text-4" id="text-2-5-2">
 <p>
 Revenant à notre projet, nous allons voir comment une modification et un
@@ -1778,7 +1778,7 @@ vu depuis Git Bash.
 </div>
 
 <ol class="org-ol">
-<li><a id="orgf54e548"></a>Configurez Git<br />
+<li><a id="org29fa00b"></a>Configurez Git<br />
 <div class="outline-text-5" id="text-2-5-2-1">
 <div class="tdaction">
 <p>
@@ -1794,7 +1794,7 @@ git config --global user.name "Votre Nom"
 </div>
 </li>
 
-<li><a id="orgbcf5498"></a>Ajoutez un test pour votre programme<br />
+<li><a id="org9e305e2"></a>Ajoutez un test pour votre programme<br />
 <div class="outline-text-5" id="text-2-5-2-2">
 <div class="tdaction">
 <p>
@@ -1831,15 +1831,24 @@ fi
 
 <div class="tdaction">
 <p>
-Lancez le test avec <code>sh test.sh</code> et si "Test réussi." est
-affiché à la fin, committez.
+Lancez le test avec <code>sh test.sh</code> et "Test réussi." doit s'afficher à la fin. Lorsque cela fonctionne, committez.
 </p>
+
+</div>
+<div class="tdreponse">
+<div class="verbatim">
+<p>
+git add test.sh
+git commit -m "test.sh: nouveau fichier"
+</p>
+
+</div>
 
 </div>
 </div>
 </li>
 
-<li><a id="org878fd14"></a>Envoyez le résultat sur Gitlab<br />
+<li><a id="org3a0a602"></a>Envoyez le résultat sur Gitlab (<code>git.esi-bru.be</code>)<br />
 <div class="outline-text-5" id="text-2-5-2-3">
 <p>
 Pour envoyer sur Gitlab, on pourrait se demander s'il ne faut pas
@@ -1877,8 +1886,8 @@ distant après l'avoir cloné. Par défaut c'était <code>origin</code>.
 </ol>
 </div>
 
-<div id="outline-container-org781e736" class="outline-4">
-<h4 id="org781e736"><span class="section-number-4">2.5.3</span> Modification du projet (Git Bash)</h4>
+<div id="outline-container-org719118a" class="outline-4">
+<h4 id="org719118a"><span class="section-number-4">2.5.3</span> Modification du projet (Git Bash)</h4>
 <div class="outline-text-4" id="text-2-5-3">
 <div class="tdaction">
 <p>
@@ -1889,8 +1898,8 @@ Modifiez, sous Netbeans, le texte qui suit <code>@author</code> pour y indiquer 
 </div>
 </div>
 
-<div id="outline-container-org01df630" class="outline-4">
-<h4 id="org01df630"><span class="section-number-4">2.5.4</span> Récupération : linux1 vers Git Bash.</h4>
+<div id="outline-container-orgced2028" class="outline-4">
+<h4 id="orgced2028"><span class="section-number-4">2.5.4</span> Récupération : linux1 vers Git Bash.</h4>
 <div class="outline-text-4" id="text-2-5-4">
 <div class="tdaction">
 <p>
@@ -1906,13 +1915,13 @@ git remote update
 <p>
 Cette commande a mis à jour la branche qui correspond au contenu de
 Gitlab&#x2026; mais pas encore vos fichiers de travail. Pour cela il faudra
-attendre la section <a href="#orgc8140c9">diff et merge</a>.
+attendre la section <a href="#org1a31b62">diff et merge</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org352eb19" class="outline-4">
-<h4 id="org352eb19"><span class="section-number-4">2.5.5</span> Voir les branches : <code>git branch</code></h4>
+<div id="outline-container-org4a110d7" class="outline-4">
+<h4 id="org4a110d7"><span class="section-number-4">2.5.5</span> Voir les branches : <code>git branch</code></h4>
 <div class="outline-text-4" id="text-2-5-5">
 <div class="tdaction">
 <p>
@@ -1955,8 +1964,8 @@ C'est là qu'est caché le travail que nous avions mis sur linux1
 </div>
 </div>
 
-<div id="outline-container-org13fb3a7" class="outline-3">
-<h3 id="org13fb3a7"><span class="section-number-3">2.6</span> Lecture de l'historique (variante arborescente)</h3>
+<div id="outline-container-org056a84f" class="outline-3">
+<h3 id="org056a84f"><span class="section-number-3">2.6</span> Lecture de l'historique (variante arborescente)</h3>
 <div class="outline-text-3" id="text-2-6">
 <div class="tdaction">
 <p>
@@ -2021,8 +2030,8 @@ et voir le résultat dans <code>gitk</code>.
 </div>
 </div>
 
-<div id="outline-container-orgc8140c9" class="outline-3">
-<h3 id="orgc8140c9"><span class="section-number-3">2.7</span> diff et merge</h3>
+<div id="outline-container-org1a31b62" class="outline-3">
+<h3 id="org1a31b62"><span class="section-number-3">2.7</span> diff et merge</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 Nous avons deux branches qui ont divergé : <code>master</code> et
@@ -2036,8 +2045,8 @@ contient donc normalement la même chose que cette branche (à l'exception
 </p>
 </div>
 
-<div id="outline-container-org6ca8275" class="outline-4">
-<h4 id="org6ca8275"><span class="section-number-4">2.7.1</span> Comparaison : diff</h4>
+<div id="outline-container-orgc550b43" class="outline-4">
+<h4 id="orgc550b43"><span class="section-number-4">2.7.1</span> Comparaison : diff</h4>
 <div class="outline-text-4" id="text-2-7-1">
 <div class="tdaction">
 <p>
@@ -2051,8 +2060,8 @@ git diff master esi-gitlab/master
 </div>
 </div>
 
-<div id="outline-container-orgbc6432c" class="outline-4">
-<h4 id="orgbc6432c"><span class="section-number-4">2.7.2</span> Fusion : merge</h4>
+<div id="outline-container-org59f756a" class="outline-4">
+<h4 id="org59f756a"><span class="section-number-4">2.7.2</span> Fusion : merge</h4>
 <div class="outline-text-4" id="text-2-7-2">
 <div class="tdaction">
 <p>
@@ -2115,8 +2124,8 @@ git, par exemple pour utiliser Notepad++ :
 </div>
 </div>
 
-<div id="outline-container-org696d23c" class="outline-3">
-<h3 id="org696d23c"><span class="section-number-3">2.8</span> Lecture de l'historique (variante DAG)</h3>
+<div id="outline-container-orgb9be7e5" class="outline-3">
+<h3 id="orgb9be7e5"><span class="section-number-3">2.8</span> Lecture de l'historique (variante DAG)</h3>
 <div class="outline-text-3" id="text-2-8">
 <div class="tdaction">
 <p>
@@ -2130,8 +2139,8 @@ gitk --all
 </div>
 </div>
 
-<div id="outline-container-orgf140aa7" class="outline-3">
-<h3 id="orgf140aa7"><span class="section-number-3">2.9</span> Gestion des conflits de fusion</h3>
+<div id="outline-container-orgd84de15" class="outline-3">
+<h3 id="orgd84de15"><span class="section-number-3">2.9</span> Gestion des conflits de fusion</h3>
 <div class="outline-text-3" id="text-2-9">
 <p>
 Il peut arriver que survienne un conflit de fusion. C'est à dire que Git
@@ -2214,7 +2223,7 @@ Par exemple vous pourriez écrire ceci à la place :
 
 <div class="tdaction">
 <p>
-<a href="#orgbc6432c">Fusionnez</a> la branche <code>fix-comment</code>.
+<a href="#org59f756a">Fusionnez</a> la branche <code>fix-comment</code>.
 </p>
 
 </div>
@@ -2362,8 +2371,8 @@ ligne, puis une ligne vide, puis un message détaillé.
 </div>
 </div>
 
-<div id="outline-container-org1c8a19b" class="outline-3">
-<h3 id="org1c8a19b"><span class="section-number-3">2.10</span> git et NetBeans</h3>
+<div id="outline-container-orgdaa61a4" class="outline-3">
+<h3 id="orgdaa61a4"><span class="section-number-3">2.10</span> git et NetBeans</h3>
 <div class="outline-text-3" id="text-2-10">
 <p>
 Comme vous l'avez noté dans le menu Team, Netbeans offre une certaine
@@ -2374,12 +2383,12 @@ faire depuis Netbeans.
 </div>
 </div>
 
-<div id="outline-container-orgccea0a3" class="outline-2">
-<h2 id="orgccea0a3"><span class="section-number-2">3</span> Annexe</h2>
+<div id="outline-container-orgfbc9a24" class="outline-2">
+<h2 id="orgfbc9a24"><span class="section-number-2">3</span> Annexe</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org35f76f7" class="outline-3">
-<h3 id="org35f76f7"><span class="section-number-3">3.1</span> Notion de branche, version abstraite</h3>
+<div id="outline-container-org55332fa" class="outline-3">
+<h3 id="org55332fa"><span class="section-number-3">3.1</span> Notion de branche, version abstraite</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Techniquement, une branche est simplement un fichier dans
@@ -2428,8 +2437,8 @@ détails techniques bien au delà du cadre du présent document.)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5057180" class="outline-3">
-<h3 id="org5057180"><span class="section-number-3">3.2</span> Anatomie d'un commit</h3>
+<div id="outline-container-org316feb2" class="outline-3">
+<h3 id="org316feb2"><span class="section-number-3">3.2</span> Anatomie d'un commit</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Un commit n'est en réalité rien d'autre qu'un petit fichier texte. On
@@ -2446,7 +2455,7 @@ git cat-file commit HEAD
 <div id="postamble" class="status">
 <p class="date">Date: Année 2018-2019</p>
 <p class="author">Author: Nicolas Richard <a href="mailto:nrichard@he2b.be">nrichard@he2b.be</a></p>
-<p class="date">Created: 2018-09-06 Thu 23:18</p>
+<p class="date">Created: 2018-09-07 Fri 00:40</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
