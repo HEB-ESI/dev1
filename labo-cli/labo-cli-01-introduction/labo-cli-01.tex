@@ -41,7 +41,7 @@
 	borderline west={1mm}{-4mm}{lightgray},
 	title=Objectifs, coltitle=black, fonttitle=\sffamily\bfseries\large]
 	Ce premier TD (\textit{Travail Dirigé}) a pour but de vous permettre de prendre en main les outils informatiques 
-	avec lesquels vous allez travailler aux laboratoires de Java. Il vous accompagne dans vos premiers pas sur \verb_Linux_.
+	avec lesquels vous allez travailler aux laboratoires d'environnement. Il vous accompagne dans vos premiers pas sur \verb_Linux_.
 	\end{tcolorbox}
 	
 	\tableofcontents
@@ -51,14 +51,8 @@
 %===================
 \section{Introduction}
 %====================	
-Les TDs sont compsés :
-\par
-\begin{itemize}
-\item de rappels de la \textbf{théorie} vue au cours ou d'éléments nouveaux (surtout pour la partie \verb_Linux_); 
-\item d'\textbf{exemples} qui illustrent la théorie;
-\item d'\textbf{exercices} pour mettre en pratique et assimiler la théorie.
-\end{itemize}
-
+Au cours des laboratoires java, vous serez amener à concevoir et écrire des programmes en java à l'aide de l'environnement de développement Netbeans.
+Les laboratoires d'environnement ont, de leur côté, pour objectifs de vous familiariser avec l'environnement de développement au sens large. Vous y découvrirez des outils souvent incontournables lorsqu'on développe du logiciel. Entre autres, nous utiliseront linux, bash, git et ssh.
 %====================
 \subsection{Consignes}
 %====================
@@ -89,17 +83,16 @@ Nous avons rassemblé sur le site (\textbf{suivez le lien "Aide"}), une série d
 
 Comme vous avez pu le constater, les PC des laboratoires sont équipés du système \verb_Windows_.
 \par			
-Au laboratoire, vous vous connecterez sur un serveur \verb_Linux_. Windows vous servira essentiellement à : vous connecter au Linux, 
+Au laboratoire d'environnement, vous vous connecterez sur un serveur \verb_Linux_. Windows vous servira essentiellement à : vous connecter au Linux, 
 effectuer des recherches sur Internet, imprimer et transférer des fichiers.
 \par
-Si vous avez une question concernant l'utilisation de Windows vous trouverez peut-être la réponse dans l'aide-mémoire que nous avons déjà cité dans la partie "ressources". Il est disponible sur poÉSI et vous y trouverez par exemple des explications sur l'impression.
-\par			
-		
+Si vous avez une question concernant l'utilisation de Windows vous trouverez peut-être la réponse dans l'aide-mémoire que nous avons déjà cité dans la partie "ressources". Il est disponible sur poÉSI. 
+\par		
 
 %====================
 \subsection{Imprimer}
 %====================
-Si vous voulez imprimer ce TD (ce qui est une bonne idée), vous devez \textit{installer} une imprimante. Vous trouverez comment faire en consultant l'aide-mémoire sur poÉSI.
+Si vous voulez imprimer ce TD (ce qui est une bonne idée), vous devez \textit{installer} une imprimante. Vous trouverez comment faire en consultant l'aide-mémoire que vous venons de mentionner.
 \par
 %====================
 \subsection{Changer le mot de passe sous Windows}
@@ -113,7 +106,6 @@ Si vous voulez imprimer ce TD (ce qui est une bonne idée), vous devez \textit{i
 \`A votre avis, pourquoi vous demande-t-on de modifier votre mot de passe ?
 				
 \par
-{\footnotesize\emph{(la r\'eponse est disponible dans la version en ligne)}\par} 
 			
 %\subparagraph{Exemples de mots de passe} 
 \begin{Exercice}{Exemples de mots de passe} 		
@@ -155,7 +147,7 @@ Non. Pour des raisons de s\'ecurit\'e, Windows va vous demander de changer le mo
 \par
  \textbf{J'ai oubli\'e mon mot de passe. Qu'est-ce que je peux faire ?}
  \par
- Les professeurs ne peuvent ni retrouver votre nouveau mot de passe, ni remettre le mot de passe de d\'epart. Par contre le technicien (F. Marchal qui a son bureau au 5\textsuperscript{\`eme}) peut remettre le mot de passe de d\'epart. Allez le trouver (et prenez garde \`a ce que \c ca n'arrive plus !)
+ Les professeurs ne peuvent ni retrouver votre nouveau mot de passe, ni remettre le mot de passe de d\'epart. Par contre les techniciens (bureau au 5\textsuperscript{\`eme}) peuvent remettre le mot de passe de d\'epart. Allez les trouver (et prenez garde \`a ce que \c ca n'arrive plus !)
  \par
 
 \clearpage
@@ -168,7 +160,7 @@ Non. Pour des raisons de s\'ecurit\'e, Windows va vous demander de changer le mo
 %====================
 \subsection{Présentation}
 %====================
-Vous ne travaillerez pas directement sur votre PC durant les laboratoires Java. Celui-ci vous servira pour vous connecter au serveur Linux (son nom est \verb_linux1_)
+Vous ne travaillerez pas directement sur votre PC durant les laboratoires d'environnement. Celui-ci vous servira pour vous connecter au serveur Linux (son nom est \verb_linux1_)
  \par
  \textbf{Tiens, c'est quoi Linux et pourquoi l'utiliser ? C'est quoi une machine partag\'ee?}
  \par
@@ -197,15 +189,6 @@ Le mot de passe sous Windows et sous Linux sont 2 mots de passe diff\'erents (in
         
 Vous avez modifi\'e votre mot de passe sous Windows mais pas encore sous Linux (vous le ferez plus tard...)
 				
-\par
-\begin{figure}[hbt]      
- \begin{coltbox}{Attention :}
-Seulement les images peuvent \^etre repr\'esent\'ees dans cette version! Flash, animation, son etc. sont visibles uniquement dans la version en ligne.
-\end{coltbox}
-%\end{fhint}
-\caption[PuTTY.mov]{PuTTY.mov}
-\end{figure}
-
 %\subparagraph{Connectez-vous \`a linux1} 
 \begin{Tutoriel}{Connectez-vous \`a linux1} 
 Il y a 4 \'etapes :
@@ -216,7 +199,7 @@ Il y a 4 \'etapes :
 \item lancez l'application \verb_putty_ (vous la trouverez dans le menu ou comme raccourci sur le bureau) ;
 					
 \item indiquez \`a \verb_putty_ le nom de la machine (\textit{Host Name}) \`a laquelle vous voulez vous connecter (ici \verb_linux1_) ;
-{\footnotesize\emph{(une capture d'\'ecran est disponible dans la version en ligne)}\par} 
+% TODO capture putty
 
 \item cliquez sur "\textbf{Open}" ; la connexion se fait ! S'il vous pr\'esente une boite de message avec un "\textbf{Security Alert}", cliquez sur "\textbf{Yes}" en toute confiance ;
 					
@@ -452,10 +435,10 @@ Est-ce qu'on peut dire que \,\verb|ls bin|\, est strictement \'equivalent \`a \,
 				
 \par
  \fcolorbox{gray}{verylightgray}{\parbox{\textwidth}{\textcolor{verylightgray}{\LARGE Non ! Dans le 1 er cas, on ne modifie pas le dossier courant. Dans le 2 ème cas oui. }}}
-  {\footnotesize\emph{(la r\'eponse est disponible dans la version en ligne)}\par} Comment le mettre en \'evidence ?
+  Comment le mettre en \'evidence ?
  \par
  \fcolorbox{gray}{verylightgray}{\parbox{\textwidth}{\textcolor{verylightgray}{\LARGE On peut le mettre en évidence en tapant la commande pwd après chaque cas.}}} 
- {\footnotesize\emph{(la r\'eponse est disponible dans la version en ligne)}\par} 										
+										
 			
  \end{Exercice}       
 			
@@ -594,17 +577,17 @@ Oui ! Mais c'est impoli de quitter quelqu'un sans lui dire au revoir ! ;)
 Plus s\'erieusement, vous coupez brutalement la conversation avec \verb_linux1_ ce qui peut laisser trainer des programmes actifs et vous emp\^echer de vous connecter la prochaine fois.
 						
 \par
- \textbf{J'ai oubli\'e mon mot de passe. Je dois aussi aller voir F. Marchal ?}
+ \textbf{J'ai oubli\'e mon mot de passe. Je dois aussi aller voir les techniciens ?}
  \par
         
-Non ! Votre professeur de Java peut r\'einitialiser le mot de passe Linux \`a sa valeur initiale.
+Non ! Votre professeur de labo peut r\'einitialiser le mot de passe Linux \`a sa valeur initiale.
 						
  \par
 
 %===================
 \section{Les outils virtuels}
 %====================
-Cette partie d\'epasse un peu le cadre strict des laboratoires Java. Nous voudrions profiter de votre pr\'esence \`a un laboratoire pour vous pr\'esenter les diff\'erents outils virtuels mis \`a votre disposition par l'\'ecole.
+Cette partie d\'epasse un peu le cadre strict des laboratoires d'environnement. Nous voudrions profiter de votre pr\'esence \`a un laboratoire pour vous pr\'esenter les diff\'erents outils virtuels mis \`a votre disposition par l'\'ecole.
 \par
 
 %====================
@@ -662,29 +645,33 @@ Pour le moment, cet espace est peu utilis\'e dans les \'echanges \'etudiants-pro
 			
 \par
 \begin{Exercice}{}
-Allez sur votre drive, cr\'eez un dossier \verb_Java_ et, dedans, un fichier texte \verb_Notes_ que vous pourrez utiliser pour prendre quelques notes.
+Allez sur votre drive, cr\'eez un dossier \verb_dev1_ et, dedans, un fichier texte \verb_Notes_ que vous pourrez utiliser pour prendre quelques notes.
 \end{Exercice}
 
  \par
         
 \subparagraph{E. L'agenda} 
-		
+
 \textcolor{white}{.} \par
 Google met \'egalement \`a disposition un agenda. Nous ne l'\textbf{utilisons pas} pour l'instant pour communiquer des dates importantes (cours, interrogations,...) mais vous pouvez l'utiliser pour vous ; il est facilement int\'egrable \`a tout autre syst\`eme d'agenda que vous pourriez d\'ej\`a utiliser.
 			
 \par
+\subparagraph{F. git-esi}
+\textcolor{white}{.} \par
+Nous utiliserons également un serveur gitlab avec lequel nous travaillerons au TD5 disponible à l'adresse \url{https://git.esi-bru.be}
+\textcolor{white}{.} \par
 
+
+\par
 %===================
 \section{Conclusion}
 %====================
-%====================
-\subsection{Félicitations}
-%=====================
-Vous \^etes arriv\'es au bout de ce premier TD.
+
+Félicitations ! Vous \^etes arriv\'es au bout de ce premier TD.
  \par
 Avant de quitter le laboratoire, n'oubliez pas de quitter proprement la connexion avec \verb_linux1_ (\,\verb|exit|\,). et d'\'eteindre l'ordinateur ou de vous d\'eloguer.
 \par
-Attention, afin d'arriver au laboratoire dans les meilleures conditions, il est bien de revoir la mati\`ere qui sera mise en pratique.  C'est pourquoi nous vous fournissons quelques \textbf{exercices pr\'eparatoires} \`a faire \`a la maison pour vous permettre d'\'evaluer si vous \^etes pr\^et.  Afin de v\'erifier que vous pr\'eparez bien ces exercices, des \textbf{interrogations} seront organis\'ees tr\`es r\'eguli\`erement en d\'ebut d'ann\'ee. 
+Attention, afin d'arriver au laboratoire dans les meilleures conditions, il est bien de revoir la mati\`ere qui sera mise en pratique.  C'est pourquoi nous vous fournissons quelques \textbf{exercices pr\'eparatoires} \`a faire \`a la maison pour vous permettre d'\'evaluer si vous \^etes pr\^et.  
  \par
 \`A la semaine prochaine et soyez \`a l'heure !
 \par
