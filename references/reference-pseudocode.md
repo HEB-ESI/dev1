@@ -61,9 +61,10 @@ décrivant un algorithme. C'est un peu vrai… et faux. Dès lors que l'on veut
 décrire un algorithme, c'est pour le partager avec d'autres… Ceci implique que
 certaines régles soient définies. 
 
-Nous présentons ici ce que nous pensons être le sous-ensemble minimal de règles
-à respecter pour ne pas être (trop) ambigü et pour ne pas devoir *apprendre* le
-pseudocode. Ceci dit, si le lecteur trouve que c'est ambigü, c'est ambigü. 
+Nous présentons ici ce que nous utilisons dans les notes et pensons être le
+sous-ensemble minimal de règles à respecter pour ne pas être (trop) ambigü et
+pour ne pas devoir *apprendre* le pseudocode. Ceci dit, si le lecteur d'un
+algorithme trouve que c'est ambigü, c'est ambigü. 
 
 
 
@@ -72,8 +73,8 @@ pseudocode. Ceci dit, si le lecteur trouve que c'est ambigü, c'est ambigü.
 Pour faire appel à un traitement, une opération, un algorithme, nous utilisons
 un mot en *mixedCase*. 
 
-Un mot en *mixedCase* est un mot composé de plusieurs mots. Collés.
-Chaque mot commencant par une majuscule excepté le premier. Par exemple:
+Un mot en *mixedCase* est un mot composé de plusieurs mots ! Collés.
+Chaque mot commencant par une majuscule. Excepté le premier. Par exemple:
 \pc{faireUnTrou}, \pc{remplirLeFiltre}, \pc{putLeekInHole}… 
 
 \begin{pseudocode}
@@ -81,6 +82,11 @@ Chaque mot commencant par une majuscule excepté le premier. Par exemple:
 	\Stmt remplirLeFiltre()
 	\Stmt putLeekInHole()
 \end{pseudocode}
+
+Remarque:
+
+- si nous écrivons \pc{faireUnTrou()}, nous comprenons *faire un trou*. L'usage
+des parenthèses n'est pas toujours utile. 
 
 Certaines actions sont des actions élémentaires qui ne demandent aucune
 explication, d'autres sont plus complexes et doivent être expliquées. Elles le
@@ -91,10 +97,11 @@ expliquées… et ainsi de suite.
 Définir un algorithme, c'est: 
 
 - lui donner un nom représentatif de ce qu'il fait;
-- commencer par le mot \pc{algorithm} (ou \pc{algorithme} ou encore \pc{algo});
+- commencer par le mot \pc{algorithm} (ou \pc{algorithme} ou encore \pc{algo}
+voire rien);
 - **indenter** les opérations de manière à **marquer clairement le bloc**
-d'opérations (avec une ligne verticale blanche, ou au crayon, ou sans, ou… du
-moment que l'ensemble est cohérent).
+d'opérations (avec une ligne verticale blanche, ou au crayon, ou avec des
+accolades, ou sans, ou… du moment que l'ensemble est cohérent).
 
 \begin{pseudocode}
 	\Algo{plantOneLeek}{}{}
@@ -104,7 +111,57 @@ moment que l'ensemble est cohérent).
 \end{pseudocode}
 
 
-# Les structures conditionnelles, \pc{if}
+# Les types
+
+Nous voulons distinguer les nombres entiers des nombres décimaux. Nous voulons
+distinguer (parfois)  les caractères des chaines de caractères. Nous voulons
+pouvoir représenter des tableaux et des types plus complexes, définis par
+le ou la dévelopeur·euse.
+
+Nous utiliserons: 
+
+- **integer** pour les nombres entiers et comprenons *int*, *long*, *entier*…
+- **real** pour les nombres décimaux et comprenons *double*, *float*, *réel*,
+*pseudoréel*…
+- **char** pour les caractères et comprenons *character*…;
+- **string** pour les chaines et comprenons *chaine* et ne nous inquiétons pas
+de la casse;
+- **[]** pour les tableaux. Ainsi, nous noterons un tableau d'entiers:
+*integer[]*;
+
+Pour déclarer une variable:
+
+\begin{pseudocode}
+	\Decl{beautifulReal}{real}
+\end{pseudocode}
+
+Pour l'initialiser, lui donner une valeur, nous utilisons naturellement le
+symbole **\pc{=}**:
+
+\begin{pseudocode}
+	\Let beautifulInteger \Gets 7
+\end{pseudocode}
+
+Remarque
+
+- nous utilisons \pc{=} pour l'assignation et \pc{==} pour tester l'égalité.
+Nous comprenons l'usage de \pc{$\leftarrow$} pour l'assignation… mais nous
+déconseillons d'utiliser \pc{=} pour tester l'égalité. 
+
+
+Pour les types plus complexes nous utiliserons le mot **structure** (et nous
+comprenons le mot classe):
+
+\begin{pseudocode}
+	\Struct{StructureName}
+		\Decl{fieldName1}{type1}
+		\Decl{fieldName2}{type2}
+		\Stmt \dots
+		\Decl{fieldNameN}{typeN}
+	\EndStruct
+\end{pseudocode}
+
+# Les structures alternatives, \pc{if}
 
 Pour représenter le **si** (**if**) nous utiliserons cette notation:
 
@@ -131,15 +188,17 @@ Remarques:
 
 - dans les notes, nous utiliserons l'anglais mais le français est bien aussi;
 - il est important de marquer le bloc d'instructions. Nous utilisons une barre
-verticale mais un \pc{endIf} pourrait faire l'affaire;
+verticale mais un \pc{endIf} ou des accolades pourrait faire l'affaire;
+- le mot *then* peut être omis ou remplacé par des parenthèses lorsque 
+la condition ne s'étend pas sur plusieurs lignes par exemple;
 - nous utilisons \pc{if-then} mais nous comprenons \pc{si-alors}[^f1];
+- …
 
 [^f1]:Nous comprenons aussi \pc{if-alors} ou \pc{si-then}… mais bon, *faut pas
   pousser* !
 
-- …
 
-Les autres structures conditionnelles se représentent comme suit:
+Nous écrirons les autres structures conditionnelles comme suit:
 
 \begin{pseudocode}
 	\If {condition}
@@ -158,6 +217,11 @@ Les autres structures conditionnelles se représentent comme suit:
 		\Stmt statement
 	\EndIf
 \end{pseudocode}
+
+À nouveau nous comprenons si l'on délimite les blocs par des accolades et les 
+expressions conditionnelles par des parenthèses[^f2]. 
+
+[^f2]: Et pas l'inverse parce qu'aucun langage ne fait ça. 
 
 ## La structure \pc{switch}
 
@@ -179,7 +243,7 @@ Remarques:
 
 - nous utilisons *switch* mais nous comprenons *selon que*;
 - nous ajoutons un \pc{case} pour chaque cas mais nous comprenons *cas* ou
-l'utilisation d'un tiret;
+l'utilisation d'un tiret ou autre;
 - en langage Java le \pc{switch} est associé au \pc{break}. Nous n'en utilisons
 pas mais nous comprenons s'il y en a. 
 
@@ -203,26 +267,62 @@ Nous formalisons les structrures répétitives les plus courantes: *tant que*
 	\EndRepeat {condition}
 \end{pseudocode}
 
+Le **\pc{for}** est utilisé de deux manières différentes; pour parcourir de
+*n* à *m* avec éventuellement un pas ou en définissant une situation de départ,
+un condition de fin et un incrément. 
+
+Pour un simple parcours, nous écrirons:
+
 \begin{pseudocode}
-	\For {i}{1}{n}
+	\For {i}{n}i{m}
 		\Stmt statement
 	\EndFor
+	\For[-1] {i}{m}{n}
+		\Stmt statement
+	\EndFor
+\end{pseudocode}
+
+Pour un *for* plus général, nous écrirons:
+
+\begin{pseudocode}
+	\Forfor{initialisation}{condition}{update}
+		\Stmt statement
+	\EndForfor
 \end{pseudocode}
 
 Remarques:
 
 - nous utilisons des mots anglais mais comprenons les équivalents français;
-- todo
+- il est toujours possible d'ajouter des parenthèses pour accroitre la
+lisibilité.
 
-# Les paramètes
+# Les paramètres et la valeur de retour
 
-todo 
+Un paramètre est une valeur passée à un algorithme. Il vient entre parenthèses
+après le nom de l'algorithme. Il peut être *en entrée* et ne sera pas modifié
+par l'algorithme ou *en entrée-sortie* auquel cas, il pourra être modifié par
+l'algorithme. Il peut y en avoir plusieurs, de sortes différentes, séparés par
+une virgule. 
 
-# Les entrées-sorties
+- en entrée, il peut être affublé d'une flèche:
 
-todo
+\begin{pseudocode}
+	\Algo {algorithmName}{\Par{paramName \In}{type}}{type}
+		\Stmt statement
+	\EndAlgo 
+\end{pseudocode}
+
+- en entrée/sortie, il sera affublé d'une double flèche:
+
+\begin{pseudocode}
+	\Algo {algorithmName}{\Par{paramName \InOut}{type}}{type}
+		\Stmt statement
+	\EndAlgo 
+\end{pseudocode}
 
 
+La valeur de retour est la valeur que retourne l'algorithme. Elle n'est pas
+obligatoire. Nous la signalons pas une flèche « \pc{$\rightarrow$} ».
 
 
 
@@ -230,33 +330,9 @@ todo
 
 todo à revoir
 
-\begin{center}
-\begin{tikzpicture}[node distance=2cm]
-\node (start) [startstop] {Start};
-\node (in1) [io, below of=start] {Input};
-\draw [arrow] (start) -- (in1);
-\node (pro1) [process, below of=in1] {Process 1};
-\draw [arrow] (in1) -- (pro1);
-\node (dec1) [decision, below of=pro1, yshift=-15mm] {Question ?};
-\draw [arrow] (pro1) -- (dec1);
-\node (pro2a) [process, below of=dec1, yshift=-15mm] {Process 2 if YES};
-\node (pro2b) [process, right of=pro2a, xshift=3cm] {Process 2 if NO };
-\draw [arrow] (dec1) -- node[anchor=east] {yes} (pro2a);
-\draw [arrow] (dec1) -- node[anchor=south] {no} (pro2b);
-\node (out1) [io, below of=pro2a] {Output};
-\draw [arrow] (pro2a) -- (out1);
-\draw [arrow] (pro2b) -- (out1);
-\node (stop) [startstop, below of=out1] {Stop};
-\draw [arrow] (out1) -- (stop);
-\end{tikzpicture}
-\captionof{Organigramme}{Exemple récapitulatif}
-\end{center}
-
 
 \vfill
 
-*Crédit photo chez [DeviantArt][deviantart] par [Susyspider][by].Code des
-symboles issus de [ShareLaTeX][lien].*
 
 \includegraphics[width=20mm]{resources/images/cc-by-sa.png}
 

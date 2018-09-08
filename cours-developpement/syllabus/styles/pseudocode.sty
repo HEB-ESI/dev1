@@ -213,7 +213,14 @@
   {\printandpush\algorithmicwhile\ #1\ \algorithmicdo}
   {\popandprint\algorithmicend\ }%
 \algdef{SE}[FOR]{For}{EndFor}[4][1]
-  {\printandpush\algorithmicfor\ #2 \K{from} #3 \K{until} #4\ifthenelse{\equal{#1}{1}}{}{ \K{by} #1}\ \algorithmicdo}
+  {\printandpush\algorithmicfor\ #2 
+  	  \K{from} #3 
+  	  \K{until} #4\ifthenelse{\equal{#1}{1}}{}{ \K{by} #1}\ \algorithmicdo}
+  {\popandprint\algorithmicend\ }%
+\algdef{SE}[FORFOR]{Forfor}{EndForfor}[4][1]
+  {\printandpush\algorithmicfor\ #2 
+  	  \K{;} #3 
+  	  \K{;} #4\ \algorithmicdo}
   {\popandprint\algorithmicend\ }%
 \algdef{SE}[REPEAT]{Repeat}{EndRepeat}
   {\printandpush\algorithmicrepeat}[1]
@@ -233,7 +240,7 @@
 %-----------------------------------------------
 \algdef{SE}[STRUCT]{Struct}{EndStruct}[1]
   {\printandpush\algorithmicstruct\ #1}
-  {\popandprint\algorithmicend\ \algorithmicstruct}%
+  {\popandprint\algorithmicend\ }%
 
 \algnewcommand\algorithmicstruct{\textbf{structure}}
 
