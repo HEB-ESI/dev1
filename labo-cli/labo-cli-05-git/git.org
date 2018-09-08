@@ -1040,11 +1040,16 @@ le contenu suivant:
 #+END_tdaction
 
 #+BEGIN_tdaction
-Lancez le test avec =sh test.sh= et si "Test réussi." est
-affiché à la fin, committez.
+Lancez le test avec =sh test.sh= et "Test réussi." doit s'afficher à la fin. Lorsque cela fonctionne, committez.
 #+END_tdaction
+#+BEGIN_tdreponse
+#+begin_verbatim
+   git add test.sh
+   git commit -m "test.sh: nouveau fichier"
+#+end_verbatim
+#+END_tdreponse
 
-**** Envoyez le résultat sur Gitlab
+**** Envoyez le résultat sur Gitlab (=git.esi-bru.be=)
 
 Pour envoyer sur Gitlab, on pourrait se demander s'il ne faut pas
 d'abord ajouter Gitlab comme dépôt distant. Mais rappelez-vous de la
