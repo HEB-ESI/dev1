@@ -632,6 +632,13 @@ Une telle expression se compose grâce~:
 		\item \textit{Statement} peut être une instuction ou plusieurs;
 		\item \textit{SwitchLabels} (avec un \textit{s}) se sont plusieurs 
 			«~\texttt{case}~»
+		
+		\item le \textit{switch} en java peut être vu comme un «~\textit{saut}
+			au bon label~». Dès lors que l'instruction a trouvé le bon
+			\textit{case}, l'éxécution des instructions continue. Il faut
+			explicitement demander de sortir du \textit{switch} en utilisant
+			l'instruction \textbf{\pc{break}}
+
 	\end{itemize}
 
 	Le \textit{switch} précédent s'écrit~:
@@ -640,16 +647,22 @@ Une telle expression se compose grâce~:
 switch (dayNumber) {
 	case 1: 
 		dayName = "lundi"; 
+		break;
 	case 2: 
 		dayName = "mardi"; 
+		break;
 	case 3: 
 		dayName = "mercredi"; 
+		break;
 	case 4: 
 		dayName = "jeudi"; 
+		break;
 	case 5: 
 		dayName = "vendredi"; 
+		break;
 	case 6: 
 		dayName = "samedi"; 
+		break;
 	case 7: 
 		dayName = "dimanche";
 }
@@ -664,7 +677,6 @@ switch (dayNumber) {
 		qui sera exécuté si la valeur n’est pas reprise par ailleurs.
 	\end{itemize}
 	
-	\pagebreak[4]
 	La syntaxe générale est~:
 	
 	\begin{pseudocode}
