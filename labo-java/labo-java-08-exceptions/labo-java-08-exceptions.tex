@@ -68,11 +68,11 @@
 	Lorsque cette erreur est lancée le programme s'arrête et affiche un message d'erreur.
 	Lorsqu'on exécute la classe \texttt{Cercle} on obtient le message suivant~:
 	\begin{Console}
-> java esi.dev1.td7.Cercle
+> java esi.dev1.td8.Cercle
 62.83185307179586
 Exception in thread "main" java.lang.IllegalArgumentException: Le rayon doit être positif: -3.0
-	at esi.dev1.td7.Cercle.périmètre(Cercle.java:13)
-	at esi.dev1.td7.Cercle.main(Cercle.java:20)
+	at esi.dev1.td8.Cercle.périmètre(Cercle.java:13)
+	at esi.dev1.td8.Cercle.main(Cercle.java:20)
 \end{Console}
 
 	\begin{Exercice}{Calendrier~: méthodes robustes}
@@ -84,7 +84,9 @@ Exception in thread "main" java.lang.IllegalArgumentException: Le rayon doit êt
 			\item \code{java}{void afficherMois(int décalage, int nombreJours)}: le décalage est compris entre 0 et 6 et 
 				le nombre de jours entre 1 et 31.
 			\item  \code{java}{int nombreJours(int mois, int année)}: le mois est compris entre 1 et 12~;
-			\item \code{java}{int numéroJour(int jour, int mois, int année)}: la date est correcte. 
+			\item \code{java}{int numéroJour(int jour, int mois, int année)}: la date est correcte, c'est-à-dire 
+			que \texttt{mois} est compris entre 1 et 12 et \texttt{jour} est compris entre 1 et le nombre de 
+			jours dans le mois. 
 		\end{itemize}
 		
 		Vérifiez qu'une exception est lancée lorsque vous entrez un mois incorrect dans votre application.
@@ -94,7 +96,7 @@ Exception in thread "main" java.lang.IllegalArgumentException: Le rayon doit êt
 \section{Gérer les entrées de l'utilisateur}
 %====================	
 
-	Dans la classe \texttt{Saisie} ci-dessous, la méthode \texttt{lireEntier} demande à l'utilisateur d'entrée un entier.
+	Dans la classe \texttt{Saisie} ci-dessous, la méthode \texttt{lireEntier} demande à l'utilisateur d'entrer un entier.
 	Tant que l'utilisateur entre autre chose qu'un entier, la méthode lui demande à nouveau d'en entrer un. 
 	
  	\listing{java}{Saisie.java}
@@ -134,6 +136,8 @@ Exception in thread "main" java.lang.IllegalArgumentException: Le rayon doit êt
 	\textbf{Generate Javadoc} dans le menu déroulant qui apparait. 
 	Un navigateur s'ouvre avec votre Javadoc. Dans la console (output) les éventuels 
 	erreurs et avertissements sont affichés.
+	Les fichiers générés se trouvent dans le répertoire \texttt{dist/javadoc}.
+	
 
 	\begin{Exercice}{Documentation du calendrier}
 		Documentez chaque méthode du projet calendrier et générez sa documentation.
