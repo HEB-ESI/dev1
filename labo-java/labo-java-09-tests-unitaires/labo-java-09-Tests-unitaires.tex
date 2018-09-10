@@ -1,0 +1,180 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+
+\newcommand{\publicbasepath}
+{https://git.esi-bru.be/dev1/labo-java/tree/master/td09-tests-unitaires}
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
+\renewcommand{\listingsrcpath}{code/}
+
+\marginnumberfalse
+\marginsectiontrue
+
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 9 -- Les tests unitaires}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Un code est souvent modifié, cela veut dire que le temps passé à le simplifier est souvent gage d’un gain de temps lors d’une modification ultérieure. Il vous sera même peut-être conseillé par votre professeur de 
+	\begin{enumerate}
+		\item faire un code fonctionnel~;
+		\item de le modifier afin d’améliorer sa lisibilité et sa modularité~;
+		\item et enfin, d’en améliorer son efficacité.
+	\end{enumerate} 
+	
+		Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
+	
+	\url{\publicbasepath}	
+
+		 
+	\tableofcontents
+
+	\newpage
+
+
+
+
+%====================
+\section{Introduction}
+%====================	
+
+	La démarche que l'on vous demande de suivre dans ce TD permet d'avoir un code sans bug\footnote{Un code sans bug est difficile à obtenir, mais un développer doit les éviter autant qu'il peut.}, grâce aux tests unitaires ainsi que le développement dirigé par les testes. Ces méthodoloties permettent d'obtenir des tests maintenanables tout au long de la vie d'un code.
+
+	Jusqu'à présent, nous vous avons demandé d'écrire du code afin de répondre à une demande. Pour cela, vous avez dû~:
+	\begin{enumerate}
+		\item lire et comprendre l'énoncé~;
+		\item déterminer les entrées et les sorties~;
+		\item penser votre algorithme~;
+		\item traduire l'algorithme en pseudo-code et/ou Java~;
+		\item tester votre algorithme.
+	\end{enumerate}
+
+	Dans ce laboratoire, vous allez faire ce que l'on appelle du Développement dirigé par les tests. Pour faire court, il s'agit d'écrire les tests avant d'avoir écrit le code. En effet, on sait, avant de l'écrire, ce que le code est censé faire.
+
+	Ce que vous devez faire tout au lond de ce TD est~:
+	\begin{enumerate}
+		\item lire et comprendre l'énoncé~;
+		\item déterminer les entrées et les sorties~;
+		\item penser aux tests que vos méthodes devront passer~;
+		\item écrire les tests~;
+		\item penser votre algorithme~;
+		\item traduire l'algorithme en pseudo-code et/ou Java~;
+		\item tester votre algorithme\footnote{Certains codes ont été écrit lors d'un TD précédent. L'ordre des étapes n'est parfois pas respecté.}.
+	\end{enumerate}
+
+
+%====================
+\section{La couverture de code}
+%====================	
+
+	Nous allons tenter de comprendre ce qu'est une bonne \emph{couverture de code} en reprenant notre fonction valeur absolue qui est définie de la façon suivante~:
+	$$
+		|x| = x \textrm{ si } x \geq 0, -x \textrm{ sinon}.
+	$$
+
+	Soit la méthode \texttt{abs} qui a pour signature \code{java}{public static double abs(double x)} puisque la fonction absolue s'applique sur des réels.
+
+	Nous devons maintenant réfléchir aux tests que nous devons réaliser afin de garantir le fonctionnement de notre méthode. C'est-à-dire, les tests nécessaires\footnote{Avoir les testes nécessaires et suffisants c'est mieux. À défaut, il en vaut mieux trop que pas assez.} pour garantir le fonctionnement de la méthode quelque soit l'entrée autorisée de la méthode. Réfléchissons-y ensemble.
+
+	Prenons une valeur positive, 4 par exemple. Le code suivant, qui n'est pas la valeur absolue, passe avec succès notre test puisqu'il va retourner la valeur d'entrée.
+	\begin{Code}{Java}
+		public static double abs(double x) {
+			return x;
+		}
+	\end{Code}
+
+
+	Si l'objectif n'est pas de trouver un code pour lequel les tests fonctionnent, il montre bien que notre batterie de tests est insuffisante.
+
+	Ajoutons un second test en essayant l'entrée $-4$. Le code suivant, qui n'est pas la valeur absolue, passe avec succès nos deux tests. 
+
+	\begin{Code}{Java}
+		public static double abs(double x) {
+			return 4;
+		}
+	\end{Code}
+
+	Si nous prenons toutes nos observations en considération, nous obtenons le plan de tests suivant
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\no du test & entrées & résultat attendu & note \\
+			\hline
+			1 & 4 & 4 & nombre positif \\
+			\hline
+			2 & -6 & 6 & Un nombre négatif \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	Même si notre exemple est aberrant, nous souhaitons ici mettre en évidence la difficulté d'obtenir des tests complet, que le processus d’élaboration des tests unitaires demande de la réflexion et qu’il ne garantie pas à 100\% le bon fonctionnement du code. Il est donc essentiel de prendre le temps nécessaire afin de fournir une couverture de code aussi complète et exacte que possible\footnote{Vous pouvez remarquer que dans nos exemples, la couverture de code est à chaque fois de 100\%, que malgré cela le code ne fait pas toujours ce qu'il doit faire.}.
+
+	\begin{Exercice}{Couverture de code - Max}
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{max(int a, int b)} qui permet d’obtenir la plus grande valeur parmis les~2 passées en paramètre.
+	\end{Exercice}
+
+	\begin{Exercice}{Couverture de code - Somme d'entiers consécutifs}
+		
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{somme(int n)}qui permet de calculer la somme des entiers consécutifs de 1 à n.
+	\end{Exercice}
+
+	\begin{Exercice}{Couverture de code - Anagramme}
+		Une anagramme est une construction fondée sur une figure de style qui inverse ou permute les lettres d’un mot ou d’un groupe de mots pour en extraire un sens ou un mot nouveau\footnote{https ://fr.wikipedia.org/wiki/Anagramme}. 
+
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estAnagramme qui permet de vérifier si un text est un anagramme.
+	\end{Exercice}
+
+	\begin{Exercice}{Couverture de code - Palindrome}
+		Le palindrome est un texte ou un mot qui reste identique qu’on le lise de gauche à droite ou de droite à gauche. Nous considérons ici la version stricte dans le sens où l’on prend en considération les signes diacritiques (accents, trémas, cédilles) ainsi que les espaces\footnote{https ://fr.wikipedia.org/wiki/Palindrome}.
+
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estPalindrome qui permet de vérifier si un text est un palindrome.
+	\end{Exercice}
+
+	\begin{Exercice}{Couverture de code - Nombre d'occurances}
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{public static int nbOccurance(char lettre, String text)}. Cette méthode permet de compter le nombre d’occurances d’une lettre dans un text.
+	\end{Exercice}
+
+	%\listing{java}{Cercle.java}
+
+%====================
+\section{JUnit}
+%====================
+	\subsection{Tester le lancement d'une exception}
+	
+	
+
+
+
+
+
+
+%====================
+\section{Exercices supplémentaires}
+%====================	
+
+\end{document}
