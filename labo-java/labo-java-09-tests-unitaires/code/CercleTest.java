@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Drobisz Sébastien
+ * @author ESI Prof
  */
 public class CercleTest {
     /**
