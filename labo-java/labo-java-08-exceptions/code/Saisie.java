@@ -6,7 +6,7 @@ public class Saisie {
     /**
      * Lecture robuste d'un entier. 
      * Tant que l'entrée de l'utilisateur n'est pas
-     * une entier la méthode demande une nouvelle entrée.
+     * un entier la méthode demande une nouvelle entrée.
      *
      * @param message message à afficher.
      * @return l'entier saisi par l'utilisateur.
