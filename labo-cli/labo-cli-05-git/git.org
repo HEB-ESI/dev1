@@ -76,10 +76,12 @@ fin de TD pour vérifier que vous comprenez chacune d'elle.
     git remote add <name> <url>
     git remote -v
     git remote update
+    git push
+    git clone
+    git pull
 #+END_EXAMPLE
 
-
-Les commandes suivantes sont
+Vous pourrez également apprendre les commandes suivantes dans la section "Pour aller plus loin" :
 #+BEGIN_EXAMPLE
     git diff
     git diff <commit1> <commit2>
