@@ -215,7 +215,7 @@
 \algdef{SE}[FOR]{For}{EndFor}[4][1]
   {\printandpush\algorithmicfor\ #2 
   	  \K{from} #3 
-  	  \K{until} #4\ifthenelse{\equal{#1}{1}}{}{ \K{by} #1}\ \algorithmicdo}
+  	  \K{to} #4\ifthenelse{\equal{#1}{1}}{}{ \K{by} #1}\ \algorithmicdo}
   {\popandprint\algorithmicend\ }%
 \algdef{SE}[FORFOR]{Forfor}{EndForfor}[4][1]
   {\printandpush\algorithmicfor\ #2 

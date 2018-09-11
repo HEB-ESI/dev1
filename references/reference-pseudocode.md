@@ -30,8 +30,8 @@ header-includes:
 ---
 
 <!-- ajout d'une image et du logo -->
-\ThisULCornerWallPaper{1}{resources/images/simple_msp430_cut.png}
-\vspace{-4.5mm}
+\ThisULCornerWallPaper{1}{resources/images/algo2.png}
+\vspace{9mm}
 \begin{flushright}
 \includegraphics[width=40mm]{resources/images/HE2B-Logo-ESI.png}
 \end{flushright}
@@ -41,8 +41,7 @@ header-includes:
 \setcounter{tocdepth}{1}
 \tableofcontents
 
-\bigskip 
-\bigskip 
+\clearpage
 
 Le **pseudocode** est une manière de décrire un algorithme en langage presque 
 naturel. C'est un ensemble de phrases représentant l'enchainement des opérations
@@ -94,6 +93,8 @@ sont dans un algorithme. Un algorithme est une suite d'opérations… qui sont d
 actions élémentaires ou des opérations plus complexes qui doivent être
 expliquées… et ainsi de suite. 
 
+\clearpage
+
 Définir un algorithme, c'est: 
 
 - lui donner un nom représentatif de ce qu'il fait;
@@ -141,6 +142,8 @@ symbole **\pc{=}**:
 \begin{pseudocode}
 	\Let beautifulInteger \Gets 7
 \end{pseudocode}
+
+\clearpage
 
 Remarque
 
@@ -282,6 +285,8 @@ Pour un simple parcours, nous écrirons:
 	\EndFor
 \end{pseudocode}
 
+\clearpage
+
 Pour un *for* plus général, nous écrirons:
 
 \begin{pseudocode}
@@ -324,12 +329,60 @@ une virgule.
 La valeur de retour est la valeur que retourne l'algorithme. Elle n'est pas
 obligatoire. Nous la signalons pas une flèche « \pc{$\rightarrow$} ».
 
+# Les interactions avec l'utilisateur
+
+Pour faire une lecture « au clavier », nous utiliserons simplement **\pc{read}**
+et pour une écriture à l'écran, **\pc{print}**. 
+
+\begin{pseudocode}
+	\Read a
+	\Read "Entre une valeur: ", a
+	\Write b
+	\Write "L'aire du rectangle vaut: " area
+\end{pseudocode}
+
+# Les commentaires
+
+Les commentaires commencent par **\pc{//}**. 
+
+\begin{pseudocode}
+	\LComment Fisrt comment
+	\Stmt statement \RComment An other (rigth) comment
+\end{pseudocode}
+
+Nous comprenons également **\pc{\#}**, **\pc{/* … */}**… 
 
 
 # Exemple
 
-todo à revoir
+\begin{pseudocode}
+	\Algo{friendsAtHome}{}{}
+		\Decl{friendsAreThere}{boolean} \Gets true
+		\While{friendsAreThere}
+			\If{noMoreCoffee} 
+				\Stmt makeCoffee()
+			\EndIf 
+			friendsAreThere \Gets lookArround()
+		\EndWhile 
+	\EndAlgo 
 
+	\Algo{makeCoffee}{}{}
+		\LComment Check ingredients
+		\If{ !hasCoffeePowder 
+			OR !hasFilter}
+			\Write Missing ingredients
+		\Else 
+			\Stmt putWaterInPercolator
+			\Stmt putFilterInPercolator
+			\Stmt putCoffeeInFilter
+			\Stmt pushOnButton
+		\EndIf
+	\EndAlgo 
+	
+	\Algo{lookArround}{}{boolean}
+		\LComment Not yet implemented TODO
+	\EndAlgo 
+\end{pseudocode}
 
 \vfill
 
