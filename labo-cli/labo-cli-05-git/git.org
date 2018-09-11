@@ -71,16 +71,21 @@ fin de TD pour vérifier que vous comprenez chacune d'elle.
     git status
     git add <file>...
     git commit -m <message>
-    git branch [-a]
     git log [--all] [--graph] [--oneline]
     git show <commit>
+    git remote add <name> <url>
+    git remote -v
+    git remote update
+#+END_EXAMPLE
+
+
+Les commandes suivantes sont
+#+BEGIN_EXAMPLE
     git diff
     git diff <commit1> <commit2>
     git merge <branch>
     gitk
-    git remote add <name> <url>
-    git remote -v
-    git remote update
+    git branch [-a]
 #+END_EXAMPLE
 
 Nous décrirons également le fichier =.gitignore=.
@@ -236,15 +241,15 @@ Initialisez un "dépôt Git" dans le répertoire de travail avec
 Hint: Si vous ne voyez pas, pensez aux fichiers cachés.
 
 #+BEGIN_tdreponse
-un répertoire =.git= est apparu (voir =ls -a=).
+Un répertoire =.git= est apparu (voir =ls -a=).
 #+END_tdreponse
 
 Le répertoire =.git= est le dépôt Git proprement dit. C'est lui qui
-contiendra les différentes sauvegardes (nous diront "commit"). Le
+contiendra les différentes sauvegardes (nous dirons "commit"). Le
 répertoire courant, quant à lui, est appelé "répertoire de travail".
 
 #+BEGIN_tdastuce
-pour voir tous les fichiers (y compris dans les
+Pour voir tous les fichiers (y compris dans les
 sous-répertoires) du répertoire courant, utilisez :
 #+begin_example
 find . -type f
@@ -299,7 +304,7 @@ maintenant le contenu de ces fichiers, mais simplement accepter qu'ils
 sont là.
 
 #+BEGIN_tdastuce
-si vous êtes curieux, vous pouvez regarder précisément quels
+Si vous êtes curieux, vous pouvez regarder précisément quels
 fichiers ont été créés par NetBeans (rappel: =find . -type f=).
 #+END_tdastuce
 
@@ -367,8 +372,7 @@ anglais, et voyez quel sens s'approche le plus de ce que nous faisons.
 #+END_tdastuce
 
 #+BEGIN_tdreponse
-Par exemple dans
-[[https://www.oxfordlearnersdictionaries.com/definition/english/commit]]
+Par exemple dans le Oxford Learner's[fn:dictoxford:Voir https://www.oxfordlearnersdictionaries.com/definition/english/commit]
 on trouve
 
 #+BEGIN_QUOTE
@@ -396,6 +400,10 @@ git commit -m "HelloWorld: projet créé avec Netbeans"
 #+end_example
 N.B.: N'oubliez pas les guillemets.
 #+END_tdaction
+
+#+begin_tdastuce
+On peut omettre l'option =-m= et le message correspondant. Dans ce cas Git lance l'éditeur configuré (variable d'environnement =EDITOR=).
+#+end_tdastuce
 
 
 #+BEGIN_tdaction
@@ -444,11 +452,11 @@ dépôt Git.
 
 Qu'avez vous constaté ?
 
-#+BEGIN_tdreponse
-1. =qsdf= est apparu.
-2. =qsdf= a été ignoré par Git (mais toujours présent), mais
+#+BEGIN_tdreponse 
+1. Après la première étape, =qsdf= est apparu.
+2. À la seconde, =qsdf= a été ignoré par Git (mais toujours présent), mais
    =.gitignore= est apparu.
-3. =qsdf= et =.gitignore= ont disparu.
+3. À la troisième étape, =qsdf= et =.gitignore= ont disparu.
 #+END_tdreponse
 
 #+BEGIN_tdastuce
@@ -643,7 +651,7 @@ veulent dire que la ligne a été, respectivmeent, "ajoutée", "enlevée" ou
 On peut produire un diff entre deux fichiers texte grâce à la
 commande =diff -u fichier1 fichier2=, mais c'est généralement plus
 coloré si on demande à Git : =git diff --no-index fichier1 fichier2=.
-Les options =--word-diff= et =-w= (=--ignore-all-space=) sont
+Les options =--word-diff= et =-w= (équivalent à =--ignore-all-space=) sont
 intéressantes. =git help diff= vous en dira plus sur les options
 disponibles.
 #+END_tdastuce
@@ -667,7 +675,7 @@ le continuer chez vous. Comment feriez-vous pour récupérer votre code
 d'une machine à une autre ?
 
 #+BEGIN_tdreponse
-on peut utiliser une clef USB, un "cloud" (NextCloud, Google Drive,
+On peut utiliser une clef USB, un "cloud" (NextCloud, Google Drive,
 etc.),... ou Git, bien sûr.
 #+END_tdreponse
 
@@ -733,7 +741,7 @@ Les étapes à suivre sont :
 1. Créer un dépôt sur votre machine actuelle avec du contenu (ça, c'est
    déjà fait).
 2. Créer un dépôt sur Gitlab.
-3. Envoyez le contenu du premier dans le second.
+3. Envoyer le contenu du premier dans le second.
 4. Changer de machine.
 5. Créer un dépôt sur la nouvelle machine.
 6. Récupérer le contenu du dépôt Gitlab dans ce dernier dépôt.
@@ -903,7 +911,6 @@ Renommez le dépôt distant =origin=:
 #+END_tdaction
 
 *** Et ensuite...
-
 Nous avons utilisé =linux1= comme "autre machine". Vous pourriez
 utiliser n'importe quelle autre machine à la place, par exemple la votre
 à la maison, votre portable, une autre machine de l'école, etc.
@@ -912,19 +919,17 @@ Quelle que soit la machine, vous avez sans doute envie de pouvoir y
 travailler, et puis de pouvoir récupérer ce travail sur votre machine de
 départ.
 
-Pour y parvenir, nous allons introduire la notion de branche.
-Rendez-vous dans la section suivante !
+Pour ce faire suivez la recette suivante :
 
-Cela dit si vous êtes vraiment pressé, vous pouvez déjà retenir ceci :
-
--  Committez et tapez =git push= avant de quitter une machine
+-  Committez et tapez =git push= avant de quitter une machine.
 -  Utilisez =git clone= quand vous utilisez une nouvelle machine (cela
-   crée un nouveau dépôt)
+   crée un nouveau dépôt).
 -  tapez =git pull= dans un dépôt pour le mettre à jour (c'est-à-dire quand vous utilisez une machine sur laquelle le
    dépôt est déjà présent).
 
+* Pour aller plus loin...
+La suite de ce document pourra vous être utile mais ne fait pas partie de la matière d'examen.
 ** Les branches
-
 *** Les principes
 
 **** Notion de branche
@@ -980,8 +985,8 @@ Ce que vous pouvez retirer de cette expérience :
    branche avec la petite étoile sur le site) avec
    =git checkout nom-de-branche=
 -  Lorsque vous committez, c'est la branche courante qui grandit.
--  Vous pouvez fusionner une branche à la branche courante avec
-   =git merge   nom-de-branche= (dans ce cas c'est la branche courante
+-  Vous pouvez fusionner une branche à la branche courante avec la commande
+   =git merge nom-de-branche= (dans ce cas c'est la branche courante
    qui avance, mais =nom-de-branche= ne bouge pas).
 -  Deux branches peuvent être confondues (c'est le cas de =mabranche= et
    =master= à la fin de la procédure ci-dessus.)
@@ -1220,9 +1225,12 @@ L'une d'elle consiste à modifier l'éditeur par défaut uniquement pour
 git, par exemple pour utiliser Notepad++ :
 
 #+BEGIN_EXAMPLE
-    git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe'
-  -multiInst -notabbar -nosession -noPlugin"
+    git config --global core.editor
+        "'C:/Program Files (x86)/Notepad++/notepad++.exe' 
+        -multiInst -notabbar -nosession -noPlugin"
 #+END_EXAMPLE
+
+(Pour la lisibilité, cette commande est sur plusieurs lignes mais il faut l'introduire en une seule ligne.)
 #+END_tdastuce
 
 ** Lecture de l'historique (variante DAG)
@@ -1390,7 +1398,9 @@ terminer la fusion.
 Si vous ne spécifiez pas "-m", un éditeur (par défaut =vim=) se
 lance pour que vous écriviez votre description. Celui-ci peut comporter
 plusieurs lignes, et généralement on écrit d'abord un résumé d'une
-ligne, puis une ligne vide, puis un message détaillé.
+ligne (idéalement moins de 80 caractères), puis une ligne vide, puis un message détaillé.
+
+
 #+END_tdastuce
 
 ** git et NetBeans
