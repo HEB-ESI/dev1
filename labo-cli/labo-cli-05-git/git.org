@@ -1400,7 +1400,7 @@ lance pour que vous écriviez votre description. Celui-ci peut comporter
 plusieurs lignes, et généralement on écrit d'abord un résumé d'une
 ligne (idéalement moins de 80 caractères), puis une ligne vide, puis un message détaillé.
 
-
+Voir par exemple https://chris.beams.io/posts/git-commit/#seven-rules pour les "Best practices" en terme de message de commit.
 #+END_tdastuce
 
 ** git et NetBeans
