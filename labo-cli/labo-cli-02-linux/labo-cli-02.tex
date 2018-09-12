@@ -7,8 +7,10 @@
 \usepackage{style-esi/td}
 \usepackage{style-esi/licence}	% Affiche une licence dans le document
 \usepackage{style-esi/exercice}
+\usepackage{style-esi/consigne}
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
+\usepackage{style-esi/exemple}
 %\marginsectiontrue
 \usepackage{booktabs}
 \usepackage{pifont}  
@@ -40,7 +42,7 @@
 	\begin{tcolorbox}[blanker,
 	before skip=10mm,after skip=10mm,
 	borderline west={1mm}{-4mm}{lightgray},
-	title=Résumé, coltitle=black, fonttitle=\sffamily\bfseries\large]
+	title=Objectifs, coltitle=black, fonttitle=\sffamily\bfseries\large]
 	\`A l'issue de ce TD vous aurez acquis une connaissance basique de l'utilisation du syst\`eme Linux 
 	et de son aide en ligne : man.   
 	En particulier, les commandes \textbf{ls}, 
@@ -59,16 +61,19 @@
 	
 	\tableofcontents
 
-	\newpage
+	%\newpage
 
 %===================
-\section{TD2 - Les bases de Linux}\textbf{Rappels}:
+\section{TD2 - Les bases de Linux}%\textbf{Consignes}:
 %====================	
-					\begin{itemize}
-	
+\begin{consigne}
+\begin{itemize}
 	\item Ce TD est accompagn\'e d'exercices \`a faire \textbf{avant} de venir au laboratoire.
-	\item Prenez bien note des r\'eponses aux exercices ainsi que de la fa\c con dont vous avez trouv\'e ces r\'eponses.
+\item Prenez bien note des r\'eponses aux exercices ainsi que de la fa\c con dont vous avez trouv\'e ces r\'eponses.
+
+%
 \end{itemize}
+\end{consigne}
 
 
 \begin{Tutoriel}{Se connecter \`a linux1}
@@ -87,7 +92,8 @@
 
 \par
 
-\begin{itemize}
+%\begin{itemize}
+	\begin{steps}
 	
 	\item 
 	
@@ -102,7 +108,7 @@
 	apportez une modification :  
 	
 	
-	\begin{itemize}
+	\begin{steps}
 		
 		\item 
 		
@@ -112,9 +118,9 @@
 		"\textit{Colours}"
 		
 		
-	\end{itemize}
+	\end{steps}
 	
-\end{itemize}
+\end{steps}
 
 	\end{Tutoriel}
 
@@ -171,11 +177,11 @@ Un petit tour vers les points 10 \`a 14 du guide visuel sera peut-\^etre n\'eces
 
 
 
-\begin{Exercice}{Petit exercice}
+\begin{Exercice}{Dossier personnel}
 	
-\textcolor{white}{.} \par
+%\textcolor{white}{.} \par
 
-\par
+%\par
 \begin{figure}[hbt]
 	\begin{center}
 		\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{/home/oxfam/Bureau/DEV1ARefaire/labo-cli-02/labo-cli-02/image/fs.jpeg}
@@ -198,33 +204,30 @@ Un petit tour vers les points 10 \`a 14 du guide visuel sera peut-\^etre n\'eces
 \end{Exercice}
 
 \begin{Exercice}{Chemins absolus et relatifs}
-	\textcolor{white}{.} \par
+%	\textcolor{white}{.} \par
 	Parmi tous les chemins suivants, quels sont ceux qui sont 
 	\textbf{relatifs} ?
 	
-	\begin{steps} 
+	\begin{itemize} 
 		
-		\item \verb@~/../g12345/td2@
+		\item[ \ding{"6F} ]  \verb@~/../g12345/td2@
 		
-		\item \verb@/home/g12345/../g54321/Hello.java@
+		\item[ \ding{"6F} ]  \verb@/home/g12345/../g54321/Hello.java@
 		
-		\item \verb@./tds/td2@
+		\item[ \ding{"6F} ]  \verb@./tds/td2@
 		
-		\item \verb@tds/td2/Hello.java@
+		\item[ \ding{"6F} ]  \verb@tds/td2/Hello.java@
 		
-		\item \verb@~g12345/tds/td2@
+		\item[ \ding{"6F} ]  \verb@~g12345/tds/td2@
 		
-	\end{steps} 
+	\end{itemize} 
 \end{Exercice}
 
 
-\begin{Tutoriel}{Chemin absolu}
-					\textcolor{white}{.} \par
-
-\par
-
-\begin{enumerate}
-	
+\begin{Tutoriel}{Chemin absolu}%					\textcolor{white}{.} \par
+%\par
+%
+\begin{enumerate}	
 	\item \'Ecrivez le chemin absolu d'un des fichiers que vous
 	avez d\'ej\`a cr\'e\'e pour ce TD (Si vous n'en n'avez pas cr\'e\'e, 
 	faites-le maintenant).  
@@ -235,13 +238,12 @@ Un petit tour vers les points 10 \`a 14 du guide visuel sera peut-\^etre n\'eces
 \end{enumerate}	
 \end{Tutoriel}
 
-\clearpage
+%\clearpage
 
 \begin{Tutoriel}{Raccourci}
-						\textcolor{white}{.} \par
-	
-	\par
-	
+%						\textcolor{white}{.} \par
+%	
+%	\par	
 	Refaites les exercices pr\'ec\'edents en utilisant les raccourcis 
 	\,\verb|~|\, et \,\verb|~g12345|\,.
 	
@@ -250,10 +252,9 @@ Un petit tour vers les points 10 \`a 14 du guide visuel sera peut-\^etre n\'eces
 
 
 \begin{Tutoriel}{Chemins}
-						\textcolor{white}{.} \par
-	
-	\par
-	
+%						\textcolor{white}{.} \par
+%	
+%	\par	
 	\begin{enumerate}
 		
 		\item Visualisez le contenu d'un des fichiers que vous avez d\'ej\`a cr\'e\'e pour ce TD en utilisant un chemin relatif.
@@ -291,12 +292,10 @@ Un retour vers les points 15 et 16 du guide visuel sera peut-\^etre n\'ecessaire
 
 \par
 
-
-\begin{Exercice}{Propriétaire}
-					\textcolor{white}{.} \par
-
-\par
-
+\newpage
+\begin{Tutoriel}{Propriétaire}%					\textcolor{white}{.} \par
+%
+%\par
 \begin{enumerate}
 	
 	\item 
@@ -307,68 +306,60 @@ Un retour vers les points 15 et 16 du guide visuel sera peut-\^etre n\'ecessaire
 	
 \end{enumerate}	
 	
-	\end{Exercice}
+	\end{Tutoriel}
 
 
-\begin{Exercice}{Groupe}
-					\textcolor{white}{.} \par
-
-\par
-
-\begin{enumerate}
-	
+\begin{Tutoriel}{Groupe}%					\textcolor{white}{.} \par%\par
+\begin{enumerate}	
 	\item Visualiser les groupes auxquels vous appartenez.
 	\item Quel est votre groupe principal ? 
 	\item Quels sont les groupes auxquels appartient votre professeur ?
 	\item Avez-vous un groupe en commun avec lui ?
 	\item Quel(s) groupe(s) Linux avez-vous en commun avec les autres \'etudiants de votre groupe ESI ?
 \end{enumerate}	
-		\end{Exercice}
+		\end{Tutoriel}
 	
 
-\begin{Exercice}{Groupe}	
-					\textcolor{white}{.} \par
-
-\par
-
+\begin{Tutoriel}{Groupe}	
+%					\textcolor{white}{.} \par
+%
+%\par
 \begin{enumerate}
 	
 	\item Visualisez vos fichiers et d\'eterminez \`a quel groupe ils appartiennent.
 	\item Cr\'eez un fichier de test et modifiez le groupe auquel il appartient.
 \end{enumerate}
-		\end{Exercice}
+		\end{Tutoriel}
 
 
 		\subparagraph{FAQ} 
 
-\textcolor{white}{.} \par
-
-\par
+%\textcolor{white}{.} \par
+%\par
 \textbf{Les fichiers dans mon dossier personnel ne sont pas automatiquement \`a moi ?}
-\par
+%\par
 
 Non. En pratique c'est g\'en\'eralement le cas, 
 mais on peut tr\`es bien trouver dans un dossier personnel un fichier qui appartient \`a quelqu'un d'autre.  
 
-\par
+%\par
 
         \subsection{Les permissions}  
 \`A pr\'esent que vous savez qu'un fichier a un propri\'etaire et appartient \`a un groupe, 
 on peut \'etudier la notion de permission.    
 
-\par
+%\par
 \textbf{Restez concentr\'e} ! 
 Cette partie est plus longue et un peu plus difficile que ce que vous avez d\'ej\`a appris 
 mais c'est absolument n\'ecessaire pour la suite.   
-\par
+%\par
 
 Un retour vers les points 17 \`a 19 du guide visuel sera peut-\^etre encore n\'ecessaire...  
 
-\par
+%\par
 
 \begin{Exercice}{D\'eterminez les bonnes permissions}
-	       %         \textcolor{white}{.} \par
-	
+	       %         \textcolor{white}{.} %\par
 	Remplissez les blancs avec la permission correcte (r, w, x ou -). 
 	Il s'agit de trouver la permission minimale \`a mettre pour r\'epondre \`a la demande.   
 	
@@ -389,12 +380,9 @@ Un retour vers les points 17 \`a 19 du guide visuel sera peut-\^etre encore n\'e
 
 \begin{Exercice}{Exercice}
 		%				\textcolor{white}{.} \par
-	
 %	\par
-	
 	Soit le fichier "Max.java" de la capture d'\'ecran ci-dessous.  
-	
-	\par
+	%\par
 	\begin{figure}[hbt]
 		\begin{center}
 			\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{/home/oxfam/Bureau/DEV1ARefaire/labo-cli-02/labo-cli-02/image/ls-l.jpg}
@@ -406,17 +394,14 @@ Un retour vers les points 17 \`a 19 du guide visuel sera peut-\^etre encore n\'e
 	
 	Est-ce qu'un professeur peut l'\'editer ? 
 	
-	\par
+%	\par
 	\fcolorbox{gray}{verylightgray}{\parbox{\textwidth}{\textcolor{verylightgray}{\LARGE  Non ! Le droit d'écriture n'est accordé qu'au propriétaire.  }}} {\footnotesize\emph{}\par} 
 	%(la r\'eponse est disponible dans la version en ligne)
 \end{Exercice}	
+
 	
-	\clearpage
-	
-\begin{Exercice}{D\'eterminez les bonnes permissions}
-	
-	           %     \textcolor{white}{.} \par
-	
+\begin{Exercice}{D\'eterminez les bonnes permissions}	
+	           %     \textcolor{white}{.} %\par	
 	Soit le fichier "Max.java" de la capture d'\'ecran ci-dessus.
 	
 	On voudrait que l'\'etudiant g32671 puisse travailler  
@@ -447,12 +432,8 @@ Un retour vers les points 17 \`a 19 du guide visuel sera peut-\^etre encore n\'e
 \end{Exercice}
 
 
-\begin{Exercice}{Exercice}
-					\textcolor{white}{.} \par
-
-\par
-
-Reprenez les permissions affich\'ees dans la capture d'\'ecran ci-dessous 
+\begin{Exercice}{} 
+	Reprenez les permissions affich\'ees dans la capture d'\'ecran ci-dessous 
 et exprimez-les avec un nombre de 3 chiffres.  
 
 \par
@@ -467,12 +448,10 @@ et exprimez-les avec un nombre de 3 chiffres.
 \end{Exercice}
 		
 		
-\begin{Tutoriel}{Permissions par d\'efaut} 
-		
+\begin{Tutoriel}{Permissions par d\'efaut} 	
 	%	\textcolor{white}{.} \par
 		
-	%	\par
-		
+	%	\par	
 		\begin{enumerate}
 			
 			\item Si ce n'est pas encore fait, cr\'eez un dossier "td2".
@@ -484,7 +463,7 @@ et exprimez-les avec un nombre de 3 chiffres.
 		(on s'en doute) et au groupe principal du cr\'eateur. 
 		Il y a aussi des permissions par d\'efaut (plut\^ot permissives dans notre cas).  
 		
-	+	\par
+		\par
 \end{Tutoriel}		
 		
 		\subparagraph{Modifier les permissions} 
@@ -503,9 +482,8 @@ la page de \textbf{manuel} de cette commande.
 
 \par
 	
-	\begin{Tutoriel}{} 
-					\begin{enumerate}
-	
+	\begin{Tutoriel}{Modifier les permissions} 
+\begin{enumerate}	
 	\item Cr\'eez un fichier "brol" dans le dossier "td2" avec quelques mots.
 	\item Faites en sorte que personne d'autre ne puisse en voir le contenu.
 	\item Faites en sorte que tout le monde puisse voir son contenu mais pas le modifier. 
@@ -517,13 +495,10 @@ la page de \textbf{manuel} de cette commande.
 		
 	\end{Tutoriel}
 
-	\begin{Tutoriel}{} 
-          
+	\begin{Tutoriel}{Modifier encore les permissions}           
 Modifiez les droits de votre dossier "td2" et, si n\'ecessaire, 
 des fichiers qui s'y trouvent pour que tout le monde puisse  
-
-\par
-
+%\par
 \begin{enumerate}
 	
 	\item voir quels fichiers s'y trouvent mais sans pouvoir lire le contenu de ces fichiers;
@@ -603,13 +578,19 @@ La  plupart des commandes comprennent cette option mais \textbf{pas toutes}.
 
 \par
 
-Exemple: \,\verb|ls --help|\,
+\begin{Exemple}{}
+	ls --help
+\end{Exemple}
+%Exemple: \,\verb|ls --help|\,
 \par
 \textit{Solution 2} : Pour une information plus compl\`ete, il existe la commande \,\verb|man|\,.  
 
 \par
 
-Exemple: \,\verb|man ls|\,  (\textit{q} pour quitter le man)  
+\begin{Exemple}{}
+	man ls (\textit{q} pour quitter le man)  
+\end{Exemple}
+%Exemple: \,\verb|man ls|\,  (\textit{q} pour quitter le man)  
 
 \par
 \textbf{Si vous n'avez toujours pas trouv\'e}
@@ -623,11 +604,7 @@ qui reprend la plupart des commandes linux sur une feuille recto-verso.
 
 \par
 
-\begin{Exercice}{Exercice 1}
-	\textcolor{white}{.} \par
-	
-	\par
-	
+\begin{Exercice}{} 
 	La commande \,\verb|ls -l|\, 
 	affiche le contenu du dossier en format \textit{long}.
 	Nous verrons plus tard comment comprendre toute cette information 
@@ -647,11 +624,7 @@ qui reprend la plupart des commandes linux sur une feuille recto-verso.
 \end{Exercice}
 
 
-\begin{Exercice}{Exercice 2}
-					\textcolor{white}{.} \par
-
-\par
-
+\begin{Exercice}{}
 Comment visualiser en une fois tous les fichiers de votre dossier 
 mais aussi les fichiers des dossiers qui s'y trouvent et ainsi de suite ? 
 (\textbf{r\'ecursivement} en somme)\par
@@ -667,12 +640,11 @@ Quelle commande permet de \textit{nettoyer} l'\'ecran ?
 
 \subparagraph{FAQ} 
 
-\textcolor{white}{.} \par
+\textcolor{white}{.} %\par
 
 \par
 \textbf{Euh ! Je n'ai pas fini. C'est normal ?}
-\par
-
+%\par
 Non, c'est que vous avez mal pr\'epar\'e votre TD avant de venir au labo. 
 Terminez-le en rem\'ediation et/ou \`a la maison car la semaine prochaine, 
 nous en attaquons un nouveau et, cette fois, essayez de mieux vous y pr\'eparer!  
