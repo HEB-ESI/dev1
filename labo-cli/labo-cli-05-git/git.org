@@ -849,7 +849,7 @@ Nous allons indiquer à Git deux choses :
 Attention: Pour cette étape vous aurez besoin du mot de passe défini
 pour Gitlab. Si vous n'avez pas encore reçu le mail, allez voir le
 dossier Spam. N'oubliez pas de vous déconnecter de Gitlab avant de
-cliquer sur "Reset password" dans le mail. Votre nom d'utilisateur
+cliquer sur "Reset password" dans le mail.
 
 #+BEGIN_tdaction
 Tapez:
