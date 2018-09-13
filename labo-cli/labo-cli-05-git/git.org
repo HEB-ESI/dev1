@@ -860,7 +860,7 @@ Tapez:
 #+END_tdaction
 
 Le paramètre =-u= indique à Git qu'il faudra encore utiliser ce dépôt
-distant à l'avenir. Le mot =master= va rester mystérieux jusqu'à ce que
+distant à l'avenir (vous pourrez alors vous contenter de =git push= pour les prochaines fois). Le mot =master= va rester mystérieux jusqu'à ce que
 nous parlions de [[*Les branches][branches]].
 
 **** Vérifiez que tout est en ligne
