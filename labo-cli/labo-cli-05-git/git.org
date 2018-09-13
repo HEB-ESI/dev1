@@ -101,7 +101,7 @@ Lisez les explications ci-dessous.
 Le document est conçu pour une lecture à deux niveaux :
 
 1. En première lecture, vous pouvez vous concentrer sur différentes
-   actions à réaliser indiquée par le marquage "Action" sur fond rouge (voir ci-dessus). Ces actions
+   actions à réaliser. Elles sont indiquées par le marquage "Action" sur fond rouge (voir ci-dessus). Ces actions
    consistent généralement en commandes à recopier, adapter et lancer.
 
 2. Lorsque vous voulez un complément d'information, lisez le texte
