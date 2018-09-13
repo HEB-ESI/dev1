@@ -70,7 +70,7 @@ fin de TD pour vérifier que vous comprenez chacune d'elle.
     git init
     git status
     git add <file>...
-    git commit -m <message>
+    git commit [-a] [-m <message>]
     git log [--all] [--graph] [--oneline]
     git show <commit>
     git remote add <name> <url>
@@ -435,6 +435,16 @@ La réponse devrait être:
     On branch master
     nothing to commit, working directory clean
 #+END_EXAMPLE
+
+**** Deux-en-un : add & commit
+Nous avons vu comment créer un commit en deux étapes:
+1. =git add= : définir les fichiers et modifications à intégrer au commit
+2. =git commit= : créer le commit
+
+En pratique, si vous voulez committer toutes les modifications sans devoir faire =git add= sur chaque fichier, vous pouvez simplement utiliser:
+: git commit -a -m "votre message"
+
+Attention toutefois : les fichiers qui n'ont *jamais* été ajoutés avec =git add= ne seront pas ajoutés par cette commande. Il faudra encore le faire manuellement.
 
 *** Laisser des fichiers de côté : =.gitignore=
 
@@ -923,11 +933,13 @@ départ.
 
 Pour ce faire suivez la recette suivante :
 
--  Committez et tapez =git push= avant de quitter une machine.
--  Utilisez =git clone= quand vous utilisez une nouvelle machine (cela
-   crée un nouveau dépôt).
--  tapez =git pull= dans un dépôt pour le mettre à jour (c'est-à-dire quand vous utilisez une machine sur laquelle le
-   dépôt est déjà présent).
+- Avant de quitter une machine :
+  - Committez vos modifications (par exemple avec =git commit -a=)
+  - Pushez (=git push=)
+- Pour utiliser une nouvelle machine :
+  - Clonez =git clone= (cela crée un nouveau dépôt local).
+- Pour mettre un dépôt à jour (c'est-à-dire quand vous utilisez une machine sur laquelle le dépôt est déjà présent):
+  - Tapez =git pull= depuis un répertoire du dépôt.
 
 * Pour aller plus loin...
 La suite de ce document pourra vous être utile mais ne fait pas partie de la matière d'examen.
