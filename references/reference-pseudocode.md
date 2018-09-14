@@ -312,7 +312,7 @@ une virgule.
 - en entrée, il peut être affublé d'une flèche:
 
 \begin{pseudocode}
-	\Algo {algorithmName}{\Par{paramName \In}{type}}{type}
+	\Algo {algorithmName}{\Par{paramName \In}{type}}{}
 		\Stmt statement
 	\EndAlgo 
 \end{pseudocode}
@@ -320,14 +320,30 @@ une virgule.
 - en entrée/sortie, il sera affublé d'une double flèche:
 
 \begin{pseudocode}
-	\Algo {algorithmName}{\Par{paramName \InOut}{type}}{type}
+	\Algo {algorithmName}{\Par{paramName \InOut}{type}}{}
 		\Stmt statement
 	\EndAlgo 
 \end{pseudocode}
 
 
 La valeur de retour est la valeur que retourne l'algorithme. Elle n'est pas
-obligatoire. Nous la signalons pas une flèche « \pc{$\rightarrow$} ».
+obligatoire. Nous la signalons pas une flèche « \pc{$\rightarrow$} » et
+l'algorithme devra se terminer en « retournant » une valeur en utilisant
+**\pc{return}**. 
+
+\begin{pseudocode}
+	\Algo {algorithmName}{}{type}
+		\Stmt statement
+		\Return expression
+	\EndAlgo 
+	
+	\Algo {algorithmName}{\Par{paramName1 \In}{type}
+		\Par{paramName2 \InOut}{type}
+		}{type}
+		\Stmt statement
+		\Return expression
+	\EndAlgo 
+\end{pseudocode}
 
 # Les interactions avec l'utilisateur
 
