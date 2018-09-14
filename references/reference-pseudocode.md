@@ -61,9 +61,9 @@ décrire un algorithme, c'est pour le partager avec d'autres… Ceci implique qu
 certaines régles soient définies. 
 
 Nous présentons ici ce que nous utilisons dans les notes et pensons être le
-sous-ensemble minimal de règles à respecter pour ne pas être (trop) ambigü et
+sous-ensemble minimal de règles à respecter pour ne pas être (trop) ambigu et
 pour ne pas devoir *apprendre* le pseudocode. Ceci dit, si le lecteur d'un
-algorithme trouve que c'est ambigü, c'est ambigü. 
+algorithme trouve que c'est ambigu, c'est ambigu. 
 
 
 
