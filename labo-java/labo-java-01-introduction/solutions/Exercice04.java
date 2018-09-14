@@ -1,6 +1,6 @@
 package g12345.dev1.td1;
 
-public class Exercice4 {
+public class Exercice04 {
 
     public static void main(String[] args) {
         System.out.println("10 + 32 = ");
