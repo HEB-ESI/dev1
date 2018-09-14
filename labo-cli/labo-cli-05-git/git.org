@@ -70,7 +70,7 @@ fin de TD pour vérifier que vous comprenez chacune d'elle.
     git init
     git status
     git add <file>...
-    git commit -m <message>
+    git commit [-a] [-m <message>]
     git log [--all] [--graph] [--oneline]
     git show <commit>
     git remote add <name> <url>
@@ -101,7 +101,7 @@ Lisez les explications ci-dessous.
 Le document est conçu pour une lecture à deux niveaux :
 
 1. En première lecture, vous pouvez vous concentrer sur différentes
-   actions à réaliser indiquée par le marquage "Action" sur fond rouge (voir ci-dessus). Ces actions
+   actions à réaliser. Elles sont indiquées par le marquage "Action" sur fond rouge (voir ci-dessus). Ces actions
    consistent généralement en commandes à recopier, adapter et lancer.
 
 2. Lorsque vous voulez un complément d'information, lisez le texte
@@ -435,6 +435,16 @@ La réponse devrait être:
     On branch master
     nothing to commit, working directory clean
 #+END_EXAMPLE
+
+**** Deux-en-un : add & commit
+Nous avons vu comment créer un commit en deux étapes:
+1. =git add= : définir les fichiers et modifications à intégrer au commit
+2. =git commit= : créer le commit
+
+En pratique, si vous voulez committer toutes les modifications sans devoir faire =git add= sur chaque fichier, vous pouvez simplement utiliser:
+: git commit -a -m "votre message"
+
+Attention toutefois : les fichiers qui n'ont *jamais* été ajoutés avec =git add= ne seront pas ajoutés par cette commande. Il faudra encore le faire manuellement.
 
 *** Laisser des fichiers de côté : =.gitignore=
 
@@ -849,7 +859,7 @@ Nous allons indiquer à Git deux choses :
 Attention: Pour cette étape vous aurez besoin du mot de passe défini
 pour Gitlab. Si vous n'avez pas encore reçu le mail, allez voir le
 dossier Spam. N'oubliez pas de vous déconnecter de Gitlab avant de
-cliquer sur "Reset password" dans le mail. Votre nom d'utilisateur
+cliquer sur "Reset password" dans le mail.
 
 #+BEGIN_tdaction
 Tapez:
@@ -860,7 +870,7 @@ Tapez:
 #+END_tdaction
 
 Le paramètre =-u= indique à Git qu'il faudra encore utiliser ce dépôt
-distant à l'avenir. Le mot =master= va rester mystérieux jusqu'à ce que
+distant à l'avenir (vous pourrez alors vous contenter de =git push= pour les prochaines fois). Le mot =master= va rester mystérieux jusqu'à ce que
 nous parlions de [[*Les branches][branches]].
 
 **** Vérifiez que tout est en ligne
@@ -923,11 +933,13 @@ départ.
 
 Pour ce faire suivez la recette suivante :
 
--  Committez et tapez =git push= avant de quitter une machine.
--  Utilisez =git clone= quand vous utilisez une nouvelle machine (cela
-   crée un nouveau dépôt).
--  tapez =git pull= dans un dépôt pour le mettre à jour (c'est-à-dire quand vous utilisez une machine sur laquelle le
-   dépôt est déjà présent).
+- Avant de quitter une machine :
+  - Committez vos modifications (par exemple avec =git commit -a=)
+  - Pushez (=git push=)
+- Pour utiliser une nouvelle machine :
+  - Clonez =git clone= (cela crée un nouveau dépôt local).
+- Pour mettre un dépôt à jour (c'est-à-dire quand vous utilisez une machine sur laquelle le dépôt est déjà présent):
+  - Tapez =git pull= depuis un répertoire du dépôt.
 
 * Pour aller plus loin...
 La suite de ce document pourra vous être utile mais ne fait pas partie de la matière d'examen.
