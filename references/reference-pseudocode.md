@@ -231,6 +231,16 @@ expressions conditionnelles par des parenthèses[^f2].
 Le *selon que* (\pc{switch}), s'écrit:
 
 \begin{pseudocode}
+	\Switch{expression}
+		\Case{expression} statement
+		\Case{expression} statement
+		\Case{expression} statement
+	\EndSwitch
+\end{pseudocode}
+
+Par exemple:
+
+\begin{pseudocode}
 	\Switch{dayNumber}
 		\Case{1} dayName \Gets "lundi"
 		\Case{2} dayName \Gets "mardi"
@@ -249,8 +259,10 @@ Remarques:
 l'utilisation d'un tiret ou autre;
 - en langage Java le \pc{switch} est associé au \pc{break}. Nous n'en utilisons
 pas mais nous comprenons s'il y en a. 
+- s'il y a plusieurs valeurs pour le même cas, il faudra être un peu plus
+  explicite; en utilisant un \pc{break} comme en java ou une série de **ou**. 
 
-… du moment que l'ensemble est cohérent. 
+… du moment que l'ensemble est cohérent.
 
 
 # Les structures répétitives
