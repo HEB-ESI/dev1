@@ -7,7 +7,7 @@
 \usepackage{style-esi/td}
 \usepackage{style-esi/licence}	% Affiche une licence dans le document
 \usepackage{style-esi/exercice}
-\usepackage{style-esi/consigne}
+%\usepackage{style-esi/consigne}
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
 \usepackage{style-esi/exemple}
@@ -61,7 +61,7 @@
 	
 	\tableofcontents
 
-	%\newpage
+	\newpage
 
 %===================
 \section{TD2 - Les bases de Linux}%\textbf{Consignes}:
@@ -161,9 +161,11 @@ Vous devrez donc effectuer cette configuration une fois par machine utilis\'ee.
 l'aide de putty vous explique comment faire \textbf{mais}, svp, ne perdez pas de temps \`a le faire maintenant!)   
 
 \par
-
-
-\subsection{Syst\`eme de fichiers, chemin absolu et relatif}\begin{quotation}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Syst\`eme de fichiers, chemin absolu et relatif}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{quotation}
 	\guillemotleft \textit{ Tout est relatif, et cela seul est absolu }\guillemotright . Auguste Comte.
 \end{quotation}  
 R\'eguli\`erement, il faut indiquer un endroit du syst\`eme de fichiers (par exemple pour y aller). 
@@ -184,7 +186,7 @@ Un petit tour vers les points 10 \`a 14 du guide visuel sera peut-\^etre n\'eces
 %\par
 \begin{figure}[hbt]
 	\begin{center}
-		\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{/home/oxfam/Bureau/DEV1ARefaire/labo-cli-02/labo-cli-02/image/fs.jpeg}
+		\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{image/fs.jpeg}
 	\end{center}
 	
 	\caption[Une partie d'un syst\`eme de fichiers]{Une partie d'un syst\`eme de fichiers}
@@ -244,12 +246,12 @@ Un petit tour vers les points 10 \`a 14 du guide visuel sera peut-\^etre n\'eces
 %						\textcolor{white}{.} \par
 %	
 %	\par	
-	Refaites les exercices pr\'ec\'edents en utilisant les raccourcis 
+	Refaites le tutoriel pr\'ec\'edent en utilisant les raccourcis 
 	\,\verb|~|\, et \,\verb|~g12345|\,.
 	
 	\par
 \end{Tutoriel}
-
+\newpage
 
 \begin{Tutoriel}{Chemins}
 %						\textcolor{white}{.} \par
@@ -268,8 +270,10 @@ Un petit tour vers les points 10 \`a 14 du guide visuel sera peut-\^etre n\'eces
 \end{Tutoriel}
 
 
-
-\subsection{Propri\'etaire et groupes}\begin{quotation}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Propri\'etaire et groupes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{quotation}  
 	\guillemotleft \textit{ La propri\'et\'e est un pi\`ege: ce que nous croyons poss\'eder nous poss\`ede }\guillemotright . 
 	Alphonse Karr.  
 \end{quotation}\begin{quotation}  
@@ -292,7 +296,7 @@ Un retour vers les points 15 et 16 du guide visuel sera peut-\^etre n\'ecessaire
 
 \par
 
-\newpage
+%\newpage
 \begin{Tutoriel}{Propriétaire}%					\textcolor{white}{.} \par
 %
 %\par
@@ -385,7 +389,7 @@ Un retour vers les points 17 \`a 19 du guide visuel sera peut-\^etre encore n\'e
 	%\par
 	\begin{figure}[hbt]
 		\begin{center}
-			\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{/home/oxfam/Bureau/DEV1ARefaire/labo-cli-02/labo-cli-02/image/ls-l.jpg}
+			\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{image/ls-l.jpg}
 			
 		\end{center}
 		
@@ -439,7 +443,7 @@ et exprimez-les avec un nombre de 3 chiffres.
 \par
 \begin{figure}[hbt]
 	\begin{center}
-		\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{/home/oxfam/Bureau/DEV1ARefaire/labo-cli-02/labo-cli-02/image/ls-l-permissions.jpg}
+		\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio=true]{image/ls-l-permissions.jpg}
 		
 	\end{center}
 	
@@ -579,7 +583,7 @@ La  plupart des commandes comprennent cette option mais \textbf{pas toutes}.
 \par
 
 \begin{Exemple}{}
-	ls --help
+	\verb_ls --help_
 \end{Exemple}
 %Exemple: \,\verb|ls --help|\,
 \par
@@ -588,7 +592,7 @@ La  plupart des commandes comprennent cette option mais \textbf{pas toutes}.
 \par
 
 \begin{Exemple}{}
-	man ls (\textit{q} pour quitter le man)  
+	\verb_man ls_ (\textit{q} pour quitter le man)  
 \end{Exemple}
 %Exemple: \,\verb|man ls|\,  (\textit{q} pour quitter le man)  
 

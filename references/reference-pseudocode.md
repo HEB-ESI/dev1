@@ -61,9 +61,9 @@ décrire un algorithme, c'est pour le partager avec d'autres… Ceci implique qu
 certaines régles soient définies. 
 
 Nous présentons ici ce que nous utilisons dans les notes et pensons être le
-sous-ensemble minimal de règles à respecter pour ne pas être (trop) ambigü et
+sous-ensemble minimal de règles à respecter pour ne pas être (trop) ambigu et
 pour ne pas devoir *apprendre* le pseudocode. Ceci dit, si le lecteur d'un
-algorithme trouve que c'est ambigü, c'est ambigü. 
+algorithme trouve que c'est ambigu, c'est ambigu. 
 
 
 
@@ -231,6 +231,16 @@ expressions conditionnelles par des parenthèses[^f2].
 Le *selon que* (\pc{switch}), s'écrit:
 
 \begin{pseudocode}
+	\Switch{expression}
+		\Case{expression} statement
+		\Case{expression} statement
+		\Case{expression} statement
+	\EndSwitch
+\end{pseudocode}
+
+Par exemple:
+
+\begin{pseudocode}
 	\Switch{dayNumber}
 		\Case{1} dayName \Gets "lundi"
 		\Case{2} dayName \Gets "mardi"
@@ -249,8 +259,10 @@ Remarques:
 l'utilisation d'un tiret ou autre;
 - en langage Java le \pc{switch} est associé au \pc{break}. Nous n'en utilisons
 pas mais nous comprenons s'il y en a. 
+- s'il y a plusieurs valeurs pour le même cas, il faudra être un peu plus
+  explicite; en utilisant un \pc{break} comme en java ou une série de **ou**. 
 
-… du moment que l'ensemble est cohérent. 
+… du moment que l'ensemble est cohérent.
 
 
 # Les structures répétitives
@@ -312,7 +324,7 @@ une virgule.
 - en entrée, il peut être affublé d'une flèche:
 
 \begin{pseudocode}
-	\Algo {algorithmName}{\Par{paramName \In}{type}}{type}
+	\Algo {algorithmName}{\Par{paramName \In}{type}}{}
 		\Stmt statement
 	\EndAlgo 
 \end{pseudocode}
@@ -320,14 +332,30 @@ une virgule.
 - en entrée/sortie, il sera affublé d'une double flèche:
 
 \begin{pseudocode}
-	\Algo {algorithmName}{\Par{paramName \InOut}{type}}{type}
+	\Algo {algorithmName}{\Par{paramName \InOut}{type}}{}
 		\Stmt statement
 	\EndAlgo 
 \end{pseudocode}
 
 
 La valeur de retour est la valeur que retourne l'algorithme. Elle n'est pas
-obligatoire. Nous la signalons pas une flèche « \pc{$\rightarrow$} ».
+obligatoire. Nous la signalons pas une flèche « \pc{$\rightarrow$} » et
+l'algorithme devra se terminer en « retournant » une valeur en utilisant
+**\pc{return}**. 
+
+\begin{pseudocode}
+	\Algo {algorithmName}{}{type}
+		\Stmt statement
+		\Return expression
+	\EndAlgo 
+	
+	\Algo {algorithmName}{\Par{paramName1 \In}{type}
+		\Par{paramName2 \InOut}{type}
+		}{type}
+		\Stmt statement
+		\Return expression
+	\EndAlgo 
+\end{pseudocode}
 
 # Les interactions avec l'utilisateur
 

@@ -1,0 +1,323 @@
+% =================================
+% Style pour le cours de Java
+% ---------------------------------
+% \java{...} ou \code{...}
+% \begin{Java}...\end{Java} 
+%    ou \begin{Code}...\end{Code}
+% \sigle{...}
+% \emph{...}
+% \begin{slidetoc}...\end{slidetoc}
+% =================================
+
+% ===== Francisation
+\usepackage[frenchb]{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{lmodern}
+
+% ===== bullets pour les items
+\setbeamertemplate{itemize item}[triangle]
+\setbeamertemplate{itemize subitem}[square]
+\setbeamertemplate{itemize subsubitem}[circle]
+\setbeamercolor{itemize item}{fg=black!70}
+\setbeamercolor{itemize subitem}{fg=black!70}
+\setbeamercolor{itemize subsubitem}{fg=black!70}
+
+% ===== Pour utiliser \ding
+\usepackage{pifont}
+
+% ===== Pour pouvoir barrer du texte (\sout)
+\usepackage{ulem}
+
+% ===== Emphase de texte
+\mode<beamer>{ 
+	\setbeamercolor{description item}{fg=brown} 
+	\renewcommand{\emph}[1]{\textbf{\color{brown}{#1}}}
+}
+\mode<handout>{ 
+	\setbeamercolor{description item}{fg=black} 
+	\setbeamerfont{description item}{series=\bfseries} 
+	\renewcommand{\emph}[1]{\textbf{\color{black}{#1}}}
+}
+
+% ===== Insertion de code + Java + sigle
+% ----- Environnement Verbatim
+% ----- Code : pour du code non java (shell, output, ...)
+% ----- Java : pour du code Java
+% L'argument optionnel permet d'adapter la mise en page
+% ex: \begin{Java}[basicstyle=\scriptsize] pour du code plus petit
+% Mettre le frame en fragile
+\usepackage{listings}
+\lstdefinestyle{lstverb}
+  {
+    backgroundcolor=\usebeamercolor[bg]{block body},
+    frameround=tttt, frame=trbl, framerule=0pt,
+    basicstyle=\footnotesize,
+    lineskip=-1pt,   % pour rapprocher les lignes
+    flexiblecolumns, 
+    extendedchars=true
+  }
+\lstnewenvironment{Java}[1][]{\lstset{style=lstverb,language=java,#1}}{}
+\lstnewenvironment{Code}[1][]{\lstset{style=lstverb,#1}}{}
+\mode<beamer>{
+  \newcommand{\java}{\lstinline[language=java,basicstyle=\color{blue!70!black}] 
+  } %[
+  \newcommand{\code}{\lstinline[basicstyle=\color{blue!70!black}] 
+  } %[
+}
+\mode<handout>{
+  \newcommand{\java}{\lstinline[language=java,basicstyle=\color{black}]
+  } %[
+  \newcommand{\code}{\lstinline[basicstyle=\color{black}]
+  } %[
+}
+\newcommand{\sigle}[1]{{\ttfamily \bfseries #1}}
+
+% ===== Pour les grammaires : \begin{grammaire}...\end{grammaire}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{grammaire}{Verbatim}%
+  {frame=lines,commandchars=\\\{\},baselinestretch=0.9,%
+   fontfamily=helvetica,fontsize=\footnotesize,obeytabs=true,formatcom=\color{black!80}%
+   }
+\newcommand{\term}[1]{{\ttfamily \bfseries #1}}
+\newcommand{\oterm}[1]{{\ttfamily \bfseries #1}{\tiny (opt)}}
+\newcommand{\nterm}[1]{\textit{#1}}
+\newcommand{\onterm}[1]{\textit{#1}{\tiny (opt)}}
+\newcommand{\opt}{{\tiny(opt)} }
+\newcommand{\shaded}[1]{{\color{black!30} #1}}
+
+% === Différentes pages de garde pour les leçons
+
+\newcommand{\leconwithtoc}{
+\begin{frame}[plain]
+\begin{block}{\center Séance \thesection}
+  {
+  \begin{center}
+  \insertsection
+  \end{center}
+  \begin{multicols}{2}
+  \tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+  \end{multicols}
+  \bigskip
+  }
+\end{block}
+\end{frame}
+}
+
+\newcommand{\leconwithtoconecol}{
+\begin{frame}
+\begin{block}{\center Séance \thesection}
+  {
+  \begin{center}
+  \insertsection
+  \end{center}
+  \tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+  \bigskip
+  }
+\end{block}
+\end{frame}
+}
+
+\newcommand{\leconwithtocquote}[1]{
+\begin{frame}
+\begin{block}{\center Séance \thesection}
+  {
+  \begin{center}
+  \insertsection
+  \end{center}
+  \begin{multicols}{2}
+  \tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+  \end{multicols}
+  \bigskip
+  }
+\end{block}
+\bigskip
+  \begin{flushright}
+  \small\textit{#1}
+  \end{flushright}
+\end{frame}
+}
+
+\newcommand{\leconwithtocinside}{
+\begin{frame}
+\begin{block}{\center Où en sommes-nous ?}
+  {
+  \par
+  \bigskip
+  \tableofcontents[sectionstyle=hide,subsectionstyle=show/shaded/hide]
+  \bigskip
+  }
+\end{block}
+\end{frame}
+}
+
+\newcommand{\leconwithabstract}[1]{
+\begin{frame}
+\begin{block}{\center Leçon \thesection\ --- \insertsection}
+  {
+  \medskip
+  \begin{center}
+  \textit{#1}
+  \end{center}
+  }
+\end{block}
+\end{frame}
+}
+
+\newcommand{\leconwithabstracttoc}[1]{
+\begin{frame}
+\begin{block}{\center Leçon \thesection\ --- \insertsection}
+  {
+  \medskip
+  \textit{#1}
+  \bigskip
+  \tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+  \bigskip
+  }
+\end{block}
+\end{frame}
+}
+
+\newcommand{\leconwithabstractquote}[2]{
+\begin{frame}
+\begin{block}{\center Leçon \thesection\ --- \insertsection}
+  {
+  \medskip
+  \begin{center}
+  \textit{#1}
+  \end{center}
+  }
+\end{block}
+\bigskip
+  \begin{flushright}
+  \small\textit{#2}
+  \end{flushright}
+\end{frame}
+}
+
+\definecolor{bleu}{rgb}{0.59, 0.65, 0.82}
+\usepackage{multicol}
+
+% ===== Alerte ====
+\newcommand{\warning}[1]{
+  \begin{tabular}{cl}
+    \begin{minipage}[c]{30pt}
+    \includegraphics[width=30pt]{../img/warning}
+    \end{minipage}
+    & 
+    \begin{minipage}[c]{270pt}
+    #1
+    \end{minipage}
+    \\
+  \end{tabular}
+}
+
+% === Image en fullscreen
+% Je ne trouve pas comment faire avec une seule commande qui calcule la position
+\usepackage[absolute,overlay]{textpos}
+\newcommand{\imgfullw}[3]
+{{
+	\usebackgroundtemplate{
+		\includegraphics[keepaspectratio,width=\paperwidth]{#1}}
+    \setbeamertemplate{navigation symbols}{}
+	\setbeamercolor{background canvas}{bg=black}
+	\begin{frame}[plain]{}
+		#2
+		\begin{textblock*}{\linewidth}(0pt,.87\paperheight)
+			\tiny\flushright{\color{gray}\href{#3}{Crédit photo}}
+		\end{textblock*}
+	\end{frame}
+}}
+
+\newcommand{\imgfullwt}[3]
+{{
+	\usebackgroundtemplate{
+		\includegraphics[keepaspectratio,width=\paperwidth]{#1}}
+    \setbeamertemplate{navigation symbols}{}
+	\setbeamercolor{background canvas}{bg=black}
+	\begin{frame}[plain,t]{}
+		#2
+		\begin{textblock*}{\linewidth}(0pt,.87\paperheight)
+			\tiny\flushright{\color{gray}\href{#3}{Crédit photo}}
+		\end{textblock*}
+	\end{frame}
+}}
+
+\newcommand{\imgfullh}[3]
+{{
+	\usebackgroundtemplate{
+		\includegraphics[keepaspectratio,height=\paperheight]{#1}}
+    \setbeamertemplate{navigation symbols}{}
+	\setbeamercolor{background canvas}{bg=black}
+	\begin{frame}[plain]{}
+		#2
+		\begin{textblock*}{\linewidth}(0pt,.9\paperheight)
+			\tiny\flushright{\color{gray}\href{#3}{Crédit photo}}
+		\end{textblock*}
+	\end{frame}
+}}
+
+\newcommand{\imgfullht}[3]
+{{
+	\usebackgroundtemplate{
+		\includegraphics[keepaspectratio,height=\paperheight]{#1}}
+    \setbeamertemplate{navigation symbols}{}
+	\setbeamercolor{background canvas}{bg=black}
+	\begin{frame}[plain,t]{}
+		#2
+		\begin{textblock*}{\linewidth}(0pt,.9\paperheight)
+			\tiny\flushright{\color{gray}\href{#3}{Crédit photo}}
+		\end{textblock*}
+	\end{frame}
+}}
+
+% Je ne comprend pas bien cette commande ^^ --pbt
+\newcommand{\full}[2][black]{{
+	\setbeamertemplate{navigation symbols}{}
+	\setbeamercolor{background canvas}{bg=#1}
+	\begin{frame}[plain,containsverbatim]{}
+		#2
+	\end{frame}
+}}
+
+
+% === Pour les images flottantes
+% \begin{wrapfigure}[8]{r}{4cm}
+% \includegraphics[width=4cm]{poulpy.png}
+% \end{wrapfigure}
+\usepackage{wrapfig}
+
+% === Dénifition de quelques couleurs
+% voir http://latexcolor.com
+%\definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.91}
+\definecolor{bluepigment}{rgb}{0.2, 0.2, 0.6}
+\definecolor{azuremist}{rgb}{0.94, 1.0, 1.0}
+\definecolor{cadetgrey}{rgb}{0.57, 0.64, 0.69}
+\definecolor{ghostwhite}{rgb}{0.97, 0.97, 1.0}
+\definecolor{isabelline}{rgb}{0.96, 0.94, 0.93}
+\definecolor{brickred}{rgb}{0.8, 0.25, 0.33}
+\definecolor{blush}{rgb}{0.87, 0.36, 0.51}
+\definecolor{deepfuchsia}{rgb}{0.76, 0.33, 0.76}
+\definecolor{cobalt}{rgb}{0.0, 0.28, 0.67}
+\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+
+%===========================
+% Pour des schémas en LaTeX
+%===========================
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{shapes.geometric,arrows}
+\usetikzlibrary{positioning}
+
+%==========================
+% Texte sur un fond coloré
+%==========================
+\newcommand{\back}[5]{
+	\begin{tikzpicture}
+	\node[preaction={fill=#1,fill opacity=#2},
+	rounded corners=1ex,
+	font=\fontsize{#3pt}{#3pt}\bfseries,
+	align=#4] (a) {#5};
+	\end{tikzpicture}	
+}

@@ -1,0 +1,366 @@
+% === Fichier principal
+\usetheme[secheader]{Madrid}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{esi}
+
+\title{Introduction au système d'exploitation}
+\subtitle{INT1 -- SYS}
+\institute[HE2B - ÉSI]{%
+	\includegraphics[width=2cm]{../img/esi}\\
+	Haute école de Bruxelles-Brabant\\
+	École Supérieure d'Informatique
+}    
+\date[2017 - 2018]{Année académique 2017 / 2018}
+\author[]{ \small
+	M.~Bastreghi (mba) \and 
+	M.~Codutti (mcd) \and 
+	A.~Paquot (apa)
+}
+
+\begin{document}
+
+\begin{frame}[plain]
+	\begin{block}{Installer Linux chez soi}
+		\bigskip
+		\tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+	\end{block}
+	\bigskip
+	\begin{center}
+		\includegraphics[width=2cm]{../img/windows.jpg}
+		\qquad
+		\includegraphics[width=2cm]{../img/mac_os_logo.png}
+		\qquad
+		\includegraphics[width=2cm]{../img/Tux.png}
+		\qquad
+		\includegraphics[width=2cm]{../img/android.jpg}
+	\end{center}
+\end{frame}
+
+\subsection{Qu'est-ce qu'un OS ?}
+%===============================
+
+\begin{frame}
+	\begin{block}{\center \insertsubsection}
+		%\bigskip
+		%\tableofcontents[sectionstyle=hide,subsectionstyle=hide/hide/show]
+	\end{block}
+	\bigskip
+	\begin{center}
+		\includegraphics[width=2cm]{../img/windows.jpg}
+		\qquad
+		\includegraphics[width=2cm]{../img/mac_os_logo.png}
+		\qquad
+		\includegraphics[width=2cm]{../img/Tux.png}
+		\qquad
+		\includegraphics[width=2cm]{../img/android.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Définition}
+	\begin{quote}
+		\og{}
+		Un système d'exploitation (Operating System ou OS)
+		est un ensemble de programmes spécialisés qui permet 
+		l'utilisation des ressources matérielles d'un ou plusieurs ordinateurs. 
+		\fg{}
+		{\footnotesize{\color{gray}source: universalis}}
+	\end{quote}	
+\end{frame}
+
+\begin{frame}
+	Il assure :
+	\begin{itemize}
+	\item le démarrage (Boot) de l'ordinateur
+	\item l'exécution des logiciels applicatifs
+	\end{itemize} 
+	Il remplit deux fonctions majeures :
+	\begin{itemize}
+	\item la gestion des ressources matérielles 
+	\item la fourniture de services aux applications
+	\\(appels système offrant une interface de plus haut niveau que celle 	
+	de la machine physique) 
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=2cm]{../img/run.jpg}
+		\qquad
+		\includegraphics[width=2cm]{../img/ram.jpg}
+		\qquad
+		\includegraphics[width=2cm]{../img/harddisk.jpg}
+	\end{center}
+	
+	\note{
+		\begin{itemize}
+		\item Permet de lancer un programme
+		\item Gère l'accès CPU (ordonnancement) 
+		\item Permet la communication entre programmes
+		\item Gère la mémoire (lié au point précédent)
+		\item Crée la notion de système de fichiers
+		\item Gère les périphériques (souris, écran, clé USB)
+		\end{itemize}
+	}
+\end{frame}
+
+\subsection{Les OS les plus courants}
+%====================================
+
+\begin{frame}
+	\begin{block}{\center \insertsubsection}
+		\bigskip
+		\begin{center}
+		Quels systèmes d'exploitation connaissez-vous ?
+		\end{center}
+		\bigskip
+	\end{block}
+\end{frame}
+
+\imgfullh{../img/bill_gates_microsoft_by_qimoo-d4yb6kk.jpg}{
+	\begin{flushright}
+		\includegraphics[width=2cm]{../img/windows.png}
+	\end{flushright}
+}{http://qimoo.deviantart.com/art/Bill-Gates-Microsoft-299493380}
+
+	\note{Pour info:
+		MS-DOS
+		\begin{itemize}
+		\item 1981
+		\item équipe les PC, premiers ordis personnels
+		\item mono-utilisateur, monotâche, ligne de commande
+		\item Bill Gates gagne le "marché du siècle" face à CP/M
+		\end{itemize}
+	}
+
+	\note{Pour info:
+		Windows
+		\begin{itemize}
+		\item 1992 : \sigle{Windows 3.1}
+		\item 1995 : \sigle{Windows 95} 
+		\item 1998 : \sigle{Windows 98}
+		\item 2001 : \sigle{Windows XP} (suite de \sigle{NT})
+		\item 2007 : \sigle{Windows Vista}
+		\item 2009 : \sigle{Windows 7}
+		\item 2012 : \sigle{Windows 8}
+		\end{itemize}
+	}
+
+\imgfullh{../img/steve_jobs_by_aledev-d4c3aas.jpg}{
+	\begin{flushright}
+		\includegraphics[width=1.5cm]{../img/macos.png}
+		\\
+		\includegraphics[width=1.5cm]{../img/ios.png}
+	\end{flushright}
+}{http://aledev.deviantart.com/art/Steve-Jobs-262173412}
+
+	\note{Pour info:
+		Steve Jobs 1955-2011
+		\begin{itemize}
+		\item 1984 : \sigle{MacOS 1}
+		\item 2001 : \sigle{MacOS X}
+		\end{itemize}
+		\begin{itemize}
+		\item 2008 : \sigle{iOS 2}
+		\item 2014 : \sigle{iOS 8}
+		\end{itemize}
+	}
+
+\imgfullw{../img/KenThompson-DennisRitchie.jpg}{
+	\begin{flushright}
+		\includegraphics[width=2cm]{../img/unix.jpg}		
+	\end{flushright}
+}{https://www.flickr.com/photos/darthpedrius/6846503545/sizes/l}
+
+	\note{Pour info:
+		Unix
+		\begin{itemize}
+		\item Créé par Ken Thompson et Dennis Ritchie 
+		\item Laboratoires AT-T, en C inventé pour l'occasion.
+		\item Première version publique en 1975
+		\item Une famille riche : Sys V, BSD, FreeBSD, Solaris, Linux, MacOS\dots
+		\item (timeline bien faite sur wikipedia)
+		\end{itemize}
+	}
+
+\imgfullh{../img/linustorvalds.jpg}{
+	\begin{flushright}		
+		\includegraphics[width=2cm]{../img/Tux.png}
+	\end{flushright}
+}{https://plus.google.com/+LinusTorvalds/photos/photo/5643089571499330146?pid=5643089571499330146&oid=115207733802891951512}
+
+	\note{Pour info:
+		Linux
+		\begin{itemize}
+		\item Créé par Linus Torvald en 1991
+		\item Logiciel libre (open-source) / GNU.
+		\\Aborder la question (vu par FPL dans son cours)
+		\item Timeline graphique ici : 
+		{\small\url{http://en.wikipedia.org/wiki/File:Unix_history-simple.svg}}
+		\end{itemize}
+		Pour le fun, on peux montrer des vidéos de comparaison
+		comme \url{https://www.youtube.com/watch?v=kRPEIo0LLHQ}.
+	}
+
+\imgfullh{../img/richardstallman.jpg}{
+	\includegraphics[width=2.5cm]{../img/fsf-logo-notext.png}
+	\medskip\\
+	\includegraphics[width=2cm]{../img/colored_gnu_logo.png}
+}{https://www.flickr.com/photos/christopheducamp/7463696734}
+
+
+\imgfullw{../img/android-inventeurs.jpg}{
+	\vskip 5cm
+	\centering
+	\includegraphics[width=2.5cm]{../img/android}
+}{https://www.flickr.com/photos/christopheducamp/7463696734}
+
+\note{Pour info:
+  
+	GNU et FSF
+	\begin{itemize}
+		\item GNU : projet d'un OS libre par Richard Stallman
+		\item Le noyau Gnu/Hurd pas au point 
+		\item -> on incorpore Linux -> Gnu/Linux
+		\item FSF : créé par Stallman pour promouvoir le logiciel libre
+	\end{itemize}
+}
+
+\begin{frame}{Le concept de distribution}
+	\begin{center}
+	\includegraphics[width=2cm]{../img/Tux.png}
+	\quad
+	\includegraphics[width=2cm]{../img/ubuntu.png}
+	\quad
+	\includegraphics[width=2cm]{../img/debian.png}
+	\quad
+	\includegraphics[width=2cm]{../img/mint.png}
+	\end{center}
+        C'est quoi une \emph{distribution} ?
+\end{frame}
+
+% \begin{frame}{Les environnements de bureau}
+% 	\begin{center}
+% 	\includegraphics[width=2cm]{../img/gnome}
+% 	\quad
+% 	\includegraphics[width=2cm]{../img/kde}
+% 	\quad
+% 	\includegraphics[width=2cm]{../img/xfce}
+% 	\quad
+% 	\includegraphics[width=2cm]{../img/unity}
+% 	\end{center}
+% 	\sigle{Gnome}, \sigle{KDE}, \sigle{XFCE4}, \sigle{Unity}
+% 	\\Quelle différence ?
+% \end{frame}
+
+\subsection{Installation et virtualisation}
+%=================================
+
+\begin{frame}
+	\begin{block}{\center \insertsubsection}
+		\bigskip
+		\begin{itemize}
+		\item Les modes d'installation d'un OS
+		\item Le concept de virtualisation
+		\end{itemize}
+		\bigskip
+	\end{block}
+\end{frame}
+
+\begin{frame}{Les modes d'installation}
+	Un OS peut s'installer
+	\begin{itemize}
+	\item en \emph{single-boot}
+	\item en \emph{multi-boot}
+	\item dans une machine virtuelle
+	\end{itemize}
+	Certains peuvent aussi se lancer en \emph{live}
+\end{frame}
+
+\begin{frame}{La virtualisation}
+	\begin{center}
+	\includegraphics[width=2cm]{../img/virtualbox}
+	\hfill
+	\includegraphics[width=2cm]{../img/vmware}
+	\\
+	\href{http://www.hostgeek.com.au/virtualization-explained}
+	{\includegraphics[width=0.7\textwidth]{../img/virtualisation-explained}}
+	\end{center}
+	\note{
+	On peut éventuellement aborder la différence entre virtualisation de
+	type 1 et de type 2.
+	}
+	\note{Avantages virtualisation}
+	\note[item]{Plusieurs OS en même temps}
+	\note[item]{Installation de logiciel simplifiée}
+	\note[item]{Facilite les tests et les récupérations}
+	\note[item]{Écologique}
+\end{frame}
+
+\begin{frame}{Une image virtuelle prédéfinie} 
+	\begin{tabular}{cl}
+		\href{Reading by Claire Jones from The Noun Project}
+		{\includegraphics[height=1cm]{../img/icon_57579}}
+		&
+		\begin{minipage}{10cm}
+			\begin{itemize}
+			\item
+				Installez \sigle{Virtualbox} sur votre \sigle{PC}
+			\item
+				Ajoutez une image contenant un OS préinstallé
+				suffisant pour les laboratoires Java
+                        \item Des images sont disponibles sur poESI
+			\end{itemize}
+		\end{minipage}
+		\\
+	\end{tabular}
+\end{frame}
+
+% \begin{frame}{\; {\huge\ding{193}} \; Installer un OS virtuel}
+% 	\begin{tabular}{cl}
+% 		\href{Reading by Claire Jones from The Noun Project}
+% 		{\includegraphics[height=1cm]{../img/icon_57579}}
+% 		&
+% 		\begin{minipage}[t]{10cm}
+% 			Installez un OS de votre choix dans \sigle{virtualbox}
+% 			\\Lequel ? On peut vous proposer :
+% 			\begin{itemize}
+% 			\item Debian : {\small\url{www.debian.org/distrib/netinst}}
+% 			\item Ubuntu : {\small\url{www.ubuntu.com/download/desktop}}
+% 			\item Mint : {\small\url{www.linuxmint.com/download.php}}
+% 			\end{itemize}
+% 		\end{minipage}
+% 		\\
+% 	\end{tabular}
+	
+% 	\note[item]{Expliquer i386, amd64}
+% 	\note[item]{Rassurer : effacer disque dur = disque dur virtuel}
+% \end{frame}
+
+% \begin{frame}{Aide}
+% 	\begin{center}
+% 		\href{Headset by Nicolò Bertoncin from The Noun Project}{\includegraphics[height=2cm]{../img/icon_3119}}
+% 		\\
+% 		Besoin d'aide ?
+% 	\end{center}
+% 	\bigskip
+% 	\begin{itemize}
+% 	\item \url{fora.namok.be}
+% 	\item On fait le point la séance prochaine
+% 	\end{itemize}
+% \end{frame}
+
+
+\section*{Annexe}
+\begin{frame}{Crédits}
+Ce document a été produit avec les outils suivants
+\begin{itemize}
+\item {\small Les distributions \sigle{\emph{Ubuntu}} et/ou \sigle{\emph{debian}} et/ou \sigle{\emph{Open Suse}} 
+du système d'exploitation \sigle{\emph{Linux}}}
+\item {\small \sigle{\emph{LaTeX}}/\sigle{\emph{Beamer}} comme système d'édition}
+\item {\small \sigle{\emph{Git}} et \sigle{\emph{GitHub}} pour la gestion des versions et le suivi des corrections}
+\item {\small Les outils \sigle{\emph{make}}, \sigle{\emph{rubber}}, \sigle{\emph{pdflatex}}\dots}
+\end{itemize}
+\medskip
+\href{http://creativecommons.org/licenses/by-sa/2.0/be}
+{\includegraphics[width=16mm]{../img/cc-by-nc-sa-80x15.png}}
+\end{frame}
+
+\end{document} 
+ 

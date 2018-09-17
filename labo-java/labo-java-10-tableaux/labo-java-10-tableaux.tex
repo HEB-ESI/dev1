@@ -1,0 +1,147 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+
+\newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/labo-java/tree/master/td10-tableaux}
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
+\renewcommand{\listingsrcpath}{code/}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 10 -- Tableaux}
+\sigleprof{}
+
+\marginnumberfalse
+\marginsectiontrue
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================	
+	Dans ce TD vous trouverez une introduction aux tableaux.
+	 
+	Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
+	
+	\url{\publicbasepath}	
+
+
+	\tableofcontents
+
+	\newpage
+
+%===================
+\section{Créer et manipuler des tableaux}
+%====================	
+
+ 	\listing{java}{Tableau.java}
+
+ 
+	\begin{Exercice}{\texttt{TableauUtil}}	
+		Dans une classe \texttt{TableauUtil} écrivez les méthodes suivantes et leur 
+		javadoc~:
+		\begin{itemize}
+			\item \code{java}{static double min(double[] tab)} qui retourne le minimum
+				du tableau passé en paramètre ~;
+			\item \code{java}{static double max(double[] tab)} qui retourne le maximum
+				du tableau~;
+			\item \code{java}{static double somme(double[] tab)} qui retourne la somme
+				des éléments du tableau~;
+			\item \code{java}{static double moyenne(double[] tab)} qui retourne la
+				 moyenne des éléments du tableau~;
+		\end{itemize}
+	\end{Exercice}
+
+	\begin{Exercice}{Initialisation par défaut}	
+		Dans la méthode principale d'une classe \texttt{TestInit}~:
+		\begin{itemize}
+			\item créer un tableau d'entier de taille 10 et afficher-le 
+				(comme à  la ligne 18 de la classe \texttt{Tableau} ci-dessus). 
+				
+				Quelle valeur par défaut initialise chacune des cases du tableau ?
+			\item créer un tableau de double de taille 10 et afficher-le~;
+			\item créer un tableau de 10 booléens et afficher-le~;
+			\item créer un tableau de 10 \texttt{String} et afficher-le~;
+		\end{itemize}
+	\end{Exercice}
+
+	
+	
+
+\section{Tableaux et tests}
+
+ 	\listing{java}{TableauTest.java}
+
+	\begin{Exercice}{Tests}	
+		Créer des tests JUnit pour les méthodes de l'exercice 1. Pour chacune 
+		de ces méthodes testez un cas général ainsi que les cas limites (tableau vide,
+		maximum en début/fin de tableau, valeurs négatives, etc).
+	\end{Exercice}
+
+\section{Exercices récapitulatifs}
+
+	\begin{Exercice}{\texttt{TableauUtil} (suite)}	
+
+		Dans la classe \texttt{TableauUtil} ajoputez les méthodes suivantes, meur javadoc ainsi que les tests JUnit correspondant~:
+	\begin{itemize}
+		\item \code{java}{int indiceMax(double[] tab)}: 
+				retourne l'indice du maximum du talbeau passé en paramètre~;
+		\item \code{java}{boolean estTrié(double[] tab)}: 
+				retourne vrai si le tableau est trié par ordre croissant et 	
+				faux sinon~;
+		\item \code{java}{int indice(int[] tab, int valeur)}: 
+				retourne l'indice de cette valeur dans le tableau. 
+				Que retournez-vous si la valeur n'apparait pas?
+		\item  \code{java}{boolean contient(String[] tab, String mot)}: 
+			retourne vrai si un tableau de \texttt{String} contient un mot passé en
+			paramètre~;
+%		\item \texttt{inverser}: retourne ~;
+%		\item \texttt{indiceMax}: retourne l'indice du maximum d'un tableau de double~;
+%		\item \texttt{indiceMax}: retourne l'indice du maximum d'un tableau de double~;
+%		\item \texttt{indiceMax}: retourne l'indice du maximum d'un tableau de double~;
+%	
+%		\item créer
+%		\item inverser
+%		\item positionsMin
+%		\item position(int valeur)
+%		\item premièreOccurence
+%		\item dernièreOccurence
+%		\item échange(int position1, position2)
+%		\item glissementCyclique
+%		\item doublons ?
+%		\item nb éléments négatifs
+%		\item inverserSigne
+%		\item contientChaine
+%		\item tri
+%		\item recherche dichotomique
+%		\item recherche d'une chaine
+	\end{itemize}
+	\end{Exercice}
+	
+	A faire:	
+\begin{itemize}
+	\item tableaux de string
+	\item remplissage de tableau par system.in
+	\item retourner un tableau
+	\item tableau et String (split, chars)
+	\item tableau de booléens ?
+\end{itemize}	
+
+\end{document}
