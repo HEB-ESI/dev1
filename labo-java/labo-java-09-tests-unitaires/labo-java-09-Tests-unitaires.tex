@@ -12,7 +12,7 @@
 
 
 \newcommand{\publicbasepath}
-{https://git.esi-bru.be/dev1/labo-java/tree/master/td09-tests-unitaires}
+{https://git.esi-bru.be/dev1/labo-java/tree/master/td09-tests-unitaires}	
 \renewcommand{\listingpublicpath}{\publicbasepath/code/}
 \renewcommand{\listingsrcpath}{code/}
 
@@ -62,7 +62,7 @@
 \section{Introduction}
 %====================	
 
-	La démarche que l'on vous demande de suivre dans ce TD permet d'avoir un code sans bug\footnote{Un code sans bug est difficile à obtenir, mais un développer doit les éviter autant qu'il peut.}, grâce aux tests unitaires ainsi que le développement dirigé par les testes. Ces méthodoloties permettent d'obtenir des tests maintenanables tout au long de la vie d'un code.
+	La démarche que l'on vous demande de suivre dans ce TD permet d'avoir un code sans bug\footnote{Un code sans bug est difficile à obtenir, mais un développeur doit les éviter autant qu'il peut.}, grâce aux tests unitaires ainsi que le développement dirigé par les testes. Ces méthodologies permettent d'obtenir des tests maintenables tout au long de la vie d'un code.
 
 	Jusqu'à présent, nous vous avons demandé d'écrire du code afin de répondre à une demande. Pour cela, vous avez dû~:
 	\begin{enumerate}
@@ -73,9 +73,9 @@
 		\item tester votre algorithme.
 	\end{enumerate}
 
-	Dans ce laboratoire, vous allez faire ce que l'on appelle du Développement dirigé par les tests. Pour faire court, il s'agit d'écrire les tests avant d'avoir écrit le code. En effet, on sait, avant de l'écrire, ce que le code est censé faire.
+	Dans ce laboratoire, vous allez faire ce que l'on appelle du \emph{développement dirigé par les tests}. Pour faire court, il s'agit d'écrire les tests avant d'avoir écrit le code. Cela est possible car on sait, avant de l'écrire, ce que le code est censé faire.
 
-	Ce que vous devez faire tout au lond de ce TD est~:
+	Ce que vous devez faire tout au long de ce TD est~:
 	\begin{enumerate}
 		\item lire et comprendre l'énoncé~;
 		\item déterminer les entrées et les sorties~;
@@ -83,7 +83,7 @@
 		\item écrire les tests~;
 		\item penser votre algorithme~;
 		\item traduire l'algorithme en pseudo-code et/ou Java~;
-		\item tester votre algorithme\footnote{Certains codes ont été écrit lors d'un TD précédent. L'ordre des étapes n'est parfois pas respecté.}.
+		\item tester votre algorithme.
 	\end{enumerate}
 
 
@@ -91,14 +91,14 @@
 \section{La couverture de code}
 %====================	
 
-	Nous allons tenter de comprendre ce qu'est une bonne \emph{couverture de code} en reprenant notre fonction valeur absolue qui est définie de la façon suivante~:
+	Ensemble, tentons de comprendre ce qu'est une bonne \emph{couverture de code} en reprenant notre fonction valeur absolue qui est définie de la façon suivante~:
 	$$
 		|x| = x \textrm{ si } x \geq 0, -x \textrm{ sinon}.
 	$$
 
-	Soit la méthode \texttt{abs} qui a pour signature \code{java}{public static double abs(double x)} puisque la fonction absolue s'applique sur des réels.
+	Soit la méthode \texttt{abs} qui a pour signature \code{java}{public static double abs(double x)}.
 
-	Nous devons maintenant réfléchir aux tests que nous devons réaliser afin de garantir le fonctionnement de notre méthode. C'est-à-dire, les tests nécessaires\footnote{Avoir les testes nécessaires et suffisants c'est mieux. À défaut, il en vaut mieux trop que pas assez.} pour garantir le fonctionnement de la méthode quelque soit l'entrée autorisée de la méthode. Réfléchissons-y ensemble.
+	Nous allons maintenant réfléchir aux tests que nous devons réaliser afin de garantir le bon fonctionnement de notre méthode. C'est-à-dire, les tests nécessaires\footnote{Avoir les testes nécessaires et suffisants c'est mieux. À défaut, il en vaut mieux trop que pas assez.} pour garantir le fonctionnement de la méthode quelque soit l'entrée passée à la méthode.
 
 	Prenons une valeur positive, 4 par exemple. Le code suivant, qui n'est pas la valeur absolue, passe avec succès notre test puisqu'il va retourner la valeur d'entrée.
 	\begin{Code}{Java}
@@ -132,31 +132,31 @@
 		\end{tabular}
 	\end{center}
 
-	Même si notre exemple est aberrant, nous souhaitons ici mettre en évidence la difficulté d'obtenir des tests complet, que le processus d’élaboration des tests unitaires demande de la réflexion et qu’il ne garantie pas à 100\% le bon fonctionnement du code. Il est donc essentiel de prendre le temps nécessaire afin de fournir une couverture de code aussi complète et exacte que possible\footnote{Vous pouvez remarquer que dans nos exemples, la couverture de code est à chaque fois de 100\%, que malgré cela le code ne fait pas toujours ce qu'il doit faire.}.
+	Même si notre exemple est aberrant, nous souhaitons ici mettre en évidence la difficulté d'obtenir des tests complets, que le processus d’élaboration des tests unitaires demande de la réflexion et qu’il ne garantie pas à 100\% le bon fonctionnement du code. Il est donc essentiel de prendre le temps nécessaire afin de fournir une couverture de code aussi complète et exacte que possible\footnote{Vous pouvez remarquer que pour chacun de nos exemples, la couverture de code est de 100\% ; et que malgré cela, le code ne fait pas toujours ce qu'on souhaitait qu'il fasse.}.
 
-	\begin{Exercice}{Couverture de code - Max}
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{max(int a, int b)} qui permet d’obtenir la plus grande valeur parmis les~2 passées en paramètre.
+	\begin{Exercice}{Max - Couverture de code}
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{max(int a, int b)} qui permet d’obtenir la plus grande valeur parmi les~2 passées en paramètre.
 	\end{Exercice}
 
-	\begin{Exercice}{Couverture de code - Somme d'entiers consécutifs}
+	\begin{Exercice}{Somme d'entiers consécutifs - Couverture de code}
 		
 		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{somme(int n)}qui permet de calculer la somme des entiers consécutifs de 1 à n.
 	\end{Exercice}
 
-	\begin{Exercice}{Couverture de code - Anagramme}
-		Une anagramme est une construction fondée sur une figure de style qui inverse ou permute les lettres d’un mot ou d’un groupe de mots pour en extraire un sens ou un mot nouveau\footnote{https ://fr.wikipedia.org/wiki/Anagramme}. 
+	\begin{Exercice}{Anagramme - Couverture de code}
+		\og Une anagramme est une construction fondée sur une figure de style qui inverse ou permute les lettres d’un mot ou d’un groupe de mots pour en extraire un sens ou un mot nouveau.\fg Wikipedia.\footnote{https ://fr.wikipedia.org/wiki/Anagramme}. 
 
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estAnagramme qui permet de vérifier si un text est un anagramme.
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estAnagramme qui permet de vérifier si une chaîne de caractères est un anagramme.
 	\end{Exercice}
 
-	\begin{Exercice}{Couverture de code - Palindrome}
-		Le palindrome est un texte ou un mot qui reste identique qu’on le lise de gauche à droite ou de droite à gauche. Nous considérons ici la version stricte dans le sens où l’on prend en considération les signes diacritiques (accents, trémas, cédilles) ainsi que les espaces\footnote{https ://fr.wikipedia.org/wiki/Palindrome}.
+	\begin{Exercice}{Palindrome - Couverture de code}
+		\og Le palindrome est un texte ou un mot qui reste identique qu’on le lise de gauche à droite ou de droite à gauche. Nous considérons ici la version stricte dans le sens où l’on prend en considération les signes diacritiques (accents, trémas, cédilles) ainsi que les espaces.\fg Wikipedia\footnote{https ://fr.wikipedia.org/wiki/Palindrome}.
 
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estPalindrome qui permet de vérifier si un text est un palindrome.
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estPalindrome qui permet de vérifier si un texte est un palindrome.
 	\end{Exercice}
 
-	\begin{Exercice}{Couverture de code - Nombre d'occurances}
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{public static int nbOccurance(char lettre, String text)}. Cette méthode permet de compter le nombre d’occurances d’une lettre dans un text.
+	\begin{Exercice}{Nombre occurrences - Couverture de code}
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{public static int nbOccurance(char lettre, String text)}. Cette méthode permet de compter le nombre d'occurrences d’une lettre dans un texte.
 	\end{Exercice}
 
 %====================
@@ -174,20 +174,36 @@
 
 	Les problèmes avec cette méthodologie sont multiples.
 	\begin{enumerate}
-		\item Il ne peut y avoir qu’une seule méthode main par fichier java.
+		\item Il ne peut y avoir qu’une seule méthode main par fichier Java.
  		\item On doit avoir accès au fichier pour compléter les tests.
  		\item Il faut être rigoureux pour que les tests soient lisibles.
- 		\item Le lancement des tests peut prendre du temps...
+ 		\item Le lancement des tests peut prendre du temps puisqu'il faut lancer chaque fichier séparément...
 	\end{enumerate}
 	Tous ces problèmes mènes à un problème de maintenabilité des tests et du code.
 
-	Notre manière de tester peut être améliorée en sortant les méthodes principales dans des fichiers différents. Mais il nous reste à être rigoureux pour obtenir un code maintenable. Nous allons donc utiliser le framework JUnit qui va nous obliger à obenir cette lisibilité. Le dernier point peut être évité en mettant tous les tests dans une même méthode principale, mais nous nous éloignons alors davantage d'une bonne maintenabilité.
+	Notre manière de tester peut être améliorée en sortant les méthodes principales dans des fichiers différents et le dernier point en mettant tous les points dans la même méthode, mais il nous reste à être rigoureux pour obtenir un code maintenable. Nous allons donc utiliser le framework JUnit qui va nous obliger à obtenir cette lisibilité.
 
-	La première chose à faire est de configurer Netbeans. Heureusement pour vous, il fait presque tout lui même à condition de bien s’y prendre.
-	Après avoir écrit le fichier Math.java dans un nouveau package esi.dev1.td9 faite un clique droit sur le package. Selectionnez tools et faite Create/Update tests. Une nouvelle fenêtre va apparaître. Validez. De nouveaux éléments apparraîssent dans votre
-	projet. D’une part des éléments dans les librairires utiliées par netbeans ainsi qu’un nouveau dossier nommé Tests packages. C’est dans ce dernier dossier que vous allez écrire vos tests.
+	La première chose à faire est de configurer Netbeans. Heureusement pour vous, il fait presque tout lui même (à condition de bien s’y prendre).
+	Après avoir écrit le fichier \bsc{Math.java} dans un nouveau package \bsc{esi.dev1.td9}, faite un clique droit sur le package. Sélectionnez tools et faite Create/Update tests.
 
-	Si vous avez laissé netbeans générer le code (à priori oui), vous vous retrouvez avec un tas de méthodes déjà écrites. Vous pouvez commencer par supprimer les méthodes sans implémentation.
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{images/create_tests.png}
+	\end{center}
+
+
+	Une nouvelle fenêtre va apparaître, décochez les 4 checkbox en dessous de \og Generated Code\fg et validez. 
+
+	\begin{center}
+		\includegraphics[width=.5\textwidth]{images/config_tests.png}
+	\end{center}
+
+	De nouveaux éléments apparaissent dans votre
+	projet. D’une part des éléments dans les librairies utilisées par netbeans ainsi qu’un nouveau dossier nommé Tests packages. C’est dans ce dernier dossier que vous allez écrire vos tests.
+
+	\begin{center}
+		\includegraphics[width=.5\textwidth]{images/libraries.png}
+	\end{center}
+
 	Il vous reste à considérer le message laissé par netbeans.
 	\begin{Code}{Java}
 		// TODO review the generated test code and remove the default call to fail.
@@ -206,14 +222,13 @@
 	\end{itemize}
 
 	Le troisième paramètre ne doit être utilisé que si la sortie de la méthode est de type double \footnote{Pourquoi ?}.
-	L’appel à la méthode \texttt{assertEquals} avec un retour de méthode entier s’écrira donc :
+	L’appel à la méthode \texttt{assertEquals} avec un retour de méthode entier s’écrit donc :
 	\code{java}{assertEquals(expResult, result)}.
-	Si la méthode que vous testez retourne un booléne, il est alors préférable d’utiliser les méthodes \texttt{assertTrue} ou \texttt{assertFalse}. Ces méthodes prennent en paramètre le résultat puisque le résultat attendu est défini par la méthode utilisée. En effet en utilisant \texttt{assertTrue}.
-	On s’attend à avoir un résultat positif.
+	Si la méthode que vous testez retourne un booléen, il est alors préférable d’utiliser les méthodes \texttt{assertTrue} ou \texttt{assertFalse}. Ces méthodes prennent un unique paramètre, le résultat, puisque le résultat attendu est défini par la méthode qu'on a choisi d'utiliser. En effet en utilisant \texttt{assertTrue}, on s’attend à avoir un résultat positif.
 
 	\subsection{Tester le lancement d'une exception}
 	%=============================
-	Si nous reprenons le code de la méthode périmètre, nous remarquons qu'une exception est lancée si dans le cas d'un rayon négatif. En effet, si l'on fait notre plan de test, nous aurions quelque chose comme ceci~:
+	Si nous reprenons le code de la méthode périmètre, nous remarquons qu'une exception est lancée dans le cas d'un rayon négatif. En effet, notre plan de test doit ressembler à quelque chose comme ceci~:
 
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
@@ -274,7 +289,7 @@
 		\end{enumerate}
 	\end{Exercice}
 
-	\begin{Exercice}{Implémentation - Nombre d'occurances}
+	\begin{Exercice}{Implémentation - Nombre d’occurrences}
 		\begin{enumerate}
 			\item Écrivez un nouveau fichier Math dans lequel vous allez ajouter la signature de méthode de la méthode \texttt{nbOccurances}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
