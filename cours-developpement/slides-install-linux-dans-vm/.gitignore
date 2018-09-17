@@ -1,0 +1,3 @@
+# Fichier que Git ne doit pas prendre en considération
+build/
+dist/
