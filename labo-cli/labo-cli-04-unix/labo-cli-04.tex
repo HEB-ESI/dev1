@@ -23,7 +23,7 @@
 
 \date{2018 -- 2019}
 \siglecours{DEV1}
-\libellecours{Laboratoires d'environnement}
+\libellecours{Laboratoire d'environnement de développement}
 \libelledocument{TD 4 -- Commandes grep, wc, find et variables d'environnement}
 \sigleprof{}
 
@@ -91,12 +91,13 @@
         
 			
 				
-           	\begin{Exemple}{}
-			Pour trouver dans quel fichier vous avez utilis\'e une variable nomm\'ee "surface", vous pouvez \'ecrire :
+           	\begin{Tutoriel}{}
+				Pour trouver dans quel fichier vous avez utilis\'e une variable
+				nomm\'ee "surface", vous pouvez \'ecrire :
 				\begin{Console}
 					grep surface *.java
 				\end{Console}
-		\end{Exemple}
+			\end{Tutoriel}
             \par
         
 
@@ -133,13 +134,15 @@
 		Syntaxe : \,\verb|wc fichier...|\,
             \par
            
-        
+       \clearpage 
 			
-		\begin{Exemple}{}
-			La commande : \,\verb|wc Ex2.java|\, affiche le nombre de lignes, mots et caract\`eres contenus dans le fichier
-			\verb_Ex2.java_.
-
-		\end{Exemple}	
+		\begin{Tutoriel}{}
+			La commande suivant affiche le nombre de lignes, mots et caract\`eres
+			contenus dans le fichier \verb_Ex2.java_.
+			\begin{Console}
+			wc Ex2.java
+			\end{Console}
+		\end{Tutoriel}	
 		
 		\begin{Exercice}{Compter le nombre de lignes} 
 			\begin{enumerate}
@@ -269,7 +272,8 @@
         
 			
 		\subparagraph{FAQ} 
-           		\par
+           		
+        \par
         			\textbf{Comment voir le contenu d'une variable d'environnement ?}
            		 \par
         
