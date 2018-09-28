@@ -1417,12 +1417,6 @@ ligne (idéalement moins de 80 caractères), puis une ligne vide, puis un messag
 Voir par exemple https://chris.beams.io/posts/git-commit/#seven-rules pour les "Best practices" en terme de message de commit.
 #+END_tdastuce
 
-** git et NetBeans
-
-Comme vous l'avez noté dans le menu Team, Netbeans offre une certaine
-dose d'intégration avec Git. À vous de découvrir ce que vous pouvez
-faire depuis Netbeans.
-
 * Annexe
 
 ** COMMENT Configuration
@@ -1471,6 +1465,78 @@ peut en inspecter le contenu avec =git cat-file=, par exemple :
 #+BEGIN_EXAMPLE
     git cat-file commit HEAD
 #+END_EXAMPLE
+
+** git et NetBeans
+Comme vous l'avez noté dans le menu Team, Netbeans offre une certaine
+dose d'intégration avec Git.
+
+Voyons maintenant quelques manipulations de base de Git via Netbeans.
+
+Dans ce qui suit, on suppose que vous avez créé un nouveau projet Netbeans mais pas encore de dépôt Git.
+
+*** Création d'un dépôt : =git init=
+Pour initialiser un nouveau dépôt pour votre projet depuis Netbeans:
+
+Dans le *project explorer* (à gauche) cliquez droit sur votre nom de projet (=TestGit= dans la capture d'écran ci-dessous), choisissez *Versioning* puis *Initialize Git Repository...*
+
+[[./img/Netbeans-git-init.png]]
+
+Le répertoire proposé est le répertoire de votre projet, vous pouvez confirmer.
+
+*** Création d'un commit : =git add= et =git commit=
+Pour créer un nouveau commit dans le dépôt Git, depuis Netbeans:
+
+Dans le *project explorer* cliquez droit sur votre projet, puis sélectionnez l'option *Git* et enfin l'option *Commit...*
+
+[[./img/Netbeans-git-commit.png]]
+
+Attention, une erreur courante est de cliquer droit sur un fichier et non sur le projet.
+Seules les modifications du fichier concerné sont committées dans ce cas.
+
+Dans la fenêtre qui s'ouvre, vous retrouvez une zone pour le message du commit, ainsi que tous les fichiers qui vont être committés, tel qu'illustré ci-dessous.
+
+[[./img/Netbeans-git-commit-2.png]]
+
+Remarque : avec Netbeans, le choix des fichiers (=git add=) et la création du commit (=git commit=) sont donc réalisés depuis la même fenêtre.
+
+*** Envoyer les modifications vers Gitlab : =git push=
+Pour réaliser un push, depuis Netbeans:
+
+Dans le *project explorer* cliquez droit sur votre projet, puis sélectionnez l'option *Git*, puis l'option *Remote* et enfin l'option *Push...*
+
+[[./img/Netbeans-git-push-1.png]]
+
+Une nouvelle fenêtre s'ouvre. Vous devez spécifier le nom de la remote à utiliser (choisissez par exemple /esi-gitlab/), l'URL du dépôt sur Gitlab ainsi que votre nom d'utilisateur et mot de passe Gitlab.
+
+[[./img/Netbeans-git-push-2.png]]
+
+Dans la fenêtre suivante, sélectionnez =master -> master=.
+
+[[./img/Netbeans-git-push-3-branches.png]]
+
+Confirmez ensuite dans les deux fenêtres suivantes puis allez vérifier sur Gitlab que votre dépôt a bien été mis à jour.
+
+*** Récupérer le projet depuis Gitlab...
+**** Sur une nouvelle machine : =git clone=
+Pour récupérer l’historique se trouvant sur le serveur depuis une machine où votre projet n'existe pas encore.
+
+Ouvrez Netbeans, et choisissez *Team* =>= *Git* =>= *Clone...*
+
+[[./img/Netbeans-git-clone.png]]
+
+Ensuite remplissez les champs : URL, username, password, Destination Folder.
+
+[[./img/Netbeans-git-clone-2.png]]
+
+Sélectionnez la branche master.
+**** Sur une machine existante : =git pull=
+Pour récupérer l'historique depuis une machine où votre projet se trouve déjà, depuis Netbeans:
+
+Dans le *project explorer* cliquez droit sur le nom de votre projet, puis choisissez l’option *Git > Remote > Pull...*
+
+[[./img/Netbeans-git-pull.png]]
+
+
 
 ** COMMENT Les autres noms d'un commit : branches, tag et HEAD
 
