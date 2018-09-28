@@ -4,7 +4,7 @@
 
 /* Configuration des petits cadres colorés  */
 
-.tdaction, .tdastuce, .tdreponse {
+.tdaction, .tdastuce, .tdreponse, .objectif {
     border-radius: 15px;
     padding-left: 5px;
     padding-bottom: 2px;
@@ -30,6 +30,9 @@
 .tdreponse {
     background: lightgrey;
 }
+.objectif {
+    background: lightgrey;
+}
 
 /* En tête */
 
@@ -41,4 +44,7 @@
 }
 .tdreponse:before {
     content: "Réponse (cliquez pour afficher/cacher)";
+}
+.objectif:before {
+    content: "Objectifs";
 }

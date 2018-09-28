@@ -1,7 +1,7 @@
 #+TITLE: git - the stupid content tracker
 
 #+AUTHOR: Nicolas Richard [[mailto:nrichard@he2b.be][nrichard@he2b.be]]
-#+DATE: Année 2018-2019
+#+DATE: 2018 -- 2019
 
 #+OPTIONS: toc:nil        no default TOC, use only #+TOC
 
@@ -11,7 +11,7 @@
 
 #+LATEX_CLASS: article
 #+LATEX_HEADER_EXTRA: \input styles/tdstyle.tex
-#+LATEX_HEADER_EXTRA: \libelledocument{TD 5 -- Git}
+#+LATEX_HEADER_EXTRA: \libelledocument{TD 05 -- Git}
 #+LATEX_HEADER_EXTRA: \sigleprof{}
 #+LATEX_HEADER_EXTRA: \def\maketitle{}
 
@@ -20,13 +20,8 @@
 #+LATEX: \ccbysa{esi-dev1-list@he2b.be}
 #+LATEX: \lastedit
 
-#+TOC: headlines 2
-
-
-* Contexte
-** But
-
-Le but du TD est d'apprendre le maniement basique de Git.
+#+begin_objectif 
+Le but du TD est d'apprendre le maniement basique de Git en ligne de commande.
 
 Git est un logiciel de gestion de versions ("revision control" ou
 "version control"). Ce type de logiciels, et git en particulier, est
@@ -40,7 +35,12 @@ notamment pour :
 
 Au travers de ce TD nous vous montrerons comment Git aide à réaliser ces
 objectifs.
+#+end_objectif
 
+#+TOC: headlines 2
+#+LaTeX: \clearpage
+
+* Contexte
 ** Pré-requis
 
 Les pré-requis sont l'utilisation basique :
