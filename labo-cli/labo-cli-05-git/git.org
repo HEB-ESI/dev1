@@ -582,90 +582,8 @@ Ici, vous avez une vue d'ensemble de l'histoire de votre dépôt. Chaque
 commit succède à son parent (à l'exception du premier, tout en bas, qui
 n'a pas de parent).
 
-*** Lecture d'un commit
-
-Dans le log, notez que chaque commit commence par une ligne du type:
-
-#+BEGIN_EXAMPLE
-    commit 9941d89f56fbbcd3c8fbe29570af23c89e1708c5
-#+END_EXAMPLE
-
-Ce qui se trouve à côté du mot "commit" est le nom du commit, toujours constitué de 40 caractères (des chiffres hexadécimaux). Nous l'appelons le "hash" du
-commit (en français nous dirons parfois "haché").
-
 #+BEGIN_tdastuce
-Ce hash est produit par une fonction "de hachage" appelée SHA-1.
-Vous reverrez encore SHA-1 et d'autres fonctions de hachage en d'autres
-occasions.
-#+END_tdastuce
-
-Pour désigner un commit, on peut généralement se contenter des 7
-premiers caractères de son hash.
-
-#+BEGIN_tdaction
-Notez les 7 premiers caractères du dernier commit de votre
-dépôt (dans l'exemple c'est =9941d89=), et utilisez-les comme suit:
-
-#+BEGIN_EXAMPLE
-    git show 9941d89
-#+END_EXAMPLE
-#+END_tdaction
-
-#+BEGIN_tdastuce
-Que se passe-t-il si vous mettez moins que 7 caractères ?
-#+END_tdastuce
-
-Le résultat devrait être similaire à ceci:
-
-#+BEGIN_EXAMPLE
-    commit 9941d89f56fbbcd3c8fbe29570af23c89e1708c5
-    Author: Nicolas Richard <youngfrog@members.fsf.org>
-    Date:   Mon May 28 17:03:36 2018 +0200
-
-        Hello, World !
-
-    diff --git a/src/helloworld/HelloWorld.java b/src/helloworld/HelloWorld.java
-    index c49e653..206c27d 100644
-    --- a/src/helloworld/HelloWorld.java
-    +++ b/src/helloworld/HelloWorld.java
-    @@ -15,7 +15,7 @@ public class HelloWorld {
-          * @param args the command line arguments
-          */
-         public static void main(String[] args) {
-    -        // TODO code application logic here
-    +        System.out.println("Hello, World !");
-         }
-
-     }
-#+END_EXAMPLE
-
-Les lignes entre =diff --git ...= et =@@ ...= peuvent rester
-mystérieuses, mais le reste devrait vous sembler familier. Prenez deux
-minutes pour comprendre.
-
-#+BEGIN_tdreponse
-Les premières lignes indiquent le nom du commit, le nom de l'auteur
-du commit, la date à laquelle le commit a été fait.
-#+END_tdreponse
-
-Les lignes suivantes forment la description (que vous avez fournie) du
-commit.
-
-Suivent quelques lignes mystérieuses (jusque =@@ ... @@ ...=) et enfin
-le "diff" du commit, c'est-à-dire une liste des différences entre ce
-commit et son parent.
-
-Dans le diff, chaque ligne commence par un symbole =+=, =-=, ou ` `, qui
-veulent dire que la ligne a été, respectivmeent, "ajoutée", "enlevée" ou
-"non-modifiée".
-
-#+BEGIN_tdastuce
-On peut produire un diff entre deux fichiers texte grâce à la
-commande =diff -u fichier1 fichier2=, mais c'est généralement plus
-coloré si on demande à Git : =git diff --no-index fichier1 fichier2=.
-Les options =--word-diff= et =-w= (équivalent à =--ignore-all-space=) sont
-intéressantes. =git help diff= vous en dira plus sur les options
-disponibles.
+Pour voir les différences introduites par un commit donné, voyez la section [[*Lecture d'un commit][Lecture d'un commit]].
 #+END_tdastuce
 
 *** Un outil graphique : =gitk=
@@ -1460,6 +1378,91 @@ Dans un dépôt Git, c'est similaire et cependant différent.
   des propriétés qui nous intéressent. Voyez =git help fsck= et en
   particulier les options =--dangling= et =--lost-found= pour des
   détails techniques bien au delà du cadre du présent document.)
+** Lecture d'un commit
+Dans le log, notez que chaque commit commence par une ligne du type:
+
+#+BEGIN_EXAMPLE
+    commit 9941d89f56fbbcd3c8fbe29570af23c89e1708c5
+#+END_EXAMPLE
+
+Ce qui se trouve à côté du mot "commit" est le nom du commit, toujours constitué de 40 caractères (des chiffres hexadécimaux). Nous l'appelons le "hash" du
+commit (en français nous dirons parfois "haché").
+
+#+BEGIN_tdastuce
+Ce hash est produit par une fonction "de hachage" appelée SHA-1.
+Vous reverrez encore SHA-1 et d'autres fonctions de hachage en d'autres
+occasions.
+#+END_tdastuce
+
+Pour désigner un commit, on peut généralement se contenter des 7
+premiers caractères de son hash.
+
+#+BEGIN_tdaction
+Notez les 7 premiers caractères du dernier commit de votre
+dépôt (dans l'exemple c'est =9941d89=), et utilisez-les comme suit:
+
+#+BEGIN_EXAMPLE
+    git show 9941d89
+#+END_EXAMPLE
+#+END_tdaction
+
+#+BEGIN_tdastuce
+Que se passe-t-il si vous mettez moins que 7 caractères ?
+#+END_tdastuce
+
+Le résultat devrait être similaire à ceci:
+
+#+BEGIN_EXAMPLE
+    commit 9941d89f56fbbcd3c8fbe29570af23c89e1708c5
+    Author: Nicolas Richard <youngfrog@members.fsf.org>
+    Date:   Mon May 28 17:03:36 2018 +0200
+
+        Hello, World !
+
+    diff --git a/src/helloworld/HelloWorld.java b/src/helloworld/HelloWorld.java
+    index c49e653..206c27d 100644
+    --- a/src/helloworld/HelloWorld.java
+    +++ b/src/helloworld/HelloWorld.java
+    @@ -15,7 +15,7 @@ public class HelloWorld {
+          * @param args the command line arguments
+          */
+         public static void main(String[] args) {
+    -        // TODO code application logic here
+    +        System.out.println("Hello, World !");
+         }
+
+     }
+#+END_EXAMPLE
+
+Les lignes entre =diff --git ...= et =@@ ...= peuvent rester
+mystérieuses, mais le reste devrait vous sembler familier. Prenez deux
+minutes pour comprendre.
+
+#+BEGIN_tdreponse
+Les premières lignes indiquent le nom du commit, le nom de l'auteur
+du commit, la date à laquelle le commit a été fait.
+#+END_tdreponse
+
+Les lignes suivantes forment la description (que vous avez fournie) du
+commit.
+
+Suivent quelques lignes mystérieuses (jusque =@@ ... @@ ...=) et enfin
+le "diff" du commit, c'est-à-dire une liste des différences entre ce
+commit et son parent.
+
+Dans le diff, chaque ligne commence par un symbole =+=, =-=, ou ` `, qui
+veulent dire que la ligne a été, respectivmeent, "ajoutée", "enlevée" ou
+"non-modifiée".
+
+#+BEGIN_tdastuce
+On peut produire un diff entre deux fichiers texte grâce à la
+commande =diff -u fichier1 fichier2=, mais c'est généralement plus
+coloré si on demande à Git : =git diff --no-index fichier1 fichier2=.
+Les options =--word-diff= et =-w= (équivalent à =--ignore-all-space=) sont
+intéressantes. =git help diff= vous en dira plus sur les options
+disponibles.
+#+END_tdastuce
+
 ** Anatomie d'un commit
 
 Un commit n'est en réalité rien d'autre qu'un petit fichier texte. On
@@ -1468,7 +1471,6 @@ peut en inspecter le contenu avec =git cat-file=, par exemple :
 #+BEGIN_EXAMPLE
     git cat-file commit HEAD
 #+END_EXAMPLE
-
 ** git et NetBeans
 Comme vous l'avez noté dans le menu Team, Netbeans offre une certaine
 dose d'intégration avec Git.
