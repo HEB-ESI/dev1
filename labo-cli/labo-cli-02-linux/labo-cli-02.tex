@@ -23,7 +23,7 @@
 \siglecours{DEV1}
 \libellecours{Laboratoires d'environnement}
 %\libelledocument{TD 1 -- Prise en main de l’environnement }
-\libelledocument{TD02 - Les bases de Linux }
+\libelledocument{TD02 - Bases de Linux~: chemins et permissions }
 \sigleprof{}
 
 
@@ -362,23 +362,27 @@ Un retour vers les points 17 \`a 19 du guide visuel sera peut-\^etre encore n\'e
 
 %\par
 
-\begin{Exercice}{D\'eterminez les bonnes permissions}
-	       %         \textcolor{white}{.} %\par
-	Remplissez les blancs avec la permission correcte (r, w, x ou -). 
-	Il s'agit de trouver la permission minimale \`a mettre pour r\'epondre \`a la demande.   
+\begin{Exercice}{Déterminez les bonnes permissions}
+	
+	Remplissez les blancs avec la permission correcte (r, w, x ou -).  Il s'agit
+	de trouver la permission minimale \`a mettre pour r\'epondre \`a la demande.   
 	
 	\begin{itemize}
 		
-		\item 
-		Pour un fichier Java, la permission la plus ad\'equate est
-		\textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}} 
-		\item 
-		Pour la version compil\'ee (le bytecode), la permission la plus ad\'equate est
-		\textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}} 
-		\item 
-		Le fichier qui contient (l'ex\'ecutable de) la machine virtuelle a probablement comme permisson
-		\textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}}  \textcolor{gray}{\underline{\hspace*{1em}}} 
-	\end{itemize}
+		\item Pour un fichier Java, la permission la plus ad\'equate est
+			\textcolor{gray}{\underline{\hspace*{1em}}}
+			\textcolor{gray}{\underline{\hspace*{1em}}}
+			\textcolor{gray}{\underline{\hspace*{1em}}} 
+	
+		\item Le fichier qui contient (l'ex\'ecutable de) \texttt{ls}
+			a probablement comme permisson\\
+		\textcolor{gray}{\underline{\hspace*{1em}}}
+		\textcolor{gray}{\underline{\hspace*{1em}}}
+		\textcolor{gray}{\underline{\hspace*{1em}}}
+
+		    Vous pouvez le vérifier. Comment ? 
+	
+\end{itemize}
 	
 \end{Exercice}
 
