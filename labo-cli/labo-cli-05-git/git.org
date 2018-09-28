@@ -897,6 +897,9 @@ code qui se trouve sur Gitlab, le tout en une seule étape facile.
 #+BEGIN_tdaction
 Tapez =git clone https://git.esi-bru.be/nrichard/HelloWorld=
 (Modifiez pour refléter votre propre dépôt Gitlab).
+
+Si vous ne récoltez qu'une erreur, essayez cette variante : =git clone git@git.esi-bru.be:nrichard/HelloWorld=
+(Bien sûr, modifiez pour refléter votre propre dépôt Gitlab).
 #+END_tdaction
 
 #+BEGIN_tdaction
