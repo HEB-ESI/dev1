@@ -16,7 +16,7 @@ public class Exercice11 {
         boolean croissante = false;
 
         while (valeur > sentinelle) {
-            croissante = croissane && (valeur >= antécédent);
+            croissante = croissante && (valeur > antécédent);
             antécédent = valeur;
             System.out.println("Entrez un nouveau nombre entier positifs: ");
             valeur = clavier.nextInt();
