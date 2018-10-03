@@ -798,7 +798,7 @@ vous retrouvez vos commits.
 
 *** linux1
 
-**** Connexion à linux1
+**** Connexion à =linux1=
 
 #+BEGIN_tdaction
 Avec PuTTY, connectez-vous à =linux1=.
@@ -808,16 +808,31 @@ Avec PuTTY, connectez-vous à =linux1=.
 Créez puis allez dans le répertoire =~/mesprojets/=.
 #+END_tdaction
 
+**** Génération de clefs SSH
+Pour des raisons indépendantes de notre volonté, nous ne pouvons pas utiliser le mot de passe défini précédemment pour nous connecter à Gitlab depuis =linux1=.
+Nous allons employer une autre méthode : se connecter via une clef SSH.
+
+#+BEGIN_tdaction
+Tapez =ssh-keygen=. N'indiquez pas de /passphrase/ : confirmez par la touche "Entrée" deux fois, puis une nouvelle fois pour confirmer les noms de fichiers.
+#+END_tdaction
+
+#+BEGIN_tdaction
+Copiez le contenu du fichier =~/.ssh/id_rsa.pub= (notez l'extension =.pub= !), et insérez le dans Gitlab à l'endroit suivant:
+
+1. Ouvrez votre page de paramètres.
+2. Dans le menu de gauche, choisissez =Clefs SSH= (=SSH Keys=)
+3. Insérez le contenu précédemment copié dans le champ =Key=
+4. Confirmez avec le bouton =Add key=.
+#+END_tdaction
+
 **** Créer un dépôt et récupérer le contenu du dépôt Gitlab
 Nous allons maintenant créer un dépôt sur =linux1= /et/ y rapatrier le
 code qui se trouve sur Gitlab, le tout en une seule étape facile.
 
 #+BEGIN_tdaction
-Tapez =git clone https://git.esi-bru.be/nrichard/HelloWorld=
-(Modifiez pour refléter votre propre dépôt Gitlab).
-
-Si vous ne récoltez qu'une erreur, essayez cette variante : =git clone git@git.esi-bru.be:nrichard/HelloWorld=
+Tapez =git clone git@git.esi-bru.be:nrichard/HelloWorld=
 (Bien sûr, modifiez pour refléter votre propre dépôt Gitlab).
+(Notez également que ce n'est plus =https=. Aucun mot de passe n'est demandé.)
 #+END_tdaction
 
 #+BEGIN_tdaction
