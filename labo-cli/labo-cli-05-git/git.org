@@ -33,8 +33,8 @@ notamment pour :
 -  comprendre l'apparition de bugs éventuels
 -  travailler en équipe
 
-Au travers de ce TD nous vous montrerons comment Git aide à réaliser ces
-objectifs.
+# Au travers de ce TD nous vous montrerons comment Git aide à réaliser ces
+# objectifs.
 #+end_objectif
 
 #+TOC: headlines 2
@@ -49,7 +49,7 @@ Les pré-requis sont l'utilisation basique :
 
    -  éditer des fichiers
    -  lancer des commandes
-   -  copier-coller depuis Windows vers linux1,
+   -  copier-coller entre Windows et linux1
 
 -  de Netbeans
 
