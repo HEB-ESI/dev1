@@ -2,8 +2,7 @@
 
 \minitoc
 
-
-
+\clearpage
 \section{Exercices~: spécifier le problème}
 
 Pour ces premiers exercices, nous vous demandons d’imiter la démarche décrite
@@ -45,9 +44,9 @@ dans le chapitre \ref{refpblm}, à savoir~:
 	\begin{center}
 		\flowalgodd{nombre1 (réel)}{nombre2 (réel)}{somme}{réel}
 	\end{center}			 
-	Et voici quelques exemples numériques~:	
+	Et voici quelques exemples numériques~:	\\
 	\pc{somme(3, 2)} donne $5$      \quad
-	\pc{somme(-3, 2)} donne $-1$    \quad
+	\pc{somme(-3, 2)} donne $-1$    \\
 	\pc{somme(3, 2.5)} donne $5.5$  \quad
 	\pc{somme(-2.5, 2.5)} donne $0$.
 \end{Exercice}
@@ -151,7 +150,7 @@ dans le chapitre \ref{refpblm}, à savoir~:
 \end{Exercice}
 
 
-
+\clearpage
 \section{Exercices~: premiers algorithmes et programmes}
 \label{prem-ex-simple}
 
@@ -206,11 +205,11 @@ en un programme Java.
 \end{Exercice}
 
 
-
+\clearpage
 \section{Exercices~: tracer un algorithme}
 
 Nous vous proposons de tracer vos algorithmes comme présenté dans le chapitre 
-\ref{premalgo} dans la section \ref{tracer}, page \pageref{tracer}.
+\ref{premalgos} dans la section \ref{tracer}, page \pageref{tracer}.
 
 
 \begin{Exercice}{Tracer des bouts de code}
@@ -284,18 +283,17 @@ Nous vous proposons de tracer vos algorithmes comme présenté dans le chapitre
 
 	Voici \textit{une} solution : 
 	\begin{pseudocode}[1]
-		\Algo{vitesseKMH}{\Par{distanceM, duréeS}{réels}}{réel}
-		\Decl{distanceKM, duréeH}{réels}
+		\Algo{vitesseKMH}{\Par{distanceM, duréeS}{real}}{real}
+		\Decl{distanceKM, duréeH}{real}
 		\Let distanceKM \Gets 1000 * distanceM
 		\Let duréeH \Gets 3600 * duréeS
 		\Return $\frac{\textrm{distanceKM}}{\textrm{duréeH}}$
 	\EndAlgo
-\end{pseudocode}
+	\end{pseudocode}
 
-L’algorithme, s’il est correct, devrait donner
-une vitesse de 1~km/h pour une distance de 1000~mètres
-et une durée de 3600~secondes.
-Testez cet algorithme avec cet exemple.
+L’algorithme, s’il est correct, devrait donner une vitesse de 1~km/h pour une
+distance de 1000~mètres et une durée de 3600~secondes.  Testez cet algorithme
+avec cet exemple.
 
 \begin{center}
 	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{5}{>{\centering\arraybackslash}m{2cm}}|}
@@ -311,14 +309,17 @@ Testez cet algorithme avec cet exemple.
 	\end{tabular}
 \end{center}
 
-Si vous trouvez qu’il n’est pas correct,
-voyez ce qu’il faudrait changer pour le corriger.
+Si vous trouvez qu’il n’est pas correct, voyez ce qu’il faudrait changer pour le
+corriger.
+
 \end{Exercice}
 
 \begin{Exercice}{Allure et vitesse}
 
-	L’allure d’un coureur est le temps qu’il met pour parcourir 1~km (par exemple,
-	$4'37''$).  On voudrait calculer sa vitesse (en km/h) à partir de son allure.
+	L’allure d’un coureur est le temps qu’il met pour parcourir 1~km (par
+	exemple, $4'37''$\footnote{4 minutes et 37 secondes}).  On voudrait calculer
+	sa vitesse (en km/h) à partir de son allure.  
+	
 	Par exemple, la vitesse d’un coureur ayant une allure de $4'37''$ est de
 	$12,996389892$~km/h. 
 
@@ -326,17 +327,16 @@ voyez ce qu’il faudrait changer pour le corriger.
 
 \begin{Exercice}{Cote moyenne}
 
-	Étant donné les résultats (cote entière sur
-	20) de trois examens passés par un étudiant (exprimés par six nombres, à savoir,
-	la cote et la pondération de chaque examen), calculer la moyenne globale
-	exprimée en pourcentage.  
+	Étant donné les résultats (cote entière sur 20) de trois examens passés par
+	un étudiant (exprimés par six nombres, à savoir, la cote et la pondération
+	de chaque examen), calculer la moyenne globale exprimée en pourcentage.  
 
 \end{Exercice}
 
 
 
 
-
+\clearpage
 \section{Exercices~: division entière, quotient et reste}
 
 \begin{Exercice}{Calculs}
@@ -362,7 +362,7 @@ voyez ce qu’il faudrait changer pour le corriger.
 	Testez-le avec des valeurs numériques. Est-il correct~?
 
 	\begin{pseudocode}
-		\Algo{versPrixRond}{\Par{prixCentimes}{entier}}{entier}
+		\Algo{versPrixRond}{\Par{prixCentimes}{integer}}{integer}
 		\Return 100 - (prixCentimes MOD 100)
 	\EndAlgo
 \end{pseudocode}
@@ -382,6 +382,8 @@ voyez ce qu’il faudrait changer pour le corriger.
 \end{Exercice}
 
 \bigskip
+\bigskip
+\bigskip
 \begin{Emphase}
 	
 	\paragraph{Remarque}
@@ -397,13 +399,15 @@ voyez ce qu’il faudrait changer pour le corriger.
 
 			\label{algo:mult5}
 			Calculer si un nombre entier donné est un multiple de 5.
+
+			\clearpage
 			\paragraph{Solution.}
 			Dans ce problème,
 			il y a une donnée, le nombre à tester.
 			La réponse est un booléen
 			qui est à vrai si le nombre donné est un multiple de 5.
 			\begin{center}
-				\flowalgod{nombre (entier)}{multiple5}{booléen}
+				\flowalgod{nombre (integer)}{multiple5}{boolean}
 			\end{center}
 			\textbf{Exemples.}
 			\begin{multicols}{4}
@@ -452,7 +456,7 @@ voyez ce qu’il faudrait changer pour le corriger.
 	\end{Exercice}
 
 	\begin{Exercice}{Conversion secondes en heures}
-		Étant donné un temps écoulé depuis minuit.
+		Étant donné un temps écoulé depuis minuit en secondes.
 		Si on devait exprimer ce temps sous la forme
 		habituelle (heure, minute et seconde),
 		que vaudrait la partie "heure".
@@ -463,7 +467,7 @@ voyez ce qu’il faudrait changer pour le corriger.
 	\end{Exercice}
 
 	\begin{Exercice}{Conversion secondes en minutes}
-		Étant donné un temps écoulé depuis minuit.
+		Étant donné un temps écoulé depuis minuit en secondes.
 		Si on devait exprimer ce temps sous la forme
 		habituelle (heure, minute et seconde),
 		que vaudrait la partie "minute".
@@ -472,7 +476,7 @@ voyez ce qu’il faudrait changer pour le corriger.
 	\end{Exercice}
 
 	\begin{Exercice}{Conversion secondes en secondes}
-		Étant donné un temps écoulé depuis minuit.
+		Étant donné un temps écoulé depuis minuit en secondes.
 		Si on devait exprimer ce temps sous la forme
 		habituelle (heure, minute et seconde),
 		que vaudrait la partie "seconde".
@@ -512,15 +516,18 @@ voyez ce qu’il faudrait changer pour le corriger.
 
 
 
-
-\section{Exercices~: structures alternatives (choix)}			
+\clearpage
+\section{Exercices~: structures alternatives}			
 
 
 \begin{Exercice}{Compréhension}
-		Tracez cet algorithme avec les valeurs fournies et donnez la valeur de retour.
-		\begin{pseudocode}
-			\Algo{exerciceA}{a, b~: entiers}{entier}
-			\Decl{c}{entier}
+		
+	Tracez cet algorithme avec les valeurs fournies et donnez la valeur de
+	retour.
+	
+	\begin{pseudocode}
+			\Algo{exerciceA}{a, b~: integer}{integer}
+			\Decl{c}{integer}
 			\Let c \Gets 2 * a
 			\If{c > b}
 			\Let c \Gets c - b
@@ -537,32 +544,36 @@ voyez ce qu’il faudrait changer pour le corriger.
 	\end{Exercice}
 
 	\begin{Exercice}{Simplification d’algorithmes}
-		Voici quelques extraits d’algorithmes corrects 
-		du point de vue de la syntaxe 
-		mais contenant des lourdeurs d’écriture.
-		Simplifiez-les.
+		
+		Voici quelques extraits d’algorithmes corrects du point de vue de la
+		syntaxe mais contenant des lourdeurs d’écriture.  Simplifiez-les.
+		Si vous avez l'impression que la condition est inutile, précisez-le.
 
-		\begin{pseudocode}
-			\If{ok = vrai}
-			\Write nombre
+	\begin{pseudocode}
+		\Decl{estPair}{boolean} \Gets true 
+		\If{estPair == true}
+			\Write number
 		\EndIf
 	\end{pseudocode}
 
 	\begin{pseudocode}
-		\If{ok = faux}
-		\Write nombre
-	\EndIf
-\end{pseudocode}
+		\Decl{estPair}{boolean} \Gets true 
+		\If{estPair == false}
+			\Write number
+		\EndIf
+	\end{pseudocode}
 
-\begin{pseudocode}
-	\If{ok = vrai OU ok = faux}
-	\Write nombre
-\EndIf
-		\end{pseudocode}
+	\begin{pseudocode}
+		\Decl{estPair}{boolean} \Gets true 
+		\If{estPair = true OR estPair == false}
+			\Write number
+		\EndIf
+	\end{pseudocode}
 
-		\begin{pseudocode}
-			\If{ok = vrai ET ok = faux}
-			\Write nombre
+	\begin{pseudocode}
+		\Decl{estPair}{boolean} \Gets true 
+		\If{estPair == true ET estPair == false}
+			\Write number
 		\EndIf
 	\end{pseudocode}
 \end{Exercice}
@@ -571,16 +582,16 @@ voyez ce qu’il faudrait changer pour le corriger.
 	Tracez ces algorithmes avec les valeurs fournies et donnez la valeur de retour.
 
 	\begin{pseudocode}
-		\Algo{exerciceB}{b, a : entiers}{entier}
-		\Decl{c}{entier}
-		\If{a > b}
-		\Let c \Gets a DIV b
-		\Else
-		\Let c \Gets b MOD a	
-	\EndIf
-	\Return c
-\EndAlgo
-		\end{pseudocode}
+		\Algo{exerciceB}{b, a : integer}{integer}
+			\Decl{c}{integer}
+			\If{a > b}
+				\Let c \Gets a DIV b
+			\Else
+				\Let c \Gets b MOD a	
+			\EndIf
+			\Return c
+		\EndAlgo
+	\end{pseudocode}
 
 		\begin{multicols}{2}
 			\begin{itemize}
@@ -589,16 +600,18 @@ voyez ce qu’il faudrait changer pour le corriger.
 			\end{itemize}
 		\end{multicols}
 
+		\bigskip
+
 		\begin{pseudocode}
-			\Algo{exerciceC}{x1, x2~: entiers}{entier}
-			\Decl{ok}{booléen}
-			\Let ok \Gets x1 > x2
-			\If{ok}
-			\Let ok \Gets ok ET x1 = 4
+			\Algo{exerciceC}{x1, x2~: integer}{integer}
+			\Decl{estPlusGrand}{boolean}
+			\Let estPlusGrand \Gets x1 > x2
+			\If{estPlusGrand}
+			\Let estPlusGrand \Gets estPlusGrand AND x1 == 4
 			\Else
-			\Let ok \Gets ok OU x2 = 3
+			\Let estPlusGrand \Gets estPlusGrand OR x2 == 3
 		\EndIf
-		\If{ok}
+		\If{estPlusGrand}
 		\Let x1 \Gets x1 * 1000
 	\EndIf
 	\Return x1 + x2
@@ -613,31 +626,33 @@ voyez ce qu’il faudrait changer pour le corriger.
 			\end{itemize}
 		\end{multicols}	
 
+
 	\end{Exercice}	
 
 	\begin{Exercice}{Simplification d’algorithmes}
-		Voici quelques extraits d’algorithmes corrects du point de vue de la
-		syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
-		Remplacer chacune de ces portions d’algorithme par un minimum
-		d’instructions qui auront un effet équivalent.
+
+		Voici quelques extraits d’algorithmes que vous pouvez supposer corrects
+		du point de vue de la syntaxe mais contenant des lignes inutiles ou des
+		lourdeurs d’écriture.  Remplacer chacune de ces portions d’algorithme
+		par un minimum d’instructions qui auront un effet équivalent.
 
 		\begin{minipage}[t]{7cm}
 			\begin{pseudocode}
 				\If{condition}
-				\Let ok \Gets vrai
+				\Let b \Gets vrai
 				\Else
-				\Let ok \Gets faux
+				\Let b \Gets faux
 			\EndIf
 		\end{pseudocode}
 	\end{minipage}
 	\quad
 	\begin{minipage}[t]{7cm}		
 		\begin{pseudocode}
-			\If{a $>$ b}
-			\Let ok \Gets faux
+			\If{n1 $>$ n2}
+			\Let b \Gets faux
 			\Else
-			\If{a $\leq$ b}
-			\Let ok \Gets vrai
+			\If{n1 $\leq$ n2}
+			\Let b \Gets vrai
 		\EndIf
 	\EndIf
 \end{pseudocode}
@@ -754,40 +769,19 @@ voyez ce qu’il faudrait changer pour le corriger.
 			comprend toujours 28 jours.
 		\end{Exercice}
 
-		\begin{Exercice}{Réussir DEV1}
+		\begin{Exercice}{Moyenne pondérée}
 
-			Pour réussir l’UE (unité d’enseignement) DEV1,
-			il faut que la cote attribuée à cette UE 
-			soit supérieure ou égale à 50\%.
-			Cette cote tient compte de votre examen intégré
-			et de vos interrogations.
-			Écrire un algorithme 
-			qui reçoit la cote finale (sur 100)
-			d’un étudiant pour l’UE DEV1
-			et qui indique si l’étudiant a réussi cette UE.
+			Un examen se déroule en plusieurs parties;
+			\begin{itemize}
+				\item la première partie a une pondération de 5%;
+				\item la seconde, 25\%; et
+				\item la dernière 70\%.
+			\end{itemize}
+			Écrire un algorithme qui reçoit les 3 cotes (/20) et qui indique
+			si l'étudiant a réussi l'examen ou non. L'algorithme affiche également
+			la cote de l'examen. 
 		\end{Exercice}	
 
-		\begin{comment}
-		\begin{Exercice}{Réussir GEN1}
-
-			\label{algo:réussirGEN1}
-			l'UE (Unité d'enseignement) GEN1 est composée de trois AA (activité d’apprentissage) :
-			Mathématique, Communication anglophone et Comptabilité%
-			\footnote{%
-				Sans parler de Méthodologie qui ne donne pas lieu à une évaluation.
-			}.
-			Pour réussir cette unité d’enseignement,
-			il faut que la cote attribuée à chaque AA soit supérieure ou égale à 50\%.
-			Si c'est le cas, la cote attribuée à l'UE est une moyenne \textbf{pondérée}
-			des trois cotes d'AA 
-			(avec la pondération 6 pour Mathématique et 2 pour les autres AA).
-
-			Écrire un algorithme qui reçoit les 3 cotes (sur 20) d’AA d’un étudiant
-			pour l’UE GEN1 et qui \textbf{affiche} un message
-			indiquant si l’étudiant a réussi ou pas cette UE.
-			S’il a réussi, l’algorithme affiche également la cote d'UE (sur 20).
-		\end{Exercice}		
-		\end{comment}
 
 		\begin{Exercice}{La fourchette}
 
@@ -811,18 +805,17 @@ voyez ce qu’il faudrait changer pour le corriger.
 
 		\begin{Exercice}{Le stationnement alternatif}
 
-			Dans une rue où se pratique le stationnement alternatif, 
-			du 1 au 15 du mois, on se gare du côté des maisons ayant un numéro impair, 
-			et le reste du mois, on se gare de l’autre côté. 
-			Écrire un algorithme qui, sur base de la date du jour et du numéro de maison
-			devant laquelle vous vous êtes arrêté, 
-			retourne vrai si vous êtes bien stationné et faux sinon.
-		\end{Exercice}
+			Dans une rue où se pratique le stationnement alternatif, du 1 au 15
+			du mois, on se gare du côté des maisons ayant un numéro impair, et
+			le reste du mois, on se gare de l’autre côté.  Écrire un algorithme
+			qui, sur base de la date du jour et du numéro de maison devant
+			laquelle vous vous êtes arrêté, retourne vrai si vous êtes bien
+			stationné et faux sinon.  \end{Exercice}
 
 
 
 
-
+\clearpage
 \section{Exercices~: modules et méthodes}
 
 		\begin{Exercice}{Tracer des algorithmes}
@@ -830,81 +823,39 @@ voyez ce qu’il faudrait changer pour le corriger.
 			lors de l’exécution des algorithmes ex1, ex2, ex3 et ex4.
 
 			\begin{pseudocode}
-				\Algo{ex1}{}{}
-				\Decl{x, y}{entiers}
-				\Stmt addition(3, 4, x)
+			\Algo{ex1}{}{}
+				\Decl{x, y}{integer}
+				\Let x \Gets addition(3, 4)
 				\Write x
 				\Let x \Gets 3
 				\Let y \Gets 5
-				\Stmt addition(x, y, y)
+				\Let y \Gets addition(x, y)
 				\Write y
 			\EndAlgo
 			\Empty
-			\Algo{addition}{a\In, b\In, c\Out~:~entiers}{}
-			\Decl{somme}{entier}
-			\Let somme \Gets a + b
-			\Let c \Gets somme
-		\EndAlgo
-	\end{pseudocode}
+			\Algo{addition}{a\In, b\In}{integer}
+				\Decl{somme}{integer}
+				\Let somme \Gets a + b	
+				\Return somme
+			\EndAlgo
+			\end{pseudocode}
 
-	\begin{pseudocode}
-		\Algo{ex2}{}{}
-		\Decl{a, b}{entiers}
-		\Stmt addition(3, 4, a) \Comment voir ci-dessus
-		\Write a
-		\Let a \Gets 3
-		\Let b \Gets 5
-		\Stmt soustraction(b, a, b)
-		\Write b
-	\EndAlgo
-	\Empty
-	\Algo{soustraction}{a\In, b\In, c\Out~:~entiers}{}
-	\Let c \Gets a - b
-\EndAlgo
-		\end{pseudocode}
+			\begin{pseudocode}
+			\Algo{ex2}{}{}
+				\Decl{a, b}{integer}
+				\Let a \Gets addition(3, 4) \Comment voir ci-dessus
+				\Write a
+				\Let a \Gets 3
+				\Let b \Gets 5
+				\Let b \Gets soustraction(b, a)
+				\Write b
+			\EndAlgo
+			\Empty
+			\Algo{soustraction}{a\In, b\In}{integer}
+				\Let c \Gets a - b
+			\EndAlgo
+			\end{pseudocode}
 
-		\begin{pseudocode}
-			\Algo{ex3}{}{}
-			\Decl{a, b, c}{entiers}
-			\Stmt calcul(3, 4, c)
-			\Write c
-			\Let a \Gets 3
-			\Let b \Gets 4
-			\Let c \Gets 5
-			\Stmt calcul(b, c, a)
-			\Write a, b, c
-		\EndAlgo
-		\Empty
-		\Algo{calcul}{a\In, b\In, c\Out~:~entiers}{}
-		\Let a \Gets 2 * a
-		\Let b \Gets 3 * b
-		\Let c \Gets a + b
-	\EndAlgo
-\end{pseudocode}
-
-\begin{pseudocode}
-	\Algo{ex4}{}{}
-	\Decl{a, b, c}{entiers}
-	\Let a \Gets 3
-	\Let b \Gets 4
-	\Let c \Gets f(b)
-	\Write c
-	\Stmt calcul2(a, b, c)
-	\Write a, b, c
-\EndAlgo
-\Empty
-\Algo{calcul2}{a\In, b\In, c\Out~:~entiers}{}
-\Let a \Gets f(a)
-\Let c \Gets 3 * b
-\Let c \Gets a + c
-		\EndAlgo
-		\Empty
-		\Algo{f}{a\In~:~entier}{entier}
-		\Decl{b}{entier}
-		\Let b \Gets 2 * a + 1
-		\Return b
-	\EndAlgo
-\end{pseudocode}	
 	\end{Exercice}
 
 	\begin{Exercice}{Appels de module}
@@ -914,20 +865,20 @@ voyez ce qu’il faudrait changer pour le corriger.
 		à l’algorithme d’en-tête suivant~?
 
 		\begin{pseudocode}
-			\Entete{PGCD}{a\In,b\In~:~entiers}{entier}
+			\Entete{pgcd}{a\In,b\In~:~integer}{integer}
 		\end{pseudocode}
 
 		\begin{pseudocode}
-			\Stmt [1] a \Gets PGCD(24, 32)
-			\Stmt [2] a \Gets PGCD(a, 24)
-			\Stmt [3] b \Gets 3 * PGCD(a + b, 2*c) + 120
-			\Stmt [4] PGCD(20, 30)
-			\Stmt [5] a \Gets PGCD(a, b, c)
-			\Stmt [6] a \Gets PGCD(a, b) + PGCD(a, c)
-			\Stmt [7] a \Gets PGCD(a, PGCD(a, b))
-			\Stmt [8] \Read PGCD(a, b)
-			\Stmt [9] \Write PGCD(a, b)
-			\Stmt [10] PGCD(a, b) \Gets c
+			\Stmt [1] a \Gets pgcd(24, 32)
+			\Stmt [2] a \Gets pgcd(a, 24)
+			\Stmt [3] b \Gets 3 * pgcd(a + b, 2*c) + 120
+			\Stmt [4] pgcd(20, 30)
+			\Stmt [5] a \Gets pgcd(a, b, c)
+			\Stmt [6] a \Gets pgcd(a, b) + pgcd(a, c)
+			\Stmt [7] a \Gets pgcd(a, pgcd(a, b))
+			\Stmt [8] \vspace{-\lineheight}\Read pgcd(a, b)
+			\Stmt [9] \Write pgcd(a, b)
+			\Stmt [10] pgcd(a, b) \Gets c
 		\end{pseudocode}
 	\end{Exercice}
 
@@ -1000,7 +951,7 @@ voyez ce qu’il faudrait changer pour le corriger.
 
 
 
-
+\clearpage 
 \section{Exercices~: structures itératives}
 
 \subsection{while}
@@ -1067,11 +1018,11 @@ voyez ce qu’il faudrait changer pour le corriger.
 			écrire un algorithme qui reçoit un entier $n$ positif et affiche
 			\begin{enumerate}[label=\alph*)]
 				\item les nombres de 1 à $n$~;
-				\item les nombres de 1 à $n$ en ordre décroissant~;
+				\item les nombres de $n$ à 1 en ordre décroissant~;
 				\item les nombres impairs de 1 à $n$~;
-				\item les nombres de -n à n~;
-				\item les multiples de 5 de 1 à n~;
-				\item les multiples de n de 1 à 100.
+				\item les nombres de -$n$ à $n$~;
+				\item les multiples de 5 de 1 à $n$~;
+				\item les multiples de $n$ de 1 à 100.
 			\end{enumerate}
 		\end{Exercice}
 
