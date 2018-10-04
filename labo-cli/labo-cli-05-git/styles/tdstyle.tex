@@ -5,10 +5,21 @@
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
 \usepackage{mdframed}
+\usepackage{marginnote}
 \mdfsetup{roundcorner = 10 pt,skipabove=\topskip}
-\newmdenv[backgroundcolor=red!20,frametitle=Action]{tdaction}
-\newmdenv[backgroundcolor=green!20,frametitle=Astuce]{tdastuce}
-\newmdenv[backgroundcolor=black!20,frametitle=Réponse]{tdreponse}
+
+\newcommand{\newboxedenv}[3]{%
+   \newmdenv[backgroundcolor=#3]{md#1}% internal
+   \newenvironment{#1}{%
+        \csname md#1\endcsname
+        {\leavevmode\reversemarginpar\marginnote[\bfseries #2]{}}%
+        }
+        {\csname endmd#1\endcsname}% public
+}
+\newboxedenv{tdaction}{Action}{red!20}
+\newboxedenv{tdastuce}{Astuce}{green!20}
+\newboxedenv{tdreponse}{Réponse}{black!20}
+
 \newenvironment{tdimportant}{}{}
 \usepackage{upquote} % use straight (not curly) quotes in verbatim environments
 
