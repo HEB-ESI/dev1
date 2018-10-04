@@ -6,19 +6,20 @@ public class Exercice11 {
 
     public static void main(String[] args) {
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Entrez des nombres entiers positifs (terminez par −1)");
-        int valeur = clavier.nextInt();
 
         int sentinelle = -1;
+        boolean croissante = true;
 
-        int antécédent = valeur;
+        System.out.println("Entrez un nombre entier positif: ");
+        int antécédent = clavier.nextInt();;
 
-        boolean croissante = false;
+        System.out.println("Entrez un nouveau nombre entier positif: ");
+        int valeur = clavier.nextInt();
 
         while (valeur > sentinelle) {
-            croissante = croissane && (valeur >= antécédent);
+            croissante = croissante && (valeur > antécédent);
             antécédent = valeur;
-            System.out.println("Entrez un nouveau nombre entier positifs: ");
+            System.out.println("Entrez un nouveau nombre entier positif: ");
             valeur = clavier.nextInt();
         }
         if (croissante) {
