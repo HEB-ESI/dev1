@@ -98,7 +98,7 @@
 
 	Soit la méthode \texttt{abs} qui a pour signature \code{java}{public static double abs(double x)}.
 
-	Nous allons maintenant réfléchir aux tests que nous devons réaliser afin de garantir le bon fonctionnement de notre méthode. C'est-à-dire, les tests nécessaires\footnote{Avoir les testes nécessaires et suffisants c'est mieux. À défaut, il en vaut mieux trop que pas assez.} pour garantir le fonctionnement de la méthode quelque soit l'entrée passée à la méthode.
+	Nous allons maintenant réfléchir aux tests que nous devons réaliser afin de garantir le bon fonctionnement de notre méthode. C'est-à-dire, les tests nécessaires\footnote{Avoir les testes nécessaires et suffisants c'est mieux. À défaut, il en vaut mieux trop que pas assez.} pour garantir le fonctionnement de la méthode quelle que soit l'entrée passée à la méthode.
 
 	Prenons une valeur positive, 4 par exemple. Le code suivant, qui n'est pas la valeur absolue, passe avec succès notre test puisqu'il va retourner la valeur d'entrée.
 	\begin{Code}{Java}
@@ -132,7 +132,7 @@
 		\end{tabular}
 	\end{center}
 
-	Même si notre exemple est aberrant, nous souhaitons ici mettre en évidence la difficulté d'obtenir des tests complets, que le processus d’élaboration des tests unitaires demande de la réflexion et qu’il ne garantie pas à 100\% le bon fonctionnement du code. Il est donc essentiel de prendre le temps nécessaire afin de fournir une couverture de code aussi complète et exacte que possible\footnote{Vous pouvez remarquer que pour chacun de nos exemples, la couverture de code est de 100\% ; et que malgré cela, le code ne fait pas toujours ce qu'on souhaitait qu'il fasse.}.
+	Même si notre exemple est aberrant, nous souhaitons ici mettre en évidence la difficulté d'obtenir des tests complets, que le processus d’élaboration des tests unitaires demande de la réflexion et qu’il ne garantit pas à 100\% le bon fonctionnement du code. Il est donc essentiel de prendre le temps nécessaire afin de fournir une couverture de code aussi complète et exacte que possible\footnote{Vous pouvez remarquer que pour chacun de nos exemples, la couverture de code est de 100\% ; et que malgré cela, le code ne fait pas toujours ce qu'on souhaitait qu'il fasse.}.
 
 	\begin{Exercice}{Max - Couverture de code}
 		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{max(int a, int b)} qui permet d’obtenir la plus grande valeur parmi les~2 passées en paramètre.
@@ -140,23 +140,23 @@
 
 	\begin{Exercice}{Somme d'entiers consécutifs - Couverture de code}
 		
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{somme(int n)}qui permet de calculer la somme des entiers consécutifs de 1 à n.
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code pour la méthode \code{java}{somme(int n)}. Cette méthode calcule la somme des entiers consécutifs de 1 à n.
 	\end{Exercice}
 
 	\begin{Exercice}{Anagramme - Couverture de code}
 		\og Une anagramme est une construction fondée sur une figure de style qui inverse ou permute les lettres d’un mot ou d’un groupe de mots pour en extraire un sens ou un mot nouveau.\fg Wikipedia.\footnote{https ://fr.wikipedia.org/wiki/Anagramme}. 
 
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estAnagramme qui permet de vérifier si une chaîne de caractères est un anagramme.
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{boolean estAnagramme(String mot, String candidat)}. Cette méthode vérifie si une chaîne de caractères est un anagramme.
 	\end{Exercice}
 
 	\begin{Exercice}{Palindrome - Couverture de code}
 		\og Le palindrome est un texte ou un mot qui reste identique qu’on le lise de gauche à droite ou de droite à gauche. Nous considérons ici la version stricte dans le sens où l’on prend en considération les signes diacritiques (accents, trémas, cédilles) ainsi que les espaces.\fg Wikipedia\footnote{https ://fr.wikipedia.org/wiki/Palindrome}.
 
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode estPalindrome qui permet de vérifier si un texte est un palindrome.
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{boolean estPalindrome(String mot, String candidat)}. Cette méthode vérifie qu'un texte est un palindrome.
 	\end{Exercice}
 
 	\begin{Exercice}{Nombre occurrences - Couverture de code}
-		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{public static int nbOccurance(char lettre, String text)}. Cette méthode permet de compter le nombre d'occurrences d’une lettre dans un texte.
+		Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{public static int nbOccurance(char lettre, String texte)}. Cette méthode permet de compter le nombre d'occurrences d’une lettre dans un texte.
 	\end{Exercice}
 
 %====================
@@ -181,10 +181,10 @@
 	\end{enumerate}
 	Tous ces problèmes mènes à un problème de maintenabilité des tests et du code.
 
-	Notre manière de tester peut être améliorée en sortant les méthodes principales dans des fichiers différents et le dernier point en mettant tous les points dans la même méthode, mais il nous reste à être rigoureux pour obtenir un code maintenable. Nous allons donc utiliser le framework JUnit qui va nous obliger à obtenir cette lisibilité.
+	Notre manière de tester peut être améliorée en sortant les méthodes principales dans des fichiers différents et le dernier point en mettant tous les tests dans la même méthode, mais il nous reste à être rigoureux pour obtenir un code maintenable. Nous allons donc utiliser le framework JUnit qui va nous permettre d'obtenir cette lisibilité.
 
 	La première chose à faire est de configurer Netbeans. Heureusement pour vous, il fait presque tout lui même (à condition de bien s’y prendre).
-	Après avoir écrit le fichier \bsc{Math.java} dans un nouveau package \bsc{esi.dev1.td9}, faite un clique droit sur le package. Sélectionnez tools et faite Create/Update tests.
+	Après avoir écrit le fichier \bsc{MonMath.java} dans un nouveau package \bsc{esi.dev1.td9}, faite un clique droit sur le package. Sélectionnez tools et faite Create/Update tests.
 
 	\begin{center}
 		\includegraphics[width=.7\textwidth]{images/create_tests.png}
@@ -197,8 +197,7 @@
 		\includegraphics[width=.5\textwidth]{images/config_tests.png}
 	\end{center}
 
-	De nouveaux éléments apparaissent dans votre
-	projet. D’une part des éléments dans les librairies utilisées par netbeans ainsi qu’un nouveau dossier nommé Tests packages. C’est dans ce dernier dossier que vous allez écrire vos tests.
+	De nouveaux éléments, créés par NetBeans, apparaissent dans votre projet. D’une part les librairies utilisées par NetBeans ainsi qu’un nouveau dossier nommé Tests packages. Dans ce dossier se trouver une nouvelle classe \bsc{MonMathTest.java}. C'est dans cette classe que vous écrirez vos premiers tests.
 
 	\begin{center}
 		\includegraphics[width=.5\textwidth]{images/libraries.png}
@@ -224,7 +223,7 @@
 	Le troisième paramètre ne doit être utilisé que si la sortie de la méthode est de type double \footnote{Pourquoi ?}.
 	L’appel à la méthode \texttt{assertEquals} avec un retour de méthode entier s’écrit donc :
 	\code{java}{assertEquals(expResult, result)}.
-	Si la méthode que vous testez retourne un booléen, il est alors préférable d’utiliser les méthodes \texttt{assertTrue} ou \texttt{assertFalse}. Ces méthodes prennent un unique paramètre, le résultat, puisque le résultat attendu est défini par la méthode qu'on a choisi d'utiliser. En effet en utilisant \texttt{assertTrue}, on s’attend à avoir un résultat positif.
+	Si la méthode que vous testez retourne un booléen, il est alors préférable d’utiliser les méthodes \texttt{assertTrue} ou \texttt{assertFalse}. Ces méthodes prennent un unique paramètre, le résultat, puisque le résultat attendu est défini par la méthode qu'on a choisi d'utiliser. En effet en utilisant \texttt{assertTrue}, on s’attend à avoir une expression évaluée à \bsc{true}.
 
 	\subsection{Tester le lancement d'une exception}
 	%=============================
@@ -255,7 +254,7 @@
 
 	\begin{Exercice}{Implémentation - Max}
 		\begin{enumerate}
-			\item Écrivez un nouveau fichier Math dans lequel vous allez ajouter la signature de méthode de la méthode \texttt{max}. Faite un retour quelconque afin de rendre le code compilable.
+			\item Dans le fichier MonMath, ajoutez la signature de la méthode \texttt{max}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
 			\item Lancez votre fichier de test.
 			\item Développez votre méthode afin que celle-ci complète tous les tests.
@@ -264,7 +263,7 @@
 
 	\begin{Exercice}{Implémentation - Somme d'entiers consécutifs}
 		\begin{enumerate}
-			\item Écrivez un nouveau fichier Math dans lequel vous allez ajouter la signature de méthode de la méthode \texttt{somme}. Faite un retour quelconque afin de rendre le code compilable.
+			\item Dans le fichier MonMath, ajoutez la signature de la méthode \texttt{somme}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
 			\item Lancez votre fichier de test.
 			\item Développez votre méthode afin que celle-ci complète tous les tests.
@@ -273,7 +272,7 @@
 	
 	\begin{Exercice}{Implémentation - Anagramme}
 		\begin{enumerate}
-			\item Écrivez un nouveau fichier Math dans lequel vous allez ajouter la signature de méthode de la méthode \texttt{estAnagramme}. Faite un retour quelconque afin de rendre le code compilable.
+			\item Dans le fichier MesMots, ajoutez la signature de la méthode \texttt{estAnagramme}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
 			\item Lancez votre fichier de test.
 			\item Développez votre méthode afin que celle-ci complète tous les tests.
@@ -282,7 +281,7 @@
 
 	\begin{Exercice}{Implémentation - Palindrome}
 		\begin{enumerate}
-			\item Écrivez un nouveau fichier Math dans lequel vous allez ajouter la signature de méthode de la méthode \texttt{estPalindrome}. Faite un retour quelconque afin de rendre le code compilable.
+			\item Dans le fichier MesMots, ajoutez la signature de la méthode \texttt{estPalindrome}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
 			\item Lancez votre fichier de test.
 			\item Développez votre méthode afin que celle-ci complète tous les tests.
@@ -291,7 +290,7 @@
 
 	\begin{Exercice}{Implémentation - Nombre d’occurrences}
 		\begin{enumerate}
-			\item Écrivez un nouveau fichier Math dans lequel vous allez ajouter la signature de méthode de la méthode \texttt{nbOccurances}. Faite un retour quelconque afin de rendre le code compilable.
+			\item Dans le fichier MesMots, ajoutez la signature de la méthode \texttt{nbOccurances}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
 			\item Lancez votre fichier de test.
 			\item Développez votre méthode afin que celle-ci complète tous les tests.

@@ -1,6 +1,6 @@
 package esi.dev1.td9;
 
-public class Math {
+public class MonMath {
 
     /**
      * Calcule la valeur absolue d'un nombre.
