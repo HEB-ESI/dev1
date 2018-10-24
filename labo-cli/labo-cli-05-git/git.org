@@ -973,10 +973,10 @@ le contenu suivant:
 
   compileProject () {
       mkdir -p build/
-      javac -d build/ src/helloworld/HelloWorld.java
+      javac -J-XX:-UseCompressedClassPointers -d build/ src/helloworld/HelloWorld.java
   }
   runProject () {
-      java -cp build/ helloworld.HelloWorld
+          java -XX:-UseCompressedClassPointers -cp build/ helloworld.HelloWorld
   }
 
   expected_output='Hello, World !'
