@@ -1,0 +1,266 @@
+% ============================
+%\chapter{Les tests}
+\renewcommand{\chaptername}{Errata}
+\chapter{Les tests}
+\label{chap:tests}
+% ============================
+
+\begin{Exergue}
+	«~J'ai fait tourner le programme, il fonctionne bien.~»
+\end{Exergue}
+
+Tous les programmes contiennent des erreurs, des \textit{bugs}, des défauts… Ces
+«~\textit{bugs}~» entrainent, au mieux, un inconfort pour l'utilisateur ou
+l'utilisatrice. Ils peuvent occasionner une perte de temps, d'argent, de
+données, de matériel… ou, pire, un danger pour la vie humaine dans un
+environnement industriel par exemple. 
+
+Le travail de développeur ou de la développeuse est de réduire le nombre
+d'erreurs dans son programme. Pour ce faire, il ou elle le \textbf{testera}
+abondamment.  Ce chapitre s'intéresse aux tests. 
+
+\minitoc
+
+
+\section{Les types d'erreurs et de tests}
+
+Les défauts d'un programme peuvent être de différentes sortes:
+
+\begin{enumerate}
+	
+	\item les erreurs de compilation~;
+
+		Ces erreurs sont détectées par le compilateur et rapidement corrigées.
+
+	\item les erreurs d'exécution
+		
+		… et le programme s'arrête~;
+
+
+		… et le programme ne fournit pas les bonnes valeurs~;
+
+		Ces erreurs sont difficiles à corriger. Elles nécessitent
+		que le programme soit \textbf{testé} avec un nombre suffisant de
+		situations différentes. Elles peuvent être dues à des erreurs de
+		programmation mais aussi à des erreurs dans nos algorithmes. 
+
+	\item les erreurs de programmation qui entrainent une lenteur du programme 
+		ou une consommation excessive de mémoire. 
+
+		Pour éviter ces erreurs, respecter les bonnes pratiques de développement
+		est une première étape qu'il ne faut pas négliger. Ensuite, il faudra
+		détecter les endroits dans le code où les ralentissements ont lieu ou la
+		consommation de mémoire augmente. Il existe des logiciels dédiés à ce
+		genre de cas. 
+
+\end{enumerate}
+
+Pour montrer — garantir, prouver — qu'un programme fonctionne bien, il ne suffit
+pas de montrer qu'il fournit les bons résultats dans certains cas, il faut
+convaincre, qu'il fournira les bons résultats dans \textbf{tous} les cas:
+
+\begin{itemize}
+	\item les cas généraux;
+	\item les cas particuliers;
+	\item lors d'une défaillance de l'environnement;
+		
+		Par exemple, si un capteur de distance est défectueux, il faut que la 
+		chaine de production s'arrête. 
+	
+	\item lors d'une utilisation non conforme du programme.
+\end{itemize}
+
+Pour répondre à ces attentes, le développeur ou la développeuse sera attentif·ve
+à utiliser une méthodologie éprouvée dans toutes les étapes de développement de
+son projet; de la phase d'analyse au déploiement.  Il mettra en place différents
+types de tests
+\footnote{Voir \url{https://fr.wikipedia.org/wiki/Test_(informatique)}}
+; des tests unitaires, d'intégration, fonctionnels, de non-régression… Dans ce
+premier cours de développement, nous nous intéressons aux \textbf{tests
+unitaires}.  Pour ces tests unitaires, le développeur ou la développeuse
+fournira un ensemble de valeurs à tester représentatives et convaincantes. 
+
+\index{test unitaire}
+\marginicon{definition}
+\textbf{Définition}
+
+\textbf{Test unitaire} Procédure permettant de tester le bon fonctionnement d'un
+module, d'une méthode. En fonction des paramètres qu'elle reçoit en entrée, la
+méthode fournit elle les bons résultats ? 
+
+L'idée sous-jacente des tests unitaires est que si chaque partie est correcte,
+l'ensemble sera correct. 
+
+Pour tester régulièrement — très régulièrement — notre programme nous avons besoin
+d'outils qui vont automatiser ces tests mais commençons par les planifier. 
+
+
+\section{Planifier les tests}
+
+Dans la méthode de résolution de problèmes que nous avons présenté dans le chapitre \ref{refpblm} p.\pageref{refpblm} et dans l'exercice résolu de la section \ref{exerciceresolu} p.\pageref{exerciceresolu} nous précisions que l'écriture d'une solution complète dans ce premier cours de développement consistait en: 
+
+\begin{enumerate}
+	\item spécifier le problème;
+	\item fournir des exemples;
+	\item écrire un algorithme;
+	\item vérifier les exemples (en traçant l'algorithme);
+	\item écrire un programme correspondant à l'algorithme;
+	\item tester le programme et constater qu'il fournit bien les résultats attendus.
+\end{enumerate}
+
+Les points 2 et 4 sont les prémisses à l'écriture des tests puisque ces exemples
+vont nous convaincre que l'algorithme — et le programme — fournit bien les
+«~bons~» résultats. Ces exemples constituent le \textbf{plan de tests} que nous allons utiliser. Dans ces différents cas, outre les cas généraux, les cas particuliers, les valeurs limites, apparaitront aussi des cas montrant les erreurs de programmation fréquentes. Par exemple~:
+
+\begin{itemize}
+	\item commencer ou arrêter trop tôt ou trop tard une boucle;
+	\item ne pas initialiser ou mal initialiser une variable;
+	\item confondre < et $\le$ ou > et $\ge$… voire < et >;
+	\item confondre AND et OR;
+	\item mal écrire la négation d'une proposition;
+	\item …
+\end{itemize}
+
+C'est l'expérience qui permettra d'écrire un plan de tests efficace et
+convaincant.
+
+\paragraph{Remarque} Dans certaines méthodologies, la mise en exergue de l'importance des tests se fait en écrivant d'abord les tests avant le code.
+Voir par exemple \href{https://fr.wikipedia.org/wiki/Test_driven_development}{Wikipedia} ou \href{http://www.extremeprogramming.org/rules/testfirst.html}{cette article d'\textit{extreme programming}}. 
+
+Dès lors que le plan de tests est écrit, nous pouvons nous intéresser aux outils
+qui vont permettre d'automatiser l'exécution des tests et faciliter leur
+écriture.  En effet pour que nos tests soient utiles il faudra tester souvent
+— idéalement dès qu'une méthode est écrite — et «~tout~». Ce sont toutes les
+méthodes qui sont testées parce que l'écriture d'une méthode pourrait amener une
+erreur dans une autre méthode. Dans ces conditions, pour que le développeur ou
+la développeuse teste son programme, ce doit être automatique.  
+
+Cette automatisation est fournie par \text{JUnit}.
+
+\section{JUnit}
+
+\paragraph{Remarque préalable} JUnit n'est pas fourni avec le JDK (\textit{java
+development kit}), c'est un \textit{framework} de tests indépendant que l'on
+trouve sur \url{junit.org}. Il est donc nécessaire de l'installer. 
+
+Par contre, il est fourni avec Netbeans. 
+
+\index{junit}
+\marginicon{definition}
+\textbf{JUnit} est un \textit{framework} simple pour l'écriture de tests
+répétables. 
+
+Pour tester la méthode — \texttt{foo} — dans la classe \texttt{MyClass}, il faut
+écrire une classe \texttt{MyClassTest} qui contiendra les méthodes de tests et
+demander à JUnit — dès lors qu'il est installé — d'exécuter cette classe. Un clic dans un IDE ou une commande du style fait l'affaire~:
+
+\begin{term}
+	java org.junit.runner.JUnitCore my.package.MyClassTest
+\end{term}
+
+La classe \texttt{MyClassTest} contient plusieurs méthodes. Une méthode de test
+par cas. Une méthode de test~: 
+
+\begin{itemize}
+	\item est autonome. Elle ne reçoit pas de paramètre et ne retourne rien;
+	
+	\item contient des affirmations qui seront évaluées;
+
+		\textit{La méthode doit me retourner «~vrai~».}~: \pc{assertTrue()}\\
+		\textit{La méthode doit me retourner «~faux~».}~: \pc{assertFalse()}\\
+		\textit{La méthode doit me donner cette valeur si ses paramètres sont
+		ceux-ci.}~:\\\pc{assertEqauls(<valeur attendue>, <valeur>)}
+
+	\item est précédée de l'annotation \pc{@Test} permettant de la faire
+		reconnaitre comme un test unitaire;
+
+	\item n'a pas de mot clé \pc{static}.
+
+\end{itemize}
+
+Un test aura donc l'allure suivante~:
+
+\begin{java}
+@Test
+public void max2_cas1(){
+	assertEquals(2, max2(-1, 2));
+}
+\end{java}
+
+Après lancement des tests, JUnit fournirait un rapport l'allure suivante~:
+
+\begin{term}
+JUnit version 4.12
+.
+
+Time: 0,012
+
+OK (1 test)
+\end{term}
+
+\section{Exemple}
+
+Reprenons l'exemple du calcul du maximum de 2 nombres décrit dans la fiche
+\ref{fiche:max2nb} p.\pageref{fiche:max2nb}. Voici un plan de tests~:
+
+\begin{center}
+\begin{tabular}{|c|cc|c|}
+	\hline
+	\rowcolor{black!40}
+	test \no & nb1 & nb2 & réponse attendue  \\
+	\hline 
+	1 & -3    & 4   & 4	\\\hline
+	2 & 7     & 4   & 7 \\\hline
+	3 & 4     & 4   & 4 \\\hline
+	4 & 0     & -4  & 0 \\\hline
+\end{tabular}
+\end{center}		
+
+Et la classe de tests \texttt{MaximumTest} sans les commentaires.
+
+\begin{java}
+package esi-bru.cours.dev1;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class MaximumTest {
+    
+    
+	@Test
+	public void max2_cas1(){
+		assertEquals(4, max2(-3, 4));
+	}
+
+	@Test
+	public void max2_cas2(){
+		assertEquals(7, max2(7, 4));
+	}
+
+	@Test
+	public void max2_cas3(){
+		assertEquals(4, max2(4, 4));
+	}
+
+	@Test
+	public void max2_cas4(){
+		assertEquals(0, max2(0, -4));
+	}
+}
+\end{java}
+
+
+\begin{term}
+JUnit version 4.12
+....
+
+Time: 0,012
+
+OK (4 tests)
+\end{term}
+
+
+
+
+
+
