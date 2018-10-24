@@ -168,7 +168,14 @@ par cas. Une méthode de test~:
 		\textit{La méthode doit me retourner «~vrai~».}~: \pc{assertTrue()}\\
 		\textit{La méthode doit me retourner «~faux~».}~: \pc{assertFalse()}\\
 		\textit{La méthode doit me donner cette valeur si ses paramètres sont
-		ceux-ci.}~:\\\pc{assertEqauls(<valeur attendue>, <valeur>)}
+		ceux-ci.}~:\\\pc{assertEquals(<valeur attendue>, <valeur>)}
+
+              Ces trois méthodes \pc{assertTrue}, \pc{assertFalse}, \pc{assertEquals} sont définies dans la classe \pc{org.junit.Assert}.
+              On peut les utiliser directement après les avoir préalablement importées :
+\begin{java}
+import static org.junit.Assert.*;
+\end{java}
+              
 
 	\item est précédée de l'annotation \pc{@Test} permettant de la faire
 		reconnaitre comme un test unitaire;
@@ -218,7 +225,7 @@ Reprenons l'exemple du calcul du maximum de 2 nombres décrit dans la fiche
 Et la classe de tests \texttt{MaximumTest} sans les commentaires.
 
 \begin{java}
-package esi-bru.cours.dev1;
+package be.he2b.esi.cours.dev1;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
