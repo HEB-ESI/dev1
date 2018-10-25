@@ -5,10 +5,10 @@
 % ============================
 
 \begin{Exergue}
-	«~J'ai fait tourner le programme, il fonctionne bien.~»
+	\og{}J'ai fait tourner le programme, il fonctionne bien.\fg{}
 \end{Exergue}
 
-Tous les programmes contiennent des erreurs, des \textit{bugs}, des défauts… Ces
+Tous les programmes contiennent des erreurs, des \textit{bugs}, des défauts\dots{} Ces
 «~\textit{bugs}~» entrainent, au mieux, un inconfort pour l'utilisateur ou
 l'utilisatrice. Ils peuvent occasionner une perte de temps, d'argent, de
 données, de matériel… ou, pire, un danger pour la vie humaine dans un
@@ -33,10 +33,10 @@ Les défauts d'un programme peuvent être de différentes sortes:
 
 	\item les erreurs d'exécution
 		
-		… et le programme s'arrête~;
+		\dots{} et le programme s'arrête~;
 
 
-		… et le programme ne fournit pas les bonnes valeurs~;
+		\dots{} et le programme ne fournit pas les bonnes valeurs~;
 
 		Ces erreurs sont difficiles à corriger. Elles nécessitent
 		que le programme soit \textbf{testé} avec un nombre suffisant de
@@ -54,7 +54,7 @@ Les défauts d'un programme peuvent être de différentes sortes:
 
 \end{enumerate}
 
-Pour montrer — garantir, prouver — qu'un programme fonctionne bien, il ne suffit
+Pour montrer --- garantir, prouver --- qu'un programme fonctionne bien, il ne suffit
 pas de montrer qu'il fournit les bons résultats dans certains cas, il faut
 convaincre, qu'il fournira les bons résultats dans \textbf{tous} les cas:
 
@@ -83,14 +83,13 @@ fournira un ensemble de valeurs à tester représentatives et convaincantes.
 \marginicon{definition}
 \textbf{Définition}
 
-\textbf{Test unitaire} Procédure permettant de tester le bon fonctionnement d'un
-module, d'une méthode. En fonction des paramètres qu'elle reçoit en entrée, la
+\textbf{Test unitaire} Procédure permettant de tester le bon fonctionnement d'une unité de code, une méthode \bsc{Java} dans notre cas. En fonction des paramètres qu'elle reçoit en entrée, la
 méthode fournit elle les bons résultats ? 
 
 L'idée sous-jacente des tests unitaires est que si chaque partie est correcte,
 l'ensemble sera correct. 
 
-Pour tester régulièrement — très régulièrement — notre programme nous avons besoin
+Pour tester régulièrement --- très régulièrement --- notre programme nous avons besoin
 d'outils qui vont automatiser ces tests mais commençons par les planifier. 
 
 
@@ -108,8 +107,8 @@ Dans la méthode de résolution de problèmes que nous avons présenté dans le 
 \end{enumerate}
 
 Les points 2 et 4 sont les prémisses à l'écriture des tests puisque ces exemples
-vont nous convaincre que l'algorithme — et le programme — fournit bien les
-«~bons~» résultats. Ces exemples constituent le \textbf{plan de tests} que nous allons utiliser. Dans ces différents cas, outre les cas généraux, les cas particuliers, les valeurs limites, apparaitront aussi des cas montrant les erreurs de programmation fréquentes. Par exemple~:
+vont nous convaincre que l'algorithme --- et le programme --- fournit bien les
+\og{}bons\fg{} résultats. Ces exemples constituent le \textbf{plan de tests} que nous allons utiliser. Dans ces différents cas, outre les cas généraux, les cas particuliers, les valeurs limites, apparaitront aussi des cas montrant les erreurs de programmation fréquentes. Par exemple~:
 
 \begin{itemize}
 	\item commencer ou arrêter trop tôt ou trop tard une boucle;
@@ -117,7 +116,7 @@ vont nous convaincre que l'algorithme — et le programme — fournit bien les
 	\item confondre < et $\le$ ou > et $\ge$… voire < et >;
 	\item confondre AND et OR;
 	\item mal écrire la négation d'une proposition;
-	\item …
+	\item \dots
 \end{itemize}
 
 C'est l'expérience qui permettra d'écrire un plan de tests efficace et
