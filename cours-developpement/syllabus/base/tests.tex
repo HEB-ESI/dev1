@@ -1,5 +1,5 @@
 % ============================
-%\renewcommand{\chaptername}{Errata}
+\renewcommand{\chaptername}{Errata}
 \chapter{Les tests}
 \label{chap:tests}
 % ============================
@@ -8,18 +8,17 @@
 	\og{}J'ai fait tourner le programme, il fonctionne bien.\fg{}
 \end{Exergue}
 
-Tous les programmes contiennent des erreurs, des \textit{bugs}, des défauts\dots{} Ces
-«~\textit{bugs}~» entrainent, au mieux, un inconfort pour l'utilisateur ou
-l'utilisatrice. Ils peuvent occasionner une perte de temps, d'argent, de
-données, de matériel… ou, pire, un danger pour la vie humaine dans un
-environnement industriel par exemple. 
+Tous les programmes contiennent des erreurs, des \textit{bugs}, des
+défauts\dots{} Ces «~\textit{bugs}~» entrainent, au mieux, un inconfort pour
+l'utilisateur ou l'utilisatrice. Ils peuvent occasionner une perte de temps,
+d'argent, de données, de matériel… ou, pire, un danger pour la vie humaine dans
+un environnement industriel par exemple. 
 
 Le travail de développeur ou de la développeuse est de réduire le nombre
 d'erreurs dans son programme. Pour ce faire, il ou elle le \textbf{testera}
 abondamment.  Ce chapitre s'intéresse aux tests. 
 
 \minitoc
-
 
 \section{Les types d'erreurs et de tests}
 
@@ -54,9 +53,9 @@ Les défauts d'un programme peuvent être de différentes sortes:
 
 \end{enumerate}
 
-Pour montrer --- garantir, prouver --- qu'un programme fonctionne bien, il ne suffit
-pas de montrer qu'il fournit les bons résultats dans certains cas, il faut
-convaincre, qu'il fournira les bons résultats dans \textbf{tous} les cas:
+Pour montrer --- garantir, prouver --- qu'un programme fonctionne bien, il ne
+suffit pas de montrer qu'il fournit les bons résultats dans certains cas, il
+faut convaincre, qu'il fournira les bons résultats dans \textbf{tous} les cas:
 
 \begin{itemize}
 	\item les cas généraux;
@@ -83,14 +82,16 @@ fournira un ensemble de valeurs à tester représentatives et convaincantes.
 \marginicon{definition}
 \textbf{Définition}
 
-\textbf{Test unitaire} Procédure permettant de tester le bon fonctionnement d'une unité de code, une méthode \bsc{Java} dans notre cas. En fonction des paramètres qu'elle reçoit en entrée, la
-méthode fournit elle les bons résultats ? 
+\textbf{Test unitaire} Procédure permettant de tester le bon fonctionnement
+d'une unité de code, une méthode \bsc{Java} dans notre cas. En fonction des
+paramètres qu'elle reçoit en entrée, la méthode fournit elle les bons résultats~? 
 
 L'idée sous-jacente des tests unitaires est que si chaque partie est correcte,
 l'ensemble sera correct. 
 
-Pour tester régulièrement --- très régulièrement --- notre programme nous avons besoin
-d'outils qui vont automatiser ces tests mais commençons par les planifier. 
+Pour tester régulièrement --- très régulièrement --- notre programme nous avons
+besoin d'outils qui vont automatiser ces tests mais commençons par les
+planifier. 
 
 
 \section{Planifier les tests}
@@ -122,6 +123,16 @@ vont nous convaincre que l'algorithme --- et le programme --- fournit bien les
 C'est l'expérience qui permettra d'écrire un plan de tests efficace et
 convaincant.
 
+\index{plan de test}
+\marginicon{definition}
+Un \textbf{plan de test} est donc une liste ou un tableau reprenant un certain
+nombre d'exemples qui mettent en œuvre la méthode testée sur des cas tels que
+ceux décrits ci-dessus et permettent de faire apparaître des problèmes lors de
+l'exécution automatique. Chacun des tests sera défini par une méthode qui porte
+un nom qui explique l'objectif du test sans la nécessité de commentaires
+additionnels. Autant que possible, ce nom décrit aussi la portée ou le contexte
+de ce qui est vérifié.
+
 \paragraph{Remarque} Dans certaines méthodologies, la mise en exergue de l'importance des tests se fait en écrivant d'abord les tests avant le code.
 Voir par exemple \href{https://fr.wikipedia.org/wiki/Test_driven_development}{Wikipedia} ou \href{http://www.extremeprogramming.org/rules/testfirst.html}{cette article d'\textit{extreme programming}}. 
 
@@ -134,6 +145,8 @@ erreur dans une autre méthode. Dans ces conditions, pour que le développeur ou
 la développeuse teste son programme, ce doit être automatique.  
 
 Cette automatisation est fournie par \text{JUnit}.
+
+
 
 \section{JUnit}
 
@@ -149,8 +162,11 @@ Par contre, il est fourni avec Netbeans.
 répétables. 
 
 Pour tester la méthode — \texttt{foo} — dans la classe \texttt{MyClass}, il faut
-écrire une classe \texttt{MyClassTest} qui contiendra les méthodes de tests et
-demander à JUnit — dès lors qu'il est installé — d'exécuter cette classe. Un clic dans un IDE ou une commande du style fait l'affaire~:
+écrire une classe \texttt{MyClassTest} qui contiendra les méthodes de tests.  Le
+nom de la classe de test porte le nom de la classe qu'elle teste, suffixé par
+\texttt{Test}. Ensuite, il faut demander à JUnit — dès lors qu'il est installé
+— d'exécuter cette classe. Un clic dans un IDE ou une commande du style fait
+l'affaire~:
 
 \begin{term}
 	java org.junit.runner.JUnitCore my.package.MyClassTest
@@ -208,21 +224,25 @@ OK (1 test)
 Reprenons l'exemple du calcul du maximum de 2 nombres décrit dans la fiche
 \ref{fiche:max2nb} p.\pageref{fiche:max2nb}. Voici un plan de tests~:
 
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\bigskip 
 \begin{center}
-\begin{tabular}{|c|cc|c|}
+	\begin{tabular}{|c|p{4cm}|c|c|C{1.5cm}|}
 	\hline
 	\rowcolor{black!40}
-	test \no & nb1 & nb2 & réponse attendue  \\
+	test \no & description & nb1 & nb2 & réponse attendue  \\
 	\hline 
-	1 & -3    & 4   & 4	\\\hline
-	2 & 7     & 4   & 7 \\\hline
-	3 & 4     & 4   & 4 \\\hline
-	4 & 0     & -4  & 0 \\\hline
+	1 & maximum en position 2 et nombre négatif & -3    & 4   & 4	\\\hline
+	2 & maximum en position 1 & 7     & 4   & 7 \\\hline
+	3 & tous égaux & 4     & 4   & 4 \\\hline
+	4 & avec un nul & 0     & -4  & 0 \\\hline
 \end{tabular}
 \end{center}		
+\bigskip 
 
 Et la classe de tests \texttt{MaximumTest} sans les commentaires.
 
+\bigskip 
 \begin{java}
 package be.he2b.esi.cours.dev1;
 
@@ -233,22 +253,22 @@ public class MaximumTest {
     
     
 	@Test
-	public void max2_cas1(){
+	public void max2_maximumEnPosition2EtUnNégatif(){
 		assertEquals(4, max2(-3, 4));
 	}
 
 	@Test
-	public void max2_cas2(){
+	public void max2_maximumEnPosition1(){
 		assertEquals(7, max2(7, 4));
 	}
 
 	@Test
-	public void max2_cas3(){
+	public void max2_tousÉgaux(){
 		assertEquals(4, max2(4, 4));
 	}
 
 	@Test
-	public void max2_cas4(){
+	public void max2_avecUnNul(){
 		assertEquals(0, max2(0, -4));
 	}
 }
@@ -263,9 +283,5 @@ Time: 0,012
 
 OK (4 tests)
 \end{term}
-
-
-
-
 
 
