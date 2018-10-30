@@ -1,0 +1,396 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/exemple}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+%\marginsectiontrue
+\usepackage{booktabs}
+\usepackage{pifont} 
+%\usepackage{tabularx} 
+%\usepackage{multicol}
+%\usepackage{multirow}
+\usepackage{longtable}
+%\usepackage{array}
+
+\definecolor{verylightgray}{rgb}{0.98,0.98,0.98}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires d'environnement}
+\libelledocument{TD 07 -- Filtres, tubes et redirections}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%===================
+	%  Contenu
+	%====================
+	\begin{tcolorbox}[blanker,
+	before skip=10mm,after skip=10mm,
+	borderline west={1mm}{-4mm}{lightgray},
+	title=Objectifs, coltitle=black, fonttitle=\sffamily\bfseries\large]
+	Dans ce TD, vous étudierez les mécanismes de redirections, de tubes et les filtres sous Linux.
+	Vous apprendrez à :
+	\begin{itemize}
+		\item rediriger les entrées et les sorties de vos programmes ;
+		\item combiner plusieurs commandes Linux pour réaliser des opérations complexes sur vos fichiers ;
+	\end{itemize}
+	
+	\end{tcolorbox}
+	
+	\tableofcontents
+
+	\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	   
+\section{TD7 - Filtres, tubes et redirections}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+%%%%%%%%%%%%%%%%%%%%%%%	
+	\subsection{Entr\'ees et sorties standards}
+%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{coltbox}{Les fichiers standards}
+		Tout programme qui s'ex\'ecute dispose de trois fichiers ouverts d'office 
+		par le syst\`eme pour lui : l'entr\'ee standard, la sortie standard et la sortie d'erreur,
+		identifi\'es respectivement par les num\'eros 0, 1 et 2.
+		\par
+		En Java, on retrouve ces trois fichiers :
+	   			
+                  
+			\begin{itemize}
+				
+				\item \verb_System.in_ pour 0 (entr\'ee standard) qu'on retrouve dans la d\'eclaration
+					\verb_Scanner clavier = new Scanner(System.in);_
+				\item \verb_System.out_ pour 1 (sortie standard) qu'on retrouve dans l'instruction
+					\verb_System.out.println();_
+				\item \verb_System.err_ pour 2 (erreur standard) qu'on retrouve dans l'instruction
+						\verb_System.err.println();_
+				\end{itemize}
+	\end{coltbox}
+	
+	Cela peut vous paraitre bizarre de dire que le clavier et l'\'ecran sont des fichiers
+	mais c'est bien ainsi que le programme les voit. Et c'est pratique, car nous allons pouvoir
+	\textit{rediriger} ces entr\'ees et ces sorties vers de vrais fichiers de fa\c con tout-\`a-fait transparente pour le
+	programme ; il ne sera pas n\'ecessaire de le modifier.
+				
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+	\subsection{Rediriger la sortie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%			
+		Il est possible, au moment o\`u on lance un programme, de rediriger sa sortie.
+		Tout ce que le programme enverra sur sa sortie standard
+		(par exemple avec un \verb_System.out.println()_ en Java) ne sera pas visible \`a l'\'ecran
+		mais sera envoy\'e dans, par exemple, un fichier.
+		\par		
+		\begin{coltbox}{Notation}
+			Une redirection de sortie standard se note \guillemotleft >\guillemotright  ou \guillemotleft 1>\guillemotright  lors du lancement du programme.
+			Ces redirections sont r\'ealis\'ees par le shell avant l'ex\'ecution de la commande et sont transparentes pour cette commande.
+		\end{coltbox}
+					
+		\begin{Exemple}{Redirection de sortie}
+		        \begin{Console}
+				ls -l > liste
+		 	\end{Console}
+			ou
+			 \begin{Console}
+				ls -l 1> liste
+		 	\end{Console}
+		\end{Exemple}
+		
+		Ces deux commandes sont \'equivalentes; elles n'affichent pas le r\'esultat \`a l'\'ecran,
+		mais l'\'ecrivent dans le fichier \verb_liste_ cr\'e\'e ici ou \'ecras\'e s'il pr\'eexistait.
+		Par d\'efaut \verb_ls -l_  affiche le r\'esultat \`a l'\'ecran. Nous avons \textit{redirig\'e} 
+		cette sortie standard vers un fichier, en l'occurrence \verb_liste_.
+				
+            \par
+        		\begin{steps}
+			\item Faites l'essai et v\'erifiez le contenu du fichier cr\'e\'e.
+		\end{steps}
+				
+            \newpage
+\begin{Exercice}{Rediriger la sortie}
+	\begin{itemize}
+			\item Écrivez un programme qui affiche la suite des pas croissants :\\
+				 1, 2, 4, 7, 11, 16, 22, 29, ... .\\
+				  Ex\'ecutez-le pour afficher les 1000 premiers nombres de cette suite.
+					
+			\item Sauvez le r\'esultat dans un fichier pour pouvoir l'examiner \`a votre aise.\\
+				\textbf{Rappel} : pour examiner le contenu d'un fichier, inutile de passer par un \'editeur,
+				la commande \verb_more_ suffit.
+					
+			\item Est-ce que le nombre 15007 en fait partie ? (aide : vous vous rappelez de la commande \verb_grep_ ?)
+					
+	\end{itemize}
+				
+
+\end{Exercice}
+
+\begin{coltbox}{Note} 
+	Avec la simple redirection en sortie, si le fichier existe d\'ej\`a, il est \'ecras\'e. 
+	Nous pouvons choisir de ne pas l'\'ecraser, mais de le compl\'eter 
+	(ajouter du contenu \`a la fin du fichier) via la double redirection (en sortie) not\'ee 
+					\verb_>>_.			
+	
+\end{coltbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+	\subsection{Rediriger l'entrée}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		L'\guillemotleft entr\'ee standard\guillemotright  peut \^etre associ\'ee \`a un fichier au lieu du clavier.
+		Cela permet d'utiliser les donn\'ees \`a partir du fichier au lieu de les entrer au clavier.
+		C'est ce qu'on appelle une redirection de l'entr\'ee.
+			
+		\begin{coltbox}{Notation}
+			La redirection d'entr\'ee se note \guillemotleft <\guillemotright .
+		\end{coltbox}
+        \par
+		\begin{Exemple}{Redirection d'entrée}
+		        \begin{Console}
+		        		commande < data
+			\end{Console}
+		\end{Exemple}
+		Les lectures de la commande se feront dans le fichier \verb_data_
+		et pas au clavier.
+		
+		\begin{Tutoriel}{Exp\'erience} 
+				\begin{steps}
+					\item Écrivez une classe \verb_Multiple5_ qui lit une série de nombres et n'affiche que ceux qui sont des multiples de 5. 
+					À la fin, elle affiche le nombre de multiples de 5.
+			
+					\item Exécutez votre programme et entrez des nombres au clavier.
+						La combinaison de touches \verb_Ctrl-d_ est l'\'equivalent de la marque \guillemotleft fin de fichier\guillemotright  pour le clavier,
+						c'est ainsi que vous terminerez l'acquisition de la s\'erie de nombres au clavier.
+					
+					\item Il ne faut pas confondre \verb_Ctrl-d_ et \verb_Ctrl-c_
+						qui tue le processus. Comment mettre en \'evidence la diff\'erence ?
+					
+					\item Ex\'ecutez la classe en associant le clavier 
+						\`a un petit fichier texte o\`u vous aurez \'ecrit les nombres au pr\'ealable,
+						s\'epar\'es par des blancs ou des caract\`eres \'equivalents (pas de \verb_Ctrl-d_ ici ;-) ).						
+					
+				\end{steps}
+		\end{Tutoriel}
+				
+			
+		\begin{Exercice}{Les fichiers cach\'es} 
+			Pour r\'esoudre cet exercice, vous devez combiner votre programme des pas croissants
+			et le programme qui s\'electionne les multiples de 5. On vous demande d'afficher,
+			parmi les 1000 premiers nombres de la suite des pas croissants, tous ceux qui sont des multiples de 5.
+			Combien y en a-t-il ?
+		\end{Exercice}
+            		
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \subsection{Les tubes (pipes en anglais)}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Pour r\'esoudre l'exercice de la section pr\'ec\'edente, vous avez d\^u cr\'eer un fichier
+temporaire qui n'a servi qu'\`a \c ca. Vous avez redirig\'e la sortie de la premi\`ere commande dans un fichier et
+redirig\'e ce fichier comme entr\'ee de la seconde commande.
+					
+			\begin{coltbox}{Les tubes}
+		
+				Le symbole \guillemotleft |\guillemotright  permet de chainer des commandes ; la sortie de l'une sert d'entr\'ee \`a la suivante. 
+				On parle de "pipe" en anglais et de "tube" en fran\c cais.
+					
+			\end{coltbox}
+
+			C'est une situation qui se pr\'esente souvent, surtout en Linux qui propose de nombreuses
+			commandes qui font une seule chose (plut\^ot bien) et qu'on combine pour obtenir 
+			un r\'esultat plus cons\'equent. Des commandes comme \verb_more_, \verb_grep_,
+			\verb_wc_... peuvent prendre leurs donn\'ees sur l'entr\'ee standard.
+					
+          
+		\begin{Exemple}{Enchaîner les commandes} 
+			La commande \verb_more_ permet d'afficher un message page par page.
+			Si on ne lui donne pas de nom de fichier, il pagine les donn\'ees re\c cues sur l'entr\'ee standard. 
+			On peut donc remplacer
+				
+                  	 \begin{Console}
+				ls /home >temp
+				more temp
+			\end{Console}
+					par
+				
+                		 \begin{Console}
+				ls /home | more
+			\end{Console}
+			
+		\end{Exemple}
+			
+		\begin{Exercice}{Utilisation des tubes}
+				\begin{itemize}
+				
+						\item Utilisez un pipe pour refaire l'exercice pr\'ec\'edent
+						(afficher parmi les 1000 premiers nombres de la suite des pas croissants,
+						tous ceux qui sont des multiples de 5).
+					
+						\item Supprimez du programme \verb_Multiples5_
+							la ligne finale qui affiche le nombre de multiples trouv\'es. 
+					
+						\item Relancez votre commande de l'exercice pr\'ec\'edent.
+							Vous ne voyez plus, \`a la fin, le nombre de multiples, ce qui est normal.
+							Quelle enchainement de commandes permet d'afficher ce nombre
+							(et uniquement ce nombre) ? Rappelez-vous, il existe une commande Linux qui "compte". 
+					
+						\item Affichez, parmi les 1000 premiers nombres 
+							de la suite des pas croissants, tous ceux qui contiennent un 0.
+					
+					\end{itemize}
+	\end{Exercice}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\subsection{Rediriger les erreurs}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          	On a vu qu'il est possible de rediriger la sortie d'un programme.
+		Il est aussi possible de rediriger ses erreurs.
+				
+          	Attention ! C'est au programme \`a d\'ecider ce qui est un message d'erreur (en utilisant
+		\verb_err_ au lieu de \verb_out_).
+			
+		\begin{coltbox}{Notation}
+		
+					Une redirection de la sortie d'erreur se note \guillemotleft 2>\guillemotright .
+				
+		\end{coltbox}
+\newpage
+			
+		\begin{Exemple}{Redirection d'erreurs}
+			Supposons que vous ayez \'ecrit une classe \verb_Malfaite_ qui provoque beaucoup d'erreurs \`a la compilation.
+			Pour les regarder \`a votre aise, vous pouvez les rediriger dans un fichier 
+					\verb_erreur_ via :
+					\begin{Console}
+						javac MalFaite.java 2>erreur
+						
+					\end{Console}
+					Vous pouvez alors examiner les erreurs en ouvrant le fichier \verb_erreur_,
+					par exemple via : 
+					\begin{Console} 
+						more erreur
+					\end{Console}
+					
+		\end{Exemple}		
+          	
+		\begin{Exercice}{Redirection}        
+			Les professeurs se demandent combien d'\'etudiants ont chez eux
+			un fichier \verb_Multiples5.java_. Pouvez-vous indiquer la (suite de) commande(s)
+			qui permet de r\'epondre \`a la question ?
+		\end{Exercice}
+				
+            \par
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \subsection{Les filtres Linux}  
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      		De nombreuses commandes Linux sont bas\'ees sur le principe \verb_KISS_ (Keep It Simple, Stupid).
+		Elles font peu, mais le font bien et surtout, peuvent facilement coop\'erer pour, au final,
+		obtenir un r\'esultat bluffant. Parmi toutes les commandes, les filtres sont \`a mettre en \'evidence.
+		
+		\begin{coltbox}{Les filtres}
+				Un \verb_filtre_ est une commande Linux qui acquiert des donn\'ees sur l'entr\'ee standard 
+				et les envoie vers la sortie standard apr\`es les avoir \'eventuellement transform\'ees.
+		\end{coltbox}
+
+		Nous allons nous concentrer sur les filtres suivants :
+		\verb_tr_, \verb_cut_, \verb_cat_, \verb_sort_, \verb_head_, \verb_tail_, 
+		\verb_split_, \verb_uniq_, \verb_grep_, \verb_more_, \verb_less_, \verb_wc_, ...
+		Vous en connaissez d\'ej\`a ; voyez-en les pages de manuel respectives et l'aide (\verb_--help_) pour en connaitre le d\'etail.
+				
+           
+			
+		\begin{Tutoriel}{Utilisation des filtres}
+					On voudrait connaitre le nombre d'utilisateurs qui sont connect\'es \`a linux1 pour le moment.
+					Voyons, \'etape par \'etape, comment on peut obtenir le r\'esultat.
+				
+           		\begin{steps}
+				
+				\item La premi\`ere \'etape est de penser \`a la commande \verb_who_
+					qui affiche toutes les connexions actives.
+					
+				\item C'est gagn\'e, il suffit de compter le nombre de lignes, direz-vous !
+						Allons ! Ne nous arr\^etons pas l\`a ; l'ordinateur peut compter pour nous,
+						ce qui donne :
+						\begin{Console}
+							who | wc -l
+						\end{Console}
+						
+				\item Cette fois, \c ca y est, on a la r\'eponse ! Ben, non !
+					Il y a un pi\`ege car la commande \verb_who_ ne donne pas les utilisateurs
+					mais les connexions ce qui n'est pas tout \`a fait la m\^eme chose ;
+					un utilisateur peut avoir ouvert plusieurs fen\^etres "putty". 
+						
+            \par
+        
+					La commande \verb_uniq_ peut venir \`a notre secours en supprimant
+					les doublons mais il faut que les lignes soient parfaitement identiques
+					et contig\"ues.
+						
+            \par
+        
+					Parfait ! La commande \verb_cut_ peut ne garder que certaines colonnes
+					et la commande \verb_sort_ peut trier les lignes. On obtient alors :							
+						
+            \par
+        					\begin{Console}
+						who | cut -f 1 -d ' ' | sort | uniq | wc -l
+					\end{Console}
+					
+					Je ne me r\'ejouis pas trop vite ; je suis s\^ur que vous allez encore
+					trouver une faille, n'est-ce pas ? Non, pas cette-fois ; on y est !
+			\end{steps}
+		\end{Tutoriel}
+\newpage				
+			
+		\begin{Exercice}{Nombre de connexions d'un utilisateur} 
+				Trouvez un enchainement de commandes qui permet de donner le nombre de connexions
+				d'un utilisateur donn\'e.
+				
+            \par
+        
+				Il existe de nombreuses fa\c cons de r\'esoudre cet exercice. 
+				Celle \`a laquelle nous pensons fait intervenir : \verb_grep_, \verb_wc_ et \verb_who_.
+				
+            \end{Exercice}
+        
+			
+	\begin{Exercice}{Nombre de PC connect\'es} 
+			Trouvez un enchainement de commandes qui permet de donner le nombre de PC
+			connect\'es \`a linux1. Ce n'est pas exactement le nombre d'utilisateurs car un utilisateur pourrait \^etre connect\'e
+			sur plusieurs machines.
+				
+            \par
+        
+			\`A nouveau, il existe de nombreuses fa\c cons de r\'esoudre cet exercice. 
+			Celle \`a laquelle nous pensons fait intervenir la commande \verb_tr -s ' '_
+			qui supprime plusieurs occurences cons\'ecutives d'un m\^eme caract\`ere facilitant ainsi la s\'election par colonne
+			de la commande \verb_cut_.
+				
+            \end{Exercice}
+        
+			
+	\begin{Exercice}{Droits sur les dossiers personnels} 
+			Trouvez un enchainement de commandes qui permet de donner le nombre de professeurs
+			qui ont donn\'e le droit \`a ceux qui ne font pas partie de leur groupe d'entrer dans leur dossier personnel.
+				
+            \par
+			\`A votre imagination...
+				
+            \end{Exercice}
+   		
+				
+				
+\end{document}
+			
