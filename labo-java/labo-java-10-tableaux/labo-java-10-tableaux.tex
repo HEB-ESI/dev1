@@ -51,12 +51,110 @@
 \section{Créer et manipuler des tableaux}
 %====================	
 
+	Un tableau est une collection indexée d'éléments de même type.
+	Un tableau est crée avec une taille donnée et ne peut plus en changer 
+	par la suite. Dans l'exemple ci-dessous nous créons et manipulons
+	un tableau de taille 5 contenant des entiers.
+	Comme cela est illustré dans l'exemple, on accède aux éléments 
+	d'un tableau par son indice.
+
+	\bigskip 
+
  	\listing{java}{Tableau.java}
 
- 
+ 	\begin{Exercice}{Doubler}	
+		Reprenez le code ci-dessus et ajoutez-y une méthode 
+		\code{java}{void multiplier(int[] tab, int valeur)} qui
+		 multiplie chaque élément du tableau par la valeur donnée.
+	\end{Exercice}
+	
+	\bigskip
+	
+	\begin{Exercice}{Afficher}
+		Modifiez la méthode \texttt{afficherTab} afin que l'affichage soit par exemple pour un tableau contenant les valeurs 1, 2, 3, 4, 5:
+		
+		\texttt{[1, 2, 3, 4, 5]}
+	\end{Exercice}
+
+
+\section{Tableaux de différents types}
+	Les tableaux peuvent contenir des éléments de tous les types.	
+	L'exemple suivant illustre l'utilisation d'un tableau de \texttt{String}.
+
+ 	\listing{java}{TableauChaines.java}
+
+
+
+	\begin{Exercice}{Les tailles}	
+		Complètez l'exemple ci-dessus en y ajoutant une méthode 
+		\code{java}{void afficherTailles(String[] tab)}
+			qui affiche la taille de chaque \texttt{String} d'un
+			 tableau. Par exemple si le tableau est celui de l'exemple la méthode 		
+			 affiche 3 5 5 3 5 4 3 4 3.
+	\end{Exercice}
+	
+	\begin{Exercice}{Le plus long mot}
+		Toujours dans l'exemple, ajoutez
+		 une méthode  \code{java}{String plusLongMot(String[] tab)}
+			qui reçoit un tableau de \texttt{String} et retourne le 
+			plus long mot. S'il y a plusieurs mots les plus longs, la méthode
+			retournera n'importe lequel parmi ceux-ci. 
+			Dans l'exemple ci-dessus la méthode retournera
+			 \texttt{quick}, \texttt{brown} ou \texttt{jumps}.
+				
+	\end{Exercice}
+	
+	
+
+
+\section{Retourner un tableau}
+
+	Il est bien sûr possible qu'une méthode retourne un tableau.
+	Dans l'exemple suivant la méthode \texttt{copie} 
+	effectue une copie d'un tableau reçu en paramètre. 
+	La méthode \texttt{pasUneCopie} illustre une erreur fréquente
+	lorsque l'on débute dans l'apprentissage des tableaux en Java.
+	
+ 	\listing{java}{TableauCopie.java}
+
+	\begin{Exercice}{Miroir}	
+		Complètez l'exemple ci-dessus en y ajoutant une méthode 
+		\code{java}{int miroir(int[] tab)}
+			qui retourne un nouveau tableau dont les éléments sont les 
+			éléments du tableau reçu en paramèter mais en ordre inverse. 
+			Par exemple si le tableau est celui de l'exemple la méthode 		
+			 retourne un tableau contenant les entiers 5, 4, 3, 2, 1.
+	\end{Exercice}
+
+
+%\section{Tableaux et \texttt{String}}
+%TODO v2 ? split, getCharArray
+
+\section{Tableaux et tests}
+
+	La manipulation des tableaux n'est pas aisée, les tests JUnit 
+	sont un outil essentiel afin de s'assurer de la correction de nos méthodes.
+	
+	La méthode \code{java}{assertArrayEquals} de la classe \texttt{org.junit.Assert}
+	permet de s'assurer que deux tableaux sont strictement égaux: de même taille, 
+	de même type et que tous leurs éléments sont égaux et 
+	apparaissent dans le même ordre.
+
+ 	\listing{java}{TableauTest.java}
+
+	\begin{Exercice}{Tests}	
+		Créer des tests JUnit pour les méthodes de les exercices 1, 4 et 5. Pour chacune 
+		de ces méthodes testez un cas général ainsi que les cas limites (tableau vide,
+		maximum en début/fin de tableau, valeurs négatives, etc).
+	\end{Exercice}
+
+
+
+\section{Exercices récapitulatifs}
+
 	\begin{Exercice}{\texttt{TableauUtil}}	
-		Dans une classe \texttt{TableauUtil} écrivez les méthodes suivantes et leur 
-		javadoc~:
+		Dans une classe \texttt{TableauUtil} écrivez les méthodes suivantes, leur 
+		javadoc ainsi que les tests JUnit correspondant~:
 		\begin{itemize}
 			\item \code{java}{static double min(double[] tab)} qui retourne le minimum
 				du tableau passé en paramètre ~;
@@ -66,40 +164,16 @@
 				des éléments du tableau~;
 			\item \code{java}{static double moyenne(double[] tab)} qui retourne la
 				 moyenne des éléments du tableau~;
+			\item \code{java}{static double[] copie(double[] tab)} qui retourne une
+			 copie du la tableau passé en paramètre~;
 		\end{itemize}
 	\end{Exercice}
 
-	\begin{Exercice}{Initialisation par défaut}	
-		Dans la méthode principale d'une classe \texttt{TestInit}~:
-		\begin{itemize}
-			\item créer un tableau d'entier de taille 10 et afficher-le 
-				(comme à  la ligne 18 de la classe \texttt{Tableau} ci-dessus). 
-				
-				Quelle valeur par défaut initialise chacune des cases du tableau ?
-			\item créer un tableau de double de taille 10 et afficher-le~;
-			\item créer un tableau de 10 booléens et afficher-le~;
-			\item créer un tableau de 10 \texttt{String} et afficher-le~;
-		\end{itemize}
-	\end{Exercice}
 
-	
-	
-
-\section{Tableaux et tests}
-
- 	\listing{java}{TableauTest.java}
-
-	\begin{Exercice}{Tests}	
-		Créer des tests JUnit pour les méthodes de l'exercice 1. Pour chacune 
-		de ces méthodes testez un cas général ainsi que les cas limites (tableau vide,
-		maximum en début/fin de tableau, valeurs négatives, etc).
-	\end{Exercice}
-
-\section{Exercices récapitulatifs}
 
 	\begin{Exercice}{\texttt{TableauUtil} (suite)}	
 
-		Dans la classe \texttt{TableauUtil} ajoputez les méthodes suivantes, meur javadoc ainsi que les tests JUnit correspondant~:
+		Dans la classe \texttt{TableauUtil} ajoutez les méthodes suivantes, leur javadoc ainsi que les tests JUnit correspondant~:
 	\begin{itemize}
 		\item \code{java}{int indiceMax(double[] tab)}: 
 				retourne l'indice du maximum du talbeau passé en paramètre~;
@@ -112,36 +186,88 @@
 		\item  \code{java}{boolean contient(String[] tab, String mot)}: 
 			retourne vrai si un tableau de \texttt{String} contient un mot passé en
 			paramètre~;
-%		\item \texttt{inverser}: retourne ~;
-%		\item \texttt{indiceMax}: retourne l'indice du maximum d'un tableau de double~;
-%		\item \texttt{indiceMax}: retourne l'indice du maximum d'un tableau de double~;
-%		\item \texttt{indiceMax}: retourne l'indice du maximum d'un tableau de double~;
+			
+			Astuce: utiliser la méthode \texttt{equals} afin de tester 
+			l'égalité entre deux \texttt{String} et non pas l'opérateur '=='.
+		\item  \code{java}{boolean contient(double[] tab, double valeur, 
+						double erreur)}: 
+			retourne vrai si un élément du tableau est proche de la \texttt{valeur}
+			à l'\texttt{erreur} près, c'est-à-dire si la distance entre l'élément 
+			et la valeur est inférieure à \texttt{erreur}.
 %	
 %		\item créer
-%		\item inverser
-%		\item positionsMin
 %		\item position(int valeur)
 %		\item premièreOccurence
 %		\item dernièreOccurence
-%		\item échange(int position1, position2)
 %		\item glissementCyclique
-%		\item doublons ?
-%		\item nb éléments négatifs
 %		\item inverserSigne
-%		\item contientChaine
 %		\item tri
 %		\item recherche dichotomique
 %		\item recherche d'une chaine
 	\end{itemize}
 	\end{Exercice}
 	
-	A faire:	
-\begin{itemize}
-	\item tableaux de string
-	\item remplissage de tableau par system.in
-	\item retourner un tableau
-	\item tableau et String (split, chars)
-	\item tableau de booléens ?
-\end{itemize}	
+	\begin{Exercice}{\texttt{TableauUtil} (suite)}	
+		Dans la classe \texttt{TableauUtil} ajoutez les méthodes suivantes, leur
+		 javadoc ainsi que les tests JUnit correspondant~:
+		\begin{itemize}
+			\item \code{java}{static void inverser(double[] tab)} 
+				qui inverse l'ordre des éléments  du tableau passé en paramètre ~;
+			\item \code{java}{static boolean doublons(int[] tab)} 
+				qui retourne vrai si le tableau possède des doublons 
+				(2 fois la même valeur) et faux sinon~;
+			\item \code{java}{static int nbNégatifs(double[] tab)} 
+				qui retourne le nombre d'éléments négatifs du tableau~;
+			\item \code{java}{static void échange(double[] tab, indice1, indice2)} 
+				qui échange la valeura se trouvant à l'indice \texttt{indice1} 
+				avec la valeur se trouvant à l'indice \texttt{indice2}~;
+			\item \code{java}{static int[] indicesMin(double[] tab)} 
+				qui retourne un tableau conteant les indices des minimums.
+		\end{itemize}
+	\end{Exercice}
+	
+		
+	\begin{Exercice}{Initialisation par défaut}	
+		Dans la méthode principale d'une classe \texttt{TestInit}~:
+		\begin{itemize}
+			\item créer un tableau d'entier de taille 10 et afficher-le 
+				(comme à  la ligne 18 de la classe \texttt{Tableau} ci-dessus). 
+				
+				Quelle valeur par défaut initialise chacune des cases du tableau ?
+			\item créer un tableau de double de taille 10 et afficher-le~;
+			\item créer un tableau de 10 booléens et afficher-le~;
+			\item créer un tableau de 10 \texttt{String} et afficher-le.
+		\end{itemize}
+	\end{Exercice}
+
+	\begin{Exercice}{\texttt{Tri}}	
+		Dans la classe \texttt{Tri} ajoutez les méthodes suivantes, leur
+		 javadoc ainsi que les tests JUnit correspondant~:
+		\begin{itemize}
+			\item \code{java}{static void triBulle(int[] tab)} 
+				qui trie le tableau en utilisant le tri bulle vu au cours~;
+			\item \code{java}{static void triSélection(int[] tab)} 
+				qui trie le tableau en utilisant le tri par sélection vu au cours~;
+			\item \code{java}{static void triInsertion(int[] tab)} 
+				qui trie le tableau en utilisant le tri par insertion vu au cours~;
+			\item \code{java}{static boolean rechercheDichotomique(int[] tab, 
+			int valeur )} 
+				qui retourne vrai si l'élément se trouve dans le tableau trié et 
+				faux sinon. On suppose que le tableau reçu est trié. Vous utiliserez
+				l'algorithme de recherche dichotomique vu au cours.
+
+		\end{itemize}
+	\end{Exercice}
+
+
+
+%	A faire:	
+%\begin{itemize}
+%	\item remplissage de tableau par system.in
+%	\item tableau et String (split, chars)
+% 	\item différentes façons de créer un tableaux
+% 	\item tri bulle, insertin, sélection
+%   \item recherche dichotomique
+%\end{itemize}	
 
 \end{document}
