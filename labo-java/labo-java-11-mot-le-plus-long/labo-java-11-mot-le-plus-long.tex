@@ -1,0 +1,199 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 11 -- Mise en pratique \\ Le mot le plus long}
+\sigleprof{}
+
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+\vspace{0.5cm}
+
+	%===================
+	%  Contenu
+	%====================	
+	Dans ce TD vous utiliserez les notions vues précédemment afin de réaliser 
+	le jeu 'le mot le plus long'. 
+	
+	Le mot le plus long est un jeu de lettres à deux joueurs qui se déroule en
+	plusieurs manches. Le nombre de manches est choisi au départ, par exemple 5 manches.
+	Une manche se déroule en 2 étapes. 
+	
+	Tout d'abord les joueurs, chacun à leur tour, 
+	tirent au hasard soit une voyelle, soit une consonne, 
+	jusqu'à obtenir 9 lettres. A chaque fois que'une lettre est tirée 
+	(voyelle ou consonne), la lettre est dévoilée aux joueurs afin qu'ils puissent
+	continuer en connaissance de cause.
+
+	Ensuite les joueurs cherchent le mot le plus long avec les lettres disponibles.
+	Chaque joueur annonce la longueur du mot trouvé. Celui qui a trouvé le mot le 
+	plus long le forme avec les lettres disponibles. On vérifie alors que c'est 
+	bien un mot du dictionnaire. Le joueur gagne autant de points que le nombre
+	de lettres de son mot. 
+			
+
+\vspace{0.5cm}
+
+
+Nous allons vous guider tout au long de ce TD afin de développer les différentes méthodes nécessaires pour une version à un seul joueur de ce jeu.
+
+
+
+		Créer un package \texttt{g12345.dev1.lemotlepluslong} et une classe
+		 \texttt{LeMotLePlusLong}. Créer la méthode principale qui, dans un premier 
+		temps, affiche un message de bienvenue au 'mot le plus long'.
+
+
+ 	\begin{Exercice}{Hasard}
+		\'Ecrivez la méthode \code{java}{int hasard(int min, int max)} qui reçoit le
+		retourne un nombre au hasard compris entre \texttt{min} et \texttt{max} 
+		reçu en paramètre.
+		
+		Par exemple si la méthode reçoit 3 et 8 elle retourne par exemple 6.
+		
+		Astuce: utilisez la méthode \texttt{random} de la classe \texttt{Math} qui 
+		retourne un nombre réel entre 0 et 1 non compris.
+	\end{Exercice} 
+
+ 
+ 	\begin{Exercice}{Voyelle}
+		\'Ecrivez la méthode \code{java}{char voyelle()} qui retourne une voyelle 
+		tirée au hasard.
+		
+		Cette méthode fera un appel à la méthode \texttt{hasard} 
+		de l'exercice précédent.
+	\end{Exercice} 
+
+ 	\begin{Exercice}{Consonne}
+		\'Ecrivez la méthode \code{java}{char consonne()} qui retourne une consonne 
+		tirée au hasard.
+	\end{Exercice} 
+
+ 	\begin{Exercice}{Afficher les lettres}
+ 		\'Ecrivez la méthode \code{java}{void afficherLettres(char[] lettres)}
+		qui affiche les lettres disponibles.
+	\end{Exercice} 
+
+ 	\begin{Exercice}{Demander les lettres}
+		\'Ecrivez la méthode \code{java}{char[] demanderLettres()}
+		qui demande à l'utilisateur s'il veut une voyelle ou une consonne
+		et qui en fonction de la réponse tire une voyelle ou une consonne.
+		La méthode affiche les lettres déjà tirées et répète la demande
+		et le tirage 9 fois.
+		 
+		La méthode retourne un tableau de 9 caractères contenant les lettres tirées. 
+		
+		Intégrer cela dans la méthode principale, c'est-à-dire, ajoutez un appelle à 
+		la méthode \texttt{demanderLettres} dans la méthode principale.
+	\end{Exercice} 
+
+	
+ 	\begin{Exercice}{Demander un mot}
+		\'Ecrivez la méthode \code{java}{String demanderMot()}
+		qui demande à l'utilisateur le mot le plus long qu'il a trouvé.
+		 
+		La méthode retourne le mot donné par l'utilisateur. 
+		
+		Intégrer cela dans la méthode principale.
+	\end{Exercice} 
+	
+ 	\begin{Exercice}{Vérifier les lettres}
+ 			\'Ecrivez la méthode 
+ 			\code{java}{boolean vérifierLettres(char[] lettres, String mot)}
+		qui vérifie que le mot proposé est possible avec les lettres 
+		disponibles. 
+		
+		Attention: vous ne pouvez pas modifier le tableau \texttt{lettres}.
+		
+		Astuce: vous pouvez utilisé un tableau de travail, par exemple un 
+		tableau de booléens qui indiquera si une lettre à déjà été utilisé.
+		
+		Cette méthode n'est pas triviale, elle doit être validée par des tests.
+		Ajoutez des tests JUnit en prenant soin de tester les cas particuliers: 
+		utilisation de la même lettre mais disponible une seule fois, utilisation de la 
+		même lettre disponible plusieurs fois, utilisation d'une lettre non 
+		disponible, etc.
+		
+		Complètez la méthode principale.
+	\end{Exercice} 
+	
+ 	\begin{Exercice}{Mot du dictionnaire}
+ 	 			\'Ecrivez la méthode 
+ 			\code{java}{boolean dansDictionnaire(String mot)}
+		qui vérifie que le mot proposé se trouve dnas le dictionnaire.
+				
+		Pour réaliser cet exercice, nous vous fournissons une librairie qui contient 
+		un dictionnaire complet, ou plus exactement la liste de tous les mots
+		acceptés par le jeu. Cette librairie vous est fournie dans un fichier
+		 \texttt{.jar} que vous devez ajouter à votre projet.		
+		
+		\subsection*{Mais qu’est-ce qu’un .jar ?}
+			Un JAR (Java Archive) est un fichier Zip utilisé pour distribuer un 
+			ensemble de classes Java. Ce format est utilisé pour stocker les 
+			définitions des classes, ainsi que des métadonnées, constituant 
+			l’ensemble d’un programme. [Wikipedia]
+			
+		\subsection*{Comment ajouter un .jar donné ?}
+
+		Sous Netbeans, pour pouvoir utiliser les classes d’un .jar donné, il suffit :
+		
+		\begin{enumerate}
+		 	\item de copier ce .jar dans un sous-dossier de votre projet (par exemple
+				dans le dossier lib, que vous créez pour l’occasion).
+			\item d’ajouter ce .jar aux librairies de votre projet.
+		\end{enumerate}
+	\end{Exercice} 
+
+ 	\begin{Exercice}{Le meilleur mot}
+ 	 	\'Ecrivez la méthode 
+ 		\code{java}{String meilleurMot(char[] lettres)}
+		qui parcours le dictionnaire à la recherche du mot le plus long faisable 
+		avec les lettres disponibles. 
+		Si plusieurs mots sont possible on en choisit ici un seul.
+
+		Testez votre méthode avec plusieurs tests JUnit.
+
+		 Intégrez cela dans a méthode principale.
+	\end{Exercice}
+
+ 	\begin{Exercice}{Les meilleurs mots}
+ 	 	\'Ecrivez la méthode 
+ 		\code{java}{String[] meilleursMots(char[] lettres)}
+		qui retourne la liste de tous les mots les plus longs du dictionnaire 
+		faisable avec les lettres disponibles.
+
+		Testez votre méthode avec plusieurs tests JUnit.
+
+		Intégrez cela dans a méthode principale.
+	\end{Exercice}
+
+
+ 	\begin{Exercice}{Bonus}
+		Développer le jeu à plusieurs manches, avec 2 joueurs, 
+		ainsi que la gestion du score et du gagnant.
+		Pour cela vous pouvez-vous référer aux règles officielles probablement 
+		disponibles quelque part sur internet.
+	\end{Exercice}
+
+
+\end{document}
