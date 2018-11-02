@@ -41,7 +41,7 @@
 	
 	Tout d'abord les joueurs, chacun à leur tour, 
 	tirent au hasard soit une voyelle, soit une consonne, 
-	jusqu'à obtenir 9 lettres. A chaque fois que'une lettre est tirée 
+	jusqu'à obtenir 9 lettres. A chaque fois qu'une lettre est tirée 
 	(voyelle ou consonne), la lettre est dévoilée aux joueurs afin qu'ils puissent
 	continuer en connaissance de cause.
 
@@ -140,20 +140,20 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
  	\begin{Exercice}{Mot du dictionnaire}
  	 			\'Ecrivez la méthode 
  			\code{java}{boolean dansDictionnaire(String mot)}
-		qui vérifie que le mot proposé se trouve dnas le dictionnaire.
+		qui vérifie que le mot proposé se trouve dans le dictionnaire.
 				
 		Pour réaliser cet exercice, nous vous fournissons une librairie qui contient 
 		un dictionnaire complet, ou plus exactement la liste de tous les mots
 		acceptés par le jeu. Cette librairie vous est fournie dans un fichier
 		 \texttt{.jar} que vous devez ajouter à votre projet.		
 		
-		\subsection*{Mais qu’est-ce qu’un .jar ?}
+		\subsection*{Mais qu’est-ce qu’un jar ?}
 			Un JAR (Java Archive) est un fichier Zip utilisé pour distribuer un 
 			ensemble de classes Java. Ce format est utilisé pour stocker les 
 			définitions des classes, ainsi que des métadonnées, constituant 
 			l’ensemble d’un programme. [Wikipedia]
 			
-		\subsection*{Comment ajouter un .jar donné ?}
+		\subsection*{Comment ajouter un jar donné ?}
 
 		Sous Netbeans, pour pouvoir utiliser les classes d’un .jar donné, il suffit :
 		
@@ -162,6 +162,16 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 				dans le dossier lib, que vous créez pour l’occasion).
 			\item d’ajouter ce .jar aux librairies de votre projet.
 		\end{enumerate}
+		
+		\subsection*{Comment utiliser le jar ?}
+			Le jar que nous vous fournissons contient une seule classe.
+			La classe \texttt{Dictionnaire} qui se trouve dans le package 
+			\texttt{esi.dev1.util}. Cette classe possède une méthode 
+			\texttt{String[] mots()} qui retourne un tableau contenant tous les mots
+			du dictionnaire. Pour l'utiliser il suffit donc d'appeler cette méthode
+			et de récupéré une référence vers ce tableau de mots:
+			\texttt{String[] dico = Dictionnaire.mots();}			
+			
 	\end{Exercice} 
 
  	\begin{Exercice}{Le meilleur mot}
