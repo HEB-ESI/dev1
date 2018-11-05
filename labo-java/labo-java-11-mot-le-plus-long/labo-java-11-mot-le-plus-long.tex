@@ -103,7 +103,7 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 		 
 		La méthode retourne un tableau de 9 caractères contenant les lettres tirées. 
 		
-		Intégrer cela dans la méthode principale, c'est-à-dire, ajoutez un appelle à 
+		Intégrez cela dans la méthode principale, c'est-à-dire, ajoutez un appelle à 
 		la méthode \texttt{demanderLettres} dans la méthode principale.
 	\end{Exercice} 
 
@@ -114,7 +114,7 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 		 
 		La méthode retourne le mot donné par l'utilisateur. 
 		
-		Intégrer cela dans la méthode principale.
+		Intégrez cela dans la méthode principale.
 	\end{Exercice} 
 	
  	\begin{Exercice}{Vérifier les lettres}
@@ -145,8 +145,9 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 		Pour réaliser cet exercice, nous vous fournissons une librairie qui contient 
 		un dictionnaire complet, ou plus exactement la liste de tous les mots
 		acceptés par le jeu. Cette librairie vous est fournie dans un fichier
-		 \texttt{.jar} que vous devez ajouter à votre projet.		
-		
+		 \texttt{.jar} que vous devez ajouter à votre projet.	
+		 
+		\begin{colxbox}	
 		\subsection*{Mais qu’est-ce qu’un jar ?}
 			Un JAR (Java Archive) est un fichier Zip utilisé pour distribuer un 
 			ensemble de classes Java. Ce format est utilisé pour stocker les 
@@ -162,22 +163,29 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 				dans le dossier lib, que vous créez pour l’occasion).
 			\item d’ajouter ce .jar aux librairies de votre projet.
 		\end{enumerate}
-		
-		\subsection*{Comment utiliser le jar ?}
+	\end{colxbox}	
+
+	Une fois le jar ajouté à votre projet, comment l'utiliser ?
 			Le jar que nous vous fournissons contient une seule classe.
 			La classe \texttt{Dictionnaire} qui se trouve dans le package 
 			\texttt{esi.dev1.util}. Cette classe possède une méthode 
-			\texttt{String[] mots()} qui retourne un tableau contenant tous les mots
+			\code{java}{String[] mots()} qui retourne un tableau contenant tous les mots
 			du dictionnaire. Pour l'utiliser il suffit donc d'appeler cette méthode
-			et de récupéré une référence vers ce tableau de mots:
-			\texttt{String[] dico = Dictionnaire.mots();}			
+			et de récupérer une référence vers ce tableau de mots:
+			
+			\code{java}{String[] dico = Dictionnaire.mots();}	
+			
+			Vous avez maintenant un tableau contenant tous les mots du dictionnaire.
+			Par exemple \code{java}{System.out.println(dico[58]);} affichera 
+			le 58è mot de ce dictionnaire.
+
 			
 	\end{Exercice} 
 
  	\begin{Exercice}{Le meilleur mot}
  	 	\'Ecrivez la méthode 
  		\code{java}{String meilleurMot(char[] lettres)}
-		qui parcours le dictionnaire à la recherche du mot le plus long faisable 
+		qui parcourt le dictionnaire à la recherche du mot le plus long faisable 
 		avec les lettres disponibles. 
 		Si plusieurs mots sont possible on en choisit ici un seul.
 
