@@ -133,7 +133,7 @@
 \section{Tableaux et tests}
 
 	La manipulation des tableaux n'est pas aisée, les tests JUnit 
-	sont un outil essentiel afin de s'assurer de la correction de nos méthodes.
+	sont un outil essentiel afin de s'assurer de la justesse de nos méthodes.
 	
 	La méthode \code{java}{assertArrayEquals} de la classe \texttt{org.junit.Assert}
 	permet de s'assurer que deux tableaux sont strictement égaux: de même taille, 
@@ -143,7 +143,7 @@
  	\listing{java}{TableauTest.java}
 
 	\begin{Exercice}{Tests}	
-		Créer des tests JUnit pour les méthodes de les exercices 1, 4 et 5. Pour chacune 
+		Créer des tests JUnit pour les méthodes des exercices 1, 4 et 5. Pour chacune 
 		de ces méthodes testez un cas général ainsi que les cas limites (tableau vide,
 		maximum en début/fin de tableau, valeurs négatives, etc).
 	\end{Exercice}
@@ -165,7 +165,7 @@
 			\item \code{java}{static double moyenne(double[] tab)} qui retourne la
 				 moyenne des éléments du tableau~;
 			\item \code{java}{static double[] copie(double[] tab)} qui retourne une
-			 copie du la tableau passé en paramètre~;
+			 copie du tableau passé en paramètre~;
 		\end{itemize}
 	\end{Exercice}
 
@@ -176,13 +176,15 @@
 		Dans la classe \texttt{TableauUtil} ajoutez les méthodes suivantes, leur javadoc ainsi que les tests JUnit correspondant~:
 	\begin{itemize}
 		\item \code{java}{int indiceMax(double[] tab)}: 
-				retourne l'indice du maximum du talbeau passé en paramètre~;
+				retourne l'indice du maximum du tableau passé en paramètre~;
 		\item \code{java}{boolean estTrié(double[] tab)}: 
 				retourne vrai si le tableau est trié par ordre croissant et 	
 				faux sinon~;
 		\item \code{java}{int indice(int[] tab, int valeur)}: 
 				retourne l'indice de cette valeur dans le tableau. 
+				
 				Que retournez-vous si la valeur n'apparait pas?
+				Indiquez-le dans la javadoc.
 		\item  \code{java}{boolean contient(String[] tab, String mot)}: 
 			retourne vrai si un tableau de \texttt{String} contient un mot passé en
 			paramètre~;
@@ -207,7 +209,7 @@
 	\end{itemize}
 	\end{Exercice}
 	
-	\begin{Exercice}{\texttt{TableauUtil} (suite)}	
+	\begin{Exercice}{\texttt{TableauUtil} (suite de la suite)}	
 		Dans la classe \texttt{TableauUtil} ajoutez les méthodes suivantes, leur
 		 javadoc ainsi que les tests JUnit correspondant~:
 		\begin{itemize}
@@ -219,10 +221,10 @@
 			\item \code{java}{static int nbNégatifs(double[] tab)} 
 				qui retourne le nombre d'éléments négatifs du tableau~;
 			\item \code{java}{static void échange(double[] tab, indice1, indice2)} 
-				qui échange la valeura se trouvant à l'indice \texttt{indice1} 
+				qui échange la valeur se trouvant à l'indice \texttt{indice1} 
 				avec la valeur se trouvant à l'indice \texttt{indice2}~;
 			\item \code{java}{static int[] indicesMin(double[] tab)} 
-				qui retourne un tableau conteant les indices des minimums.
+				qui retourne un tableau contenant les indices des minimums.
 		\end{itemize}
 	\end{Exercice}
 	
@@ -230,34 +232,34 @@
 	\begin{Exercice}{Initialisation par défaut}	
 		Dans la méthode principale d'une classe \texttt{TestInit}~:
 		\begin{itemize}
-			\item créer un tableau d'entier de taille 10 et afficher-le 
+			\item créez un tableau d'entier de taille 10 et afficher-le 
 				(comme à  la ligne 18 de la classe \texttt{Tableau} ci-dessus). 
 				
 				Quelle valeur par défaut initialise chacune des cases du tableau ?
-			\item créer un tableau de double de taille 10 et afficher-le~;
-			\item créer un tableau de 10 booléens et afficher-le~;
-			\item créer un tableau de 10 \texttt{String} et afficher-le.
+			\item créez un tableau de double de taille 10 et afficher-le~;
+			\item créez un tableau de 10 booléens et afficher-le~;
+			\item créez un tableau de 10 \texttt{String} et afficher-le.
 		\end{itemize}
 	\end{Exercice}
 
-	\begin{Exercice}{\texttt{Tri}}	
-		Dans la classe \texttt{Tri} ajoutez les méthodes suivantes, leur
-		 javadoc ainsi que les tests JUnit correspondant~:
-		\begin{itemize}
-			\item \code{java}{static void triBulle(int[] tab)} 
-				qui trie le tableau en utilisant le tri bulle vu au cours~;
-			\item \code{java}{static void triSélection(int[] tab)} 
-				qui trie le tableau en utilisant le tri par sélection vu au cours~;
-			\item \code{java}{static void triInsertion(int[] tab)} 
-				qui trie le tableau en utilisant le tri par insertion vu au cours~;
-			\item \code{java}{static boolean rechercheDichotomique(int[] tab, 
-			int valeur )} 
-				qui retourne vrai si l'élément se trouve dans le tableau trié et 
-				faux sinon. On suppose que le tableau reçu est trié. Vous utiliserez
-				l'algorithme de recherche dichotomique vu au cours.
-
-		\end{itemize}
-	\end{Exercice}
+%	\begin{Exercice}{\texttt{Tri}}	
+%		Dans la classe \texttt{Tri} ajoutez les méthodes suivantes, leur
+%		 javadoc ainsi que les tests JUnit correspondant~:
+%		\begin{itemize}
+%			\item \code{java}{static void triBulle(int[] tab)} 
+%				qui trie le tableau en utilisant le tri bulle vu au cours~;
+%			\item \code{java}{static void triSélection(int[] tab)} 
+%				qui trie le tableau en utilisant le tri par sélection vu au cours~;
+%			\item \code{java}{static void triInsertion(int[] tab)} 
+%				qui trie le tableau en utilisant le tri par insertion vu au cours~;
+%			\item \code{java}{static boolean rechercheDichotomique(int[] tab, 
+%			int valeur )} 
+%				qui retourne vrai si l'élément se trouve dans le tableau trié et 
+%				faux sinon. On suppose que le tableau reçu est trié. Vous utiliserez
+%				l'algorithme de recherche dichotomique vu au cours.
+%
+%		\end{itemize}
+%	\end{Exercice}
 
 
 

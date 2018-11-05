@@ -2,7 +2,7 @@ package esi.dev1.td10;
 
 /**
  * Exemple d'utilisation de tableaux de chaines
- * @author fservais
+ * @author dev1
  */
 public class TableauChaines {
     public static void main(String[] args) {

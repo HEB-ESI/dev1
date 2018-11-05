@@ -2,7 +2,7 @@ package esi.dev1.td10;
 
 /**
  * Exemple d'utilisations des tableaux
- * @author fservais
+ * @author dev1
  */
 public class Tableau {
 
@@ -31,7 +31,7 @@ public class Tableau {
      * @param tab le tableau à afficher
      */
     static void afficherTab(int[] tab) {
-        for (int valeur : tab) {
+        for (int valeur : tab) {  // pour chaque valeur dans le tableau 'tab'
             System.out.print(valeur+" ");
         }
         System.out.println(); // on passe à la ligne

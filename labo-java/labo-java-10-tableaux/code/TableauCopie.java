@@ -2,7 +2,7 @@ package esi.dev1.td10;
 
 /**
  * Exemples de méthodes retournant un tableau.
- * @author fservais
+ * @author dev1
  */
 public class TableauCopie {
     
