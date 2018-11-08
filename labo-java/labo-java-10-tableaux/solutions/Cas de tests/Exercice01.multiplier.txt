@@ -1,0 +1,11 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15680\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 Num\'e9ro | Entr\'e9es | R\'e9sultats Attendus | Notes\
+1 | tab=null, valeur = 0 | IllegalArgumentException | Null\
+2 | tab=\{\}, valeur = 0 | tab=\{\} | Vide\
+3 | tab=\{1,2,3\}, valeur = 3 | tab=\{3,6,9\} | Positif\
+4 | tab=\{-12,8,-4,9\}, valeur = -2 | tab=\{24,-16,8,-18\} | Negatif}
