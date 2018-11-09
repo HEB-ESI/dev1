@@ -1,0 +1,189 @@
+\documentclass[a4paper,11pt]{article}
+
+%=========================
+% Les styles
+%=========================
+\usepackage{style-esi/french}	% Francise LaTeX
+\usepackage{style-esi/td}
+\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/tutoriel}
+
+
+\newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/labo-java/tree/master/td12-structures}
+\renewcommand{\listingpublicpath}{\publicbasepath/code/}
+\renewcommand{\listingsrcpath}{code/}
+
+\date{2018 -- 2019}
+\siglecours{DEV1}
+\libellecours{Laboratoires Java I}
+\libelledocument{TD 12 -- Les structures}
+\sigleprof{}
+
+\marginnumberfalse
+\marginsectiontrue
+
+
+\begin{document}
+
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+
+	%====================
+	%  Contenu
+	%====================	
+	Dans ce TD vous trouverez une introduction aux structures.
+	 
+	Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
+	
+	\url{\publicbasepath}	
+
+
+	\tableofcontents
+
+	\newpage
+
+%===================
+\section{Créer et manipuler des structures}
+%====================	
+
+	À l'instar d'un tableau, une structure représente une collection d'éléments. Cependant, contrairement aux tableaux, ces données ne sont pas indexées et ne sont pas nécessairement du même type. L'intérêt d'utiliser une structure et de pouvoir accéder et manipuler des données qui sont liées entre-elles de manière à former un nouveau type composite.
+
+	Dans la grammaire de Java, il n'existe pas réellement de structure. Nous allons en réalité définir des classes qui permettent d'\emph{instancier} (créer) des objets. Ces objets sont des valeurs dont le type est celui définit par la classe qui permet leur instanciation.
+	Avant de réellement mettre le pied à l'étrier et de vous initier réellement à l'orienté objet\footnote{Cela sera fait dans un autre cours.}, nous allons utiliser ces objets de manière simplifiée afin de coller aux structures et de vous permettre de vous familiariser avec l'utilisation et la création de nouveaux types.
+
+
+	\subsection{Définition et utilisation}
+	%=====================================
+
+	Imaginons vouloir utiliser un nouveau type qui permet de représenter un étudiant. Un étudiant est composé d'un matricule, d'un nom, d'un prénom.
+
+	Ce type peut-être définit et utilisé de la manière suivante~:
+
+	\listing{java}{Student.java}
+
+	Essayez de définir un nouvel élément (valeur, objet) qui vous représente en tant qu'étudiant. Affichez cette valeur.
+
+	Si vous avez bien fait l'exercice, il est probable que cela vous ait déjà semblé laborieux. Nous allons introduire un \emph{constructeur} qui va vous permettre, en une instruction, d'instancier votre étudiant avec les bonnes valeurs.
+
+	\listing{java}{StudentWithConst.java}
+
+	Instanciez à nouveau une instance d'un étudiant avec vos propres valeurs.
+
+	Le code s'améliore, mais nous allons aller un peu plus loin. En effet, il reste assez verbeux de représenter une valeur et de l'afficher sur la sortie standard.
+
+	Un bon étudiant n'ayant pas fait de java avant d'avoir commencé ce cours proposerait certainement d'écrire une méthode pour permettre cette affichage~; nous allons nommer cette méthodes \texttt{toString}.
+
+	\listing{java}{StudentWithSTS.java}
+
+	Encodez à nouveau votre étudiant. Si son implémentation se complexifie un peu à chaque étape, son utilisation est elle simplifiée.
+
+	Notez qu'après création (instanciation), il est toujours possible de modifier votre instance. Modifiez son prénom en 'Adams' et son nom en 'Douglas'.
+
+
+	\subsection{Affichage}
+	%=====================
+
+	Dans la manière d'intéragir avec ce nouvel élément, vous avez peut-être remarqué que nous avions déjà manipulé quelque chose de semblable précédemment. Il s'agit des Scanners. Vous étiez en réalité en train de manipuler des instances d'objet de type Scanner.
+
+	Nous avons précédement dit que chaque instance est une valeur. Il serait commode de pouvoir imprimer sur la sortie standard cette valeur sans avoir à la manipuler. D'ailleurs, si vous essayez avec une instance de \texttt{Scanner} cela va afficher sa valeur (essayez !).
+	\begin{Code}{Java}
+		Scanner clavier = new Scanner(System.in);
+		System.out.println(clavier);
+	\end{Code}
+
+	Pour permettre cela, il faut expliciter comment une instance doit être affichée et non plus définir une méthode externe qui permet d'afficher une instance passée en paramètre ; ce que nous avons fait précédemment. Modifions pour cela la méthode \texttt{toString}. Quand vous l'utilisez, vous devez fournir l'instance à représenter sous forme de chaîne de caractères. Supprimons le paramètre. Il n'y a maintenant plus de valeur à afficher. Pour rappel, on souhaitais faire en sorte qu'une instance puisse être affichée. Cela est possible en retirant le mot clé static. Une instance de la classe que vous définissez porte toujours le même nom \texttt{this}. Cela donne le code suivante~:
+
+	\listing{java}{StudentWithTS.java}
+
+	N'est-ce pas beaucoup mieux ? En fait, pas réellement. Au lieu de demander à afficher \texttt{toString(s)} il faut maintenant faire \texttt{s.toString()}. En fait, nous ne l'avons pas montré, mais la partie \texttt{.toString()} est facultative. On peut donc écrire ce que l'on souhaitait depuis le départ. C'est-à-dire, \code{java}{System.out.println(s);}. Essayez ! Tant qu'on est à parler de choses facultative. Le mot clé \texttt{this} n'est pas obligatoire.
+
+	Le code nettoyé donne :
+	\listing{java}{StudentCleared.java}
+
+	Maintenant que vous savez comment manipuler les \og structures\fg. Faites des exercices.
+
+
+	\bigskip
+
+%===================
+\section{Exercices~: créer et manipuler des structures}
+%====================	
+	
+	Pour tous les exercices qui vous sont proposés ici, aucune méthode principale (\texttt{main}) ne doit être implémentée. Il est par contre requis~:
+	\begin{enumerate}
+		\item de tester le bon fonctionnement de votre code ;
+		\item penser à la modularité et à la clareté de celui-ci ;
+		\item pour chacune des structures, permettre de représenter fidèlement un élément par une chaine de caractères.
+	\end{enumerate}
+
+	\begin{Exercice}{Moment}
+		\begin{itemize}
+			\item
+				Créer une nouvelle structure \texttt{Moment} qui définit un moment d'une journée par un nombre de secondes, minutes et heures.
+			\item 
+				Dans une classe \texttt{Moments}, créer une méthode \code{java}{void addASecond(Moment m)} qui va permettre d'incrémenter d'une seconde, un moment donné en paramètre\footnote{Tout type que vous définirez sera un type référence (à l'inverse des types primitifs). Cela implique qu'il est possible de modifier une valeur en la passant en paramètre d'une méthode. Pour plus d'explication, demandez à votre enseignant.}
+		\end{itemize}		
+	\end{Exercice}
+
+	\begin{Exercice}{Point}
+		\begin{itemize}
+			\item
+				Écrivez une structure qui permet de représenter un point par ses coordonnées $x$ et $y$.
+			\item 
+				Écrivez une classe \texttt{Points} deux méthodes doivent être implémentées.
+				\begin{itemize}
+					\item 
+						La méthode \code{java}{double distance(Point p1, Point p2)} qui retourne la distance entre deux points. Pour rappel, la distance entre deux points $p_1 = (x_1, y_2)$ et $p_2 = (x_2, y_2)$ est donnée par la formule suivante~:
+						$$
+							distance(p_1, p_2) = \sqrt[]{(x_1 - x_2)^2 + (y_1 - y_2)^2}.
+						$$
+					\item 
+						La méthode \code{java}{Point middlePoint(Point p1, Point p2)} qui retourne le point à mi chemin entre les deux points $p_1 = (x_1, y_2)$ et $p_2 = (x_2, y_2)$.
+				\end{itemize}
+		\end{itemize}		
+	\end{Exercice}
+
+	\begin{Exercice}{Circle}
+		\begin{itemize}
+			\item
+				Écrivez une structure qui permet de représenter un cercle par son centre et son rayon.
+			\item
+				Écrivez une classe \texttt{Circles} et implémentez les méthodes suivantes~:
+				\begin{itemize}
+					\item 
+						\code{java}{double area(Circle c)} qui retourne l'aire du délimitée par le cercle passé en paramètre.
+					\item
+						\code{java}{double perimeter(Circle c)} qui retourne le périmètre du cercle.
+					\item  
+						\code{java}{Circle middleCircle(Circle c1, Circle c2)} qui retourne le cercle dont le diamètre est le segment reliant les centres des cercles donnés en paramètre.
+					\item  
+						\code{java}{boolean isADiskMember(Circle c, Point p)} qui indique si le point $p$ est un point du disque délimité par le cercle donné.
+					\item  
+						\code{java}{boolean haveIntersectionPoint(Circle c1, Circle c2)} qui retourne vrai si les deux cercles ont au moins un points d'intersection, sinon faux.
+				\end{itemize}
+		\end{itemize}		
+	\end{Exercice}
+
+	\begin{Exercice}{Date}
+		\begin{itemize}
+			\item
+				Écrivez une structure qui permet de représenter une date par le jour, le mois et l'année.
+			\item 
+				Écrivez dans une classe \texttt{Dates} la méthode \code{java}{int compare(Date d1, Date d2)} qui retourne un nombre positif si d1 est une date ultérieure à d2, négatif si d1 est antérieur et nul si les deux dates sont les mêmes.
+		\end{itemize}		
+	\end{Exercice}
+
+	\begin{Exercice}{Holiday}
+		\begin{itemize}
+			\item
+				Écrivez une structure qui permet de représenter un jour férié par son libellé (exemple : "jour de l'an") et par sa date.
+			\item 
+				Écrivez dans une classe \texttt{Holidays}, la méthode \code{java}{void sort(Holiday holidays)} qui permet d'ordonner, par date, les jours fériés contenus dans un tableau.
+		\end{itemize}		
+	\end{Exercice}
+\end{document}
