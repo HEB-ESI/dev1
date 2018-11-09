@@ -51,10 +51,11 @@
 \section{Créer et manipuler des structures}
 %====================	
 
-	À l'instar d'un tableau, une structure représente une collection d'éléments. Cependant, contrairement aux tableaux, ces données ne sont pas indexées et ne sont pas nécessairement du même type. L'intérêt d'utiliser une structure et de pouvoir accéder et manipuler des données qui sont liées entre-elles de manière à former un nouveau type composite.
+	À l'instar d'un tableau, une structure représente une collection d'éléments. Cependant, contrairement aux tableaux, ces données ne sont ni indexées ni nécessairement du même type. L'intérêt d'utiliser une structure et de pouvoir accéder et manipuler des données qui sont liées entre-elles de manière à former un nouveau type composite.
 
-	Dans la grammaire de Java, il n'existe pas réellement de structure. Nous allons en réalité définir des classes qui permettent d'\emph{instancier} (créer) des objets. Ces objets sont des valeurs dont le type est celui définit par la classe qui permet leur instanciation.
-	Avant de réellement mettre le pied à l'étrier et de vous initier réellement à l'orienté objet\footnote{Cela sera fait dans un autre cours.}, nous allons utiliser ces objets de manière simplifiée afin de coller aux structures et de vous permettre de vous familiariser avec l'utilisation et la création de nouveaux types.
+	Dans la grammaire de Java, il n'existe pas réellement de structure. Nous allons en réalité définir des classes qui permettent d'\emph{instancier} (créer) des objets. Ces objets sont des valeurs dont le type est celui définit par leur classe.
+
+	Avant de réellement mettre le pied à l'étrier et de vous initier à l'orienté objet\footnote{Cela sera fait dans un autre cours.}, nous allons utiliser ces objets de manière simplifiée afin de coller aux structures.
 
 
 	\subsection{Définition et utilisation}
@@ -66,21 +67,23 @@
 
 	\listing{java}{Student.java}
 
-	Essayez de définir un nouvel élément (valeur, objet) qui vous représente en tant qu'étudiant. Affichez cette valeur.
+	Essayez de définir une nouvelle valeur (objet) qui vous représente en tant qu'étudiant. Affichez cette valeur.
 
-	Si vous avez bien fait l'exercice, il est probable que cela vous ait déjà semblé laborieux. Nous allons introduire un \emph{constructeur} qui va vous permettre, en une instruction, d'instancier votre étudiant avec les bonnes valeurs.
+	Si vous avez bien fait l'exercice, il est probable que cela vous ait déjà semblé laborieux. Nous allons introduire un \emph{constructeur} qui va vous permettre, en une instruction, d'instancier votre étudiant avec les valeurs souhaitées.
 
 	\listing{java}{StudentWithConst.java}
 
 	Instanciez à nouveau une instance d'un étudiant avec vos propres valeurs.
 
-	Le code s'améliore, mais nous allons aller un peu plus loin. En effet, il reste assez verbeux de représenter une valeur et de l'afficher sur la sortie standard.
+	\bigskip
 
-	Un bon étudiant n'ayant pas fait de java avant d'avoir commencé ce cours proposerait certainement d'écrire une méthode pour permettre cette affichage~; nous allons nommer cette méthodes \texttt{toString}.
+	Le code s'améliore, mais nous pouvons aller un peu plus loin. En effet, il reste assez verbeux de représenter une valeur et de l'afficher sur la sortie standard.
+
+	Nous vous proposons d'écrire une méthode qui permet de \og traduire\fg{} une instance \texttt{Etudiant} en une chaîne de caractères. Nommons cette méthodes \texttt{toString} ; la signature de la méthode sera donc \code{java}{String toString(Etudiant e)}.
 
 	\listing{java}{StudentWithSTS.java}
 
-	Encodez à nouveau votre étudiant. Si son implémentation se complexifie un peu à chaque étape, son utilisation est elle simplifiée.
+	À nouveau, ajoutez une instance d'étudiant qui vous représente. Si son implémentation se complexifie un peu à chaque étape, son utilisation se voit simplifiée.
 
 	Notez qu'après création (instanciation), il est toujours possible de modifier votre instance. Modifiez son prénom en 'Adams' et son nom en 'Douglas'.
 
@@ -88,19 +91,26 @@
 	\subsection{Affichage}
 	%=====================
 
-	Dans la manière d'intéragir avec ce nouvel élément, vous avez peut-être remarqué que nous avions déjà manipulé quelque chose de semblable précédemment. Il s'agit des Scanners. Vous étiez en réalité en train de manipuler des instances d'objet de type Scanner.
+	Nous avons déjà instancié des éléments précédement. Il s'agit des Scanners. Pour être précis, vous manipuliez jusqu'à maintenant des instances d'objet de type Scanner.
 
-	Nous avons précédement dit que chaque instance est une valeur. Il serait commode de pouvoir imprimer sur la sortie standard cette valeur sans avoir à la manipuler. D'ailleurs, si vous essayez avec une instance de \texttt{Scanner} cela va afficher sa valeur (essayez !).
+	Nous avons précédement dit que chaque instance est une valeur. Il serait commode de pouvoir imprimer sur la sortie standard cette valeur sans avoir à utiliser de méthodes. Si vous essayez avec une instance de \texttt{Scanner} cela va afficher sa valeur (essayez !).
 	\begin{Code}{Java}
 		Scanner clavier = new Scanner(System.in);
 		System.out.println(clavier);
 	\end{Code}
 
-	Pour permettre cela, il faut expliciter comment une instance doit être affichée et non plus définir une méthode externe qui permet d'afficher une instance passée en paramètre ; ce que nous avons fait précédemment. Modifions pour cela la méthode \texttt{toString}. Quand vous l'utilisez, vous devez fournir l'instance à représenter sous forme de chaîne de caractères. Supprimons le paramètre. Il n'y a maintenant plus de valeur à afficher. Pour rappel, on souhaitais faire en sorte qu'une instance puisse être affichée. Cela est possible en retirant le mot clé static. Une instance de la classe que vous définissez porte toujours le même nom \texttt{this}. Cela donne le code suivante~:
+	Pour permettre cela, il faut expliciter comment une instance doit être affichée, et non plus définir une méthode qui permet d'afficher une instance passée en paramètre ; ce que nous avons fait précédemment. Modifions pour cela la méthode \texttt{toString}. 
+	\begin{enumerate}
+		\item Actuellement vous devez fournir l'instance à représenter sous forme de chaîne de caractères. Supprimons le paramètre de la méthode \texttt{toString}. N'essayez pas de compiler, ça ne fonctionnera pas.
+		\item Retirons le mot clé \texttt{static}. Une méthode non statique est en fait liée à l'instance. Cela veut dire que lorsque vous utilisez une méthode non statique, celle-ci a accès aux valeurs propres à l'instance sur laquelle la méthode est appelée. Pour faire référence à cette instance, utilisez le mot clé \texttt{this}.
+	\end{enumerate} 
+
+	Cela donne le code suivante~:
 
 	\listing{java}{StudentWithTS.java}
 
-	N'est-ce pas beaucoup mieux ? En fait, pas réellement. Au lieu de demander à afficher \texttt{toString(s)} il faut maintenant faire \texttt{s.toString()}. En fait, nous ne l'avons pas montré, mais la partie \texttt{.toString()} est facultative. On peut donc écrire ce que l'on souhaitait depuis le départ. C'est-à-dire, \code{java}{System.out.println(s);}. Essayez ! Tant qu'on est à parler de choses facultative. Le mot clé \texttt{this} n'est pas obligatoire.
+	%todo lire la suite
+	C'est mieux, ... enfin, pas vraiment. Heureusement, il ne faut plus rien faire pour simplifier notre code. En effet, l'appel à la méthode \texttt{.toString()} est facultatif. On peut donc écrire ce que l'on souhaitait depuis le départ. C'est-à-dire, \code{java}{System.out.println(s);}. Essayez ! Tant qu'on est à parler de choses facultative. Le mot clé \texttt{this} n'est pas obligatoire.
 
 	Le code nettoyé donne :
 	\listing{java}{StudentCleared.java}
