@@ -51,9 +51,9 @@
 \section{Créer et manipuler des structures}
 %====================	
 
-	À l'instar d'un tableau, une structure représente une collection d'éléments. Cependant, contrairement aux tableaux, ces données ne sont ni indexées ni nécessairement du même type. L'intérêt d'utiliser une structure et de pouvoir accéder et manipuler des données qui sont liées entre-elles de manière à former un nouveau type composite.
+	À l'instar d'un tableau, une structure représente une collection d'éléments. Cependant, contrairement aux tableaux, ces données ne sont ni indexées ni nécessairement du même type. L'intérêt d'utiliser une structure est de pouvoir accéder et manipuler des données qui sont liées entre-elles de manière à former un nouveau type composite.
 
-	Dans la grammaire de Java, il n'existe pas réellement de structure. Nous allons en réalité définir des classes qui permettent d'\emph{instancier} (créer) des objets. Ces objets sont des valeurs dont le type est celui définit par leur classe.
+	Dans la grammaire de Java, il n'existe pas réellement de structure. Nous allons en réalité définir des classes qui permettent d'\emph{instancier} (créer) des objets. Ces objets sont des valeurs dont le type est celui défini par leur classe.
 
 	Avant de réellement mettre le pied à l'étrier et de vous initier à l'orienté objet\footnote{Cela sera fait dans un autre cours.}, nous allons utiliser ces objets de manière simplifiée afin de coller aux structures.
 
@@ -63,7 +63,7 @@
 
 	Imaginons vouloir utiliser un nouveau type qui permet de représenter un étudiant. Un étudiant est composé d'un matricule, d'un nom, d'un prénom.
 
-	Ce type peut-être définit et utilisé de la manière suivante~:
+	Ce type peut-être défini et utilisé de la manière suivante~:
 
 	\listing{java}{Student.java}
 
@@ -79,7 +79,7 @@
 
 	Le code s'améliore, mais nous pouvons aller un peu plus loin. En effet, il reste assez verbeux de représenter une valeur et de l'afficher sur la sortie standard.
 
-	Nous vous proposons d'écrire une méthode qui permet de \og traduire\fg{} une instance \texttt{Etudiant} en une chaîne de caractères. Nommons cette méthodes \texttt{toString} ; la signature de la méthode sera donc \code{java}{String toString(Etudiant e)}.
+	Nous vous proposons d'écrire une méthode qui permet de \og traduire\fg{} une instance \texttt{Etudiant} en une chaîne de caractères. Nommons cette méthode \texttt{toString} ; la signature de la méthode sera donc \code{java}{String toString(Etudiant e)}.
 
 	\listing{java}{StudentWithSTS.java}
 
@@ -124,10 +124,10 @@
 \section{Exercices~: créer et manipuler des structures}
 %====================	
 	
-	Pour tous les exercices qui vous sont proposés ici, aucune méthode principale (\texttt{main}) ne doit être implémentée. Il est par contre requis~:
+	Pour tous les exercices qui vous sont proposés ici, aucune méthode principale (\texttt{main}) ne doit être implémentée. Il est par contre requis de~:
 	\begin{enumerate}
-		\item de tester le bon fonctionnement de votre code ;
-		\item penser à la modularité et à la clareté de celui-ci ;
+		\item tester le bon fonctionnement de votre code ;
+		\item penser à la modularité et à la clarté de celui-ci ;
 		\item pour chacune des structures, permettre de représenter fidèlement un élément par une chaine de caractères.
 	\end{enumerate}
 
@@ -143,17 +143,17 @@
 	\begin{Exercice}{Point}
 		\begin{itemize}
 			\item
-				Écrivez une structure qui permet de représenter un point par ses coordonnées $x$ et $y$.
+				Écrivez une structure \texttt{Point} qui permet de représenter un point par ses coordonnées $x$ et $y$.
 			\item 
-				Écrivez une classe \texttt{Points} deux méthodes doivent être implémentées.
+				Écrivez une classe \texttt{Points} dans laquelle deux méthodes doivent être implémentées:
 				\begin{itemize}
 					\item 
-						La méthode \code{java}{double distance(Point p1, Point p2)} qui retourne la distance entre deux points. Pour rappel, la distance entre deux points $p_1 = (x_1, y_2)$ et $p_2 = (x_2, y_2)$ est donnée par la formule suivante~:
-						$$
-							distance(p_1, p_2) = \sqrt[]{(x_1 - x_2)^2 + (y_1 - y_2)^2}.
-						$$
+						La méthode \code{java}{double distance(Point p1, Point p2)} qui retourne la distance entre deux points. Pour rappel, la distance entre deux points $p_1 = (x_1, y_1)$ et $p_2 = (x_2, y_2)$ est donnée par la formule suivante~:
+						\[
+							\textrm{distance}(p_1, p_2) = \sqrt[]{(x_1 - x_2)^2 + (y_1 - y_2)^2}.
+						\]
 					\item 
-						La méthode \code{java}{Point middlePoint(Point p1, Point p2)} qui retourne le point à mi chemin entre les deux points $p_1 = (x_1, y_2)$ et $p_2 = (x_2, y_2)$.
+						La méthode \code{java}{Point middlePoint(Point p1, Point p2)} qui retourne le point à mi-chemin entre les deux points $p_1 = (x_1, y_1)$ et $p_2 = (x_2, y_2)$.
 				\end{itemize}
 		\end{itemize}		
 	\end{Exercice}
@@ -161,12 +161,12 @@
 	\begin{Exercice}{Circle}
 		\begin{itemize}
 			\item
-				Écrivez une structure qui permet de représenter un cercle par son centre et son rayon.
+				Écrivez une structure \texttt{Circle} qui permet de représenter un cercle par son centre et son rayon.
 			\item
 				Écrivez une classe \texttt{Circles} et implémentez les méthodes suivantes~:
 				\begin{itemize}
 					\item 
-						\code{java}{double area(Circle c)} qui retourne l'aire du délimitée par le cercle passé en paramètre.
+						\code{java}{double area(Circle c)} qui retourne l'aire délimitée par le cercle passé en paramètre.
 					\item
 						\code{java}{double perimeter(Circle c)} qui retourne le périmètre du cercle.
 					\item  
@@ -174,7 +174,7 @@
 					\item  
 						\code{java}{boolean isADiskMember(Circle c, Point p)} qui indique si le point $p$ est un point du disque délimité par le cercle donné.
 					\item  
-						\code{java}{boolean haveIntersectionPoint(Circle c1, Circle c2)} qui retourne vrai si les deux cercles ont au moins un points d'intersection, sinon faux.
+						\code{java}{boolean haveIntersectionPoint(Circle c1, Circle c2)} qui retourne vrai si les deux cercles ont au moins un point d'intersection, sinon faux.
 				\end{itemize}
 		\end{itemize}		
 	\end{Exercice}
@@ -182,18 +182,18 @@
 	\begin{Exercice}{Date}
 		\begin{itemize}
 			\item
-				Écrivez une structure qui permet de représenter une date par le jour, le mois et l'année.
+				Écrivez une structure \texttt{Date} qui permet de représenter une date par le jour, le mois et l'année.
 			\item 
-				Écrivez dans une classe \texttt{Dates} la méthode \code{java}{int compare(Date d1, Date d2)} qui retourne un nombre positif si d1 est une date ultérieure à d2, négatif si d1 est antérieur et nul si les deux dates sont les mêmes.
+				Écrivez dans une classe \texttt{Dates} la méthode \code{java}{int compare(Date d1, Date d2)} qui retourne un nombre positif si \code{java}{d1} est une date ultérieure à \code{java}{d2}, négatif si \code{java}{d1} est antérieur et nul si les deux dates sont les mêmes.
 		\end{itemize}		
 	\end{Exercice}
 
 	\begin{Exercice}{Holiday}
 		\begin{itemize}
 			\item
-				Écrivez une structure qui permet de représenter un jour férié par son libellé (exemple : "jour de l'an") et par sa date.
+				Écrivez une structure qui permet de représenter un jour férié par son libellé (exemple : \texttt{"jour de l'an"}) et par sa date.
 			\item 
-				Écrivez dans une classe \texttt{Holidays}, la méthode \code{java}{void sort(Holiday holidays)} qui permet d'ordonner, par date, les jours fériés contenus dans un tableau.
+				Écrivez dans une classe \texttt{Holidays}, la méthode \code{java}{void sort(Holiday[] holidays)} qui permet d'ordonner, par date, les jours fériés contenus dans un tableau.
 		\end{itemize}		
 	\end{Exercice}
 \end{document}
