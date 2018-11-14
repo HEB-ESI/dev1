@@ -1,0 +1,8 @@
+Numéro;Entrées;Résultats Attendus;Notes
+1;tab=null;IllegalArgumentException;Null
+2;tab={};FAUX;Vide
+3;tab={1,2,3,2,5,7};VRAI;Vrai
+4;tab={1,2,3,4,5};FAUX;Faux
+5;tab={1,2,3,2};VRAI;VraiDernier
+6;tab={1,2,3,2,5,1};VRAI;Plusieurs
+7;tab={1,2,3,2,5,2};VRAI;Triplets

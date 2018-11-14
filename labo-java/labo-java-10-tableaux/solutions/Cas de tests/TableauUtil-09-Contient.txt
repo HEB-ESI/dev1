@@ -1,0 +1,8 @@
+Numéro;Entrées;Résultats Attendus;Notes
+1;"tab=null,mot=""test""";IllegalArgumentException;Null
+2;"tab={},mot=""bonjour""";FAUX;Vide
+3;"tab={""abc"",""bc"",""defgh""},mot=""abc""";VRAI;Premier
+4;"tab={""abc"",""bc"",""def"",""ghij""},mot=""ghij""";VRAI;Dernier
+5;"tab={""abc"",""bc"",""def"",""bc""},mot=""bc""";VRAI;Plusieurs
+6;"tab={""abc"",""bc"",""defgh""},mot=""bonjour""";FAUX;Absent
+7;"tab={""abc"",""BonJour"",""def"",""BonJour""},mot=""BonJour""";VRAI;CamelCase

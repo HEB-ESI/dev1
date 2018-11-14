@@ -1,0 +1,9 @@
+Numéro;Entrées;Résultats Attendus;Notes
+1;tab=null;IllegalArgumentException;Null
+2;tab={};IllegalArgumentException;Vide
+3;tab={1,2,3,4};tab={0};SeulPremier
+4;tab={1,2,3,4,-25};tab={4};SeulDernier
+5;tab={1,2,-36,4,-25};tab={2};SeulMilieu
+6;tab={15,23,10,42,10,10,89};tab={2,4,5};Plusieurs
+7;tab={2,23,2,42,10,10,2};tab={0,2,6};PlusieursExtremes
+8;tab={1,1,1,1};tab={0,1,2,3};Tous

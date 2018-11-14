@@ -1,0 +1,5 @@
+Numéro;Entrées;Résultats Attendus;Notes
+1;tab=null, valeur = 0;IllegalArgumentException;Null
+2;tab={}, valeur = 0;tab={};Vide
+3;tab={1,2,3}, valeur = 3;tab={3,6,9};Positif
+4;tab={-12,8,-4,9}, valeur = -2;tab={24,-16,8,-18};Negatif

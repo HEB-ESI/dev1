@@ -1,0 +1,7 @@
+Numéro;Entrées;Résultats Attendus;Notes
+1;tab=null;IllegalArgumentException;Null
+2;tab={};IllegalArgumentException;Vide
+3;"tab={""a"",""bc"",""def""}";"""def""";DernierMot
+4;"tab={""abcde"",""bc"",""def"",""ghij""}";"""abcde""";PremierMot
+5;"tab={""ab"",""bc"",""defghij"",""ghij""}";"""defghij""";AutreMot
+6;"tab={""abcd"",""bcef"",""defg"",""ghi""}";"""abcd""";PlusieursMots

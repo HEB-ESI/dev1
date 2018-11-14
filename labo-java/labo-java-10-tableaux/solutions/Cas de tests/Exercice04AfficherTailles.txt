@@ -1,0 +1,5 @@
+Numéro;Entrées;Résultats Attendus;Notes
+1;tab=null;IllegalArgumentException;Null
+2;tab={};void;Vide
+3;"tab={""a"",""bc"",""def""}";void;Taille3
+4;"tab={""a"",""bc"",""def"",""ghij""}";void;TailleDifférente
