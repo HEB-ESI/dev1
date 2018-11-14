@@ -79,7 +79,10 @@
 
 	Le code s'améliore, mais nous pouvons aller un peu plus loin. En effet, il reste assez verbeux de représenter une valeur et de l'afficher sur la sortie standard.
 
-	Nous vous proposons d'écrire une méthode qui permet de \og traduire\fg{} une instance \texttt{Etudiant} en une chaîne de caractères. Nommons cette méthode \texttt{toString} ; la signature de la méthode sera donc \code{java}{String toString(Etudiant e)}.
+	Nous vous proposons d'écrire une méthode qui permet de \og traduire\fg{} une
+	instance \texttt{Student} en une chaîne de caractères. Nommons cette
+	méthode \texttt{toString} ; la signature de la méthode sera donc
+	\code{java}{String toString(Student s)}.
 
 	\listing{java}{StudentWithSTS.java}
 
@@ -91,7 +94,9 @@
 	\subsection{Affichage}
 	%=====================
 
-	Nous avons déjà instancié des éléments précédement. Il s'agit des Scanners. Pour être précis, vous manipuliez jusqu'à maintenant des instances d'objet de type Scanner.
+	Nous avons déjà instancié des éléments précédement. Il s'agit des scanner
+	(\texttt{Scanner}).  Pour être précis, vous manipuliez jusqu'à maintenant
+	des instances d'objet de type \texttt{Scanner}.
 
 	Nous avons précédement dit que chaque instance est une valeur. Il serait commode de pouvoir imprimer sur la sortie standard cette valeur sans avoir à utiliser de méthodes. Si vous essayez avec une instance de \texttt{Scanner} cela va afficher sa valeur (essayez !).
 	\begin{Code}{Java}
@@ -110,7 +115,12 @@
 	\listing{java}{StudentWithTS.java}
 
 	%todo lire la suite
-	C'est mieux, ... enfin, pas vraiment. Heureusement, il ne faut plus rien faire pour simplifier notre code. En effet, l'appel à la méthode \texttt{.toString()} est facultatif. On peut donc écrire ce que l'on souhaitait depuis le départ. C'est-à-dire, \code{java}{System.out.println(s);}. Essayez ! Tant qu'on est à parler de choses facultative. Le mot clé \texttt{this} n'est pas obligatoire.
+	C'est mieux... enfin, pas vraiment. Heureusement, il ne faut plus rien faire
+	pour simplifier notre code. En effet, l'appel à la méthode
+	\texttt{.toString()} est facultatif. On peut donc écrire ce que l'on
+	souhaitait depuis le départ. C'est-à-dire,
+	\code{java}{System.out.println(s);}. Essayez ! Tant qu'on est à parler de
+	choses facultative. Le mot clé \texttt{this} n'est pas obligatoire non plus.
 
 	Le code nettoyé donne :
 	\listing{java}{StudentCleared.java}
@@ -135,8 +145,16 @@
 		\begin{itemize}
 			\item
 				Créer une nouvelle structure \texttt{Moment} qui définit un moment d'une journée par un nombre de secondes, minutes et heures.
-			\item 
-				Dans une classe \texttt{Moments}, créer une méthode \code{java}{void addASecond(Moment m)} qui va permettre d'incrémenter d'une seconde, un moment donné en paramètre\footnote{Tout type que vous définirez sera un type référence (à l'inverse des types primitifs). Cela implique qu'il est possible de modifier une valeur en la passant en paramètre d'une méthode. Pour plus d'explication, demandez à votre enseignant.}
+			
+			\item Dans une classe \texttt{Moments}, créer une méthode
+				\code{java}{void addASecond(Moment m)} qui va permettre
+				d'incrémenter d'une seconde, un moment donné en
+				paramètre\footnote{Tout type que vous définirez sera un type
+					référence (à l'inverse des types primitifs). Cela implique
+					qu'il est possible de modifier une valeur en la passant en
+				paramètre d'une méthode. Pour plus d'explication, demandez
+			à votre enseignant.}
+
 		\end{itemize}		
 	\end{Exercice}
 
