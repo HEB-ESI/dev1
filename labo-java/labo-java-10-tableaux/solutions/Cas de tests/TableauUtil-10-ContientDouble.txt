@@ -1,0 +1,8 @@
+Numéro;Entrées;Résultats Attendus;Notes
+1;tab=null,value=17;IllegalArgumentException;Null
+2;tab={},value=12;IllegalArgumentException;Vide
+3;tab={10,2,3,4},valeur = 10;VRAI;Premier
+4;tab={-1,0,15,-3,-7},valeur=-7;VRAI;Dernier
+5;tab={2,0,10,10},valeur = 10;VRAI;Plusieurs
+6;tab={20,70,10,10},valeur = 5;FAUX;Absent
+7;tab={20,70,10,10},valeur = 500;FAUX;AbsentAbsolu
