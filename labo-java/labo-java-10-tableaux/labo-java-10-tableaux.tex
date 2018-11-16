@@ -52,7 +52,7 @@
 %====================	
 
 	Un tableau est une collection indexée d'éléments de même type.
-	Un tableau est crée avec une taille donnée et ne peut plus en changer 
+	Un tableau est créé avec une taille donnée et ne peut plus en changer 
 	par la suite. Dans l'exemple ci-dessous nous créons et manipulons
 	un tableau de taille 5 contenant des entiers.
 	Comme cela est illustré dans l'exemple, on accède aux éléments 
@@ -62,7 +62,7 @@
 
  	\listing{java}{Tableau.java}
 
- 	\begin{Exercice}{Doubler}	
+ 	\begin{Exercice}{Multiplier}	
 		Reprenez le code ci-dessus et ajoutez-y une méthode 
 		\code{java}{void multiplier(int[] tab, int valeur)} qui
 		 multiplie chaque élément du tableau par la valeur donnée.
@@ -118,10 +118,10 @@
  	\listing{java}{TableauCopie.java}
 
 	\begin{Exercice}{Miroir}	
-		Complètez l'exemple ci-dessus en y ajoutant une méthode 
-		\code{java}{int miroir(int[] tab)}
+		Complétez l'exemple ci-dessus en y ajoutant une méthode 
+		\code{java}{int[] miroir(int[] tab)}
 			qui retourne un nouveau tableau dont les éléments sont les 
-			éléments du tableau reçu en paramèter mais en ordre inverse. 
+			éléments du tableau reçu en paramètre mais en ordre inverse. 
 			Par exemple si le tableau est celui de l'exemple la méthode 		
 			 retourne un tableau contenant les entiers 5, 4, 3, 2, 1.
 	\end{Exercice}
@@ -156,15 +156,15 @@
 		Dans une classe \texttt{TableauUtil} écrivez les méthodes suivantes, leur 
 		javadoc ainsi que les tests JUnit correspondant~:
 		\begin{itemize}
-			\item \code{java}{static double min(double[] tab)} qui retourne le minimum
+			\item \code{java}{double min(double[] tab)} qui retourne le minimum
 				du tableau passé en paramètre ~;
-			\item \code{java}{static double max(double[] tab)} qui retourne le maximum
+			\item \code{java}{double max(double[] tab)} qui retourne le maximum
 				du tableau~;
-			\item \code{java}{static double somme(double[] tab)} qui retourne la somme
+			\item \code{java}{double somme(double[] tab)} qui retourne la somme
 				des éléments du tableau~;
-			\item \code{java}{static double moyenne(double[] tab)} qui retourne la
+			\item \code{java}{double moyenne(double[] tab)} qui retourne la
 				 moyenne des éléments du tableau~;
-			\item \code{java}{static double[] copie(double[] tab)} qui retourne une
+			\item \code{java}{double[] copie(double[] tab)} qui retourne une
 			 copie du tableau passé en paramètre~;
 		\end{itemize}
 	\end{Exercice}
@@ -213,17 +213,17 @@
 		Dans la classe \texttt{TableauUtil} ajoutez les méthodes suivantes, leur
 		 javadoc ainsi que les tests JUnit correspondant~:
 		\begin{itemize}
-			\item \code{java}{static void inverser(double[] tab)} 
-				qui inverse l'ordre des éléments  du tableau passé en paramètre ~;
-			\item \code{java}{static boolean doublons(int[] tab)} 
+			\item \code{java}{boolean doublons(int[] tab)} 
 				qui retourne vrai si le tableau possède des doublons 
 				(2 fois la même valeur) et faux sinon~;
-			\item \code{java}{static int nbNégatifs(double[] tab)} 
+			\item \code{java}{int nbNégatifs(double[] tab)} 
 				qui retourne le nombre d'éléments négatifs du tableau~;
-			\item \code{java}{static void échange(double[] tab, indice1, indice2)} 
+			\item \code{java}{void échange(double[] tab, int indice1,int indice2)} 
 				qui échange la valeur se trouvant à l'indice \texttt{indice1} 
 				avec la valeur se trouvant à l'indice \texttt{indice2}~;
-			\item \code{java}{static int[] indicesMin(double[] tab)} 
+			\item \code{java}{void inverser(double[] tab)} 
+				qui inverse l'ordre des éléments  du tableau passé en paramètre ~;				
+			\item \code{java}{int[] indicesMin(double[] tab)} 
 				qui retourne un tableau contenant les indices des minimums.
 		\end{itemize}
 	\end{Exercice}
@@ -246,13 +246,13 @@
 %		Dans la classe \texttt{Tri} ajoutez les méthodes suivantes, leur
 %		 javadoc ainsi que les tests JUnit correspondant~:
 %		\begin{itemize}
-%			\item \code{java}{static void triBulle(int[] tab)} 
+%			\item \code{java}{void triBulle(int[] tab)} 
 %				qui trie le tableau en utilisant le tri bulle vu au cours~;
-%			\item \code{java}{static void triSélection(int[] tab)} 
+%			\item \code{java}{void triSélection(int[] tab)} 
 %				qui trie le tableau en utilisant le tri par sélection vu au cours~;
-%			\item \code{java}{static void triInsertion(int[] tab)} 
+%			\item \code{java}{void triInsertion(int[] tab)} 
 %				qui trie le tableau en utilisant le tri par insertion vu au cours~;
-%			\item \code{java}{static boolean rechercheDichotomique(int[] tab, 
+%			\item \code{java}{boolean rechercheDichotomique(int[] tab, 
 %			int valeur )} 
 %				qui retourne vrai si l'élément se trouve dans le tableau trié et 
 %				faux sinon. On suppose que le tableau reçu est trié. Vous utiliserez

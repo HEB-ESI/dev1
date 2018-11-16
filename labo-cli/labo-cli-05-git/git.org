@@ -413,7 +413,7 @@ Lisez bien ce que Git vous répond et faites ce qui vous est
 suggéré (indiquez /votre/ adresse email et /votre/ nom).
 
 #+BEGIN_EXAMPLE
-    git config --global user.email "xxx@student.he2b.be"
+    git config --global user.email "12345@etu.he2b.be"
     git config --global user.name "Votre Nom"
 #+END_EXAMPLE
 
@@ -958,7 +958,7 @@ vu depuis Git Bash.
 Configurez Git sous linux1:
 
 #+BEGIN_EXAMPLE
-    git config --global user.email "xxx@student.he2b.be"
+    git config --global user.email "12345@etu.he2b.be"
     git config --global user.name "Votre Nom"
 #+END_EXAMPLE
 #+END_tdaction
