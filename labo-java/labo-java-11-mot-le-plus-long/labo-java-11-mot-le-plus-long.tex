@@ -40,7 +40,7 @@
 	Une manche se déroule en 2 étapes. 
 	
 	Tout d'abord les joueurs, chacun à leur tour, 
-	tirent au hasard soit une voyelle, soit une consonne, 
+	tirent au hasard soit une voyelle, soit une consonne (le joueur choisit), 
 	jusqu'à obtenir 9 lettres. A chaque fois qu'une lettre est tirée 
 	(voyelle ou consonne), la lettre est dévoilée aux joueurs afin qu'ils puissent
 	continuer en connaissance de cause.
@@ -55,7 +55,7 @@
 \vspace{0.5cm}
 
 
-Nous allons vous guider tout au long de ce TD afin de développer les différentes méthodes nécessaires pour une version à un seul joueur de ce jeu.
+Nous allons vous guider tout au long de ce TD afin de développer les différentes méthodes nécessaires pour une version simplifiée à un seul joueur de ce jeu.
 
 
 
@@ -65,7 +65,7 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 
 
  	\begin{Exercice}{Hasard}
-		\'Ecrivez la méthode \code{java}{int hasard(int min, int max)} qui
+		\'Ecrivez la méthode \code{java}{int tirerHasard(int min, int max)} qui
 		retourne un nombre au hasard compris entre \texttt{min} et
 		\texttt{max} reçus en paramètre.
 		
@@ -77,21 +77,32 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 
  
  	\begin{Exercice}{Voyelle}
-		\'Ecrivez la méthode \code{java}{char voyelle()} qui retourne une voyelle 
+		\'Ecrivez la méthode \code{java}{char tirerVoyelle()} qui retourne une voyelle 
 		tirée au hasard.
 		
-		Cette méthode fera un appel à la méthode \texttt{hasard} 
+		Cette méthode fera un appel à la méthode \texttt{tirerHasard} 
 		de l'exercice précédent.
 	\end{Exercice} 
 
  	\begin{Exercice}{Consonne}
-		\'Ecrivez la méthode \code{java}{char consonne()} qui retourne une consonne 
+		\'Ecrivez la méthode \code{java}{char tirerConsonne()} qui retourne une consonne 
 		tirée au hasard.
 	\end{Exercice} 
 
  	\begin{Exercice}{Afficher les lettres}
  		\'Ecrivez la méthode \code{java}{void afficherLettres(char[] lettres)}
-		qui affiche les lettres disponibles.
+		qui affiche affiche le contenu du tableau de caractère \texttt{lettres}.
+		
+		Par exemple si la méthode reçoit le tableau 
+		\texttt{\{'E', 'E', 'I', 'O', 'C', 'D', 'M', 'R', 'Z'\}}
+		Elle affiche~:
+		
+		\begin{verbatim}
+		E E I O C D M R Z
+		\end{verbatim}
+		
+		Cette méthode permettra d'afficher les lettres tirées par les joueurs.
+.
 	\end{Exercice} 
 
  	\begin{Exercice}{Demander les lettres}
@@ -194,7 +205,7 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 		 Intégrez cela dans a méthode principale.
 	\end{Exercice}
 
- 	\begin{Exercice}{Les meilleurs mots}
+ 	\begin{Exercice}{BONUS 1 - Les meilleurs mots}
  	 	\'Ecrivez la méthode 
  		\code{java}{String[] meilleursMots(char[] lettres)}
 		qui retourne la liste de tous les mots les plus longs du dictionnaire 
@@ -206,14 +217,14 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 	\end{Exercice}
 
 
- 	\begin{Exercice}{Bonus I}
+ 	\begin{Exercice}{Bonus 2 - 2 joueurs}
 		Développer le jeu à plusieurs manches, avec 2 joueurs, 
 		ainsi que la gestion du score et du gagnant.
 		Pour cela vous pouvez-vous référer aux règles officielles probablement 
 		disponibles quelque part sur internet.
 	\end{Exercice}
 		
- 	\begin{Exercice}{Bonus II}
+ 	\begin{Exercice}{Bonus 3 - Fréquence des lettres}
 		Pour que le jeu soit agréable il faudrait que la fréquence des différentes
 		lettres ne soit pas uniforme. En d'autres mots, il est préférable d'avoir plus
 		souvent un 'e' ou un 'a' qu'un 'y' ou un 's' qu'un 'z'. Modifiez vos méthodes
