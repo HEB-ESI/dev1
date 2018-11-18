@@ -1,0 +1,41 @@
+%
+% style pour un environnement permettant d'écrire des instructions
+% bash et console
+%
+
+% ==============================================================
+% usage
+%
+% \begin{term}		
+%      ...
+% \end{term}
+%
+% ==============================================================
+
+
+%\@ifpackageloaded{alltt}{}{\usepackage{alltt}}
+\newenvironment{term}
+{%
+	\begin{flushleft}
+	\begin{tcolorbox}[
+			%blanker,
+			%borderline west={3pt}{0pt}{red},
+			colback=black!70,
+			coltext=white,
+			sharp corners,
+			top=1em,
+			bottom=1em,
+			left=1em,
+			enhanced,
+			title=terminal,
+			attach boxed title to bottom right={yshift=4mm, xshift=-7mm},
+			coltitle=green,
+                 ]
+    %\begin{alltt}
+    \large\$
+}{%
+	%\end{alltt}
+	\end{tcolorbox}
+	\end{flushleft}
+}
+
