@@ -16,6 +16,7 @@ Ressources pour toute l'UE DEV1.
 
 ```
 .
+├── aide
 ├── cc-by-sa.png
 ├── cours-developpement
 ├── labo-cli
@@ -30,15 +31,15 @@ Ressources pour toute l'UE DEV1.
 
 ## Auteurs
 
-*(Ajouter ici son nom dès lors que l'on fait un commit)*
-
-Frédéric Servais <fservais@he2b.be>
-Nicolas Pettiaux <npettiaux@he2b.be>   
-Nicolas Richard <nrichard@he2b.be>
-Pierre Bettens <pbettens@he2b.be>   
-
-
-
+Christine Leignel <cleignel@he2b.be>  
+Don Patrick Bischop <dpbischop@he2b.be>  
+Frédéric Servais <fservais@he2b.be>  
+Jonathan Lechien <jlechien@he2b.be>
+Marco Codutti <mcodutti@he2b.be>  
+Nicolas Pettiaux <npettiaux@he2b.be>     
+Nicolas Richard <nrichard@he2b.be>  
+Pierre Bettens <pbettens@he2b.be>     
+Sébastien Drobisz <sdrobisz@he2b.be>  
 
 
 \ ![](cc-by-sa.png)
