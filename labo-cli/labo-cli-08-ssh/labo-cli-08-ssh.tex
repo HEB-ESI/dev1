@@ -174,7 +174,7 @@ chacha20-poly1305@openssh.com
 
 			\begin{term}
 			openssl enc -aes-256-cbc -out mysecrets.ciphered
-			    in mysecrets
+			   -in mysecrets
 			\end{term}
 
 		\item observez le contenu du fichier chiffré;
@@ -347,7 +347,7 @@ utilisé avec la clé de session (cfr section \ref{comment-se-passe-la-connexion
 Voici quelques algorithmes \texttt{HMAC}
 \footnote{Accessible par la commande \texttt{ssh -Q mac}}~:
 hmac-sha1 hmac-sha1-96 hmac-sha2-256 hmac-sha2-512 hmac-md5 hmac-md5-96
-hmac-ripemd160 hmac-ripemd160@openssh.com umac-64\-@opessh.com
+hmac-ripemd160 hmac-ripemd160@openssh.com umac-64\-@openssh.com
 umac-128@openssh.com hmac-sha1-etm@openssh.com hmac-sha1-96-etm\-@openssh.com
 hmac-sha2-256-etm@openssh.com hmac-sha2-512-etm@openssh.com
 h\-mac-md5-etm@openssh.com hmac-md5-96-etm@openssh.com
@@ -503,7 +503,7 @@ Si l'on traduit et résume, nous obtenons~:
 \begin{Exercice}*{Connexion ssh verbeuse}
 	L'option \texttt{-v} de \textit{ssh} rend le programme beaucoup plus verbeux.
 	Il affiche dans la console toute une série de commentaires. Parmi ceux-ci
-	se trouve l'information de quelle algorithme est utilisé pour faire
+	se trouve l'information de quel algorithme est utilisé pour faire
 	l'échange de clés. 
 
 	Entrez la commande suivante sous \textit{Git Bash} et cherchez cette
