@@ -18,6 +18,8 @@
 \usepackage{minitoc}
 \setcounter{secttocdepth}{3}
 \usepackage{tikzpeople}
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{#2}\footnote{\url{#1}}} 
 
 \definecolor{verylightgray}{rgb}{0.98,0.98,0.98}
 
@@ -40,10 +42,23 @@
 \setcounter{tocdepth}{1} 
 \mtcsettitle{secttoc}{}
 
+
+\begin{tcolorbox}
+	[blanker, before skip=10mm,after skip=10mm, 
+		borderline west={1mm}{-4mm}{lightgray},
+		title=Objectifs, coltitle=black, fonttitle=\sffamily\bfseries\large]
+
+		À la fin de ce module, vous pourrez différencier les étapes et systèmes
+		intervenants dans une connexion \textit{ssh}, utiliser et configurer la
+		commande \textit{ssh} et différentes options dans différents contextes et
+		décrire les algorithmes sous-jacents. 
+
+\end{tcolorbox}
+
+\vspace{-12mm}
 \renewcommand{\contentsname}{}
 \tableofcontents
-
-\vspace{2cm}
+\vspace{5mm}
 
 \emph{Secure SHell} (\emph{ssh}) permet d'obtenir un \textbf{\emph{shell}}
 \textbf{sécurisé} à distance.
@@ -103,9 +118,9 @@ peut-être l'écouter mais ne la comprendra pas.
 \subsection{Chiffrement symétrique}
 \label{chiffrement-symétrique}
 
-Le \textbf{chiffrement symétrique} appellé aussi chiffrement par échange
-d'une clé ou par clé partagée ou encore par clé secrète est un système
-qui consiste au chiffrement des messages échangés avec une clé de
+Le \textbf{chiffrement symétrique}, appelé aussi chiffrement par échange
+d'une clé ou par clé partagée ou encore par clé secrète, est un système
+qui consiste au chiffrement des messages échangés, avec une clé de
 chiffrement commune et partagée «~à l'avance~» par les intervenants.
 
 \begin{center}
@@ -146,9 +161,8 @@ aes192-cbc aes256-cbc rijndael-cbc@lysator.liu.se aes128-ctr aes192-ctr
 aes256-ctr aes128-gcm@openssh.com aes256-gcm@openssh.com
 chacha20-poly1305@openssh.com
 
-
-\begin{Exercice}*{Chiffrement, déchiffrement}
-    
+\bigskip
+\begin{Exercice}*{Chiffrement, déchiffrement}    
     La commande `openssl` permet d'encoder (chiffrer) et déchiffrer un texte.
     Voyons ça:
 	
@@ -156,19 +170,21 @@ chacha20-poly1305@openssh.com
     	\item créez et éditez un fichier nommé `mysecrets` contenant quelques 
     		phrases;
     
-    	\item chiffrez ce fichier;
+    	\item chiffrez ce fichier (vous devrez entrer un mot de passe);
 
 			\begin{term}
-		    openssl enc -aes-256-cbc -out mysecrets.ciphered -in mysecrets
+			openssl enc -aes-256-cbc -out mysecrets.ciphered
+			    in mysecrets
 			\end{term}
 
 		\item observez le contenu du fichier chiffré;
 
-		\item déchiffrez le et affichez le contenu déchiffré sur la sortie 
+			\pagebreak
+		\item déchiffrez-le et affichez le contenu déchiffré sur la sortie 
 			standard;
 			
 			\begin{term}
-		    openssl enc -aes-256-cbc -in mysecrets.ciphered -d
+			openssl enc -aes-256-cbc -in mysecrets.ciphered -d
 	        \end{term}
 	
 	\end{itemize}
@@ -182,7 +198,7 @@ chacha20-poly1305@openssh.com
 \label{chiffrement-asymétrique}
 
 Le \textbf{chiffrement asymétrique} appelé aussi chiffrement à clé publique est
-un système qui consiste au chiffrement des messages échangés à l'aide de
+un système qui consiste au chiffrement des messages échangés, à l'aide de
 plusieurs clés. 
 
 Supposons qu'Alice veuille envoyer un message à Bob de manière confidentielle et
@@ -223,8 +239,8 @@ soit interceptée. Le chiffrement asymétrique peut venir à leur secours.
 \vspace{2cm}
 
 
-Alice et Bob possèdent chacun deux clés — une clé publique ($Pu$ et une clé 
-privée $Pr$ — telles que~:
+Alice et Bob possèdent chacun deux clés — une clé publique ($Pu$) et une clé 
+privée ($Pr$) — telles que~:
 
 \begin{itemize}
 	\item il est facile de chiffrer un message avec la clé publique;
@@ -252,14 +268,13 @@ Voici quelques noms d'algorithmes de chiffrements asymétriques
 		\item \texttt{ssh-keygen} génèrera directement la clé publique au
 			format \textit{OpenSSH}
 		\item \texttt{openssl} ne génèrera pas de clé publique
-			automatiquement… mais il est possible de lui demander. Dans ce
+			automatiquement… mais il est possible de le lui demander. Dans ce
 			cas, cette clé sera au format PEM.
 	\end{itemize}
 \end{coltbox}
 \vspace{1cm}
 
 \begin{Exercice}*{Chiffrement, déchiffrement asymétrique}
-	
 	La commande \texttt{openssl} permet toujours de chiffrer et déchiffrer un 
 	message… cette fois de manière asymétrique. 
 
@@ -278,30 +293,32 @@ Voici quelques noms d'algorithmes de chiffrements asymétriques
 				ssh-keygen -t rsa -b 4096
 			\end{term}
 
-		\item le format OpenSSH de la clé publique ne conviendra pas pour la suite,
-			créons un fichier contenant cette même clé au format PEM;
+			Regardez quelles permissions ces fichiers ont. 
+
+		\item le format OpenSSH de la clé publique ne conviendra pas pour la
+			suite, créons un fichier contenant cette même clé au format PEM;
 
 			\begin{term}
 				openssl rsa -in id\_rsa -pubout -out id\_rsa.pub.pem
 			\end{term}
 
 		\item vous pouvez «~diffuser~» votre clé publique  (en la mettant dans 
-			un répertoire accessible par votre voisin, il ou elle pourra 
+			un répertoire accessible par votre voisin·e, il ou elle pourra 
 			l'utiliser par exemple); 
 
-		\item chiffrez un message avec une clé publique (celle de votre voisin·ne
+		\item chiffrez un message avec une clé publique (celle de votre voisin·e
 			par exemple) et partagez le message chiffré;
 
 			\begin{term}
 				echo "Message super secret" 
-					| openssl pkeyutl -encrypt -pubin \ \\
-						-inkey <la clé publique du voisin> \ \\
-						-out encrypted-message.bin
+				    | openssl pkeyutl -encrypt -pubin 
+				        -inkey <la clé publique du voisin> 
+				        -out encrypted-message.bin
 			\end{term}
 
 		\item cherchez dans la page de manuel de \texttt{openssl} comment 
 			déchiffrer le message avec votre clé privée… et déchiffrez le 
-			message reçu de votre voisin. 
+			message reçu de votre voisin·e. 
 
 	\end{itemize}
 
@@ -325,20 +342,19 @@ signature reçue avec la signature qu'il vient de calculer.
 Cette signature MAC (\textit{message authentication code}) peut s'accompagner
 d'une clé secrète, on parle alors de HMAC (\textit{keyed-hash message
 authentication code}). Dans le cas de \textit{ssh}, c'est bien HMAC qui est
-utilisé avec la clé de session. 
+utilisé avec la clé de session (cfr section \ref{comment-se-passe-la-connexion}). 
 
 Voici quelques algorithmes \texttt{HMAC}
 \footnote{Accessible par la commande \texttt{ssh -Q mac}}~:
 hmac-sha1 hmac-sha1-96 hmac-sha2-256 hmac-sha2-512 hmac-md5 hmac-md5-96
-hmac-ripemd160 hmac-ripemd160@openssh.com umac-64@openssh.com
-umac-128@openssh.com hmac-sha1-etm@openssh.com hmac-sha1-96-etm@openssh.com
+hmac-ripemd160 hmac-ripemd160@openssh.com umac-64\-@opessh.com
+umac-128@openssh.com hmac-sha1-etm@openssh.com hmac-sha1-96-etm\-@openssh.com
 hmac-sha2-256-etm@openssh.com hmac-sha2-512-etm@openssh.com
-hmac-md5-etm@openssh.com hmac-md5-96-etm@openssh.com
-hmac-ripemd160-etm@openssh.com umac-64-etm@openssh.com umac-128-etm@openssh.com
+h\-mac-md5-etm@openssh.com hmac-md5-96-etm@openssh.com
+hmac-ripemd160-etm\-@o\-penssh.com umac-64-etm@openssh.com umac-128-etm@openssh.com
 
-
+\bigskip
 \begin{Exercice}*{Altération d'un message}
-
 	Vérifions l'intégrité d'un message avec SHA-512. 
 
 	\begin{itemize}
@@ -361,13 +377,63 @@ hmac-ripemd160-etm@openssh.com umac-64-etm@openssh.com umac-128-etm@openssh.com
 
 \end{Exercice}
 
-\paragraph{Remarque} Cette technique est utilisée lors du téléchargement de
-certains fichiers par exemple. Ces fichiers sont accompagnés d'un \textit{hash}
-qu'il est facile de vérifier. 
+\bigskip
+\bigskip
+\begin{coltbox}{Remarque}	
 
+	Cette technique est utilisée lors du téléchargement de certains fichiers par
+	exemple. Ces fichiers sont accompagnés d'un \textit{hash} qu'il est facile
+	de vérifier. 
 
+	Dans certains cas, le \textit{hash} est disponible sur le site officiel et
+	le fichier est répliqué à différents endroits. Vérifier le \textit{hash}
+	permet d'être sûr que le fichier n'a pas été altéré lorsqu'il a été partagé
+	sur un autre site.  
+
+\end{coltbox}
 
 \clearpage
+\begin{Exercice}*{Vérification d'une archive}
+	À l'adresse \url{https://cdimage.debian.org/debian-cd/current/amd64/iso-cd},
+	vous trouverez en téléchargement des \textit{iso} debian à télécharger. 
+	
+	Ces fichiers sont accompanés de fichiers de somme de contrôle
+	(\textit{hash}).  Ces \textit{hashs} servent à vérifier l'intégrité de
+	l'\textit{iso} téléchargé.
+
+	\begin{enumerate}
+
+		\item Téléchargez l'iso correspondant au \textit{pattern} (schéma)
+			\texttt{debian*-netinst.iso};
+
+		\item calculez le \textit{hash} du fichier à l'aide d'une des commandes
+			\texttt{sha512sum}, \texttt{sha256sum} voire \texttt{md5sum};
+
+		\item comparez la valeur obtenue avec la valeur se trouvant dans le
+			fichier correspondant au \textit{hash} que vous avez choisi;
+
+			\medskip
+			Si les valeurs correspondent, c'est que le fichier téléchargé est
+			bien le fichier qui a été déposé par les responsables debian… sinon,
+			ne l'utilisez pas. 
+			\medskip
+
+		\item effacez le fichier que vous venez de télécharger \footnote{Cette
+			étape est importante pour éviter que ce fichier de près de 300Mib
+			reste en beaucoup d'exemplaire sur linux1. Merci de la part des
+			administrateurs de cette machine.}
+
+	\end{enumerate}
+
+	Pour être complet, il faudrait également vérifier que ces fichiers de somme
+	de contrôle sont eux-même correct… mais ça sort du cadre de ce premier td.
+	Le lecteur intéressé suivra \href{https://www.debian.org/CD/verify}{le lien}
+	renseigné sur le site de debian. 
+	
+\end{Exercice}
+
+
+
 \section{Comment se passe la connexion ?}
 \label{comment-se-passe-la-connexion}
 
@@ -420,9 +486,9 @@ Si l'on traduit et résume, nous obtenons~:
 				\end{quote}
 		\end{itemize}
 
-	\item en utilisant Diffie-Hellman et un algorithme asymétrique, le client et
-		le serveur se partagent une \textbf{clé de session} (\textit{shared
-		session key});
+	\item en utilisant Diffie-Hellman, qui est un algorithme asymétrique, le
+		client et le serveur se partagent une \textbf{clé de session}
+		(\textit{shared session key});
 
 	\item le reste de la session utilisera un chiffrement symétrique en
 		utilisant cette clé de session nouvellement partagée. Chaque message
@@ -435,11 +501,26 @@ Si l'on traduit et résume, nous obtenons~:
 \end{enumerate}
 
 \begin{Exercice}*{Connexion ssh verbeuse}
-	
-	TODO ssh -vv 
+	L'option \texttt{-v} de \textit{ssh} rend le programme beaucoup plus verbeux.
+	Il affiche dans la console toute une série de commentaires. Parmi ceux-ci
+	se trouve l'information de quelle algorithme est utilisé pour faire
+	l'échange de clés. 
 
-	je voudrais voir quels sont les algorithmes utilisés pour une connexion, mais 
-	je ne vois pas. soit on trouve, soit pas d'exercice ;-) 
+	Entrez la commande suivante sous \textit{Git Bash} et cherchez cette
+	information~:
+
+	\begin{term}
+		ssh -v g12345@linux1
+	\end{term}
+
+	Si vous ne trouvez pas, entrez ces deux commandes, un peu plus précises~:
+
+	\begin{term}
+		ssh -v g12345@linux1 true 2>\&1 |grep "server->client"
+		\$ ssh -v g12345@linux1 true 2>\&1 |grep "client->server"
+	\end{term}
+
+	Tiens ! Que font ces deux commandes ? 
 
 \end{Exercice}
 
@@ -447,7 +528,7 @@ Si l'on traduit et résume, nous obtenons~:
 
 
 
-
+\clearpage
 \section{Connexion SSH}
 \label{connexion-ssh}
 
@@ -456,35 +537,23 @@ Si l'on traduit et résume, nous obtenons~:
 \subsection{Connexion simple}
 
 Pour se connecter à un serveur ssh, il suffit de connaitre son nom ou son
-adresse IP et d'utiliser un \textbf{client ssh}. Sous linux, la commande s'appelle \textit{ssh} et sous Windows, c'est souvent \textit{Putty}
+adresse IP et d'utiliser un \textbf{client ssh}. Sous linux, la commande s'appelle \textit{ssh} et sous Windows, c'est souvent \textit{PuTTY}
 \footnote{À l'heure de Windows 10 et de l'intégration de \texttt{bash}, les
-utilisateurs et utilisatrices de Windows, vont pouvoir se détacher de Putty.}
+utilisateurs et utilisatrices de Windows, vont pouvoir se détacher de PuTTY. Voir par exemple \url{http://namok.be/blog/?post/2018/10/05/debian-microsoft}}
 qui est utilisé mais \textit{Git Bash} fait bien l'affaire aussi. 
 
 \begin{Exercice}*{Connexion à linux1}
-	En utilisant Putty, se connecter à \textit{linux1}. 
+	En utilisant PuTTY, se connecter à \textit{linux1}. 
 
 	En utilisant Git Bash, se connecter à \textit{linux1}. Pour ce faire, lancer
 	une console Git Bash et entrer la commande \texttt{ssh g12345@linux1}
 
 \end{Exercice}
 
-
-
-\subsection{Paramètres de connexion}
-
-Lors d'une connexion, il faut au minimum renseigner l'adresse du serveur. Il
-arrive parfois que l'on se connecte avec un autre nom d'utilisateur ou sur un
-autre \textit{port}. La commande de connexion aura alors plutôt cette allure~:
-
-\begin{term}
-	ssh <user>@<host>:<port> \\
-	\$\, ssh anakin@example.org:2222
-\end{term}
-
+\vspace{10mm}
 \begin{coltbox}{Définition: port}
 	Pour qu'une machine puisse faire tourner plusieurs programmes «~serveurs~»
-	qui sont des programmes continuellement à l'écoute d'une connexion réseau,
+	(qui sont des programmes continuellement à l'écoute d'une connexion réseau),
 	il est nécessaire de donner une information supplémentaire à l'adresse de la
 	machine. Nous dirons qu'un programme écoute sur un certain \textbf{port}. 
 
@@ -494,7 +563,7 @@ autre \textit{port}. La commande de connexion aura alors plutôt cette allure~:
 	port(e). 
 
 	Certains programmes ont un numéro de port réservé. Par exemple
-	\footnote{Pour les voir tous~: \texttt{cat /etc/services}}~:
+	\footnote{Pour en voir une liste plus complète~: \texttt{cat /etc/services}}~:
 	\begin{itemize}
 		\item ssh, 22;
 		\item serveur web, 80;
@@ -502,7 +571,19 @@ autre \textit{port}. La commande de connexion aura alors plutôt cette allure~:
 		\item …
 	\end{itemize}
 \end{coltbox}
-\vspace{5mm}
+
+\clearpage
+\subsection{Paramètres de connexion}
+
+Lors d'une connexion, il faut au minimum renseigner l'adresse du serveur. Il
+arrive parfois que l'on se connecte avec un autre nom d'utilisateur ou sur un
+autre \textit{port}. La commande de connexion aura alors plutôt cette allure~:
+
+\begin{term}
+	ssh <user>@<host>:<port> 
+	\$ ssh anakin@example.org:2222
+\end{term}
+
 
 Certains serveurs \textit{ssh} ferment automatiquement la
 connexion dès lors que l'utilisateur ou l'utilisatrice est inactif·ve trop
@@ -521,7 +602,7 @@ l'allure suivante~:
 	Host labo
 		HostName linux1
 		Port 22
-		User pbt
+		User g12345
 \end{Console}
 
 La connexion à \texttt{linux1} en tant qu'utilisateur \textit{g12345} se fera
@@ -531,14 +612,14 @@ par la commande~:
 	ssh labo
 \end{term}
 
+\vspace{5mm}
 \begin{Exercice}*{Connexion paramétrée}
-
 	Ajoutez un fichier de configuration sous Windows \texttt{Z:/.ssh/config}
 	contenant les paramètres ci-dessus et testez la connexion avec \textit{Git
 	Bash}.
 
-	Si l'on voulait faire le même paramétrage avec \textit{Putty}, cherchez où
-	se trouvent ces mêmes paramètres dans l'interface de \textit{Putty}.
+	Si l'on voulait faire le même paramétrage avec \textit{PuTTY}, cherchez où
+	se trouvent ces mêmes paramètres dans l'interface de \textit{PuTTY}.
 
 \end{Exercice}
 
@@ -557,18 +638,18 @@ faite.
 Le serveur conserve les clés publiques autorisées dans les fichiers 
 \\\texttt{/home/<user>/.ssh/authorized\_keys}.
 
+\clearpage
 \begin{Exercice}*{Connexion à linux1 à partir de Windows par échange de clés}
-
-	Sous \textit{Git Bash}~:
+	Sous \textit{Git Bash}, si ce n'est pas déjà fait~: 
 
 	\begin{enumerate}
 		\item créez une paire de clés ssh;
 			\begin{term}
-				ssh-keygen -t rsa -b 4096 -C "my@example.org"
+				ssh-keygen -t rsa -b 4096 -C "12345@etu.he2b.be"
 			\end{term}
 
 		\item cherchez où se trouvent les deux fichiers créés;
-		\item copiez la clé sur \textit{linux1};
+		\item copiez la clé publique sur \textit{linux1} grâce à votre mot de passe;
 			\begin{term}
 				ssh-copy-id -i <votre clé> <user>@linux1
 			\end{term}
@@ -583,7 +664,7 @@ Le serveur conserve les clés publiques autorisées dans les fichiers
 
 	Maintenant que notre clé est déposée sur \textit{linux1}, comment faire pour
 	faire la même chose — une connexion par échange de clés — avec
-	\textit{Putty} cette fois ?
+	\textit{PuTTY} cette fois ?
 
 \end{Exercice}
 
@@ -591,14 +672,16 @@ Le serveur conserve les clés publiques autorisées dans les fichiers
 
 \subsection{Codes d'échappement}
 
+%%FIXME: cela fonctionne-t-il avec PuTTY ?
+
 Pendant une connexion \textit{ssh}, il est possible de contrôler la connexion en
 envoyant des caractères d'échappement (\textit{escape characters}\footnote{Le
 	fait de connaitre le terme exact en français et en anglais permet d'être
 	plus efficace lors d'une recherche dans une page \texttt{man} par exemple.
 }). 
 
-Les codes d'échappement commencent pas le caractère \texttt{\textasciitilde}
-(sauf configuration spéciale) et doivent suivre un passage à la ligne. Il est
+Les codes d'échappement commencent par le caractère \texttt{\textasciitilde}
+(sauf configuration spéciale) et doivent suivre un passage à la ligne. Il est donc
 recommandé d'entrer la touche \texttt{[Enter]} avant. Voici quelques codes~:
 
 \begin{itemize}
@@ -610,13 +693,13 @@ recommandé d'entrer la touche \texttt{[Enter]} avant. Voici quelques codes~:
 		\texttt{jobs}. Ramener une tâche spécifique \texttt{fg \%<i>} 
 \end{itemize}
 
+\bigskip 
 \begin{Exercice}*{Déconnexion rapide}
-	
 	Après vous être connecté à \textit{linux1}, déconnectez vous en utilisant le
 	code d'échappement plutôt que \texttt{exit}
 
 \end{Exercice}
-
+\vfill
 
 \subsection{Ne pas demander de shell}
 
@@ -630,8 +713,8 @@ La syntaxe est la suivante~:
 	ssh <user>@<host> <command>
 \end{Console}
 
+\bigskip
 \begin{Exercice}*{ssh, une seule commande}
-
 	À partir de \textit{Git Bash} connectez vous à \textit{linux1} pour
 	n'exécuter que la commande \\\texttt{df . -h}. 
 

@@ -10,11 +10,17 @@
 %      ...
 % \end{term}
 %
+%
+% \begin[prompt]{term}		
+%      ...
+% \end{term}
+%
 % ==============================================================
 
 
 %\@ifpackageloaded{alltt}{}{\usepackage{alltt}}
-\newenvironment{term}
+\@ifpackageloaded{alltt}{}{\usepackage{alltt}}
+\NewDocumentEnvironment{term} {o}
 {%
 	\begin{flushleft}
 	\begin{tcolorbox}[
@@ -31,11 +37,16 @@
 			attach boxed title to bottom right={yshift=4mm, xshift=-7mm},
 			coltitle=green,
                  ]
-    %\begin{alltt}
-    \large\$
+    \begin{alltt}%
+		\large\IfValueTF{#1}%
+			{ {#1} }% 
+			{ \$ }%
+			\hspace{-5mm}
 }{%
-	%\end{alltt}
+	\end{alltt}
 	\end{tcolorbox}
 	\end{flushleft}
 }
+
+
 
