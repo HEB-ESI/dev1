@@ -161,7 +161,7 @@ Voici quelques noms d'algorithmes de chiffrements symétriques%
 \footnote{Cette liste est accessible par la commande \texttt{ssh\ -Q\ cipher}}
 : 3des-cbc blowfish-cbc cast128-cbc arcfour arcfour128 arcfour256 aes128-cbc
 aes192-cbc aes256-cbc rijndael-cbc@lysator.liu.se aes128-ctr aes192-ctr
-aes256-ctr aes128-gcm@openssh.com aes256-gcm@openssh.com
+aes256-ctr aes128-gcm@openssh.com aes256-gcm\-@openssh.com
 chacha20-poly1305@openssh.com
 
 \bigskip
@@ -400,10 +400,13 @@ hmac-ripemd160-etm\-@o\-penssh.com umac-64-etm@openssh.com umac-128-etm@openssh.
 
 \end{coltbox}
 
-\clearpage
-\begin{Exercice}*{Vérification d'une archive}
-	À l'adresse \url{https://cdimage.debian.org/debian-cd/current/amd64/iso-cd},
-	vous trouverez en téléchargement des \textit{iso} debian à télécharger. 
+\clearpage \begin{Exercice}*{Vérification d'une archive} À l'adresse
+	\url{https://cdimage.debian.org/debian-cd/current/amd64/iso-cd}, vous
+	trouverez en téléchargement des \textit{iso}\footnote{Une \textit{iso} est
+un fichier contenant toute une arborescance de fichier. Initialement prévu pour
+être gravé sur un cdrom ou un dvd, il peut aujourd'hui être placé sur n'importe
+quel support amovible ou remplacer un lecteur DVD dans une machine virtuelle.}
+debian à télécharger. 
 	
 	Ces fichiers sont accompanés de fichiers de somme de contrôle
 	(\textit{hash}).  Ces \textit{hashs} servent à vérifier l'intégrité de
@@ -411,8 +414,8 @@ hmac-ripemd160-etm\-@o\-penssh.com umac-64-etm@openssh.com umac-128-etm@openssh.
 
 	\begin{enumerate}
 
-		\item Téléchargez l'iso correspondant au \textit{pattern} (schéma)
-			\texttt{debian*-netinst.iso};
+		\item Téléchargez la plus petite iso correspondant au \textit{pattern}
+			(schéma) \\\texttt{debian*-netinst.iso};
 
 		\item calculez le \textit{hash} du fichier à l'aide d'une des commandes
 			\texttt{sha512sum}, \texttt{sha256sum} voire \texttt{md5sum};
@@ -434,7 +437,7 @@ hmac-ripemd160-etm\-@o\-penssh.com umac-64-etm@openssh.com umac-128-etm@openssh.
 	\end{enumerate}
 
 	Pour être complet, il faudrait également vérifier que ces fichiers de somme
-	de contrôle sont eux-même correct… mais ça sort du cadre de ce premier td.
+	de contrôle sont eux-même corrects… mais ça sort du cadre de ce premier td.
 	Le lecteur intéressé suivra \href{https://www.debian.org/CD/verify}{le lien}
 	renseigné sur le site de debian. 
 	
@@ -479,9 +482,9 @@ Si l'on traduit et résume, nous obtenons~:
 	\item le client compare cette clé avec celle qu'il connait (c'est le
 		\textit{host checking})~:
 		\begin{itemize}			
-			\item s'il l'a connait et qu'elle correspond à l'adresse IP ou au
+			\item s'il la connait et qu'elle correspond à l'adresse IP ou au
 				nom associé, le serveur est reconnu;
-			\item s'il ne l'a connait pas, il demande à l'utilisateur s'il est
+			\item s'il ne la connait pas, il demande à l'utilisateur s'il est
 				d'accord de l'ajouter à la liste des hôtes connus en affichant
 				un message à l'allure suivante~:
 
