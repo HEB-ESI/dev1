@@ -61,7 +61,7 @@
 \vspace{5mm}
 
 \emph{Secure SHell} (\emph{ssh}) permet d'obtenir un \textbf{\emph{shell}}
-\textbf{sécurisé} à distance.
+\textbf{sécurisé} à distance~:
 
 \begin{itemize}
 
@@ -70,11 +70,17 @@
 		d'exploitation. Il est en mode texte.
 
 	\item il est \textbf{sécurisé} parce que les messages échangés sont
-		chiffrés.  \end{itemize}
+		chiffrés. Il offre les fonctionnalités suivantes~:
 
-Lorsque la communication est chiffrée, un utilisateur malveillant ne
-pourra pas écouter cette communication. Plus précisément, il pourra
-peut-être l'écouter mais ne la comprendra pas.
+		\begin{enumerate}
+			\item l'authentification du serveur;
+			\item la confidentialité des données échangées (ou session chiffrée);
+			\item l'intégrité des données échangées;
+			\item l'authentification du client.
+		\end{enumerate}
+
+\end{itemize}
+
 
 \emph{ssh} fonctionne en «~client-serveur~»~:
 
@@ -99,14 +105,10 @@ peut-être l'écouter mais ne la comprendra pas.
 
 \end{itemize}
 
-\emph{ssh} offre les fonctionnalités suivantes:
+Lorsque la communication est chiffrée, un utilisateur malveillant ne pourra pas
+écouter cette communication. Plus précisément, il pourra peut-être l'écouter
+mais ne la comprendra pas sans les codes d'accès appropriés. 
 
-\begin{itemize}
-	\item l'authentification du serveur;
-	\item la confidentialité des données échangées (ou session chiffrée);
-	\item l'intégrité des données échangées;
-	\item l'authentification du client.
-\end{itemize}
 
 
 
@@ -145,7 +147,8 @@ chiffrement commune et partagée «~à l'avance~» par les intervenants.
 	{
 		\begin{tabular}{c}
 			\textbf{Ève} \\
-			Ne peut comprendre le message
+			Ne peut comprendre le message. \\
+			Elle ne peut pas le déchiffrer sans la clé.
 		\end{tabular}
 	};
 	\draw[->, thick] (alice) -- (bob) node[above, midway] {WW91IGdldCBpdCAhCg==};
@@ -212,16 +215,18 @@ soit interceptée. Le chiffrement asymétrique peut venir à leur secours.
     {
         \begin{tabular}{c}
 			\textbf{Alice} \\
-			(\faKey\,$Alice_{Pr}$, \faKey\,$Alice_{Pu}$) \\
-			Chiffre avec la \faKey\, $Bob_{Pu}$ 
+			({\color{red}\faKey}\,$Alice_{Pr}$, 
+			{\color{green!70!black}\faKey}\,$Alice_{Pu}$) \\
+			Chiffre avec la {\color{green!70!black}\faKey}\, $Bob_{Pu}$ 
 		\end{tabular}
     };
     \draw (8,0) node[bob, shirt=purple, mirrored] (bob) 
     {
         \begin{tabular}{c}
 			\textbf{Bob} \\ 
-			(\faKey\,$Bob_{Pr}$, \faKey\,$Bob_{Pu}$) \\
-			Déchiffre avec sa \faKey\,$Bob_{Pr}$
+			({\color{red}\faKey}\,$Bob_{Pr}$, 
+			{\color{green!70!black}\faKey}\,$Bob_{Pu}$) \\
+			Déchiffre avec sa {\color{red}\faKey}\,$Bob_{Pr}$
         \end{tabular}
     };
 	\draw (4.7,-4) node[bob, female, shirt=black, mirrored ] (eve) 
@@ -239,16 +244,19 @@ soit interceptée. Le chiffrement asymétrique peut venir à leur secours.
 \vspace{2cm}
 
 
-Alice et Bob possèdent chacun deux clés — une clé publique ($Pu$) et une clé 
-privée ($Pr$) — telles que~:
+Alice et Bob possèdent chacun deux clés — une clé publique
+({\color{green!70!black}\faKey}\,$Pu$) et une clé privée
+({\color{red}\faKey}\,$Pr$) — telles que~:
 
 \begin{itemize}
-	\item il est facile de chiffrer un message avec la clé publique;
+	\item il est rapide de chiffrer un message avec la clé publique ;
+	
+	\item il est rapide de déchiffrer le message avec la clé privée~;
 
 	\item il est impossible en un temps raisonnable de déchiffrer le
-		message avec la clé publique;
+		message avec la clé publique ou de déduire la clé privée à partir de la 
+		clé publique.
 
-	\item il est facile de déchiffrer le message avec la clé privée.
 \end{itemize}
 
 Dans ces conditions, il suffit de publier sa clé publique et de conserver
