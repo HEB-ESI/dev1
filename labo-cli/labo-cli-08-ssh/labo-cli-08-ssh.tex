@@ -183,8 +183,10 @@ chacha20-poly1305@openssh.com
 		\item observez le contenu du fichier chiffré;
 
 			\pagebreak
-		\item déchiffrez-le et affichez le contenu déchiffré sur la sortie 
-			standard;
+		\item déchiffrez-le et affichez le contenu déchiffré sur la sortie
+			standard\footnote{C'est toujours la commande \texttt{enc} pour
+			décoder… et elle est affublée d'une option \texttt{-d}. Ce n'est pas
+		habituel};
 			
 			\begin{term}
 			openssl enc -aes-256-cbc -in mysecrets.ciphered -d
