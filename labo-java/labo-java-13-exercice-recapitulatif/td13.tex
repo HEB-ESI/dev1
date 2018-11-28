@@ -15,7 +15,7 @@
 \date{2018 -- 2019}
 \siglecours{DEV1}
 \libellecours{Laboratoires Java I}
-\libelledocument{TD 13 -- Mise en pratique \\ La gestion des clients (ébauche)}
+\libelledocument{TD 13 -- Mise en pratique \\ La gestion des clients}
 \sigleprof{}
 
 
@@ -35,10 +35,24 @@
 	
 \section{Introduction}
 
-	Dans ce TD, on vous propose de mettre en pratique les notions vues auparavant pour créer un programme gérant l'enregistrement de nouveaux clients d'une entreprise (imaginaire). De nombreuses données différentes peuvent être associées à un client d'une entreprise donnée: son identifiant (numéro d'identification au sein de l'entreprise), son nom, son numéro de compte courant, son adresse postale, son adresse e-mail, sa date de naissance, sa nationalité, .... Pour simplifier les choses dans ce TD, nous considérerons uniquement les identifiants, noms, prénoms et l'adresse e-mail.
-Nous considérerons qu'un identifiant client est simplement une suite de $10$ chiffres (dans l'intervalle \path{0-9}).
+	Dans ce TD, on vous propose de mettre en pratique les notions vues auparavant pour créer un programme gérant l'enregistrement de nouveaux clients d'une entreprise (imaginaire). De nombreuses données différentes peuvent être associées à un client d'une entreprise donnée: son identifiant (numéro d'identification au sein de l'entreprise), son nom, son numéro de compte courant, son adresse postale, son adresse e-mail, sa date de naissance, sa nationalité, .... Pour simplifier les choses dans ce TD, nous considérerons uniquement les identifiants, noms, prénoms et l'adresse e-mail. Tous ces champs sont enregistr\'es sous forme de cha\^ines de caract\`eres (des \path{String}). Nous considérerons qu'un identifiant client est simplement une suite de $10$ chiffres (choisi parmi $\{0,1, \ldots, 9\}$).
+	
+	Le programme que nous vous demandons de concevoir devra maintenir un tableau de client \`a jour et proposer \`a l'utilisateur (qui sera un employ\'e de l'entreprise) le menu suivant:
+	
+	\begin{verbatim}
+		**** Que souhaitez-vous faire ? ****
+		
+			1 -- Ajouter un nouveau client (tapez 1),
+			2 -- Supprimer un client (tapez 2),
+			3 -- Afficher les clients déjà encodés (tapez 3),
+			4 -- Quitter le programme (tapez 4),
+			
+			Votre choix: 
+	\end{verbatim}
+	
+La section suivante vous guide étape par étape dans la réalisation d'un tel programme.
 
-Cet encodage au clavier n'aurait pas beaucoup d'int\'er\^et si les donn\'ees ne sont pas enregistr\'ees \`a la fin de l'ex\'ecution du programme. Dans un syst\`eme professionnel de gestion de clients, celles-ci sont le plus souvent enregistr\'ees dans une base de donn\'ee. Ici, nous simplifierons les choses et enregistrerons simplement les donn\'ees dans un fichier plat (un fichier texte).
+Remarque: Dans un syst\`eme professionnel de gestion de clients, les données sont le plus souvent enregistr\'ees dans une base de donn\'ee ou un fichier plat apr\`es la fin de l'encodage. Ces sujets sortent cependant du cadre du cours de DEV1, et nous n'en parlerons pas donc pas dans ce TD. Il n'est cependant pas difficile d'écrire des donn\'ees dans un fichier \`a partir d'une source Java, les curieux parmi vous qui souhaitent compl\'eter le programme pour qu'il le fasse trouveront ais\'ement des informations sur la fa\c con de proc\'eder en effectuant une recherche sur internet (ou dans une r\'ef\'erence sur Java).
 
 \section{D\'eveloppement}
 	
@@ -78,71 +92,106 @@ Cet encodage au clavier n'aurait pas beaucoup d'int\'er\^et si les donn\'ees ne 
  	\begin{Exercice}{Créer la structure Client}
 		D\'eclarer une nouvelle structure \path{Client} comportant les champs repris dans l'introduction: identifiant, nom, prénom, adresse-e-mail.
 		
-		Vous prendrez soin de d\'eclarer un constructeur appropri\'e ainsi qu'une m\'ethode \path{toString()} renvoyant une description du client (il suffit pour ce faire de concat\'ener les diff\'erents champs les uns \`a la suite des autres).
+		Vous prendrez soin de d\'eclarer un constructeur appropri\'e ainsi qu'une m\'ethode \path{toString()} renvoyant une description du client (il suffit pour ce faire de concat\'ener les diff\'erents champs les un \`a la suite des autres).
 		
 	\end{Exercice} 
 
  
- 	\begin{Exercice}{Initialiser un tableau de clients}
-		 \`Ecrire une classe \path{GestionClients} contenant une m\'ethode \path{main} dans laquelle on demande \`a l'utilisateur le nombre de nouveaux clients qu'il souhaite encoder. Si ce nombre est $n$, le programme initialisera alors un tableau de $n$ clients. Pour ce faire, une référence vers le tableau contenant les clients peut-être déclarée dans la classe:\newpage
-		 
-		
+ 	\begin{Exercice}{Cr\'eer un tableau de clients}
+	Cr\'eer une classe \path{GestionClients} qui contiendra la fonction \path{main} de notre programme. Nos clients seront enregistr\'es dans un tableau de structures \path{Client}. Mais comme notre but est de proposer \`a l'utilisateur d'ajouter/supprimer des clients comme il le souhaite, il n'est pas possible de savoir \`a l'avance le nombre de clients que le tableau contiendra \`a un moment donn\'e de l'ex\'ecution du programme. Nous allons donc supposer que le nombre de clients ne dépassera pas une certaine borne (disons $200$) qui sera cod\'ee comme une constante du programme (et qu'on peut donc facilement modifier au besoin):
+	
 		\begin{Code}{Java} 
 			public class GestionClients
-			{
-				// Déclare une référence destinée à contenir un tableau de structures Client.
-				static Client [] clients;
-				
+			{	
 				public static void main (String args[])
 				{
-					//Assigner un nouveau tableau de taille n à la variable clients ici.
-					// n est choisi par l'utilisateur.
+				        /* Déclare une nouvelle constante
+				          Celle-ci représente le nombre maximum de clients */
+				        final int MAX_CLIENTS = 200;
+				        				
+				        Client [] clients = new Client[MAX_CLIENTS];
 				}
 			}
 		\end{Code}
-			
-	\end{Exercice}
+Mais alors, comment savoir combien de clients contient effectivement le tableau ? Comme on souhaite permettre \`a l'utilisateur de supprimer et d'ajouer des clients quand il veut, ce ne sera certainement pas \path{clients.lenght} qui nous fournira la réponse (ceci donnera toujours le r\'esultat \path{MAX_CLIENTS}).
 
- 	\begin{Exercice}{Encoder les différents clients dans le tableau}
-		Apr\`es avoir créer un nouveau tableau de $n$ clients, if faut initialiser chaque case du tableau avec un nouveau client dont les données sont entrées au clavier par l'utilisateur.
-		Pour ce faire, le programme demandera $n$ fois à l'utilisateur d'entrer un nom, un prénom, un identifiant et une adresse e-mail.		
+En réalité, tant que la case $i$ du tableau (pour $i$ entre $0$ et \path{MAX_CLIENTS -1}) n'a pas été initialisée avec un nouveau client, cette case contiendra la valeur \path{null}. Les cases de notre tableau qui contiennent effectivement des clients seront donc toutes celles dont la valeur n'est pas égale à \path{null}. On convient de rassembler tous les clients en d\'ebut de tableau.
+\end{Exercice}	
+		% \`Ecrire une classe \path{GestionClients} contenant une m\'ethode \path{main} dans laquelle on demande \`a l'utilisateur le nombre de nouveaux clients qu'il souhaite encoder. Si ce nombre est $n$, le programme initialisera alors un tableau de $n$ clients. Pour ce faire, une référence vers le tableau contenant les clients peut-être déclarée comme suit: \newpage
+
+ \begin{Exercice}{Afficher le menu}
+ 	    Compl\'eter la m\'ethode \path{main} pour qu'elle affiche le menu d\'ecrit dans l'introduction. Le menu s'affichera \`a nouveau tant que l'utilisateur n'a pas choisi l'option quitter (choix num\'ero $4$).			
+		%Apr\`es avoir créer un nouveau tableau de $n$ clients, if faut initialiser chaque case du tableau avec un nouveau client dont les données sont entrées au clavier par l'utilisateur.
+		%Pour ce faire, le programme demandera $n$ fois à l'utilisateur d'entrer un nom, un prénom, un identifiant et une adresse e-mail.		
 		
   \end{Exercice}
+  
+   \begin{Exercice}{Ajouter un nouveau client}
+   	 		\`Ecrire une m\'ethode:
+		\begin{Code}{Java}
+		    static void ajoutClient (Clients [] client)
+		\end{Code}
+qui demande un identifant, un nom, un pr\'enom et une adresse e-mail \`a l'utilisateur et ajoute un nouveau client ayant exactement ces données apr\`es la derni\`ere case utilis\'ee du tableau \path{client}.
+
+Si toutes les cases du tableau sont d\'eja utilis\'ees, la m\'ethode renverra une \\\path{UnsupportedOperationException}. Compl\'eter la m\'ethode \path{main} (\`a vous de prendre garde a ne pas permettre \`a l'utilisateur de rentrer plus de \path{MAX_CLIENTS} clients.)
+				
+\end{Exercice}
   
   	\begin{Exercice}{Afficher les clients encod\'es}
 	\`Ecrire une m\'ethode
 	
 		\begin{Code}{Java}
-		    static void afficher()
+		    static void afficher(Clients clients[])
 		\end{Code}
-	qui affiche \`a l'\'ecran, pour chaque client du tableau \path{clients[]} les donn\'es du clients. Cette m\'ethode fera appel a la m\'ethode \path{toString()} de la classe \path{Client}.
+	qui affiche \`a l'\'ecran, pour chaque client du tableau \path{clients[]} les donn\'es du client. Cette m\'ethode fera appel \`a la m\'ethode \path{toString()} de la classe \path{Client}. Remarque: si le tableau ne contient aucun client (toutes les cases contiennent \path{null}), la m\'ethode affichera "Aucun client n'est encore encod\'e".
+		
 	\end{Exercice}
-
-	\begin{Exercice}{V\'erifier le format de l'adresse e-mail}
+	
+\begin{Exercice}{V\'erifier le format de l'adresse e-mail}
 		L'utilisateur peut se tromper en entrant les donn\'ees du client. En particulier, une adresse e-mail doit \^etre au format 
 		
 		\path{s1@s2.s3}
 		
-		ou s1,s2,s3 sont des cha\^ines de caract\`ere. \`Ecrire une m\'ethode 
+		o\`u s1,s2,s3 sont des cha\^ines de caract\`ere. \`Ecrire une m\'ethode 
 		
 		\begin{Code}{Java}
 		boolean verifierEmail(String email)
 		\end{Code}
 		
 		qui renvoie \path{true} si email a le format d'une adresse e-mail et \path{false} sinon.
-		Mettre la fonction \path{main} \`a jour: si l'utilisateur entre une mauvaise adresse pour un certain client, le programme refuse de cr\'eer le nouveau client et lui demande de corriger      l'adresse entr\'ee.
+		Mettre la m\'ethode \path{ajoutClient} \`a jour: si l'utilisateur entre une mauvaise adresse pour un certain client, le programme refuse de cr\'eer le nouveau client et lui demande de corriger      l'adresse entr\'ee.
 	\end{Exercice}
 
+
 \begin{Exercice}{V\'erifier l'absence de doublons}
-		Bien que ce soit rare, il est possible que deux clients aient le m\^eme nom et le m\^eme pr\'enom. Par contre, ils ne peuvent avoir le m\^eme identifiant au sein de la soci\'et\'e. Ecrire une m\'ethode
+		Bien que ce soit rare, il est possible que deux clients aient le m\^eme nom et le m\^eme pr\'enom. Par contre, ils ne peuvent avoir le m\^eme identifiant au sein de la soci\'et\'e. \`Ecrire une m\'ethode
 		
 		\begin{Code}{Java}
-		boolean verifierID(String identifiant)
+		boolean verifierID(Client[] clients, String id)
 		\end{Code}
 		
-qui renvoie \path{true} si l'identifiant que l'utilisateur vient de rentrer n'a pas d\'eja \'et\'e utilis\'e et \path{false} sinon. Adapter la m\'ethode \path{main} de sorte que l'utilisateur ne puisse jamais encoder deux clients avec le m\^eme identifiant. \newpage
+qui renvoie \path{true} si l'identifiant \path{id} est d\'eja utilis\'e dans le tableau \path{clients} et \path{false} sinon. Adapter la m\'ethode \path{ajoutClient} de sorte que l'utilisateur ne puisse jamais encoder deux clients avec le m\^eme identifiant. 
 
 \end{Exercice}
+	
+\begin{Exercice}{Supprimer un client}
+		\`Ecrire une m\'ethode:
+				
+		\begin{Code}{Java}
+		void supprimer (Clients[] clients, String id)
+		\end{Code}
+
+qui supprime le client dont l'identifiant est donn\'e par \path{id}. Si aucun client n'ayant un identifiant \'egal \`a \path{id} n'est trouv\'e, la m\'ethode d\'eclenchera une \path{NoSuchFieldException}. \\
+
+Pour la suppression, il suffit de d\'eterminer le client ayant l'identifiant \path{id} et de faire un d\'ecalage de toutes les cases du tableau vers la gauche (en \'ecrasant la case du client \path{id}, et en n'oubliant pas de mettre la dernière case utilisée du tableau à \path{null}).
+
+Mettre la m\'ethode \path{main} a jour. A vous de prendre garde \`a ce que l'utilisateur n'essaie pas de supprimer un client inexistant.
+	
+\end{Exercice}
+
+	
+	
+\end{document}
 
 \begin{Exercice}{\'Ecrire les donn\'ees dans un fichier}
 
@@ -182,14 +231,25 @@ static void WriteData (String filename) throws Exception
 
 qui \'ecrira toute les données du tableau \path{clients[]} dans le fichier dont le nom est sp\'ecifi\'e dans \path{filename}. Mettre \`a jour la m\'ethode \path{main} pour demander un nom de fichier a l'utilisateur et valider l'\'ecriture du fichier de donn\'ees.
 
-
-
-
-
 \end{Exercice}
-	
 
-	
-\end{document}
+		
+		\begin{Code}{Java} 
+			public class GestionClients
+			{	
+				public static void main (String args[])
+				{
+				        
+					// Déclare une référence destinée à contenir un tableau de structures Client.
+					Client [] clients;
+				
+					/* Assigner un nouveau tableau de taille n à la variable clients ici.
+					   n est choisi par l'utilisateur. */
+				}
+			}
+		\end{Code}
+			
+	\end{Exercice}
+
 
 
