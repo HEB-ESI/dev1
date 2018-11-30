@@ -72,7 +72,7 @@ Remarque: Dans un syst\`eme professionnel de gestion de clients, les données so
 		\begin{Code}{Java} 
 			public class GestionClients
 			{	
-				public static void main (String args[])
+				public static void main (String[] args)
 				{
 				        final int MAX_CLIENTS = 200;
 				        				
@@ -110,7 +110,7 @@ Si toutes les cases du tableau sont d\'eja utilis\'ees, la m\'ethode renverra un
 	\'Ecrire une m\'ethode
 	
 		\begin{Code}{Java}
-		    static void afficher(Client clients[])
+		    static void afficher(Client[] clients)
 		\end{Code}
 	qui affiche \`a l'\'ecran, pour chaque client du tableau \path{clients[]} les donn\'es du client. Cette m\'ethode fera appel \`a la m\'ethode \path{toString()} de la classe \path{Client}. Remarque: si le tableau ne contient aucun client (toutes les cases contiennent \path{null}), la m\'ethode affichera "Aucun client n'est encore encod\'e".
 		
@@ -210,7 +210,7 @@ qui \'ecrira toute les données du tableau \path{clients[]} dans le fichier dont
 		\begin{Code}{Java} 
 			public class GestionClients
 			{	
-				public static void main (String args[])
+				public static void main (String[] args)
 				{
 				        
 					// Déclare une référence destinée à contenir un tableau de structures Client.
