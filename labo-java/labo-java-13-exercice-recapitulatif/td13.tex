@@ -76,7 +76,7 @@ Remarque: Dans un syst\`eme professionnel de gestion de clients, les données so
 				{
 				        final int MAX_CLIENTS = 200;
 				        				
-				        Client [] clients = new Client[MAX_CLIENTS];
+				        Client[] clients = new Client[MAX_CLIENTS];
 				}
 			}
 		\end{Code}
@@ -98,7 +98,7 @@ qui affiche le menu, demande \`a l'utilisateur de rentrer un choix, et renvoie l
    \begin{Exercice}{Ajouter un nouveau client}
    	 		\'Ecrire une m\'ethode:
 		\begin{Code}{Java}
-		    static void ajoutClient (Client [] clients)
+		    static void ajoutClient (Client[] clients)
 		\end{Code}
 qui demande un identifant, un nom, un pr\'enom et une adresse e-mail \`a l'utilisateur et ajoute un nouveau client ayant exactement ces données apr\`es la derni\`ere case utilis\'ee du tableau \path{clients}.
 
@@ -149,7 +149,7 @@ qui renvoie \path{true} si l'identifiant \path{id} est d\'eja utilis\'e dans le 
 		\'Ecrire une m\'ethode:
 				
 		\begin{Code}{Java}
-		void supprimer (Client [] clients, String id)
+		void supprimer (Client[] clients, String id)
 		\end{Code}
 
 qui supprime le client dont l'identifiant est donn\'e par \path{id}. Si aucun client ayant un identifiant \'egal \`a \path{id} n'est trouv\'e, la m\'ethode d\'eclenchera une \path{NoSuchFieldException}. \\
@@ -214,7 +214,7 @@ qui \'ecrira toute les données du tableau \path{clients[]} dans le fichier dont
 				{
 				        
 					// Déclare une référence destinée à contenir un tableau de structures Client.
-					Client [] clients;
+					Client[] clients;
 				
 					/* Assigner un nouveau tableau de taille n à la variable clients ici.
 					   n est choisi par l'utilisateur. */
