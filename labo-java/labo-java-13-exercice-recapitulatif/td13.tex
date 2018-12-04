@@ -70,11 +70,11 @@ La section suivante vous guide étape par étape dans la réalisation d'un tel p
 		\begin{Code}{Java} 
 			public class GestionClients
 			{	
-				public static void main (String args[])
+				public static void main (String[] args)
 				{
 				        final int MAX_CLIENTS = 200;
 				        				
-				        Client [] clients = new Client[MAX_CLIENTS];
+				        Client[] clients = new Client[MAX_CLIENTS];
 				}
 			}
 		\end{Code}
@@ -96,7 +96,7 @@ qui affiche le menu, demande \`a l'utilisateur de rentrer un choix, et renvoie l
    \begin{Exercice}{Ajouter un nouveau client}
    	 		\'Ecrire une m\'ethode:
 		\begin{Code}{Java}
-		    static void ajoutClient (Client [] clients)
+		    static void ajoutClient (Client[] clients)
 		\end{Code}
 qui demande un identifant, un nom, un pr\'enom et une adresse e-mail \`a l'utilisateur et ajoute un nouveau client ayant exactement ces données apr\`es la derni\`ere case utilis\'ee du tableau \path{clients}.
 
@@ -108,9 +108,9 @@ Si toutes les cases du tableau sont d\'eja utilis\'ees, la m\'ethode renverra un
 	\'Ecrire une m\'ethode
 	
 		\begin{Code}{Java}
-		    static void afficher(Client clients[])
+		    static void afficher(Client[] clients)
 		\end{Code}
-	qui affiche \`a l'\'ecran, pour chaque client du tableau \path{clients[]} les donn\'es du client. Cette m\'ethode fera appel \`a la m\'ethode \path{toString()} de la classe \path{Client}. Remarque: si le tableau ne contient aucun client (toutes les cases contiennent \path{null}), la m\'ethode affichera "Aucun client n'est encore encod\'e".
+	qui affiche \`a l'\'ecran, pour chaque client du tableau \path{clients} les donn\'es du client. Cette m\'ethode fera appel \`a la m\'ethode \path{toString()} de la classe \path{Client}. Remarque: si le tableau ne contient aucun client (toutes les cases contiennent \path{null}), la m\'ethode affichera "Aucun client n'est encore encod\'e".
 		
 	\end{Exercice}
 	
@@ -147,7 +147,7 @@ qui renvoie \path{true} si l'identifiant \path{id} est d\'eja utilis\'e dans le 
 		\'Ecrire une m\'ethode:
 				
 		\begin{Code}{Java}
-		void supprimer (Client [] clients, String id)
+		void supprimer (Client[] clients, String id)
 		\end{Code}
 
 qui supprime le client dont l'identifiant est donn\'e par \path{id}. Si aucun client ayant un identifiant \'egal \`a \path{id} n'est trouv\'e, la m\'ethode d\'eclenchera une \path{NoSuchFieldException}. \\
@@ -200,7 +200,7 @@ Ecrire une m\'ethode:
 static void WriteData (String filename) throws Exception
 \end{Code}
 
-qui \'ecrira toute les données du tableau \path{clients[]} dans le fichier dont le nom est sp\'ecifi\'e dans \path{filename}. Mettre \`a jour la m\'ethode \path{main} pour demander un nom de fichier a l'utilisateur et valider l'\'ecriture du fichier de donn\'ees.
+qui \'ecrira toute les données du tableau \path{clients} dans le fichier dont le nom est sp\'ecifi\'e dans \path{filename}. Mettre \`a jour la m\'ethode \path{main} pour demander un nom de fichier a l'utilisateur et valider l'\'ecriture du fichier de donn\'ees.
 
 \end{Exercice}
 
@@ -208,11 +208,11 @@ qui \'ecrira toute les données du tableau \path{clients[]} dans le fichier dont
 		\begin{Code}{Java} 
 			public class GestionClients
 			{	
-				public static void main (String args[])
+				public static void main (String[] args)
 				{
 				        
 					// Déclare une référence destinée à contenir un tableau de structures Client.
-					Client [] clients;
+					Client[] clients;
 				
 					/* Assigner un nouveau tableau de taille n à la variable clients ici.
 					   n est choisi par l'utilisateur. */
