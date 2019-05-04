@@ -1,0 +1,80 @@
+% =====================================================================
+%						style-esi/numbered.sty
+% =====================================================================
+%	Définit la notion d'"élément numéroté".
+%	Pourra facilement être décliné en "exercice numéroté",
+%	"exemple numéroté", "tutoriel numéroté".
+%
+%	Concrètement, la commande \newnumbered{Exercice}
+%	crèe l'environnement 'Exercice' de telle sorte qu'on puisse écrire
+%
+%	\begin{Exercice}{Titre}
+%		Contenu
+%	\end{Exercice}
+%
+%	qui va afficher :
+%	- un cartouche en retrait avec "Exercice i" où i est un compteur
+%		commençant en 1 et incrémenté automatiquement.
+%		Si le document contient la notion de chapitre,
+%		le compteur est remis à 1 en début de chaque chapitre.
+%	- L'éventuel titre en gras (mettre {} si pas de titre)
+%	- Le contenu (avec un passage à la ligne si un titre est présent)
+%
+%	Définit également une version * qui affiche un visuel (une ligne)
+%	à la fin (utile quand le contenu est long)
+% =====================================================================
+
+% pour syntaxe plus souple pour déclarer nouvel environement
+\usepackage{xparse}
+% pour \settowidth qui calcule la taille d'un texte
+\usepackage{calc}
+% contiendra la largeur du contenu du cartouche
+\newlength{\widthcartouche}		
+
+% à priori, numéro en marge
+\newif\ifmarginnumber
+\marginnumbertrue
+
+\newcommand{\newnumbered}[1]{%
+	% On crée un compteur
+	% Le test suivant indique que le compteur doit être réinitialisé
+	% à chaque début de chapitre si la notion de chapitre existe
+	% cf. https://tex.stackexchange.com/questions/155776/check-if-counter-exists
+	\ifcsname c@chapter\endcsname
+		\newcounter{#1}[chapter]
+	\else
+		\newcounter{#1}
+	\fi
+	\setcounter{#1}{0}%
+	\DeclareDocumentEnvironment {#1} {s m}
+		{%
+			\IfBooleanTF {##1}
+				{\begin{numbered}*{#1}{##2}}
+				{\begin{numbered}{#1}{##2}}
+		}
+		{\end{numbered}}
+}
+
+% Utilisé par \newnumbered pour clarifier la définition de l'environnement
+% Effectue concrètement l'affichage
+% \begin{numbered}{type}{titre}
+% \begin{numbered}*{type}{titre}
+\DeclareDocumentEnvironment {numbered} {s m m}
+{%
+	% Incrémenter le compteur
+	\refstepcounter{#2}
+	% Calculer la largeur du texte en marge (exercice + num question)
+	\settowidth{\widthcartouche}{\bfseries\scriptsize #2{} \normalsize\arabic{#2}\,\,\,~~~}
+	\medskip
+	% Afficher le numéro de question
+	\noindent
+	\ifmarginnumber\hspace{-\widthcartouche}\fi%
+	{{\cadre[colmain][colback=collight,boxrule=.5px]{\color{colmain}\bfseries\scriptsize #2{} \normalsize\arabic{#2}\,}}}~%
+	% Gestion de la présence ou nom du titre
+	\ifthenelse{\equal{#3}{}}{}{{\sffamily\large\bfseries~#3\smallskip\\}\nopagebreak}%
+}
+{%
+	\IfBooleanTF {#1}
+	{\par\noindent\color{colmain}\hrulefill\quad\textbf{Fin #2 \arabic{#2}}\quad\hrulefill}%
+	{}
+}

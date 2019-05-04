@@ -1,0 +1,290 @@
+%=====================================================================
+%						box.sty
+%
+%	Crée des commandes et environnements pour surligner, encadrer,
+%	placer du texte dans des boites avec un fond coloré...
+%=====================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{box}[2018/06/10 Boites colorees pour les documents a l'ESI]
+
+%=====================================================================
+%	Dépendences
+%=====================================================================
+
+% --- Pour la définition des couleurs de base
+% --- Utilisé notamment par les boites colorées
+\RequirePackage{style-esi/color}
+
+% --- Package utilisé pour réaliser les fonds colorés 
+% --- many = charge qq extensions utilisées
+% ---	mais bug sur vieilles versions du package
+% --- sknis = juste celle que j'utilise apparemment
+\RequirePackage[skins]{tcolorbox}	
+
+% --- Pour utiliser l'option varwidth dans tcolorbox
+% --- Utilisé par l'option left dans \colbox
+\RequirePackage{varwidth}
+
+% --- Pour configurer facilement des commandes avec paramètre facultatif
+\RequirePackage{xparse}
+
+% --- Pour utiliser un \ifthenelse amélioré (ex: \isin)
+\RequirePackage{xifthen}
+
+%=====================================================================
+%	\surligne[bgcol][options tcolorbox]{texte}
+%---------------------------------------------------------------------
+%	Affiche le texte surligné comme du stabilo
+%	avec la couleur bgcol (défaut=collight)
+%
+%	Techniquement, on utilise le package tcolorbox.
+%	Le second paramètre optionnel permet de lui passer 
+%	directement des options. 
+%	Par exemple :
+%	- colback=<color>		pour modifier la couleur de fond
+%	- coltext=<color>		pour modifier la couleur du texte
+%	- fontupper=\LARGE		pour mettre le texte en \LARGE
+%	- opacityfill=.6		pour de la transparence
+%=====================================================================
+
+\DeclareDocumentCommand \surligne { O{collight} O{} m }{%
+	\tcbox[on line, size=fbox, boxsep=0pt, top=2pt, bottom=2pt,%
+		  colback=#1, colframe=#1, #2]{#3}%
+}
+
+%=====================================================================
+%	\cadre[framecol][options tcolorbox]{texte}
+%---------------------------------------------------------------------
+%	Affiche le texte avec une cadre de
+%	avec la couleur framecol (défaut=colmain)
+%
+%	Techniquement, on utilise le package tcolorbox.
+%	Le second paramètre optionnel permet de lui passer 
+%	directement des options. 
+%	Par exemple :
+%	- colback=<color>		pour modifier la couleur de fond
+%	- coltext=<color>		pour modifier la couleur du texte
+%	- fontupper=\LARGE		pour mettre le texte en \LARGE
+%	- opacityfill=.6		pour de la transparence
+%=====================================================================
+
+\DeclareDocumentCommand \cadre { O{colmain} O{} m }{%
+	\tcbox[on line, colback=white, size=fbox, colframe=#1, boxrule=1pt, arc=4pt, #2]{#3}%
+}
+
+%=====================================================================
+%	\colbox[options][options tcolorbox]{texte}
+%---------------------------------------------------------------------
+%	Des boites avec fond coloré.
+%  
+%	Affiche le texte donné dans un cadre avec fond coloré.
+%	Utiliser \\ pour passer à la ligne (pas de passage automatique)
+%	À priori, le cadre prend juste la taille indiquée (sauf si full)
+%
+%	Les options sont (à séparer par , si plusieurs):
+%	- light  : utilise un fond clair (collight) 
+%	- dark   : utilise un fond moins clair (colmain) et un texte blanc
+%	- main   : synonyme
+%	- alert	 : utilise un fond de la couleur colalert (texte en blanc)
+%	- left   : le texte est aligné à gauche (se voit si pl. lignes)
+%	- center : le texte est centré dans le cadre (pl. lignes)
+%	- fuzzy  : ajoute une ombre classique au sud-est
+%	- lifted : ajoute une ombre "soulevée'
+%	- full   : pour prendre toute la largeur
+%
+%	Par défaut, il est juste light et left, sans ombre.
+%
+%	Techniquement, on utilise le package tcolorbox
+%	Le second paramètre optionnel permet de lui passer directement des
+%	options. Par exemple :
+%	- colback=<color>		pour modifier la couleur de fond
+%	- coltext=<color>		pour modifier la couleur du texte
+%	- colframe=<color>		pour la couleur du bord
+%	- fontupper=\LARGE		pour mettre le texte en \LARGE
+%	- opacityfill=.6		pour de la transparence
+%	- center				pour centrer le cadre sur la page
+%	- width=10cm			pour fixer la largeur (si full)
+%	- size=fbox				pour un padding plus petit
+%	- drop fuzzy shadow		ce que fait le raccourci (fuzzy)
+%	- drop lifted shadow	ce que fait le raccourci (lifted)
+%
+%	Remarque : on peut changer la taille du texte directement 
+%	dans le texte sauf si en mode center où il faut le faire 
+%	ligne par ligne ou utiliser l'option fontupper de tcolorbox 
+%	(car \\ reset la taille !!!).
+% ====================================================================
+
+\DeclareDocumentCommand \colbox { O{} O{} m }{{%
+	\tcbset{
+		enhanced,			% Pour pouvoir utiliser des ombres
+		on line,			% S'intègre au texte autour
+		varwidth upper,		% Largeur adaptée au texte
+		colback=collight,
+		colframe=lightgray,
+		coltext=black,
+		boxrule=1pt,
+	}%
+	% Est-ce que "light" est présent dans les options ?
+	\ifthenelse{\isin{light}{#1}}{%		
+		\tcbset{
+			colback=collight,
+			colframe=lightgray,
+			coltext=black
+		}%
+	}{}%
+	\ifthenelse{\isin{dark}{#1} \OR \isin{main}{#1}}{%
+		\tcbset{
+			colback=colmain,
+			colframe=collight,
+			coltext=colverylight
+		}%
+	}{}%
+	\ifthenelse{\isin{alert}{#1}}{%
+		\tcbset{
+			colback=colalert,
+			colframe=white,
+			coltext=white
+		}%
+	}{}%
+	\ifthenelse{\isin{fuzzy}{#1}}{%
+		\tcbset{
+			drop fuzzy shadow
+		}%
+	}{}%
+	\ifthenelse{\isin{lifted}{#1}}{%
+		\tcbset{
+			drop lifted shadow
+		}%
+	}{}%
+	\ifthenelse{\isin{left}{#1}}{%
+		\tcbset{
+			% Largeur adaptée au texte, aligné à gauche,\\OK
+			varwidth upper		
+		}%
+	}{}%
+	\ifthenelse{\isin{center}{#1}}{%
+		\tcbset{
+			% Largeur adaptée au texte, centré, \\ OK
+			tikznode			
+		}%
+	}{}%
+	\ifthenelse{\isin{full}{#1}}%
+		{\begin{tcolorbox}[#2]#3\end{tcolorbox}}%
+		{\tcbox[#2]{#3}}%
+}}
+
+%=====================================================================
+%	\begin{colxbox}[options tcolorbox]
+%		texte
+%	\end{colxbox}
+%---------------------------------------------------------------------
+%   Une boite comme \colbox mais sous forme d'environnement.
+%	Permet de mettre plus de choses à l'intérieur
+%	Attention ! Toujours en full size (indépendement du contenu)
+%
+% 	Options possibles :
+%	- celles de \colbox (notamment width=)
+%	- halign=center	(pour centrer le texte à l'intérieur)
+%=====================================================================
+
+\newtcolorbox{colxbox}[1][]{%
+	enhanced, before skip=2mm, after skip=2mm, 
+	boxrule=0.2mm, colframe=lightgray, #1%
+}
+
+%=====================================================================
+%	\begin{coltbox}[options tcolorbox]{titre}
+%		texte
+%	\end{coltbox}
+%---------------------------------------------------------------------
+%   Une boite avec un titre.
+%   Tiré du manuel de tcolorbox.
+%
+% 	Options possibles : idem colbox
+%=====================================================================
+
+\newtcolorbox{coltbox}[2][]{%
+	enhanced, before skip=2mm, after skip=2mm, boxrule=0.2mm, 
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+	varwidth boxed title*=-3cm,
+	boxed title style={%
+		frame code={
+			\path[fill=tcbcol@back!30!black]
+				([yshift=-1mm,xshift=-1mm]frame.north west)
+				arc[start angle=0,end angle=180,radius=1mm]
+				([yshift=-1mm,xshift=1mm]frame.north east)
+				arc[start angle=180,end angle=0,radius=1mm];
+			\path[left color=colmain,right color=colmain,middle color=colmain]
+				([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+				[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+				-- (frame.south east) -- (frame.south west)
+				-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+				[sharp corners]-- cycle;
+		},interior engine=empty,
+	},
+	colbacktitle=colmain, colback=collight, colframe=lightgray,
+	drop lifted shadow,
+	fonttitle=\bfseries,
+	title={#2},#1%
+}
+
+%=====================================================================
+%	\begin{infobox}[options tcolorbox]
+%		texte
+%	\end{infotbox}
+%---------------------------------------------------------------------
+%   Une boite avec un bleu de la couleur collight
+% 	Options possibles : idem colbox
+%	alertbox: idem avec un fond alertlight
+%=====================================================================
+
+\newtcolorbox{infobox}[1][]{%
+	enhanced, arc=0pt,outer arc=0pt, 
+    colback=collight, colframe=colmain,
+    leftrule=0pt, rightrule=0pt, bottomrule=2pt, toprule=2pt, #1%
+}
+
+\newtcolorbox{alertbox}[1][]{%
+	enhanced, arc=0pt,outer arc=0pt, 
+    colback=colalertlight, colframe=colalert,
+    leftrule=0pt, rightrule=0pt, bottomrule=2pt, toprule=2pt, #1%
+}
+
+\usepackage{environ} % Merci à astalavista pour ce truc :)
+\NewEnviron{infotbox}[1]{%
+	\begin{infobox}
+		\textbf{\color{colmain}#1}\par
+		\BODY
+	\end{infobox}
+}
+\NewEnviron{alerttbox}[1]{%
+	\begin{alertbox}
+		\textbf{\color{colalert}#1}\par
+		\BODY
+	\end{alertbox}
+}
+
+% --------------------------------------------------------------------
+%	\begin{leftbar}{titre}
+%		Texte
+%	\end{leftbar}
+%	Un paragraphe avec une barre grisée sur le coté et un titre choisi
+%	\begin{consigne}
+%		Préconfiguré pour des consignes.	
+%	\end{consigne}
+% --------------------------------------------------------------------
+
+\newtcolorbox{consigne}{%
+	blanker,
+	before skip=10mm,after skip=10mm,
+	borderline west={1mm}{-4mm}{lightgray},
+	title=Consignes, coltitle=black, fonttitle=\sffamily\bfseries\large
+}
+
+\newtcolorbox{leftbar}[1]{%
+	blanker,
+	before skip=1em,after skip=1em,
+	borderline west={1mm}{-4mm}{lightgray},
+	title=#1, coltitle=black, fonttitle=\sffamily\bfseries\large
+}

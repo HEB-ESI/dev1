@@ -1,0 +1,179 @@
+%=====================================================================
+%						style-esi/slide.sty
+%
+%	Style pour des slides à l'ÉSI (à utiliser avec beamer)
+%	À priori, on peut utiliser directement la classe slide.cls
+%	(qui fait appel à ce style).
+%=====================================================================
+
+%=====================================================================
+%	Dépendences
+%=====================================================================
+
+% --- Charge tous les packages de base communs à tout document
+% --- french, color, box...
+\RequirePackage{style-esi/common}
+
+%=====================================================================
+%  Aspect général du document
+%=====================================================================
+
+% --- Thème Madrid 
+% --- (secheader = bande entête avec section et sous-section)
+\usetheme[secheader]{Madrid}
+
+% --- Les couleurs sont basées sur la couleur colmain
+\usecolortheme[named=colmain]{structure}
+
+% ====================================================================
+%  La page de titre
+% ====================================================================
+
+% --- L'institution est déjà définie
+\institute[HE2B - ÉSI]{
+	\includegraphics[width=2cm]{style-esi/logo}\\
+	\nomHE\\
+	\nomEntite
+}    
+
+% ====================================================================
+%  Aspect général d'une page
+% ====================================================================
+
+% --- Enlever toutes les petites icônes de navigation 
+% --- en bas de chaque slide
+\setbeamertemplate{navigation symbols}{}
+
+% --- Les titres sont plus petits mais en gras
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+
+% --- Idem pour la commande structure (utilisé comme un sous-titre)
+\setbeamerfont{structure}{series=\bfseries,size=\large}
+
+% --- \soustitre{texte} crée un sous-titre dans le texte
+% --- Proche de \structure mais j'ai plus de contrôle pour le définir
+\newcommand{\soustitre}[1]{%
+	\par\medskip{\color{colmain}\large\bfseries{}#1}
+}
+
+%=====================================================================
+%	La notion de section
+%=====================================================================
+
+% --- On adapte le rendu de \sectionpage
+\setbeamertemplate{section page}{
+	\medskip
+	\colbox[dark,fuzzy]{\Huge\insertsectionnumber}~
+	\colbox[dark,fuzzy]{\Large\insertsection}
+	\\\medskip
+}
+
+% ====================================================================
+%  La notion de sous-section
+% ====================================================================
+
+% --- On adapte le rendu de \subsectionpage
+\setbeamertemplate{subsection page}{
+	\medskip
+	\colbox[dark,lifted,center][center]%
+	{\large{}\insertsectionnumber{}.\insertsubsectionnumber{}\ --\ \insertsubsection}
+	\medskip
+}
+
+%=====================================================================
+%  Différents templates de slides prédéfinis
+%=====================================================================
+
+%---------------------------------------------------------------------
+%	\begin{imageFrame}[crédit]{image}
+%  		On met le texte qu'on veut
+%  \end{imageFrame}
+%---------------------------------------------------------------------
+%	Slide avec une image de fond et un crédit éventuel
+%
+%	Le slide est mis en mode "plain" pas d'entête ni de bas de page.
+%	L'image prend toute la largeur et la hauteur
+%	(ce qui peut amener une distorsion si son ratio n'est pas correct).
+%	Le crédit est une URL.
+%	Si présent, on trouve "crédit image" en bas à droite.
+%	Il agit comme un hyperlien vers la source donnée.
+%---------------------------------------------------------------------
+
+\usepackage{environ}						% Pour utiliser BODY
+\usepackage[absolute,overlay]{textpos}		% Pour placer le credit en absolu
+\usepackage{xifthen}						% provides \isempty test
+
+\NewEnviron{imageFrame}[2][]{{
+		\usebackgroundtemplate{
+			\includegraphics[height=\paperheight,width=\paperwidth]{#2}
+		}
+		\begin{frame}[plain]
+			\BODY
+			\ifthenelse{\isempty{#1}}{}{
+				\begin{textblock*}{3cm}[1,1](.98\paperwidth,.98\paperheight)
+					\flushright
+					\credit{#1}
+				\end{textblock*}
+			}	
+		\end{frame}
+	}}
+	
+%=====================================================================
+%	Mise en page des items
+%=====================================================================
+
+%---------------------------------------------------------------------
+%	itemize
+%---------------------------------------------------------------------
+%	niveau 1 = carreau gris
+%		niveau 2 = carré gris
+%			niveau 3 = triangle gris
+%---------------------------------------------------------------------
+
+\setbeamertemplate{itemize item}{$\diamond$} 
+\setbeamertemplate{itemize subitem}[square]
+\setbeamertemplate{itemize subsubitem}[triangle]
+\setbeamercolor{itemize item}{fg=gray}
+\setbeamercolor{itemize subitem}{fg=gray}
+\setbeamercolor{itemize subsubitem}{fg=gray}
+\setbeamerfont{itemize subsubitem}{size=\small}
+
+%---------------------------------------------------------------------
+%	enumerate
+%---------------------------------------------------------------------
+%	niveau 1 = nombre dans carré de la couleur définie du style choisi
+%---------------------------------------------------------------------
+
+\setbeamertemplate{enumerate items}[square]
+\setbeamertemplate{enumerate item}{%
+	\usebeamercolor{palette primary}
+	{\colorbox{bg}{\color{white}\small\insertenumlabel}}
+}
+
+%---------------------------------------------------------------------
+%	description
+%---------------------------------------------------------------------
+%	item en couleur colalert
+%---------------------------------------------------------------------
+
+\setbeamercolor{description item}{fg=colmain}
+\setbeamerfont{description item}{size=\normalsize,series=\bfseries}
+
+%---------------------------------------------------------------------
+%	Aère un peu plus en ajoutant de l'espace vertical entre les items.
+%---------------------------------------------------------------------
+
+%\let\olditem\item
+%\renewcommand{\item}{\vspace{.1em}\olditem} 
+
+%=====================================================================
+%	Varia
+%=====================================================================
+
+%---------------------------------------------------------------------
+%	Les textes \alert{important} sont en gras, couleur colalert
+%---------------------------------------------------------------------
+
+\setbeamercolor*{alerted text}{fg=colalert}
+\setbeamerfont{alerted text}{series=\bfseries}
+

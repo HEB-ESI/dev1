@@ -1,0 +1,61 @@
+%=====================================================================
+%						style-esi/evaluation.sty
+%
+%	Style LaTeX pour des évaluations à l'ÉSI.
+%	C'est comme un document normal mais avec un cadre pour
+%	les infos de l'étudiant et un autre pour les points.
+%
+% 	auteurs:
+% 		Marco Codutti, mai 2013, mai 2018 
+% 		Pierre Bettens, novembre 2017
+%=====================================================================
+
+%=====================================================================
+%	Dépendences
+%=====================================================================
+
+% --- Commun à tous documents de type article
+\usepackage{style-esi/td}
+
+% --- Pour les questions
+\usepackage{style-esi/question}
+
+%=====================================================================
+%	Les éléments de la première page
+%=====================================================================
+
+% --------------------------------------------------------------------
+%	\infosetd 	affiche un cadre pour que l'étudiants entre ses infos
+%				ainsi qu'un cadre pour les points
+% --------------------------------------------------------------------
+
+% absolute = position absolue et pas relative à l'emplacement courant.
+\usepackage[absolute]{textpos}
+
+\newcommand{\infosetd}[1]{
+	\begin{textblock*}{0cm}(1cm,1cm)
+		\begin{colxbox}[width=12cm, drop lifted shadow, nobeforeafter, colback=colverylight]
+			\sffamily
+			\medskip
+			Nom : {\color{lightgray}{\hrulefill}}
+		
+			\medskip
+			Prénom : {\color{lightgray}{\hrulefill}}
+		
+			\medskip
+			
+			Identifiant~: {\color{lightgray}{\hrulefill}}
+			\quad
+			Groupe : {\color{lightgray}{\hrulefill}}
+			%\quad
+			%Enseignant : {\color{lightgray}{\hrulefill}}
+		\end{colxbox}
+	\end{textblock*}
+	\begin{textblock*}{4cm}[1,0](\paperwidth-1cm,1cm)
+		\begin{colxbox}[width=4cm,drop lifted shadow, nobeforeafter, colback=colverylight]
+			\vskip14.5mm
+			\hfill {\Large\bfseries/#1}
+		\end{colxbox}
+	\end{textblock*}
+	\vspace*{2cm}
+}

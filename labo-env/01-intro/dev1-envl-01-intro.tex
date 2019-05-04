@@ -1,0 +1,832 @@
+\documentclass[a4paper,11pt]{style-esi/td}
+
+\usepackage{style-esi/licence}
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/exemple}
+\usepackage{style-esi/question}
+\usepackage{style-esi/tutoriel}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/images}
+\usepackage{style-dev1/dev1}
+
+\begin{document}
+
+\seance{1}{Introduction}
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+\bigskip
+\tableofcontents
+
+\vfill
+%\newpage
+\begin{coltbox}{Conseils}
+	Quelques conseils pour bien travailler et progresser.
+	\begin{itemize}
+	\item 
+		Faites bien tous les exercices proposés.
+	\item 
+		Vous pouvez \textbf{coopérer} avec vos condisciples 
+		mais nous vous demandons de ne \textbf{pas copier} les réponses. 
+		Si vous voulez progresser, \textbf{chercher} la réponse est plus important que de la trouver. 
+	\item 
+		N'hésitez pas à \textbf{montrer votre travail} à votre professeur.
+	\item 
+		N'hésitez pas à \textbf{poser des questions} 
+		si vous n'avez pas bien compris ce qu'on vous demande.
+	\item 
+		\textbf{Prenez des notes} ! 
+		Ce que vous allez apprendre aujourd'hui 
+		vous servira les semaines prochaines 
+		mais vous en aurez oublié une grande partie si vous ne notez rien. 
+		Le plus pratique est probablement d'annoter la version \textbf{papier}. 
+	\end{itemize}
+\end{coltbox}
+\vfill
+
+\newpage
+%===================
+\section{Windows}
+%====================
+
+	Comme vous avez pu le constater, 
+	les \name{PC} des laboratoires sont équipés du système \name{Windows}.
+	Au laboratoire d'environnement, vous vous connecterez sur un serveur \name{Linux}. 
+	\name{Windows} vous servira essentiellement à : vous connecter au \name{Linux}, 
+	effectuer des recherches sur Internet, imprimer et transférer des fichiers.
+	Si vous avez une question concernant l'utilisation de Windows 
+	vous trouverez peut-être la réponse dans l'aide-mémoire disponible sur \name{poÉSI}. 		
+
+	%====================
+	\subsection{S'identifier}
+	%====================
+
+	\begin{infobox}
+		\begin{description}
+			\item[Votre login]
+				est simplement votre numéro d'étudiant.
+			\item[Votre mot de passe]
+				vous a été communiqué par mail lors de votre inscription.
+				C'est le même mot de passe que celui pour vous connecter
+				à votre mail \name{he2b} ainsi que tous les autres service associés.
+			\end{description}	
+	\end{infobox}
+
+	%====================
+	\subsection{Imprimer}
+	%====================
+
+	Si vous voulez imprimer ce \name{TD} (ce qui est une bonne idée), 
+	vous devez \textit{installer} une imprimante. 
+	Vous trouverez comment faire en consultant l'aide-mémoire que vous venons de mentionner.
+	
+	%====================
+	\subsection{Changer le mot de passe sous Windows}
+	%=====================
+
+	\subparagraph{Réflexion.}
+	À votre avis, pourquoi vous demande-t-on de modifier votre mot de passe ?
+				
+	\begin{Exercice}{Exemples de mots de passe} 		
+		Quelles sont les propositions qui vous paraissent correctes comme mot de passe ?
+		\par
+		\qquad\checkbox~\samp{nadia}
+		\qquad\checkbox~\samp{M0nAm1eN@di@}
+		\qquad\checkbox~\samp{m@C0p1ne}
+		\qquad\checkbox~\samp{GH5).jg}
+	\end{Exercice} 
+ 
+	Il est  temps de \textbf{changer votre mot de passe}. 
+	Consultez l'aide-mémoire si vous ne savez pas comment faire. 
+			
+	\begin{infotbox}{Règles sur les mots de passe}
+		Sur les \name{PC} de l'école,
+		un mot de passe doit comporter au moins 8 caractères
+		parmi au moins 3 des 4 catégories suivantes : 
+		minuscules, majuscules, chiffres et autres caractères.
+	\end{infotbox}
+
+	\begin{faq}
+		\textbf{J'ai oublié mon mot de passe. Qu'est-ce que je peux faire ?}
+		\par
+		Les professeurs ne peuvent ni retrouver votre nouveau mot de passe, 
+		ni remettre le mot de passe de départ. 
+		Par contre les techniciens (bureau au 5\ieme) 
+		peuvent remettre le mot de passe de départ. 
+		Allez les trouver (et prenez garde à ce que ça n'arrive plus !)
+	\end{faq}
+	
+\newpage
+%===================
+\section{Une introduction à Linux}
+%====================
+
+	\exergue{Linux ? Il y a moins bien mais c'est plus cher.}{Auteur inconnu}
+
+	%====================
+	\subsection{Présentation}
+	%====================
+	Vous ne travaillerez pas directement sur votre PC durant les laboratoires d'environnement. 
+	Celui-ci vous servira pour vous connecter au serveur Linux
+	(son nom est \verb_linux1_).
+
+	\begin{theorie}{Linux}
+		\begin{wrapfigure}{r}{0.4\textwidth} 
+			\vspace{-1em}
+			\flushright
+			\includegraphics[width=0.38\textwidth]{images/ubuntu}
+			\caption{Ubuntu 18.04}
+			\vspace{-1em}
+		\end{wrapfigure} 
+		Linux est un système d'exploitation comme le sont également Windows ou MacOS. 
+		Il permet d'utiliser l'ordinateur et ses périphériques. 
+		La plupart des systèmes d'exploitation actuels proposent 
+		une interface graphique à l'utilisateur. 
+		Ainsi, les concepts de fenêtre, de menus, de souris\dots vous sont familiers. 
+		Linux n'échappe pas à la règle et propose un environnement 
+		proche de ce qu'on peut trouver sur d'autres systèmes.
+	\end{theorie}
+
+	Bien que nous pourrions utiliser le mode graphique, 
+	nous allons, pour des raisons pédagogiques, 
+	vous apprendre à utiliser Linux en mode console.
+
+	\begin{theorie}{Le mode console}
+		\begin{wrapfigure}{r}{0.55\textwidth} 
+			\vspace{-1em}
+			\flushright
+			\includegraphics[width=0.53\textwidth]{images/console}
+			\vspace{-1em}
+		\end{wrapfigure} 
+		En mode console%
+		\footnote{%
+			On parle aussi de mode \og{}commande\fg{} ou encore \og{}terminal\fg{}.
+		}, 
+		nous n'allons pas utiliser des fenêtres et une souris 
+		mais nous allons donner (\textbf{écrire}) des commandes au système.
+		\begin{description}
+		\item[Shell] 
+			Un programme dont le but 
+			est d'accepter des commandes de la part de l'utilisateur 
+			et de les exécuter. 
+			C'est ce shell qui tourne dans la console.
+		\item[Bash] 
+			Plusieurs shells existent en Linux. Bash est l'un d'entre eux.
+		\end{description} 
+		Dans l'exemple ci-dessus, 
+		vous pouvez constater que l'utilisateur entre la commande \kbd{pwd}  
+		qui a pour effet d'afficher une réponse%
+		\footnote{%
+			Vous comprendrez bientôt ce que signifie \kbd{pwd}.
+		}. 
+		Ensuite, bash attend la commande suivante.
+	\end{theorie}
+
+	Pour travailler en mode console, il faut savoir dialoguer avec ce shell. 
+	Comment lui indiquer par exemple qu'on veut copier un fichier, 
+	exécuter un programme Java\dots ? 
+	\textbf{C'est le principal objectif de ces TDs !}
+
+\newpage
+	%====================
+	\subsection{Se connecter}
+	%=====================
+
+	\verb_linux1_ n'est pas la machine sur laquelle vous êtes.
+	Vous allez devoir vous y connecter à distance.
+
+	\begin{theorie}{putty}
+		\textbf{\name{putty}} est une application qui permet (notamment)
+		d'ouvrir un \emph{terminal} sur une machine distante, 
+		de s'y connecter et de dialoguer avec elle en mode console.	
+	\end{theorie}
+
+	Lorsque vous allez vous connecter, \verb_linux1_ va vous demander de vous identifier.
+
+	\begin{infotbox}{S'identifier sur linux1}
+		\begin{description}
+		\item[username]
+			Un \textbf{'g' minuscule} suivi de votre numéro d'étudiant
+			(ex: \samp{g52010}).
+			\textbf{Note} : pour Linux, les minuscules et les majuscules 
+			sont toujours des caractères différents.
+		\item[password]
+			Le même que votre \textbf{mot de passe initial sous Windows}.			
+			Le mot de passe sous Windows et sous Linux sont deux mots de passe différents 
+			(initialisés à la même valeur).        
+			Vous avez modifié votre mot de passe sous Windows 
+			mais pas encore sous Linux (vous le ferez plus tard\dots)
+		\end{description}
+	\end{infotbox}
+
+	\begin{Tutoriel}{Connectez-vous à linux1} 
+	Il y a 4 étapes :
+	\begin{steps}			
+	\item 
+		lancez l'application \name{putty} 
+		(vous la trouverez dans le menu ou comme raccourci sur le bureau) ;				
+	\item 
+		indiquez à \name{putty} le nom de la machine (\textit{Host Name}) 
+		à laquelle vous voulez vous connecter (ici \kbd{linux1}) ;
+	\item 
+		cliquez sur "\textbf{Open}" ; 
+		la connexion se fait ! 
+		S'il vous présente une boite de message avec un "\textbf{Security Alert}", 
+		cliquez sur "\textbf{Yes}" en toute confiance ;				
+	\item 
+		identifiez-vous !
+		\begin{steps}
+		\item 
+			Tapez votre nom d'utilisateur (cf. plus haut) 
+			puis sur la touche \verb_ENTREE_. 
+		\item 
+			Tapez votre mot de passe (cf. plus haut) puis sur la touche \verb_ENTREE_.
+			\par
+			\textbf{Note} : Rien ne s'affiche quand vous tapez votre mot de passe ; c'est normal.
+		\end{steps}
+	\end{steps}
+	\end{Tutoriel}
+
+%====================
+\subsection{Le mode console}
+%=====================
+
+	Faisons quelques expériences pour comprendre les principes de base des commandes.
+
+	\begin{Tutoriel}{Ma première commande}
+		\vspace{-1em}
+		\begin{steps}
+		\item Entrez la commande \kbd{ls}, (n'oubliez pas la touche \verb|ENTREE|).
+		\end{steps}				
+		Vous constatez que le bash a affiché quelque chose%
+		\footnote{%
+			D'incompréhensible pour le moment ; ne vous inquiétez pas nous y reviendrons
+		}
+		et qu'il vous propose à nouveau l'invite de commande.
+	\end{Tutoriel}				
+
+\newpage
+
+	\begin{Tutoriel}{La casse} 
+		\vspace{-1em}
+		\begin{steps}
+		\item Entrez à présent  la commande \kbd{LS}.
+		\end{steps}
+	\end{Tutoriel}	
+
+	Vous voyez que le résultat est différent : 
+	il ne comprend pas ce que vous lui voulez.
+	En Linux, 
+	\textbf{les majuscules et les minuscules n'ont pas le même sens, 
+	vous devez respecter la casse.}
+        
+	\begin{Tutoriel}{Les espaces} 
+		Tapez les 3 commandes suivantes qui ne se différencient 
+		que par la présence ou non d'espaces.
+		\begin{steps}
+		\item \kbd{ls /home}
+		\item \kbd{ls/home}
+		\item \kbd{ls / home}
+		\end{steps}
+	\end{Tutoriel}				
+
+	À nouveau le résultat est différent dans les 3 cas. 
+	\textbf{Les espaces ont de l'importance}.
+
+	\begin{theorie}{Une commande disséquée}
+		Une commande est composée de plusieurs parties 
+		séparées par un ou plusieurs espaces. 
+		\begin{center}
+			\includegraphics[width=0.7\textwidth]{images/commande.jpg}
+		\end{center}
+		La 1\iere{} partie indique ce qu'on veut faire. 
+		Ensuite on donne des arguments pour préciser ce qu'on veut faire.
+		\\
+		\textbf{Exemples} :
+		\begin{itemize}
+		\item 
+			Si on veut détruire un fichier (commande \kbd{rm}), 
+			il faut donner un argument : le nom du fichier à détruire.
+		\item 
+			Si on veut renommer un fichier (commande \kbd{mv}), 
+			il faut donner 2 arguments : 
+			le nom du fichier à renommer et son nouveau nom.
+		\end{itemize}
+	\end{theorie}
+
+	%====================
+	\subsection{Changer le mot de passe sous Linux}
+	%=====================
+
+		\begin{Tutoriel}{Changez votre mot de passe !}
+			\vspace{-1em}
+			\begin{steps}
+			\item Tapez la commande \kbd{passwd} pour changer votre mot de passe.
+			\end{steps}
+			\begin{enumerate}				
+				\item 
+					Le système vous demande de taper le mot de passe actuel 
+					(vous ne le voyez pas quand vous le tapez, c'est normal !)
+				\item 
+					Ensuite, vous entrez le nouveau mot de passe.
+					Vous pouvez reprendre le même mot de passe 
+					que celui que vous avez choisi pour Windows.
+				\item 
+					Vous retapez une deuxième fois ce mot de passe pour le confirmer.
+			\end{enumerate}
+		\end{Tutoriel}
+				
+		\begin{faq}
+			\textbf{Quand je tape la commande rien ne se passe !}
+			\begin{itemize}				
+			\item 
+				Avez-vous bien appuyé sur la touche \texttt{ENTREE} ?
+			\item 
+				Une seule personne à la fois peut changer son mot de passe 
+				et vous êtes tous connectés à la même machine. 
+				Soyez patient !
+			\end{itemize}	
+			\textbf{Après avoir tout entré, il me met un message d'erreur !}
+			\begin{itemize}
+			\item \textbf{Lisez le message} ! Il est en général assez explicite.
+			\item Peut-être que le mot de passe est trop simple.
+			\item Peut-être n'avez-vous pas respecté les minuscules/majuscules.
+			\end{itemize}
+		\end{faq}
+				
+		\begin{Tutoriel}{Vérification} 
+			Pour vérifier que tout s'est bien passé, 
+			vous pouvez vous déconnecter et vous reconnecter.
+			Pour quitter proprement \verb_linux1_, 
+			la commande est \kbd{exit}.
+		\end{Tutoriel}
+
+	%====================
+	\subsection{Le dossier personnel et le dossier courant}
+	%=====================
+
+		\begin{theorie}{Fichiers et dossiers}
+			Comme sur la plupart des systèmes d'exploitation 
+			les données sur le disque dur 
+			sont organisées en fichiers et dossiers :
+			\begin{itemize}
+			\item 
+				Un \textbf{fichier} contient de l'information : 
+				un programme Java, un exécutable, un texte\dots{}
+				mais aussi des informations propres au système : 
+				données de configuration\dots
+			\item 
+				Un \textbf{dossier} contient des fichiers. 
+				Il sert à organiser/regrouper les nombreux fichiers du disque. 
+				On parle aussi de \textbf{répertoire}.
+			\item 
+				Un dossier peut aussi contenir des dossiers qui, à leur tour, 
+				peuvent contenir des fichiers et des dossiers qui\dots{}
+				On a ainsi une organisation \textbf{hiérarchique} des fichiers.
+			\end{itemize}
+		\end{theorie}
+
+		\begin{theorie}{Le répertoire personnel}
+			Sur Linux, chaque utilisateur dispose d'un « \textbf{dossier personnel} » 
+			(on dit aussi sa « \textbf{home} »). 
+			C'est dans ce dossier qu'il peut créer des fichiers (et des dossiers). 
+			Par convention, ce dossier porte le même nom que le login de l'utilisateur%
+			\footnote{%
+				À ne pas confondre avec le dossier qui s'appelle \samp{home}
+				et qui contient tous les répertoires personnels.
+			}.
+		\end{theorie}
+
+		\begin{theorie}{Le dossier courant}
+			À tout moment,
+			on se trouve dans un dossier précis, le \og{}\textbf{dossier courant}\fg{}. 
+			Au départ, c’est la \emph{home}.
+		\end{theorie}
+
+		Les commandes qu'on va entrer dépendront du répertoire courant.
+		Par exemple, si on crée un dossier sans préciser où,
+		il sera créé dans le dossier courant.
+
+	%====================
+	\subsection{Examiner un dossier et se déplacer}
+	%=====================
+
+		Comment voir le contenu du dossier courant ? 
+		Simplement avec la commande \kbd{ls} que vous avez déjà rencontrée.
+				
+		\begin{Tutoriel}{Expérimentation}  
+			\vspace{-1em}
+			\begin{steps}
+			\item Tapez la commande \kbd{ls}.
+				\begin{itemize}
+				\item Il vous montre le contenu de votre dossier personnel.
+				\item Vous constatez qu'il contient déjà des éléments.
+				\item La couleur permet de distinguer un dossier (en bleu) d'un fichier (en blanc).
+				\end{itemize}
+			\item Tapez à présent la commande \kbd{ls bin}.
+				\begin{itemize}
+				\item Cette fois, il vous montre le contenu du dossier \textit{bin} 
+					(ne vous inquiétez pas, la commande n'affiche rien parce que le dossier est vide).
+				\end{itemize}
+			\item À présent, tapez la commande \kbd{cd bin}.
+				\begin{itemize}
+				\item Cette commande demande de se \textit{\textbf{déplacer}} 
+					dans le dossier \textit{bin}.
+				\end{itemize}
+			\item Retapez la commande \kbd{ls} du début.
+				\begin{itemize}
+				\item Le résultat est différent. 
+					Est-ce que vous comprenez pourquoi ?
+				\end{itemize}
+			\end{steps}
+		\end{Tutoriel}
+		
+		\bigskip
+		\begin{theorie}{Quelques commandes}
+			\begin{itemize}
+			\item \kbd{ls} : liste le contenu d'un dossier.
+				\begin{itemize}
+					\item \kbd{ls}
+						(sans rien derrière) liste le contenu du dossier courant.
+					\item \kbd{ls \emph{nom-dossier}}
+						liste le contenu du dossier indiqué.
+				\end{itemize}
+			\item \kbd{cd} (\textit{change directory}) :
+				permet de changer de dossier courant.
+				\begin{itemize}
+					\item \kbd{cd \emph{nom-dossier}}
+						vous déplace dans le dossier indiqué (qui doit être dans le dossier courant).
+					\item \kbd{cd ..}
+						vous amène dans le dossier juste au-dessus de celui où vous êtes, 
+						c-à-d celui qui contient le dossier courant actuel.
+						On parle de \textit{répertoire parent}.
+					\item \kbd{cd}
+						(sans rien derrière) vous ramène toujours dans votre dossier personnel.
+				\end{itemize}
+			\item \kbd{pwd} (\textit{print working directory})  :
+				permet d'afficher le chemin du dossier courant.
+			\item \kbd{tree} :
+				affiche une vue hiérarchique du dossier courant et de ses sous-dossiers.
+			\end{itemize}
+		\end{theorie}
+
+		\begin{Exercice}{Assimiler les commandes de base}
+			Afin d'assimiler les commandes qu'on vient de voir,
+			on vous demande de :
+			\begin{enumerate}
+				\item Vous placer dans votre répertoire personnel ;
+				\item Vérifier que c'est bien là que vous êtes ;
+				\item En afficher le contenu ;
+				\item En afficher le contenu complet (sous-dossiers y compris) ;
+				\item Vous déplacer dans le fichier \samp{bin} ;
+				\item Vérifier que vous avez bien changé de dossier courant ;
+				\item Revenir dans le dossier courant.
+			\end{enumerate}
+		\end{Exercice}
+
+		\begin{Exercice}{cd vs ls}
+			Supposons que vous êtes dans votre répertoire personnel.
+			Quelle est la différence entre :
+			\begin{enumerate}
+				\item La commande \kbd{ls bin} ;
+				\item La commande \kbd{cd bin} suivie de \kbd{ls} ?
+			\end{enumerate}
+			Comment le mettre en évidence ?
+		\end{Exercice}			
+
+	%====================
+	\subsection{L'éditeur}
+	%=====================
+
+		Un \textbf{éditeur de texte} (ou, plus court, un \textbf{éditeur}) 
+		est un programme qui vous permet d'entrer, modifier
+		le contenu d'un fichier texte. 
+		Vous connaissez probablement \name{Notepad} sous \name{Windows}. 
+		Sur \name{Linux}, il en existe beaucoup. 
+		Celui que nous vous proposons dans un premier temps au laboratoire 
+		s'appelle \name{nano}. 
+		Il est assez facile pour débuter et faire des choses simples. 
+		Par la suite, vous pourrez choisir de rester sous \name{nano} 
+		ou d'utiliser \name{vim}.
+        
+		\begin{Tutoriel}{Permiers pas avec nano}
+			\vspace{-1em}
+			\begin{steps}
+			\item En préambule, tapez la commande \kbd{cd} pour revenir dans \textit{votre home}.
+			\item Tapez \kbd{nano test} pour commencer à éditer le fichier \samp{test} 
+				(comme il n'existe pas encore, il est créé).
+			\item Une fenêtre s'ouvre. 
+				Vous voyez qu'elle est scindée en 2 parties : 
+				la partie supérieure où vous écrivez votre texte 
+				et la partie inférieure où sont indiquées 
+				les différentes commandes (le \char`\^{} représente la touche \verb|Ctrl|)
+			\item Entrez quelques mots.
+			\item Appuyez sur la combinaison de touches \verb|Ctrl X|, 
+				confirmez que vous voulez sauver vos modifications et sortez.
+			\item Vous êtes maintenant revenu à l'invite de commande.
+			\item Tapez à présent la commande \kbd{ls}.
+				Vous pouvez constater que le fichier \verb_test_ est apparu dans la liste ;)
+			\end{steps}
+		\end{Tutoriel}
+
+		Pour aller plus loin dans l'apprentissage de cet éditeur,
+		consultez ce document :\\
+		{\tiny\url{http://fr.openclassrooms.com/informatique/cours/reprenez-le-controle-a-l-aide-de-linux/nano-l-editeur-de-texte-du-debutant}}.
+
+	%====================
+	\subsection{Quelques commandes courantes}
+	%=====================
+
+	\begin{Exercice}{Se rappeler les commandes vues}		
+		Vous avez déjà eu l'occasion d'utiliser quelques commandes. 
+		Voyons voir si vous les avez retenues.
+		La commande pour :
+		\begin{itemize}
+		\item voir le contenu d'un dossier est \textfield{ls} 
+		\item éditer le contenu d'un fichier est \textfield{nano} 
+		\item changer son mot de passe est \textfield{passwd} 
+		\item se déconnecter de linux1 est \textfield{exit} 
+		\item changer de dossier courant est \textfield{cd} 
+		\item voir le chemin du dossier courant est \textfield{pwd} 
+		\item voir une vue arborescente de tous le contenu d'un dossier est \textfield{tree} 
+		\end{itemize}
+	\end{Exercice}
+
+	Il est temps de voir quelques commandes supplémentaires.
+
+	\begin{theorie}{Commandes courantes}
+		\begin{itemize}
+		\item \kbd{cat nomDuFichier}
+			affiche à l'écran le contenu du fichier dont le nom est donné 
+			(ce n'est pas un éditeur, on voit le contenu et c'est tout) ;
+		\item \kbd{mkdir nomDuDossier}
+			crée un dossier (vide) nommé \samp{nomDuDossier} ;
+		\item \kbd{mv nomDuFichier nouveauNomDeFichier} 
+			renomme le fichier donné \samp{nomDuFichier} sous le nom \samp{nouveauNomDeFichier} ;
+		\item \kbd{mv nomDuFichier nomDuDossier}
+			déplace le fichier donné dans le dossier indiqué ;
+		\item \kbd{cp nomDuFichier nouveauNomDeFichier} 
+			crée une copie du fichier sous le nom \samp{nouveauNomDeFichier} ;
+		\item \kbd{cp nomDuFichier nomDuDossier} copie le fichier donné dans le dossier indiqué 
+			(il garde le même nom) ;
+		\item \kbd{rm nomDuFichier} détruit le fichier dont on donne le nom ;
+		\item \kbd{rmdir nomDuDossier} détruit le dossier dont on donne le nom 
+			(Attention, le dossier doit être vide !) ;
+		\item \kbd{touch nomDuFichier} crée un fichier vide de nom donné.
+		\end{itemize}
+	\end{theorie}
+
+	\begin{Exercice}{Assimiler ces commandes courantes}
+		Afin d'assimiler les commandes qu'on vient de voir :
+		\begin{enumerate}
+		\item Créez un dossier \verb_td1_ et déplacez-y le fichier \verb_test_ 
+			que vous avez déjà créé.
+		\item Prenez une copie de votre fichier \verb_test_ (appelez-la \verb_test2_).
+		\item Éditez ce fichier et ajoutez-y quelques mots.
+		\item Affichez le contenu des 2 fichiers pour vérifier qu'ils sont bien différents.
+		\item Créez, dans votre dossier \verb_td1_, un dossier \verb_monDossier_.
+		\item Déplacez-y votre fichier \verb_test2_.
+		\item Détruisez le dossier \verb_monDossier_ (ainsi que son contenu).
+		\end{enumerate}
+	\end{Exercice}
+
+	%====================
+	\subsection{La ligne de commande}
+	%=====================
+	
+		Nous avons déjà parlé de la ligne de commande 
+		mais il reste un élément dont nous n'avons pas parlé, les \textbf{options}.
+
+		\begin{theorie}{Les options}
+			Une option modifie le sens d'une commande ;
+			\begin{itemize}
+			\item elle commence par le signe \texttt{-} suivi d'une seule lettre ;
+			\item ou encore par le double tiret \texttt{-{}-} suivi d'un nom d'option.
+			\item elle est placée n'importe où après le nom de la commande.   
+			\end{itemize}
+		\end{theorie}		
+
+\newpage
+
+	\begin{Tutoriel}{Expérimenter les options}		
+		\vspace{-1em}
+		\begin{steps}
+		\item Tapez la commande \kbd{ls -l}. 
+			Vous constatez que le résultat obtenu est beaucoup plus verbeux 
+			que celui obtenu sans l'option.
+		\item Placez vous dans le dossier \samp{td1} et 
+			tapez la commande \kbd{cat -n test}. 
+			L'option demande de numéroter les lignes 
+		\item Essayez \kbd{cat --number test}. 
+			C'est la version \textit{longue} tout-à-fait équivalente à la précédente.
+		\end{steps}
+	\end{Tutoriel}
+
+	%==================================
+	\subsection{La racine du système de fichiers}
+	%==================================
+
+		Rappelez-vous que les fichiers sont organisés en hiérarchie :
+		un dossier contient d'autres dossiers qui lui-même\dots
+
+		\begin{theorie}{La racine du système de fichiers}
+			\begin{description}
+			\item[La racine]
+				La \textbf{racine} est le dossier principal, 
+				tout en haut de la hiérarchie des dossiers.
+
+				On a vu que chaque utilisateur dispose d'un dossier personnel. 
+				Où se trouve-il ? Dans un dossier appelé \samp{home}. 
+				Et où se trouve ce dossier \samp{home} ? 
+				Dans un dossier appelé \og{}\samp{/}\fg{} (la barre oblique). 
+				Et où se trouve ce dossier \og{}\samp{/}\fg{} ? Nulle part ;) 
+				C'est le dossier principal (la \textbf{racine}).
+			\end{description}
+		\end{theorie}
+
+	%==================================
+	\subsection{Chemin absolu et relatif}
+	%==================================
+
+		\exergue{Tout est relatif, et cela seul est absolu.}{Auguste Comte}
+		
+		\bigskip
+		Régulièrement, il faut indiquer un endroit du système de fichiers 
+		(par exemple pour y aller). 
+		Désigner simplement le nom du dossier ne suffit pas.  
+
+		\begin{theorie}{Chemin absolu et relatif}
+			\begin{description}
+			\item[Chemin]
+				Un \textbf{chemin} est une suite de dossiers à traverser 
+				pour arriver au dossier ou au fichier qui nous intéresse.
+				On les sépare par \og{}\samp{/}\fg{}.
+
+				Par exemple : \samp{home/g12345/td1/test}
+				indique que dans le dossier \samp{home}
+				il y a un dossier \samp{g12345}
+				qui contient un dossier \samp{td1} 
+				qui contient un fichier (ou un dossier) \samp{test}.
+			\item[Chemin absolu]
+				Un chemin est \textbf{absolu} 
+				s'il commence à partir de la \textbf{racine}.
+				Il commence donc par \og{}\samp{/}\fg{}.
+				Par exemple : \samp{/home/g12345/td1/test}
+			\item[Chemin absolu]
+				Dans le cas contraire il est \textbf{relatif}.
+				Il s'agit d'un chemin à suivre à partir du \textbf{dossier courant}.
+			\end{description}
+		\end{theorie}
+
+		\begin{Exercice}{pwd}
+			Entrez la commande \kbd{pwd} (que fait-elle encore ?). 
+			Comprenez-vous la notation qu'elle utilise pour la réponse ?
+			Est-ce une chemin absolu ou relatif ?
+		\end{Exercice}
+
+		Dans une commande, un nom de fichier (ou de dossier)
+		désigne toujours un fichier (ou un dossier) se trouvant
+		dans le dossier courant%
+		\footnote{%
+			Comprenez que le \emph{bash} ne cherche jamais un fichier
+			lorsqu'il n'est pas dans le dossier courant. 
+			Pourquoi ? D'une part parce que ce serait un gros travail pour lui 
+			(il y a des dizaines de milliers de fichiers dans un système de base). 
+			D'autre part, parce qu'il faudrait gérer le cas 
+			où il existe plusieurs fichiers qui portent le même nom; 
+			lequel choisirait-il ?
+		}.
+
+		Pour indiquer un fichier (ou un dossier) se trouvant ailleurs,
+		il faut donner son chemin (absolu ou relatif).
+
+		Par exemple : \kbd{ls /home/g12345}
+		permet de visualiser le contenu de la home de \samp{g12345}
+		(quel que soit l'endroit où on se trouve puisque c'est un chemin absolu).
+		
+		\begin{Exercice}{Utilisation d'un chemin}
+			Supposons que vous êtes dans votre home 
+			et que vous ne pouvez pas vous déplacer 
+			(la commande \samp{cd} est interdite !).
+			\begin{enumerate}
+			\item Afficher le contenu du fichier \samp{test}
+				(qui se trouve dans le dossier \samp{td1})
+				en utilisant un chemin \textbf{relatif}.
+			\item Faites la même chose 
+				en utilisant un chemin \textbf{absolu}.
+			\end{enumerate}
+		\end{Exercice}
+
+	%==================================
+	\subsection{Raccourcis pour des chemins}
+	%==================================
+
+		\begin{theorie}{Raccourcis}
+			Dans un chemin :
+			\begin{itemize}
+			\item \samp{\textasciitilde{}g12345} : désigne la home de l'utilisateur \samp{g12345} ;
+			\item \samp{\textasciitilde{}} : désigne la home de l'utilisateur qui entre la commande ;
+			\item \samp{..} : désigne le dossier parent du dossier courant ;
+			\item \samp{.} : désigne le dossier courant.
+			\end{itemize}
+		\end{theorie}
+
+		\begin{Exercice}{Se familiariser avec les raccourcis}
+			Placez-vous dans votre dossier personnel.
+			En utilisant les raccourcis 
+			afin de trouver la solution la plus courte possible :
+			\begin{enumerate}
+			\item Affichez le contenu de votre dossier personnel
+				en utilisant un chemin absolu.
+			\item Affichez le contenu de la home de votre professeur
+				en utilisant un chemin absolu.
+			\item Refaites la même chose mais en utilisant un chemin relatif.
+			\end{enumerate}
+		\end{Exercice}
+
+		\begin{Exercice}{Comprendre un chemin}
+			Que désigne le chemin suivant :
+			\samp{\textasciitilde{}mcd/../../home} ?
+		\end{Exercice}
+
+		\begin{Exercice}{Chemins absolus et relatifs}
+			Parmi tous les chemins suivants, quels sont ceux qui sont 
+			\textbf{relatifs} ?			
+			\begin{selectmany} 
+			\item \verb@~/../g12345/td2@
+			\item \verb@/home/g12345/../g54321/Hello.java@
+			\item \verb@./tds/td2@
+			\item \verb@tds/td2/Hello.java@
+			\item \verb@~g12345/tds/td2@
+			\end{selectmany} 
+		\end{Exercice}
+
+%===================
+\section{Conclusion}
+%====================
+
+	Voici les notions importantes que vous devez avoir assimilées à la fin de ce TD.
+	\begin{itemize}
+		\item Ce que font les commandes : 
+			\kbd{cd}, \kbd{ls}, \kbd{cp}, \kbd{mv},
+			\kbd{pwd}, \kbd{tree}, \kbd{exit}, 
+			\kbd{nano}, \kbd{rm}, \kbd{rmdir} et \kbd{touch}.
+		\item Savoir éditer un petit texte avec \samp{nano}.
+		\item Comprendre la notion de hiérarchie de dossiers 
+			et savoir ce qu'est la racine.
+		\item Comprendre la notion de chemin absolu et relatif.
+			Savoir les utiliser dans les commandes.
+		\item Connaitre la signification dans un chemin de : 
+			\og{}\samp{\textasciitilde}\fg{},
+			\og{}\samp{.}\fg{} et \og{}\samp{..}\fg{}.
+	\end{itemize}
+
+	\begin{Exercice}{Exercice récapitulatif}
+		Voici un petit exercice qui va vous permettre de vérifier
+		que toutes les notions importantes vues aujourd'hui
+		ont bien été assimilées.
+		\begin{enumerate}
+			\item Placez-vous dans votre dossier personnel.
+			\item Allez dans le dossier \samp{td1}.
+			\item Créez un fichier vide nommé \samp{cv}.
+			\item Éditez-le en y mettant votre nom.
+			\item Affichez son contenu.
+			\item Revenez dans votre dossier personnel simplement.
+			\item Afficher le contenu du fichier \samp{cv}
+				en utilisant un chemin relatif.
+			\item Faites de même avec un chemin absolu.
+			\item En restant dans votre dossier personnel :
+			\begin{enumerate}
+				\item Créez un dossier \samp{recap}.
+				\item Déplacez le fichier \samp{cv} dans ce dossier.
+				\item Faites une copie du fichier \samp{cv}
+					appelée \samp{cv2}
+			\end{enumerate}
+			\item Supprimez tout ce que vous avez créé pour cet exercice.
+		\end{enumerate}
+	\end{Exercice}
+
+	\bigskip
+	\begin{infotbox}{Félicitations !} 
+		Vous êtes arrivé au bout de ce premier TD.
+		Avant de quitter le laboratoire, n'oubliez pas de quitter proprement 
+		la connexion avec \samp{linux1} (\kbd{exit}) 
+		et d'éteindre l'ordinateur (ou au moins de vous déloguer).
+
+		À la semaine prochaine et soyez à l'heure !
+	\end{infotbox}
+
+	\begin{faq}
+	\textbf{J'ai quitté en fermant la fenêtre, ce n'est pas plus simple ?}
+	Oui ! Mais c'est impoli de quitter quelqu'un sans lui dire au revoir ! ;) 
+	Plus sérieusement, vous coupez brutalement la conversation avec \texttt{linux1} 
+	ce qui peut laisser trainer des processus actifs et vous empêcher de vous connecter la prochaine fois.
+							
+	\medskip
+	\textbf{Si jamais j'oublie mon mot de passe sous Linux. Je dois aussi aller voir les techniciens ?}			
+	Non ! Votre professeur de labo peut réinitialiser le mot de passe Linux à sa valeur initiale.
+	\end{faq}
+
+\end{document}

@@ -1,0 +1,45 @@
+%=====================================================================
+%						style-esi/licence.sty
+%
+%	Style LaTeX pour insérer les licences de documents
+%=====================================================================
+
+% --------------------------------------------------------------------
+%	\licence{licence}{url}{mail}{logo}
+% 		Affiche une licence en bas de page.
+%
+%	\ccbysa{mail}
+%		Configuré pour une licence CC-BY-SA
+% -------------------------------------------------------------
+
+% absolute = position absolue et pas relative à l'emplacement courant.
+\usepackage[absolute]{textpos}
+\usepackage{style-esi/links}
+
+\newcommand{\licence}[4]{
+	\begin{textblock*}{\paperwidth}[0,1](1cm,\paperheight-1cm)
+		\begin{minipage}{22mm}
+			\includegraphics[width=20mm]{style-esi/licence/#4}
+		\end{minipage}
+	\end{textblock*}
+	\begin{textblock*}{\paperwidth}[0,1](3.2cm,\paperheight-1cm)
+		\begin{minipage}{\paperwidth-4cm}
+			\tiny{\color{gray}
+				Ce document est distribué sous licence
+				\\ 
+				#1{} (\url{#2}).
+				\\
+				Les autorisations au-delà du champ de cette licence
+				peuvent être demandées à \texttt{#3}.
+			}
+		\end{minipage}
+	\end{textblock*}
+}
+
+\newcommand{\ccbysa}[1] {
+	\licence
+		{Creative Commons Paternité - Partage à l'Identique 2.0 Belgique}
+		{http://creativecommons.org/licenses/by-sa/2.0/be/}
+		{#1}
+		{cc-by-sa}
+}

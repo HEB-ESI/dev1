@@ -1,0 +1,53 @@
+%=====================================================================
+%	style-esi/nonslide.sty
+%
+%	Tout ce qui est commun à tout type de document sauf les slides.
+%=====================================================================
+
+%=====================================================================
+%   Style des titres : \part, \chapter, \section, \subsection
+%	Numéros en marge : tiré de "Latex Howtos" de Sébastien Combéfis 
+%=====================================================================
+
+\usepackage[explicit]{titlesec}
+
+\titleformat{\part}[display]
+	{\thispagestyle{empty}\centering\normalfont\Large\color{colmain}}% 
+	{\titlerule[3pt]\vspace{3pt}\titlerule[1pt]\vspace{3pt}{\partname}}%
+	{5pt}%
+	{\Huge\bfseries#1\\\rule{\textwidth}{2pt}}
+
+\titleformat{\chapter}[hang]{\sffamily\bfseries\color{colmain}}%
+	{%
+		\colbox[center,dark][colframe=white,coltext=white]%
+		{\chaptertitlename\\\\\Huge \thechapter}
+	}%
+	{2em}
+	{\begin{minipage}[b]{12cm}\normalfont\bfseries\huge{}#1\end{minipage}}
+
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+\titleformat{\section}[hang]{\normalfont\Large\sffamily\bfseries\color{colmain}}%
+	{%
+		\protect\makebox[0pt][r]{\colbox[center,dark][colframe=white,coltext=white,size=small]{\thesection}\hspace{7px}}	
+	}%
+	{-5px}
+	{#1}
+
+\titleformat{\subsection}[hang]{\normalfont\large\sffamily\bfseries\color{colmain}}%
+	{%
+		\protect\makebox[0pt][r]{\colbox[center,dark][colframe=white,coltext=white,size=small]{\thesubsection}\hspace{7px}}	
+	}%
+	{-5px}
+	{#1}
+
+% ===================================================
+%   Style des listes en tout genre
+% ===================================================
+% 	Mis ici et pas dans common car fait bugger
+%	le enumerate dans beamer !?
+\usepackage{enumitem}
+% On modifie le look pour 'description'
+\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
+% Pour les itemize : un triangle
+\setlist[itemize]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}

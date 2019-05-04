@@ -1,0 +1,138 @@
+%=====================================================================
+%						style-esi/syllabus.sty
+%
+%					Style pour un syllabus à l'ÉSI.
+%=====================================================================
+
+%=====================================================================
+%	Dépendences
+%=====================================================================
+
+% --- Ce qui est commun à tout style
+\usepackage{style-esi/common}
+% --- Ce qui est commun à tout document (hors slide)
+\usepackage{style-esi/nonslide}
+
+% --- Utilise le logo qui doit se trouver dans le même dossier.
+% --- style-esi/logo.png (ou une autre extension)
+
+%=====================================================================
+%	La géométrie des pages
+%=====================================================================
+
+\usepackage[
+	%showframe,
+	bindingoffset=0.5cm,
+	hscale=0.7, top=2.5cm, bottom=2.5cm, headsep=1cm
+%	vmargin=3cm,hmargin=3cm,
+%	headsep=1cm,footskip=2cm
+	]{geometry}
+	
+%=====================================================================
+%	1ère page du syllabus.
+%=====================================================================
+
+% --- On définit une notion de sous-titre
+% --- Pensé pour mettre : Bachelor en Informatique - UE
+\newcommand{\subtitle}[1]{\def \@subtitle {#1}}
+
+% --- Redéfinit la commande standard \maketitle
+\renewcommand{\maketitle}{
+
+	\thispagestyle{empty}
+	
+	%----------------------------------
+	% haut : logo + info école
+	%----------------------------------
+	\begin{minipage}[t]{3cm}
+	\includegraphics[width=3cm]{style-esi/logo}
+	\end{minipage}
+	\quad
+	\begin{minipage}[t]{8cm}
+		\vspace{-6em}
+		\sffamily
+		{\Large\bfseries%
+			\nomHE\\
+			\nomEntite\par
+		}
+		\adresseEntite\\
+		\contactEntite
+	\end{minipage}
+	
+	%----------------------------------
+	% centre : ue, cours, année
+	%----------------------------------
+	\vfill
+	\begin{center}
+		\sffamily
+		{\Huge \color{colmain} \scshape \bfseries \@title}
+		\\\bigskip
+		\Large \@date
+		\\\vspace{3em}
+		\LARGE \@subtitle
+	\end{center}
+	\vfill
+	
+	%----------------------------------
+	% bas : profs
+	%----------------------------------
+	\begin{center}
+		\Large \@author
+	\end{center}
+}
+
+%=====================================================================
+%	2ème page du syllabus.
+%	Des éléments à y placer, au choix.
+%=====================================================================
+
+% --- \pagedeux
+% --- Produit une 2ème page standard
+\newcommand{\pagedeux}{
+	\clearpage
+	\thispagestyle{empty}
+	\version
+}
+
+% --- \version
+% --- Des infos sur la version du document
+\newcommand{\version}{%
+	\noindent
+	Document produit avec \LaTeX.
+	\\Version du \today.
+}
+
+% ===================================================
+%   Entête et pied de page
+%	header : section en extérieur
+%	footer : n° page en extérieur
+% ===================================================
+
+\usepackage{fancyhdr}
+
+% Pour les pages plain (début de chapitre)
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE,RO]{\color{gray}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+% Pour les autres pages
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[LE,RO]{\color{gray}\textsl{\rightmark}}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{\color{gray}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{1pt}	% Evite warning trop petit
+
+% Les pages complètement vides n'ont pas de header/footer
+\usepackage{emptypage}
+
+%=====================================================================
+%	Un index
+%=====================================================================
+
+\usepackage{makeidx}
+\makeindex

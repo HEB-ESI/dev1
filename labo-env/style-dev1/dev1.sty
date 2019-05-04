@@ -1,0 +1,48 @@
+\newcommand{\seance}[2]{\def\unitnb{#1}\def\unitname{#2}}
+\date{2019 -- 2020}
+\siglecours{DEV1 -- ENVL}
+\libellecours{Laboratoires d'environnement}
+\libelledocument{TD \unitnb{} -- \unitname}
+\sigleprof{}
+
+\newcommand{\exergue}[2]{
+    \vspace{-1em}
+    \hfill
+    {\color{colmain}\og{}\textit{#1}\fg{} -- #2}
+    \vspace{-1em}
+}
+
+\usepackage{environ}
+\NewEnviron{theorie}[1]{%
+	\medskip
+	\begin{coltbox}{#1}
+		\BODY
+	\end{coltbox}
+	\bigskip
+}
+
+\newtcolorbox{postit}[1][]{%
+	enhanced, colback=yellow!10!white,  
+    boxrule=1pt, colframe=yellow!50!white, drop lifted shadow,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight},
+	title={\color{yellow!80!black}\Large\texttt{#1}},
+	boxed title style={
+        size=small, colback=white, 
+        rounded corners, colframe=yellow!50!white,
+        leftrule=0pt, bottomrule=1pt, rightrule=1pt, toprule=0pt
+    }
+}
+
+\NewEnviron{faq}{%
+	\medskip
+	\begin{postit}[FAQ]
+		\hspace{3em}\BODY
+	\end{postit}
+	\bigskip
+}
+
+\DeclareDocumentCommand \kbd { m }{%
+	\tcbox[on line, size=fbox, boxsep=0pt,%
+		top=2pt, bottom=2pt, left=2pt, right=2pt,%
+		colback=black!50!white,colframe=black!50!white]{\small\texttt{\color{white}#1}}%
+}%

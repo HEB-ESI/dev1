@@ -1,0 +1,220 @@
+% =====================================================================
+%						style-esi/question.sty
+% =====================================================================
+%	Définit la notion de question numérotée et différents types
+%	de réponses (qcm, réponse libre dans un cadre, texte à trou...)
+% =====================================================================
+
+% =====================================================================
+% 	Pour l'écriture de questions numérotées
+%
+%	\question{nb}	
+%		Crée une question à nb points
+%
+%	\titledquestion{nb}{titre}	
+%		Crée une question avec un titre et un nb points.
+%		Si vous ne voulez pas de points : {}
+%		(par ex pour donner des points à des sous-questions)
+%
+%	\marginpoints{nb}
+%		Affiche des points pour ce paragraphe.
+%		(par ex pour donner des points à des sous-questions)
+%
+%	obsolete:
+%	\begin{Question}{nb}{titre}
+%		Corps de la question
+%	\end{Question}
+%		Crée une question avec un titre
+% =====================================================================
+
+% Permet de calculer la place que va prendre un texte
+% ---------------------------------------------------
+
+\usepackage{calc}
+\newlength{\widthquestionnum}
+
+% Numérotation automatique des questions et des sous-questions
+% ------------------------------------------------------------
+\newcounter{questionnum}
+\setcounter{questionnum}{0}
+\newcounter{subquestionnum}
+\setcounter{subquestionnum}{0}
+
+
+% Affiche le numéro de la question
+% --------------------------------
+
+\DeclareDocumentCommand \printquestionnum {} {%
+	% Incrémenter le numéro de question
+	\refstepcounter{questionnum}									
+	% Calculer la largeur du numéro de question
+	\settowidth{\widthquestionnum}{\bfseries\large\,\thequestionnum}
+	\medskip
+	% Afficher le numéro de question avec les bons espaces
+	\hskip -8mm%
+	\hskip -\widthquestionnum%
+	\cadre{\color{colmain}\bfseries\large\,\thequestionnum\,}%
+	\hskip 4mm%
+	\setcounter{subquestionnum}{0}%
+}
+
+\DeclareDocumentCommand \printsubquestionnum {} {%
+	\refstepcounter{subquestionnum}%
+	\medskip
+	{\large{\color{colmain}{\bf\roman{subquestionnum}}}}~~%
+}
+
+% Affiche les points dans la marge
+% --------------------------------
+
+\DeclareDocumentCommand \marginpoints {m} {%
+	\marginpar{\hfill\textbf{/#1}}
+}
+
+% \question{points}
+% -----------------
+
+\DeclareDocumentCommand \question {m} {%
+	\printquestionnum%
+	\ifthenelse{\equal{#1}{}}%
+		{\marginpar{}}%
+		{\marginpoints{#1}}
+}
+
+% \titledquestion{points}{titre}
+% -----------------
+\DeclareDocumentCommand \titledquestion {m m} {%
+	\printquestionnum
+	{\sffamily\large\bfseries #2}
+	\hfill
+	 \ifthenelse{\equal{#1}{}}%
+		{}%
+		{(#1{} point\ifthenelse{#1 > 1}{s}{})}
+	\par	
+}
+
+\DeclareDocumentCommand \titledsubquestion {m} {%
+	\printsubquestionnum 
+	{\sffamily\large\bfseries{#1}}\par%
+}
+
+
+
+% OBSOLETE
+% \begin{Question}{points}{titre}
+% -------------------------------
+
+\NewDocumentEnvironment{Question} {m m} {
+	\printquestionnum
+	{\sffamily\large\bfseries #2}
+	\hfill
+	 \ifthenelse{\equal{#1}{}}%
+		{}%
+		{(#1{} point\ifthenelse{#1 > 1}{s}{})}
+	\par	
+}{}
+
+% ===================================================
+% 	Champ pour les réponses.
+%
+%	\textfield{texte}	
+%		Pour un texte à trou.
+%		Le texte est remplacé par un cadre pour la réponse
+%		dont la taille s'adapte à la largeur du texte.
+%
+%	\textbox{hauteur}	
+%		Crée une zone pour la réponse prenant tout la largeur
+%		et de hauteur donnée.
+%
+%	\begin{textboxwithtext}{hauteur}
+%		...
+%	\end{textboxwithtext}	
+%		Crée une zone pour la réponse prenant tout la largeur
+%		et de hauteur donnée mais avec du texte dedans.
+%		Utile quand on veut que l'étudiant complète une réponse
+%
+%	\begin{selectone}
+%		\item réponse 1
+%		...
+%	\end{selectone}
+%		Pour un choix avec une seule réponse possible
+%		Chaque élément est précédé d'un rond.
+%
+%	\begin{selectmany}
+%		\item réponse 1
+%		...
+%	\end{selectmany}
+%		Idem mais pour plusieurs réponses possibles.
+%		Chaque élément est précédé d'un carré.
+%
+%	\buttonradio et \checkbox
+%		Disponibles pour une mise en page différente
+%		des choix simples et multiples.
+% ===================================================
+
+\usepackage{fontawesome} 	% Pour les icones dans les QCM
+
+% pour \settowidth qui calcule la taille d'un texte
+\usepackage{calc}
+% contiendra la largeur du contenu du cartouche
+\newlength{\widthtf}		
+
+% \textfield
+\DeclareDocumentCommand \textfield {m} {%
+	\ifprintanswers%
+		\cadre[lightgray][colback=colverylight]{#1}%
+	\else%
+		\settowidth{\widthtf}{#1}%
+		\setlength{\widthtf}{\widthtf * \real{1.5}}%
+		\cadre[lightgray][colback=colverylight,coltext=colverylight]{Xg\hspace{\widthtf}gX}%
+	\fi%
+}
+
+% \textbox
+\DeclareDocumentCommand \textbox {m} {\par\colbox[full][height=#1,colback=colverylight]{}}
+
+\DeclareDocumentCommand \textboxoranswer {m m} {%
+	\par\colbox[full][height=#1,colback=colverylight]{\ifprintanswers{}#2\fi}%
+}
+
+% \textboxwithtext
+\DeclareDocumentEnvironment{textboxwithtext} {m} 
+	{\begin{colxbox}[colframe=lightgray,colback=colverylight,height=#1]}
+	{\end{colxbox}}
+
+% select one et select many
+% --------------------------
+
+\usepackage{enumitem}
+
+% Bouton radio
+\newcommand{\radiobutton}{\faCircleThin}
+\newlist{selectone}{itemize}{3}
+\setlist[selectone]{label=\radiobutton}
+
+% Checkbox
+\newcommand{\checkbox}{\faSquareO}
+\newlist{selectmany}{itemize}{3}
+\setlist[selectmany]{label=\checkbox}
+
+% Boutons radio avec bonne réponse affichée à la demande
+\newcommand{\onefalse}{\item\radiobutton\ }
+\newcommand{\onetrue}{\item\ifprintanswers{}\faCheckCircle\else\radiobutton\fi\ }
+\newlist{selectoneanswer}{itemize}{3}
+\setlist[selectoneanswer]{label=}
+
+% Checbox avec bonnes réponses affichées à la demande
+\newcommand{\manyfalse}{\item\checkbox\ }
+\newcommand{\manytrue}{\item\ifprintanswers{}\faCheckSquareO\else\checkbox\fi\ }
+\newlist{selectmanyanswer}{itemize}{3}
+\setlist[selectmanyanswer]{label=}
+
+% ===================================================
+%	Gestion des solutions
+% ===================================================
+
+\newif\ifprintanswers
+
+\usepackage{environ} % Permet de définir un environnement en 1 partie
+\NewEnviron{Answer}{\ifprintanswers\BODY\fi}
+\DeclareDocumentCommand \answer {m} {\ifprintanswers{}#1\fi}

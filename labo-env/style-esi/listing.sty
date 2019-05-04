@@ -1,0 +1,266 @@
+%=====================================================================
+%						style-esi/listing.sty
+%
+%	Style pour les listings de code.
+%
+%	Commandes de base
+%	- \code[options]{langage}{code}			: code inline
+%	- \listing[options]{langage}{fichier}	: fichier externe
+%	- \begin{Code}[options]{langage}		: environnement
+%		code
+%	  \end{Code}
+%
+%	Les options sont passées à listings.
+%	Par exemple: 
+%	- linerange=8-12
+%	- emph={id}
+%
+%	Mettre {} pour le langage s'il n'y en a pas.
+%	Par défaut les codes sont en \small\vtt.
+%	\vtt  fait appe à la police lmvtt, 
+%		police de look typewriter mais à largeur variable.
+%
+%	Si vous voulez changer la taille, vous pouvez le faire
+%	via un changement de taille à l'extérieur ou via l'option
+%	\basicstyle mais ne pas oublier de mettre la référence à la police
+%	variable. Ex: \basicstyle=\scriptsize\vtt.
+%
+%	On a également ajouté
+%	\begin{Code}[options]{langage}
+%		code
+%	\end{Code}
+%	et \console[options]{fichier}
+%	pour afficher des outputs de console.
+% 	Pour eux, pas de police à largeur variable.
+%=====================================================================
+
+%---------------------------------------------------------------------
+%	Dépendences :
+%---------------------------------------------------------------------
+
+% --- Pour les box avec background (surligne)
+\usepackage{style-esi/common}
+
+% --- Le package principal rendant le service
+\usepackage{listings}
+
+% --- Extension de listings pour décaler le texte à gauche si possible
+% --- Permet d'écrire
+% --- 		\begin{Code}{java}
+% ---			System.out.println("Hello, World!");
+% ---		\end{Code}
+% --- L'affichage aura un System.out... bien collé à gauche
+% --- Pour que ça fonctionne, il faut que l'intérieur ne soit pas plus
+% --- à gauche que l'environement.
+\usepackage{lstautogobble}
+
+% --- On définit un raccourci pour la police tt variable
+\newcommand{\vtt}{\fontfamily{lmvtt}}
+
+\newcommand{\listingabspath}{}
+\newcommand{\listingrelpath}{}
+
+%---------------------------------------------------------------------
+%	\code[options]{langage}{code}
+%	Insertion de code interne en inline.
+%	La version normale surligne le texte.
+%	La version * pas.
+%---------------------------------------------------------------------
+
+\DeclareDocumentCommand \code { s O{} m m }{%
+	\IfBooleanTF {#1}%
+		{\lstinline[style=lstesi,language={#3},#2]{\renewcommand{\listingpath}{https://github.com/HEB-ESI/dev1/tree/master/labo-java/labo-java-02-alternatives/code}
+		#4}}%
+		{\surligne{\lstinline[style=lstesi,language={#3},#2]{#4}}}%
+}
+
+%---------------------------------------------------------------------
+%	\texto{texte}
+%	Comme \code mais pour du texte (nom de fichier...)
+%	Equivalent à \verb
+%---------------------------------------------------------------------
+
+\DeclareDocumentCommand \texto { m }{\lstinline[style=lstesi]{#1}}
+
+%---------------------------------------------------------------------
+%	\listing[options]{langage}{fichier}
+%	Insertion de code externe
+%	Au niveau de la mise en page, on ajoute des n° de lignes
+%	ainsi que le nom du fichier en bas à droite.
+%	La version * n'affiche pas la source.
+%---------------------------------------------------------------------
+
+\DeclareDocumentCommand \listing { s O{} m m }{%
+	\lstinputlisting[style=lstesiext,language={#3},#2]{\listingrelpath#4}%
+	\IfBooleanF {#1}{%
+		\vskip -1.5em%
+		\hfill{\tiny{\color{colmain}\href{\listingabspath#4}{#4}}\noindent}%
+		\vskip -.5em\par%
+	}
+}
+
+%---------------------------------------------------------------------
+%	\begin{Code}[options]{langage}
+%		code
+%	\end{Code}
+%	Insertion de code interne en environnement
+%	Nécessite de mettre le frame en [fragile]
+%---------------------------------------------------------------------
+
+\lstnewenvironment{Code}[2][]%
+	{\lstset{style=lstesibg,language={#2},#1}}%
+	{}
+
+%---------------------------------------------------------------------
+%	\begin{Console}[options]
+%		affichage
+%	\end{Console}
+%	Affichage décoré d'un texte issu d'une console
+%---------------------------------------------------------------------
+
+\lstnewenvironment{Console}[1][]%
+	{\lstset{
+		style=console, 
+		,#1}}%
+	{}
+
+%---------------------------------------------------------------------
+%	\console[options]{fichier}
+%	Comme Console mais le texte est dans un fichier externe.
+%---------------------------------------------------------------------
+	
+\DeclareDocumentCommand \console { O{} m }{%
+	\lstinputlisting[style=console,#1]{#2}%
+}
+%=====================================================================
+%	Les couleurs à utiliser
+%=====================================================================
+
+%\usepackage{xcolor}	% --- Déjà chargé par common
+\definecolor{kwcolor}{RGB}{35, 106, 185}	% bleu
+\definecolor{kwcolor2}{RGB}{19, 56, 99}		% bleu foncé
+\definecolor{strcolor}{RGB}{85, 158, 84}	% vert
+
+%=====================================================================
+%	Look général pour les codes
+%=====================================================================
+
+% --- french : permet les accents
+\lstdefinestyle{french}{
+	% -- Accents OK avec listing externe
+	% -- mais difficile si inline
+	% -- OK avec le truc de literate
+	extendedchars=true,					% permet les caractères >128
+	inputencoding=utf8,					% fichiers en utf8
+	keepspaces,							% sans çà, manque espace après accent			
+	literate=%							% définit les car>128
+		% {car à remplacer}{remplacement}{taille remplacement}
+		{é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {É}{{\'E}}1 {È}{{\`E}}1%
+		{à}{\`a}1 {â}{{\^a}}1 {À}{{\`A}}1%
+		{ô}{{\^o}}1% 
+		{ù}{{\`u}}1%
+		{ç}{{\c{c}}}1 {Ç}{{\c{C}}}1%
+		{œ}{{\oe}}1	                
+}
+
+% --- wrap : permet les passages à la ligne jolis de longues phrases 
+\lstdefinestyle{wrap}{
+	breaklines=true,					% coupe les lignes trop longues
+	breakatwhitespace=true,				% Ne coupe qu'aux espace,
+	%prebreak={},
+	postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}}
+}
+
+% --- number : numérote les lignes 
+\lstdefinestyle{number}{
+	numbersep=6pt,				% 10 par défaut
+	numbers=left,
+	numberstyle=\tiny\color{gray}
+}
+
+% --- codecolor : définition couleurs code
+\lstdefinestyle{codecolor}{
+	keywordstyle=\color{kwcolor},		% -- Couleurs des différents éléments
+	commentstyle=\color{gray},
+	stringstyle=\color{strcolor},
+	emphstyle={\color{colalert}\bfseries}	% Style pour les \emph={}}
+}
+
+% --- base : configuration de base espaces (tab, espace, espace vertical...)
+\lstdefinestyle{base}{
+	lineskip=-1pt,   					% pour rapprocher les lignes
+	showstringspaces=false,				% Pas de |_| pour les espaces
+	tabsize=4,							% taille de tabulation
+	columns=fullflexible,				% moins large !?
+	autogobble=true,					% Enlève le plus d'espace possible à gauche 
+}
+
+% --- code interne (inline et environnement)
+\lstdefinestyle{lstesi}{
+	basicstyle=\small\vtt,% Police code
+	style=base,
+	style=french,
+	style=wrap,
+	style=codecolor
+}
+
+% --- code avec bg
+\lstdefinestyle{lstesibg}{
+	style=lstesi,						% On se base sur lstesi
+	backgroundcolor=\color{collight},	% couleur de fond,
+	xleftmargin=4pt,					% Ajoute un peu de marge horizontale
+	xrightmargin=4pt,
+	frameround=tttt, frame=trbl, framerule=0pt
+}
+
+% --- code externe (fichier inclus)
+\lstdefinestyle{lstesiext}{
+	style=lstesibg,
+	style=number
+}
+
+% --- console
+\lstdefinestyle{console}{
+	style=base,
+	style=french,
+	style=wrap,
+	backgroundcolor=\color{collight},	% couleur de fond,
+	xleftmargin=12pt,					% Ajoute un peu de marge horizontale
+	xrightmargin=4pt,
+	framesep=8pt,
+	frameround=tttt, frame=leftline, framerule=3pt, rulecolor=\color{colmain},
+	basicstyle=\small\tt
+}
+
+
+%=====================================================================
+%	HTML est assez basique
+%	On définit un langage html5 qui comprend aussi JS et CSS
+%	Enfin, on essaye...
+%=====================================================================
+
+% BUGS
+% J'ai du mal à faire fonctionner les 2 ensembles : alsolanguage
+
+\lstdefinelanguage{JavaScript}{
+	morekeywords={						% JavaScript
+		typeof, new, catch,throw, try, function, return, 
+		class, delete, of, catch, switch, var, if, in, 
+		while, do, else, case, break, let, for, default, static,
+		export, boolean, implements, import, this, length, 
+		true, false, undefned, null, constructor, get, set
+	},	
+	keywordstyle=\color{kwcolor}		% couleur des attributs
+}
+
+\lstdefinelanguage{html5}{
+	language=html,						% On se base sur HTML
+	tagstyle=\color{kwcolor}\bfseries,	% Tag affiché comme les keywords
+	alsoletter={=},	% = reconnu comme une lettre
+					% nécessaire pour les attributs
+	morekeywords={[2]{					% Tous les attributs
+		accept=, accept-charset=, accesskey=, action=, align=, alt=, async=, autocomplete=, autofocus=, autoplay=, autosave=, bgcolor=, border=, buffered=, challenge=, charset=, checked=, cite=, class=, code=, codebase=, color=, cols=, colspan=, content=, contenteditable=, contextmenu=, controls=, coords=, data=, datetime=, default=, defer=, dir=, dirname=, disabled=, download=, draggable=, dropzone=, enctype=, for=, form=, formaction=, headers=, height=, hidden=, high=, href=, hreflang=, http-equiv=, icon=, id=, ismap=, itemprop=, keytype=, kind=, label=, lang=, language=, list=, loop=, low=, manifest=, max=, maxlength=, media=, method=, min=, multiple=, name=, novalidate=, onclick=, onload=, onmouseover=, onkeydown=, open=, optimum=, pattern=, ping=, placeholder=, poster=, preload=, pubdate=, radiogroup=, readonly=, rel=, required=, reversed=, rows=, rowspan=, sandbox=, scope=, scoped=, seamless=, selected=, shape=, size=, sizes=, span=, spellcheck=, src=, srcdoc=, srclang=, start=, step=, style=, summary=, tabindex=, target=, title=, type=, usemap=, value=, width=, wrap=, required
+	}},	
+	keywordstyle={[2]{\color{kwcolor2}}},	% couleur des attributs
+}
+
