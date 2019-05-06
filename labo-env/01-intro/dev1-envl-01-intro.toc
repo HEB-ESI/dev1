@@ -7,13 +7,13 @@
 \contentsline {section}{\numberline {2}Une introduction \IeC {\`a} Linux}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Pr\IeC {\'e}sentation}{3}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Se connecter}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Le mode console}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Changer le mot de passe sous Linux}{5}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Le dossier personnel et le dossier courant}{6}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Examiner un dossier et se d\IeC {\'e}placer}{7}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}L'\IeC {\'e}diteur}{8}{subsection.2.7}
-\contentsline {subsection}{\numberline {2.8}Quelques commandes courantes}{8}{subsection.2.8}
-\contentsline {subsection}{\numberline {2.9}La ligne de commande}{9}{subsection.2.9}
+\contentsline {subsection}{\numberline {2.3}Le dossier personnel et le dossier courant}{5}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Visualiser le contenu d'un dossier/fichier}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}La structure d'une commande}{6}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Changer le mot de passe sous Linux}{7}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Se d\IeC {\'e}placer}{7}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}L'\IeC {\'e}diteur}{8}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Quelques commandes courantes}{9}{subsection.2.9}
 \contentsline {subsection}{\numberline {2.10}La racine du syst\IeC {\`e}me de fichiers}{10}{subsection.2.10}
 \contentsline {subsection}{\numberline {2.11}Chemin absolu et relatif}{10}{subsection.2.11}
 \contentsline {subsection}{\numberline {2.12}Raccourcis pour des chemins}{11}{subsection.2.12}

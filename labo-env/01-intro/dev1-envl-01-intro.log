@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  4 MAY 2019 23:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  6 MAY 2019 14:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1230,6 +1230,12 @@ Package: wrapfig 2003/01/31  v 3.6
 . 
 . Redefining command \kbd with sig. ' m ' on line 48.
 .................................................
+\c@Experience=\count316
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'Experience' with sig. 's m' on line 50.
+.................................................
 ) (/home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/dev1-envl-01-intro.aux)
 \openout1 = `dev1-envl-01-intro.aux'.
 
@@ -1262,16 +1268,16 @@ Package french.ldf Info: Setting StandardEnumerateEnv=true for
 LaTeX Info: Redefining \up on input line 12.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count316
+\scratchcounter=\count317
 \scratchdimen=\dimen286
 \scratchbox=\box70
-\nofMPsegments=\count317
-\nofMParguments=\count318
+\nofMPsegments=\count318
+\nofMParguments=\count319
 \everyMPshowfont=\toks41
-\MPscratchCnt=\count319
+\MPscratchCnt=\count320
 \MPscratchDim=\dimen287
-\MPnumerator=\count320
-\makeMPintoPDFobject=\count321
+\MPnumerator=\count321
+\makeMPintoPDFobject=\count322
 \everyMPtoPDFconversion=\toks42
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1292,7 +1298,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count322
+\c@section@level=\count323
 LaTeX Info: Redefining \Ref on input line 515.
 )
 LaTeX Info: Redefining \ref on input line 12.
@@ -1341,7 +1347,7 @@ LaTeX Info: Redefining \Ref on input line 12.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 12.
-\c@lstlisting=\count323
+\c@lstlisting=\count324
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -1405,62 +1411,76 @@ File: ufontawesometwo.fd 2016/05/22 Font definitions for U/fontawesometwo.
 <images/ubuntu.jpg, id=128, 1445.4pt x 813.0375pt>
 File: images/ubuntu.jpg Graphic file (type jpg)
 <use images/ubuntu.jpg>
-Package pdftex.def Info: images/ubuntu.jpg  used on input line 150.
+Package pdftex.def Info: images/ubuntu.jpg  used on input line 151.
 (pdftex.def)             Requested size: 147.69379pt x 83.07014pt.
 <images/console.jpg, id=129, 484.81125pt x 179.67125pt>
 File: images/console.jpg Graphic file (type jpg)
 <use images/console.jpg>
-Package pdftex.def Info: images/console.jpg  used on input line 185.
+Package pdftex.def Info: images/console.jpg  used on input line 186.
 (pdftex.def)             Requested size: 205.99084pt x 76.34143pt.
 
-Underfull \hbox (badness 1635) in paragraph at lines 185--185
+Underfull \hbox (badness 1635) in paragraph at lines 186--186
 \T1/lmr/m/n/10.95 sou-ris mais nous al-lons don-ner
  []
 
 [3 </home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/images/ubuntu.jpg> </home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/images/console.jpg>]
 
 LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
-(Font)              using `T1/lmr/bx/n' instead on input line 204.
+(Font)              using `T1/lmr/bx/n' instead on input line 208.
 
-[4]
-<images/commande.jpg, id=151, 511.9125pt x 126.4725pt>
+[4] (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 310.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 310.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+) [5]
+<images/commande.jpg, id=164, 511.9125pt x 126.4725pt>
 File: images/commande.jpg Graphic file (type jpg)
 <use images/commande.jpg>
-Package pdftex.def Info: images/commande.jpg  used on input line 317.
+Package pdftex.def Info: images/commande.jpg  used on input line 413.
 (pdftex.def)             Requested size: 272.06282pt x 67.21536pt.
- [5 </home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/images/commande.jpg>] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 579--579
+ [6 </home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/images/commande.jpg>] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 647--647
 [][] \T1/lmr/m/n/10.95 re-nomme le fi-chier donné
  []
 
-[8] [9] [10] [11] 
+[9] [10] [11]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 951.
+ [12] 
 AED: lastpage setting LastPage
-[12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 832.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 832.
+[13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 970.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 970.
  (/home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/dev1-envl-01-intro.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 832.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 832.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 970.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 970.
 Package rerunfilecheck Info: File `dev1-envl-01-intro.out' has not changed.
-(rerunfilecheck)             Checksum: 967C0EB3897FE16A126771C84DF872C6;1253.
+(rerunfilecheck)             Checksum: 8091D54E759AF21859CD692CBC9DA188;1264.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 34279 strings out of 492982
- 657033 string characters out of 6134895
- 778063 words of memory out of 5000000
- 37242 multiletter control sequences out of 15000+600000
- 620172 words of font info for 67 fonts, out of 8000000 for 9000
+ 34598 strings out of 492982
+ 660008 string characters out of 6134895
+ 772640 words of memory out of 5000000
+ 37537 multiletter control sequences out of 15000+600000
+ 627376 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,12n,106p,10453b,1194s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb>
-Output written on /home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/dev1-envl-01-intro.pdf (12 pages, 785879 bytes).
+ 80i,12n,106p,10453b,1783s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+Output written on /home/marco/ESI/Cours/dev1/dev1/labo-env/01-intro/dev1-envl-01-intro.pdf (13 pages, 800601 bytes).
 PDF statistics:
- 340 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 96 named destinations out of 1000 (max. 500000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 316 compressed objects within 4 object streams
+ 111 named destinations out of 1000 (max. 500000)
  188 words of extra memory for PDF output out of 10000 (max. 10000000)
 
