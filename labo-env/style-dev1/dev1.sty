@@ -7,9 +7,13 @@
 
 \newcommand{\exergue}[2]{
     \vspace{-1em}
-    \hfill
-    {\color{colmain}\og{}\textit{#1}\fg{} -- #2}
-    \vspace{-1em}
+	\hfill
+	\begin{minipage}{.9\textwidth}
+		\begin{flushright}
+			{\color{colmain}\og{}\textit{#1}\fg{} -- #2}
+		\end{flushright}
+	\end{minipage}
+	\vspace{-1em}
 }
 
 \usepackage{environ}
