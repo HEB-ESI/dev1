@@ -1,0 +1,320 @@
+\documentclass[a4paper,11pt]{style-esi/td}
+
+\usepackage{style-esi/licence}
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/exemple}
+\usepackage{style-esi/question}
+\usepackage{style-esi/tutoriel}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/images}
+\usepackage{style-dev1/dev1}
+\usepackage{longtable} % Pour des tables sur plusieurs pages
+
+\begin{document}
+
+\seance{3}{Java sur linux}
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+\bigskip
+\begin{abstract}
+    Lorsqu'on programme en \name{Java} sur \name{Linux},
+    on peut, comme sur \name{Windows},
+    utiliser un environnement de développement comme \name{Netbeans}.
+    Mais on peut aussi tout faire en mode console, 
+    c'est ce que nous allons voir ici.
+    Nous en profiterons pour apprendre de nouvelles notions liées à Linux.
+\end{abstract}
+
+\bigskip
+\tableofcontents
+
+\vfill
+\begin{infobox}
+    Dans votre répertoire \samp{home/dev1}, 
+    créez un répertoire \samp{td3}. 
+    Ce répertoire contiendra tous les fichiers que vous allez créer aujourd'hui. 
+\end{infobox}
+
+\newpage
+
+%============================================================
+\section{Quelques notions supplémentaires de Linux}
+%============================================================
+
+	Avant d'attaquer le c\oe{}ur du TD, 
+	à savoir le compilation et l'exécution de programmes Java,
+	voyons quelques éléments e Linux qui vous seront utiles.
+
+	%============================================================
+	\subsection{La ligne de commande}
+	%============================================================
+              
+		Commençons par quelques astuces 
+		pour vous faciliter la vie lorsque vous entrez des commandes.
+		
+		\subsubsection*{La complétion de commandes}
+		%======================================
+
+			Parfois, vous devez entrer une commande assez longue 
+			parce que les noms de fichiers sont longs et/ou nombreux.
+			Linux offre plusieurs facilités pour simplifier l'entrée de longues commandes.  
+
+			Lorsque vous appuyez sur la touche \samp{TAB}, 
+			le shell tente de compléter le début de commande 
+			que vous avez déjà tapé. 
+			Si plusieurs possibilités existent, 
+			elles sont affichées si vous appuyez 2x sur \samp{TAB}.  
+
+			\begin{Tutoriel}{La complétion de la commande} 
+				Supposons que vous ne vous rappeliez plus très bien 
+				de la commande qui permet de modifier le mot de passe.
+				Vous vous rappelez juste qu'elle commence par \kbd{pas}.  
+				\begin{steps}
+				\item 
+					Tapez \kbd{pas} puis appuyez 2x sur la touche \samp{TAB}.
+				\item 
+					Entrez un \kbd{s} puis appuyez à nouveau sur \samp{TAB}.
+				\end{steps}
+			\end{Tutoriel}		
+			
+			\medskip
+			La touche de tabulation permet également de compléter un nom de fichier.
+
+			\begin{Exercice}{La complétion des noms de fichiers}  
+				\vspace{-1em}          
+				\begin{enumerate}
+				\item 
+					Dans votre dossier \samp{td3}, 
+					copiez le fichier \par
+					\samp{monfichieraunomtellementlongquilmeparaitpeuprobabledeletaper2xsanserreur} 
+					qui se trouve dans le dossier \samp{/eCours/java/td/td3}.
+				\item 
+					Affichez le contenu de ce fichier en évitant de retaper son nom.
+				\end{enumerate}
+			\end{Exercice}	
+			
+			% \begin{Exercice}{Joker} 
+			% 	Le point 20 du guide visuel parle des jokers; c'est le moment de les utiliser :) 
+			% 	\par
+			% 	\begin{enumerate}
+			% 		\item Copiez dans votre répertoire td3 créé ci-dessus tous les fichiers du répertoire \verb@/eCours/java/td/td3@ dont l'extension est \verb@.java@ 
+			% 		(c'est possible sans passer par un \,\verb|cd /eCours/java/td/td3|\,)
+					
+			%     			\item Copiez dans votre répertoire td3 tous les fichiers du répertoire  \verb@/eCours@\ \verb@/java/td/td3@ dont la deuxième lettre est un '\verb@x@'.
+	
+			%       		\item  Listez le contenu des répertoires des étudiants (pour rappel, les répertoires des étudiants sont ceux qui se trouvent dans \verb@/home@ et qui 						commencent par un '\verb@g@').
+			%  			\item Listez le contenu des répertoires des professeurs (pour rappel, les répertoires des professeurs sont ceux qui se trouvent dans \verb@/home@ et qui 						sont composés de 3 lettres).
+			%   		\end{enumerate}
+			% \end{Exercice}
+								
+		\subsubsection*{Revenir à une commande précédente} 
+		%==============================================
+
+			Il arrive souvent qu'il faille entrer une commande 
+			qu'on a déjà écrite il y a peu 
+			(ou en tout cas fort proche de ce qu'on a déjà écrit). 
+			C'est là que les flèches viennent à notre secours.  
+			
+			La flèche vers le haut permet de revenir aux commandes précédentes 
+			et de les modifier. À utiliser sans modération\dots  
+
+		\subsubsection*{Historique des commandes} 
+		%==============================================
+		
+			\begin{itemize}
+			\item \kbd{history} : 
+				affiche la liste des dernières commandes entrées.
+				Chaque commande est numérotée.
+			\item \kbd{!numéro} : 
+				ré-execute la commande de numéro donné.
+			\item \kbd{!cmd} : 
+				ré-execute la dernière commande qui commençait par \samp{cmd}.
+			\end{itemize}
+
+	%============================================================
+	\subsection{Les fichiers cachés}
+	%============================================================
+
+		\begin{theorie}{Les fichiers cachés}
+			Un \textbf{fichier caché}
+			est un fichier
+			dont le nom commence par \og{}\samp{.}\fg{} (un point).
+			\\
+			Idem pour un dossier.
+		\end{theorie}
+
+		Par défaut, 
+		les fichiers cachés ne sont pas montrés par la commande \kbd{ls}.
+		Pour les voir, utiliser l'option \texttt{a} : \kbd{ls -a}.
+		C'est surtout utilisé pour des fichiers de configuration.
+
+		\begin{Exercice}{Les fichiers cachés de la home}
+			Regardez s'il existe des fichiers cachés
+			dans votre répertoire personnel.
+		\end{Exercice}
+
+%=============================
+\section{Compiler et exécuter du Java}
+%==============================
+
+    \begin{theorie}{Java sans package}
+        Si le programme Java n'utilise pas de package :
+        \begin{itemize}
+            \item \kbd{javac MaClasse.java} compile le programme Java du fichier donné
+            \item \kbd{java MaClasse} : exécute le programme Java se trouvant dans la classe donnée.
+        \end{itemize}
+    \end{theorie}
+
+	\begin{Tutoriel}{Compiler / exécuter un programme} 
+		Commençons par un programme correct et tentons de l'exécuter.  
+      
+        Le fichier \samp{/eCours/java/td/td3/Ex.java} 
+        contient un petit programme Java tout simple qui affiche un message de bienvenue. 
+        
+		\begin{steps}	
+        \item 
+            Si ce n'est pas le cas, placez-vous dans le dossier \samp{td3}.
+        \item 
+            Copiez le fichier indiqué dans cd dossier :
+            \kbd{cp /eCours/java/td/td3/Ex.java .}
+        \item 
+            Lisez-le et voyez si vous devinez ce qu'il fait : \kbd{cat Ex.java}
+        \item 
+            Compilez-le : \kbd{java Ex.java}
+        \item 
+            Que fait cette phase, à quoi sert-elle ?
+            Affichez le contenu du dossier pour le vérifier.
+		\item Exécutez le programme : \kbd{java Ex}
+		\end{steps}			
+	\end{Tutoriel}
+
+    Lorsqu'on compile, il faut mettre le \samp{.java} 
+    mais lorsqu'on exécute, 
+    il ne faut pas mettre le \samp{.class}.
+
+    \begin{alerttbox}{Retenez !} 
+        On \textbf{compile un fichier} mais on \textbf{exécute une classe}.
+    \end{alerttbox}
+
+\newpage
+%=====================================
+\section{L'éditeur nano}
+%======================================
+
+	Un éditeur de texte, même simple comme nano,
+	peut apporter quelques facilités dans l'écriture de programmes.
+
+	\subsection{Coloration syntaxique}
+	%=================================
+
+		La coloration syntaxique signifie 
+		utiliser des couleurs pour mettre en évidence certaines parties d'un code :
+		mots clés, constantes\dots{}
+	
+		Pour utiliser cette facilité, 
+		il faut configurer \name{nano}. 
+		Cette configuration se fait dans le fichier \samp{\textasciitilde{}/.nanorc}.
+
+		\begin{Tutoriel}{Introduire la coloration sytaxique} 
+			\vspace{-1em}
+			\begin{steps}
+			\item 
+				Tapez \kbd{nano \textasciitilde/.nanorc} 
+				pour éditer le fichier de configuration de \emph{nano}.
+			\item 
+				Ajoutez-y la ligne : \samp{include "/usr/share/nano/java.nanorc"}
+			\item 
+				Quittez l'éditeur.
+			\item 
+				Ouvrez le fichier \samp{Ex.java};
+				il devrait être coloré.
+			\end{steps}
+		\end{Tutoriel}
+				
+	\subsection{Numérotation des lignes}
+	%=================================
+				
+		Nano peut également indiquer le numéro de la ligne sur laquelle se trouve le curseur, 
+		ce qui sera pratique pour corriger vos erreurs. 
+		Pour cela, il existe deux méthodes.
+
+		\begin{itemize} 
+		\item \textbf{Méthode 1} : 
+			Lancer nano avec l'option \samp{-c} : \kbd{nano -c monFichier}.
+		\item \textbf{Méthode 2} : 
+			Dans l'éditeur, appuyez sur \samp{CTRL-c}.
+		\end{itemize}
+			
+	\subsection{Indentation}
+	%=================================
+				 
+		Pour qu'un programme soit lisible, 
+		il doit être \textit{indenté}. 
+		Ce qui serait pratique lorsqu'on code ce serait qu'un retour à la ligne 
+		positionne automatiquement le curseur de façon à être aligné avec la ligne précédente. 
+		Pour que nano fasse ça pour nous, 
+		il suffit d'ajouter	ceci à son fichier de configuration : \samp{set autoindent}.
+			
+	\subsection{Autres configurations} 
+	%=================================
+		
+		Si vous désirez connaitre d'autres possibilités de configuration de nano, 
+		vous pouvez lire le manuel : \kbd{man nanorc}.
+
+		Pour une \textit{quick ref} en ligne, consultez (par exemple) : \\
+		\url{www.codexpedia.com/text-editor/nano-text-editor-command-cheatsheet/}
+		.
+
+\newpage
+%=====================================
+\section{Développer un programme Java}  
+%=====================================
+  
+	Vous allez à présent écrire votre premier programme de bout en bout sur linux1. 
+	
+	\begin{Exercice}{Un programme Java}
+		Écrivez un programme qui :
+		\begin{itemize}
+		\item Affiche votre nom ;
+		\item Affiche la valeur de $7^2$ ;
+		\item Affiche la valeur de $2^7$ ;
+		\item Demande une entier à l'utilisateur et affiche s'il est pair. 
+		\end{itemize}
+	\end{Exercice}
+
+	\begin{alerttbox}{Conseils}
+		Procédez par étape et vérifiez correctement votre programme.
+		Ce n'est pas parce qu'il compile qu'il est correct.
+		Et ce n'est pas parce qu'il affiche quelque chose que c'est la bonne réponse.
+	\end{alerttbox}
+
+%=================================
+\section{Transfert de fichiers}  
+%=================================
+
+	Vous n'avez peut-être pas fini. Pour pouvoir continuer à la maison sans tout recommencer, 
+    il serait bon de pouvoir récupérer ce que vous avez déjà fait sur linux1.
+	Voici une façon de le faire.			
+				
+	\begin{Tutoriel}{Transférer des fichiers}
+	\begin{steps}		
+		\item 
+			Ouvrez l'explorateur de fichier Windows (par exemple en cliquant sur l'icône "My Computer").
+		\item 
+			Dans le champ d'adresse, tapez l'adresse \samp{ftp://linux1}.
+		\item 
+			Une boite de dialogue vous demande votre login et mot de passe (sur \textit{linux1}).
+		\item 
+			Vous voyez apparaitre votre dossier personnel sur \textit{linux1}. 
+		\item 
+			Vous pouvez y prendre/déposer des fichiers comme vous le feriez pour un dossier Windows. 
+			Vous pouvez par exemple les mettre sur une \textbf{clé USB},
+			sur le cloud ou vous les envoyer par mail.
+	\end{steps}
+	\end{Tutoriel}			
+							
+\end{document}
+			
