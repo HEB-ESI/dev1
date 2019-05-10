@@ -156,50 +156,6 @@
 			dans votre répertoire personnel.
 		\end{Exercice}
 
-%=============================
-\section{Compiler et exécuter du Java}
-%==============================
-
-    \begin{theorie}{Java sans package}
-        Si le programme Java n'utilise pas de package :
-        \begin{itemize}
-            \item \kbd{javac MaClasse.java} compile le programme Java du fichier donné
-            \item \kbd{java MaClasse} : exécute le programme Java se trouvant dans la classe donnée.
-        \end{itemize}
-    \end{theorie}
-
-	\begin{Tutoriel}{Compiler / exécuter un programme} 
-		Commençons par un programme correct et tentons de l'exécuter.  
-      
-        Le fichier \samp{/eCours/java/td/td3/Ex.java} 
-        contient un petit programme Java tout simple qui affiche un message de bienvenue. 
-        
-		\begin{steps}	
-        \item 
-            Si ce n'est pas le cas, placez-vous dans le dossier \samp{td3}.
-        \item 
-            Copiez le fichier indiqué dans cd dossier :
-            \kbd{cp /eCours/java/td/td3/Ex.java .}
-        \item 
-            Lisez-le et voyez si vous devinez ce qu'il fait : \kbd{cat Ex.java}
-        \item 
-            Compilez-le : \kbd{java Ex.java}
-        \item 
-            Que fait cette phase, à quoi sert-elle ?
-            Affichez le contenu du dossier pour le vérifier.
-		\item Exécutez le programme : \kbd{java Ex}
-		\end{steps}			
-	\end{Tutoriel}
-
-    Lorsqu'on compile, il faut mettre le \samp{.java} 
-    mais lorsqu'on exécute, 
-    il ne faut pas mettre le \samp{.class}.
-
-    \begin{alerttbox}{Retenez !} 
-        On \textbf{compile un fichier} mais on \textbf{exécute une classe}.
-    \end{alerttbox}
-
-\newpage
 %=====================================
 \section{L'éditeur nano}
 %======================================
@@ -268,11 +224,49 @@
 		\url{www.codexpedia.com/text-editor/nano-text-editor-command-cheatsheet/}
 		.
 
-\newpage
-%=====================================
-\section{Développer un programme Java}  
-%=====================================
-  
+%=============================
+\section{Compiler et exécuter du Java}
+%==============================
+
+    \begin{theorie}{Java sans package}
+        Si le programme Java n'utilise pas de package :
+        \begin{itemize}
+            \item \kbd{javac MaClasse.java} compile le programme Java du fichier donné
+            \item \kbd{java MaClasse} : exécute le programme Java se trouvant dans la classe donnée.
+        \end{itemize}
+    \end{theorie}
+
+	\begin{Tutoriel}{Compiler / exécuter un programme} 
+		Commençons par un programme correct et tentons de l'exécuter.  
+      
+        Le fichier \samp{/eCours/java/td/td3/Ex.java} 
+        contient un petit programme Java tout simple qui affiche un message de bienvenue. 
+        
+		\begin{steps}	
+        \item 
+            Si ce n'est pas le cas, placez-vous dans le dossier \samp{td3}.
+        \item 
+            Copiez le fichier indiqué dans cd dossier :
+            \kbd{cp /eCours/java/td/td3/Ex.java .}
+        \item 
+            Lisez-le et voyez si vous devinez ce qu'il fait : \kbd{cat Ex.java}
+        \item 
+            Compilez-le : \kbd{java Ex.java}
+        \item 
+            Que fait cette phase, à quoi sert-elle ?
+            Affichez le contenu du dossier pour le vérifier.
+		\item Exécutez le programme : \kbd{java Ex}
+		\end{steps}			
+	\end{Tutoriel}
+
+    Lorsqu'on compile, il faut mettre le \samp{.java} 
+    mais lorsqu'on exécute, 
+    il ne faut pas mettre le \samp{.class}.
+
+    \begin{alerttbox}{Retenez !} 
+        On \textbf{compile un fichier} mais on \textbf{exécute une classe}.
+    \end{alerttbox}
+
 	Vous allez à présent écrire votre premier programme de bout en bout sur linux1. 
 	
 	\begin{Exercice}{Un programme Java}
@@ -290,6 +284,23 @@
 		Ce n'est pas parce qu'il compile qu'il est correct.
 		Et ce n'est pas parce qu'il affiche quelque chose que c'est la bonne réponse.
 	\end{alerttbox}
+
+	\begin{Exercice}{Comprendre les erreurs (I)}
+		Supposons que vous faites une erreur dans votre programme.
+		Par exemple en écrivant \code{java}{Public} 
+		au lieu de \code{java}{public}.
+
+		À quelle étape le problème va-t'il apparaitre ?
+		Sous quelle forme ? Testez !
+	\end{Exercice}
+
+	\begin{Exercice}{Comprendre les erreurs (II)}
+		Supposons que vous demandez un calcul impossible dans votre programme.
+		Par exemple \code{java}{1/0}.
+
+		À quelle étape le problème va-t'il apparaitre ?
+		Sous quelle forme ? Testez !
+	\end{Exercice}
 
 %=================================
 \section{Transfert de fichiers}  
@@ -315,6 +326,117 @@
 			sur le cloud ou vous les envoyer par mail.
 	\end{steps}
 	\end{Tutoriel}			
-							
+
+%===================
+\section{Conclusion}
+%====================
+
+	\subsection{Ce qu'il faut connaitre}
+	%===================================
+
+		\begin{theorie}{Notions importantes de ce TD}
+			Voici les notions importantes que vous devez avoir assimilées à la fin de ce TD.
+			\begin{itemize}
+			\item 
+				La notion de fichier caché et comment les voir.
+			\item 
+				Savoir utiliser \samp{nano} pour éditer un petit programme Java.
+			\item 
+				Savoir compiler et exécuter un programme Java 
+				qui n'utilise pas de package.
+			\end{itemize}
+		\end{theorie}
+
+	\subsection{Pour aller plus loin : l'éditeur \texttt{vi}}
+	%==================================
+
+		Si vous avez fini,
+		vous serez peut-être curieux d'apprendre à utiliser \texttt{vi}
+		plutôt que \texttt{nano}.
+
+		Quels sont les avantages de \texttt{vi} ?
+		\begin{itemize}
+		\item 
+			Certaines manipulations du fichiers sont plus simples : 
+			copier, supprimer, déplacer des lignes par exemple.
+		\item 
+			Il est facile d'indenter proprement un programme Java qui ne l'est pas.
+		\end{itemize}
+
+		\texttt{vi} est plus puissant que \texttt{nano}
+		mais il est moins intuitif quand on débute.
+		Voici les bases à comprendre.
+
+		\subsubsection*{Démarrer}
+		%========================
+
+			Pour éditer un fichier texte existant
+			ou créer un nouveau fichier, 
+			il suffit de taper : \kbd{vi monFichier}.
+
+			Les 3 modes de fonctionnement sous vi(m) :
+			\begin{center}
+			\includegraphics[width=.7\textwidth]{image/vi.pdf}
+			\end{center}
+
+		\subsubsection*{Le mode commande}
+		%===============================
+
+			C'est le mode dans lequel vous vous trouvez quand vous ouvrez \samp{vi}. 
+			Dans ce mode, les touches sur lesquelles vous appuyez
+			ne sont pas insérées dans le texte (comme dans nano)
+			mais sont considérées comme des commandes.
+			C'est le mode qui permet de \textbf{manipuler} le texte.
+
+			Exemples de commandes :
+			\begin{itemize}
+			\item \kbd{i} : passer en mode édition (cfr. infra);
+			\item \kbd{yy} : copier la ligne sous le curseur (comme un \samp{CTRL-C} sous Windows) ; 
+			\item \kbd{3yy}	: copier 3 lignes ;
+			\item \kbd{dd} : couper la ligne sous le curseur (\kbd{5yy} pour en couper 5) ;
+			\item \kbd{dw} : couper le mot sur lequel se trouve le curseur ;
+			\item \kbd{p} : coller (ce qui a été précédemment copié ou coupé)
+				sous la ligne qui suit le curseur ;
+			\item \kbd{u} : annuler la dernière modification. 
+				Vous pouvez appuyer plusieurs fois pour annuler les dernières modifications.	
+			\end{itemize}
+
+			\subsubsection*{Le mode édition}
+			%===============================
+		
+				C'est le mode dans lequel ce qu'on tape est ajouté au texte,
+				comme dans nano.
+				On y accède par la touche :
+				\begin{itemize}
+				\item \kbd{i} (insert) : on insère à l'endroit du curseur ;
+				\item \kbd{a} (append) : on insère après le curseur ;
+				\item \kbd{o} : on insère dans une nouvelle ligne créée sous le curseur ;
+				\end{itemize}
+
+				Dans tous les cas, l'indicateur \texttt{INSERT} 
+				apparait alors en bas de l'écran.
+
+			\subsubsection*{Le mode exécution}
+			%===============================
+			
+				On y accède à partir du mode commande en tapant \kbd{:}.
+				Ce mode permet d'entrer d'autres types de commandes,
+				plus riches que celles du mode commande. 
+				Voici les plus utilisées:
+				\begin{itemize}
+				\item \kbd{:h} pour accéder à l'aide (\kbd{q} pour quitter l'aide) ;
+				\item \kbd{:w} pour sauver le fichier ;
+				\item \kbd{:w monFichier} pour enregistrer sous \samp{monFichier},
+				\item \kbd{:q} pour quitter l'éditeur (sans sauver) ;
+				\item \kbd{:x} pour enregistrer et quitter ;
+				\item \kbd{:q!} pour quitter sans enregistrer les modifications ;
+				\item \kbd{:set nu} pour afficher les numéro de ligne 
+					(\kbd{:set nonu} pour les retirer) ;
+				\item \kbd{:numéroDeLigne} pour aller directement à cette ligne ;
+				\item \kbd{:\%s/old/new/g} 
+					pour remplacer toutes les occurrences de la chaine de caractères 
+					\samp{old} par la chaine de caractère \samp{new}.
+				\end{itemize}
+		
 \end{document}
 			
