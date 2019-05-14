@@ -303,6 +303,83 @@
 	\end{Exercice}
 
 %=================================
+\section{Les variables d'environnement}  
+%=================================
+
+	\subsection{Introduction}
+	%========================
+
+		\begin{theorie}{Variable d'environnement}
+			Une \textbf{variable d'environnement} 
+			est une variable associée à votre shell 
+			contenant un texte qui est accessible 
+			par toutes les applications que vous lancez. 
+			Généralement, elle permet de configurer certaines applications, 
+			d'en modifier le comportement.
+		\end{theorie}	
+
+		\begin{theorie}{Manipuler une variable d'environnement}
+			Si \samp{VARENV} est une variable d'environnement :
+			\begin{itemize}
+			\item \kbd{export VARENV=valeur} crée une nouvelle variable à la valeur donnée.
+			\item \kbd{VARENV=valeur} modifie la valeur d'une variable existante.
+			\item \kbd{\$VARENV} est remplacé par la valeur de la variable.
+			\end{itemize}
+		\end{theorie}
+
+		\begin{Experience}{Manipuler une variable}
+			\begin{steps}
+			\item Entrez \kbd{VAR=12} pour créer la variable.
+			\item Entrez \kbd{echo "Bonjour !"}.
+				\\Cette commande affiche ce qu'on lui donne en paramètre.
+			\item Entrez \kbd{echo \$VAR} pour afficher le contenu de la variable.
+			\end{steps}
+		\end{Experience}
+
+	\subsection{Le prompt}
+	%=====================
+
+		\begin{theorie}{Prompt}
+			Le \textbf{prompt} (ou \textit{invite} en français) 
+			est le texte qui apparait à gauche
+			de ce que vous tapez dans votre shell. 
+			Il est déterminé par la variable d'environnement \samp{PS1}.
+		\end{theorie}
+			
+		\begin{Experience}{Le prompt} 
+			Affichez la valeur de votre prompt. 
+			Vous remarquerez qu'il contient des codes qui seront 
+			remplacés par certaines valeurs. 
+			Par exemple, \verb_\w_ indique le dossier courant.
+		\end{Experience}
+			
+		\begin{Exercice}{Modifier le prompt} 
+			Modifiez la valeur de votre prompt.
+			Par exemple, modifiez l'invite en "Bonjour ! ".
+		\end{Exercice}	
+
+		\begin{Tutoriel}{Durée de vie de la variable} 
+			\vspace{-1em}
+			\begin{steps}
+			\item Déconnectez-vous de linux1, puis reconnectez-vous.	
+			\end{steps}
+			Surprise, votre prompt a repris sa valeur d'origine ! 
+			Pour rendre une modification permanente, 
+			il faut ajouter la commande à votre fichier \verb@.bashrc@.
+			C'est un fichier caché qui est exécuté 
+			par votre shell lors de votre connexion.
+		\end{Tutoriel}
+			
+		\begin{Exercice}{Explorer les codes du prompt}
+			Les possibilités de configuration du prompt sont nombreuses : 
+			afficher l'heure, le nom de la machine, votre login,
+			utiliser des couleurs\dots{}
+			Examinez la documentation pour configurer le prompt comme il 
+			vous plait (\verb@man bash@, section \verb@PROMPTING@).
+			Rendez la modification permanente.
+		\end{Exercice}	
+
+%=================================
 \section{Transfert de fichiers}  
 %=================================
 
@@ -344,6 +421,8 @@
 			\item 
 				Savoir compiler et exécuter un programme Java 
 				qui n'utilise pas de package.
+			\item 
+				Savoir créer/consulter/modifier une variable d'environnement.
 			\end{itemize}
 		\end{theorie}
 
