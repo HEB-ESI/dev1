@@ -33,9 +33,9 @@
 
 \vfill
 \begin{infobox}
-    Dans votre répertoire \samp{home/dev1}, 
+    Dans votre répertoire \samp{\textasciitilde/dev1}, 
     créez un répertoire \samp{td3}. 
-    Ce répertoire contiendra tous les fichiers que vous allez créer aujourd'hui. 
+    Il contiendra tous les fichiers que vous allez créer aujourd'hui. 
 \end{infobox}
 
 \newpage
@@ -225,83 +225,122 @@
 		.
 
 %=============================
-\section{Compiler et exécuter du Java}
+\section{Java en mode console}
 %==============================
 
-    \begin{theorie}{Java sans package}
-        Si le programme Java n'utilise pas de package :
-        \begin{itemize}
-            \item \kbd{javac MaClasse.java} compile le programme Java du fichier donné
-            \item \kbd{java MaClasse} : exécute le programme Java se trouvant dans la classe donnée.
-        \end{itemize}
-    \end{theorie}
+	Avec Netbeans, lorsque vous appuyez sur des boutons
+	(comme celui demandant d'exécuter le projet),
+	cela lancent des commandes qui effectuent la tâche.
+	Il est possible d'exécuter directement ces commandes.
+	C'est ce que nous allons faire ici.
 
-	\begin{Tutoriel}{Compiler / exécuter un programme} 
-		Commençons par un programme correct et tentons de l'exécuter.  
-      
-        Le fichier \samp{/eCours/java/td/td3/Ex.java} 
-        contient un petit programme Java tout simple qui affiche un message de bienvenue. 
-        
-		\begin{steps}	
-        \item 
-            Si ce n'est pas le cas, placez-vous dans le dossier \samp{td3}.
-        \item 
-            Copiez le fichier indiqué dans cd dossier :
-            \kbd{cp /eCours/java/td/td3/Ex.java .}
-        \item 
-            Lisez-le et voyez si vous devinez ce qu'il fait : \kbd{cat Ex.java}
-        \item 
-            Compilez-le : \kbd{java Ex.java}
-        \item 
-            Que fait cette phase, à quoi sert-elle ?
-            Affichez le contenu du dossier pour le vérifier.
-		\item Exécutez le programme : \kbd{java Ex}
-		\end{steps}			
-	\end{Tutoriel}
+	%=============================
+	\subsection{Compiler et exécuter}
+	%==============================
 
-    Lorsqu'on compile, il faut mettre le \samp{.java} 
-    mais lorsqu'on exécute, 
-    il ne faut pas mettre le \samp{.class}.
+		\begin{theorie}{Java sans package}
+			Si le programme Java n'utilise pas de package :
+			\begin{itemize}
+				\item \kbd{javac MaClasse.java} compile le programme Java du fichier donné
+				\item \kbd{java MaClasse} exécute le programme Java se trouvant dans la classe donnée.
+			\end{itemize}
+		\end{theorie}
 
-    \begin{alerttbox}{Retenez !} 
-        On \textbf{compile un fichier} mais on \textbf{exécute une classe}.
-    \end{alerttbox}
+		\begin{Tutoriel}{Compiler / exécuter un programme} 
+			Commençons par un programme correct et tentons de l'exécuter.  
+		
+			Le fichier \samp{/eCours/dev1/envl/Hello.java} 
+			contient un petit programme Java tout simple qui affiche un message de bienvenue. 
+			
+			\begin{steps}	
+			\item 
+				Si ce n'est pas le cas, placez-vous dans le dossier \samp{td3}.
+			\item 
+				Copiez le fichier indiqué dans cd dossier :
+				\kbd{cp /eCours/dev1/envl/Hello.java .}
+			\item 
+				Lisez-le et voyez si vous devinez ce qu'il fait : \kbd{cat Hello.java}
+			\item 
+				Compilez-le : \kbd{java Hello.java}
+			\item 
+				Que fait cette phase, à quoi sert-elle ?
+				Affichez le contenu du dossier pour le vérifier.
+			\item Exécutez le programme : \kbd{java Hello}
+			\end{steps}			
+		\end{Tutoriel}
 
-	Vous allez à présent écrire votre premier programme de bout en bout sur linux1. 
-	
-	\begin{Exercice}{Un programme Java}
-		Écrivez un programme qui :
-		\begin{itemize}
-		\item Affiche votre nom ;
-		\item Affiche la valeur de $7^2$ ;
-		\item Affiche la valeur de $2^7$ ;
-		\item Demande une entier à l'utilisateur et affiche s'il est pair. 
-		\end{itemize}
-	\end{Exercice}
+		% Lorsqu'on compile, il faut mettre le \samp{.java} 
+		% mais lorsqu'on exécute, 
+		% il ne faut pas mettre le \samp{.class}.
 
-	\begin{alerttbox}{Conseils}
-		Procédez par étape et vérifiez correctement votre programme.
-		Ce n'est pas parce qu'il compile qu'il est correct.
-		Et ce n'est pas parce qu'il affiche quelque chose que c'est la bonne réponse.
-	\end{alerttbox}
+		\begin{alerttbox}{Retenez !} 
+			On \textbf{compile un fichier} mais on \textbf{exécute une classe}.
+		\end{alerttbox}
 
-	\begin{Exercice}{Comprendre les erreurs (I)}
-		Supposons que vous faites une erreur dans votre programme.
-		Par exemple en écrivant \code{java}{Public} 
-		au lieu de \code{java}{public}.
+		Vous allez à présent écrire votre premier programme de bout en bout sur linux1. 
+		
+		\begin{Exercice}{Un programme Java}
+			Écrivez un programme qui :
+			\begin{itemize}
+			\item Affiche votre nom ;
+			\item Demande un nombre à l'utilisateur ;
+			\item Affiche l'inverse du nombre (par ex: $0.25$ si le nombre entré était $4$).
+			\end{itemize}
+		\end{Exercice}
 
-		À quelle étape le problème va-t'il apparaitre ?
-		Sous quelle forme ? Testez !
-	\end{Exercice}
+		% \begin{alerttbox}{Conseils}
+		% 	Procédez par étape et vérifiez correctement votre programme.
+		% 	Ce n'est pas parce qu'il compile qu'il est correct.
+		% 	Et ce n'est pas parce qu'il affiche quelque chose que c'est la bonne réponse.
+		% \end{alerttbox}
 
-	\begin{Exercice}{Comprendre les erreurs (II)}
-		Supposons que vous demandez un calcul impossible dans votre programme.
-		Par exemple \code{java}{1/0}.
+		\begin{Exercice}{Comprendre les erreurs (I)}
+			Supposons que vous faites une erreur dans votre programme.
+			Par exemple en écrivant \code{java}{Public} 
+			au lieu de \code{java}{public}.
 
-		À quelle étape le problème va-t'il apparaitre ?
-		Sous quelle forme ? Testez !
-	\end{Exercice}
+			À quelle étape le problème va-t'il apparaitre ?
+			Sous quelle forme ? Testez !
+		\end{Exercice}
 
+		\begin{Exercice}{Comprendre les erreurs (II)}
+			Supposons que vous demandez un calcul impossible dans votre programme.
+			Par exemple \code{java}{1/0}.
+
+			À quelle étape le problème va-t'il apparaitre ?
+			Sous quelle forme ? Testez !
+		\end{Exercice}
+
+	%=============================
+	\subsection{Produire la Javadoc}
+	%==============================
+
+		\begin{theorie}{Javadoc}
+			\kbd{javadoc -doc dossierDoc MaClasse.java}
+			génère la javadoc présente dans le fichier \texttt{MaClasse.java}
+			dans le dossier \texttt{dossierDoc} (qui doit exister).
+		\end{theorie}
+
+		\begin{Exercice}{Javadoc de Hello}
+			Produisez la javadoc du programme \samp{Hello} précédent.
+		\end{Exercice}
+
+		\subsubsection*{Visualiser le résultat}
+		%--------------------------------------
+
+			La javadoc est au format \name{HTML} et peut être consulté
+			avec un simple navigateur web mais il n'y en a pas sur \samp{linux1}%
+			\footnote{%
+				Un Linux avec environnement graphique 
+				dispose bien sûr d'un navigateur web.
+			}.
+
+			\begin{todo}
+				À voir s'il y aura un serveur apache sur le nouveau linux1.
+				Si oui, on parlera du \samp{public\_html}, 
+				sinon parlera de FTP. 
+			\end{todo}
+\newpage
 %=================================
 \section{Les variables d'environnement}  
 %=================================
