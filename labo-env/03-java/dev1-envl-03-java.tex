@@ -375,6 +375,23 @@
 			\end{steps}
 		\end{Experience}
 
+		\begin{Exercice}{Comprendre la signification du \$}
+			Supposons que la variable d'environnement \samp{VAR} vaut 12.
+			Que va faire chacune des commandes suivantes ?
+			Une fois que vous pensez le savoir, 
+			vérifiez-le le tapant sur la machine.
+			\begin{itemize}
+			\item \kbd{echo VAR}
+			\item \kbd{\$VAR=12}
+			\item \kbd{VAR=\$VAR} 
+			\item \kbd{echo \$VAR + 30} 
+			\item \kbd{VAR=\$VAR+30} 
+			\item \kbd{VAR=\$VAR + 30} 
+			\item \kbd{VAR="\$VAR + 30"} 
+			\item \kbd{VAR=VAR} 
+			\end{itemize}
+		\end{Exercice}
+
 	\subsection{Le prompt}
 	%=====================
 
@@ -409,15 +426,6 @@
 			par votre shell lors de votre connexion.
 		\end{Tutoriel}
 			
-		\begin{Exercice}{Explorer les codes du prompt}
-			Les possibilités de configuration du prompt sont nombreuses : 
-			afficher l'heure, le nom de la machine, votre login,
-			utiliser des couleurs\dots{}
-			Examinez la documentation pour configurer le prompt comme il 
-			vous plait (\verb@man bash@, section \verb@PROMPTING@).
-			Rendez la modification permanente.
-		\end{Exercice}	
-
 %=================================
 \section{Transfert de fichiers}  
 %=================================
@@ -555,6 +563,18 @@
 					pour remplacer toutes les occurrences de la chaine de caractères 
 					\samp{old} par la chaine de caractère \samp{new}.
 				\end{itemize}
+
+	\subsection{Pour aller plus loin : le prompt}
+	%=============================================
+
+		\begin{Exercice}{Explorer les codes du prompt}
+			Les possibilités de configuration du prompt sont nombreuses : 
+			afficher l'heure, le nom de la machine, votre login,
+			utiliser des couleurs\dots{}
+			Examinez la documentation pour configurer le prompt comme il 
+			vous plait (\verb@man bash@, section \verb@PROMPTING@).
+			Rendez la modification permanente.
+		\end{Exercice}	
 		
 \end{document}
 			
