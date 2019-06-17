@@ -46,93 +46,7 @@
 
 	Avant d'attaquer le c\oe{}ur du TD, 
 	à savoir le compilation et l'exécution de programmes Java,
-	voyons quelques éléments e Linux qui vous seront utiles.
-
-	%============================================================
-	\subsection{La ligne de commande}
-	%============================================================
-              
-		Commençons par quelques astuces 
-		pour vous faciliter la vie lorsque vous entrez des commandes.
-		
-		\subsubsection*{La complétion de commandes}
-		%======================================
-
-			Parfois, vous devez entrer une commande assez longue 
-			parce que les noms de fichiers sont longs et/ou nombreux.
-			Linux offre plusieurs facilités pour simplifier l'entrée de longues commandes.  
-
-			Lorsque vous appuyez sur la touche \samp{TAB}, 
-			le shell tente de compléter le début de commande 
-			que vous avez déjà tapé. 
-			Si plusieurs possibilités existent, 
-			elles sont affichées si vous appuyez 2x sur \samp{TAB}.  
-
-			\begin{Tutoriel}{La complétion de la commande} 
-				Supposons que vous ne vous rappeliez plus très bien 
-				de la commande qui permet de modifier le mot de passe.
-				Vous vous rappelez juste qu'elle commence par \kbd{pas}.  
-				\begin{steps}
-				\item 
-					Tapez \kbd{pas} puis appuyez 2x sur la touche \samp{TAB}.
-				\item 
-					Entrez un \kbd{s} puis appuyez à nouveau sur \samp{TAB}.
-				\end{steps}
-			\end{Tutoriel}		
-			
-			\medskip
-			La touche de tabulation permet également de compléter un nom de fichier.
-
-			\begin{Exercice}{La complétion des noms de fichiers}  
-				\vspace{-1em}          
-				\begin{enumerate}
-				\item 
-					Dans votre dossier \samp{td3}, 
-					copiez le fichier \par
-					\samp{monfichieraunomtellementlongquilmeparaitpeuprobabledeletaper2xsanserreur} 
-					qui se trouve dans le dossier \samp{/eCours/java/td/td3}.
-				\item 
-					Affichez le contenu de ce fichier en évitant de retaper son nom.
-				\end{enumerate}
-			\end{Exercice}	
-			
-			% \begin{Exercice}{Joker} 
-			% 	Le point 20 du guide visuel parle des jokers; c'est le moment de les utiliser :) 
-			% 	\par
-			% 	\begin{enumerate}
-			% 		\item Copiez dans votre répertoire td3 créé ci-dessus tous les fichiers du répertoire \verb@/eCours/java/td/td3@ dont l'extension est \verb@.java@ 
-			% 		(c'est possible sans passer par un \,\verb|cd /eCours/java/td/td3|\,)
-					
-			%     			\item Copiez dans votre répertoire td3 tous les fichiers du répertoire  \verb@/eCours@\ \verb@/java/td/td3@ dont la deuxième lettre est un '\verb@x@'.
-	
-			%       		\item  Listez le contenu des répertoires des étudiants (pour rappel, les répertoires des étudiants sont ceux qui se trouvent dans \verb@/home@ et qui 						commencent par un '\verb@g@').
-			%  			\item Listez le contenu des répertoires des professeurs (pour rappel, les répertoires des professeurs sont ceux qui se trouvent dans \verb@/home@ et qui 						sont composés de 3 lettres).
-			%   		\end{enumerate}
-			% \end{Exercice}
-								
-		\subsubsection*{Revenir à une commande précédente} 
-		%==============================================
-
-			Il arrive souvent qu'il faille entrer une commande 
-			qu'on a déjà écrite il y a peu 
-			(ou en tout cas fort proche de ce qu'on a déjà écrit). 
-			C'est là que les flèches viennent à notre secours.  
-			
-			La flèche vers le haut permet de revenir aux commandes précédentes 
-			et de les modifier. À utiliser sans modération\dots  
-
-		\subsubsection*{Historique des commandes} 
-		%==============================================
-		
-			\begin{itemize}
-			\item \kbd{history} : 
-				affiche la liste des dernières commandes entrées.
-				Chaque commande est numérotée.
-			\item \kbd{!numéro} : 
-				ré-execute la commande de numéro donné.
-			\item \kbd{!cmd} : 
-				ré-execute la dernière commande qui commençait par \samp{cmd}.
-			\end{itemize}
+	voyons quelques éléments de Linux qui vous seront utiles.
 
 	%============================================================
 	\subsection{Les fichiers cachés}
@@ -160,8 +74,50 @@
 \section{L'éditeur nano}
 %======================================
 
-	Un éditeur de texte, même simple comme nano,
-	peut apporter quelques facilités dans l'écriture de programmes.
+	Un \textbf{éditeur de texte} (ou, plus court, un \textbf{éditeur}) 
+	est un programme qui vous permet d'entrer, modifier
+	le contenu d'un fichier texte. 
+	Vous connaissez probablement \name{Notepad} sous \name{Windows}. 
+	Sur \name{Linux}, il en existe beaucoup. 
+	Celui que nous vous proposons dans un premier temps au laboratoire 
+	s'appelle \name{nano}. 
+	Il est assez facile pour débuter et faire des choses simples. 
+	Par la suite, vous pourrez choisir de rester sous \name{nano} 
+	ou d'utiliser \name{vim}.
+
+	\subsection{Premiers pas}
+	%=================================
+
+	\begin{Tutoriel}{Premiers pas avec nano}
+	\vspace{-1em}
+	\begin{steps}
+	\item 
+		En préambule, tapez la commande \kbd{cd} pour revenir dans \textit{votre home}.
+	\item 
+		Tapez \kbd{nano test} pour commencer à éditer le fichier \samp{test} 
+		(comme il n'existe pas encore, il est créé).
+	
+		Une fenêtre s'ouvre. 
+		Vous voyez qu'elle est scindée en 2 parties : 
+		la partie supérieure où vous écrivez votre texte 
+		et la partie inférieure où sont indiquées 
+		les différentes commandes (le \char`\^{} représente la touche \verb|Ctrl|)
+	\item 
+		Entrez quelques mots.
+	\item 
+		Appuyez sur la combinaison de touches \verb|Ctrl X|, 
+		confirmez que vous voulez sauver vos modifications et sortez.
+	
+		Vous êtes maintenant revenu à l'invite de commande.
+	\item 
+		Tapez à présent la commande \kbd{ls}.
+		Vous pouvez constater que le fichier \verb_test_ est apparu dans la liste ;)
+	\end{steps}
+	\end{Tutoriel}
+
+	Pour aller plus loin dans l'apprentissage de cet éditeur,
+	consultez ce document :\\
+	{\tiny\url{http://fr.openclassrooms.com/informatique/cours/reprenez-le-controle-a-l-aide-de-linux/nano-l-editeur-de-texte-du-debutant}}.
 
 	\subsection{Coloration syntaxique}
 	%=================================
@@ -336,95 +292,9 @@
 			}.
 
 			\begin{todo}
-				À voir s'il y aura un serveur apache sur le nouveau linux1.
-				Si oui, on parlera du \samp{public\_html}, 
-				sinon parlera de FTP. 
+				Aborder le \samp{public\_html}.
 			\end{todo}
-\newpage
-%=================================
-\section{Les variables d'environnement}  
-%=================================
 
-	\subsection{Introduction}
-	%========================
-
-		\begin{theorie}{Variable d'environnement}
-			Une \textbf{variable d'environnement} 
-			est une variable associée à votre shell 
-			contenant un texte qui est accessible 
-			par toutes les applications que vous lancez. 
-			Généralement, elle permet de configurer certaines applications, 
-			d'en modifier le comportement.
-		\end{theorie}	
-
-		\begin{theorie}{Manipuler une variable d'environnement}
-			Si \samp{VARENV} est une variable d'environnement :
-			\begin{itemize}
-			\item \kbd{export VARENV=valeur} crée une nouvelle variable à la valeur donnée.
-			\item \kbd{VARENV=valeur} modifie la valeur d'une variable existante.
-			\item \kbd{\$VARENV} est remplacé par la valeur de la variable.
-			\end{itemize}
-		\end{theorie}
-
-		\begin{Experience}{Manipuler une variable}
-			\begin{steps}
-			\item Entrez \kbd{VAR=12} pour créer la variable.
-			\item Entrez \kbd{echo "Bonjour !"}.
-				\\Cette commande affiche ce qu'on lui donne en paramètre.
-			\item Entrez \kbd{echo \$VAR} pour afficher le contenu de la variable.
-			\end{steps}
-		\end{Experience}
-
-		\begin{Exercice}{Comprendre la signification du \$}
-			Supposons que la variable d'environnement \samp{VAR} vaut 12.
-			Que va faire chacune des commandes suivantes ?
-			Une fois que vous pensez le savoir, 
-			vérifiez-le le tapant sur la machine.
-			\begin{itemize}
-			\item \kbd{echo VAR}
-			\item \kbd{\$VAR=12}
-			\item \kbd{VAR=\$VAR} 
-			\item \kbd{echo \$VAR + 30} 
-			\item \kbd{VAR=\$VAR+30} 
-			\item \kbd{VAR=\$VAR + 30} 
-			\item \kbd{VAR="\$VAR + 30"} 
-			\item \kbd{VAR=VAR} 
-			\end{itemize}
-		\end{Exercice}
-
-	\subsection{Le prompt}
-	%=====================
-
-		\begin{theorie}{Prompt}
-			Le \textbf{prompt} (ou \textit{invite} en français) 
-			est le texte qui apparait à gauche
-			de ce que vous tapez dans votre shell. 
-			Il est déterminé par la variable d'environnement \samp{PS1}.
-		\end{theorie}
-			
-		\begin{Experience}{Le prompt} 
-			Affichez la valeur de votre prompt. 
-			Vous remarquerez qu'il contient des codes qui seront 
-			remplacés par certaines valeurs. 
-			Par exemple, \verb_\w_ indique le dossier courant.
-		\end{Experience}
-			
-		\begin{Exercice}{Modifier le prompt} 
-			Modifiez la valeur de votre prompt.
-			Par exemple, modifiez l'invite en "Bonjour ! ".
-		\end{Exercice}	
-
-		\begin{Tutoriel}{Durée de vie de la variable} 
-			\vspace{-1em}
-			\begin{steps}
-			\item Déconnectez-vous de linux1, puis reconnectez-vous.	
-			\end{steps}
-			Surprise, votre prompt a repris sa valeur d'origine ! 
-			Pour rendre une modification permanente, 
-			il faut ajouter la commande à votre fichier \verb@.bashrc@.
-			C'est un fichier caché qui est exécuté 
-			par votre shell lors de votre connexion.
-		\end{Tutoriel}
 			
 %=================================
 \section{Transfert de fichiers}  
@@ -473,108 +343,7 @@
 			\end{itemize}
 		\end{theorie}
 
-	\subsection{Pour aller plus loin : l'éditeur \texttt{vi}}
-	%==================================
 
-		Si vous avez fini,
-		vous serez peut-être curieux d'apprendre à utiliser \texttt{vi}
-		plutôt que \texttt{nano}.
-
-		Quels sont les avantages de \texttt{vi} ?
-		\begin{itemize}
-		\item 
-			Certaines manipulations du fichiers sont plus simples : 
-			copier, supprimer, déplacer des lignes par exemple.
-		\item 
-			Il est facile d'indenter proprement un programme Java qui ne l'est pas.
-		\end{itemize}
-
-		\texttt{vi} est plus puissant que \texttt{nano}
-		mais il est moins intuitif quand on débute.
-		Voici les bases à comprendre.
-
-		\subsubsection*{Démarrer}
-		%========================
-
-			Pour éditer un fichier texte existant
-			ou créer un nouveau fichier, 
-			il suffit de taper : \kbd{vi monFichier}.
-
-			Les 3 modes de fonctionnement sous vi(m) :
-			\begin{center}
-			\includegraphics[width=.7\textwidth]{image/vi.pdf}
-			\end{center}
-
-		\subsubsection*{Le mode commande}
-		%===============================
-
-			C'est le mode dans lequel vous vous trouvez quand vous ouvrez \samp{vi}. 
-			Dans ce mode, les touches sur lesquelles vous appuyez
-			ne sont pas insérées dans le texte (comme dans nano)
-			mais sont considérées comme des commandes.
-			C'est le mode qui permet de \textbf{manipuler} le texte.
-
-			Exemples de commandes :
-			\begin{itemize}
-			\item \kbd{i} : passer en mode édition (cfr. infra);
-			\item \kbd{yy} : copier la ligne sous le curseur (comme un \samp{CTRL-C} sous Windows) ; 
-			\item \kbd{3yy}	: copier 3 lignes ;
-			\item \kbd{dd} : couper la ligne sous le curseur (\kbd{5yy} pour en couper 5) ;
-			\item \kbd{dw} : couper le mot sur lequel se trouve le curseur ;
-			\item \kbd{p} : coller (ce qui a été précédemment copié ou coupé)
-				sous la ligne qui suit le curseur ;
-			\item \kbd{u} : annuler la dernière modification. 
-				Vous pouvez appuyer plusieurs fois pour annuler les dernières modifications.	
-			\end{itemize}
-
-			\subsubsection*{Le mode édition}
-			%===============================
-		
-				C'est le mode dans lequel ce qu'on tape est ajouté au texte,
-				comme dans nano.
-				On y accède par la touche :
-				\begin{itemize}
-				\item \kbd{i} (insert) : on insère à l'endroit du curseur ;
-				\item \kbd{a} (append) : on insère après le curseur ;
-				\item \kbd{o} : on insère dans une nouvelle ligne créée sous le curseur ;
-				\end{itemize}
-
-				Dans tous les cas, l'indicateur \texttt{INSERT} 
-				apparait alors en bas de l'écran.
-
-			\subsubsection*{Le mode exécution}
-			%===============================
-			
-				On y accède à partir du mode commande en tapant \kbd{:}.
-				Ce mode permet d'entrer d'autres types de commandes,
-				plus riches que celles du mode commande. 
-				Voici les plus utilisées:
-				\begin{itemize}
-				\item \kbd{:h} pour accéder à l'aide (\kbd{q} pour quitter l'aide) ;
-				\item \kbd{:w} pour sauver le fichier ;
-				\item \kbd{:w monFichier} pour enregistrer sous \samp{monFichier},
-				\item \kbd{:q} pour quitter l'éditeur (sans sauver) ;
-				\item \kbd{:x} pour enregistrer et quitter ;
-				\item \kbd{:q!} pour quitter sans enregistrer les modifications ;
-				\item \kbd{:set nu} pour afficher les numéro de ligne 
-					(\kbd{:set nonu} pour les retirer) ;
-				\item \kbd{:numéroDeLigne} pour aller directement à cette ligne ;
-				\item \kbd{:\%s/old/new/g} 
-					pour remplacer toutes les occurrences de la chaine de caractères 
-					\samp{old} par la chaine de caractère \samp{new}.
-				\end{itemize}
-
-	\subsection{Pour aller plus loin : le prompt}
-	%=============================================
-
-		\begin{Exercice}{Explorer les codes du prompt}
-			Les possibilités de configuration du prompt sont nombreuses : 
-			afficher l'heure, le nom de la machine, votre login,
-			utiliser des couleurs\dots{}
-			Examinez la documentation pour configurer le prompt comme il 
-			vous plait (\verb@man bash@, section \verb@PROMPTING@).
-			Rendez la modification permanente.
-		\end{Exercice}	
 		
 \end{document}
 			

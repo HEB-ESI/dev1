@@ -20,196 +20,781 @@
 \bigskip
 \tableofcontents
 
-	%====================
-	\subsection{L'éditeur}
-	%=====================
+%===================
+\section{Rechercher (dans) des fichiers}
+%====================
 
-		Un \textbf{éditeur de texte} (ou, plus court, un \textbf{éditeur}) 
-		est un programme qui vous permet d'entrer, modifier
-		le contenu d'un fichier texte. 
-		Vous connaissez probablement \name{Notepad} sous \name{Windows}. 
-		Sur \name{Linux}, il en existe beaucoup. 
-		Celui que nous vous proposons dans un premier temps au laboratoire 
-		s'appelle \name{nano}. 
-		Il est assez facile pour débuter et faire des choses simples. 
-		Par la suite, vous pourrez choisir de rester sous \name{nano} 
-		ou d'utiliser \name{vim}.
-		
-		\begin{Tutoriel}{Premiers pas avec nano}
+	Lorsqu'on commence à avoir beaucoup de fichiers,
+	il arrive qu'on ne sache plus trop bien où se trouve un fichier
+	ou quel fichier contient un texte particulier.
+	Les commandes \samp{find} et \samp{grep} sont là pour nous aider.
+
+	%===================
+	\subsection{Rechercher un fichier}
+	%====================
+
+		La commande \samp{find} permet de chercher des fichiers
+		dans le système de fichiers en fonction de critères : 
+		son nom, sa taille, sa date de création\dots
+
+		\begin{theorie}{find}
+			\kbd{find dossierOùChercher critèreDeRecherche...}
+			cherche dans le dossier indiqué (et tous les sous dossiers)
+			les fichiers qui respectent tous les critères indiqués.
+			Par défaut, la commande affiche le nom des fichiers trouvés.
+
+			Parmi les critères citons :
+			\begin{itemize}
+				\item \kbd{-name nomfichier}
+			\end{itemize}
+        \end{theorie}
+        
+        %========================
+\section{Les permissions}
+%========================
+
+	Comme Linux est un système partagé, il est important de parler de sécurité. 
+	Ici, on va se concentrer sur la sécurité au niveau des fichiers 
+	et répondre aux questions suivantes :  
+	\begin{itemize}
+	\item À qui \textbf{appartient} un fichier ?
+	\item \textbf{Qui peut faire} quoi avec un fichier ?
+	\end{itemize}
+
+	Mais pour commencer il faut d'abord comprendre 
+	la notion de \textit{propriétaire}
+	et celle de \textit{groupe}. 
+
+	%======================================
+	\subsection{Les groupes d'utilisateurs}
+	%======================================
+
+		\begin{theorie}{Les groupes}
+			Les utilisateurs d'un système Linux sont placés dans des \textbf{groupes}. 
+			Un groupe contient un ou plusieurs utilisateur(s) 
+			et un utilisateur appartient à un ou plusieurs groupe(s).
+		\end{theorie}
+
+		\begin{wrapfigure}{r}{.3\textwidth}
 			\vspace{-1em}
+			\includegraphics[width=.3\textwidth]{image/groupes.pdf}
+			\vspace{-3em}
+		\end{wrapfigure}
+		\textbf{Exemple} :
+		Dans l'exemple ci-contre on peut constater que :
+		\begin{itemize}
+		\item 
+			l'utilisateur \samp{g12345} appartient 
+			aux groupes \samp{users} et \samp{etudiants} ;
+		\item 
+			l'utilisateur \samp{g54321} appartient aux mêmes groupes ;
+		\item 
+			l'utilisateur \samp{mcd} appartient 
+			aux groupes \samp{users} et \samp{enseignants}.
+		\end{itemize}
+		
+		À quoi servent les groupes ? 
+		À gérer les permissions. 
+		On va pouvoir dire un truc du genre : 
+		\og{}Seuls les professeurs peuvent voir le contenu de ce fichier\fg{}.
+
+		\begin{theorie}{Visualiser les groupes}
+			La commande \samp{groups} renseigne sur les groupes.
+			\begin{itemize}
+				\item \kbd{groups} : affiche les groupes de l'utilisateur.
+				\item \kbd{groups loginUtilisateur} : affiche les groupes de l'utilisateur donné.
+			\end{itemize}
+			Le premier groupe de la liste est le \textbf{groupe principal}.
+			C'est celui qui sera utilisé par défaut (par exemple, lorsqu'on crée un fichier).
+		\end{theorie}
+
+		\begin{Exercice}{Visualiser les groupes}
+			\vspace{-1em}
+			\begin{itemize}
+				\item Visualiser les groupes auxquels vous appartenez.
+				\item Quel est votre groupe principal ? 
+				\item Quels sont les groupes auxquels appartient votre professeur ?
+				\item Avez-vous un groupe en commun avec lui ?
+				\item Quel(s) groupe(s) Linux avez-vous en commun avec les autres étudiants de votre groupe ÉSI ?
+			\end{itemize}
+		\end{Exercice}
+
+		\begin{colxbox}[colback=white,drop fuzzy shadow]
+			Les groupes qui existent concrètement sur une machine sont définis 
+			par l'administrateur%
+			\footnote{
+				L'administrateur est la personne qui installe 
+				un système d'exploitation et le gère au quotidien : 
+				installation de logiciels, 
+				gestion des comptes utilisateurs et des groupes, 
+				sauvegardes, gestion des panne\dots{}
+				Sur Linux, on dit aussi le « super user », 
+				le « compte root » ou le « root ».
+			} de la machine. 		
+			Sur \texttt{linux1}, 
+			il y a 3 groupes pour les utilisateurs.
+			\begin{itemize}
+				\item \textbf{\samp{users}} : tous les utilisateurs sont dans ce groupe
+				\item \textbf{\samp{etudiants}} : tous les étudiants sont dans ce groupe
+				\item \textbf{\samp{enseignants}} : tous les professeurs sont dans ce groupe	
+			\end{itemize}
+		\end{colxbox}
+
+		\medskip
+		\begin{alertbox}
+			Attention, on remarque que vous confondez souvent 
+			la notion de \textbf{groupe d'étudiants} à l'école
+			et les \textbf{groupes sur Linux}.
+			C'est un même mot qui recouvre 2 
+			\textbf{concepts} complètement \textbf{différents}.
+		\end{alertbox}
+
+	%======================================
+	\subsection{Propriétaire d'un fichier}
+	%======================================
+	
+		\exergue{La propriété est un piège: ce que nous croyons posséder nous possède.}
+			{Alphonse Karr}
+		\vspace{2em}
+
+		\exergue{La propriété c'est le vol.}{Pierre Joseph Proudhon}
+		\vspace{1em}
+
+		\begin{theorie}{Propriétaire}
+			Chaque fichier/dossier \textbf{appartient} à une personne, 
+			son \textbf{propriétaire}.
+		\end{theorie}
+
+		Pour visualiser le propriétaire d'un fichier, 
+		on peut utiliser la commande \kbd{ls -l}.
+
+		\begin{center}
+			\includegraphics[height=5em]{image/owner}
+		\end{center}
+
+		On pourra donner des permissions spécifiques au propriétaire du fichier.
+
+		\begin{Exercice}{Propriétaire}
+			Visualisez le propriétaire des fichiers de votre dossier personnel.
+		\end{Exercice}
+
+		\begin{faq}
+			\textbf{Les fichiers dans mon dossier personnel ne sont pas automatiquement à moi ?}
+
+			Non. En pratique c'est généralement le cas, 
+			mais on peut très bien trouver dans un dossier personnel 
+			un fichier qui appartient à quelqu'un d'autre.  
+		\end{faq}
+
+	%======================================
+	\subsection{Groupes d'un fichier}
+	%======================================
+
+		\begin{theorie}{Groupe d'un fichier}
+			Chaque fichier/dossier \textbf{appartient} à \textbf{un et un seul groupe}.
+		\end{theorie}
+
+		\begin{center}
+			\includegraphics[height=5em]{image/group}
+		\end{center}
+
+		Ces groupes sont les mêmes que ceux utilisés pour grouper les utilisateurs.
+		On pourra donner des permissions spécifiques à toutes les personnes
+		qui sont dans le même groupe que le fichier.
+
+		\begin{theorie}{Changer le groupe}
+			\kbd{chgrp nouveauGroupe nomFichier}
+			place le fichier indiqué dans le groupe donné.
+		\end{theorie}
+
+		Par défaut, un fichier est placé dans le groupe principal de celui qui le crée.
+
+		\begin{Exercice}{Groupe}
+			\vspace{-1em}
+			\begin{itemize}
+			\item Visualisez vos fichiers et déterminez à quel groupe ils appartiennent.
+			\item Créez un fichier de test et modifiez le groupe auquel il appartient.
+			\end{itemize}
+		\end{Exercice}
+
+	%======================================
+	\subsection{Les 3 catégories de personnes}
+	%======================================
+
+		\begin{infotbox}{Ce qu'on a déjà vu}
+			Un fichier a un propriétaire et appartient à un groupe.
+		\end{infotbox}
+
+		\begin{alerttbox}{Restez concentré !} 
+			D'expérience nous constatons que vous avez du mal avec 
+			les notions qui vont suivre.
+			Restez concentrés et vérifiez que vous avez bien compris.
+		\end{alerttbox}
+		
+		Lorsque nous allons donner des permissions sur un fichier/dossier,
+		nous allons pouvoir donner des droits différents à trois catégories
+		de personnes : le propriétaire, les utilisateurs qui sont dans le même
+		groupe que le fichier et tous les \og{}autres\fg{} 
+		(ceux qui ne sont pas dans les deux premières catégories).
+
+		\begin{center}
+			\includegraphics[width=.8\textwidth]{image/categorie}
+		\end{center}
+
+	%======================================
+    \subsection{Les permissions sur un fichier}  
+	%======================================
+
+		Nous avons vu que nous pouvons spécifier des permissions différentes
+		à trois catégories de personnes.
+		Bien ! Mais quelles permissions pouvons-nous donner ?
+		À quoi correspondent les lettres \samp{r}, \samp{w} et \samp{x}
+		vues dans la capture d'écran précédente ?
+		Commençons par les permissions pour un fichier.
+
+		\begin{theorie}{Les permissions sur un fichier}
+			Il existe 3 types de permissions pour un fichier : 
+			en lecture, en écriture et en exécution.
+			\begin{description}
+			\item[r (pour \emph{Read}, la lecture)] 
+				Avec ce droit, un utilisateur peut 
+				\emph{lire} un fichier, il peut en voir le contenu. 
+				Par exemple, avec \samp{cat}.
+			\item[w (pour \emph{Write}, l'écriture)]
+				Un utilisateur a le droit en écriture sur un fichier, 
+				il peut en modifier le contenu. 
+				Par exemple, avec \samp{nano}.
+			\item[x (pour \emph{eXecute}, l'exécution)]
+				Cette permission concerne les exécutables. 
+				Un exécutable est un fichier qui contient 
+				un programme en langage machine 
+				directement exécutable par le processeur.
+				Par exemple, il existe quelque part sur le disque 
+				un fichier \samp{nano} 
+				qui contient le programme de la commande nano.
+			\end{description}
+		\end{theorie}
+
+		Les permissions sont toujours placées dans le même ordre (\samp{rwx})
+		et un tiret (\samp{-}) indique que la permission n'est pas accordée.
+
+		\paragraph{Exemple.}
+		Reprenons la capture d'écran précédente et interprétons
+		les permissions sur le fichier \samp{welcome}.
+		\begin{center}
+			\includegraphics[width=.8\textwidth]{image/categorie}
+		\end{center}
+		On y lit que :
+		\begin{itemize}
+		\item
+			Les permissions pour le propriétaire sont \samp{rw-}.
+			Donc, (\samp{g12345}) 
+			peut voir \textbf{(r)} le contenu 
+			et modifier \textbf{(w)} le fichier \samp{welcome}.
+			Par contre, il ne peut pas l'exécuter.
+		\item 
+			Idem pour les utilisateurs qui sont dans le groupe \samp{users}.
+		\item 
+			Les autres utilisateurs 
+			(ceux qui ne sont ni le propriétaire, ni un utilisateur du groupe \samp{users})
+			peuvent lire le fichier mais pas le modifier ni l'exécuter.
+		\end{itemize}
+
+		\medskip
+		\begin{Exercice}{Déterminez les bonnes permissions}
+			Imaginons que vous écrivez un programme \name{Java} sur \texttt{linux1}.
+			Vous ne voulez pas que quelqu'un copie sur vous.
+			Par contre, vous désirez qu'il puisse exécuter la version compilée.
+			Quelles permissions proposez-vous pour les fichiers :
+			\begin{itemize}
+			\item \samp{.java} ? 
+				{\tiny
+					\textfield{r}\textfield{w}\textfield{-}\quad
+					\textfield{-}\textfield{-}\textfield{-}\quad
+					\textfield{-}\textfield{-}\textfield{-}
+				}
+			\item \samp{.class} ? 
+				{\tiny
+					\textfield{r}\textfield{-}\textfield{-}\quad
+					\textfield{r}\textfield{-}\textfield{-}\quad
+					\textfield{r}\textfield{-}\textfield{-}
+				}
+			\end{itemize}
+		\end{Exercice}
+
+		\begin{Experience}{Permissions par défaut}
+			Quelle est la situation de départ quand on crée un fichier ?
+			Faisons une petite expérience pour le découvrir.
+			\begin{steps}
+			\item Si ce n'est pas encore fait, créez un dossier \samp{dev1/td2}.
+			\item Créez-y un fichier vide.
+			\item Demandez les détails du fichier (propriétaire, groupe, permission)
+			\end{steps}
+			On constate qu'un nouveau fichier appartient à celui qui l'a créé 
+			(on s'en doute) et au groupe principal du créateur. 
+			Il y a aussi des permissions par défaut (plutôt permissives dans notre cas).  
+		\end{Experience}		
+	
+	%=========================================
+	\subsection{Modifier les permissions}
+	%=========================================
+
+		\begin{infotbox}{Faisons le point !}
+			Nous savons qu'un fichier a un propriétaire et un groupe.
+			Nous savons que nous allons pouvoir donner des permissions
+			différentes au propriétaire, au membres du groupe 
+			et à tous les autres utilisateurs.
+			Nous avons aussi appris à comprendre les permissions données sur un fichier.
+		\end{infotbox}
+	
+		Très bien mais comment modifier ces permissions ?
+
+		\begin{theorie}{Modifier les permissions}
+			\kbd{chmod permissions fichier} modifie les permissions du fichier.
+		\end{theorie}
+
+		Il existe deux façons d'indiquer les permissions : via des nombres ou via des lettres.
+
+		\subsubsection{Donner les permissions avec des nombres}
+		%======================================================
+
+			Pour indiquer les permissions avec un nombre, 
+			on considère que $r=4$, $w=2$ et $x=1$. 
+			Et on additionne les valeurs ainsi obtenues.
+
+			Exemples :
+			\begin{tabular}{|c|c|l|}
+				\hline
+				\textbf{lettres} & \textbf{nombre} & \textbf{signification}\\
+				\hline
+				\samp{r-{}-} & 4 (4+0+0) & droit en lecture uniquement\\
+				\samp{rw-}   & 6 (4+2+0) & droit en lecture et en écriture\\
+				\samp{-{}-x} & 1 (0+0+1) & droit d'exécution uniquement\\
+				\hline
+			\end{tabular}
+
+			On combine alors les nombres obtenus pour les 3 sortes d'utilisateurs.
+			
+			Exemple : \kbd{chmod 640 welcome} donne 
+			au propriétaire le droit en lecture/écriture, 
+			aux utilisateurs dans le même groupe que le fichier le droit en lecture uniquement 
+			et aucun droit aux autres.
+
+			\begin{Exercice}{Convertir les permissions en nombres} 
+				Reprenez les permissions affichées dans la capture d'écran ci-dessous 
+				et exprimez-les avec un nombre de 3 chiffres.  
+				\begin{center}
+					\includegraphics[width=0.7\linewidth]{image/perm-nb.pdf}
+				\end{center}
+			\end{Exercice}
+			
+			\begin{Exercice}{Modifier les permissions}
+				Créez un fichier \samp{dev1/td2/brol} 
+				contenant un petit texte de votre choix.
+				Faites en sorte qu'il soit lisible par tout le monde
+				mais modifiable uniquement par vous.
+			\end{Exercice}
+
+		\subsubsection{Donner les permissions avec des lettres}
+		%======================================================
+
+			Avec la notation précédente, on spécifie toutes les permissions. 
+			Ici, on va aussi pouvoir indiquer uniquement ce qui doit changer : 
+			ajouter/enlever un droit sans toucher aux autres droits.
+
+			\begin{wrapfigure}{r}{.4\textwidth}
+				\vspace{-1em}
+				\includegraphics[width=.4\textwidth]{image/chmod.pdf}
+				\vspace{-2em}
+			\end{wrapfigure}
+			Le format de la commande est assez complexe. 
+			\begin{itemize}
+			\item
+				On indique d'abord les utilisateurs concernés par la modification des droits :
+				\begin{itemize}
+				\item « u » pour le propriétaire (user), 
+				\item « g » pour le groupe, 
+				\item « o » pour les autres (other) et
+				\item « a » pour tout le monde (all)
+				\end{itemize}  
+			\item
+				On indique ensuite si on veut ajouter (« + ») 
+				ou enlever (« - ») un droit
+			\item 
+				On indique enfin quel(s) droit(s) on ajoute ou enlève 
+				(« r », « w » et/ou « x »)
+			\end{itemize}
+
+			Consultez à la page de manuel pour découvrir toutes les possibilités.
+
+			\begin{Exercice}{Modifier les permissions}
+				Créez un fichier \samp{dev1/td2/brol2} 
+				contenant un petit texte de votre choix.
+				Faites en sorte qu'il soit lisible par tout le monde
+				mais modifiable uniquement par vous.
+			\end{Exercice}
+
+	%======================================================
+	\subsection{Différencier les étudiants des enseignants}
+	%======================================================
+
+		\begin{alertbox}
+			Nous n'allons pas ici introduire un concept nouveau
+			mais appliquer tout ce qui a été vu dans un exemple
+			qui, par expérience, vous pose souvent un problème. 
+		\end{alertbox}
+
+		\begin{Tutoriel}{Droit de lecture pour les enseignant uniquement}
+			Supposons que vous avez un fichier qui ne doit être
+			lu que par vous-même et les enseignants (mais pas les autres étudiants).
+
+			Comment donner des droits différents aux enseignants et aux étudiants ?
+			La seule solution passe par une modification du groupe du fichier.
+			S'il appartient au groupe \samp{etudiants} par exemple
+			et plus au groupe \samp{users}, les permissions de groupe
+			s'appliqueront aux étudiants et les permissions des \emph{autres}
+			concerneront les enseignants%
+			\footnote{
+				Pour être plus précis, 
+				tout utilisateur qui n'est pas dans le groupe \samp{etudiants}.
+			}
+
 			\begin{steps}
 			\item 
-				En préambule, tapez la commande \kbd{cd} pour revenir dans \textit{votre home}.
+				Entrez \kbd{cd ~/dev1/td2}
+				pour vous placer dans le dossier indiqué.
 			\item 
-				Tapez \kbd{nano test} pour commencer à éditer le fichier \samp{test} 
-				(comme il n'existe pas encore, il est créé).
-			
-				Une fenêtre s'ouvre. 
-				Vous voyez qu'elle est scindée en 2 parties : 
-				la partie supérieure où vous écrivez votre texte 
-				et la partie inférieure où sont indiquées 
-				les différentes commandes (le \char`\^{} représente la touche \verb|Ctrl|)
+				Entrez \kbd{touch examen} 
+				pour créer le fichier (vide) indiqué.
 			\item 
-				Entrez quelques mots.
+				Entrez \kbd{chgrp etudiants examen}
+				pour changer son groupe.
 			\item 
-				Appuyez sur la combinaison de touches \verb|Ctrl X|, 
-				confirmez que vous voulez sauver vos modifications et sortez.
-			
-				Vous êtes maintenant revenu à l'invite de commande.
+				Entrez \kbd{ls -l} pour visualiser la modification.
 			\item 
-				Tapez à présent la commande \kbd{ls}.
-				Vous pouvez constater que le fichier \verb_test_ est apparu dans la liste ;)
+				Entrez \kbd{chmod 604 examen}
+				pour changer les permissions associées au fichier.
+			\item 
+				Entrez \kbd{ls -l} pour visualiser le résultat final.
 			\end{steps}
 		\end{Tutoriel}
 
-		Pour aller plus loin dans l'apprentissage de cet éditeur,
-		consultez ce document :\\
-		{\tiny\url{http://fr.openclassrooms.com/informatique/cours/reprenez-le-controle-a-l-aide-de-linux/nano-l-editeur-de-texte-du-debutant}}.
+		\begin{Exercice}{Un fichier réservé aux étudiants}
+			Créez un fichier \samp{dev1/td2/gossip}
+			pour partager des rumeurs entre élèves.
+			On voudrait que tous les étudiants puissent le lire et le modifier
+			mais que les enseignants ne puissent ni le lire, ni l'écrire.
+		\end{Exercice}
 
-        	%==================================
-	\subsection{La racine du système de fichiers}
-	%==================================
+	%======================================================
+	\subsection{Les permissions sur les dossiers}
+	%======================================================
 
-		Rappelez-vous que les fichiers sont organisés en hiérarchie :
-		un dossier contient d'autres dossiers qui lui-même\dots
-
-		On a vu que chaque utilisateur dispose d'un dossier personnel. 
-		Où se trouve-il ? Dans un dossier appelé \samp{home}. 
-		Et où se trouve ce dossier \samp{home} ? 
-		Dans un dossier appelé \og{}\samp{/}\fg{} (la barre oblique). 
-		Et où se trouve ce dossier \og{}\samp{/}\fg{} ? Nulle part ;) 
-		C'est le dossier principal (la \textbf{racine}).
-
-		\begin{theorie}{La racine du système de fichiers}
-			La \textbf{racine} est le dossier principal, 
-			tout en haut de la hiérarchie des dossiers.
-		\end{theorie}
-
-	%==================================
-	\subsection{Chemin absolu et relatif}
-	%==================================
-
-		\exergue{Tout est relatif, et cela seul est absolu.}{Auguste Comte}
+		\begin{wrapfigure}{r}{.2\textwidth}
+			\vspace{-1em}
+			\includegraphics[width=.2\textwidth]{image/perm-dossier.pdf}
+			\vspace{-4em}
+		\end{wrapfigure}
+		Tout comme pour les fichiers, on peut donner des permissions au dossier. 
+		Ce qui change, c'est la signification des permissions. 
+		Que veut dire « exécuter » un dossier par exemple ? 
 		
-		\bigskip
-		Régulièrement, il faut indiquer un endroit du système de fichiers 
-		(par exemple pour y aller). 
-		Désigner simplement le nom du dossier ne suffit pas.  
-
-		\begin{theorie}{Chemin absolu et relatif}
+		Pour bien comprendre, prenons une image.
+		Imaginons qu'un dossier possède sur sa « couverture » une liste de son contenu. 
+		Par exemple, on voit ci-contre que le dossier td2 contient 3 fichiers.
+		
+		\begin{theorie}{Permissions sur un dossier}
+			Explicitons à présent le sens de chaque droit pour un dossier :
 			\begin{description}
-			\item[Chemin]
-				Un \textbf{chemin} est une suite de dossiers à traverser 
-				pour arriver au dossier ou au fichier qui nous intéresse.
-				On les sépare par \og{}\samp{/}\fg{}.
-
-				Par exemple : \samp{home/g12345/dev1/td1/test}
-				indique que dans le dossier \samp{home}
-				il y a un dossier \samp{g12345}
-				qui contient un dossier \samp{dev1} 
-				qui contient un dossier \samp{td1} 
-				qui contient un fichier (ou un dossier) \samp{test}.
-			\item[Chemin absolu]
-				Un chemin est \textbf{absolu} 
-				s'il commence à partir de la \textbf{racine}.
-				Il commence donc par \og{}\samp{/}\fg{}.
-				Par exemple : \samp{/home/g12345/td1/test}
-			\item[Chemin absolu]
-				Dans le cas contraire il est \textbf{relatif}.
-				Il s'agit d'un chemin à suivre à partir du \textbf{dossier courant}.
+			\item[\samp{r} (lecture)] 
+				On a le droit de lire ce qui est écrit sur la « couverture » du dossier. 
+				On peut par exemple faire \kbd{ls td2}.
+			\item[\samp{w} (écriture)] 
+				On peut modifier la « couverture » du dossier. 
+				On peut ainsi effacer un fichier (\kbd{rm td1/brol2})
+				ou en créer un (\kbd{touch td1/brol3}). 
+			\item[\samp{x} (ouverture)]
+				On peut « ouvrir » le dossier / entrer dedans. 
+				On peut ainsi en faire son dossier courant (\kbd{cd td2}) 
+				ou le traverser dans un chemin (\kbd{cat td2/gossip}).				
 			\end{description}
 		\end{theorie}
 
 		\begin{alertbox}
-			Un chemin \textbf{absolu} désigne toujours le même endroit.
-			Un chemin \textbf{relatif} non ! \c ca dépend d'où on est,
-			du dossier courant.
+			Pour effacer un fichier 
+			il ne faut pas de droit en écriture sur le fichier 
+			mais bien sur le dossier qui le contient.
 		\end{alertbox}
-
-		\begin{Exercice}{pwd}
-			Entrez la commande \kbd{pwd} (que fait-elle encore ?). 
-			Comprenez-vous la notation qu'elle utilise pour la réponse ?
-			Est-ce une chemin absolu ou relatif ?
-		\end{Exercice}
-
-		\begin{infobox}
-			Rappel : dans une commande, un nom de fichier (ou de dossier)
-			désigne toujours un fichier (ou un dossier) se trouvant
-			dans le dossier courant
-	
-			Pour indiquer un \textbf{fichier} (ou un dossier) 
-			se trouvant \textbf{ailleurs},
-			il faut donner son \textbf{chemin} (absolu ou relatif).
-		\end{infobox}
-
-		Par exemple : \kbd{ls /home/g12345}
-		permet de visualiser le contenu de la home de \samp{g12345}
-		(quel que soit l'endroit où on se trouve puisque c'est un chemin absolu).
 		
-		\begin{Exercice}{Utilisation d'un chemin}
-			Supposons que vous êtes dans votre home 
-			et que vous ne pouvez pas vous déplacer 
-			(la commande \samp{cd} est interdite !).
-			\begin{enumerate}
-			\item 
-				Affichez le contenu du fichier \samp{test}
-				(qui se trouve dans le dossier \samp{td1})
-				en utilisant un chemin \textbf{relatif}.
-			\item 
-				Faites la même chose 
-				en utilisant un chemin \textbf{absolu}.
-			\item
-				Créez une copie du fichier \samp{welcome} 
-				dans le dossier \samp{td1}.
-			\item 
-				Auriez-vous pu faire cette copie 
-				sans utiliser de chemin,
-				en vous déplaçant (\samp{cd}) ?
-			\end{enumerate}
+		\begin{Exercice}{Les permissions sur un dossier (I)}           
+			Dans un dossier \samp{dir1} dans votre dossier \samp{td2}.
+			Dans ce dossier, créez un fichier \samp{file}.
+			Faites en sorte que tout le monde puisse voir 
+			quels fichiers se trouvent dans \samp{dir1}
+			mais sans pouvoir lire le contenu de ces fichiers.
 		\end{Exercice}
 
-	%==================================
-	\subsection{Raccourcis pour des chemins}
-	%==================================
+		\begin{Exercice}{Les permissions sur un dossier (II)}           
+			Dans un dossier \samp{dir2} dans votre dossier \samp{td2}.
+			Dans ce dossier, créez un fichier \samp{file}.
+			Faites en sorte que tout le monde puisse modifier ce fichier 
+			mais sans pouvoir le supprimer.
+		\end{Exercice}
 
-		\begin{theorie}{Raccourcis}
-			Dans un chemin :
+	%================================
+	\subsection{Les derniers détails}
+	%================================
+
+		Voyons quelques détails mis de coté pendant notre apprentissage.
+
+		\begin{center}
+			\includegraphics[width=.7\textwidth]{image/reste.pdf}
+		\end{center}
+
+		\begin{faq}
+			\textbf{%
+				Vous dites que dans un affichage en format long, 
+				le premier caractère indique si c'est un fichier simple ('-') ou un dossier ('d'). 
+				Pourtant j'ai déjà vu d'autres symboles. C'était quoi ?
+			}
+			
+			Il existe d'autres types de fichiers que les deux que nous avons vus. 
+			Ils se rencontrent moins souvent et sont surtout utilisés par le système.
+			Par exemple, certains définissent des \textit{pilotes} vers le matériel. 
+			Si vous voulez en savoir plus, vous pouvez lire ceci 
+			(\url{en.wikipedia.org/wiki/Unix\_file\_types}).  
+
+			\medskip
+			\textbf{%
+				Vous avez mentionné les permissions 'r', 'w' et 'x'. 
+				Pourtant j'ai déjà vu d'autres lettres dans la zone réservée aux permissions. 
+				C'était quoi ?
+			}
+
+			Il y a 3 permissions dont nous n'avons pas parlé parce qu'elles sont moins courantes : 
+			le \textit{suid} (set user id), le \textit{sgid} (set group id) 
+			et le \textit{sticky}. 
+			Si vous voulez en savoir plus, vous pouvez lire ceci 
+			(\url{fr.wikipedia.org/wiki/Permissions\_UNIX}).  
+
+			\medskip
+			\textbf{%
+				J'ai un Linux à la maison et les groupes ne sont pas les mêmes. 
+				C'est normal ?
+			}
+
+			Oui ! 
+			Les groupes dépendent à la fois de la distribution particulière utilisée
+			et de la façon dont l'administrateur (le root) a configuré le système.   
+
+			\medskip
+			\textbf{%
+				Vous n'avez pas expliqué le sens de la 2\ieme{} colonne 
+				fournie par la commande ls (juste avant le propriétaire) ?
+			}
+
+			C'est vrai mais c'est moins utile 
+			et plus lié à la structure interne du système de fichier. 
+			Je veux bien vous dire qu'il s'agit 
+			du nombre de liens physiques sur le fichier 
+			mais je sens que vous commencez déjà à regretter d'avoir posé la question ;)  
+
+			\medskip
+			\textbf{%
+				Nous avons vu qu'un fichier est créé avec des permissions par défaut. 
+				C'est configurable ?
+			}
+
+			Oui. Voyez la commande \kbd{umask}.  
+		\end{faq}
+
+        \newpage
+%=================================
+\section{Les variables d'environnement}  
+%=================================
+
+	\subsection{Introduction}
+	%========================
+
+		\begin{theorie}{Variable d'environnement}
+			Une \textbf{variable d'environnement} 
+			est une variable associée à votre shell 
+			contenant un texte qui est accessible 
+			par toutes les applications que vous lancez. 
+			Généralement, elle permet de configurer certaines applications, 
+			d'en modifier le comportement.
+		\end{theorie}	
+
+		\begin{theorie}{Manipuler une variable d'environnement}
+			Si \samp{VARENV} est une variable d'environnement :
 			\begin{itemize}
-			\item \samp{\textasciitilde{}g12345} : désigne la home de l'utilisateur \samp{g12345} ;
-			\item \samp{\textasciitilde{}} : désigne la home de l'utilisateur qui entre la commande ;
-			\item \samp{..} : désigne le dossier parent du dossier courant ;
-			\item \samp{.} : désigne le dossier courant.
+			\item \kbd{export VARENV=valeur} crée une nouvelle variable à la valeur donnée.
+			\item \kbd{VARENV=valeur} modifie la valeur d'une variable existante.
+			\item \kbd{\$VARENV} est remplacé par la valeur de la variable.
 			\end{itemize}
 		\end{theorie}
 
-		\begin{Exercice}{Se familiariser avec les raccourcis}
-			Placez-vous dans votre dossier personnel.
-			En utilisant les raccourcis 
-			afin de trouver la solution la plus courte possible :
-			\begin{enumerate}
-			\item Affichez le contenu de votre dossier personnel
-				en utilisant un chemin absolu.
-			\item Affichez le contenu de la home de votre professeur
-				en utilisant un chemin absolu.
-			\item Refaites la même chose mais en utilisant un chemin relatif.
-			\end{enumerate}
+		\begin{Experience}{Manipuler une variable}
+			\begin{steps}
+			\item Entrez \kbd{VAR=12} pour créer la variable.
+			\item Entrez \kbd{echo "Bonjour !"}.
+				\\Cette commande affiche ce qu'on lui donne en paramètre.
+			\item Entrez \kbd{echo \$VAR} pour afficher le contenu de la variable.
+			\end{steps}
+		\end{Experience}
+
+		\begin{Exercice}{Comprendre la signification du \$}
+			Supposons que la variable d'environnement \samp{VAR} vaut 12.
+			Que va faire chacune des commandes suivantes ?
+			Une fois que vous pensez le savoir, 
+			vérifiez-le le tapant sur la machine.
+			\begin{itemize}
+			\item \kbd{echo VAR}
+			\item \kbd{\$VAR=12}
+			\item \kbd{VAR=\$VAR} 
+			\item \kbd{echo \$VAR + 30} 
+			\item \kbd{VAR=\$VAR+30} 
+			\item \kbd{VAR=\$VAR + 30} 
+			\item \kbd{VAR="\$VAR + 30"} 
+			\item \kbd{VAR=VAR} 
+			\end{itemize}
 		\end{Exercice}
 
-		\begin{Exercice}{Comprendre un chemin}
-			Que désigne le chemin suivant :
-			\samp{\textasciitilde{}mcd/../../home} ?
-		\end{Exercice}
+	\subsection{Le prompt}
+	%=====================
 
-		\begin{Exercice}{Chemins absolus et relatifs}
-			Parmi tous les chemins suivants, quels sont ceux qui sont 
-			\textbf{relatifs} ?			
-			\begin{selectmany} 
-			\item \verb@~/../g12345/td2@
-			\item \verb@/home/g12345/../g54321/Hello.java@
-			\item \verb@./tds/td2@
-			\item \verb@tds/td2/Hello.java@
-			\item \verb@~g12345/tds/td2@
-			\end{selectmany} 
-        \end{Exercice}
-        
+		\begin{theorie}{Prompt}
+			Le \textbf{prompt} (ou \textit{invite} en français) 
+			est le texte qui apparait à gauche
+			de ce que vous tapez dans votre shell. 
+			Il est déterminé par la variable d'environnement \samp{PS1}.
+		\end{theorie}
+			
+		\begin{Experience}{Le prompt} 
+			Affichez la valeur de votre prompt. 
+			Vous remarquerez qu'il contient des codes qui seront 
+			remplacés par certaines valeurs. 
+			Par exemple, \verb_\w_ indique le dossier courant.
+		\end{Experience}
+			
+		\begin{Exercice}{Modifier le prompt} 
+			Modifiez la valeur de votre prompt.
+			Par exemple, modifiez l'invite en "Bonjour ! ".
+		\end{Exercice}	
+
+		\begin{Tutoriel}{Durée de vie de la variable} 
+			\vspace{-1em}
+			\begin{steps}
+			\item Déconnectez-vous de linux1, puis reconnectez-vous.	
+			\end{steps}
+			Surprise, votre prompt a repris sa valeur d'origine ! 
+			Pour rendre une modification permanente, 
+			il faut ajouter la commande à votre fichier \verb@.bashrc@.
+			C'est un fichier caché qui est exécuté 
+			par votre shell lors de votre connexion.
+        \end{Tutoriel}
+
+        \subsection{Pour aller plus loin : l'éditeur \texttt{vi}}
+        %==================================
+    
+            Si vous avez fini,
+            vous serez peut-être curieux d'apprendre à utiliser \texttt{vi}
+            plutôt que \texttt{nano}.
+    
+            Quels sont les avantages de \texttt{vi} ?
+            \begin{itemize}
+            \item 
+                Certaines manipulations du fichiers sont plus simples : 
+                copier, supprimer, déplacer des lignes par exemple.
+            \item 
+                Il est facile d'indenter proprement un programme Java qui ne l'est pas.
+            \end{itemize}
+    
+            \texttt{vi} est plus puissant que \texttt{nano}
+            mais il est moins intuitif quand on débute.
+            Voici les bases à comprendre.
+    
+            \subsubsection*{Démarrer}
+            %========================
+    
+                Pour éditer un fichier texte existant
+                ou créer un nouveau fichier, 
+                il suffit de taper : \kbd{vi monFichier}.
+    
+                Les 3 modes de fonctionnement sous vi(m) :
+                \begin{center}
+                \includegraphics[width=.7\textwidth]{image/vi.pdf}
+                \end{center}
+    
+            \subsubsection*{Le mode commande}
+            %===============================
+    
+                C'est le mode dans lequel vous vous trouvez quand vous ouvrez \samp{vi}. 
+                Dans ce mode, les touches sur lesquelles vous appuyez
+                ne sont pas insérées dans le texte (comme dans nano)
+                mais sont considérées comme des commandes.
+                C'est le mode qui permet de \textbf{manipuler} le texte.
+    
+                Exemples de commandes :
+                \begin{itemize}
+                \item \kbd{i} : passer en mode édition (cfr. infra);
+                \item \kbd{yy} : copier la ligne sous le curseur (comme un \samp{CTRL-C} sous Windows) ; 
+                \item \kbd{3yy}	: copier 3 lignes ;
+                \item \kbd{dd} : couper la ligne sous le curseur (\kbd{5yy} pour en couper 5) ;
+                \item \kbd{dw} : couper le mot sur lequel se trouve le curseur ;
+                \item \kbd{p} : coller (ce qui a été précédemment copié ou coupé)
+                    sous la ligne qui suit le curseur ;
+                \item \kbd{u} : annuler la dernière modification. 
+                    Vous pouvez appuyer plusieurs fois pour annuler les dernières modifications.	
+                \end{itemize}
+    
+                \subsubsection*{Le mode édition}
+                %===============================
+            
+                    C'est le mode dans lequel ce qu'on tape est ajouté au texte,
+                    comme dans nano.
+                    On y accède par la touche :
+                    \begin{itemize}
+                    \item \kbd{i} (insert) : on insère à l'endroit du curseur ;
+                    \item \kbd{a} (append) : on insère après le curseur ;
+                    \item \kbd{o} : on insère dans une nouvelle ligne créée sous le curseur ;
+                    \end{itemize}
+    
+                    Dans tous les cas, l'indicateur \texttt{INSERT} 
+                    apparait alors en bas de l'écran.
+    
+                \subsubsection*{Le mode exécution}
+                %===============================
+                
+                    On y accède à partir du mode commande en tapant \kbd{:}.
+                    Ce mode permet d'entrer d'autres types de commandes,
+                    plus riches que celles du mode commande. 
+                    Voici les plus utilisées:
+                    \begin{itemize}
+                    \item \kbd{:h} pour accéder à l'aide (\kbd{q} pour quitter l'aide) ;
+                    \item \kbd{:w} pour sauver le fichier ;
+                    \item \kbd{:w monFichier} pour enregistrer sous \samp{monFichier},
+                    \item \kbd{:q} pour quitter l'éditeur (sans sauver) ;
+                    \item \kbd{:x} pour enregistrer et quitter ;
+                    \item \kbd{:q!} pour quitter sans enregistrer les modifications ;
+                    \item \kbd{:set nu} pour afficher les numéro de ligne 
+                        (\kbd{:set nonu} pour les retirer) ;
+                    \item \kbd{:numéroDeLigne} pour aller directement à cette ligne ;
+                    \item \kbd{:\%s/old/new/g} 
+                        pour remplacer toutes les occurrences de la chaine de caractères 
+                        \samp{old} par la chaine de caractère \samp{new}.
+                    \end{itemize}
+    
+        \subsection{Pour aller plus loin : le prompt}
+        %=============================================
+    
+            \begin{Exercice}{Explorer les codes du prompt}
+                Les possibilités de configuration du prompt sont nombreuses : 
+                afficher l'heure, le nom de la machine, votre login,
+                utiliser des couleurs\dots{}
+                Examinez la documentation pour configurer le prompt comme il 
+                vous plait (\verb@man bash@, section \verb@PROMPTING@).
+                Rendez la modification permanente.
+            \end{Exercice}	
+            
 \end{document}
