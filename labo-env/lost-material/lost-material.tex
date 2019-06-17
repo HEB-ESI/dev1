@@ -1,0 +1,215 @@
+\documentclass[a4paper,11pt]{style-esi/td}
+
+\usepackage{style-esi/licence}
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/exemple}
+\usepackage{style-esi/question}
+\usepackage{style-esi/tutoriel}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/images}
+\usepackage{style-dev1/dev1}
+
+\begin{document}
+
+\seance{1}{Introduction}
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+\bigskip
+\tableofcontents
+
+	%====================
+	\subsection{L'éditeur}
+	%=====================
+
+		Un \textbf{éditeur de texte} (ou, plus court, un \textbf{éditeur}) 
+		est un programme qui vous permet d'entrer, modifier
+		le contenu d'un fichier texte. 
+		Vous connaissez probablement \name{Notepad} sous \name{Windows}. 
+		Sur \name{Linux}, il en existe beaucoup. 
+		Celui que nous vous proposons dans un premier temps au laboratoire 
+		s'appelle \name{nano}. 
+		Il est assez facile pour débuter et faire des choses simples. 
+		Par la suite, vous pourrez choisir de rester sous \name{nano} 
+		ou d'utiliser \name{vim}.
+		
+		\begin{Tutoriel}{Premiers pas avec nano}
+			\vspace{-1em}
+			\begin{steps}
+			\item 
+				En préambule, tapez la commande \kbd{cd} pour revenir dans \textit{votre home}.
+			\item 
+				Tapez \kbd{nano test} pour commencer à éditer le fichier \samp{test} 
+				(comme il n'existe pas encore, il est créé).
+			
+				Une fenêtre s'ouvre. 
+				Vous voyez qu'elle est scindée en 2 parties : 
+				la partie supérieure où vous écrivez votre texte 
+				et la partie inférieure où sont indiquées 
+				les différentes commandes (le \char`\^{} représente la touche \verb|Ctrl|)
+			\item 
+				Entrez quelques mots.
+			\item 
+				Appuyez sur la combinaison de touches \verb|Ctrl X|, 
+				confirmez que vous voulez sauver vos modifications et sortez.
+			
+				Vous êtes maintenant revenu à l'invite de commande.
+			\item 
+				Tapez à présent la commande \kbd{ls}.
+				Vous pouvez constater que le fichier \verb_test_ est apparu dans la liste ;)
+			\end{steps}
+		\end{Tutoriel}
+
+		Pour aller plus loin dans l'apprentissage de cet éditeur,
+		consultez ce document :\\
+		{\tiny\url{http://fr.openclassrooms.com/informatique/cours/reprenez-le-controle-a-l-aide-de-linux/nano-l-editeur-de-texte-du-debutant}}.
+
+        	%==================================
+	\subsection{La racine du système de fichiers}
+	%==================================
+
+		Rappelez-vous que les fichiers sont organisés en hiérarchie :
+		un dossier contient d'autres dossiers qui lui-même\dots
+
+		On a vu que chaque utilisateur dispose d'un dossier personnel. 
+		Où se trouve-il ? Dans un dossier appelé \samp{home}. 
+		Et où se trouve ce dossier \samp{home} ? 
+		Dans un dossier appelé \og{}\samp{/}\fg{} (la barre oblique). 
+		Et où se trouve ce dossier \og{}\samp{/}\fg{} ? Nulle part ;) 
+		C'est le dossier principal (la \textbf{racine}).
+
+		\begin{theorie}{La racine du système de fichiers}
+			La \textbf{racine} est le dossier principal, 
+			tout en haut de la hiérarchie des dossiers.
+		\end{theorie}
+
+	%==================================
+	\subsection{Chemin absolu et relatif}
+	%==================================
+
+		\exergue{Tout est relatif, et cela seul est absolu.}{Auguste Comte}
+		
+		\bigskip
+		Régulièrement, il faut indiquer un endroit du système de fichiers 
+		(par exemple pour y aller). 
+		Désigner simplement le nom du dossier ne suffit pas.  
+
+		\begin{theorie}{Chemin absolu et relatif}
+			\begin{description}
+			\item[Chemin]
+				Un \textbf{chemin} est une suite de dossiers à traverser 
+				pour arriver au dossier ou au fichier qui nous intéresse.
+				On les sépare par \og{}\samp{/}\fg{}.
+
+				Par exemple : \samp{home/g12345/dev1/td1/test}
+				indique que dans le dossier \samp{home}
+				il y a un dossier \samp{g12345}
+				qui contient un dossier \samp{dev1} 
+				qui contient un dossier \samp{td1} 
+				qui contient un fichier (ou un dossier) \samp{test}.
+			\item[Chemin absolu]
+				Un chemin est \textbf{absolu} 
+				s'il commence à partir de la \textbf{racine}.
+				Il commence donc par \og{}\samp{/}\fg{}.
+				Par exemple : \samp{/home/g12345/td1/test}
+			\item[Chemin absolu]
+				Dans le cas contraire il est \textbf{relatif}.
+				Il s'agit d'un chemin à suivre à partir du \textbf{dossier courant}.
+			\end{description}
+		\end{theorie}
+
+		\begin{alertbox}
+			Un chemin \textbf{absolu} désigne toujours le même endroit.
+			Un chemin \textbf{relatif} non ! \c ca dépend d'où on est,
+			du dossier courant.
+		\end{alertbox}
+
+		\begin{Exercice}{pwd}
+			Entrez la commande \kbd{pwd} (que fait-elle encore ?). 
+			Comprenez-vous la notation qu'elle utilise pour la réponse ?
+			Est-ce une chemin absolu ou relatif ?
+		\end{Exercice}
+
+		\begin{infobox}
+			Rappel : dans une commande, un nom de fichier (ou de dossier)
+			désigne toujours un fichier (ou un dossier) se trouvant
+			dans le dossier courant
+	
+			Pour indiquer un \textbf{fichier} (ou un dossier) 
+			se trouvant \textbf{ailleurs},
+			il faut donner son \textbf{chemin} (absolu ou relatif).
+		\end{infobox}
+
+		Par exemple : \kbd{ls /home/g12345}
+		permet de visualiser le contenu de la home de \samp{g12345}
+		(quel que soit l'endroit où on se trouve puisque c'est un chemin absolu).
+		
+		\begin{Exercice}{Utilisation d'un chemin}
+			Supposons que vous êtes dans votre home 
+			et que vous ne pouvez pas vous déplacer 
+			(la commande \samp{cd} est interdite !).
+			\begin{enumerate}
+			\item 
+				Affichez le contenu du fichier \samp{test}
+				(qui se trouve dans le dossier \samp{td1})
+				en utilisant un chemin \textbf{relatif}.
+			\item 
+				Faites la même chose 
+				en utilisant un chemin \textbf{absolu}.
+			\item
+				Créez une copie du fichier \samp{welcome} 
+				dans le dossier \samp{td1}.
+			\item 
+				Auriez-vous pu faire cette copie 
+				sans utiliser de chemin,
+				en vous déplaçant (\samp{cd}) ?
+			\end{enumerate}
+		\end{Exercice}
+
+	%==================================
+	\subsection{Raccourcis pour des chemins}
+	%==================================
+
+		\begin{theorie}{Raccourcis}
+			Dans un chemin :
+			\begin{itemize}
+			\item \samp{\textasciitilde{}g12345} : désigne la home de l'utilisateur \samp{g12345} ;
+			\item \samp{\textasciitilde{}} : désigne la home de l'utilisateur qui entre la commande ;
+			\item \samp{..} : désigne le dossier parent du dossier courant ;
+			\item \samp{.} : désigne le dossier courant.
+			\end{itemize}
+		\end{theorie}
+
+		\begin{Exercice}{Se familiariser avec les raccourcis}
+			Placez-vous dans votre dossier personnel.
+			En utilisant les raccourcis 
+			afin de trouver la solution la plus courte possible :
+			\begin{enumerate}
+			\item Affichez le contenu de votre dossier personnel
+				en utilisant un chemin absolu.
+			\item Affichez le contenu de la home de votre professeur
+				en utilisant un chemin absolu.
+			\item Refaites la même chose mais en utilisant un chemin relatif.
+			\end{enumerate}
+		\end{Exercice}
+
+		\begin{Exercice}{Comprendre un chemin}
+			Que désigne le chemin suivant :
+			\samp{\textasciitilde{}mcd/../../home} ?
+		\end{Exercice}
+
+		\begin{Exercice}{Chemins absolus et relatifs}
+			Parmi tous les chemins suivants, quels sont ceux qui sont 
+			\textbf{relatifs} ?			
+			\begin{selectmany} 
+			\item \verb@~/../g12345/td2@
+			\item \verb@/home/g12345/../g54321/Hello.java@
+			\item \verb@./tds/td2@
+			\item \verb@tds/td2/Hello.java@
+			\item \verb@~g12345/tds/td2@
+			\end{selectmany} 
+        \end{Exercice}
+        
+\end{document}
