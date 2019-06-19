@@ -155,18 +155,17 @@
 		vous apprendre à utiliser Linux en mode console.
 
 		\begin{theorie}{Le mode console}
-			\begin{wrapfigure}{r}{0.55\textwidth} 
-				\vspace{-1em}
-				\flushright
-				\includegraphics[width=0.53\textwidth]{images/console}
-				\vspace{-1em}
-			\end{wrapfigure} 
 			En mode console%
 			\footnote{%
 				On parle aussi de mode \og{}commande\fg{} ou encore \og{}terminal\fg{}.
 			}, 
 			nous n'allons pas utiliser des fenêtres et une souris 
 			mais nous allons donner (\textbf{écrire}) des commandes au système.
+			
+			\medskip
+			\begin{center}
+			\includegraphics[width=0.63\textwidth]{images/console}
+			\end{center}
 			\begin{description}
 			\item[Shell] 
 				Un programme dont le but 
@@ -180,7 +179,7 @@
 			vous pouvez constater que l'utilisateur entre la commande \kbd{pwd}  
 			qui a pour effet d'afficher une réponse%
 			\footnote{%
-				Vous comprendrez bientôt ce que signifie \kbd{pwd}.
+				Vous comprendrez bientôt ce que signifie \samp{pwd}.
 			}. 
 			Ensuite, bash attend la commande suivante.
 		\end{theorie}
@@ -233,8 +232,8 @@
 			\item[Votre login (username)]
 				Un \textbf{'g' minuscule} suivi de votre numéro d'étudiant
 				(ex: \samp{g52010}).
-				\textbf{Note} : pour Linux, les minuscules et les majuscules 
-				sont toujours des caractères différents.
+				\\\textbf{Note} : pour Linux, les minuscules et les majuscules 
+				sont différentes.
 			\item[Votre mot de passe]
 				Le même que votre \textbf{mot de passe initial sous Windows}%
 				\footnote{%
@@ -475,7 +474,7 @@
 			\medskip	
 			\textbf{Après avoir tout entré, il me met un message d'erreur !}
 				Lisez le message ! Il est en général assez explicite : 
-				message trop court, trop simple\dots
+				mot de passe trop court, trop simple\dots
 
 			\medskip
 			\textbf{J'ai quitté en fermant la fenêtre, ce n'est pas plus simple ?}
@@ -487,18 +486,83 @@
 			\textbf{Si jamais j'oublie mon mot de passe sous Linux. Je dois aussi aller voir les techniciens ?}			
 				Non ! Votre professeur de labo peut réinitialiser le mot de passe Linux à sa valeur initiale.
 		\end{faq}
-				
+
+	%====================
+	\subsection{Une introduction aux chemins}
+	%=====================
+
+		Comment désigner un fichier qui se trouve dans un sous-dossier ?
+		Peut-on se contenter d'indiquer son nom ? Testons !
+
+		\begin{Experience}{Le bash ne cherche pas un fichier}
+			On voudrait visualiser le contenu du fichier \samp{readme}
+			qui se trouve dans \samp{dev1}.
+			\begin{steps}
+			\item 
+				Entrez la commande \kbd{cat readme}.
+			\end{steps}
+			\c Ca ne fonctionne pas !
+		\end{Experience}
+
+		\begin{alertbox}
+			Quand on indique un \textbf{nom} de fichier ou de dossier sans plus de précision,
+			il doit se trouver dans le \textbf{dossier courant}.
+			Le shell ne va \textbf{pas chercher} ailleurs ou dans un sous-dossier 
+			pour le trouver. 
+		\end{alertbox}
+
+		Par exemple, si on crée un dossier sans préciser où,
+		il sera créé dans le dossier courant.
+
+\newpage
+
+		\begin{Experience}{Accès à un dous-dossier}
+			Modifions légèrement l'expérience précédente.
+			\begin{steps}
+			\item 
+				Entrez la commande \kbd{cat dev1/readme}.
+			\end{steps}
+			\c Ca fonctionne cette fois !
+			Nous avons donné le \emph{chemin} pour y arriver.
+		\end{Experience}
+
+		\begin{theorie}{Une première approche des chemins}
+			En première approche, un \textbf{chemin}
+			est la suite des dossiers à traverser 
+			(séparés par \samp{/}%
+			\footnote{%
+				Attention ! Pas d'espace sinon le bash pense 
+				qu'il s'agit de 2 éléments distincts.
+			})
+			pour arriver au fichier
+			(ou au dossier) désiré.
+			Cette suite commence au dossier courant%
+			\footnote{%
+				Lors du prochain TD, 
+				nous verrons plus de notations pour désigner 
+				d'autres endroits du système de fichiers.
+			}.
+		\end{theorie}
+
 	%====================
 	\subsection{Se déplacer}
 	%=====================
 
-		Il est utile de pouvoir se \emph{déplacer} 
+		Nous venons de voir qu'il est possible 
+		de désigner un élément dans un sous-dossier.
+		Il est aussi utile de pouvoir se \emph{déplacer} 
 		dans la structure des dossiers, de changer de dossier courant.
 		Voyons comment.
 
 		\begin{Experience}{Se déplacer}  
 			\vspace{-1em}
 			\begin{steps}
+			\item 
+				Entrez la commande \kbd{ls}.
+				\begin{itemize}
+				\item 
+					Elle affiche le contenu de votre dossier personnel.
+				\end{itemize}
 			\item 
 				Tapez la commande \kbd{cd bin}.
 				\begin{itemize}
@@ -536,6 +600,8 @@
 				affiche une vue hiérarchique du dossier courant et de ses sous-dossiers.
 			\end{itemize}
 		\end{theorie}
+		
+%\newpage 
 
 		\begin{Exercice}{Assimiler les commandes de base}
 			Afin d'assimiler les commandes qu'on vient de voir,
@@ -547,7 +613,9 @@
 				\item En afficher le contenu complet (sous-dossiers y compris) ;
 				\item Vous déplacer dans le fichier \samp{dev1} ;
 				\item Vérifier que vous avez bien changé de dossier courant ;
-				\item Revenir dans le dossier courant.
+				\item Afficher le contenu du fichier \samp{readme} ;
+				\item Revenir dans le dossier courant ;
+				\item Afficher à nouveau le contenu du fichier \samp{readme} .
 			\end{enumerate}
 		\end{Exercice}
 
@@ -561,65 +629,6 @@
 			Comment le mettre en évidence ?
 		\end{Exercice}			
 
-	%====================
-	\subsection{Une introduction aux chemins}
-	%=====================
-
-		Faut-il obligatoirement se déplacer pour manipuler un fichier
-		qui se trouve dans un sous-dossier ?
-		Nous allons voir que ce n'est pas nécessaire.
-
-		\begin{Experience}{Le bash ne cherche pas un fichier}
-			On voudrait visualiser le contenu du fichier \samp{readme}
-			qui se trouve dans \samp{dev1}.
-			\begin{steps}
-			\item 
-				Si ce n'est pas le cas, 
-				placez-vous dans votre dossier personnel (\kbd{cd}).
-			\item 
-				Entrez la commande \kbd{cat readme}.
-			\end{steps}
-			\c Ca ne fonctionne pas !
-		\end{Experience}
-
-		\begin{alertbox}
-			Quand on indique un \textbf{nom} de fichier ou de dossier sans plus de précision,
-			il doit se trouver dans le \textbf{dossier courant}.
-			Le shell ne va \textbf{pas chercher} ailleurs ou dans un sous-dossier 
-			pour le trouver. 
-		\end{alertbox}
-
-		Par exemple, si on crée un dossier sans préciser où,
-		il sera créé dans le dossier courant.
-
-\newpage
-
-		\begin{Experience}{Accès à un dous-dossier}
-			Modifions légèrement l'expérience précédente.
-			\begin{steps}
-			\item 
-				Si ce n'est pas le cas, 
-				placez-vous dans votre dossier personnel (\kbd{cd}).
-			\item 
-				Entrez la commande \kbd{cat dev1/readme}.
-			\end{steps}
-			\c Ca fonctionne cette fois !
-			Nous avons donné le \emph{chemin} pour y arriver.
-		\end{Experience}
-
-		\begin{theorie}{Une première approche des chemins}
-			En première approche, un \textbf{chemin}
-			est la suite des dossiers à traverser 
-			(séparés par \samp{/})
-			pour arriver au fichier
-			(ou au dossier) désiré.
-			Cette suite commence au dossier courant%
-			\footnote{%
-				Lors du prochain TD, 
-				nous verrons plus de notations pour désigner 
-				d'autres endroits du système de fichiers.
-			}.
-		\end{theorie}
 
 	%====================
 	\subsection{Quelques commandes courantes}
@@ -661,25 +670,32 @@
 			\end{itemize}
 		\end{theorie}
 
+		Pour chaque commande, un nom de fichier (dossier)
+		peut-être un chemin vers ce fichier (dossier).
+		Par exemple, \kbd{rm dev1/readme} 
+		supprime le fichier \samp{readme} du dossier {dev1}.
+
 \newpage
 
 		\begin{Exercice}{Assimiler ces commandes courantes}
-			Afin d'assimiler les commandes qu'on vient de voir :
+			Afin d'assimiler les commandes qu'on vient de voir 
+			on vous demande d'arriver à la situation suivante :
+			\begin{center}
+				\includegraphics[height=8em]{images/ex-cmd-courtantes.pdf}
+			\end{center}
 			\begin{enumerate}
-			\item Dans \texttt{dev1}, créez un dossier \texttt{td1}.
-			\item Créez une copie appelée \verb|welcome2| du fichier \verb|welcome|.
-			\item Créez également un fichier vide nommé \verb|welcome3|.
-			%\item Éditez ce fichier et ajoutez-y quelques mots.
-			\item Affichez le contenu des 3 fichiers.
-			\item Créez, dans votre dossier \verb_td1_, un dossier \verb_monDossier_.
-			\item Déplacez-y votre fichier \verb_welcome2_.
-			\item Revenez dans votre dossier personnel.
-			\item Sans vous déplacer (pas de \verb|cd|),
-				affichez le contenu du fichier \verb|welcome|
-				et celui du fichier \verb|welcome2|.
-			\item Détruisez le fichier \verb_welcome3_.
-			\item Détruisez le dossier \verb_monDossier_ (ainsi que son contenu).
+			\item \verb|readme2| est une copie de \verb|readme|.
+			\item \verb|td1| est un dossier créé dans \verb|dev1|.
+			\item \verb|readme3| est aussi une copie de \verb|readme|.
 			\end{enumerate}
+			Une fois que c'est fait, supprimez les 2 fichiers et le dossier créés.
+		\end{Exercice}
+
+		\begin{Exercice}{Sans \samp{cd}}
+			Si vous avez utiliser la commande \samp{cd}
+			à un moment ou un autre lors de l'exercice précédent,
+			recommencez sans utiliser cette commande.
+			Le répertoire courant sera en permanence votre dossier personnel.
 		\end{Exercice}
 
 %===================
@@ -695,14 +711,13 @@
 			\kbd{pwd}, \kbd{tree}, \kbd{exit}, 
 			%\kbd{nano}, 
 			\kbd{rm}, \kbd{rmdir} et \kbd{touch}.
-		% \item 
-		% 	Savoir éditer un petit texte avec \samp{nano}.
+		\item 
+			Comprendre la notion de hiérarchie de dossiers.
 		\item 
 			Comprendre la notion de dossier courant
 			et de dossier personnel.
 		\item 
-			Comprendre la notion de hiérarchie de dossiers
-			et savoir désigner un sous-dossier en utilisant un chemin simple.
+			Savoir désigner un sous-dossier en utilisant un chemin simple.
 		\end{itemize}
 	\end{theorie}
 
