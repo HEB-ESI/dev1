@@ -85,6 +85,9 @@
 	\end{steps}
 	\end{Tutoriel}
 
+	C'est un bon début.
+	Plus loin dans ce TD, nous verrons quelques facilités supplémentaires.
+
 %=============================
 \section{Java en mode console}
 %==============================
@@ -94,6 +97,13 @@
 	cela lance des commandes qui effectuent la tâche.
 	Il est possible d'exécuter directement ces commandes.
 	C'est ce que nous allons faire ici.
+
+	\begin{alerttbox}{Pas de package}
+		Nous allons aborder uniquement des programmes Java
+		\textbf{sans package}.
+		L'utilisation de l'instruction \samp{package} en début de code
+		complique la tâche et nous n'aurons pas le temps d'aborder cette situation.
+	\end{alerttbox}
 
 	%=============================
 	\subsection{Compiler et exécuter}
@@ -138,42 +148,8 @@
 			On \textbf{compile un fichier} mais on \textbf{exécute une classe}.
 		\end{alerttbox}
 
-		Vous allez à présent écrire votre premier programme de bout en bout sur linux1. 
-		
-		\begin{Exercice}{Un programme Java}
-			Écrivez un programme qui :
-			\begin{itemize}
-			\item Affiche votre nom ;
-			\item Demande un nombre à l'utilisateur ;
-			\item Affiche l'inverse du nombre (par ex: $0.25$ si le nombre entré était $4$).
-			\end{itemize}
-		\end{Exercice}
-
-		% \begin{alerttbox}{Conseils}
-		% 	Procédez par étape et vérifiez correctement votre programme.
-		% 	Ce n'est pas parce qu'il compile qu'il est correct.
-		% 	Et ce n'est pas parce qu'il affiche quelque chose que c'est la bonne réponse.
-		% \end{alerttbox}
-
-		\begin{Exercice}{Comprendre les erreurs (I)}
-			Supposons que vous faites une erreur dans votre programme.
-			Par exemple en écrivant \code{java}{Public} 
-			au lieu de \code{java}{public}.
-
-			À quelle étape le problème va-t'il apparaitre ?
-			Sous quelle forme ? Testez !
-		\end{Exercice}
-
-		\begin{Exercice}{Comprendre les erreurs (II)}
-			Supposons que vous demandez un calcul impossible dans votre programme.
-			Par exemple \code{java}{1/0}.
-
-			À quelle étape le problème va-t'il apparaitre ?
-			Sous quelle forme ? Testez !
-		\end{Exercice}
-
 	%=============================
-	\subsection{Produire la Javadoc}
+	\subsection{Produire et visualiser la Javadoc}
 	%==============================
 
 		\begin{theorie}{Javadoc}
@@ -189,21 +165,51 @@
 		\subsubsection*{Visualiser le résultat}
 		%--------------------------------------
 
-			La javadoc est au format \name{HTML} et peut être consulté
-			avec un simple navigateur web mais il n'y en a pas sur \samp{linux1}%
-			\footnote{%
-				Un Linux avec environnement graphique 
-				dispose bien sûr d'un navigateur web.
-			}.
+		La javadoc est au format \name{HTML} et peut être consulté
+		avec un simple navigateur web en ouvrant le fichier \verb|index.html|
+		mais il n'y en a pas sur \samp{linux1}%
+		\footnote{%
+			Un Linux avec environnement graphique 
+			dispose bien sûr d'un navigateur web.
+			Si vous avez installé un Linux avec environnement graphique
+			sur votre PC, il suffit de double-cliquer sur le fichier
+			\samp{index.html} produit.
+		}.
 
-			\begin{todo}
-				Aborder le \samp{public\_html}.
-			\end{todo}
+		\begin{Tutoriel}{Visualiser la documentation sur Windows}
+			Voici comment procéder pour visualiser la documentation
+			produite à partir d'un navigateur sur Windows.
+			\begin{steps}
+			\item 
+				Entrez \kbd{mkdir -p \textasciitilde{}/public\_{}html/doc}.
+				\\
+				C'est dans le dossier \verb|public_html|
+				qu'il faut placer les documents accessibles à distance%
+				\footnote{%
+					Parce que le serveur web \name{Apache} a été installé
+					sur linux1 et qu'il a été configuré ainsi.
+				}.
+				Plus précisément, nous placerons la documentation
+				dans le sous-dossier \samp{doc}.
+				Comme c'est la toute première fois, il faut le créer.
+			\item 
+				Entrez \kbd{javadoc -doc \textasciitilde{}/public\_{}html/doc Hello.java}
+				\\pour créer la javadoc en la plaçant au bon endroit.
+			\item 
+				Lancez votre navigateur préféré sur Windows.
+			\item 
+				Entrez comme \name{url} : \verb|http://linux1/~<votre login>/doc|.
+				Vous devriez voir la javadoc s'afficher.
+			\end{steps}
+		\end{Tutoriel}
 
+\newpage
 %=====================================
 \section{L'éditeur nano}
 %======================================
 
+	Voyons quelques facilités proposées par le navigateur \name{nano}
+	pour simplifier le développement de programmes.
 
 	\subsection{Coloration syntaxique}
 	%=================================
@@ -267,7 +273,39 @@
 		\item Une \textit{quick ref} en ligne : 
 		\url{www.codexpedia.com/text-editor/nano-text-editor-command-cheatsheet/}
 		\end{itemize}	
-	
+
+%=================================
+\section{S'exercer}  
+%=================================
+
+	Vous allez à présent écrire et modifier des programmes
+	afin de vous aider à bien distinguer les phases de compilation et d'exécution. 
+
+	\begin{Exercice}{Comprendre les erreurs (I)}
+		Supposons que vous faites une erreur dans votre programme.
+		Par exemple en écrivant \code{java}{Public} 
+		au lieu de \code{java}{public}.
+
+		À quelle étape le problème va-t'il apparaitre ?
+		Sous quelle forme ? Testez !
+	\end{Exercice}
+
+	\begin{Exercice}{Comprendre les erreurs (II)}
+		Et si vous demandez un calcul impossible (par exemple \code{java}{1/0}).
+
+		À quelle étape le problème va-t'il apparaitre ?
+		Sous quelle forme ? Testez !
+	\end{Exercice}
+
+	\begin{Exercice}{Un programme Java}
+		Écrivez un programme qui :
+		\begin{itemize}
+		\item Affiche votre nom ;
+		\item Demande un nombre à l'utilisateur ;
+		\item Affiche l'inverse du nombre (par ex: $0.25$ si le nombre entré était $4$).
+		\end{itemize}
+	\end{Exercice}
+
 %=================================
 \section{Transfert de fichiers}  
 %=================================
@@ -297,23 +335,18 @@
 \section{Conclusion}
 %====================
 
-	\subsection{Ce qu'il faut connaitre}
-	%===================================
-
-		\begin{theorie}{Notions importantes de ce TD}
-			Voici les notions importantes que vous devez avoir assimilées à la fin de ce TD.
-			\begin{itemize}
-			\item 
-				La notion de fichier caché et comment les voir.
-			\item 
-				Savoir utiliser \samp{nano} pour éditer un petit programme Java.
-			\item 
-				Savoir compiler et exécuter un programme Java 
-				qui n'utilise pas de package.
-			\item 
-				Savoir créer/consulter/modifier une variable d'environnement.
-			\end{itemize}
-		\end{theorie}
+	\begin{theorie}{Notions importantes de ce TD}
+		Voici les notions importantes que vous devez avoir assimilées à la fin de ce TD.
+		\begin{itemize}
+		\item 
+			Savoir utiliser \samp{nano} pour éditer un petit programme Java.
+		\item 
+			Savoir compiler et exécuter un programme Java 
+			qui n'utilise pas de package.
+		\item 
+			Savoir générer et visualiser la javadoc.
+		\end{itemize}
+	\end{theorie}
 
 
 		
