@@ -37,41 +37,12 @@
     créez un répertoire \samp{td3}. 
     Il contiendra tous les fichiers que vous allez créer aujourd'hui. 
 \end{infobox}
+\vfill
 
 \newpage
 
-%============================================================
-\section{Quelques notions supplémentaires de Linux}
-%============================================================
-
-	Avant d'attaquer le c\oe{}ur du TD, 
-	à savoir le compilation et l'exécution de programmes Java,
-	voyons quelques éléments de Linux qui vous seront utiles.
-
-	%============================================================
-	\subsection{Les fichiers cachés}
-	%============================================================
-
-		\begin{theorie}{Les fichiers cachés}
-			Un \textbf{fichier caché}
-			est un fichier
-			dont le nom commence par \og{}\samp{.}\fg{} (un point).
-			\\
-			Idem pour un dossier.
-		\end{theorie}
-
-		Par défaut, 
-		les fichiers cachés ne sont pas montrés par la commande \kbd{ls}.
-		Pour les voir, utiliser l'option \texttt{a} : \kbd{ls -a}.
-		C'est surtout utilisé pour des fichiers de configuration.
-
-		\begin{Exercice}{Les fichiers cachés de la home}
-			Regardez s'il existe des fichiers cachés
-			dans votre répertoire personnel.
-		\end{Exercice}
-
 %=====================================
-\section{L'éditeur nano}
+\section{Une introduction à l'éditeur nano}
 %======================================
 
 	Un \textbf{éditeur de texte} (ou, plus court, un \textbf{éditeur}) 
@@ -85,14 +56,13 @@
 	Par la suite, vous pourrez choisir de rester sous \name{nano} 
 	ou d'utiliser \name{vim}.
 
-	\subsection{Premiers pas}
-	%=================================
-
 	\begin{Tutoriel}{Premiers pas avec nano}
 	\vspace{-1em}
 	\begin{steps}
 	\item 
-		En préambule, tapez la commande \kbd{cd} pour revenir dans \textit{votre home}.
+		Entrez \kbd{mkdir -p ~/dev1/td3} pour créer un dossier dédié à ce TD.
+	\item 
+		Entrez \kbd{cd ~/dev1/td3} pour vous y placer.
 	\item 
 		Tapez \kbd{nano test} pour commencer à éditer le fichier \samp{test} 
 		(comme il n'existe pas encore, il est créé).
@@ -115,78 +85,13 @@
 	\end{steps}
 	\end{Tutoriel}
 
-	Pour aller plus loin dans l'apprentissage de cet éditeur,
-	consultez ce document :\\
-	{\tiny\url{http://fr.openclassrooms.com/informatique/cours/reprenez-le-controle-a-l-aide-de-linux/nano-l-editeur-de-texte-du-debutant}}.
-
-	\subsection{Coloration syntaxique}
-	%=================================
-
-		La coloration syntaxique signifie 
-		utiliser des couleurs pour mettre en évidence certaines parties d'un code :
-		mots clés, constantes\dots{}
-	
-		Pour utiliser cette facilité, 
-		il faut configurer \name{nano}. 
-		Cette configuration se fait dans le fichier \samp{\textasciitilde{}/.nanorc}.
-
-		\begin{Tutoriel}{Introduire la coloration sytaxique} 
-			\vspace{-1em}
-			\begin{steps}
-			\item 
-				Tapez \kbd{nano \textasciitilde/.nanorc} 
-				pour éditer le fichier de configuration de \emph{nano}.
-			\item 
-				Ajoutez-y la ligne : \samp{include "/usr/share/nano/java.nanorc"}
-			\item 
-				Quittez l'éditeur.
-			\item 
-				Ouvrez le fichier \samp{Ex.java};
-				il devrait être coloré.
-			\end{steps}
-		\end{Tutoriel}
-				
-	\subsection{Numérotation des lignes}
-	%=================================
-				
-		Nano peut également indiquer le numéro de la ligne sur laquelle se trouve le curseur, 
-		ce qui sera pratique pour corriger vos erreurs. 
-		Pour cela, il existe deux méthodes.
-
-		\begin{itemize} 
-		\item \textbf{Méthode 1} : 
-			Lancer nano avec l'option \samp{-c} : \kbd{nano -c monFichier}.
-		\item \textbf{Méthode 2} : 
-			Dans l'éditeur, appuyez sur \samp{CTRL-c}.
-		\end{itemize}
-			
-	\subsection{Indentation}
-	%=================================
-				 
-		Pour qu'un programme soit lisible, 
-		il doit être \textit{indenté}. 
-		Ce qui serait pratique lorsqu'on code ce serait qu'un retour à la ligne 
-		positionne automatiquement le curseur de façon à être aligné avec la ligne précédente. 
-		Pour que nano fasse ça pour nous, 
-		il suffit d'ajouter	ceci à son fichier de configuration : \samp{set autoindent}.
-			
-	\subsection{Autres configurations} 
-	%=================================
-		
-		Si vous désirez connaitre d'autres possibilités de configuration de nano, 
-		vous pouvez lire le manuel : \kbd{man nanorc}.
-
-		Pour une \textit{quick ref} en ligne, consultez (par exemple) : \\
-		\url{www.codexpedia.com/text-editor/nano-text-editor-command-cheatsheet/}
-		.
-
 %=============================
 \section{Java en mode console}
 %==============================
 
 	Avec Netbeans, lorsque vous appuyez sur des boutons
 	(comme celui demandant d'exécuter le projet),
-	cela lancent des commandes qui effectuent la tâche.
+	cela lance des commandes qui effectuent la tâche.
 	Il est possible d'exécuter directement ces commandes.
 	C'est ce que nous allons faire ici.
 
@@ -295,7 +200,74 @@
 				Aborder le \samp{public\_html}.
 			\end{todo}
 
+%=====================================
+\section{L'éditeur nano}
+%======================================
+
+
+	\subsection{Coloration syntaxique}
+	%=================================
+
+		La coloration syntaxique signifie 
+		utiliser des couleurs pour mettre en évidence certaines parties d'un code :
+		mots clés, constantes\dots{}
+	
+		Pour utiliser cette facilité, 
+		il faut configurer \name{nano}. 
+		Cette configuration se fait dans le fichier \samp{\textasciitilde{}/.nanorc}.
+
+		\begin{Tutoriel}{Introduire la coloration sytaxique} 
+			\vspace{-1em}
+			\begin{steps}
+			\item 
+				Tapez \kbd{nano \textasciitilde/.nanorc} 
+				pour éditer le fichier de configuration de \emph{nano}.
+			\item 
+				Ajoutez-y la ligne : \samp{include "/usr/share/nano/java.nanorc"}
+			\item 
+				Quittez l'éditeur.
+			\item 
+				Ouvrez le fichier \samp{Ex.java};
+				il devrait être coloré.
+			\end{steps}
+		\end{Tutoriel}
+				
+	\subsection{Numérotation des lignes}
+	%=================================
+				
+		Nano peut également indiquer le numéro de la ligne sur laquelle se trouve le curseur, 
+		ce qui sera pratique pour corriger vos erreurs. 
+		Pour cela, il existe deux méthodes.
+
+		\begin{itemize} 
+		\item \textbf{Méthode 1} : 
+			Lancer nano avec l'option \samp{-c} : \kbd{nano -c monFichier}.
+		\item \textbf{Méthode 2} : 
+			Dans l'éditeur, appuyez sur \samp{CTRL-c}.
+		\end{itemize}
 			
+	\subsection{Indentation}
+	%=================================
+				 
+		Pour qu'un programme soit lisible, 
+		il doit être \textit{indenté}. 
+		Ce qui serait pratique lorsqu'on code ce serait qu'un retour à la ligne 
+		positionne automatiquement le curseur de façon à être aligné avec la ligne précédente. 
+		Pour que nano fasse ça pour nous, 
+		il suffit d'ajouter	ceci à son fichier de configuration : \samp{set autoindent}.
+			
+	\subsection{Pour aller plus loin} 
+	%=================================
+		
+		Voici quelques ressources pour aller plus loin dans votre apprentissage de l'éditeur :
+		\begin{itemize}
+		\item Le manuel : \kbd{man nanorc}.
+		\item Un petit tutoriel : 
+			\\{\tiny\url{http://fr.openclassrooms.com/informatique/cours/reprenez-le-controle-a-l-aide-de-linux/nano-l-editeur-de-texte-du-debutant}}.
+		\item Une \textit{quick ref} en ligne : 
+		\url{www.codexpedia.com/text-editor/nano-text-editor-command-cheatsheet/}
+		\end{itemize}	
+	
 %=================================
 \section{Transfert de fichiers}  
 %=================================
