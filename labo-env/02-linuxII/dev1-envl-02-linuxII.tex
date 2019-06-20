@@ -31,246 +31,6 @@
 \newpage
 
 %====================
-\section{La ligne de commandes}
-%=====================
-
-	Nous avons déjà vu quelques règles concernant la ligne de commande.
-	Voyons quelques notions supplémentaires qui vont vous être utiles.
-
-	%====================
-	\subsection{Compléter une commande}
-	%====================
-
-		Parfois, vous ne vous rappelez plus exactement d'une commande.
-		Le shell peut vous aider.  
-
-		\begin{Experience}{La complétion de la commande} 
-			Supposons que vous ne vous rappeliez plus très bien 
-			de la commande qui permet de modifier le mot de passe.
-			Vous vous rappelez juste qu'elle commence par \verb|pas|.
-			\begin{steps}
-			\item 
-				Tapez \kbd{pas} sans appuyer sur \samp{ENTER}.
-			\item 
-				Appuyez $2\times$ sur la touche \samp{TAB}.
-				Le shell affiche la liste des commandes commençant ainsi.
-			\item 
-				Tapez sur \kbd{s} puis à nouveau $2\times$ sur la touche \samp{TAB}.
-				Comme il n'y a plus qu'une seule possibilité, le shell complète la commande.
-			\end{steps}  
-		\end{Experience}		
-
-		\begin{Exercice}{La complétion des noms de fichiers} 
-			La touche de tabulation permet également de compléter un nom de fichier. 
-			\begin{enumerate}
-  			\item Copiez chez vous le fichier\par
-	  			\verb@monfichieraunomtellementlongquilmeparaitpeuprobabledeletaper2xsanserreur@ 
-	  			qui se trouve dans le dossier \verb@/eCours/dev1/@.
-			\item Affichez le contenu de ce fichier en évitant de retaper son nom.
-			\end{enumerate}
-		\end{Exercice}	
-
-	% %====================
-	% \subsection{Les jokers}
-	% %====================
-
-	% 	TODO (motivation, expérience, exercice\dots)
-
-	% 	\begin{theorie}{Les jokers}
-	% 		Dans un nom de fichier/dossier
-	% 		\begin{itemize}
-	% 			\item \og{}\samp{?}\fg{} remplace \textbf{un et un seul} caractère quelconque.
-	% 			\item \og{}\samp{*}\fg{} remplace \textbf{0, 1 ou plusieurs} caractères quelconques.
-	% 		\end{itemize}
-	% 	\end{theorie}
-
-	%====================
-	\subsection{Historique}
-	%====================
-
-		Il arrive souvent qu'on oublie une commande qu'on a déjà utilisée avant.
-		Le shell retient un historique des commandes tapées par un utilisateur
-		et il est possible de l'exploiter.
-		
-		\begin{theorie}{Historique}
-			\begin{itemize}
-			\item 
-				Les flèches \emph{haut} et \emph{bas}
-				permettent de se déplacer dans les commandes déjà entrées.
-			\item 
-				\kbd{history} affiche la liste (numérotée)
-				des dernières commandes tapées.
-			\item 
-				\kbd{!n} réexécute la commande numéro \emph{n}.
-			\item 
-				\kbd{!mot} réexécute la commande la plus récente 
-				\textbf{commençant} par \emph{mot}.
-			\item 
-				\kbd{!?mot} réexécute la commande la plus récente 
-				\textbf{contenant} par \emph{mot}.
-			\item 
-				\kbd{\^{}chaine1\^{}chaine2\^{}} réexécute la dernière commande
-				en remplaçant \emph{chaine1} par \emph{chaine2}.
-			\end{itemize}
-		\end{theorie}
-				
-	%====================
-	\subsection{Les options}
-	%=====================
-	
-		La plupart des commandes possèdent des \textbf{options}.
-
-		\begin{theorie}{Les options}
-			Une \textbf{option modifie le sens} d'une commande ;
-			\begin{itemize}
-			\item Elle commence par le signe \texttt{-} suivi d'une seule lettre ;
-			\item ou encore par le double tiret \texttt{-{}-} suivi d'un nom d'option.
-			\item Elle est placée n'importe où après le nom de la commande.   
-			\end{itemize}
-		\end{theorie}		
-
-		\begin{Experience}{Expérimenter les options}		
-			\vspace{-1em}
-			\begin{steps}
-			\item Tapez la commande \kbd{ls -l}. 
-				Vous constatez que le résultat obtenu est beaucoup plus verbeux%
-				\footnote{%
-					Vous apprendrez dans un prochain TD 
-					à comprendre ces informations supplémentaires.
-				} 
-				que celui obtenu sans l'option.
-			\item Entrez la commande \kbd{cat -n welcome}. 
-				L'option demande de numéroter les lignes 
-			\item Essayez \kbd{cat -{}-number welcome},
-				la version \textit{longue} équivalente à la précédente.
-			\end{steps}
-		\end{Experience}
-
-	%====================
-	\subsection{Les fichiers cachés}
-	%=====================
-
-		Nous avons vu que le shell retient les dernières commandes entrées.
-		Où exactement est ce que c'est retenu ?
-		Dans un fichier qui s'appelle \verb|.bash_history| dans votre \emph{home}.
-
-		\begin{Experience}{Un fichier caché}
-			Vérifions ce qu'on vient d'affirmer.
-			\begin{steps}
-			\item Entrez \kbd{cd} pour vous assurer d'être dans votre \emph{home}.
-			\item Entrez \kbd{ls} pour en voir le contenu.
-				\\Le fichier \verb|.bash_history| n'a pas l'air d'être présent !?
-			\item Entrez \kbd{cat .bash\_{}history} pour quand même en afficher son contenu.
-				\\Le shell vous affiche bien vos anciennes commandes sans afficher d'erreur !?
-			\end{steps}
-		\end{Experience}
-
-		\medskip
-		\begin{theorie}{Fichiers cachés}
-			Un \textbf{fichier caché} 
-			est un fichier dont le nom commence par un point.
-			\begin{itemize}
-			\item Par défaut, il n'est pas montré par la commande \kbd{ls}.
-			\item L'option \kbd{-a} demande de montrer les fichiers cachés.
- 			\end{itemize}
-		\end{theorie}
-
-		\begin{Experience}{Voir les fichiers cachés}
-			Testons ce qu'on vient d'apprendre.
-			\begin{steps}
-			\item Entrez la commande \kbd{ls -a}.
-				\\La commande affiche beaucoup plus de fichiers qu'avant,
-				dont celui qui nous intéresse.
-			\end{steps}
-		\end{Experience}
-
-%====================
-\section{Se documenter}
-%=====================
-
-	%====================
-	\subsection{Recherche d'informations}  
-	%====================
-
-		Non seulement, il y a beaucoup de commandes à connaitre mais, en plus, 
-		chacune dispose d'une multitude d'options. 
-		Impossible de tout retenir ! Comment faire ?   
-
-		\begin{theorie}{Information}
-			\begin{itemize}
-			\item 
-				\kbd{nomCommande -{}-help}
-				affiche une aide succincte sur la commande.
-			\item 
-				\kbd{man nomCommande} affiche une documentation plus complète.
-				(\textit{q} pour quitter).
-			\end{itemize}
-		\end{theorie}
-
-		Si vous ne connaissez pas le nom de la commande,
-		consultez les documents que l'on met à votre disposition,
-		notamment le \textit{Linux Cheat Sheet}.  
-
-		\begin{Exercice}{Trouver la bonne option} 
-			La commande \kbd{ls -l} 
-			affiche le contenu du dossier en format \textit{long}.
-			La 5\ieme{} colonne donne la taille du fichier (en octets).
-			Lorsque les nombres sont grands, ce n'est pas très lisible. 
-			Trouvez l'option qui permet d'afficher cette taille sous un format plus lisible.  
-			
-			\begin{alertbox} 
-				De grâce, \textbf{cherchez} la réponse, 
-				ne la \textbf{demandez pas} à votre voisin. 
-				Le but de cet exercice n'est pas de connaitre l'option 
-				(elle n'est pas si utile que \c ca) 
-				mais d'apprendre à trouver soi-même l'information.  
-			\end{alertbox}
-		\end{Exercice}
-
-	%====================
-	\subsection{Parcourir un long document}  
-	%====================
-
-		Lorsque vous avez demandé de l'aide, 
-		la commande \samp{man} vous a affiché 
-		le contenu d'un fichier contenant cette aide.
-		Comme il est long, il ne l'a pas affiché comme le ferait un \samp{cat}
-		mais au travers d'une commande 
-		qui permet d'afficher \textbf{page par page} un document.
-
-		\begin{theorie}{less}
-			\kbd{less nomDeFichier} 
-			permet de \textbf{consulter} le fichier en question \emph{page par page}.
-			\begin{itemize}
-			\item
-				Ce n'est pas un éditeur; vous ne pouvez \textbf{pas modifier} le document.
-			\item 
-				Les flèches et les touches \samp{PGUP} et \samp{PGDN}
-				permettent de se déplacer dans le document.
-			\item 
-				Appuyez sur \samp{q} pour terminer la consultation. 
-			\item 
-				\samp{/mot} cherche le mot donné dans le document.
-			\item 
-				\samp{n} montre l'occurrence suivante du mot recherché.
-			\end{itemize}
-		\end{theorie}
-
-		Toutes ces facilités peuvent être utilisées lorsque vous parcourez
-		une aide%
-		\footnote{%
-			Il en existe bien plus ! \kbd{man less} si vous êtes intéressé.
-		}.
-
-		\begin{Exercice}{Trouver la bonne option (II)}
-			Quelqu'un m'a dit que la commande \samp{pouvait}
-			afficher à coté de chaque fichier la date de sa dernière modification
-			mais je ne me rappelle plus de l'option. 
-			Pouvez-vous m'aider ?
-			Aide: en anglais, on dit \og{}last modification\fg{}.
-		\end{Exercice}
-
-%====================
 \section{Le système de fichiers}
 %=====================
 
@@ -451,7 +211,231 @@
 		\end{enumerate}
 		\end{Exercice}
 
+%====================
+\section{La ligne de commandes}
+%=====================
 
+	Nous avons déjà vu quelques règles concernant la ligne de commande.
+	Voyons quelques notions supplémentaires qui vont vous être utiles.
+
+	%====================
+	\subsection{Compléter une commande}
+	%====================
+
+		Parfois, vous ne vous rappelez plus exactement d'une commande.
+		Le shell peut vous aider.  
+
+		\begin{Experience}{La complétion de la commande} 
+			Supposons que vous ne vous rappeliez plus très bien 
+			de la commande qui permet de modifier le mot de passe.
+			Vous vous rappelez juste qu'elle commence par \verb|pas|.
+			\begin{steps}
+			\item 
+				Tapez \kbd{pas} sans appuyer sur \samp{ENTER}.
+			\item 
+				Appuyez $2\times$ sur la touche \samp{TAB}.
+				Le shell affiche la liste des commandes commençant ainsi.
+			\item 
+				Tapez sur \kbd{s} puis à nouveau $2\times$ sur la touche \samp{TAB}.
+				Comme il n'y a plus qu'une seule possibilité, le shell complète la commande.
+			\end{steps}  
+		\end{Experience}		
+
+		\begin{Exercice}{La complétion des noms de fichiers} 
+			La touche de tabulation permet également de compléter un nom de fichier. 
+			\begin{enumerate}
+  			\item Copiez chez vous le fichier\par
+	  			\verb@monfichieraunomtellementlongquilmeparaitpeuprobabledeletaper2xsanserreur@ 
+	  			qui se trouve dans le dossier \verb@/eCours/dev1/@.
+			\item Affichez le contenu de ce fichier en évitant de retaper son nom.
+			\end{enumerate}
+		\end{Exercice}	
+
+	%====================
+	\subsection{Historique}
+	%====================
+
+		Il arrive souvent qu'on oublie une commande qu'on a déjà utilisée avant.
+		Le shell retient un historique des commandes tapées par un utilisateur
+		et il est possible de l'exploiter.
+		
+		\begin{theorie}{Historique}
+			\begin{itemize}
+			\item 
+				Les flèches \emph{haut} et \emph{bas}
+				permettent de se déplacer dans les commandes déjà entrées.
+			\item 
+				\kbd{history} affiche la liste (numérotée)
+				des dernières commandes tapées.
+			\item 
+				\kbd{!n} réexécute la commande numéro \emph{n}.
+			\item 
+				\kbd{!mot} réexécute la commande la plus récente 
+				\textbf{commençant} par \emph{mot}.
+			\item 
+				\kbd{!?mot} réexécute la commande la plus récente 
+				\textbf{contenant} par \emph{mot}.
+			\item 
+				\kbd{\^{}chaine1\^{}chaine2\^{}} réexécute la dernière commande
+				en remplaçant \emph{chaine1} par \emph{chaine2}.
+			\end{itemize}
+		\end{theorie}
+
+	%====================
+	\subsection{Les options}
+	%=====================
+	
+		La plupart des commandes possèdent des \textbf{options}.
+
+		\begin{theorie}{Les options}
+			Une \textbf{option modifie le sens} d'une commande ;
+			\begin{itemize}
+			\item Elle commence par le signe \texttt{-} suivi d'une seule lettre ;
+			\item ou encore par le double tiret \texttt{-{}-} suivi d'un nom d'option.
+			\item Elle est placée n'importe où après le nom de la commande.   
+			\end{itemize}
+		\end{theorie}		
+
+		\begin{Experience}{Expérimenter les options}		
+			\vspace{-1em}
+			\begin{steps}
+			\item Tapez la commande \kbd{ls -l}. 
+				Vous constatez que le résultat obtenu est beaucoup plus verbeux%
+				\footnote{%
+					Vous apprendrez dans un prochain TD 
+					à comprendre ces informations supplémentaires.
+				} 
+				que celui obtenu sans l'option.
+			\item Entrez la commande \kbd{cat -n welcome}. 
+				L'option demande de numéroter les lignes 
+			\item Essayez \kbd{cat -{}-number welcome},
+				la version \textit{longue} équivalente à la précédente.
+			\end{steps}
+		\end{Experience}
+
+%====================
+\section{Les fichiers cachés}
+%=====================
+
+	Nous avons vu que le shell retient les dernières commandes entrées.
+	Où exactement est ce que c'est retenu ?
+	Dans un fichier qui s'appelle \verb|.bash_history| dans votre \emph{home}.
+
+	\begin{Experience}{Un fichier caché}
+		Vérifions ce qu'on vient d'affirmer.
+		\begin{steps}
+		\item Entrez \kbd{cd} pour vous assurer d'être dans votre \emph{home}.
+		\item Entrez \kbd{ls} pour en voir le contenu.
+			\\Le fichier \verb|.bash_history| n'a pas l'air d'être présent !?
+		\item Entrez \kbd{cat .bash\_{}history} pour quand même en afficher son contenu.
+			\\Le shell vous affiche bien vos anciennes commandes sans afficher d'erreur !?
+		\end{steps}
+	\end{Experience}
+
+	\medskip
+	\begin{theorie}{Fichiers cachés}
+		Un \textbf{fichier caché} 
+		est un fichier dont le nom commence par un point.
+		\begin{itemize}
+		\item Par défaut, il n'est pas montré par la commande \kbd{ls}.
+		\item L'option \kbd{-a} demande de montrer les fichiers cachés.
+		\end{itemize}
+	\end{theorie}
+
+	\begin{Experience}{Voir les fichiers cachés}
+		Testons ce qu'on vient d'apprendre.
+		\begin{steps}
+		\item Entrez la commande \kbd{ls -a}.
+			\\La commande affiche beaucoup plus de fichiers qu'avant,
+			dont celui qui nous intéresse.
+		\end{steps}
+	\end{Experience}
+
+%====================
+\section{Se documenter}
+%=====================
+
+	%====================
+	\subsection{Recherche d'informations}  
+	%====================
+
+		Non seulement, il y a beaucoup de commandes à connaitre mais, en plus, 
+		chacune dispose d'une multitude d'options. 
+		Impossible de tout retenir ! Comment faire ?   
+
+		\begin{theorie}{Information}
+			\begin{itemize}
+			\item 
+				\kbd{nomCommande -{}-help}
+				affiche une aide succincte sur la commande.
+			\item 
+				\kbd{man nomCommande} affiche une documentation plus complète.
+				(\textit{q} pour quitter).
+			\end{itemize}
+		\end{theorie}
+
+		Si vous ne connaissez pas le nom de la commande,
+		consultez les documents que l'on met à votre disposition,
+		notamment le \textit{Linux Cheat Sheet}.  
+
+		\begin{Exercice}{Trouver la bonne option} 
+			La commande \kbd{ls -l} 
+			affiche le contenu du dossier en format \textit{long}.
+			La 5\ieme{} colonne donne la taille du fichier (en octets).
+			Lorsque les nombres sont grands, ce n'est pas très lisible. 
+			Trouvez l'option qui permet d'afficher cette taille sous un format plus lisible.  
+			
+			\begin{alertbox} 
+				De grâce, \textbf{cherchez} la réponse, 
+				ne la \textbf{demandez pas} à votre voisin. 
+				Le but de cet exercice n'est pas de connaitre l'option 
+				(elle n'est pas si utile que \c ca) 
+				mais d'apprendre à trouver soi-même l'information.  
+			\end{alertbox}
+		\end{Exercice}
+
+	%====================
+	\subsection{Parcourir un long document}  
+	%====================
+
+		Lorsque vous avez demandé de l'aide, 
+		la commande \samp{man} vous a affiché 
+		le contenu d'un fichier contenant cette aide.
+		Comme il est long, il ne l'a pas affiché comme le ferait un \samp{cat}
+		mais au travers d'une commande 
+		qui permet d'afficher \textbf{page par page} un document.
+
+		\begin{theorie}{less}
+			\kbd{less nomDeFichier} 
+			permet de \textbf{consulter} le fichier en question \emph{page par page}.
+			\begin{itemize}
+			\item
+				Ce n'est pas un éditeur; vous ne pouvez \textbf{pas modifier} le document.
+			\item 
+				Les flèches et les touches \samp{PGUP} et \samp{PGDN}
+				permettent de se déplacer dans le document.
+			\item 
+				Appuyez sur \samp{q} pour terminer la consultation. 
+			\item 
+				\samp{/mot} cherche le mot donné dans le document.
+			\item 
+				\samp{n} montre l'occurrence suivante du mot recherché.
+			\end{itemize}
+		\end{theorie}
+
+		Toutes ces facilités peuvent être utilisées lorsque vous parcourez
+		une aide%
+		\footnote{%
+			Il en existe bien plus ! \kbd{man less} si vous êtes intéressé.
+		}.
+
+		\begin{Exercice}{Trouver la bonne option (II)}
+			Quelqu'un m'a dit que la commande \samp{pouvait}
+			afficher à coté de chaque fichier la date de sa dernière modification
+			mais je ne me rappelle plus de l'option. 
+			Pouvez-vous m'aider ?
+			Aide: en anglais, on dit \og{}last modification\fg{}.
+		\end{Exercice}
 
 %===================
 \section{Conclusion}
