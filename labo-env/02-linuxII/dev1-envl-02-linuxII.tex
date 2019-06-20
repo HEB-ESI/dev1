@@ -227,12 +227,47 @@
 			\end{alertbox}
 		\end{Exercice}
 
-		\begin{Exercice}{Trouver la bonne commande}
-			Quelle commande permet de 
+	%====================
+	\subsection{Parcourir un long document}  
+	%====================
+
+		Lorsque vous avez demandé de l'aide, 
+		la commande \samp{man} vous a affiché 
+		le contenu d'un fichier contenant cette aide.
+		Comme il est long, il ne l'a pas affiché comme le ferait un \samp{cat}
+		mais au travers d'une commande 
+		qui permet d'afficher \textbf{page par page} un document.
+
+		\begin{theorie}{less}
+			\kbd{less nomDeFichier} 
+			permet de \textbf{consulter} le fichier en question \emph{page par page}.
 			\begin{itemize}
-				\item \textit{nettoyer} l'écran ?  
-				\item afficher la date et l'heure ?
+			\item
+				Ce n'est pas un éditeur; vous ne pouvez \textbf{pas modifier} le document.
+			\item 
+				Les flèches et les touches \samp{PGUP} et \samp{PGDN}
+				permettent de se déplacer dans le document.
+			\item 
+				Appuyez sur \samp{q} pour terminer la consultation. 
+			\item 
+				\samp{/mot} cherche le mot donné dans le document.
+			\item 
+				\samp{n} montre l'occurrence suivante du mot recherché.
 			\end{itemize}
+		\end{theorie}
+
+		Toutes ces facilités peuvent être utilisées lorsque vous parcourez
+		une aide%
+		\footnote{%
+			Il en existe bien plus ! \kbd{man less} si vous êtes intéressé.
+		}.
+
+		\begin{Exercice}{Trouver la bonne option (II)}
+			Quelqu'un m'a dit que la commande \samp{pouvait}
+			afficher à coté de chaque fichier la date de sa dernière modification
+			mais je ne me rappelle plus de l'option. 
+			Pouvez-vous m'aider ?
+			Aide: en anglais, on dit \og{}last modification\fg{}.
 		\end{Exercice}
 
 %====================
