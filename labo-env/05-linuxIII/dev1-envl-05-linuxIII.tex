@@ -1,0 +1,436 @@
+\documentclass[a4paper,11pt]{style-esi/td}
+
+\usepackage{style-esi/licence}
+\usepackage{style-esi/exercice}
+\usepackage{style-esi/exemple}
+\usepackage{style-esi/question}
+\usepackage{style-esi/tutoriel}
+\usepackage{style-esi/listing}
+\usepackage{style-esi/images}
+\usepackage{style-dev1/dev1}
+
+\begin{document}
+
+\seance{4}{Linux (partie III)}
+\entete
+\titre
+\ccbysa{esi-dev1-list@he2b.be}
+\lastedit
+
+\bigskip
+\tableofcontents
+
+\vfill
+\begin{infobox}
+    Dans votre répertoire \samp{\textasciitilde/dev1}, 
+	créez un répertoire \samp{td4}. 
+    Il contiendra tous les fichiers que vous allez créer aujourd'hui. 
+\end{infobox}
+\vfill
+
+\newpage
+
+%====================
+\section{Les jokers}
+%====================
+
+	Le dossier \samp{/eCours/dev1/envl} contient plusieurs programmes \name{Java}.
+	Imaginons qu'on veuille les copier tous chez nous. Comment faire ?
+	\begin{enumerate}
+	\item 
+		On peut entrer une commande \samp{cp} par fichier à copier.
+		C'est pénible.
+	\item 
+		La commande \samp{cp} accepte plusieurs noms de fichiers à copier
+		pour autant que toutes les copies se fassent au même endroit.
+		Ainsi on peut écrire : 
+		\\\kbd{cp fichier1 fichier2 fichier3 dossierOùLesMettre}.
+		\\C'est mieux mais encore pénible.
+	\item
+		S'il y a une certaine logique dans les fichiers à copier,
+		on peut utiliser les \textbf{jokers}.
+	\end{enumerate}
+
+	\begin{theorie}{Les jokers}
+		Dans un nom de fichier/dossier
+		\begin{itemize}
+			\item \og{}\samp{?}\fg{} remplace \textbf{un et un seul} caractère quelconque.
+			\item \og{}\samp{*}\fg{} remplace \textbf{0, 1 ou plusieurs} caractères quelconques.
+		\end{itemize}
+	\end{theorie}
+
+	\begin{Experience}{Copie de plusieurs fichiers}
+		Utilisons les jokers pour facilement tout copier d'un coup.
+		\begin{steps}
+		\item 
+			Si ce n'est pas encore fait, créez un dossier \samp{td4}
+			et placez-vous dedans.
+		\item 
+			Entrez \kbd{cp /eCours/dev1/envl/*.java .}.
+			\\Que signifie le \og{}\samp{.}\fg{} (point) dans la commande ?
+		\item 
+			Affichez le contenu de \samp{td4}.
+			Vous constatez que plusieurs fichiers y ont été copiés.
+		\end{steps}
+		Concrètement, 
+		lorsqu'il voit un nom avec un joker,
+		le shell le remplace par tous les fichiers/dossiers qui correspondent au motif.
+		Ensuite il appelle la commande comme si tous les noms de fichiers/dossiers
+		avaient été entrés explicitement.
+	\end{Experience}
+	
+	\begin{Exercice}{Comprendre le \samp{*}}
+		Quels sont les noms qui correspondent au motif \samp{*1*.java} ?
+		\begin{selectmany}
+		\item \samp{Ex10.java}
+		\item \samp{Ex1.java}
+		\item \samp{Ex10.class}
+		\item \samp{1.java}		
+		\end{selectmany}
+	\end{Exercice}
+
+	\begin{Exercice}{Comprendre le \samp{*}}
+		Quels sont les noms qui correspondent au motif \samp{Ex?.java} ?
+		\begin{selectmany}
+		\item \samp{Ex10.java}
+		\item \samp{Ex1.java}
+		\item \samp{10.java}
+		\item \samp{1.java}		
+		\end{selectmany}
+	\end{Exercice}
+
+	\begin{Exercice}{Compiler en bloc}
+		Sachant que la commande \samp{javac} 
+		accepte plusieurs noms de fichiers à compiler,
+		comment compiler facilement tous les fichiers Java du dossier \samp{td4}.
+	\end{Exercice}
+
+%====================
+\section{Recherche de fichiers}
+%====================
+
+	Vous commencez à avoir beaucoup de fichiers.
+	Dans pareil cas, 
+	il arrive souvent qu'on ne sache plus exactement où se trouve un fichier.
+	Est-ce que le système peut nous aider à le trouver ?
+
+	Les jokers peuvent parfois nous aider.
+	Par exemple, si on sait que le fichier s'appelle \samp{Hello.java}
+	et qu'il se trouve directement dans un des dossiers \samp{td\emph{i}},
+	on peut le trouver avec 
+	la commande \kbd{ls \textasciitilde/dev1/td*/Hello.java}.
+	
+	Dans des cas plus complexes, la commande \samp{find} vient à notre secours.
+
+	\medskip
+	\begin{coltbox}{\samp{find}}
+		\kbd{find <oùChercher> <quoiChercher>}
+		
+		\medskip
+		Permet de chercher des fichiers
+		sur le disque dur en fonction de critères :
+		le nom, la date de création, le propriétaire, la taille,
+		les permissions\dots{}  {\color{colalert}mais pas le contenu !}
+		Elle affiche la liste des fichiers trouvés.
+		\begin{itemize}
+		\item \og{}oùChercher\fg{} : le dossier dans lequel chercher ;
+		\item \og{}quoiChercher\fg{} : le ou les critère(s) de recherche.
+		\end{itemize}
+	\end{coltbox}
+
+	\medskip
+	Exemple : \kbd{find \textasciitilde{} -name "*.java"}
+	\\permet de trouver tous les fichiers java%
+	\footnote{
+		Les guillements demande au shell de ne \textbf{pas}
+		traiter le joker. Le motif est passé tel quel à la commande
+		et c'est le \samp{find} qui va en tenir compte.
+	} \emph{quelque part}
+	dans son répertoire personnel.
+
+	On vous laisse consulter la page de manuel pour trouver comment
+	exprimer les autres critères.
+
+	\begin{Exercice}{Recherche 1}
+		Cherchez dans votre répertoire personnel,
+		tous les fichiers ou dossiers qui sont vides
+		(il n'y en a peut-être pas !).
+	\end{Exercice}
+
+	\begin{Exercice}{Recherche 2}
+		Cherchez dans votre répertoire personnel,
+		tous les fichiers qui ont une taille de plus de 512 octets.
+	\end{Exercice}
+
+	\begin{Exercice}{Recherche 3}
+		Listez tous les répertoires personnels 
+		qui sont composés d'exactement 3 caractères.
+	\end{Exercice}
+
+	\begin{Exercice}{Recherche 4}
+		Listez tous vos fichiers qui ont été modifiés depuis moins de 24h.
+	\end{Exercice}
+
+\newpage
+
+%====================
+\section{Redirection}
+%====================
+
+	Imaginons qu'un programme Java produise un gros output.
+	Est-il possible de le sauver dans un fichier pour le consulter tranquillement ?
+	Oui !
+	Ceci ,et bien d'autres choses encore, est possible grâce aux redirections.
+
+	%===============================
+	\subsection{Rediriger la sortie}
+	%===============================
+
+		\begin{Experience}{Rediriger la sortie d'un programme Java}
+			Si ce n'est pas encore le cas,
+			créez un dossier \samp{td4} et placez-vous dedans.
+			\begin{steps}
+			\item 
+				\kbd{cp /eCours/dev1/envl/PasCroissant.java .}
+				pour copier un programme Java qui produit un output très long.
+			\item 
+				Examiner le code et essayez de comprendre ce qu'il fait.
+			\item 
+				\kbd{javac PasCroissant.java} pour le compiler.
+			\item 
+				\kbd{java PasCroissant} pour l'exécuter.
+				Vous constatez que le résultat est très long.
+			\item 
+				\kbd{java PasCroissant >res}. Plus rien n'est affiché !?
+			\item 
+				\kbd{ls} pour constater qu'un fichier \samp{res} est apparu.
+			\item 
+				\kbd{cat res} 
+				pour constater qu'il contient bien tout l'output du programme.
+			\end{steps}
+		\end{Experience}
+
+		Ce qu'on vient de voir avec un programme Java est en fait
+		vrai pour n'importe quel exécutable (les commandes aussi donc).
+
+		\begin{theorie}{Rediriger la sortie}
+			La \textbf{sortie standard} d'un exécutable est par défaut l'écran.
+			\c Ca peut être changé. 
+			\begin{itemize}
+				\item \samp{> nomFichier} :
+					à la suite d'une commande indique que les affichages
+					se feront \textbf{dans le fichier} indiqué (qui est créé ou vidé avant)
+				\item \samp{>{}> nomFichier} : 
+					pour \textbf{ajouter} les affichages à la \textbf{fin} du fichier.
+			\end{itemize}
+		\end{theorie}
+
+		\begin{alerttbox}{Transparent pour les exécutables}
+			Comprenez-bien que ceci est \textbf{transparent}
+			pour les commandes.
+			Le programme Java n'a pas été modifié !
+			Pour lui, \samp{System.out} représente la \emph{sortie standard}.
+			Par défaut c'est l'écran mais la redirection 
+			permet de rediriger vers un fichier.
+		\end{alerttbox}
+
+		\begin{Exercice}{Rediriger la sortie d'une commande}
+			Sauvez dans un fichier toute l'arborescence (commande \samp{tree})
+			de votre répertoire personnel.
+		\end{Exercice}
+
+	%===============================
+	\subsection{Rediriger l'erreur}
+	%===============================
+	
+		En Java, le code \samp{System.out.println()}
+		est utilisé pour afficher quelque chose à l'écran.
+		Il existe également le code \samp{System.err.println()}
+		pour afficher un message d'erreur.
+		Pourquoi fournir 2 techniques différentes si, au final,
+		le résultat apparait au même endroit ?
+
+		\begin{theorie}{Rediriger l'erreur}
+			L'\textbf{erreur standard} d'un exécutable est par défaut l'écran.
+			\c Ca peut être changé. 
+			\begin{itemize}
+				\item \samp{2> nomFichier} : 
+				pour envoyer les \textbf{messages d'erreur} dans le fichier.
+			\end{itemize}
+		\end{theorie}
+
+		Lorsqu'un programme affiche des messages d'erreurs,
+		ils sont mélangés aux affichages normaux.
+		Une redirection permet de les séparer pour mieux les voir.
+
+		Ceci explique pourquoi c'est une bonne pratique en Java
+		d'utiliser \samp{System.err} lorsque vous affichez un message d'erreur.
+
+		\begin{Exercice}{Recherche}
+			Si on utilise la commande \samp{find} pour chercher un fichier,
+			il est possible que la commande tente d'accéder à des sous-dossiers
+			pour lesquels vous n'avez pas les droits%
+			\footnote{%
+				Un prochain TD sera consacré aux permissions sous Linux.
+			}.
+			Dans ce cas, elle affiche un message d'erreur.
+
+			Affichez à l'écran la liste des fichiers \samp{Hello.java}
+			qui existent quelque part dans le système de fichier
+			en enlevant les messages d'erreurs.
+		\end{Exercice}
+
+	%===============================
+	\subsection{Rediriger l'entrée}
+	%===============================
+
+		Tout comme on peut rediriger la sortie,
+		on peut rediriger l'entrée.
+
+		\begin{theorie}{Rediriger l'entrée}
+			L'\textbf{entrée standard} d'un exécutable est par défaut le clavier.
+			\c Ca peut être changé. 
+			\begin{itemize}
+			\item \samp{< nomFichier} : 
+				pour indiquer que les lectures ne se font pas au clavier
+				mais \textbf{dans le fichier} (qui doit exister).
+			\end{itemize}
+		\end{theorie}
+
+		\begin{Experience}{Rediriger l'entrée d'un programme Java}
+			\begin{steps}
+			\item 
+				\kbd{cp /eCours/dev1/envl/Multiple4.java .}
+				pour copier un programme Java qui produit lit des nombres
+				au clavier (plus précisément, sur l'entrée standard).
+			\item 
+				Examiner le code et essayez de comprendre ce qu'il fait.
+			\item 
+				\kbd{javac Multiple4.java} pour le compiler.
+			\item 
+				\kbd{java Multiple4} pour l'exécuter.
+				Il vous demande d'entrer des entiers et affiche
+				uniquement ceux qui sont multiples de 4.
+			\item 
+				Pour indiquer qu'il n'y a plus de données,
+				il faut appuyez sur \samp{CTRL-D}
+				(et pas \samp{CTRL-C} qui tue brutalement le processus).
+			\end{steps}
+			Si on veut exécuter à nouveau le programme pour les mêmes valeurs,
+			il faudra retaper les nombres ? Non !
+			\begin{steps}
+			\item 
+				Créez un fichier \samp{data} avec quelques nombres.
+			\item 
+				\kbd{java Multiple4 <data} pour exécuter
+				le programme en demandant que les lectures se fassent
+				dans le fichier indiqué et pas au clavier.
+			\end{steps}
+		\end{Experience}	
+
+		\medskip
+		\begin{alerttbox}{Transparent pour les exécutables}
+			À nouveau, ceci est \textbf{transparent} pour les commandes.
+			C'est toujours \samp{System.in} (l'entrée standard) 
+			qui est donné à \samp{Scanner}.
+		\end{alerttbox}
+
+		\begin{Exercice}{Pas croissant multiple de 4 }
+			Produisez un fichier \samp{croissant4}
+			qui contient parmi les 1000 premiers nombres de la suite
+			des pas croissants (produite par le programme \samp{PasCroissant})
+			uniquement ceux qui sont des multiples de 4.
+			\\Aide: la sortie de l'un devient l'entrée de l'autre.
+		\end{Exercice}
+
+		\begin{Exercice}{cat et ses variantes}
+			La commande \samp{cat} est plus riche que ce que vous avez vu.
+			\begin{enumerate}
+			\item 
+				Faites l'expérience de taper juste \samp{cat}.
+				Entrez quelques phrases puis appuyez sur \samp{CTRL-D}.
+				En vous aidant du manuel, comprenez ce qui se passe.
+			\item 
+				Entrez maintenant \samp{cat <fichier} 
+				où \samp{fichier} est le nom d'un fichier qui existe.
+				Que se passe-t'il et pourquoi ?
+			\item 
+				Comment pouvez-vous utiliser la commande \samp{cat}
+				pour créer un fichier contentant juste le mot \samp{Bonjour}
+				(sans utiliser un éditeur donc) ?
+			\item 
+				Comment pouvez-vous utiliser la commande \samp{cat}
+				pour copier un fichier ?
+			\item 
+				Comment pouvez-vous utiliser la commande \samp{cat}
+				pour fusionner le contenu de deux fichiers ?
+			\end{enumerate}
+		\end{Exercice}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection{Les tubes (pipes en anglais)}
+ 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		Pour résoudre l'exercice 
+		qui produit les pas croissants multiples de 4 de la section précédente, 
+		vous avez dû créer un fichier temporaire qui n'a servi qu'à \c ca. 
+		Vous avez redirigé la sortie de la première commande dans un fichier 
+		et redirigé ce fichier comme entrée de la seconde commande.
+		Les tubes permettent de simplifier le processus.
+						
+		\begin{theorie}{Tubes}
+			\samp{commande1 | commande2}
+
+			\medskip
+			Un \emph{tube} (ou \emph{pipe}) lie 2 commandes :
+			la sortie de la première devient l'entrée de la seconde.
+		\end{theorie}
+			
+		\begin{Exemple}{Enchaîner les commandes} 
+			La commande \verb_less_ permet d'afficher un message page par page.
+			Si on ne lui donne pas de nom de fichier, il pagine les données reçues sur l'entrée standard. 
+			On peut donc remplacer
+					
+			\begin{Console}
+				ls /home >temp
+				less temp
+			\end{Console}
+			par					
+			\begin{Console}
+				ls /home | less
+			\end{Console}	
+		\end{Exemple}
+			
+		\begin{Exercice}{Utilisation des tubes}
+			Utilisez un tube pour refaire l'exercice précédent
+			(afficher parmi les 1000 premiers nombres de la suite des pas croissants,
+			tous ceux qui sont des multiples de 4).
+		\end{Exercice}
+
+%===================
+\section{Conclusion}
+%====================
+
+	\begin{theorie}{Notions importantes de ce TD}
+		Voici les notions importantes que vous devez avoir assimilées à la fin de ce TD.
+		\begin{itemize}
+		\item Comprendre et savoir utiliser les jokers (\samp{*} et \samp{?}).
+		\item Savoir utiliser la commande \samp{find} pour rechercher des fichiers.
+			Pouvoir trouver dans la page de manuel la syntaxe pour un critère de recherche
+			qui n'a pas été testé au laboratoire.
+		\item Comprendre et savoir utiliser à bon escient les redirections et les tubes.
+		\end{itemize}
+	\end{theorie}
+
+	\subsubsection*{Pour aller plus loin\dots}
+	Ceux qui ont du temps peuvent aborder les exercices suivants.
+
+	\begin{Exercice}{Traiter les fichiers trouvés}
+		Comment afficher le \textbf{contenu} de tous vos fichiers java ?
+		Aide : consultez la section \samp{ACTIONS} de la page de manuel
+		de \samp{find}.
+	\end{Exercice}
+
+\end{document}
+
+	
