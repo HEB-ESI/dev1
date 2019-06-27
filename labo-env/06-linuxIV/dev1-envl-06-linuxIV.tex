@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\seance{5}{Linux (partie III)}
+\seance{6}{Linux (partie IV)}
 \entete
 \titre
 \ccbysa{esi-dev1-list@he2b.be}
@@ -50,7 +50,7 @@
 	\end{theorie}
 
 	\begin{infotbox}{Penser aux jokers}
-		Comme à chaque fois qu'une commande peut reçevoir plusieurs noms de fichiers,
+		Comme à chaque fois qu'une commande peut recevoir plusieurs noms de fichiers,
 		on peut les indiquer explicitement et/ou utiliser les \emph{jokers}
 		pour en désigner plusieurs d'un coup.
 	\end{infotbox}
@@ -94,7 +94,11 @@
 		Il y a beaucoup d'autres commandes qui agissent comme des filtres.
 		C'est à la base même de Linux : fournir des commandes qui font peu 
 		mais qui le font bien et les combiner (avec des tubes)
-		pour obtenir un résultat conséquent.
+		pour obtenir un résultat conséquent%
+		\footnote{%
+			C'est ce qu'on appelle le principe \name{KISS}, 
+			\emph{Keep it simple, stupid !}
+		}.
 
 \newpage
 
@@ -114,8 +118,8 @@
 		Quelles peuvent être ces données ? N'importe quoi.
 		Nous avons vu que ça peut être le contenu d'un fichier
 		mais ça peut aussi être le résultat d'une commande quelconque.
-		Afin d'enrichir nos exemples, voyons 2 commandes qui produisent
-		des données.
+		Afin d'enrichir nos exemples et exercices, 
+		voyons 2 commandes qui produisent des données.
 
 		\begin{theorie}{Commandes pour nourrir les filtres}
 			\begin{itemize}
@@ -149,7 +153,7 @@
 			Consultez la page de manuel pour toutes les options.
 		\end{Experience}
 
-		\begin{Exercice}{Trier le résultat de du}
+		\begin{Exercice}{Trier le résultat de l'occupation disque}
 			Reprenez l'exemple donné ci-dessus et voyez comment trier
 			la liste des sous-dossiers et leur taille :
 			\begin{enumerate}
@@ -165,7 +169,24 @@
 		les lignes identiques \textbf{qui se suivent}.
 
 		\begin{Experience}{Enlever les doublons}
-			TODO
+			\begin{steps}
+			\item 
+				\kbd{cat | uniq}.
+				La commande est en attente de texte et le reproduit tel quel.
+			\item 
+				Faites-en l'expérience en entrant \kbd{salut} puis, à la ligne,
+				\kbd{hello}.
+			\item 
+				Entrez à nouveau \kbd{hello}.
+				Il n'est \textbf{pas reproduit sur la sortie} !
+				La ligne précédente étant identique.
+			\item 
+				Entrez à nouveau  \kbd{salut} puis, à la ligne, \kbd{hello}.
+				Ils sont reproduits car la ligne précédente est à chaque fois
+				différente.
+			\item 
+				Rappel : \samp{CTRL-D} pour terminer l'expérience.
+			\end{steps}
 		\end{Experience}
 
 		\begin{Exercice}{Les utilisations de Scanner}
@@ -174,18 +195,19 @@
 			du dossier \samp{td4}.
 			\\Aide: 
 			Si vous devez enchainer plusieurs filtres,
-			vous pouvez tester, étape par étape.
+			vous pouvez les tester étape par étape.
 		\end{Exercice}
 
 	\subsection{Les premières/dernières lignes}
 	%==================
 	
-		La commande \samp{head} (respectivement \samp{tail}
+		La commande \samp{head} (respectivement \samp{tail})
 		ne laisse passer que les premières (respectivement dernières)
 		lignes reçues.
 
 		\begin{Experience}{Les premières/dernières lignes}
-			TODO
+			\kbd{ls *.java | head -5}
+			pour afficher le nom de 5 fichiers Java de votre dossier courant.
 		\end{Experience}
 
 		\begin{Exercice}{Les gros dossiers}
@@ -198,12 +220,27 @@
 	%======================================
 	
 		La commande \samp{tr} permet de faire des transformation du texte :
-		remplacez certains caractères par d'autres ou simplifier 
+		remplacez certains caractères par d'autres, en supprimer ou simplifier 
 		plusieurs occurrences consécutives d'un caractère 
 
-		\begin{Experience}{Transformer des caractères}
-			TODO
-		\end{Experience}
+		\begin{Exemple}{Transformer des caractères}
+			Voici quelques utilisations possibles :
+			\begin{itemize}
+			\item 
+				\kbd{ls | tr "jv" "gf"} 
+				transforme tous les \samp{j} en \samp{g}
+				et les \samp{v} en \samp{f}.
+			\item
+				\kbd{ls | tr -d "a"} 
+				supprime tous les \samp{a}.
+			\item 
+				\kbd{who | tr -s " "}
+				remplace toute suite de plusieurs espaces par un seul.
+				Comparez le résultat à celui produit par \samp{who} tout seul.
+			\end{itemize}
+			Consultez le manuel pour bien comprendre les exemples
+			et pouvoir aller plus loin.
+		\end{Exemple}
 
 		Elle est particulièrement utile pour la commande qui suit.
 
@@ -211,16 +248,54 @@
 	%==================
 	
 		La commande \samp{cut} sert à ne garder que certaines colonnes 
+		(\emph{champs})
 		parmi les lignes reçues.
 
-		\begin{Experience}{Les premières/dernières lignes}
-			TODO
+		\begin{Exemple}{Utilisation de la commande \samp{cut}}
+			\begin{itemize}
+			\item 
+				\kbd{du . | cut -f 2}
+				pour ne garder que les noms des dossiers 
+				(qui se trouvent dans le \emph{champ}/\emph{colonne} 2).
+			\item 
+				\kbd{ls | cut -d "." -f 1}
+				pour ne garder que les noms des fichiers sans leur extension.
+				L'option \samp{d} modifie le séparateur de champ
+				qui est une tabulation par défaut.
+			\end{itemize}
+		\end{Exemple}
+
+		\begin{Experience}{Les heures de connexions}
+			Imaginons qu'on veuille les heures 
+			de connexions des utilisateurs actuels de linux1
+			(et rien que cela).
+			\begin{steps}
+			\item 
+				\kbd{who}. 
+				L'information demandée est en colonne 4 mais il y a beaucoup plus.
+			\item 
+				On aurait envie d'écrire \kbd{who | cut -f 4}.
+				Ca ne fonctionne pas (essayez !)
+				car la commande affiche des espaces
+				et pas des tabulations entre les éléments.
+			\item 
+				Alors ce sera \kbd{who | cut -d " " -f 4}.
+				Toujours pas !
+				Lorsque 2 espaces se suivent,
+				la commande considère qu'il y a une colonne (vide) entre eux.
+			\item 
+				La bonne commande est \kbd{who | tr -s " " | cut -d " " -f 4}.
+			\end{steps}
 		\end{Experience}
 
-		\begin{Exercice}{Les gros dossiers}
-			Affichez le nom et la taille des 3 dossiers 
-			qui prennent le plus d'espace disque 
-			parmi tous vos sous-dossiers de \samp{dev1}. 
+		\begin{Exercice}{Les machines de connexion}
+			Affichez la liste des machines à partir desquelles les utilisateurs
+			de linux1 sont connectés.
+			\begin{enumerate}[label=\alph*)]
+				\item Plus facile : le nom complet;
+				\item Plus difficile : le nom court 
+					(ex: \verb_L301P01_ sans le domaine).
+			\end{enumerate} 
 		\end{Exercice}
 
 	\subsection{Compter}
@@ -229,13 +304,21 @@
 		La commande \samp{wc} est un peu particulière.
 		Elle compte le nombre de lignes/mots/caractères reçus.
 
-		TODO
+		\begin{Exemple}{Le nombre de connexions}
+			\kbd{who | wc} donne le nombre de connexions actuellement.
+		\end{Exemple}
 
-	\subsection{Résumé}
+		\begin{Exercice}{Clarifier le résultat}
+			L'exemple précédent affiche 3 nombres.
+			Regardez comment afficher une et une seule fois le nombre
+			de connexions.
+		\end{Exercice}
+
+	\subsection{Récapitulatif}
 	%==================
 
 		\begin{theorie}{Filtres}
-			Voici les quelques filtres que nous avons appris à utiliser·
+			Voici les quelques filtres que nous avons appris à utiliser :
 			\begin{itemize}
 				\item \samp{grep} : ne laisse passer que certaines lignes.
 				\item \samp{sort} : trie les lignes
@@ -248,7 +331,22 @@
 			\end{itemize}
 		\end{theorie}
 		
+		Voici quelques exercices récapitulatifs qui vont vous demander 
+		d'utiliser la plupart des concepts vus.
+
+		\begin{Exemple}{Le nombre de personnes connectées différentes}
+			Vous avez déjà écrit une solution pour afficher le nombre de connexions.
+			Modifiez-le pour affichez le nombre de personnes connectées.
+			La différence ? Si une personne est connectée plusieurs fois,
+			elle ne doit être comptée qu'une seule fois !
+		\end{Exemple}
 	
+		\begin{Exemple}{Le plus gros dossier}
+			Affichez le nom (et rien que cela)
+			de votre sous-dossier de \samp{dev1}
+			qui occupe le plus d'espace sur le disque.
+		\end{Exemple}
+
 %===================
 \section{Conclusion}
 %====================
@@ -264,8 +362,25 @@
 
 	\subsubsection*{Pour aller plus loin\dots}
 	Ceux qui ont du temps peuvent aborder les exercices suivants.
-	(expressions régulières dans le grep)
 	
+	\begin{Exercice}{Un mot ou un autre}
+		Vous avez vu comment utiliser la commande \samp{grep}
+		pour sélectionner les lignes qui contiennent \verb_Scanner_
+		\textbf{ET} \verb_System_.
+		Comment faire pour sélectionner celles qui contiennent
+		\verb_Scanner_ \textbf{OU} \verb_System_.
+	\end{Exercice}
+	
+	\begin{Exercice}{Un chiffre}
+		Comment sélectionner avec \samp{grep}
+		toutes les lignes qui contiennent un chiffre, quel qu'il soit.
+	\end{Exercice}
+
+	\begin{Exercice}{La casse}
+		Affichez le contenu de votre dossier en remplaçant
+		toutes les minuscules par des majuscules. 
+	\end{Exercice}
+
 \end{document}
 
 	
