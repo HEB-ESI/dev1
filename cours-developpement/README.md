@@ -30,11 +30,23 @@ Le syllabus du cours se trouve dans le répertoire *syllabus*.
 
 ## Historique
 
+### septembre 2019
+
+L'équipe a décidé de :
+
+- supprimer la notion de pseudocode et de donner les exemples en java
+  (simplifié) ;
+
+- d'ajouter des exemples plus complets ;
+
+
+### aux origines
+
 Le syllabus est une évolution du syllabus de logique puis de syllabus
-d'algorithmique.  Le syllabus était destiné au cours
-d'algorithmique, son évolution est un syllabus pour le premier cours de
-développement. Là ou le premier ne parlait que d'algorithme, le second traite
-d'algorithmique et de langage Java. 
+d'algorithmique.  Le syllabus était destiné au cours d'algorithmique, son
+évolution est un syllabus pour le premier cours de développement. Là ou le
+premier ne parlait que d'algorithme, le second traite d'algorithmique et de
+langage Java. 
 
 ## Aspects techniques
 
@@ -48,12 +60,12 @@ Quelques choix qui peuvent être discutés:
 
 - les exercices sont en annexes ou dans un document séparé (pas dans le flux de
   lecture);
-- le pseudo-code s'écrit en anglais;
+- le pseudocode s'écrit en anglais;
 
 
 ## Crédits
 
-- Version 2018-2019
+- Versions 2018-2020
     Pierre Bettens (pbt) <pbettens@he2b.be>  
 
 - Versions antérieures à 2015-2018 ([dépot][dev-alg])  
