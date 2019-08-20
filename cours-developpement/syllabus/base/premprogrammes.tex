@@ -179,7 +179,7 @@ Le \textit{bytecode} est ensuite interprété par une machine virtuelle, la
 
 Le \textbf{code source} du programme est écrit dans un fichier texte dont
 l'extension sera \texttt{.java}. C'est le fichier que manipule le développeur.
-Le code source est la suite l'instructions java. 
+Le code source est la suite d'instructions java. 
 
 À l'aide du \textbf{compilateur} — le programme \texttt{javac} — le fichier est
 compilé. Un nouveau fichier ayant comme extension \texttt{.class}, est créé
@@ -197,10 +197,28 @@ du bytecode. C'est ce programme qui permet d'exécuter le… programme.
 	java MyProgram
 \end{term}
 
-\paragraph{Remarques} Notez que \texttt{javac} prend le nom d'un fichier en
-paramètre (avec son extension) alors que \texttt{java} prend le nom d'un
-programme — nous dirons une classe bientôt — en paramètre (sans extension donc). 
+\paragraph{Remarques} 
+\label{jdk11}
 
+\begin{enumerate}
+	
+	\item Notez que \texttt{javac} prend le nom d'un fichier en paramètre (avec
+		son extension) alors que \texttt{java} prend le nom d'un programme
+		— nous dirons une classe bientôt — en paramètre (sans extension donc). 
+
+	\item Avec JDK11, il est possible de passer un fichier à la commande
+		\texttt{java}. Dans ce cas, la commande compilera le fichier, conservera
+		le bytecode en RAM et l'exécutera. Il n'y aura donc pas création d'un
+		fichier contenant le \textit{bytecode} et le code source sera exécutable
+		en une seule commande.  
+
+		\begin{term}
+			java MyProgram.java
+		\end{term}
+
+		\textbf{Attention de ne pas confondre.}
+
+\end{enumerate}
  
 
 
@@ -259,7 +277,7 @@ d'un éditeur de code ou d'un IDE (EDI, Environnement de Développement Intégr�
 		Exemples d'éditeurs de code toutes plateformes, licences et prix
 		confondus~: {\itshape (g)Vim, Notepad++, Atom, SublimeText…}
 	
-		Exemples d'éditeurs de texte inutile pour le développement~: {\itshape
+		Exemples d'éditeurs de texte inutiles pour le développement~: {\itshape
 		nano, Notepad, Mousepad}.
 
 
@@ -270,12 +288,12 @@ d'un éditeur de code ou d'un IDE (EDI, Environnement de Développement Intégr�
 		en arrière plan, a un débogueur, organise les fichiers, crée des fichiers
 		(en partie) pré-complétés sur base de \textit{templates}…
 
-		Exemples d'IDE~: {\itshape Netbeans, Eclipse… }
+		Exemples d'IDE~: {\itshape Netbeans, Eclipse, IntelliJ… }
 
 \end{enumerate}
 
 Connaitre et utiliser correctement un éditeur de code et un IDE sont deux
-compétences essentielles d'un bon développeur.
+compétences essentielles d'un bon développeur. L'une n'allant pas sans l'autre. 
 
 \subsection{Exécuter le programme}
 
@@ -353,7 +371,10 @@ Un fichier \texttt{Hello.class} apparait dans mon répertoire courant. C'est le
 
 … et je vois apparaitre dans mon terminal les mots \textbf{Hello world}. 
 
+\paragraph{Remarque}
 
+À partir de JDK11, comme dit au paragraphe \ref{jdk11} page \pageref{jdk11}, on 
+peut se contenter d'une seule commande \verb_java Hello.java_. 
 
 
 
@@ -406,3 +427,4 @@ virgule flottante~», il s'agit du type \pc{double}.
 
 Nous sommes incomplets à ce stade. Les personnes curieuses peuvent aller voir la grammaire complète de ces règles dans \href{https://docs.oracle.com/javase/specs/jls/se10/jls10.pdf}{JLS10} p. 42.
 
+%@todo ajouter les opérateurs (l'extrait de grammaire)
