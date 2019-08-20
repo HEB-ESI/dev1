@@ -36,7 +36,7 @@
 			Comme toute marche à suivre, un algorithme doit s’exprimer dans un
 			certain langage~—~ à priori le langage naturel~—~ mais il
 			y a d’autres possibilités~:~ ordinogramme, arbre programmatique,
-			pseudo-code…
+			pseudocode…
 
 			L'algorithme est destiné à être compris par une personne et à être
 			traduit — ce qui n'est pas immédiat — en un programme. 
@@ -47,9 +47,12 @@
 				\paragraph{} Calculer la circonférence d'un cercle.
 			\end{Emphase}
 
-			Un algorithme en \textbf{langage naturel} pourrait être: en
-			connaissant le rayon, le calcul de la circonférence se fait grâce
+			Un algorithme en \textbf{langage naturel} pourrait être~: 
+			
+			\begin{langagenaturel}		
+			En connaissant le rayon, le calcul de la circonférence se fait grâce
 			à  $$p = 2\pi r$$
+			\end{langagenaturel}
 
 			En utilisant un \textbf{organigramme} l'algorithme peut se décrire
 			comme suit (et nous y reviendrons plus longuement plus tard):
@@ -98,7 +101,7 @@
 			Un programme correct résulte donc d’une démarche logique correcte 
 			(algorithme correct) 
 			et de la connaissance de la syntaxe d’un langage de programmation.
-			La syntaxe d'un langage est — très — précise. 
+			La syntaxe d'un langage est -- très -- précise. 
 			
 			\textbf{%
 			Il est donc indispensable d’élaborer des algorithmes corrects 
@@ -125,7 +128,7 @@ public class CircleCircumference{
 		
 			Les constituants d’un ordinateur 
 			se divisent en \textbf{hardware} (matériel) 
-			et \textbf{software d’exploitation} (logiciel).
+			et \textbf{software} (logiciel).
 			
 			Le \textbf{hardware} est constitué 
 			de l’ordinateur proprement dit 
@@ -169,18 +172,15 @@ public class CircleCircumference{
 				la conservation permanente en mémoire centrale.
 			\end{itemize}
 			
-			Le \textbf{software d’exploitation} 
-			est l’ensemble des procédures (programmes) 
-			s’occupant de la gestion du fonctionnement 
-			d’un système informatique 
-			et de la gestion de l’ensemble des ressources de ce système 
-			(le matériel –~les programmes~– les données). 
-			Il contient notamment des logiciels de traduction 
-			permettant d’obtenir un programme écrit en langage machine 
-			(langage technique qui est le seul que l’ordinateur 
-			peut comprendre directement, c’est-à-dire exécuter) 
-			à partir d’un programme écrit en langage de programmation 
-			plus ou moins «~évolué~» 
+			Le \textbf{software} et plus précisément le système d'exploitation,
+			est l’ensemble des procédures (programmes) s’occupant de la gestion
+			du fonctionnement d’un système informatique et de la gestion de
+			l’ensemble des ressources de ce système (le matériel –~les
+			programmes~– les données).  Il contient notamment des logiciels de
+			traduction permettant d’obtenir un programme écrit en langage
+			machine (langage technique qui est le seul que l’ordinateur peut
+			comprendre directement, c’est-à-dire exécuter) à partir d’un
+			programme écrit en langage de programmation plus ou moins «~évolué~»
 			(c’est-à-dire plus ou moins proche du langage naturel).
 	
 		\subsection{Exécution d’un programme}
@@ -275,7 +275,7 @@ public class CircleCircumference{
 		revenir en arrière. Un problème peut être amélioré, complexifié, modifié
 		ou étendu. 
 
-		Par exemple~: Imaginons que je veuille préparer un repas pour mes
+		Par exemple~: imaginons que je veuille préparer un repas pour mes
 		invités et invitées. Je désire leur proposer une lasagne et décide de
 		suivre une recette. À la dernière minute, j'apprend que l'une des
 		personne invitée est allergique au lait. Plusieurs choix s'offrent à moi~: 
@@ -283,8 +283,9 @@ public class CircleCircumference{
 		\begin{itemize}
 			\item je modifie ma recette et remplace le lait par du lait de soja;
 			\item je change de plat;
-			\item je le notifie qu'il ou elle n'est plus le bienvenu·e ou qu'il 
-				recevra une tartine.
+			\item je notifie qu'il ou elle n'est plus bienvenue ou qu'elle 
+				recevra une tartine\footnote{Je m'autorise un accord de 
+				proximité.}.
 		\end{itemize}
 
 	
@@ -301,9 +302,10 @@ public class CircleCircumference{
 			permet de séparer deux difficultés~:~
 			quelle est la marche à suivre~? 
 			Et comment l’exprimer dans le langage de programmation choisi~? 
-			Le langage que nous allons utiliser en algorithmique 
+			Le langage que nous allons utiliser pour écrire nos algorithmes
 			est plus souple et plus général que le langage Java
-			par exemple (où il faut être précis au «~;~» près).
+			par exemple (où il faut être précis au «~;~» près). Nous commencerons 
+			simplement par écrire en langage naturel. 
 		\item
 			De plus, un algorithme écrit facilite le dialogue 
 			dans une équipe de développement. 

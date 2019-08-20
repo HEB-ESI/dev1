@@ -1,0 +1,41 @@
+\definecolor{solarizedyellow}{HTML}{b58900}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+ 
+%\@ifpackageloaded{monbeaupackage}{}{\usepackage{monbeaupackage}}
+\@ifpackageloaded{tcolorbox}{}{\usepackage[most,listings]{tcolorbox}}
+\@ifpackageloaded{environ}{}{\usepackage{environ}}
+\tcbuselibrary{listingsutf8}
+
+\NewEnviron{langagenaturel}[1][0]{%
+	\begin{flushleft}
+		\begin{tcolorbox}[
+			colback=gray!5,
+            colframe=gray!95,
+            %leftrule=.6em,
+            leftrule=0em,
+            toprule=0em,
+            arc=2mm,
+            sharp corners=northwest,
+            enhanced,
+            title=langage naturel,
+    		fonttitle=\itshape,
+    		coltitle=javapurple, 
+			attach boxed title to bottom right={yshift=2mm, xshift=-7mm},
+			boxed title style={colback=white},
+        ]
+		\begin{minipage}{0.97\linewidth}
+		%\begin{slshape}
+		\fontfamily{qag}\selectfont
+		\small
+				\BODY
+		%\end{slshape}
+		\end{minipage}
+		\end{tcolorbox}
+	\end{flushleft}
+}
+
+
+
