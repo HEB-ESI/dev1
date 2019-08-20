@@ -9,8 +9,12 @@
 	l’exprimer dans un langage compris de tous.
 	
 	En fonction de la difficulté du problème et de notre sensibilité, nous
-	pouvons représenter un algorithme de plusieurs manières; en français (ou en
-	anglais), en pseudo-code ou avec un organigramme. 
+	pouvons représenter un algorithme de plusieurs manières; en langage naturel
+	(en français ou en 	anglais), en pseudocode ou avec un organigramme\ldots
+	Dans ce chapitre, nous présenterons les algorithmes en langage naturel, en
+	pseudocode, avec un organigramme et en langage Java. 
+
+	Dans la suite du cours, nous nous contenterons de les écrire en langage Java. 
 
 	\newpage
 	\minitoc
@@ -57,7 +61,12 @@
 				\end{center}
 				
 				\textbf{Exemples.} % paragraph casse la mise en page
-				
+			
+				La surface du rectangle 3,2 vaut 6. La surface du rectangle 3.5,
+				1 vaut 3.5. 
+
+				ou 
+
 				\begin{multicols}{2}
 					\begin{itemize}
 					\item \pc{rectangleArea(3,2)} donne $6$~;
@@ -81,13 +90,18 @@
 				\end{center}
 			\end{Emphase}
 			
+			Les exemples sont essentiels. Ce sont eux qui vont nous permettre de
+			tester notre algorithme. Notre programme. 
+
 			\paragraph{Comment résoudre ce problème~?} 
 			La toute première étape est de comprendre 
 			le lien entre les données et le résultat. 
-			Ici, on va se baser sur la formule de la surface :
+			Ici, le lien est la formule du calcul d'une surface.  
+			
 			\[
 				\textrm{surface} = \textrm{longueur} * \textrm{largeur}
 			\]
+
 			La surface s’obtient donc en multipliant la longueur par la largeur%
 			\footnote{%
 				Trouver la bonne formule n’est pas toujours facile.
@@ -98,9 +112,61 @@
 				Il vous faudra alors chercher de l’aide,
 				demander à des experts du domaine.
 				Dans ce cours,
-				nous essaierons de nous concentrer sur des problèmes
-				simples voire très simples.
+				nous nous concentrons sur des problèmes simples.
 			}.
+		
+		%===================================
+		\subsection{Vérifier l’algorithme}
+		\index{vérifier un algorithme}
+		%=================================
+	
+			Une étape importante, après l'écriture d'un algorithme est la
+			vérification de sa validité. Il est important d'exécuter
+			l’algorithme avec des exemples numériques et vérifier que chaque 
+			réponse fournie est correcte.
+
+			Pour tester un algorithme il faut — même si ça parait étrange
+			— \textbf{éteindre son cerveau}.  Il faut agir comme une machine et
+			exécuter \textbf{ce qui est écrit} pas ce que l'on voulait écrire ou
+			ce que l'on pensait avoir écrit ou encore ce qu’il est censé faire.
+			Cela demande un peu de pratique.
+
+			\paragraph{Exemple.} 
+			Vérifions notre solution 
+			pour le calcul de la surface du rectangle
+			en reprenant les exemples choisis.
+			
+			\begin{center}
+			\begin{tabular}{|c|cccc|c|}
+			\hline
+			\rowcolor{black!40}
+			test \no & longueur & largeur & réponse attendue 
+				& réponse fournie & {} \\
+			\hline 
+			1 & 3   & 2 & 6   & 6   & {\color{ForestGreen}$\checkmark$} \\\hline
+			2 & 3.5 & 1 & 3.5 & 3.5 & {\color{ForestGreen}$\checkmark$} \\\hline
+			\end{tabular}
+			\end{center}				
+		
+
+
+		%===================================
+		\subsection{Écrire l’algorithme}
+		%=================================
+
+		\subsubsection{Langage naturel}
+
+			En \textbf{langage naturel}, une solution aurait simplement cette 
+			allure~:
+
+			\begin{langagenaturel}
+				La surface s'obtient grâce à la formule~:
+				\[
+					surface = longueur * largeur
+				\]
+			\end{langagenaturel}
+
+		\subsubsection{Organigramme}
 
 			Un \textbf{organigramme} d'une solution aura cette allure~:
 
@@ -122,8 +188,9 @@
 			\captionof{Organigramme}{Solution de \pc{rectangleArea}}
 			\end{center}
 			
+		\subsubsection{Pseudocode}
 			
-			Un \textbf{pseudo-code} d'une solution s’écrit :
+			Un \textbf{pseudocode} d'une solution s’écrit :
 			
 			\begin{pseudocode}
 				\Algo{rectangleArea}{\Par{length, width}{reals}}{real}
@@ -171,47 +238,10 @@
 			«~\pc{\large\textvisiblespace}~»\footnote{Ce symbole signifie: «~ici
 			se trouve un espace~»} font l'affaire.
 
-		%===================================
-		\subsection{Vérifier l’algorithme}
-		\index{vérifier un algorithme}
-		%=================================
-	
-			Une étape importante, après l'écriture d'un algorithme est la
-			vérification de sa validité. Il est important d'exécuter
-			l’algorithme avec des exemples numériques et vérifier que chaque 
-			réponse fournie est correcte.
-
-			Pour tester un algorithme il faut — même si ça parait étrange
-			— \textbf{éteindre son cerveau}.  Il faut agir comme une machine et
-			exécuter \textbf{ce qui est écrit} pas ce que l'on voulait écrire ou
-			ce que l'on pensait avoir écrit ou encore ce qu’il est censé faire.
-			Cela demande un peu de pratique.
-
-			\paragraph{Exemple.} 
-			Vérifions notre solution 
-			pour le calcul de la surface du rectangle
-			en reprenant les exemples choisis.
-			
-			\begin{center}
-			\begin{tabular}{|c|cccc|c|}
-			\hline
-			\rowcolor{black!40}
-			test \no & longueur & largeur & réponse attendue 
-				& réponse fournie & {} \\
-			\hline 
-			1 & 3   & 2 & 6   & 6   & {\color{ForestGreen}$\checkmark$} \\\hline
-			2 & 3.5 & 1 & 3.5 & 3.5 & {\color{ForestGreen}$\checkmark$} \\\hline
-			\end{tabular}
-			\end{center}				
-		
-
-		%================================================================
-		\subsection{Implémenter l'algorithme en Java}
+		\subsubsection{Java}
 		\index{implémenter un algorithme}
-		%==================================================================
 
-			Maintenant que l'algorithme est écrit, il reste à l'implémenter en 
-			Java. Une solution en Java s'écrit~:
+			Une solution en Java s'écrit~:
 
 			\begin{java}
 public class RectangleArea{
@@ -244,25 +274,25 @@ public class RectangleArea{
 }
 			\end{java}
 
-
-			\bigskip
+		%===================================
+		\subsection{Remarques}
+		%=================================
+		%
 			\marginicon{attention}
 			\textbf{Attention} : 
 	
 			Écrire une solution complète d'un exercice c'est~:
 			\begin{itemize}
-				\item spécifier le problème;
-				\item fournir des exemples;
-				\item écrire un algorithme;
-				\item vérifier les exemples;
-				\item écrire un programme correspondant à l'algorithme;
+				\item spécifier le problème~;
+				\item fournir des exemples, les tests~;
+				\item construire son algorithme~;
 				\item tester le programme et constater qu'il fournit bien les 
 					résultats attendus
 			\end{itemize}
 
 
 		%-------------------------------------------
-		\subsection{Résolution d'un second problème simple}
+		\section{Résolution d'un second problème simple}
 		\label{prem-ex-simple}
 		%-------------------------------------------
 
@@ -296,17 +326,51 @@ public class RectangleArea{
 				\hline
 				\end{tabular}
 				\end{center}
-				
+			
+				\paragraph{Exemples}
+
+				Les exemples qui deviendront les tests~:
+
+				\begin{center}
+				\begin{tabular}{|c|cccc|}
+				\hline
+				\rowcolor{black!40}
+				test \no & nombre1 & nombre2 & réponse attendue 
+				  & réponse fournie \\
+				\hline 
+				1 & 3    & 2   & 5   & 5   
+					 \\\hline
+				2 & -3   & 2   & -1  & -1  
+					 \\\hline
+				3 & 3    & 2.5 & 5.5 & 5.5 
+					 \\\hline
+				4 & -2.5 & 2.5 & 0   & 0   
+					\\\hline
+				\end{tabular}
+				\end{center}
+
 				\paragraph{Algorithme}
 
-				L’algorithme s’écrit simplement :			
-				
-				\begin{pseudocode}
-					\Algo{addition}{\Par{number1, number2}{reals}}{real}
-						\Return number1 + number2
-					\EndAlgo
-				\end{pseudocode}
+				L’algorithme s’écrit simplement en langage naturel :
 
+				\begin{langagenaturel}
+					somme = n1 + n2
+				\end{langagenaturel}
+
+				La traduction en un programme Java est très semblable au 
+				premier exemple. 
+
+				\begin{java}
+public class Addition{
+	public static double add(double number1, double number2){
+		return number1 + number2;
+	}
+}			
+				\end{java}
+
+				
+				\paragraph{Tester le programme}
+				
 				Il est aussi assez facile de vérifier qu’il fournit
 				bien les bonnes réponses pour les exemples choisis.				
 
@@ -328,19 +392,6 @@ public class RectangleArea{
 					& {\color{ForestGreen}$\checkmark$} \\\hline
 				\end{tabular}
 				\end{center}				
-
-				\paragraph{Programme}
-
-				La traduction en un programme Java est très semblable au 
-				premier exemple. 
-
-				\begin{java}
-public class Addition{
-	public static double add(double number1, double number2){
-		return number1 + number2;
-	}
-}			
-				\end{java}
 
 			\end{Emphase}
 		
@@ -399,22 +450,22 @@ public class Addition{
 			début de l’algorithme. La \textbf{déclaration}\index{déclaration}
 			d’une variable est l’instruction qui définit son nom et son type.
 			On pourrait écrire~:
-	
-			\begin{pseudocode}
-				\Stmt longueur et largeur seront les noms de deux 
-				objets destinés à recevoir
-				\Stmt les longueur et largeur du rectangle, 
-				c’est-à-dire des nombres à valeurs réelles.
-			\end{pseudocode}
-			
-			Mais, bien entendu, cette formulation, trop proche du
-			langage parlé, serait trop floue et trop longue. 
-			Dès lors, nous abrégerons par~:
-	
-			\begin{pseudocode}
-				\Decl{length, width}{réels}
-			\end{pseudocode}
 
+			\begin{langagenaturel}
+				Longueur et largeur seront les noms de deux 
+				objets destinés à recevoir
+				
+				Les longueur et largeur du rectangle, 
+				c’est-à-dire des nombres à valeurs réelles.
+				
+			\end{langagenaturel}
+	
+			Nous pouvons abréger -- et passer à l'anglais -- en~:
+
+			\begin{langagenaturel}
+				réels length, width
+			\end{langagenaturel}
+	
 			Certains langages de programmation imposent que les variables soient 
 			déclarées — c'est le cas de Java — et le vérifient tandis que d'autres 
 			permettent d'utiliser des variables sans les déclarer. 
@@ -457,17 +508,29 @@ double width;
 			car c’est ce qui permet de retenir les résultats 
 			de calculs intermédiaires.
 
-			En algorithmique, nous écrirons~:
-			
-			\begin{pseudocode}
-			\Let variableName \Gets expression
-			\end{pseudocode}
+			Pour cette assignation, nous pourrions utiliser une flèche
+			$\leftarrow$ ou le symbole d'égalité $=$. Dans ces notes nous
+			utiliserons le symbole d'égalité $=$.
+
+			\begin{langagenaturel}
+				variableName = expression
+			\end{langagenaturel}
 
 			En Java, nous utiliserons exactement le même symbole $=$~:
 
 			\begin{java}
 variableName = <une expression>				
 			\end{java}
+
+			Bien que nous utilisions le symbole de l'égalité mathématique, 
+			l'assignation n'a pas le même sens. 
+
+			\begin{itemize}
+				\item l'égalité mathématique définit que deux choses sont égales 
+					et le resteront~;
+				\item l'assignation assigne une valeur -- le membre de droite -- 
+					à la variable se trouvant à gauche à un moment $t$.
+			\end{itemize}
 				
 			\marginicon{definition}
 			Une \textbf{expression}\index{expression} est un calcul faisant
@@ -479,28 +542,13 @@ variableName = <une expression>
 				
 				Quelques assignations correctes en algorithmique~:
 				
-				\begin{pseudocode}
-					\Let denRes \Gets den1 * den2
-					\Let count \Gets count + 1
-					\Let average \Gets (number1 + number2) / 2
-					\Let isALowerthanB \Gets a < b 
-						\RComment pour une variable logique
-					\Let aString \Gets "hello"
-					\Let aString \Gets hello	
-						\RComment quelle différence avec la précédente~? 
-				\end{pseudocode}
-
-				Et d’autres qui ne le sont pas :
-			
-				\begin{wrong}
-					\begin{pseudocode}
-					\Let sum + 1 \Gets 3
-						\RComment sum + 1 n’est pas une variable
-					\Let sum \Gets 3n
-						\RComment 3n n’est ni un nom de variable correct 
-						ni une expression correcte
-					\end{pseudocode}
-				\end{wrong}
+				\begin{langagenaturel}
+					 denRes = den1 * den2\\
+					 count = count + 1\\
+					 average = (number1 + number2) / 2\\
+					 isALowerthanB = a < b \\
+					 aString = "hello"\\
+				\end{langagenaturel}
 
 				Et ces même exemples — corrects — en Java~:
 
@@ -510,7 +558,6 @@ count = count + 1;
 average = (number1 + number2) /2;
 isALowerthanB = a < b;
 aString = "hello";
-aString = hello;
 				\end{java}
 				
 			\paragraph{Remarques}
@@ -548,15 +595,15 @@ aString = hello;
 					aussi. 
 
 					Nous utiliserons dans ce cours le symbole $=$ afin d'être plus
-					proche du langage. 
+					proche du langage Java. 
 				\end{itemize}
 				
 				\subsection{Tracer un algorithme}\label{tracer}
 		%--------------------------------
 		
-			Pour vérifier qu’un algorithme est correct,
-			le développeur ou la développeuse sera souvent amené·e à 
-			le tracer\index{tracer}.
+			Pour vérifier qu’un algorithme est correct, le développeur ou la
+			développeuse sera souvent amenée\footnote{Je m'autorise un accord de
+			proximité.} à le tracer\index{tracer}.
 
 			\textbf{Tracer} un algorithme ou un programme consiste à suivre
 			l’évolution des variables à chaque étape ou à chaque instruction
@@ -576,17 +623,17 @@ aString = hello;
 			\paragraph{Exemple.} Traçons des extraits d’algorithmes.
 			
 			\begin{minipage}{4cm}
-			\begin{pseudocode}[1]
-				\Decl{a, b, c}{integer}
-				\Let a \Gets 12
-				\Let b \Gets 5
-				\Let c \Gets a - b
-				\Let a \Gets a + c
-				\Let b \Gets a
-			\end{pseudocode}
+				\begin{java}
+int a, b et c;
+a = 12;
+b = 5;
+c = a - b;
+a = a + c;
+b = a;
+				\end{java}
 			\end{minipage}
 			\quad%
-			\begin{minipage}{7cm}
+			\begin{minipage}{6cm}
 			\begin{tabular}{|>{\centering\arraybackslash}m{1cm}
 				|*{3}{>{\centering\arraybackslash}m{2cm}}|}
 				\hline
@@ -605,15 +652,15 @@ aString = hello;
 
 			\bigskip
 			\begin{minipage}{4cm}
-			\begin{pseudocode}[1]
-				\Decl{a, b, c}{integer}
-				\Let a \Gets 12
-				\Let c \Gets a - b
-				\Let d \Gets c - 2
-			\end{pseudocode}
+				\begin{java}
+int a, b, c;
+a = 12;
+c = a - b;
+d = c - 2;
+			\end{java}
 			\end{minipage}
 			\quad%
-			\begin{minipage}{7cm}
+			\begin{minipage}{6cm}
 			\begin{tabular}{|>{\centering\arraybackslash}m{1cm}
 				|*{3}{>{\centering\arraybackslash}m{2cm}}|}
 				\hline
@@ -657,7 +704,7 @@ aString = hello;
 			Nous vous proposons de rédiger une solution complète.
 			
 			Vous pouvez vérifier ensuite sur la fiche \vref{fiche:calcul-complexe}
-			qui présente cette solution.
+			qui présente une solution.
 				
 
 	%=============================================
@@ -665,9 +712,8 @@ aString = hello;
 	%=============================================
 	
 		Vous êtes habitués à effectuer des calculs.  L’expérience nous montre
-		toutefois que certains calculs vous posent des difficultés.  Soit parce
-		que ce sont des opérations que vous utilisez peu, soit parce que vous
-		n’avez pas l’habitude de les voir comme des calculs.  Citons~:
+		toutefois que certains calculs posent des difficultés.  Soit parce
+		que ce sont des opérations peu utilisées, soit parce qu'elles ne sont habituellement pas sous la forme de calculs.  Citons~:
 
 		\begin{itemize}
 		\item
@@ -687,8 +733,7 @@ aString = hello;
 		\subsection{Un peu de vocabulaire}
 		%------------------------------------------------------------------------
 
-			La première difficulté que rencontre un ou une apprenant·e est
-			généralement liée au vocabulaire utilisé.  Qu’est-ce qu'un
+			Quelques notions~: Qu’est-ce qu'un
 			opérateur~? Un opérande~?  Rappelons et fixons ces notions.
 			
 			\marginicon{definition}
@@ -711,7 +756,8 @@ aString = hello;
 				Un opérande peut être une sous-expression.
 				Exemple~: dans l’expression \Verb_(a+b) * c_, 
 				\Verb_(a+b)_ est l’opérande 
-				de gauche de l’opérateur \Verb_*_.
+				de gauche de l’opérateur \Verb_*_ et \Verb_c_ l'opérande de 
+				droite.
 			\item[unaire, binaire, ternaire]\index{unaire}\index{binaire}\index{ternaire}
 				Un opérateur qui agit sur deux opérandes (le plus fréquent)
 				est qualifié de binaire. 
@@ -768,23 +814,8 @@ aString = hello;
 			booléenne.			
 
 			\textbf{Exemples.}
-			Voici quelques assignations correctes 
+			Voici quelques assignations correctes~:
 			
-			\begin{pseudocode}
-				\Decl{positive, adult, successful, perfect}{boolean}
-				\Let positive \Gets nb > 0 
-					\RComment positive est mis à vrai si le nb est positive 
-				\Let adult \Gets age $\ge$ 21 
-					\RComment adult est vrai si l’âge est 21 ou plus
-				\Let successful \Gets cote $\ge$ 10 
-					\RComment successful est mis à vrai si la cote est 
-					\Stmt\RComment supérieure ou égale à 10
-				\Let perfect \Gets errors == 0  
-					\RComment c’est perfect si le nombre de fautes est 0
-			\end{pseudocode}
-
-			En Java
-
 			\begin{java}
 boolean positive, 
 	adult, 
@@ -800,7 +831,6 @@ perfect = errors == 0;
 
 			Pour tester l'égalité, nous utilisons le symbole $==$ afin de le 
 			différencier du symbole $=$ qui est le symbole de d'assignation. 
-			C'est la même chose en Java et dans beaucoup d'autres langages. 
 		
 			\begin{Emphase}
 				\paragraph{Exercices~: écrire des expressions booléennes}
@@ -860,23 +890,23 @@ perfect = errors == 0;
 			\begin{tabular}{|ccc|}
 				\hline
 				\rowcolor{black!20}
-				a & b & a ET b   \\
+				a & b & a AND b   \\
 				\hline
-				V & V & V \\\hline
-				V & F & F \\\hline
-				F & V & F \\\hline
-				F & F & F \\\hline				
+				true & true & true \\\hline
+				true & false & false \\\hline
+				false & true & false \\\hline
+				false & false & false \\\hline				
 			\end{tabular}
 			\qquad
 			\begin{tabular}{|ccc|}
 				\hline
 				\rowcolor{black!20}
-				a & b  & a OU b \\
+				a & b  & a OR b \\
 				\hline
-				V & V & V \\\hline
-				V & F & V \\\hline
-				F & V & V \\\hline
-				F & F & F \\\hline				
+				true & true & true \\\hline
+				true & false & true \\\hline
+				false & true & true \\\hline
+				false & false & false \\\hline				
 			\end{tabular}
 			\qquad
 			\begin{tabular}{|cc|}
@@ -884,8 +914,8 @@ perfect = errors == 0;
 				\rowcolor{black!20}
 				a & NON a \\
 				\hline
-				V & F \\\hline
-				F & V \\\hline
+				true & false \\\hline
+				false & true \\\hline
 			\end{tabular}
 			\end{center}
 
@@ -929,19 +959,19 @@ perfect = errors == 0;
 			\paragraph{Loi de De Morgan.}\index{Morgan}
 				Cette loi s'énonce: 
 				\begin{quote}
-					{\Huge «}
+					{\LARGE «}
 					La négation d'une conjonction (\pc{AND}) de deux
 					propositions est la disjonction (\pc{OR}) des deux
-					négations. De même, la négation de d'une disjonction de deux
-					propositions est la conjonction des deux négations.~{\Huge »}
+					négations. De même, la négation d'une disjonction de deux
+					propositions est la conjonction des deux négations.~{\LARGE »}
 				\end{quote}
 
 				… et s'écrit plus simplement~:
 				\[
-					\mathrm{NON}\ (a\ \mathrm{ET}\ b) \Leftrightarrow \mathrm{NON}\ a\ \mathrm{OU}\ \mathrm{NON}\ b
+					\mathrm{NON}\ (a\ \mathrm{AND}\ b) \Leftrightarrow \mathrm{NON}\ a\ \mathrm{OR}\ \mathrm{NON}\ b
 				\]
 				\[
-					\mathrm{NON}\ (a\ \mathrm{OU}\ b) \Leftrightarrow \mathrm{NON}\ a\ \mathrm{ET}\ \mathrm{NON}\ b
+					\mathrm{NON}\ (a\ \mathrm{OR}\ b) \Leftrightarrow \mathrm{NON}\ a\ \mathrm{AND}\ \mathrm{NON}\ b
 				\]
 				
 				Par exemple, ces trois propositions sont équivalentes~: 
@@ -956,6 +986,8 @@ perfect = errors == 0;
 				\end{center}
 	
 			\paragraph{Priorités et parenthèses.}
+			\index{priorité}
+
 				L'opérateur \pc{NON} est prioritaire sur les opérateurs \pc{AND}
 				et \pc{OR}.
 
@@ -986,18 +1018,22 @@ perfect = errors == 0;
 				de programmation. Java utilise cette évaluation paresseuse.  
 				 
 				\textbf{Exemples.}
-				\begin{pseudocode}
-					\Let ok \Gets 1/b < 0.1
-						\RComment provoque une erreur et un arrêt
-						de l’algorithme si \pc{b=0}. 
-					\Let ok \Gets b$\neq$0 ET 1/b < 0.1
-						\RComment donne la valeur \pc{faux} à \pc{ok} 
-						si \pc{b=0} (court-circuit). 
-					\Let ok \Gets 1/b < 0.1 ET b$\neq$0
-						\RComment provoque une erreur et
-						un arrêt si \pc{b=0}. 
-				\end{pseudocode}
-				
+
+				\begin{java}
+boolean ok;
+
+// Génère une erreur si b est nul
+ok = 1/b < 0.1;
+
+// Si b est nul, provoque une erreur et un arrêt
+ok = 1/b < 0.1 && b != 0;
+
+// YES ! C'est dans le bon ordre si b est nul, 
+// la condition est fausse et
+// ok reçoit false
+ok = b != 0 && 1/b < 0.1;
+				\end{java}
+
 				Cette propriété sera abondamment utilisée dans le parcours
 				de tableaux par exemple. 
 
@@ -1061,10 +1097,14 @@ perfect = errors == 0;
 				et, éventuellement un reste  $r$				
 			\end{flushright}
 				
-			Dans nos algorithmes, nous noterons la division entière \pc{DIV} et le
-			reste \pc{MOD}. $a$ \pc{DIV} $b$ est le quotient de la division et
-			$a$ \pc{MOD} $b$ — nous dirons \textit{a modulo b} — est le reste de
-			cette division.  
+			La division entière est souvent notée \pc{DIV} et le
+			reste \pc{MOD}. 
+			
+			\begin{itemize}
+				\item $a$ \pc{DIV} $b$ est le quotient de la division et
+				\item $a$ \pc{MOD} $b$ — nous dirons \textit{a modulo b} — 
+					est le reste de cette division.  
+			\end{itemize}
 
 			En Java, la division se note $/$ et le reste $\%$.
 			
@@ -1097,10 +1137,10 @@ perfect = errors == 0;
 		%-------------------------------------
 		
 			Les deux opérateurs \pc{MOD} et \pc{DIV}, respectivement \pc{/} et
-			\pc{\%}, permettent de tester si un nombre est un multiple d’un
-			autre.
+			\pc{\%}, permettent, par exemple, de tester si un nombre est un
+			multiple d’un autre.
 
-			Si l'on veut par exemple savoir si un nombre est \textbf{pair}
+			Si l'on veut savoir si un nombre est \textbf{pair}
 			— pour rappel, un nombre pair est un multiple de 2 — il suffit 
 			de vérifier que le reste de la division par 2 est nul.
 			
@@ -1155,7 +1195,8 @@ isOdd = nb % 2 == 0;
 			de droite (DIV).  Combinés, ils permettent d’extraire n’importe quel
 			chiffre d’un nombre.
 			
-			\textbf{Exemple}~: (65536 DIV 100) MOD 10 = 5.
+			\textbf{Exemple}~: (65536 DIV 100) MOD 10 = 5… qui est le chiffre des
+			centaines. 
 
 
 		
@@ -1218,22 +1259,36 @@ double number = Math.random();
 			\begin{itemize}
 				\item un entier entre 0 inclus et n exclu
 
-					\begin{pseudocode}
-						\Algo{random}{\Par{n}{integer}}{integer}
-						\Return random() * n	
-						\RComment le nombre réel est tronqué
-						\EndAlgo 
-					\end{pseudocode}
+					\begin{langagenaturel}
+						(la partie entière de) random() * n
+					\end{langagenaturel}
 
 				\item un entier entre min et max inclus
-			
-				\begin{pseudocode}
-					\Algo{random}{\Par{min}{integer}, \Par{max}{integer}}{integer}
-					\Return random(max-min+1) + min
-					\EndAlgo
-				\end{pseudocode}
+
+					\begin{langagenaturel}
+						(la partie entière de) min + random() * (max-min+1)
+					\end{langagenaturel}
 			
 			\end{itemize}
+
+			En langage Java, il existe une méthode \verb_Math.random()_ comme
+			nous l'avons dit mais également une autre manière de faire en
+			utilisant la classe \textbf{Random} comme ceci\footnote{Le code
+			n'est pas fonctionnel en l'état. Il manque un \textit{import}.
+			Nous y reviendrons}~: 
+
+			\begin{java}
+Random R = new Random();
+
+// Une valeur entière comprise entre 0 et 13 strictement
+int value = R.nextInt(13);
+
+// Une valeur entière comprise entre 10 et 20 strictement
+int value2 = 10 + R.nextInt(10);
+
+// Une valeur pseudo-réelle entre 0 et 1 strictement
+double value3 = R.nextDouble();
+			\end{java}
 			
 
 	%======================================================================
@@ -1267,11 +1322,11 @@ double number = Math.random();
 		%------------------------------------------
 			
 			L’\textbf{efficacité}
-			désigne le fait que l’algorithme (le programme) résout%
 			\footnote{%
 				À ne pas confondre avec \emph{l’efficience}
 				qui indique qu’il est économe en ressources.
 			}
+			désigne le fait que l’algorithme (le programme) résout%
 			bien le problème donné.
 			C’est un minimum~!
 		
@@ -1375,8 +1430,8 @@ double number = Math.random();
 			nécessairement plus rapide ni plus lisible.
 
 			Lors de la traduction en langage Java, certaines formes d'écriture
-			— plus courtes — seront privilégiées. Nous y reviendrons et — au fur
-			et à mesure de l'apprentissage — elles deviendront vite évidentes.
+			— plus courtes — seront privilégiées. Nous y reviendrons et -- au fur
+			et à mesure de l'apprentissage -- elles deviendront vite évidentes.
 		
 		%----------------------		
 		\subsection{Conclusion}
@@ -1401,15 +1456,15 @@ double number = Math.random();
 		que doivent avoir nos algorithmes et nos programmes.  Qu’est ce qui
 		permet d’améliorer la lisibilité d’un algorithme~?
 
-		\subsection{Mise en page des algorithmes}
+		\subsection{Mise en page des algorithmes et des programmes} 
 		
-			Il y a d’abord la \textbf{mise en page} qui aide le lecteur
-			à avoir une meilleure vue d’ensemble de l’algorithme,
-			à en repérer rapidement la structure générale.
-			Ainsi, dans ce syllabus~:
+			Il y a d’abord la \textbf{mise en page} qui aide le lecteur à avoir
+			une meilleure vue d’ensemble de l’algorithme, à en repérer
+			rapidement la structure générale.  Ainsi, dans ce syllabus~:
+
 			\begin{itemize}
 			\item 
-				Les mots imposés ou, tout au moins importants, 
+				les mots imposés ou, tout au moins importants, 
 				\index{mots-clés}
 				sont mis en évidence (en gras%
 				\footnote{%
@@ -1417,61 +1472,57 @@ double number = Math.random();
 					Dans une version écrite vous pouvez~:
 					souligner ou surligner le mot, l’écrire en majuscule
 					ou le mettre en couleur.%
-				}).
+				})~;
 			\item
-				Une seule instruction se trouve par ligne.
+				une seule instruction se trouve par ligne~;
 			\item
-				Les instructions à l’intérieur de l’algorithme sont 
+				les instructions à l’intérieur de l’algorithme sont 
 				\emph{indentées}\index{indentation}
 				(décalées vers la droite).
 				On indentera également les instructions
-				à l’intérieur des choix et des boucles.
+				à l’intérieur des choix et des boucles~;
 			\item
-				Des lignes verticales relient le début et la fin
-				de quelque chose. 
-				Ici, un algorithme mais on pourra l’utiliser
-				également pour les choix et les boucles. 
+
+				Le début et la fin de quelque chose — un bloc — sont marqués 
+				par des accolades ({}) ou une ligne. 
 			\end{itemize}
 			
-			\textbf{Exemples à ne pas suivre.}
-			\\
-			\\
-			\begin{wrong}
-				\begin{pseudocode}
-					\Entete{duréeTrajet}{\Par{vitesseMS, distanceKM}{réels}}{réel}
-					\Decl{distanceM}{réel}
-					\Let distanceM \Gets 1000 * distanceKM
-					\Return distanceM / vitesseMS
-				\end{pseudocode}
-			\end{wrong}
+			\textbf{Exemples}
+
+			On n'écrira pas~:
+
+			\marginicon{dont}
+			\begin{java}
+public static double travelTime(double speedMS, double distanceKm) {
+double distanceM;
+distance M = 1000 * distanceKM;
+return distanceM / speedMS;
+}
+			\end{java}
+
+			ni~:
 			
-			\begin{wrong}
-				\begin{pseudocode}
-					\Algo{duréeTrajet}{\Par{vitesseMS, distanceKM}{réels}}{réel}
-						\Decl{distanceM}{réel}
-						\Let \quad distanceM \Gets 1000 * distanceKM
-						\qquad \K{retourner} distanceM / vitesseMS
-					\EndAlgo
-				\end{pseudocode}
-			\end{wrong}
-	
-			Il faudra préférer
-			
-			\begin{correct}
-				\begin{pseudocode}
-				\Algo{duréeTrajet}{\Par{vitesseMS, distanceKM}{réels}}{réel}
-					\Decl{distanceM}{réel}
-					\Let distanceM \Gets 1000 * distanceKM
-					\Return distanceM / vitesseMS
-				\EndAlgo
-				\end{pseudocode}
-			\end{correct}
+			\marginicon{dont}
+			\begin{java}
+public static double travelTime(double speedMS, double distanceKm) {
+	double distanceM;
+		distance M = 1000 * distanceKM; return distanceM / speedMS; }
+			\end{java}
+
+			mais plutôt~:
+
+			\begin{java}
+public static double travelTime(double speedMS, double distanceKm) {
+	double distanceM;
+	distance M = 1000 * distanceKM;
+	return distanceM / speedMS;
+}
+			\end{java}
+
 			\medskip
 	
-		\subsection{Écriture des programmes}
-
-			Pour l'écriture d'un programme, les règles sont semblables.
-			L'utilisation d'un éditeur de code% 
+			Plus spécifiquement pour les programmes, l'utilisation d'un éditeur 
+			de code% 
 			\footnote{%
 				Un éditeur de code est un programme aidant à l'édition de code
 				qu'il ne faut pas confondre avec un éditeur de texte. Des
@@ -1580,14 +1631,8 @@ public static boolean iDoNothing(double beautifulDouble,
 			
 			Voici quelques mauvais 	commentaires
 			
-			\begin{wrong}
-				\begin{pseudocode}
-					\LComment{Exemples de mauvais commentaires}
-					\Decl{length}{real} \RComment{La longueur est un réel\quad.}
-					\Let sum \Gets 0 \RComment{On initialise la somme à 0} 
-				\end{pseudocode}
-			\end{wrong}
 
+			\marginicon{dont}
 				\begin{java}
 double length 		// La longeur est un réel
 /* La somme est initialisée à 0. 
@@ -1600,23 +1645,23 @@ int sum = 0;
 				Un excès de commentaires peut être le révélateur des problèmes
 				de lisibilité du code lui-même.  Par exemple, un choix judicieux
 				de noms de variables peut s’avérer bien plus efficace que des
-				commentaires.  Ainsi, l’instruction
+				commentaires.  Ainsi, écrire~:
+
+				\begin{langagenaturel}
+					newCapital = oldCapital * ( 1 + rate / 100 )
+				\end{langagenaturel}
+
 	
-			\begin{correct}
-				\begin{pseudocode}
-				\Let newCapital \Gets oldCapital * (1 + rate / 100)
-				\end{pseudocode}
-			\end{correct}
+				sans commentaires est bien préférable aux lignes suivantes~:
 	
-			dépourvue de commentaires est bien préférable aux lignes suivantes~:
-	
-			\begin{wrong}
-				\begin{pseudocode}
-				\Let c1 \Gets c0 * (1 + r / 100) \RComment calcul du nouveau capital\quad.
-				\Empty \RComment c1 est le nouveau capital, c0 est l’ancien capital, t est le taux
-				\end{pseudocode}
-			\end{wrong}
-			
+				\begin{wrong}
+					\begin{langagenaturel}
+						c1 = c0 * ( 1 + r/100)
+						
+						Calcul du nouveau capital en appliqant le taux
+					\end{langagenaturel}
+				\end{wrong}
+
 			\bigskip
 			Pour résumer~:
 			\begin{quote}
@@ -1630,14 +1675,6 @@ int sum = 0;
 
 			\paragraph{Exemples.}
 			Voici comment on pourrait documenter un de nos algorithmes.
-			\begin{pseudocode}
-				\LComment{Calcule la surface d’un rectangle dont 
-				on donne la largeur et la longueur.}
-				\LComment{On considère que les données ne sont pas négatives.}
-				\Algo{rectangleArea}{\Par{length, width}{reals}}{real}
-					\Return length* width
-				\EndAlgo
-			\end{pseudocode}
 
 			\begin{java}
 /* 
@@ -1660,30 +1697,20 @@ public static double rectangleArea (double length, double width){
 
 			L'usage est d'écrire les constantes en majuscules. 
 			
-	
-			Il est inutile de spécifier leur type — mais c'est autorisé
-			— celui-ci étant défini implicitement par la valeur de la constante.	
 			L’utilisation de constantes dans vos algorithmes présente
 			les avantages suivants~:
 			\begin{itemize}
 			\item
-				Une meilleure lisibilité du code,
-				pour autant que vous lui trouviez un nom explicite.
+				une meilleure lisibilité du code,
+				pour autant que vous lui trouviez un nom explicite~;
 			\item
-				Une plus grande facilité pour modifier le code
+				une plus grande facilité pour modifier le code
 				si la constante vient à changer 
 				(modification légale du seuil de réussite par exemple).
 			\end{itemize}
 			
-			\clearpage
 			\textbf{Exemples}
 			
-			\begin{pseudocode}
-				\Const{PI}{3,1415}
-				\Const{SEUIL\_RÉUSSITE}{10}
-				\Const{ESI}{{\textquotedbl}École Supérieure d’Informatique{\textquotedbl}}
-			\end{pseudocode}
-
 			\begin{java}
 public static final double PI = 3.1415;
 public static final int PASS_LEVEL = 10;
@@ -1720,10 +1747,10 @@ public static final String ESI = "École supérieure d'Informatique";
 		Cet autre algorithme doit exister \emph{quelque part}~: sur la même
 		page, une autre page, un autre document, peu importe.
 		
-		En Java, la contrainte est un peu plus forte. Les programmes ne sont 
-		pas écrits sur une feuille mais rassemblés dans un ou plusieurs fichiers.
-		Dans un premier temps, nous écrirons nos programmes dans un seul fichier.
-		Ce fichier représentera une \emph{classe}\index{classe}. 
+		En Java, la contrainte est un peu plus forte.  Les programmes sont
+		généralement écrits dans plusieurs fichiers qui doivent «~se
+		retrouver~»… mais dans un premier temps, nous nous contenterons d'un
+		seul.  Ce fichier représentera une \emph{classe}\index{classe}. 
 
 		\begin{itemize}
 			\item Les instructions qui définissent une classe sont:
@@ -1733,30 +1760,22 @@ public class MyClass{
 }
 				\end{java}
 			\item La classe \pc{MyClass} doit se trouver dans le fichier 
-				\texttt{MyClass.java}
+				\texttt{MyClass.java}\footnote{Cette contrainte peut être 
+					relâchée à partir de JDK11. Voir 
+					\url{http://namok.be/blog/?post/2019/04/06/JDK10-11-12}}
 		\end{itemize}
 
-		Pour pouvoir appeler une méthode en Java, il faudra qu'elle existe dans
-		la même classe\footnote{Nous relâcherons assez vite cette contrainte}.
+		Pour pouvoir appeler une méthode en Java qui se trouve dans la même 
+		classe, il suffit d'écrire~:
 		
-
-		L’appel d'un algorithme s’écrit ainsi~:
-		
-		\begin{pseudocode}
-			\Let area \Gets rectangleArea(122,3.78) 
-				\RComment{On appelle l’algorithme}
-		\end{pseudocode}
-
-		L'appel d'une méthode s'écrit ainsi~:
-
 		\begin{java}
 area = rectangleArea(122, 3.78);			
 		\end{java}
 		
-		L’appel d’un algorithme est considéré comme une expression, un calcul
-		qui, comme toute expression, possède une valeur (la valeur retournée) et
-		peut intervenir dans un calcul plus grand, être assignée à une
-		variable\dots
+		L’appel d’une méthode est considéré comme une expression, un calcul qui,
+		comme toute expression, possède une valeur (la valeur retournée) et un
+		type. Elle peut intervenir dans un calcul plus grand, être assignée
+		à une variable\dots
 	
 	%=====================================
 	\section{Interagir avec l'utilisateur}
@@ -1770,12 +1789,18 @@ area = rectangleArea(122, 3.78);
 			à l’utilisateur du programme.  Nous allons renseigner un affichage
 			par la commande \pc{\K{print}}.  Ce qui donne~:
 			
-			\begin{pseudocode}
-				\Write{rectangleArea(122, 3.78)}
-			\end{pseudocode}
+			\begin{langagenaturel}
+				print 2\\
+				print rectangleArea(122, 3.78)\\
+
+				afficher 3
+			\end{langagenaturel}
+
+			En langage naturel, nous pouvons choisir d'écrire afficher, print,
+			écrire à l'écran… Dans ces notes, nous écrirons \pc{\K{print}}.
 	
 			L’instruction \pc{\K{print}} signifie que l’algorithme doit, à cet
-			endroit de l’algorithme communiquer une information à l’utilisateur.
+			endroit communiquer une information à l’utilisateur.
 			La façon dont il va communiquer cette information (à l’écran dans
 			une application texte, via une application graphique, sur un cadran
 			de calculatrice ou de montre, sur une feuille de papier imprimée,
@@ -1787,9 +1812,14 @@ area = rectangleArea(122, 3.78);
 			\begin{java}
 System.out.println(rectangleArea(122, 3.78);				
 			\end{java}
+
+			Les lettres \textit{ln} qui suivent le mot \textit{print} signifient
+			\textit{new line} et indiquent un passage à la ligne après
+			l'affichage. Il existe aussi une instruction \pc{print} sans les
+			lettres \textit{ln}… qui ne passe pas à la ligne. 
 		
-			Les affichages et les demandes peuvent aussi se faire à l'aide 
-			d'un organigramme et d'un parallélogramme.  
+			Avec un organigramme, les affichages et les demandes peuvent 
+			se faire à l'aide d'un parallélogramme.  
 
 			\begin{center}
 				\begin{tikzpicture}[node distance=2cm]
@@ -1806,12 +1836,17 @@ System.out.println(rectangleArea(122, 3.78);
 			Il serait maintenant intéressant de demander à l’utilisateur ce que
 			valent la longueur et la largeur.  C’est le but de la commande
 			\pc{\K{read}}. 
-	
-			\begin{pseudocode}
-				\Read{length}
-				\Read{width}
-				\Write{rectangleArea(length, width)}
-			\end{pseudocode}
+
+			\begin{langagenaturel}
+				read length \\
+				read width\\
+				print rectangleArea(length, width)\\
+
+				demander la valeur de length
+			\end{langagenaturel}
+
+			En langage naturel, nous pouvons choisir d'écrire lire, read,
+			demander la valeur de… Dans ces notes, nous écrirons \pc{\K{read}}.
 	
 			L’instruction \pc{\K{read}} signifie que l’utilisateur va, à cet
 			endroit de l’algorithme, être sollicité pour donner une valeur qui
@@ -1849,23 +1884,6 @@ double length = keyboard.nextDouble();
 
 			L'exemple du rectangle pourrait s'écrire de manière un peu plus 
 			complète comme suit~:
-
-			\begin{pseudocode}
-				\LComment{Calcule la surface d’un rectangle dont 
-				on donne la largeur et la longueur.}
-				\LComment{On considère que les données ne sont pas négatives.}
-				\Algo{rectangleArea}{\Par{length, width}{reals}}{real}
-					\Return length* width
-				\EndAlgo
-				
-				\Algo{AreaTest}{}{}
-					\Decl{length, width}{reals}
-					\Read{length, width}
-					\Write{rectangleArea(length, width)}
-				\EndAlgo
-			\end{pseudocode}
-
-			Et voici une traduction en langage Java~:
 
 			\begin{java}
 import java.util.Scanner;
