@@ -163,14 +163,14 @@
 		faute. Dans ces notes nous utiliserons l'anglais}~:
 		
 		\begin{center}
-			\begin{tabular}[t]{|p{1.4cm}|p{1.4cm}|p{8cm}|}
+			\begin{tabular}[t]{|p{1.4cm}|p{8cm}|}
 				\hline
 				\rowcolor{black!40}
-				\color{white}\bf\large Algo & \color{white}\bf\large Java & \\
+				\color{white}\bf\large Type & \\
 				\hline
-				\pc{integer} & \pc{int} & pour les nombres entiers\\
-				\pc{real} & \pc{double} & pour les nombres réels\\
-				\pc{string} & \pc{String}
+				\pc{int} & pour les nombres entiers\\
+				\pc{double} & pour les nombres réels\\
+				\pc{String}
 						\footnote{Notez la majuscule, indispensable en Java} 
 						& \makecell[tl]{
 							pour les chaines de caractères, les textes\\
@@ -180,7 +180,7 @@
 							\hspace{1cm}\pc{"a"}, \pc{""}\dots
 						}
 					\\
-				\pc{boolean} & \pc{boolean} & quand la valeur 
+				\pc{boolean} & quand la valeur 
 			ne peut être que \pc{true} (vrai) ou \pc{false} (faux)\\
 			\hline
 			\end{tabular}
@@ -192,10 +192,10 @@
 			\paragraph{Exemples.}	
 			\begin{itemize}
 			\item Pour la longueur, la largeur et la surface d’un rectangle, 
-				on prendra un réel (le type \pc{real}).
+				on prendra un réel (le type \pc{double}).
 			\item Pour le nom d’une personne, on choisira une chaine de caractère
-				(le type \pc{string}).
-			\item Pour l’âge d’une personne, un entier est indiqué (\pc{integer}).
+				(le type \pc{String}).
+			\item Pour l’âge d’une personne, un entier est indiqué (\pc{int}).
 			\item Pour décrire si un étudiant est doubleur ou pas, un booléen 
 				(\pc{boolean}) est adapté.
 			\item Pour représenter un mois, on préférera souvent un entier
@@ -211,7 +211,7 @@
 			Un type numérique indique que les valeurs possibles seront
 			des nombres. Il n’y a là aucune notion d’unité.
 			Ainsi, la longueur d’un rectangle, un réel, 
-			peut valoir $2.5$ mais certainement pas $2.5 cm$.
+			peut valoir $2.5$ mais certainement pas $2.5$\,$cm$.
 			Si cette unité a de l’importance,
 			il faut la spécifier dans le nom de la donnée ou en commentaire.
 			
@@ -286,12 +286,11 @@
 				le jour, le mois et l’année, tous des entiers.
 			\end{Emphase}
 			
-			Plus loin dans le cours,
-			nous verrons qu’il est possible de définir de nouveaux
-			types de données grâce aux \emph{structures} pour les algorithmes et 
+			Plus tard, vous verrez qu’il est possible de définir de nouveaux
+			types de données grâce aux \emph{structures} pour les algorithmes et
 			aux \emph{classes} pour les langages orientés objets tels que Java. 
 			
-			Nous pourrons alors définir et utiliser un type \pc{Date}
+			Il sera alors possible de définir et utiliser un type \pc{Date}
 			et il ne sera plus nécessaire de décomposer une date en trois
 			morceaux bien que le type sera bien entendu composé de trois valeurs.
 
@@ -299,14 +298,14 @@
 		\subsection{Exercice}
 		%----------------------------------------------
 		
-			Quel(s) type(s) de données utiliseriez-vous pour représenter 
+			Quel(s) type(s) de données utiliseriez-vous pour représenter~:
 			\begin{itemize}
-				\item le prix d’un produit en grande surface~?
-				\item la taille de l’écran de votre ordinateur~?
-				\item votre nom~?
-				\item votre adresse~?
-				\item le pourcentage de remise proposé pour un produit~?
-				\item une date du calendrier~?
+				\item le prix d’un produit en grande surface~;
+				\item la taille de l’écran de votre ordinateur~;
+				\item votre nom~;
+				\item votre adresse~;
+				\item le pourcentage de remise proposé pour un produit~;
+				\item une date du calendrier~;
 				\item un moment dans la journée~?
 			\end{itemize}
 			
