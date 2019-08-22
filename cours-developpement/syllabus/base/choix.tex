@@ -2,14 +2,10 @@
 \chapter{Une question de choix}
 %===========================================
 
-	% Dans la section \ref{codestudio} (p. \pageref{codestudio}) nous proposions
-	% une initiation ludique aux algorithmes.  Vous avez eu l’occasion d’y aborder
-	% les alternatives.  Par exemple, vous avez indiqué au zombie quelque chose
-	% comme~: \og{}S’il existe un chemin à gauche alors tourner à gauche\fg{}.
-	
 	Les \textbf{alternatives}\index{alternatives} permettent de n’exécuter des
-	instructions que si une certaine \emph{condition} est vérifiée.  Avec le
-	zombie, par exemple, vous testiez son environnement~; dans nos algorithmes
+	instructions que si une certaine \emph{condition} est vérifiée.  
+	Par exemple, si le filtre à café est vide, le remplir. Dans la vie, nous 
+	testons notre environnement, dans nos algorithmes
 	et dans nos programmes, nous allons tester les données.
 	
 	Les algorithmes et les programmes vus jusqu’à présent ne proposent qu’un
@@ -28,16 +24,60 @@
 	Il existe des situations où des instructions ne doivent pas toujours être
 	exécutées et un test va nous permettre de le savoir.
 	
-	\paragraph{Exemple.}
+	\begin{langagenaturel}
+		si une certaine condition est vraie alors\\
+		\tab exécuter une ou plusieurs actions\\
+		fin si\\
+		continuer l'algorithme
+	\end{langagenaturel}
+
+	Dans la grammaire du langage Java, cette instruction s'écrit~:
+	
+	\begin{grammaire}
+		if ( \grammarrule{Expression} ) \grammarrule{Statement}
+	\end{grammaire}
+
+	\begin{enumerate}
+		\item \grammarrule{Expression} représente une expression booléenne. 
+			c'est-à-dire ayant comme valeur \pc{true} ou \pc{false}.
+		\item \grammarrule{Statement} représente une instruction ou un 
+			\textbf{bloc} d'instructions. En langage Java, un bloc 
+			\index{bloc} d'instructions est toujours délimités par une paire 
+			d'accolades. 
+	\end{enumerate}
+
+	\marginicon{attention}
+	\textbf{Remarque}
+
+	Attention, un \og{}si\fg{} n’est pas une règle que l’ordinateur doit
+	apprendre et exécuter à chaque fois que l’occasion se présente.  La
+	condition n’est testée que lorsqu’on arrive à cet endroit de l’algorithme.
+	
+	\textbf{Exemple}
 
 	Supposons que la variable \pc{nb} contienne un nombre positif ou négatif.
 	Et supposons que l’on veuille le rendre positif. Il faudra tester son signe
 	et, s’il est négatif, l'inverster.  Par contre, s’il est positif, il n’y
-	a rien à faire.  Voici comment écrire, graphiquement et en pseudocode, un 
-	algorithme~:
+	a rien à faire.  
 	
-	\qquad
-	\begin{minipage}{6cm}
+	Voici comment écrire un algorithme sous différentes formes~:
+		
+	\begin{langagenaturel}
+		si nb < 0 alors\\
+			\tab nb = -nb\\
+		fin si
+	\end{langagenaturel}
+	
+	ou
+	
+	\begin{langagenaturel}
+		if (nb < 0)\\
+			\tab nb = -nb\\
+	\end{langagenaturel}
+	
+	Un organigramme aurait cette forme~:
+
+	\begin{center}
 		\begin{tikzpicture}[node distance = 2cm, auto]
 			\node (start) [startstop] {Start};
 			\node (dec1) [decision, below of=start, yshift=-1cm] {nb < 0};
@@ -49,15 +89,24 @@
 				.. node[anchor=east] {false} (stop);
 			\draw [arrow] (proc1) -- (stop);
 		\end{tikzpicture}	
-	\end{minipage}
-	\quad
-	\begin{minipage}{6cm}
-		\begin{pseudocode}[1]
-			\If{nb<0}
-				\Let nb \Gets -nb
-			\EndIf
-		\end{pseudocode}
-	\end{minipage}
+	\end{center}
+	
+	En langage Java, le \emph{si} s'écrit comme suit~:
+
+	\begin{java}
+if (nb < 0)
+	nb = -nb;
+	\end{java}
+
+	Pour s'éviter des erreurs, nous utiliserons toujours le bloc d'instructions.
+	Nous conseillons de faire de même et nous écrirons~:
+
+	\begin{java}
+if (nb < 0){
+	nb = -nb;
+}
+	\end{java}
+
 
 	Traçons l'algorithme dans deux cas différents pour bien illustrer 
 	son déroulement.
@@ -87,63 +136,10 @@
 	\end{tabular}
 	\end{center}
 	
-	La condition peut être n’importe quelle expression (calcul)
-	dont le résultat est un booléen (vrai ou faux).
-
-	\marginicon{attention}
-	\textbf{Remarque}
-	Attention, la confusion est fréquente.
-
-	Un \og{}si\fg{} n’est pas une règle que l’ordinateur doit apprendre et
-	exécuter à chaque fois que l’occasion se présente.  La condition n’est
-	testée que lorsqu’on arrive à cet endroit de l’algorithme.
-	
-	En langage Java, le \emph{si} s'écrit comme suit~:
-
-	\begin{grammaire}
-		if ( \grammarrule{Expression} ) \grammarrule{Statement}
-	\end{grammaire}
-
-	\begin{enumerate}
-		\item \grammarrule{Expression} représente une expression booléenne. 
-			c'est-à-dire ayant comme valeur \pc{true} ou \pc{false}.
-		\item \grammarrule{Statement} représente une instruction ou un 
-			\textbf{bloc} d'instructions. Un bloc \index{bloc} d'instructions 
-			est toujours délimités par une paire d'accolades. 
-	\end{enumerate}
-
-	\clearpage
-	Le test précédent pourrait s'écrire comme suit~:
-
-	\begin{java}
-if (nb < 0)
-	nb = -nb;
-	\end{java}
-
-	Pour s'éviter des erreurs, nous utiliserons toujours le bloc d'instructions
-	et nous écrirons~:
-
-	\begin{java}
-if (nb < 0){
-	nb = -nb;
-}
-	\end{java}
-
 	\begin{Emphase}
 		\paragraph{Exercice de compréhension}
-		Tracez  l'algorithme ou le programme avec les valeurs fournies et donnez
-		la valeur de retour.
-		
-		\begin{pseudocode}
-		\Algo{exercice}{a, b~: entiers}{entier}
-			\Decl{c}{entier}
-			\Let c \Gets 2 * a
-			\If{c > b}
-				\Let c \Gets c - b
-			\EndIf
-			\Return c
-		\EndAlgo
-		\end{pseudocode}		
+		Tracez  l'algorithme écrit en langage Java avec les valeurs fournies 
+		et donnez la valeur de retour.
 		
 		\begin{java}
 public static int exercice(int a, int b){
@@ -172,15 +168,47 @@ public static int exercice(int a, int b){
 %===============================
 	
 	La construction \pc{si-sinon} permet d’exécuter certaines instructions ou
-	d’autres en fonction d’un test.  Pour illustrer cette instruction, nous
-	allons nous pencher sur un grand classique, la recherche de maximum.
+	d’autres en fonction d’un test.  
 	
-	\paragraph{Exemple.}
+	\begin{langagenaturel}
+		si une certaine condition est vraie alors\\
+			\tab exécuter une ou plusieurs actions\\
+		sinon (la condition est alors fausse)\\
+			\tab exécuter d'autres actions\\
+		fin si\\
+		continuer l'algorithme 
+	\end{langagenaturel}
+
+	Dans la grammaire du langage Java, cette instruction s'écrit~:
+
+	\begin{grammaire}
+		\grammarrule{IfThenElseStatement:}
+		    if ( \grammarrule{Expression} )
+		        \grammarrule{Statement}
+		    else
+		        \grammarrule{Statement}
+	\end{grammaire}
+
+	\textbf{Exemple}
+
+	Pour illustrer cette instruction, nous allons écrire un algorithme qui 
+	recherche le maximum de deux nombres. 
 	
-	Pour déterminer le le maximum de deux nombres, c’est-à-dire la plus grande
+	Pour déterminer le maximum de deux nombres, c’est-à-dire la plus grande
 	des deux valeurs, il y aura deux chemins possibles.  Le maximum devra
 	prendre la valeur du premier nombre ou du second selon que le premier est
 	plus grand que le second ou pas.
+
+	Voici comment écrire cet algorithme sous différentes formes~:
+
+	\begin{langagenaturel}
+		if (nb1 > nb2)\\
+			\tab max = nb1\\
+		else\\
+			\tab max = nb2\\
+	\end{langagenaturel}
+
+	Un organigramme aurait cette forme~:
 	
 	\begin{center}
 		\begin{tikzpicture}[node distance = 2cm, auto]
@@ -199,17 +227,20 @@ public static int exercice(int a, int b){
 		\end{tikzpicture}	
 	\end{center}
 	
+	En supposant les variables déclarées, le \textit{si-alors}, s'écrit comme
+	suit en langage Java~:
 
-	\begin{pseudocode}[1]
-			\If{nb1>nb2}
-				\Let max \Gets nb1
-			\Else
-				\Let max \Gets nb2
-			\EndIf
-	\end{pseudocode}
+	\begin{java}
+if (nb1 > nb2){		
+	max = nb1;
+} else {
+	max = nb2;
+}
+	\end{java}
 
-	Traçons-le dans différentes situations.
+	Traçons l'algorithme dans différentes situations.
 	
+	\begin{center}
 	\begin{tabular}{|>{\centering\arraybackslash}m{6mm}
 					|*{4}{>{\centering\arraybackslash}m{1cm}}|}
 		\hline
@@ -221,7 +252,9 @@ public static int exercice(int a, int b){
 			2 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & 3        & {} \\
 		\hline
 	\end{tabular}
-	\quad
+	\end{center}
+
+	\begin{center}
 	\begin{tabular}{|>{\centering\arraybackslash}m{6mm}
 					|*{4}{>{\centering\arraybackslash}m{1cm}}|}
 		\hline
@@ -233,9 +266,11 @@ public static int exercice(int a, int b){
 			4 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & 42        & {} \\
 		\hline
 	\end{tabular}
+	\end{center}
 	
 	Le cas où les deux nombres sont égaux est également géré.
 	
+	\begin{center}
 	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}
 					|*{4}{>{\centering\arraybackslash}m{1cm}}|}
 		\hline
@@ -247,26 +282,7 @@ public static int exercice(int a, int b){
 			4 & {\color{gray}$\mid$} & {\color{gray}$\mid$} & 4        & {} \\
 		\hline
 	\end{tabular}
-
-	En langage Java, le \emph{si-sinon} s'écrit~:
-
-	\begin{grammaire}
-		\grammarrule{IfThenElseStatement:}
-		    if ( \grammarrule{Expression} )
-		        \grammarrule{Statement}
-		    else
-		        \grammarrule{Statement}
-	\end{grammaire}
-
-	Le test précédent peut donc s'écrire en supposant les variables déclarées~:
-
-	\begin{java}
-if (nb1 > nb2){		
-	max = nb1;
-} else {
-	max = nb2;
-}
-	\end{java}
+	\end{center}
 	
 	\begin{Emphase}
 		\paragraph{Exercice de compréhension}
@@ -274,17 +290,6 @@ if (nb1 > nb2){
 		Tracez ces algorithmes ou programmes avec les valeurs fournies et donnez
 		la valeur de retour.
 	
-		\begin{pseudocode}
-		\Algo{exercice}{a, b : integer}{integer}
-			\Decl{c}{integer}
-			\If{a > b}
-				\Let c \Gets a DIV b
-			\Else
-				\Let c \Gets b MOD a	
-			\EndIf
-			\Return c
-		\EndAlgo
-		\end{pseudocode}
 
 		\begin{java}
 public static int exercice(int a, int b){
@@ -304,21 +309,6 @@ public static int exercice(int a, int b){
 		\end{itemize}
 		\end{multicols}
 	
-		\begin{pseudocode}
-		\Algo{exercice}{x1, x2~: integer}{integer}
-			\Decl{ok}{boolean}
-			\Let ok \Gets x1 > x2
-			\If{ok}
-				\Let ok \Gets ok ET x1 == 4
-			\Else
-				\Let ok \Gets ok OU x2 == 3
-			\EndIf
-			\If{ok}
-				\Let x1 \Gets x1 * 1000
-			\EndIf
-			\Return x1 + x2
-		\EndAlgo
-		\end{pseudocode}
 
 		\begin{java}
 public static int exercice(int x1, int x2){
@@ -351,12 +341,65 @@ public static int exercice(int x1, int x2){
 %============================
 
 	Avec cette construction, il est possible d'indiquer à un endroit de
-	l’algorithme plus de deux chemins possibles.  Partons à nouveau d’un exemple
-	pour illustrer cette instruction.
+	l’algorithme plus de deux chemins possibles et dès lors que la première
+	condition est fausse, tester une condition supplémentaire à chaque étape. 
 	
-	\paragraph{Exemple.} On voudrait mettre dans la chaine \pc{signe} la valeur
+	\begin{langagenaturel}
+		si une certaine condition est vraie alors\\
+			\tab exécuter une ou plusieurs actions\\
+		sinon si une autre condition est vraie alors\\
+			\tab exécuter d'autres actions\\
+		sinon \\
+			\tab exécuter encore d'autres actions\\
+		fin si\\
+		continuer l'algorithme
+	\end{langagenaturel}
+
+	Dans la grammaire du langage Java, il n'y a pas d'instruction
+	supplémentaire. Un \textit{si-sinon-si} n'étant que des \textit{si-sinon}
+	imbriqués un peu comme suit~:
+
+	\begin{grammaire}
+	    if ( \grammarrule{Expression} )
+	        \grammarrule{Statement}
+	    else
+	        if ( \grammarrule{Expression} )
+	            \grammarrule{Statement}
+	        else
+	            \grammarrule{Statement}
+	\end{grammaire}
+	
+	…qui seront généralement indentés comme suit~:
+	
+	\begin{grammaire}
+	    if ( \grammarrule{Expression} )
+	        \grammarrule{Statement}
+	    else if ( \grammarrule{Expression} )
+	        \grammarrule{Statement}
+	    else
+	       	\grammarrule{Statement}
+	\end{grammaire}
+	
+	… mais voyons cela sur un exmeple. 
+
+	\textbf{Exemple}
+	
+	Supposons que l'on veuille mettre dans la chaine \pc{signe} la valeur
 	\pc{"positif"}, \pc{"négatif"} ou \pc{"nul"} selon qu’un nombre donné est
 	positif, négatif ou nul.
+
+	Voici comment écrire cet algorithme sous différents formats~:
+
+	\begin{langagenaturel}
+		if (nb > 0)\\
+			\tab signe = "positif"\\
+		else if (nb = 0)\\
+			\tab signe = "nul"\\
+		else\\
+			\tab signe = "négatif"\\
+	\end{langagenaturel}
+
+	Un organigramme aurait cette allure~:
 	
 	\begin{center}
 		\begin{tikzpicture}[node distance = 2cm, auto]
@@ -382,20 +425,25 @@ public static int exercice(int x1, int x2){
 			\draw [arrow] (proc3) -- (stop);
 		\end{tikzpicture}	
 	\end{center}
-
-
-		\begin{pseudocode}[1]
-			\If{nb>0}
-				\Let signe \Gets "positif"
-			\ElsIf{nb==0}
-				\Let signe \Gets "nul"
-			\Else
-				\Let signe \Gets "négatif"
-			\EndIf
-		\end{pseudocode}
 	
-	Traçons-le
+	Comme dit plus haut, en langage Java, il n'y a pas de structure particulière
+	pour ce test. Le \pc{if-then-else} fait bien l'affaire. Seule l'indentation
+	change un peu pour plus de lisibilité. Ce test peut donc s'écrire — en
+	supposant toujours que les variables sont déclarées — comme ceci~:
+
+	\begin{java}
+if (nb > 0){
+	s = "positif";
+} else if (nb == 0) {
+	s = "nul";
+} else {
+	s = "négatif";
+}
+	\end{java}
+
+	Traçons l'algorithme dans différentes situations. 
 	
+	\begin{center}
 	\begin{tabular}{|*{2}{>{\centering\arraybackslash}m{4mm}}
 					 *{2}{>{\centering\arraybackslash}m{9mm}}|}
 		\hline
@@ -407,7 +455,9 @@ public static int exercice(int x1, int x2){
 			2 & {\color{gray}$\mid$} & "positif"            & {}   \\
 		\hline
 	\end{tabular}
+	\end{center}
 	
+	\begin{center}
 	\begin{tabular}{|*{2}{>{\centering\arraybackslash}m{4mm}}
 					 *{2}{>{\centering\arraybackslash}m{9mm}}|}
 		\hline
@@ -433,21 +483,8 @@ public static int exercice(int x1, int x2){
 			6 & {\color{gray}$\mid$} & "négatif"            & {}   \\
 		\hline
 	\end{tabular}
-
-	En langage Java, il n'y a pas de structure particulière pour ce test. Le
-	\pc{if-then-else} fait bien l'affaire. Seule l'indentation change un peu 
-	pour plus de lisibilité. Ce test peut donc s'écrire — en supposant toujours
-	que les variables sont déclarées — comme ceci~:
-
-	\begin{java}
-if (nb > 0){
-	s = "positif";
-} else if (nb == 0) {
-	s = "nul";
-} else {
-	s = "négatif";
-}
-	\end{java}
+	\end{center}
+	
 
 	\paragraph{Remarques.}
 	\begin{itemize}
@@ -463,18 +500,6 @@ if (nb > 0){
 		On pourrait écrire la même chose 
 		avec des \pc{\K{si-sinon}} imbriqués
 		mais le \pc{\K{si-sinon-si}} est plus lisible.
-		
-		\begin{pseudocode}
-			\If{nb>0}
-				\Let signe \Gets "positif"
-			\Else
-				\If{nb=0}
-					\Let signe \Gets "nul"
-				\Else
-					\Let signe \Gets "négatif"
-				\EndIf
-			\EndIf
-		\end{pseudocode}
 	\item Lorsqu’une condition est testée, on sait que toutes celles au-dessus se
 		sont avérées fausses.  Cela permet parfois de simplifier la condition.
 
@@ -484,17 +509,19 @@ if (nb > 0){
 		En dessous de 10 unités, on le paie 10\texteuro{} l’unité.
 		De 10 à 99 unités, on le paie 8\texteuro{} l’unité.
 		À partir de 100 unités, on paie 6\texteuro{} l’unité.
+
+		\begin{java}
+if (quantité < 10){
+	prixUnitaire = 10;
+} else if (quantité < 100) {
+	// On sait que la quantité est plus grande
+	// ou égale à 10. Inutile de tester. 
+	prixUnitaire = 8;
+} else {
+	prixUnitaire = 6;
+}
+		\end{java}
 		
-		\begin{pseudocode}
-			\If{quantité<10}
-				\Let prixUnitaire \Gets 10
-				\ElsIf{quantité<100} \RComment{On sait que ce n’est pas <10}
-								\Let\RComment {inutile de le tester}
-				\Let prixUnitaire \Gets 8
-			\Else
-				\Let prixUnitaire \Gets 6
-			\EndIf
-		\end{pseudocode}
 	\end{itemize}
 
 
@@ -516,6 +543,7 @@ le résultat d'un calcul — dont la valeur est booléenne~: \pc{true} ou
 Une telle expression se compose grâce~: 
 
 \begin{enumerate}
+	\index{opérateurs relationnels}
 	\item aux opérateurs relationnels (\textit{relational operator} ou 
 		\textit{comparators}\index{comparators});
 		
@@ -528,9 +556,10 @@ Une telle expression se compose grâce~:
 			    < > <= >=
 		\end{grammaire}
 		
+	\index{opérateurs d'égalité}
 	\item aux opérateurs d'égalité (\textit{equality operators});
 
-		Un d'égalité est un opérateur dont la valeur
+		Un opérateur d'égalité est un opérateur dont la valeur
 		est booléenne et les opérandes de même type (à conversion près). 
 
 		\begin{grammaire}
@@ -539,6 +568,7 @@ Une telle expression se compose grâce~:
 			    == != 
 		\end{grammaire}
 
+	\index{opérateurs logiques}
 	\item au complément logique (\textit{logical complement operator}) et 
 		aux opérateurs conditionnels 
 		(\textit{conditionals operators}\index{conditionals operators});
@@ -569,50 +599,21 @@ Une telle expression se compose grâce~:
 	\pc{\K{si-sinon-si}}, plus précisément quand le choix d’une branche dépend
 	de la valeur précise d’une variable (ou d’une expression).
 
-	\paragraph{Exemple.}
-	
-	Imaginons qu’une variable (\pc{dayNumber}) contienne un numéro de jour de la
-	semaine et qu’on veuille mettre dans une variable (\pc{dayName}) le nom du
-	jour correspondant ("lundi" pour 1, "mardi" pour 2\dots)
-	
-	Une solution avec un \pc{\K{si-sinon-si}} est possible 
-	mais le \pc{\K{selon-que}} (\textit{switch}) est plus lisible.
+	\begin{langagenaturel}
+		selon que la variable vale~:\\
+			\tab — une valeur~:\\
+				\tab\tab exécuter une ou plusieurs actions\\
+			\tab — une autre valeur~:\\
+				\tab\tab exécuter d'autres actions\\
+			\tab — encore une autre valeur~:\\
+				\tab\tab exécuter d'autres actions\\
+			\tab — et une dernière valeur~:\\
+				\tab\tab exécuter d'autres actions\\
+		fin selon que 
+	\end{langagenaturel}
 
-		\begin{pseudocode}
-			\Switch{dayNumber}
-				\Case{1} dayName \Gets "lundi"
-				\Case{2} dayName \Gets "mardi"
-				\Case{3} dayName \Gets "mercredi"
-				\Case{4} dayName \Gets "jeudi"
-				\Case{5} dayName \Gets "vendredi"
-				\Case{6} dayName \Gets "samedi"
-				\Case{7} dayName \Gets "dimanche"
-			\EndSwitch
-		\end{pseudocode}
-
-	remplace avantageusement
-
-	\begin{wrong}
-		\begin{pseudocode}
-			\If{dayNumber=1}
-				\Let dayName \Gets "lundi"
-			\ElsIf{dayNumber=2}
-				\Let dayName \Gets "mardi"
-			\ElsIf{dayNumber=3}
-				\Let dayName \Gets "mercredi"
-			\ElsIf{dayNumber=4}
-				\Let dayName \Gets "jeudi"
-			\ElsIf{dayNumber=5}
-				\Let dayName \Gets "vendredi"
-			\ElsIf{dayNumber=6}
-				\Let dayName \Gets "samedi"
-			\Else
-				\Let dayName \Gets "dimanche"
-			\EndIf
-		\end{pseudocode}
-	\end{wrong}
-
-	En langage Java, le \textit{switch} s'écrit (grammaire simplifiée)~:
+	Dans la grammaire  du langage Java, cette instruction, \textit{switch}, 
+	s'écrit (grammaire simplifiée)~:
 
 	\begin{grammaire}
 		\grammarrule{SwitchStatement:}
@@ -625,23 +626,53 @@ Une telle expression se compose grâce~:
 		    case \grammarrule{ConstantExpression}:
 		    default:
 	\end{grammaire}
-
+	
 	\begin{itemize}
 		\item l'expression ne peut pas être de n'importe quel type. À ce stade, 
-			elle peut être, un entier ou une chaine;
-		\item \textit{Statement} peut être une instuction ou plusieurs;
+			elle peut être, un entier ou une chaine et nous rencontrerons 
+			d'autres types plus tard~;
+		\item \textit{Statement} peut être une instuction ou plusieurs~;
 		\item \textit{SwitchLabels} (avec un \textit{s}) se sont plusieurs 
-			«~\texttt{case}~»
-		
+			«~\texttt{case}~»~;
 		\item le \textit{switch} en java peut être vu comme un «~\textit{saut}
 			au bon label~». Dès lors que l'instruction a trouvé le bon
 			\textit{case}, l'éxécution des instructions continue. Il faut
 			explicitement demander de sortir du \textit{switch} en utilisant
-			l'instruction \textbf{\pc{break}}
-
+			l'instruction \textbf{\pc{break}}\index{break}~.
 	\end{itemize}
 
-	Le \textit{switch} précédent s'écrit~:
+	… mais voyons ça sur un exemple. 	
+
+	\textbf{Exemple.}
+	
+	Imaginons qu’une variable (\pc{dayNumber}) contienne un numéro de jour de la
+	semaine et qu’on veuille mettre dans une variable (\pc{dayName}) le nom du
+	jour correspondant ("lundi" pour 1, "mardi" pour 2\dots)
+	
+	Une solution avec un \pc{\K{si-sinon-si}} est possible 
+	mais le \pc{\K{selon-que}} (\textit{switch}) est plus lisible dans ce cas.
+
+	Voyons comment écrire un algorithme sous différentes formes~:
+
+	\begin{langagenaturel}
+		switch ( dayNumber )\\
+			\tab — 1~:\\
+				\tab\tab dayName = "lundi"\\
+			\tab — 2~:\\
+				\tab\tab dayName = "mardi"\\
+			\tab — 3~:\\
+				\tab\tab dayName = "mercredi"\\
+			\tab — 4~:\\
+				\tab\tab dayName = "jeudi"\\
+			\tab — 5~:\\
+				\tab\tab dayName = "vendredi"\\
+			\tab — 6~:\\
+				\tab\tab dayName = "samedi"\\
+			\tab — 7~:\\
+				\tab\tab dayName = "dimanche"
+	\end{langagenaturel}
+
+	En langage Java~:
 
 	\begin{java}
 switch (dayNumber) {
@@ -677,20 +708,5 @@ switch (dayNumber) {
 		qui sera exécuté si la valeur n’est pas reprise par ailleurs.
 	\end{itemize}
 	
-	La syntaxe générale est~:
-	
-	\begin{pseudocode}
-		\Switch{expression}
-			\Case{liste${}_1$ de valeurs séparées par des virgules }
-				\Stmt Instructions
-			\Case{liste${}_2$ de valeurs séparées par des virgules }
-				\Stmt Instructions
-			\Empty \dots
-			\Case{liste${}_k$ de valeurs séparées par des virgules }
-				\Stmt Instructions
-			\Case{\K{default }}
-				\Stmt Instructions
-		\EndSwitch
-	\end{pseudocode}
 	
 	
