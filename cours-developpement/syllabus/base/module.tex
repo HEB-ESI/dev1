@@ -8,7 +8,6 @@
 \minitoc
 
 %===================
-%\section{Motivation}
 \section{Décomposer le problème}
 %===================
 
@@ -39,7 +38,7 @@
 		verra un nom d’algorithme qui peut être plus parlant que les
 		instructions qui se cachent derrière, même s’il y en a peu.  Par
 		exemple, \pc{dizaine(nb)} est plus parlant que \pc{nb MOD 100 DIV 10}
-		pour calculer les dizaines d’un nombre.
+		pour calculer le nombre de dizaines d’un nombre.
 	
 \end{itemize}
 
@@ -73,17 +72,17 @@
 	\end{minipage}
 	\quad
 	\begin{minipage}{7cm}
-		\begin{pseudocode}
-		\Algo{max2}{\Par{a}{real}, \Par{b}{real}}{real}
-			\Decl{max}{real}
-			\If{a > b}
-				\Let max \Gets a
-			\Else
-				\Let max \Gets b
-			\EndIf
-			\Return max
-		\EndAlgo
-		\end{pseudocode}
+		\begin{java}
+public static double max2(double a, double b){
+	double max;
+	if (a > b){
+		max = a;
+	} else {
+		max = b;
+	}
+	return max;
+}
+		\end{java}
 	\end{minipage}
 	
 	Pour le maximum de 3 nombres, il existe plusieurs approches.  Voyons
@@ -131,36 +130,35 @@
 	c’est-à-dire appeler l’algorithme \pc{max2}. 
 	Ce qui donne~:
 
-	\begin{pseudocode}
-	\Algo{max3}{\Par{a}{real}, \Par{b}{real}, \Par{c}{real}}{real}
-		\Decl{maxab, max}{reals}
-		\Let maxab \Gets max2(a,b)
-		\Let max \Gets max2(maxab,c)
-		\Return max
-	\EndAlgo
-	\end{pseudocode}
+	\begin{java}
+public static double max3(double a, double b, double c){
+	double maxab, max;
+	maxab = max2(a, b);
+	max = max2(maxab, c);
+	return max;
+}
+	\end{java}
 
 	qui peut se simplifier en~:
 	
-	\begin{pseudocode}
-	\Algo{max3}{\Par{a,b,c}{reals}}{real}
-		\Return max2( max2(a,b) ,c)
-	\EndAlgo
-	\end{pseudocode}
+	\begin{java}
+public static double max3(double a, double b, double c){
+	return max2(max2(a, b), c);
+}
+	\end{java}
 
 %===================
 \section{Paramètres et valeur de retour}
 \index{paramètres}\label{paramètres}
 %=======================
 
-	Jusqu’à présent, nous avons considéré que les paramètres d’un algorithme (ou
-	\emph{module}\index{module}) correspondent à ses données et que le résultat,
-	unique, est retourné.
+	Jusqu’à présent, nous avons considéré que les paramètres d’un algorithme
+	(ou \emph{module}\index{module}) correspondent à ses données et que le
+	résultat, unique, est retourné.
 
 	Il s’agit d’une situation fréquente mais pas obligatoire que nous pouvons
-	généraliser.  En algorithmique nous allons traiter avec trois sortes de 
-	paramètres. Nous verrons ensuite que tous les langages n'acceptent pas tous 
-	les types de paramètres. 
+	généraliser.  De manière générale nous pouvons concevoir trois sortes de
+	paramètres. Nous verrons ensuitece qu'il en est en langage Java. 
 
 	%==================================
 	\subsection{Le paramètre en entrée}
@@ -169,7 +167,7 @@
 
 		Le paramètre en \textbf{entrée} est ce que nous connaissons déjà.  Il
 		correspond à une donnée de l’algorithme.  Une valeur va lui être
-		attribuée en début d’algorithme et elle ne sera pas modifiée.  On pourra
+		attribuée en début d’algorithme et elle ne sera pas modifiée.  On pourrait
 		faire suivre le nom du paramètre d’une flèche vers le bas (\In) pour
 		rappeler son rôle mais ce n'est pas obligatoire lorsqu'il n'y a pas
 		d'ambiguïté.
@@ -345,7 +343,7 @@
 		\end{itemize}
 
 		Cela signifie que l’algorithme a pour but de modifier le paramètre.  Un
-		tel paramètre sera suivi d’une double flèche (\InOut).
+		tel paramètre parrait être suivi d’une double flèche (\InOut).
 	
 		C'est une \textbf{une variable} qui doit être passée en paramètre.  Sa
 		valeur est donnée au paramètre au début de l’algorithme.  À la fin de
@@ -476,6 +474,7 @@
 \section{Type primitif et type référence}
 	\index{type primitif}
 	\index{type référence}
+	\index{types numériques}
 	\label{primitif-reference}
 %===================================================
 
@@ -674,6 +673,7 @@
 	
 	
 	\subsection{Les paramètres en Java}
+	\index{paramètres Java}
 
 	Dans nos algorithmes nous avons~: une valeur de retour, des paramètres en
 	entrée et des paramètres en entrée/sortie. L'ensemble étant optionnel. Qu'en
@@ -722,101 +722,7 @@ public class Test{
 	En ce sens, c'est un peu un passage de paramètre en entrée/sortie. 
 
 	
-%===================
-\section{Résumons}
-%===================
-
-	Reprenons tout ce que nous venons de voir avec un exemple d’algorithme qui
-	possède tous les types de paramètres.
-
-	\begin{pseudocode}[1]
-		\Algo{testDivision}{}{}
-			\Decl{nb1, nb2, quotient, remainder}{integers}
-			\Let{nb1 \Gets 5}
-			\Let{nb2 \Gets 3}
-			\Let{quotient \Gets division(nb1, nb2, remainder)}
-			\Write quotient
-			\Write remainder
-			\Let{nb1 \Gets 7}
-			\Let{nb2 \Gets 9}
-			\Let{quotient \Gets division(nb1, nb2, remainder)}
-			\Write quotient
-			\Write remainder
-		\EndAlgo
-
-		\Algo{division}{
-			\Par{dividend\In}{integer}, \Par{divisor\In}{integer},\\
-			\Indent\Par{remainder\In\Out}{integer}}{integer}
-			\Let{\color{gray} dividend \Gets nb1} 
-			\Let{\color{gray} divisor \Gets nb2} 
-			\Let{\color{gray} remainder \Gets remainder} 
-			\Empty
-			\LComment Le code proprement dit de l’algorithme
-			\Decl {quotient}{integer}
-			\Let{quotient \Gets dividend DIV divisor}
-			\Let{remainder \Gets dividend MOD divisor}
-			\Empty
-			\Let{\color{gray} remainder \Gets remainder} 
-			\Return quotient
-		\EndAlgo
-	\end{pseudocode}
-	
-	Traçons-le avec~: \textit{quotient} \textbf{q}, \textit{dividend} \textbf{D}, 
-	\textit{divisor} \textbf{d}, \textit{remainder} \textbf{r}.
-	
-	\begin{center}
-	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}
-					|*{4}{>{\centering\arraybackslash}m{5mm}}
-					|*{4}{>{\centering\arraybackslash}m{5mm}}|}
-		\hline
-		\rowcolor{black!50}
-		  & \multicolumn{4}{c|}{\pc{testDivision}} & 
-		  	\multicolumn{4}{c|}{\pc{division}} \\
-		\hline
-		%\# & \tiny{nb1} & \tiny{nb2} 
-		%& \tiny{quotient} & \tiny{remainder}  
-		%& \tiny{dividende} & \tiny{diviseur} 
-		%& \tiny{remainder} & \tiny{quotient} \\
-		\# & nb1 & nb2 
-		& q & r  
-		& D & d 
-		& r & q \\
-		\hline
-		3  		& 5 &  &  & 	&  &  &  & \\
-		4  		& {\color{gray}$\mid$}	& 3 &  &  &  &  &  &  \\
-		5, 15  	& {\color{gray}$\mid$}	& {\color{gray}$\mid$} 	&  &  
-				& 5 & 3  					&  &  \\
-		23 		& {\color{gray}$\mid$} 	& {\color{gray}$\mid$} 	&  &  
-			& {\color{gray}$\mid$}	& {\color{gray}$\mid$}	&  & 1 \\
-		24 		& {\color{gray}$\mid$} 	& {\color{gray}$\mid$} 	&  &  
-			& {\color{gray}$\mid$}	& {\color{gray}$\mid$}	&  2
-		& {\color{gray}$\mid$} \\
-		27, 5 		& {\color{gray}$\mid$} 	& {\color{gray}$\mid$} 	& 1 & 2  
-		&  &  &  &  \\
-		8  		& 7 & {\color{gray}$\mid$}	
-		& {\color{gray}$\mid$}  &  {\color{gray}$\mid$}
-		&  &  &  & \\
-		9    	& {\color{gray}$\mid$}	& 9 
-		& {\color{gray}$\mid$}  &  {\color{gray}$\mid$} 
-		&  &  &  &  \\
-		10, 15  	& {\color{gray}$\mid$}	& {\color{gray}$\mid$} 	
-		& {\color{gray}$\mid$}  &  {\color{gray}$\mid$} 
-			& 7  					& 9  					&  &  \\
-		23 		& {\color{gray}$\mid$} 	& {\color{gray}$\mid$} 	
-		  &  {\color{gray}$\mid$}  
-		& {\color{gray}$\mid$}	& {\color{gray}$\mid$}	& {\color{gray}$\mid$}	&  & 0 \\
-		24 		& {\color{gray}$\mid$} 	& {\color{gray}$\mid$} 	
-		& {\color{gray}$\mid$}  &  {\color{gray}$\mid$}  
-		& {\color{gray}$\mid$}	& {\color{gray}$\mid$}	&  7
-		& {\color{gray}$\mid$} \\
-		27, 10 		&{\color{gray}$\mid$} 	& {\color{gray}$\mid$} 	& 0 & 7  
-		&  &  &  &  \\
-		\hline
-	\end{tabular}
-	\end{center}
-
-	Pour mieux se comprendre, il est utile d’introduire un peu de vocabulaire.
-	
+	\paragraph{Remarque}
 	\marginicon{definition}
 	\index{paramètres formels}
 	\index{paramètres effectifs}
@@ -824,13 +730,5 @@ public class Test{
 	\textbf{paramètres formels}.  Les paramètres donnés à l’appel de
 	l’algorithme sont appelés \textbf{paramètres effectifs}. 
 	
-	Les instructions en gris dans l’exemple ne sont pas écrites mais c’est comme
-	si elles étaient présentes pour initialiser les paramètres formels \In{} et
-	\InOut{} en début d’algorithme et pour donner des valeurs aux paramètres
-	effectifs \InOut{} en fin d’algorithme.
-	
-	À la fin de l’algorithme, c’est comme si la valeur retournée
-	\emph{remplaçait} l’appel.  Dans notre exemple, c’est donc cette valeur
-	retournée qui sera affichée.
 	
 
