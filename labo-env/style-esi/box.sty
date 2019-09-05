@@ -32,6 +32,9 @@
 % --- Pour utiliser un \ifthenelse amélioré (ex: \isin)
 \RequirePackage{xifthen}
 
+% --- Permet d'utiliser \BODY dans la définition d'environnement
+\RequirePackage{environ}
+
 %=====================================================================
 %	\surligne[bgcol][options tcolorbox]{texte}
 %---------------------------------------------------------------------
@@ -56,8 +59,8 @@
 %=====================================================================
 %	\cadre[framecol][options tcolorbox]{texte}
 %---------------------------------------------------------------------
-%	Affiche le texte avec une cadre de
-%	avec la couleur framecol (défaut=colmain)
+%	Affiche le texte avec une cadre de la couleur framecol 
+%   (défaut=colmain)
 %
 %	Techniquement, on utilise le package tcolorbox.
 %	Le second paramètre optionnel permet de lui passer 
@@ -251,21 +254,20 @@
     leftrule=0pt, rightrule=0pt, bottomrule=2pt, toprule=2pt, #1%
 }
 
-\usepackage{environ} % Merci à astalavista pour ce truc :)
 \NewEnviron{infotbox}[1]{%
 	\begin{infobox}
-		\textbf{\color{colmain}#1}\par
+		\textbf{\color{colmain}#1}\\
 		\BODY
 	\end{infobox}
 }
 \NewEnviron{alerttbox}[1]{%
 	\begin{alertbox}
-		\textbf{\color{colalert}#1}\par
+		\textbf{\color{colalert}#1}\\
 		\BODY
 	\end{alertbox}
 }
 
-% --------------------------------------------------------------------
+%=====================================================================
 %	\begin{leftbar}{titre}
 %		Texte
 %	\end{leftbar}
@@ -273,14 +275,14 @@
 %	\begin{consigne}
 %		Préconfiguré pour des consignes.	
 %	\end{consigne}
-% --------------------------------------------------------------------
+%=====================================================================
 
-\newtcolorbox{consigne}{%
-	blanker,
-	before skip=10mm,after skip=10mm,
-	borderline west={1mm}{-4mm}{lightgray},
-	title=Consignes, coltitle=black, fonttitle=\sffamily\bfseries\large
-}
+% \newtcolorbox{consigne}{%
+% 	blanker,
+% 	before skip=10mm,after skip=10mm,
+% 	borderline west={1mm}{-4mm}{lightgray},
+% 	title=Consignes, coltitle=black, fonttitle=\sffamily\bfseries\large
+% }
 
 \newtcolorbox{leftbar}[1]{%
 	blanker,
@@ -288,3 +290,62 @@
 	borderline west={1mm}{-4mm}{lightgray},
 	title=#1, coltitle=black, fonttitle=\sffamily\bfseries\large
 }
+
+\NewEnviron{consigne}{%
+	\begin{leftbar}{Consignes}
+		\BODY
+	\end{leftbar}
+}
+
+%=====================================================================
+%	\begin{postit}[color]{titre}
+%		Texte
+%	\end{postit}
+%	Affiche le texte dans une sorte de postit avec un titre
+%	Mette à titre vide {} si on ne veut pas de titre.
+%	La couleur donnée (défaut=yellow) est la couleur des bords ;
+%   l'intérieur est une version plus claire de la couleur donnée.
+%
+%	\begin{infoit}{titre}	% Utilise la couleur colmain
+%	\begin{alertit}{titre}	% Utiliser la couleur colalert
+%	\begin{todo}			% Pour un TODO
+%=====================================================================
+
+\newtcolorbox{postitwithtitle}[2]{%
+	enhanced, colback=#1!10!white,  
+	boxrule=1pt, colframe=#1!50!white, drop lifted shadow,
+	top=1em,
+	attach boxed title to top left={yshift=-\tcboxedtitleheight/2},
+	title={\color{#1!10!white}{\textbf{#2}}},
+	boxed title style={
+		size=small, 
+		colback=#1, colframe=#1!50!white,
+        sharp corners=southwest, arc=2mm, 
+        leftrule=0pt, bottomrule=0pt, rightrule=0pt, toprule=0pt
+    }
+}
+
+\newtcolorbox{postitnotitle}[1]{%
+	enhanced, colback=#1!10!white,  
+	boxrule=1pt, colframe=#1!50!white, drop lifted shadow
+}
+
+\NewEnviron{postit}[2][yellow!85!black]{%
+	\medskip
+	\ifthenelse{\equal{#2}{}}{
+		\begin{postitnotitle}{#1}{#2}
+			\BODY
+		\end{postitnotitle}
+	}{
+		\begin{postitwithtitle}{#1}{#2}
+			\BODY
+		\end{postitwithtitle}
+	}
+	\medskip
+}
+
+\environbodyname\infoitBODY
+\NewEnviron{infoit}[1]{\begin{postit}[colmain]{#1}\infoitBODY\end{postit}}
+\environbodyname\alertitBODY
+\NewEnviron{alertit}[1]{\begin{postit}[colalert]{#1}\alertitBODY\end{postit}}
+\environbodyname\BODY

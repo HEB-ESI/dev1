@@ -90,12 +90,44 @@
 %	La version * n'affiche pas la source.
 %---------------------------------------------------------------------
 
+\newtcolorbox{listingboxtitle}[1]{%
+	enhanced, 
+	colback=collight, colframe=gray,
+	size=fbox, boxrule=1pt,
+	attach boxed title to top right={yshift=-\tcboxedtitleheight},
+	title={\tiny{\href{\listingabspath#1}{\color{colmain}#1}}},
+	boxed title style={
+		colback=white, colframe=gray, 
+		leftrule=1pt, bottomrule=1pt, rightrule=0pt, toprule=0pt,
+		boxsep=0mm, sharp corners=downhill,
+    }
+}
+
+\newtcolorbox{listingbox}[1]{%
+	enhanced, 
+	colback=collight, colframe=gray,
+	size=fbox, boxrule=1pt,
+}
+
 \DeclareDocumentCommand \listing { s O{} m m }{%
-	\lstinputlisting[style=lstesiext,language={#3},#2]{\listingrelpath#4}%
-	\IfBooleanF {#1}{%
-		\vskip -1.5em%
-		\hfill{\tiny{\color{colmain}\href{\listingabspath#4}{#4}}\noindent}%
-		\vskip -.5em\par%
+	% \lstinputlisting[style=lstesiext,language={#3},#2]{\listingrelpath#4}%
+	% \IfBooleanF {#1}{%
+	% 	\vskip -1.5em%
+		% \hfill{\tiny{\color{colmain}\href{\listingabspath#4}{#4}}\noindent}%
+	% 	\vskip -.5em\par%
+	% }
+	\IfBooleanTF{#1}{
+		\begin{listingbox}{#4}
+			\vspace{-.5em}
+			\lstinputlisting[style=lstesiext,language={#3},#2]{\listingrelpath#4}%
+			\vspace{-.5em}
+		\end{listingbox}
+	}{
+		\begin{listingboxtitle}{#4}
+			\vspace{-.5em}
+			\lstinputlisting[style=lstesiext,language={#3},#2]{\listingrelpath#4}%
+			\vspace{-.5em}
+		\end{listingboxtitle}
 	}
 }
 
@@ -109,7 +141,7 @@
 
 \lstnewenvironment{Code}[2][]%
 	{\lstset{style=lstesibg,language={#2},#1}}%
-	{}
+	{\vspace{-.5em}}
 
 %---------------------------------------------------------------------
 %	\begin{Console}[options]
@@ -130,7 +162,7 @@
 %---------------------------------------------------------------------
 	
 \DeclareDocumentCommand \console { O{} m }{%
-	\lstinputlisting[style=console,#1]{#2}%
+	\lstinputlisting[style=console,#1]{\listingrelpath#2}%
 }
 %=====================================================================
 %	Les couleurs à utiliser
@@ -173,7 +205,7 @@
 
 % --- number : numérote les lignes 
 \lstdefinestyle{number}{
-	numbersep=6pt,				% 10 par défaut
+	numbersep=1em,				% 10 par défaut
 	numbers=left,
 	numberstyle=\tiny\color{gray}
 }
@@ -215,7 +247,7 @@
 
 % --- code externe (fichier inclus)
 \lstdefinestyle{lstesiext}{
-	style=lstesibg,
+	style=lstesi,
 	style=number
 }
 
