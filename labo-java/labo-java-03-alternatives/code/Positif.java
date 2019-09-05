@@ -8,8 +8,7 @@ public class Positif {
         Scanner clavier = new Scanner(System.in);
         
         System.out.print("Entrez un nombre entier: ");
-        int nb = clavier.nextInt();
-        
+        int nb = clavier.nextInt();       
         if(nb>=0) {
             System.out.print("ce nombre est positif.");
         }

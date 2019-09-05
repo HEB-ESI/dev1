@@ -1,11 +1,11 @@
 %=====================================================================
-%						syllabus.cls
+%				    style-esi/syllabus.cls
 %
 %	Classe pour des syllabus à l'ÉSI (utilise book)
 %=====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{style-esi/syllabus}[2018/06/01 Classe pour des syllabus à l'ESI]
+\ProvidesClass{style-esi/syllabus}[2018/06/01 Classe pour des syllabus a l'ESI]
 
 %=====================================================================
 % On se base sur book

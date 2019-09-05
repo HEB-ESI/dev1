@@ -1,0 +1,35 @@
+\newcommand{\seance}[4]{
+    \def\unitnb{#1}
+    \def\unitname{#2}
+    \newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/labo-java/tree/master/#3}
+
+    \entete
+    \titre
+    \ccbysa{esi-dev1-list@he2b.be}
+    \lastedit
+    
+    \bigskip
+    \begin{quote}
+        #4\\
+        Les codes sources et les solutions de ce TD se trouvent à l'adresse~:\\
+        {\small\url{\sourcespublicpath}}
+    \end{quote}
+    
+    \bigskip
+    \tableofcontents
+    \newpage
+}
+
+\date{2019 -- 2020}
+\siglecours{DEV1 -- JAVL}
+\libellecours{Laboratoires Java}
+\libelledocument{TD \unitnb{} -- \unitname}
+\sigleprof{}
+
+\newcommand{\sourcespublicpath}{\publicbasepath/}
+\newcommand{\listingpublicpath}{\publicbasepath/code/}
+\newcommand{\listingsrcpath}{code/}
+\renewcommand{\listingrelpath}{code/}
+\renewcommand{\listingabspath}{code/}
+\marginnumberfalse
+\marginsectiontrue

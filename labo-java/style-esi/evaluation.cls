@@ -5,7 +5,7 @@
 %=====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{style-esi/evaluation}[2018/06/01 Classe pour des évaluations à l'ESI]
+\ProvidesClass{style-esi/evaluation}[2018/06/01 Classe pour des evaluations a l'ESI]
 
 %=====================================================================
 % On se base sur article

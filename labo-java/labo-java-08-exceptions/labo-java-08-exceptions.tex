@@ -1,55 +1,19 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,11pt]{style-esi/td}
 
-%=========================
-% Les styles
-%=========================
-\usepackage{style-esi/french}	% Francise LaTeX
-\usepackage{style-esi/td}
-\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
-
-
-\newcommand{\publicbasepath}
-{https://git.esi-bru.be/dev1/labo-java/tree/master/td08-exceptions}
-\renewcommand{\listingpublicpath}{\publicbasepath/code/}
-\renewcommand{\listingsrcpath}{code/}
-
-\marginnumberfalse
-\marginsectiontrue
-
-
-\date{2018 -- 2019}
-\siglecours{DEV1}
-\libellecours{Laboratoires Java I}
-\libelledocument{TD 8 -- Exceptions, Javadoc}
-\sigleprof{}
-
-
+\usepackage{style/dev1}
 
 \begin{document}
 
-\entete
-\titre
-\ccbysa{esi-dev1-list@he2b.be}
-\lastedit
-
-
-	%===================
-	%  Contenu
-	%====================	
-	Ce TD introduit la notion \emph{d'exception} qui permet de lancer une alerte lorsqu'une erreur est détectée.
-	Ensuite nous verrons comment \emph{documenter} le code Java à l'aide de l'outil Javadoc.
-	
-		Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
-	
-	\url{\publicbasepath}	
-
-		 
-	\tableofcontents
-
-	\newpage
+\seance{8}{Exceptions, Javadoc}{td08-exceptions}{
+	Ce TD introduit la notion \emph{d'exception} 
+	qui permet de lancer une alerte lorsqu'une erreur est détectée.
+	Ensuite nous verrons comment \emph{documenter} 
+	le code Java à l'aide de l'outil Javadoc.
+}
 
 %====================
 \section{Les exceptions}

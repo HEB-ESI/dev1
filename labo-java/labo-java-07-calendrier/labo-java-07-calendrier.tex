@@ -1,41 +1,24 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,11pt]{style-esi/td}
 
-%=========================
-% Les styles
-%=========================
-\usepackage{style-esi/french}	% Francise LaTeX
-\usepackage{style-esi/td}
-\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
+\usepackage{style/dev1}
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\date{2018 -- 2019}
-\siglecours{DEV1}
-\libellecours{Laboratoires Java I}
-\libelledocument{TD 7 -- Mise en pratique \\ Le calendrier}
-\sigleprof{}
-
-
-
 \begin{document}
 
-\entete
-\titre
-\ccbysa{esi-dev1-list@he2b.be}
-\lastedit
-
-
-	%===================
-	%  Contenu
-	%====================	
+\seance{7}{Mise en pratique : un calendrier}{td07-calendrier}{
 	Dans ce TD vous utiliserez les notions vues précédemment afin de réaliser 
 	une petite application permettant permettant d'afficher sur le terminal 
 	le calendrier d'un mois et d'une année données. 
-	
-	Votre programme demandera à l'utilisateur d'entrer au clavier un mois et une année 
+}
+
+\section{Un calendrier}
+
+Votre programme demandera à l'utilisateur d'entrer au clavier un mois et une année 
 au format MM (ou M) AAAA (par exemple 6 2018 ou 12 2015) et afficher le calendrier de ce mois.
 Par exemple pour le mois de juin 2018 le programme affichera~: 
 
@@ -52,14 +35,10 @@ Par exemple pour le mois de juin 2018 le programme affichera~:
                 ==========================
 \end{verbatim}
 
-\vspace{0.5cm}
-
-
 Nous allons vous guider tout au long de ce TD afin de développer les différentes méthodes nécessaires à cette petite application.
-%	\tableofcontents
 
-
-		Créer un package \texttt{g12345.dev1.calendrier} et une classe \texttt{Calendrier}.
+Tout d'abord,
+Créez un package \texttt{g12345.dev1.calendrier} et une classe \texttt{Calendrier}.
 
 
  	\begin{Exercice}{Mois}
@@ -100,6 +79,7 @@ Nous allons vous guider tout au long de ce TD afin de développer les différent
 
 	\end{Exercice} 
 
+\newpage 
 
  	\begin{Exercice}{Entête}
 		\'Ecrivez la méthode \code{java}{void afficherEntête()}

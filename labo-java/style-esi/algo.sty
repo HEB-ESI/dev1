@@ -1,0 +1,227 @@
+%======================================================================
+%	                          algo.sty
+%
+% Pour écrire du pseudocode à l'ESI. Adaptation du package algorithm2e.
+% Options du package :
+% - dev1 : mise en page comme en dev1
+% - dev2 : mise en page comme en dev2
+% Pour un contrôle plus fin
+% - vlined : pas de end en fin de block mais une ligne avec coin L
+% - typevar : déclaration de la forme 'type var' au lieu de 'var: type'
+% - asssymbol : assignation avec '<-' au lieu de '=' 
+%======================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{algo}[2019/01/10 pseudocode a l'ESI]
+
+% ====================================================================
+% On traite les options et on charge algorithm2e
+% ====================================================================
+
+% plain  : enlève la déco; on va la fixer nous-même
+\PassOptionsToPackage{plain}{algorithm2e}
+% shortend : block se termine juste par end (pas end if)...
+\PassOptionsToPackage{shortend}{algorithm2e}
+% vlined
+\DeclareOption{vlined}{\PassOptionsToPackage{vlined}{algorithm2e}}
+% typevar
+\newif\ifvartype\vartypetrue
+\DeclareOption{typevar}{\vartypefalse}
+\newcommand{\algodecl}[2]{\ifvartype{#1: #2}\else{#2\ #1}\fi} 
+% asssymbol
+\newif\ifassegal\assegaltrue
+\DeclareOption{asssymbol}{\assegalfalse}
+\newcommand{\Gets}{\ifassegal = \else \ensuremath{\leftarrow} \fi}
+% dev1
+\DeclareOption{dev1}{
+  \PassOptionsToPackage{vlined}{algorithm2e}
+  \vartypefalse
+}
+% dev2
+\DeclareOption{dev2}{}
+
+\ProcessOptions\relax
+\RequirePackage{algorithm2e}
+
+% ====================================================================
+% Éléments fins de configuration, hardcodés
+% ====================================================================
+
+\SetInd{.2em}{1em}                  % Espace avant/après barre verticale
+\DontPrintSemicolon                 % N'affiche pas les ; en fin d'instruction
+\SetAlFnt{\small\sf}                % sansserif par défaut
+\newcommand{\mykwsty}[1]{\textsf{\textbf{#1}}}      
+\SetKwSty{mykwsty}                  % mot-clé en sansserif bold
+\SetArgSty{textsf}                  % conditions et autres en sf
+\newcommand{\mycommentsty}[1]{{\fontfamily{lmvtt}\footnotesize\color{gray} #1}}      
+\SetCommentSty{mycommentsty}
+\SetAlgoHangIndent{5ex}            % Indentation suite longue ligne
+%\SetVlineSkip{1ex}                 % Espace après un L (défaut 0.8ex)
+
+% ====================================================================
+% Décoration des algos
+% ====================================================================
+
+% -- boite colorée
+\newtcolorbox{algobox}{%
+  enhanced, size=small,
+  colback=collight, boxrule=0.2mm, colframe=lightgray
+}
+
+% ====================================================================
+% Environnement global
+% - algo : un algo dans une boite colorée (pseudocode = synonyme)
+% - algoplain : un algo nu
+% Commande
+% - lda : pour des algos brefs
+% ====================================================================
+\usepackage{environ}
+\NewEnviron{algoplain}{%
+    \begin{algorithm}[H]
+      \BODY
+    \end{algorithm}
+}
+\NewEnviron{algo}{%
+  \begin{algobox}
+    \begin{algorithm}[H]
+      \BODY
+    \end{algorithm}
+  \end{algobox}
+}
+\NewEnviron{pseudocode}{%
+  \begin{algobox}
+    \begin{algorithm}[H]
+      \BODY
+    \end{algorithm}
+  \end{algobox}
+}
+\newcommand{\lda}[1]{\textsf{#1}}
+
+% ====================================================================
+% Un algorithme
+% \Algo{nom}{par}{returntype}{code}
+% par: \Par{nom [\In|\Out|\InOut]}{type}
+% ====================================================================
+\SetKwProg{Algorithm}{algorithm}{}{end}
+\newcommand{\SignInternal}[3]{%
+  #1%
+  \ifthenelse{\equal{#2}{} \AND \equal{#3}{}}{}{(#2)}% 
+  \ifthenelse{\equal{#3}{}}{}{\Ret #3}%
+}
+\newcommand{\Algo}[4]{\Algorithm{\SignInternal{#1}{#2}{#3}}{#4}}
+
+\newcommand{\Par}[2]{\algodecl{#1}{#2}}
+\newcommand{\In}{\ensuremath{\;\downarrow\;}}
+\newcommand{\Out}{\ensuremath{\;\uparrow\;}}
+\newcommand{\InOut}{\ensuremath{\;\updownarrow\;}}
+\newcommand{\Ret}{\ \ensuremath{\rightarrow}\ }
+%\renewcommand{\Return}{\KwSty{return}\ }
+
+\newcommand{\Sign}[4]{\KwSty{#1} \SignInternal{#2}{#3}{#4}}
+\newcommand{\AlgoSign}[3]{\Sign{algorithm}{#1}{#2}{#3}}
+
+% ====================================================================
+% Instructions de base
+% \Constant{nom}{valeur}
+% \Decl{nom}{type}    Sera mis dans le bon ordre en fct des options
+% \Assign{var}{expr}  ou simplement "var \Gets expr\;"
+% \Write text         
+% \Read test
+% var \Gets \Ask "prompt"
+% ====================================================================
+
+\SetKw{Constant}{constant}
+\newcommand{\Const}[2]{\Constant\ #1 = #2}
+\newcommand{\Decl}[2]{\algodecl{#1}{#2}}
+\newcommand{\Assign}[2]{#1 \Gets{}#2}
+\SetKw{Write}{print}
+\SetKw{Read}{read}
+\SetKw{Ask}{ask}
+\SetKw{Error}{error}
+
+% ====================================================================
+% Les structures de contrôle : if/switch
+% \If{cond}{instr}
+% \eIf{cond}{instr then}{instr else}
+% \Switch{condition}{\Case{1}{instr}\Other{instr}}
+% Cf. manuel algorithm2e pour plus de constructions
+% ====================================================================
+
+% If : on enlève le 'then' en fin de condition
+\SetKwIF{If}{ElseIf}{Else}{if}{}{else if}{else}{end if}
+
+% Switch retravaillé
+% Je reprend la définition du switch et j'enlève le ":" à la fin de switch
+% La modif est à la ligne 3 : \KwSty{} (plus de #5 à l'intérieur)
+\renewcommand{\SetKwSwitch}[9]{% #1=\Switch #2=\Case #3=\Other #4=switch #5=do #6=case #7=otherwise #8=endcase #9=endsw
+%	\algocf@newcmdside{#1}{3}%
+	\algocf@newcmdside@koif{#1}%
+		{\KwSty{#4}\algocf@scond\ArgSty{##2}\algocf@econd\KwSty{}\ifArgumentEmpty{##1}\relax{ ##1}\algocf@block{##3}{#9} {##4\relax}}%
+%%%% Case
+	\algocf@newcmdside@koif{#2}{\KwSty{#6}\algocf@scond\ArgSty{##2}\algocf@econd\KwSty{#5}\ifArgumentEmpty{##1}\relax{ ##1}\algocf@block{##3}{#8}{##4\relax}}%
+    %uCase
+	\algocf@newcmdside{u#2}{3}{\KwSty{#6}\algocf@scond\ArgSty{##2}\algocf@econd\KwSty{#5}\ifArgumentEmpty{##1}\relax{ ##1}\algocf@group{##3}}%
+    %lcase
+    \algocf@newcommand{l#2}{\@ifstar{\csname algocf@l#2star\endcsname}{\csname algocf@l#2\endcsname}}%
+	\algocf@newcmdside{algocf@l#2}{3}{\KwSty{#6}\algocf@scond\ArgSty{##2}\algocf@econd\KwSty{#5}\algocf@bgroupcode\ ##3\@endalgocfline\algocf@egroupcode\ifArgumentEmpty{##1}\ \relax{ ##1}\strut\par}%
+	\algocf@newcmdside{algocf@l#2star}{3}{\KwSty{#6}\algocf@scond\ArgSty{##2}\algocf@econd\KwSty{#5}\algocf@bgroupcode\ ##3\algocf@egroupcode}%
+%%%% Other 
+	\algocf@newcmdside@kobe{#3}{\KwSty{#7} \KwSty{#5}\ifArgumentEmpty{##1}\relax{ ##1}\algocf@block{##2}{#8}{##3\relax}}%
+    %lOther
+    \algocf@newcommand{l#3}{\@ifstar{\csname algocf@l#3star\endcsname}{\csname algocf@l#3\endcsname}}%
+	\algocf@newcmdside{algocf@l#3}{2}{\KwSty{#7} \KwSty{#5}\algocf@bgroupcode\ ##2\@endalgocfline\algocf@egroupcode\ifArgumentEmpty{##1}\relax\ {##1}\strut\par}%
+	\algocf@newcmdside{algocf@l#3star}{2}{\KwSty{#7} \KwSty{#5}\algocf@bgroupcode\ ##2\algocf@egroupcode}%
+    %uOther
+	\algocf@newcmdside{u#3}{3}{\KwSty{#7} \KwSty{#5}\ifArgumentEmpty{##1}\relax{ ##1}\algocf@group{##2}}%
+}%
+% Pour modifier les mots clés liés
+\SetKwSwitch{Switch}{Case}{Other}{switch}{:}{case}{default}{}{end switch}
+
+% ====================================================================
+% Les structures de contrôle : for/while
+% \Fori[by]{var}{from}{to}{instr}
+% \While{cond}{instr}
+% ====================================================================
+
+% For: J'aimerais une macro pour simplifier le for mais For est pris
+\newcommand{\Fori}[5][]{%
+  \For{%
+    #2 \KwSty{from} #3 \KwTo #4 \ifthenelse{\equal{#1}{}}{}{\KwSty{by}\ #1}%
+  }{#5}
+}
+\SetKwFor{For}{for}{}{end for}
+% While : juste enlever le do
+\SetKwFor{While}{while}{}{end while}
+
+% ====================================================================
+% Les tableaux et les listes
+% ====================================================================
+\newcommand{\Array}[3][0]{%
+	\KwSty{array}~\ifthenelse{\equal{#1}{0}}{\KwSty{of}~#2~#3}{[#1~to~#2] of #3}%	
+}
+\newcommand{\List}[1]{\KwSty{List of}\ #1}
+
+% ====================================================================
+% Les structures
+% ====================================================================
+\SetKwFor{Structure}{structure}{}{end structure}
+
+% ====================================================================
+% Les classes
+% ====================================================================
+\SetKwSwitch{Class}{MYPrivate}{Public}{class}{:}{private}{public}{}{end}
+\newcommand{\Private}[1]{\MYPrivate{}{#1}}
+\newcommand{\ConstrSign}[2]{\Sign{constructor}{#1}{#2}{}}
+\newcommand{\MethodSign}[3]{\Sign{method}{#1}{#2}{#3}}
+\SetKwProg{MYConstr}{constructor}{}{end}
+\newcommand{\Constr}[3]{\MYConstr{\SignInternal{#1}{#2}{}}{#3}}
+\SetKwProg{MYMethod}{method}{}{end}
+\newcommand{\Method}[4]{\MYMethod{\SignInternal{#1}{#2}{#3}}{#4}}
+\SetKw{New}{new}
+
+% ====================================================================
+% Les commentaires
+% ====================================================================
+\newcommand{\Comment}[1]{\tcp*[h]{#1}}    % Commentaire // sans fin de ligne
+\newcommand{\RComment}[1]{\tcp*{#1}}      % Idem aligné à droite sans fin de ligne
+\newcommand{\IComment}[1]{\tcp*[f]{#1}}   % Idem associé à () de \If et consorts
