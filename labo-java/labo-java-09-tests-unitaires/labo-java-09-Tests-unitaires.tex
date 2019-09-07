@@ -1,62 +1,22 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,11pt]{style-esi/td}
 
-%=========================
-% Les styles
-%=========================
-\usepackage{style-esi/french}	% Francise LaTeX
-\usepackage{style-esi/td}
-\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
-
-
-\newcommand{\publicbasepath}
-{https://git.esi-bru.be/dev1/labo-java/tree/master/td09-tests-unitaires}	
-\renewcommand{\listingpublicpath}{\publicbasepath/code/}
-\renewcommand{\listingsrcpath}{code/}
-
-\marginnumberfalse
-\marginsectiontrue
-
-
-\date{2018 -- 2019}
-\siglecours{DEV1}
-\libellecours{Laboratoires Java I}
-\libelledocument{TD 9 -- Les tests unitaires}
-\sigleprof{}
-
-
+\usepackage{style/dev1}
 
 \begin{document}
 
-\entete
-\titre
-\ccbysa{esi-dev1-list@he2b.be}
-\lastedit
-
-
-	%===================
-	%  Contenu
-	%====================	
-	Un code est souvent modifié, cela veut dire que le temps passé à le simplifier est souvent gage d’un gain de temps lors d’une modification ultérieure. Il vous sera même peut-être conseillé par votre professeur de 
-	\begin{enumerate}
-		\item faire un code fonctionnel~;
-		\item de le modifier afin d’améliorer sa lisibilité et sa modularité~;
-		\item et enfin, d’en améliorer son efficacité.
-	\end{enumerate} 
-	
-		Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
-	
-	\url{\publicbasepath}	
-
-		 
-	\tableofcontents
-
-	\newpage
-
-
-
+\seance{9}{Les tests unitaires}{td09-tests-unitaires}{
+	Un code est souvent modifié, 
+	cela veut dire que le temps passé à le simplifier 
+	est souvent gage d’un gain de temps lors d’une modification ultérieure. 
+	Il vous sera même peut-être conseillé par votre professeur de :
+	faire un code fonctionnel, 
+	de le modifier afin d’améliorer sa lisibilité et sa modularité
+	ou, enfin, d’en améliorer son efficacité.
+}
 
 %====================
 \section{Introduction}
@@ -164,7 +124,7 @@
 %====================
 
 	Si nous reprenons l’exemple de la méthode calculant la valeur absolue, nous pourrions la développer et la tester comme ceci :
-	\listing{java}{MonMath.java}
+	\listing[basicstyle=\footnotesize\vtt]{java}{MonMath.java}
 
 	Au lancement du code, les deux tests passent.
 	\begin{Console}
@@ -187,20 +147,20 @@
 	Après avoir écrit le fichier \bsc{MonMath.java} dans un nouveau package \bsc{esi.dev1.td9}, faite un clique droit sur le package. Sélectionnez tools et faite Create/Update tests.
 
 	\begin{center}
-		\includegraphics[width=.7\textwidth]{images/create_tests.png}
+		\includegraphics[width=.4\textwidth]{images/create_tests}
 	\end{center}
 
 
 	Une nouvelle fenêtre va apparaître, décochez les 4 checkbox en dessous de \og Generated Code\fg et validez. 
 
 	\begin{center}
-		\includegraphics[width=.5\textwidth]{images/config_tests.png}
+		\includegraphics[width=.3\textwidth]{images/config_tests}
 	\end{center}
 
 	De nouveaux éléments, créés par NetBeans, apparaissent dans votre projet. D’une part les librairies utilisées par NetBeans ainsi qu’un nouveau dossier nommé Tests packages. Dans ce dossier se trouver une nouvelle classe \bsc{MonMathTest.java}. C'est dans cette classe que vous écrirez vos premiers tests.
 
 	\begin{center}
-		\includegraphics[width=.5\textwidth]{images/libraries.png}
+		\includegraphics[width=.4\textwidth]{images/libraries}
 	\end{center}
 
 	Il vous reste à considérer le message laissé par netbeans.
@@ -253,6 +213,7 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Implémentation - Max}
+		\vspace{-1em}
 		\begin{enumerate}
 			\item Dans le fichier MonMath, ajoutez la signature de la méthode \texttt{max}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
@@ -262,6 +223,7 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Implémentation - Somme d'entiers consécutifs}
+		\vspace{-1em}
 		\begin{enumerate}
 			\item Dans le fichier MonMath, ajoutez la signature de la méthode \texttt{somme}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
@@ -270,7 +232,10 @@
 		\end{enumerate}
 	\end{Exercice}
 	
+	\newpage 
+	
 	\begin{Exercice}{Implémentation - Anagramme}
+		\vspace{-1em}
 		\begin{enumerate}
 			\item Dans le fichier MesMots, ajoutez la signature de la méthode \texttt{estAnagramme}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
@@ -280,6 +245,7 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Implémentation - Palindrome}
+		\vspace{-1em}
 		\begin{enumerate}
 			\item Dans le fichier MesMots, ajoutez la signature de la méthode \texttt{estPalindrome}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
@@ -289,6 +255,7 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Implémentation - Nombre d’occurrences}
+		\vspace{-1em}
 		\begin{enumerate}
 			\item Dans le fichier MesMots, ajoutez la signature de la méthode \texttt{nbOccurances}. Faite un retour quelconque afin de rendre le code compilable.
 			\item Développez, avec le framwork JUnit, votre couverture de code écrite précédemment.
@@ -313,7 +280,10 @@
 	\end{Exercice}
 
 	\begin{Exercice}{Implémentation - Chiffrement par décalage}
-		Selon le principe TDD, implémentez la méthode \code{java}{césar(String texte, int décalage)} qui permet de retourner un texte chiffré selon le code de César\footnote{https ://fr.wikipedia.org/wiki/Chiffrement\_par\_d\%C3\%A9calage}.
+		Selon le principe TDD, implémentez la méthode \code{java}{césar(String texte, int décalage)} qui permet de retourner un texte chiffré selon le code de César%
+		\footnote{%
+			\url{https ://fr.wikipedia.org/wiki/Chiffrement\_par\_d\%C3\%A9calage}
+		}.
 		
 	\end{Exercice}
 

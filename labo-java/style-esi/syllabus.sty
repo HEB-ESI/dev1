@@ -8,11 +8,10 @@
 %	Dépendences
 %=====================================================================
 
-% --- Pour configurer les couleurs utilisées (avec parcimonie). 
-\usepackage{style-esi/color}
-
-% --- Pour les box avec background (colbox, coltbox) ...
+% --- Ce qui est commun à tout style
 \usepackage{style-esi/common}
+% --- Ce qui est commun à tout document (hors slide)
+\usepackage{style-esi/nonslide}
 
 % --- Utilise le logo qui doit se trouver dans le même dossier.
 % --- style-esi/logo.png (ou une autre extension)
@@ -52,12 +51,12 @@
 	\begin{minipage}[t]{8cm}
 		\vspace{-6em}
 		\sffamily
-		\textbf{\Large%
-			Haute École de Bruxelles-Brabant\\
-			École Supérieure d'Informatique\\
-		}	
-		Rue Royale, 67. 1000 Bruxelles\\
-		02/219.15.46 – esi@he2b.be
+		{\Large\bfseries%
+			\nomHE\\
+			\nomEntite\par
+		}
+		\adresseEntite\\
+		\contactEntite
 	\end{minipage}
 	
 	%----------------------------------
@@ -126,58 +125,10 @@
 \fancyfoot[LE,RO]{\color{gray}\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{1pt}	% Evite warning trop petit
 
 % Les pages complètement vides n'ont pas de header/footer
 \usepackage{emptypage}
-
-%=====================================================================
-%   Style des titres : \part, \chapter, \section, \subsection
-%	Numéros en marge : tiré de "Latex Howtos" de Sébastien Combéfis 
-%=====================================================================
-
-\usepackage[explicit]{titlesec}
-
-\titleformat{\part}[display]
-	{\thispagestyle{empty}\centering\normalfont\Large\color{colmain}}% 
-	{\titlerule[3pt]\vspace{3pt}\titlerule[1pt]\vspace{3pt}{\partname}}%
-	{5pt}%
-	{\Huge\bfseries#1\\\rule{\textwidth}{2pt}}
-
-\titleformat{\chapter}[hang]{\sffamily\bfseries\color{colmain}}%
-	{%
-		\colbox[center,dark][colframe=white,coltext=white]%
-		{\chaptertitlename\\\\\Huge \thechapter}
-	}%
-	{2em}
-	{\begin{minipage}[b]{12cm}\normalfont\bfseries\huge{}#1\end{minipage}}
-
-\titlespacing*{\chapter}{0pt}{50pt}{40pt}
-
-\titleformat{\section}[hang]{\normalfont\Large\bfseries\color{colmain}}%
-	{%
-		\protect\makebox[0pt][r]{\colbox[center,dark][colframe=white,coltext=white,size=small]{\thesection}\hspace{7px}}	
-	}%
-	{-5px}
-	{#1}
-
-\titleformat{\subsection}[hang]{\normalfont\large\bfseries\color{colmain}}%
-	{%
-		\protect\makebox[0pt][r]{\colbox[center,dark][colframe=white,coltext=white,size=small]{\thesubsection}\hspace{7px}}	
-	}%
-	{-5px}
-	{#1}
-
-% ===================================================
-%   Style des listes en tout genre
-% ===================================================
-% 	Mis ici et pas dans common car fait bugger
-%	le enumerate dans beamer !?
-
-\usepackage{enumitem}
-% On modifie le look pour 'description'
-\setdescription{font=\sffamily\bfseries, style=nextline, labelsep=*}
-% Pour les itemize : un triangle
-\setlist[itemize]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}
 
 %=====================================================================
 %	Un index

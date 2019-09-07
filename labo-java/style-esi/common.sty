@@ -1,5 +1,5 @@
 %=====================================================================
-%	common.sty
+%	style-esi/common.sty
 %
 %	Macro style qui charge tout ce qui est commun 
 %	à tout type de document.
@@ -20,7 +20,7 @@
 
 % ====================================================================
 % 	\creditimage{largeur}{image}{url_crédit}
-%---------------------------------------------------------------------
+% ---------------------------------------------------------------------
 %	Affiche une image centrée avec un crédit en bas à droite.
 %	Le crédit est une url qui apparait comme "crédit image".
 %	Il faut spécifier la largeur de l'image.
@@ -43,3 +43,26 @@
 		{\href{#1}{crédit image}}%
 }
 
+% ====================================================================
+% 	Macros pour les infos de l'école
+% ====================================================================
+
+\newcommand{\nomHE}{Haute École Bruxelles-Brabant}
+\newcommand{\nomEntite}{École Supérieure d'Informatique}
+\newcommand{\nomEtudes}{Bachelor en Informatique}
+\newcommand{\adresseEntite}{Rue Royale, 67. 1000 Bruxelles}
+\newcommand{\contactEntite}{02/219.15.46 – esi@he2b.be}
+
+% ====================================================================
+% 	Quelques éléments de style, inspirés de html5
+%   \kbd{input} : pour un input clavier
+%   \samp{output} : pour un output d'un programme ou d'une commande
+%	+
+%	\abbr{sigle} : pour un sigle, une abbréviation
+%	\name{nom} : pour un nom de produit, un nom
+% ====================================================================
+
+\newcommand{\kbd}[1]{\texttt{#1}}
+\newcommand{\samp}[1]{\texttt{#1}}
+\newcommand{\abbr}[1]{\textsc{#1}}
+\newcommand{\name}[1]{\bsc{#1}}

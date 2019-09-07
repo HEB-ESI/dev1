@@ -33,10 +33,13 @@
 \usepackage{calc}
 \newlength{\widthquestionnum}
 
-% Numérotation automatique des questions
-% --------------------------------------
+% Numérotation automatique des questions et des sous-questions
+% ------------------------------------------------------------
 \newcounter{questionnum}
 \setcounter{questionnum}{0}
+\newcounter{subquestionnum}
+\setcounter{subquestionnum}{0}
+
 
 % Affiche le numéro de la question
 % --------------------------------
@@ -52,6 +55,13 @@
 	\hskip -\widthquestionnum%
 	\cadre{\color{colmain}\bfseries\large\,\thequestionnum\,}%
 	\hskip 4mm%
+	\setcounter{subquestionnum}{0}%
+}
+
+\DeclareDocumentCommand \printsubquestionnum {} {%
+	\refstepcounter{subquestionnum}%
+	\medskip
+	{\large{\color{colmain}{\bf\roman{subquestionnum}}}}~~%
 }
 
 % Affiche les points dans la marge
@@ -82,6 +92,13 @@
 		{(#1{} point\ifthenelse{#1 > 1}{s}{})}
 	\par	
 }
+
+\DeclareDocumentCommand \titledsubquestion {m} {%
+	\printsubquestionnum 
+	{\sffamily\large\bfseries{#1}}\par%
+}
+
+
 
 % OBSOLETE
 % \begin{Question}{points}{titre}

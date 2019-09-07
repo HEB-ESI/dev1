@@ -8,20 +8,16 @@
 %	Dépendences
 %=====================================================================
 
-% --- Pour configurer les couleurs utilisées (avec parcimonie). 
-\usepackage{style-esi/color}
-
-% --- Pour les box avec background (colbox, coltbox) ...
+% --- Ce qui est commun à tout style
 \usepackage{style-esi/common}
+% --- Ce qui est commun à tout document (hors slide)
+\usepackage{style-esi/nonslide}
 
 % --- Utilise le logo qui doit se trouver dans le même dossier.
 % --- style-esi/logo.png (ou une autre extension)
 
 % --- Utilisé dans le texte de la licence
 \usepackage{style-esi/links}
-
-% --- On éclaircit encore la couleur claire du thème
-%\colorlet{collight}{collight!50!white}
 
 %=====================================================================
 %	La géométrie des pages
@@ -53,12 +49,14 @@
 % -------------------------------------------------------------
 
 \usepackage{fancyhdr}
+\usepackage{lastpage}
 \pagestyle{plain}	
 \fancypagestyle{plain}{				% Redéfinir le style plain
 	\fancyhf{} 						% Enlever tout
 	\fancyfoot[R]{					% Infos discrètes en bas à droite
 		\vspace{1\baselineskip}
-		\textcolor{gray}{\scriptsize\scours\ -- \ldocument\ --\ page \thepage}
+		\textcolor{gray}{\scriptsize\scours\ -- \ldocument\ --\ page \thepage
+			/\pageref*{LastPage}}
 	}									
 	\renewcommand{\headrulewidth}{0pt} % pas de ligne en entête
 }
@@ -114,18 +112,17 @@
 		\begin{minipage}[t]{6cm}
 			\vspace*{-4\baselineskip}
 			%\vspace{-2mm}
-			\large{\textsf{%
+			\large\sffamily%
 				%\color{gray}
-				Haute École de Bruxelles-Brabant\\
-				École Supérieure d'Informatique\\
-				Bachelor en Informatique
-			}}
+				\nomHE\\
+				\nomEntite\\
+				\nomEtudes
 		\end{minipage}
 		\hfill
 		\begin{minipage}[t]{4cm}
 			\vspace*{-4\baselineskip}
 			\begin{flushright}
-			\large{\textsf{\makeatletter{}\@date\makeatother\\\scours\\\sprof}}
+			\large{\textsf{\@date\\\scours\\\sprof}}
 			\end{flushright}
 		\end{minipage}
 	%\end{minipage}
@@ -163,20 +160,6 @@
 }
 
 % --------------------------------------------------------------------
-%	\begin{consigne}
-%		Texte des consignes	
-%	\end{consigne}
-% --------------------------------------------------------------------
-
-\newtcolorbox{consigne}{%
-	blanker,
-	before skip=10mm,after skip=10mm,
-	borderline west={1mm}{-4mm}{lightgray},
-	title=Consignes, coltitle=black, fonttitle=\sffamily\bfseries\large
-}
-
-
-% --------------------------------------------------------------------
 % 	Affiche la date de dernière édition en bas de page.
 % --------------------------------------------------------------------
 
@@ -191,18 +174,15 @@
 	\end{textblock*}
 }
 
-% ===================================================
-%   Style des listes en tout genre
-% ===================================================
-% 	Mis ici et pas dans common car fait bugger
-%	le enumerate dans beamer !?
-
-\usepackage{enumitem}
-% On modifie le look pour 'description'
-\setdescription{font=\sffamily\bfseries, style=nextline, leftmargin=8mm}
-% Pour les itemize : un triangle
-\setlist[itemize]{label=$\triangleright$, leftmargin=8mm, itemsep=1mm}
-
+%=====================================================================
+% On redéfinit le style pour les parties, 
+% pas sur une page comme syllabus.
+%=====================================================================
+\titleformat{\part}[display]
+	{\centering\normalfont\large\color{colmain}}% 
+	{\titlerule[2pt]\vspace{1pt}\titlerule[1pt]\partname}%
+	{-.8em}%
+    {\huge\bfseries#1\\\vspace{.4em}\titlerule[1pt]\vspace{1pt}\titlerule[2pt]\vspace{-1em}}
 
 % ===================================================
 %   Config
@@ -211,37 +191,8 @@
 % Ajouter \marginsection dans le document
 % si on veut les numéros de (sub)sections dans la marge
 % Tiré de "Latex Howtos" de Sébastien Combéfis
+% Obsolète car par défaut
 % -------------------------------------------------------------
 \newcommand{\marginsectiontrue}{%
-	\def\@seccntformat##1{\protect\makebox[0pt][r]{\csname the##1\endcsname\quad}}%
+%	\def\@seccntformat##1{\protect\makebox[0pt][r]{\csname the##1\endcsname\quad}}%
 }
-
-
-% ===================================================
-%	OLD STUFF
-% ===================================================
-
-%
-%% Remonter le texte d'une ligne
-%\newcommand{\remonter}{\vskip-\baselineskip}
-%
-%% Permet de mettre des commentaires dans le source
-%%\excludecomment{mycomment} permet de les cacher
-%\usepackage{comment}
-%\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
-%\definecolor{viridian}{rgb}{0.25, 0.51, 0.43}
-%\specialcomment{mycomment}{%
-%	\begingroup\sffamily\color{airforceblue}\textbf{Commentaire}\par%
-%}{%
-%	\endgroup%
-%}
-%\specialcomment{solutions}{\begingroup\color{viridian}\large\par}{\endgroup}
-%\specialcomment{hidebox}{\begingroup}{\endgroup}
-%
-%
-%%
-%% inclusion de pages pdf
-%%\includepdf[pages=12-30,frame=true, scale=.85, offset=0 10,pagecommand={}]
-%%{doc/tanenbaum5-protocols-239-275.pdf}
-%\usepackage{pdfpages}
-%

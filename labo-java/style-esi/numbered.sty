@@ -40,13 +40,11 @@
 	% Le test suivant indique que le compteur doit être réinitialisé
 	% à chaque début de chapitre si la notion de chapitre existe
 	% cf. https://tex.stackexchange.com/questions/155776/check-if-counter-exists
-	\makeatletter	% Pour utiliser le @ comme lettre ci-dessous
 	\ifcsname c@chapter\endcsname
 		\newcounter{#1}[chapter]
 	\else
 		\newcounter{#1}
 	\fi
-	\makeatother
 	\setcounter{#1}{0}%
 	\DeclareDocumentEnvironment {#1} {s m}
 		{%

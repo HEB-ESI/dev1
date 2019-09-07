@@ -5,7 +5,7 @@
 %=====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{style-esi/slide}[2018/06/01 Classe pour des slides à l'ESI]
+\ProvidesClass{style-esi/slide}[2018/06/01 Classe pour des slides a l'ESI]
 
 %=====================================================================
 % On se base sur beamer

@@ -9,15 +9,15 @@
 %	- coldark		: couleur plus sombre
 %	- colverydark	: couleur encore plus sombre, presque noire
 %	- colalert	    : couleur pour mettre en évidence des éléments.
-%				     Ex: \alert dans beamer 
-%
+%				      (ex: \alert dans beamer)
+%   - colalertlight : colalert en plus clair pour un fond d'alerte
 %	Si vous désirez d'autres couleurs, vous pouvez
 %	1) Modifier ce fichier
 %	2) Ou modifier les couleurs après coup via des \definecolor{...}
 %=====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{style-esi/color}[2018/06/10 Couleurs pour les documents à l'ESI]
+\ProvidesPackage{color}[2018/06/10 Couleurs pour les documents a l'ESI]
 
 % --- L'option table ajoute des commandes comme 
 % --- \rowcolors pour colorier une ligne d'un tableau.
@@ -29,11 +29,6 @@
 \definecolor{coldark}{RGB}{24, 73, 129}
 \colorlet{colverylight}{collight!50!white}
 \definecolor{colverydark}{RGB}{16, 49, 86}
+% -- Un brun orangé
 \definecolor{colalert}{RGB}{184, 91, 20}
-
-% -- Couleur officielle ESI (bleu-cyan)
-%\definecolor{colmain}{HTML}{54A8D1}
-%\colorlet{collight}{colmain!10!white}
-%\colorlet{colverylight}{collight!50!white}
-%\colorlet{colalert}{-colmain}
-
+\colorlet{colalertlight}{colalert!20!white}

@@ -1,53 +1,20 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,11pt]{style-esi/td}
 
-%=========================
-% Les styles
-%=========================
-\usepackage{style-esi/french}	% Francise LaTeX
-\usepackage{style-esi/td}
-\usepackage{style-esi/licence}	% Affiche une licence dans le document
+\usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
 \usepackage{style-esi/listing}
 \usepackage{style-esi/tutoriel}
-
-\newcommand{\publicbasepath}{https://git.esi-bru.be/dev1/labo-java/tree/master/td06-methodes}
-\newcommand{\solutionspublicpath}{\publicbasepath/solutions/}
-\renewcommand{\listingpublicpath}{\publicbasepath/code/}
-\renewcommand{\listingsrcpath}{code/}
-
-\date{2018 -- 2019}
-\siglecours{DEV1}
-\libellecours{Laboratoires Java I}
-\libelledocument{TD 6 -- Méthodes}
-\sigleprof{}
-
-\marginnumberfalse
-\marginsectiontrue
-
+\usepackage{style/dev1}
 
 \begin{document}
 
-\entete
-\titre
-\ccbysa{esi-dev1-list@he2b.be}
-\lastedit
-
-
-	%===================
-	%  Contenu
-	%====================	
-	Ce TD introduit les notions de méthode, entête et déclaration, paramètre, et valeur de retour, l'instruction \texttt{return}
-	 ainsi que le type \texttt{boolean}.
+\seance{6}{Méthodes}{td06-methodes}{
+	Ce TD introduit les notions de méthode, entête et déclaration, 
+	paramètre et valeur de retour, 
+	l'instruction \texttt{return}
+	ainsi que le type \texttt{boolean}.
+}
 	 
-	 
-	Les codes sources et les solutions de ce TD se trouvent à l'adresse~: 
-	
-	\url{\publicbasepath}	
-
-	\tableofcontents
-
-	\newpage
-
 %===================
 \section{Introduction}
 %====================	
@@ -76,8 +43,7 @@
 	La méthode principale \emph{appelle}  cette méthode avec la valeur 10 comme rayon. 
 
 
-	 \begin{Exercice}{Périmètre et aire d'un cercle}
-		
+	 \begin{Exercice}{Périmètre et aire d'un cercle}		
 		Créer un package \texttt{g12345.dev1.td6} et, dans celui-ci, une classe \texttt{MathUtil}.
 		Dans la classe \texttt{MathUtil} écrivez les 2 méthodes suivantes: 
 		\begin{itemize}
@@ -111,8 +77,7 @@
 	La méthode principale de la classe \texttt{CercleApp} fait appel à la méthode \texttt{périmètre}
 	de la classe \texttt{Cercle} en utilisant le nom de la classe suivi d'un point et du nom de la méthode: \texttt{Cercle.périmètre(10)}.
 	
-	 \begin{Exercice}{Périmètre et aire d'un cercle}
-		
+	 \begin{Exercice}{Périmètre et aire d'un cercle}		
 		Dans une classe \texttt{CercleApp} écrivez un programme (et donc une méthode \texttt{main})
 		qui demande à l'utilisateur le rayon d'un cercle et affiche son périmètre et son aire.
 		
@@ -242,8 +207,7 @@
 	
 \section{Exercices récapitulatifs}
 				
-	 \begin{Exercice}{Valeur absolue}
-		
+	 \begin{Exercice}{Valeur absolue}	
 		Dans la classe \texttt{MathUtil} ajoutez la méthode 
 		\texttt{abs} qui reçoit un entier en paramètre et retourne sa valeur absolue.
 		

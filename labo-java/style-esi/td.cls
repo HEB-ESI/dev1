@@ -5,7 +5,7 @@
 %=====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{style-esi/td}[2018/06/01 Classe pour des td à l'ESI]
+\ProvidesClass{style-esi/td}[2018/06/01 Classe pour des td a l'ESI]
 
 %=====================================================================
 % On se base sur article

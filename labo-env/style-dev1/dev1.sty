@@ -25,53 +25,55 @@
 	\bigskip
 }
 
-\newtcolorbox{postit}[1][]{%
-	enhanced, colback=yellow!10!white,  
-    boxrule=1pt, colframe=yellow!50!white, drop lifted shadow,
-	attach boxed title to top left={yshift=-\tcboxedtitleheight},
-	title={\color{yellow!80!black}\Large\texttt{#1}},
-	boxed title style={
-        size=small, colback=white, 
-        rounded corners, colframe=yellow!50!white,
-        leftrule=0pt, bottomrule=1pt, rightrule=1pt, toprule=0pt
-    }
-}
+% \newtcolorbox{postit}[1][]{%
+% 	enhanced, colback=yellow!10!white,  
+%     boxrule=1pt, colframe=yellow!50!white, drop lifted shadow,
+% 	attach boxed title to top left={yshift=-\tcboxedtitleheight},
+% 	title={\color{yellow!80!black}\Large\texttt{#1}},
+% 	boxed title style={
+%         size=small, colback=white, 
+%         rounded corners, colframe=yellow!50!white,
+%         leftrule=0pt, bottomrule=1pt, rightrule=1pt, toprule=0pt
+%     }
+% }
 
+\environbodyname\faqBODY
 \NewEnviron{faq}{%
 	\medskip
-	\begin{postit}[FAQ]
-		\hspace{3em}\BODY
+	\begin{postit}{FAQ}
+		\faqBODY
 	\end{postit}
 	\bigskip
 }
 
-\newtcolorbox{greenpostit}[1][]{%
-	enhanced, colback=green!10!white,  
-    boxrule=1pt, colframe=green!50!white, drop lifted shadow,
-	attach boxed title to top left={yshift=-\tcboxedtitleheight},
-	title={\color{green!80!black}\Large\texttt{#1}},
-	boxed title style={
-        size=small, colback=white, 
-        rounded corners, colframe=green!50!white,
-        leftrule=0pt, bottomrule=1pt, rightrule=1pt, toprule=0pt
-    }
-}
+% \newtcolorbox{greenpostit}[1][]{%
+% 	enhanced, colback=green!10!white,  
+%     boxrule=1pt, colframe=green!50!white, drop lifted shadow,
+% 	attach boxed title to top left={yshift=-\tcboxedtitleheight},
+% 	title={\color{green!80!black}\Large\texttt{#1}},
+% 	boxed title style={
+%         size=small, colback=white, 
+%         rounded corners, colframe=green!50!white,
+%         leftrule=0pt, bottomrule=1pt, rightrule=1pt, toprule=0pt
+%     }
+% }
 
+\environbodyname\todoBODY
 \NewEnviron{todo}{%
 	\medskip
-	\begin{greenpostit}[TODO]
-		\hspace{3em}\BODY
-	\end{greenpostit}
+	\begin{postit}[green]{TODO}
+		\todoBODY
+	\end{postit}
 	\bigskip
 }
 
-\DeclareDocumentCommand \kbd { m }{%
-	\tcbox[on line, size=fbox, boxsep=0pt,%
-		top=2pt, bottom=2pt, left=2pt, right=2pt,%
-		colback=black!10!white,colframe=black!50!white]{%
-			\small\texttt{\color{black!90!white}#1}%
-		}%
-}%
+% \DeclareDocumentCommand \kbd { m }{%
+% 	\tcbox[on line, size=fbox, boxsep=0pt,%
+% 		top=2pt, bottom=2pt, left=2pt, right=2pt,%
+% 		colback=black!10!white,colframe=black!50!white]{%
+% 			\small\texttt{\color{black!90!white}#1}%
+% 		}%
+% }%
 
 \newnumbered{Experience}
 
