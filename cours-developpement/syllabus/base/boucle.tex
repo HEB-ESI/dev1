@@ -4,9 +4,9 @@
 % ============================
 
 	Les ordinateurs révèlent tout leur potentiel dans leur capacité à répéter
-	inlassablement les mêmes tâches.  Vous avez pu appréhender les boucles lors
-	de votre initiation sur le site \url{code.org}.  Voyons comment utiliser
-	à bon escient des boucles dans nos codes.
+	inlassablement les mêmes tâches.  Vous avez pu appréhender les boucles si
+	vous avez utilisé \textit{studio.code.org} comme proposé dans la section
+	\ref{codestudio} «~Ressources~» (cfr. p\,\pageref{codestudio})
 
 	\marginicon{attention}
 	\textbf{Conseil pédagogique.} 
@@ -105,14 +105,14 @@
 	
 		Si nous voulions un algorithme qui affiche les nombres de 1 à 5
 		sans utiliser de boucle, nous pourrions écrire~:
-		
-		\begin{pseudocode}
-		\Write{1}
-		\Write{2}
-		\Write{3}
-		\Write{4}
-		\Write{5}
-		\end{pseudocode}
+
+		\begin{langagenaturel}
+			print 1\\
+			print 2\\
+			print 3\\
+			print 4\\
+			print 5\\
+		\end{langagenaturel}	
 		
 		Ces cinq instructions sont proches mais pas tout-à-fait identiques. 
 		En l’état, nous ne pouvons pas encore en faire une boucle%
@@ -127,44 +127,43 @@
 		Nous pouvons obtenir le même résultat avec l’algorithme suivant~:
 
 		\begin{minipage}{5cm}
-		\begin{pseudocode}
-		\Let nb \Gets 1
-		\Write{nb}
-		\Let nb \Gets 2
-		\Write{nb}
-		\Let nb \Gets 3
-		\Write{nb}
-		\Let nb \Gets 4
-		\Write{nb}
-		\Let nb \Gets 5
-		\Write{nb}
-		\end{pseudocode}
+			\begin{langagenaturel}
+				nb = 1\\
+				print nb\\
+				nb = 2\\
+				print nb\\
+				nb = 3\\
+				print nb\\
+				nb = 4\\
+				print nb\\
+				nb = 5\\
+				print nb\\
+			\end{langagenaturel}
 		\end{minipage}
 		\quad ou encore \quad
 		\begin{minipage}{5cm}
-		\begin{pseudocode}[1]
-		\Let nb \Gets 1
-		\Write{nb}
-		\Let nb \Gets nb + 1
-		\Write{nb}
-		\Let nb \Gets nb + 1
-		\Write{nb}
-		\Let nb \Gets nb + 1
-		\Write{nb}
-		\Let nb \Gets nb + 1
-		\Write{nb}
-		\Let nb \Gets nb + 1
-		\end{pseudocode}
+			\begin{langagenaturel}
+				nb = 1\\
+				print nb\\
+				nb = nb + 1\\
+				print nb\\
+				nb = nb + 1\\
+				print nb\\
+				nb = nb + 1\\
+				print nb\\
+				nb = nb + 1\\
+				print nb\\
+			\end{langagenaturel}
 		\end{minipage}
 		
 		Il est plus compliqué, mais cette fois les lignes 2 et 3 se répètent
 		exactement.  D’ailleurs, la dernière ligne ne sert à rien d’autre qu’à
 		obtenir cinq copies identiques.  Le travail à répéter est donc~:
 
-		\begin{pseudocode}
-		\Write{nb}
-		\Let nb \Gets nb + 1
-		\end{pseudocode}
+		\begin{langagenaturel}
+			print nb\\
+			nb = nb + 1
+		\end{langagenaturel}
 
 		Cette tâche doit être effectuée cinq fois dans notre exemple.
 		Il existe plusieurs structures répétitives
@@ -181,11 +180,42 @@
 \clearpage
 %========================
 \section{Le «~tant que~» (\textit{while})}
-\index{tant que}\index{while}
+\index{tant que}\index{while}\index{boucles}
 %========================
 	
+	Le «~\textbf{tant que}~» est une structure qui demande à l’exécutant de
+	répéter une tâche (une ou plusieurs instructions) tant qu’une condition
+	donnée est vraie.
 	
-	\begin{wrapfigure}{r}{6cm}
+	\begin{langagenaturel}
+		tant que une certaine condition est vraie, répeter\\
+			\tab une ou plusieurs actions\\
+		fin tant que\\
+		continuer l'algorithme 
+	\end{langagenaturel}
+
+	À la fin de chaque exécution des actions, la condition est retestée. Tant
+	qu'elle est vraie les actions sont exécutées à nouveau. 
+
+	Dans la grammaire du langage, cette instruction s'écrit~:
+	
+	\begin{grammaire}
+		while ( \grammarrule{Expression} )
+		    \grammarrule{Statement}
+	\end{grammaire}
+	
+	\textit{Expression} est une expression booléenne comme nous l'avons vu (cf.
+	section \ref{expression booléenne} p.~\pageref{expression booléenne}) et
+	\textit{Statement} peut être une seule instruction ou un bloc
+	d'instructions délimitées par des accolades.
+	
+	\begin{minipage}{7cm}
+	L’organigramme ci-contre décrit  le déroulement de cette structure.  On
+	remarquera que si la condition est fausse dès le début, la tâche n’est
+	jamais exécutée.
+	\end{minipage}
+	\quad
+	\begin{minipage}{7cm}
 		\begin{tikzpicture}[node distance = 1.5cm, auto]
 			\node[startstop] (start) {Start};
 			\node[decision, below of=start, yshift=-1.3cm, text width=2cm]%
@@ -201,18 +231,10 @@
 				.. controls(4,-4.5) 
 				.. node[anchor=east] {no} (stop);
 		\end{tikzpicture}	
-		\vspace{-3cm}
-	\end{wrapfigure}
+	\end{minipage}
 
-	Le «~\textbf{tant que}~» est une structure qui demande à l’exécutant de
-	répéter une tâche (une ou plusieurs instructions) tant qu’une condition
-	donnée est vraie.
-
-	\begin{pseudocode}
-	\While{condition}
-		\Stmt instructions
-	\EndWhile
-	\end{pseudocode}
+	
+	\textbf{Remarques}
 
 	Comme pour la structure \pc{if}, la \pc{condition} est une expression
 	à valeur booléenne.  
@@ -224,21 +246,7 @@
 	cas contraire, la condition reste indéfiniment vraie et la boucle va tourner
 	sans fin, c’est ce qu’on appelle une \textbf{boucle infinie}.
 	
-	L’organigramme ci-contre décrit  le déroulement de cette structure.  On
-	remarquera que si la condition est fausse dès le début, la tâche n’est
-	jamais exécutée.
 
-	En langage Java, voici l'instruction \textit{while} qui correspond
-	exactement au «~tant~que~» des algorithmes. \textit{Expression} est une
-	expression booléen comme nous l'avons vu (cf. section \ref{expression
-	booléenne} p.~\pageref{expression booléenne}) et \textit{Statement} peut
-	être une seule instruction ou un bloc d'instructions délimitées par des
-	accolades.
-
-	\begin{grammaire}
-		while ( \grammarrule{Expression} )
-		    \grammarrule{Statement}
-	\end{grammaire}
 
 
 	\subsection{Exemple - Afficher les nombres de 1 à 5}
@@ -247,28 +255,16 @@
 		Reprenons notre exemple d’affichage des nombres de 1 à 5.
 		Pour rappel, la tâche à répéter est~:
 
-		\begin{pseudocode}
-		\Write{nb}
-		\Let nb \Gets nb + 1
-		\end{pseudocode}
-		
+		\begin{langagenaturel}
+			print nb\\
+			nb = nb + 1
+		\end{langagenaturel}
+
 		La condition va se baser sur la valeur de \pc{nb}.
 		On continue tant que le nombre n’a pas dépassé 5.
 		Ce qui donne (en n’oubliant pas l’initialisation de \pc{nb})~:
 
 		\begin{minipage}{7cm}
-			\begin{pseudocode}[1]
-				\Algo{compteur5}{}{}
-					\Decl{nb}{entier}
-					\Let nb \Gets 1
-					\While{nb $\le$ 5}
-						\Write{nb}
-						\Let nb \Gets nb + 1
-					\EndWhile
-					\Write{"nb vaut: ", nb}
-				\EndAlgo
-			\end{pseudocode}
-			\vspace{2cm}
 			\begin{java}
 public static void count5(){
 	int nb = 1;
@@ -315,20 +311,9 @@ public static void count5(){
 	\subsection{Exemple - Généralisation à n nombres}
 	%===================================================
 
-		Généraliser l'algorithme et le programme pour qu'ils reçoivent le nombre
+		Généraliser l'algorithme pour qu'il reçoive le nombre
 		d'itérations en paramètres se fait simplement comme suit:
 		
-		\begin{pseudocode}
-		\Algo{compteur}{\Par{n}{integer}}{}
-			\Decl{nb}{integer}
-			\Let nb \Gets 1
-			\While{nb $\le$ n}
-				\Write{nb}
-				\Let nb \Gets nb + 1
-			\EndWhile
-		\EndAlgo
-		\end{pseudocode}
-			
 		\begin{java}
 public static void count(int n){
 	int i = 1;
@@ -346,9 +331,48 @@ public static void count(int n){
 	\section{Le «~pour~» (\textit{for})}
 	\index{pour}\index{for}
 %====================
-
 	
-	\begin{wrapfigure}{r}{6cm}
+	Cette structure va plutôt indiquer \textbf{combien de fois} la tâche doit
+	être répétée.  Cela se fait au travers d’une \textbf{variable de contrôle}
+	dont la valeur va évoluer à partir d’une valeur de départ jusqu’à une valeur
+	finale.
+
+	\begin{langagenaturel}
+		pour une variable allant d'une valeur de départ à une valeur finale\\
+		\tab exécuter une ou plusieurs actions\\
+		fin pour \\
+		continuer l'algorithme 
+	\end{langagenaturel}
+
+	Ou, en étant un peu plus précis et en précisant un pas différent de 1~:
+
+	\begin{langagenaturel}
+		pour variable = début jusqu'à fin par pas\\
+		\tab exécuter une ou plusieurs actions\\
+		fin pour \\
+		continuer l'algorithme 
+	\end{langagenaturel}
+
+
+	\begin{minipage}{7cm}
+		\vspace*{5cm}
+
+		Dans ce type de structure, \pc{début}, \pc{fin} et \pc{pas} peuvent
+		être des constantes, des variables ou des expressions entières. 
+		
+		\vspace*{1cm}
+		
+		La boucle s’arrête lorsque la variable dépasse la valeur de \pc{fin}. 
+		
+		\vspace*{1cm}
+		
+		L'organigramme ci-contre illustre le fonctionnement d'une boucle
+		\pc{for}. 
+		
+		\vspace*{5cm}
+	\end{minipage}
+	\quad
+	\begin{minipage}{7cm}
 		\vspace{-1cm}
 		\begin{tikzpicture}[node distance = 1.5cm, auto]
 			\node[startstop] (start) {Start};
@@ -370,37 +394,11 @@ public static void count(int n){
 				.. node[anchor=east] {no} (stop);
 		\end{tikzpicture}	
 		\vspace{-4cm}
-	\end{wrapfigure}
+	\end{minipage}
 
-	Cette structure va plutôt indiquer \textbf{combien de fois} la tâche doit
-	être répétée.  Cela se fait au travers d’une \textbf{variable de contrôle}
-	dont la valeur va évoluer à partir d’une valeur de départ jusqu’à une valeur
-	finale.
-	
-	\begin{pseudocode}
-	\For[pas]{variable}{début}{fin}
-		\Stmt instructions
-	\EndFor
-	\end{pseudocode}
 
-	Dans ce type de structure, \pc{début}, \pc{fin} et \pc{pas} peuvent être des
-	constantes, des variables ou des expressions entières. 
-
-	Le \pc{pas} est facultatif, et généralement omis (dans ce cas, sa valeur par
-	défaut est 1). 
-
-	La boucle s’arrête lorsque la variable dépasse la valeur de \pc{fin}. 
-
-	La variable de contrôle ne servant que pour la boucle et étant forcement
-	entière, nous allons considérer qu’il n’est pas nécessaire de la déclarer et
-	qu’elle n’est pas utilisable en dehors de la boucle%
-	\footnote{%
-		De nombreux langages ne le permettent d’ailleurs pas
-		ou ont un comportement indéterminé si on le fait.%
-	}.
-
-	En langage Java, il existe une instruction \textit{for} également. Elle est
-	un peu plus large que celle-ci. Voici sa grammaire (simplifiée).
+	Dans la grammaire du langage Java, l'instruction \textit{for} est
+	un peu plus large que de dire qu'une variable parcourt les valeurs allant de \pc{début} à \pc{fin}. Voici sa grammaire (simplifiée).
 
 	\begin{grammaire}
 		\grammarrule{ForStatement:}
@@ -421,7 +419,7 @@ public static void count(int n){
 			Par exemple \pc{variable = variable + pas}
 	\end{description}
 	
-	Une traduction stricte du «~pour~» s'écrit en langage Java~:
+	Une utilisation simple et fréquent du pour à cette forme~:
 	
 	\begin{java}
 for (int i = début; i < fin; i = i + pas){
@@ -429,9 +427,10 @@ for (int i = début; i < fin; i = i + pas){
 }
 	\end{java}
 	
-	Nous verrons plus loin qu'il existe également un \textit{enhanced for}
-	— appelé \textit{foreach} — permettant une écriture très simple pour le
-	parcours de certaines collections. 
+	Nous verrons plus loin des exemples plus généraux du \pc{for} et nous
+	verrons également qu'il existe également un \textit{enhanced for} — appelé
+	\textit{foreach} — permettant une écriture très simple pour le parcours de
+	certaines collections. 
 
 
 
@@ -442,16 +441,6 @@ for (int i = début; i < fin; i = i + pas){
 		solution avec un \pc{\algorithmicfor} et le traçage correspondant.
 
 		\begin{minipage}{80mm}
-			\begin{pseudocode}[1]
-				\Algo{compterJusque5}{}{}
-					\LComment par défaut le pas est de 1
-					\For{nb}{1}{5} 
-						\Write nb 
-					\EndFor
-					\Write "nb n’existe plus"
-				\EndAlgo
-			\end{pseudocode}
-			\vspace{1cm}
 			\begin{java}
 public static void countTo5({
 	for (int nb=1; nb<= 5; nb = nb+1){
@@ -489,13 +478,6 @@ public static void countTo5({
 
 		Pour généraliser à $n$ nombres, nous pouvons écrire~:
 		
-		\begin{pseudocode}
-		\Algo{compterJusqueN}{\Par{n}{entier}}{}
-			\For{nb}{1}{n}
-				\Write nb 
-			\EndFor
-		\EndAlgo
-		\end{pseudocode}
 
 		\begin{java}
 public static void countToN(int n){
@@ -527,15 +509,6 @@ public static void countToN(int n){
 		à bien formuler la condition.
 		
 		\textbf{Exemple}~: Compte à rebours à partir de n.
-		
-		\begin{pseudocode}
-		\Algo{compterÀReboursDécroissant}{\Par{n}{entier}}{}
-			\For[-1]{nb}{n}{1}
-				\Write nb 
-			\EndFor
-			\Write "Partez !"
-		\EndAlgo
-		\end{pseudocode}
 
 		\begin{java}
 public static void countTo1(int n){
@@ -585,13 +558,6 @@ public static void countTo1(int n){
 		Si $n$ vaut $11$, l’affichage est le même que pour $10$.
 		Avec un «~pour~», une solution est~:
 
-		\begin{pseudocode}
-		\Algo{afficherPair}{\Par{n}{entier}}{} 
-			\For[2]{nb}{2}{n} 
-				\Write nb 
-			\EndFor
-		\EndAlgo
-		\end{pseudocode}
 
 		\begin{java}
 public static void printOdd(int n){
@@ -602,14 +568,68 @@ public static void printOdd(int n){
 		\end{java}
 
 
+
+		
+		
+		
 \pagebreak[4]
 %===================================
 \section{«~faire~–~tant que~»}
 \index{do-while}
 %===================================
+
+	À l'inverse du «~tant~que~-~faire~» qui peut ne pas exécuter la séquence
+	d'instructions si le test est faux dès le départ, il existe une structure
+	qui exécutera au moins une fois la séquence d'instructions avant de tester
+	la condition. Cette instruction peut-être~:
+
+	\begin{itemize}
+		\item «~faire~-~jusqu'à~ce~que~» ou ;
+		\item «~faire~-~tant~que~».
+	\end{itemize}
 	
-	\begin{wrapfigure}{r}{6cm}
-		%\vspace{-2cm}
+	Cette structure est très proche du «tant~que~-~faire~» à ceci près que le
+	test est fait à la fin et pas au début.
+ 
+	\begin{langagenaturel}
+		faire\\
+			\tab une ou plusieurs actions\\
+		jusqu'à ce qu'une certaine condition soit vraie\\
+		continuer l'algorithme 
+	\end{langagenaturel}
+	
+	ou
+	
+	\begin{langagenaturel}
+		faire\\
+			\tab une ou plusieurs actions\\
+		tant que une certaine condition est vraie\\
+		continuer l'algorithme 
+	\end{langagenaturel}
+	
+	En Java, c'est le second choix qui est retenu
+
+	\begin{grammaire}
+	    \grammarrule{DoStatement:}
+	    do 
+	        \grammarrule{Statement}
+	    while ( \grammarrule{Expression} );
+	\end{grammaire}
+
+
+	\begin{minipage}[]{7cm}
+	
+		\vspace{2cm}
+		Comme avec le tant-que, il faut que la séquence d’instructions comprise
+		entre \pc{\K{faire}} et \pc{\K{tant que}} contienne au moins une
+		instruction qui modifie la condition de telle manière qu’elle puisse
+		devenir \textbf{vraie} à un moment donné pour arrêter l’itération.  Le
+		schéma ci-contre décrit le déroulement de cette boucle. 
+		\vspace{2cm}
+		
+	\end{minipage}
+	\quad
+	\begin{minipage}[]{7cm}
 		\begin{tikzpicture}[node distance = 1.5cm, auto]
 			\node[startstop] (start) {Start};
 			\node[process, below of=start] (pro0) {instructions};
@@ -624,37 +644,9 @@ public static void printOdd(int n){
 			\draw[arrow] (if1) -- node[anchor=north, left, yshift=-0cm] {no} (stop);
 		\end{tikzpicture}	
 		\vspace{-2cm}
-	\end{wrapfigure}
+	\end{minipage}
 
-	Cette structure est très proche du «faire~-~tant que~» à ceci près que le
-	test est fait à la fin et pas au début% 
-	\footnote{% 
-		Certains langages introduisent aussi (ou à la place) un \pc{\K{faire
-		jusqu’à ce que}}.  Dans ce cas, la boucle continue lorsque le test est
-		\textbf{faux} et s’arrête lorsqu’il est vrai.  
-	}.  La tâche est donc toujours exécutée au moins une fois.
 
-	\begin{pseudocode}
-	\Repeat
-		\Stmt séquence d’instructions à exécuter
-	\EndRepeat{condition}
-	\end{pseudocode}
-
-	Comme avec le tant-que, il faut que la séquence d’instructions comprise
-	entre \pc{\K{faire}} et \pc{\K{tant que}} contienne au moins une
-	instruction qui modifie la condition de telle manière qu’elle puisse devenir
-	\textbf{vraie} à un moment donné pour arrêter l’itération.  Le schéma
-	ci-contre décrit le déroulement de cette boucle. 
-
-	En langage Java, il existe une instruction \textit{do-while}, «~faire-tant
-	que~»(et pas d'instruction «~faire-jusqu'à ce que~»).
-
-	\begin{grammaire}
-	    \grammarrule{DoStatement:}
-	    do 
-	        \grammarrule{Statement}
-	    while ( \grammarrule{Expression} );
-	\end{grammaire}
 
 
 
@@ -665,18 +657,6 @@ public static void printOdd(int n){
 		Voici la solution et le traçage correspondant.
 
 		\begin{minipage}{6.8cm}
-			\begin{pseudocode}[1]
-				\Algo{compteur5}{}{}
-					\Decl{nb}{entier}
-					\Let nb \Gets 1
-					\Repeat
-						\Write{nb}
-						\Let nb \Gets nb + 1
-					\EndRepeat{nb $\le$ 5}
-					\Write{"nb vaut ", nb}
-				\EndAlgo
-			\end{pseudocode}
-			\vspace{1cm}
 			\begin{java}
 public static void count5(){
 	int nb = 1;
@@ -720,6 +700,8 @@ public static void count5(){
 			\end{tabular}
 		\end{minipage}
 
+		\paragraph{Exercice} Tracer l'algorithme si l'instruction 2 est \pc{int
+		nb = 10;}. 
 
 %======================================
 \section{Quel type de boucle choisir~?}
@@ -743,8 +725,8 @@ public static void count5(){
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=.8\textwidth]{images/boucle-choixtype}
-			\label{fig:boucle-choix}
 			\caption{Récapitulatif, choix d'une structure répétitive}
+			\label{fig:boucle-choix}
 		\end{figure}
 	\end{center}
 
@@ -781,35 +763,18 @@ public static void count5(){
 		L’utilisateur indique le nombre de termes au départ.
 		Ce problème est proche de ce qui a déjà été fait.
 		
-		\begin{pseudocode}
-		\LComment Lit des valeurs entières et retourne la somme des valeurs lues.
-		\Algo{sum}{}{integer} \RComment Variante 1
-			\Decl{nValues}{integer} \RComment nombre de valeurs à additionner
-			\Decl{value}{integer} \RComment un des termes de l’addition
-			\Decl{sum}{integer} \RComment la somme
-			\Let sum \Gets 0 \RComment la somme se construit petit à petit. 
-					\Let\RComment 0 au départ
-			\Read nValues
-			\For{i}{1}{nValues}
-				\Read value
-				\Let sum \Gets sum + value 
-			\EndFor
-			\Return sum
-		\EndAlgo
-		\end{pseudocode}
+		En langage Java, l'habitude est de commencer à compter à partir de 0.
+		Là où nous avons l'habitude de compter de $1$ à $n$, nous compterons
+		toujours de $0$ à $n-1$. Plutôt que d'avoir comme condition de fin $i
+		<= n - 1$, nous écrirons $i < n$.
 
-		En langage Java, l'habitude est de commencer à compter à partir de 0. Là
-		où nous avons l'habitude de compter de $1$ à $n$, nous compterons
-		toujours de $0$ à $n-1$. Plutôt que d'avoir comme condition de fin
-		$i <= n - 1$, nous écrirons $i < n$.
-
-		Le programme Java aura l'allure suivante~:
+		Une solution en Java peut-être~:
 
 		\begin{java}
 public static int sum(){
-	int nValues;
-	int value;
-	int sum = 0;
+	int nValues;		// Nombre de valeurs à additionner
+	int value;			// Terme de l'addition
+	int sum = 0;		// Somme construite au fur et à mesure
 	Scanner keyboard = new Scanner(System.in); // nécessite un import
 	
 	nValues = keyboard.nextInt();
@@ -889,31 +854,13 @@ value = keyboard.nextInt();
 		— n'est pas connu au départ. Il faudra utiliser un «~tant que~» ou un
 		«~faire-tant~que~». 
 		
-		Si nous demandons en fin de boucle s’il reste encore
-		un nombre à additionner l'algorithme aura l'allure suivante~:
-
-		\begin{pseudocode}
-		\LComment Lit des valeurs entières et retourne la somme des valeurs lues.
-		\Algo{sum}{}{integer} \RComment Variante 2a
-			\Decl{hasMore}{boolean} \RComment est-ce qu’il reste encore 
-									une value à additionner~?
-			\Decl{value}{integer} \RComment un des termes de l’addition
-			\Decl{sum}{integer} \RComment la somme
-			\Let sum \Gets 0
-			\Repeat 
-				\Read value
-				\Let sum \Gets sum + value 
-				\Read hasMore
-			\EndRepeat{hasMore}
-			\Return sum
-		\EndAlgo
-		\end{pseudocode}
-
-		En langage Java, nous utiliserons naturellement un \textit{do-while}. 
-		Voici~:
+		Si nous demandons en fin de boucle s’il reste encore un nombre
+		à additionner l'algorithme aura l'allure suivante où nous utilisons un
+		«~do~-~while~»~:
 
 		\begin{java}
 public static int sum(){
+	/* Est-ce qu'il reste une variable à additionner (hasMore) */
 	boolean hasMore;
 	int value;
 	int sum = 0;
@@ -933,27 +880,9 @@ public static int sum(){
 		aucune valeur. Dans ce cas, il faut utiliser un «~tant que~» et donc
 		poser la question avant d’entrer dans la boucle.
 
-		\begin{pseudocode}
-		\LComment Lit des valeurs entières et retourne la somme des valeurs lues.
-		\Algo{sum}{}{integer} \RComment Variante 2b
-			\Decl{hasMore}{booléen} \RComment est-ce qu’il reste hasMore une value à additionner~?
-			\Decl{value}{integer} \RComment un des termes de l’addition
-			\Decl{sum}{integer} \RComment la sum
-			\Let sum \Gets 0
-			\Read hasMore
-			\While{hasMore} 
-				\Read value
-				\Let sum \Gets sum + value 
-				\Read hasMore
-			\EndWhile
-			\Return sum
-		\EndAlgo
-		\end{pseudocode}
-
-		En Java, ça donne~:
-
 		\begin{java}
 public static int sum(){
+	/* Est-ce qu'il reste une variable à additionner (hasMore) */
 	boolean hasMore;
 	int value;
 	int sum = 0;
@@ -990,28 +919,10 @@ public static int sum(){
 		valeur. C’est pour cela qu’il faut effectuer une lecture avant la boucle
 		et une autre à la fin de la boucle.
 
-		\begin{pseudocode}
-		\LComment Lit des valeurs entières positives et retourne la somme des valeurs lues.
-		\LComment La valeur sentinelle est -1.
-		\Algo{sumPositives}{}{integer} \RComment Variante 3
-			\Decl{value}{integer} \RComment un des termes de l’addition
-			\Decl{sum}{integer} \RComment la sum
-			\Let sum \Gets 0
-			\Read value
-			\While{value ${\neq}$ -1} 
-				\Let sum \Gets sum + value 
-				\Read value \RComment remarquer l’endroit où on lit une value.
-			\EndWhile
-			\Return sum
-		\EndAlgo
-		\end{pseudocode}
-
-		Et en Java, ça se traduit immédiatement en ~:
-
 		\begin{java}
 public static int sum(){
-	int value;
-	int sum = 0;
+	int value;			// Un des termes de l'addition
+	int sum = 0;		// La somme
 	Scanner keyboard = new Scanner(System.in); // nécessite un import
 
 	value = keyboard.nextInt();
@@ -1043,7 +954,7 @@ public static int sum(){
 		$1$, $4$, $9$, $16$, $25$\dots
 
 		Si l'on veut savoir quel est le 7\ieme{} nombre à afficher, c'est $7^2$,
-		soit $49$".  Plus généralement, le nombre à afficher lors du $i$\ieme{}
+		soit $49$.  Plus généralement, le nombre à afficher lors du $i$\ieme{}
 		passage dans la boucle est $i^2$.
 
 		\begin{tabular}{l|*{8}{>{\centering\arraybackslash}m{3mm}}}
@@ -1052,14 +963,14 @@ public static int sum(){
 		\end{tabular}
 		
 		L’algorithme qui en découle est~:
-		
-		\begin{pseudocode}
-			\Algo{suiteCarrés}{\Par{n}{entier}}{}
-				\For{i}{1}{n}
-					\Write $i^2$
-				\EndFor
-			\EndAlgo
-		\end{pseudocode}
+
+		\begin{java}
+public static void squarres(int n){
+	for (int i = 1; i <= n; i++){
+		System.out.printl(Math.pow(i, 2));
+	}
+}
+		\end{java}
 
 		Dans cette solution, la variable de contrôle compte simplement le nombre
 		d’itérations.  Le calcul du nombre à affiche se fait en fonction de
@@ -1116,7 +1027,6 @@ public static int sum(){
 		Sauf pour le premier, qui ne peut pas être calculé en fonction du
 		précédent.
 
-		\clearpage	
 		Mathématiquement, cette suite s'écrirait
 
 		\begin{align*}
@@ -1127,34 +1037,16 @@ public static int sum(){
 
 		Une solution élégante et facilement adaptable à d’autres situations
 		est~:
+
+		\begin{langagenaturel}
+			value = première valeur à afficher\\
+			for i de 1 à n\\
+			\tab print value\\
+			\tab value = valeur suivante calculée à partir de la précédente
+		\end{langagenaturel}
 		
-		\begin{pseudocode}
-			\Algo{suite}{\Par{n}{integer}}{}
-				\Decl{val}{integer}
-				\Let val \Gets \textit{1\iere{} valeur à afficher}
-				\For{i}{1}{n}
-					\Write val
-					\Let val \Gets \textit{la valeur suivante calculée à partir de}
-					\Let\Indent \textit{la valeur courante et/ou de précédentes valeurs}
-				\EndFor
-			\EndAlgo
-		\end{pseudocode}
 		
 		qui, dans notre exemple précis, devient~:
-
-		\begin{pseudocode}
-			\LComment affiche la suite 1 2 4 7 11 16 ...
-			\Algo{suite}{\Par{n}{integer}}{}
-				\Decl{val}{integer}
-				\Let val \Gets 1
-				\For{i}{1}{n}
-					\Write val
-					\Let val \Gets val + i
-				\EndFor
-			\EndAlgo
-		\end{pseudocode}
-
-		et, en langage Java, nous pourrions écrire~:
 
 		\begin{java}
 public static void suite(int n){
@@ -1170,4 +1062,5 @@ public static void suite(int n){
 		l'élément à la i\ieme\ place, le i\ieme\ terme, est exprimé en fonction
 		du ou des précédents termes. Ce genre de suite, s'appelle  «~suite
 		récurrente~». 
+		\index{suite récurrent}
                      
