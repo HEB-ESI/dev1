@@ -241,16 +241,26 @@
 	\subsection{Numérotation des lignes}
 	%=================================
 				
-		Nano peut également indiquer le numéro de la ligne sur laquelle se trouve le curseur, 
+		Nano peut également indiquer le numéro de la ligne sur laquelle se trouve 
+		le curseur, 
 		ce qui sera pratique pour corriger vos erreurs. 
 		Pour cela, il existe deux méthodes.
 
-		\begin{itemize} 
+		\begin{itemize}
 		\item \textbf{Méthode 1} : 
-			Lancer nano avec l'option \samp{-c} : \kbd{nano -c monFichier}.
+			Lancer nano avec l'option \samp{-c} : \kbd{nano -c monFichier}
+			ou, mieux, ajouter \samp{set constantshow} au fichier
+			fichier \samp{\textasciitilde{}/.nanorc}.
 		\item \textbf{Méthode 2} : 
 			Dans l'éditeur, appuyez sur \samp{CTRL-c}.
 		\end{itemize}
+		
+		Par ailleurs, il est possible d'indiquer les numéros des 
+		lignes dans la
+		marge gauche. Pour cela, lancer nano avec l'option 
+		\samp{-l} : \kbd{nano -l monFichier} ou, mieux, 
+	    ajouter \samp{set linenumbers} au fichier 
+	    fichier \samp{\textasciitilde{}/.nanorc}.
 			
 	\subsection{Indentation}
 	%=================================
