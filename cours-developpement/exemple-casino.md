@@ -1,0 +1,213 @@
+# Exemple complet : blackjack
+
+## Énoncé du problème
+
+Le blackjack est un jeu de casino dans lequel le joueur/la joueuse joue contre la banque. 
+Le but du jeu est que la somme de ses cartes soit le plus proche de 21 
+sans pour autant dépasser cette valeur. 
+Chaque carte a pour valeur son rang, sauf le valet (11), la dame (12) et roi (13)
+qui valent **dix** et l’as (1) qui vaut **1 ou 11**.
+
+Nous vous demandons d’écrire un algorithme qui reçoit 
+les cartes représentant la main du joueur/de la joueuse 
+dans un tableau d'entiers (de 1 à 13)
+et qui retourne la somme la plus avantageuse pour la personne. 
+C’est à dire, celle qui est le plus proche de 21 
+sans pour autant dépasser cette valeur. 
+Il faut donc attribuer aux as la valeur 1 ou 11 selon le jeu de la personne.
+
+Exemples : 
+* Pour le tableau de cartes [5,12,1,4] 
+l’algorithme renvoie 20 (5+10(la dame vaut 10)+1+4).
+* Pour le tableau de cartes [1,1,7] 
+l’algorithme renvoie 19 (1+11+7).
+* Pour le tableau de cartes [2,3,11,1,1] 
+l’algorithme renvoie 17 (2 + 3 + 10 + 1 + 1).
+* Pour le tableau de cartes [13,3,11,1,1]
+l’algorithme renvoie 25 (10 + 3 + 10 + 1 + 1).
+
+## Stratégie de résolution
+
+Avant d'espérer une solution correcte à un problème,
+il faut s'assurer de bien le comprendre, 
+d'identifier tous les cas particuliers et de savoir soi-même calculer la bonne réponse
+dans ces cas là.
+
+Lorsque le problème semble complexe, 
+une stratégie peut être d'attaquer d'abord une version plus simple du problème
+pour incorporer par la suite les éléments mis de coté.
+C'est ce que nous allons faire ici.
+
+## Une version simplifiée : tous les as valent 1
+
+Commençons donc par considérer une version plus simple où tous les as valent 1.
+Si on arrive à résoudre ce problème on réintroduira la possibilité pour un as
+de valoir 11.
+
+Dans cette version simplifiée, il s'agit de calculer la somme des valeurs des cartes.
+Ce qu'il ne faut pas confondre avec la carte elle-même. 
+Car si un 5 vaut 5, un 12 vaut 10.
+
+### La somme
+
+Comme chaque carte compte, on doit effectuer un parcours complet du tableau.
+On peut schématiser la solution ainsi :
+
+    Algorithme: **somme simplifié d'un tableau de cartes.**
+    Soit _cartes_ le tableau des cartes
+    Initialiser une somme à 0
+    Pour toutes les cartes 
+        Calculer la valeur de la carte
+        Ajouter cette valeur à la somme
+    
+Dans l'algorithme qu'on vient d'écrire, il existe un seul élément qui n'est pas trivial :
+le calcul de la valeur d'une carte.
+Il s'agit d'un problème en soi, qu'il est bon de regarder et de résoudre séparément
+sans polluer l'algorithme qu'on vient d'écrire
+
+### La valeur d'une carte
+
+Dans la plupart des cas, la valeur de la carte est égale à elle-même.
+Les seules exceptions sont les figures (valet, dame et roi)
+qui valent 10. On peut l'exprimer ainsi :
+
+    Algorithme: **Calcul de la valeur d'une carte**
+    Soit _carte_ une carte
+    Si la carte est > 10 alors
+        sa valeur est 10
+    sinon
+        sa valeur est égale à elle-même
+
+### Solution en Java
+
+Si on exprime le tout en Java, ça donne :
+
+    public int valeur(int carte) {
+        int valeur;
+        if( carte>10 ) {
+            valeur = 10;
+        } else {
+            valeur = carte;
+        }
+        return valeur;
+    }
+
+    public int sommeSimplifiée(int[] cartes) {
+        int somme = 0;
+        for( int carte : cartes ) {
+            somme += valeur(carte);
+        }
+        return somme;
+    }
+
+Si on veut pouvoir le tester, il faut écrire une méthode principale
+qui crée le tableau et appelle la méthode calculant la somme.
+Pour le premier exemple de l'énoncé, cela donne
+
+    public static void main(String[] args) {
+        int[] cartes = {5,12,1,4};
+        int somme = sommeSimplifiée(cartes);
+        System.out.println(somme);
+    }
+
+## Version complète : un as vaut 1 ou 11
+
+Nous avons une solution mais rappelons-nous que nous avons simplifié le problème.
+Réintroduisons la règle qui dit qu'un as vaut 1 ou 11.
+
+### 1 ou 11 ? Comment décider ?
+
+Il faut bien comprendre les points suivants :
+* un as va compter pour 11 si et seulement si ça ne
+fait pas dépasser la valeur 21.
+* Même si plusieurs as sont présents dans la main du joueur, il ne peut
+y en avoir qu’un seul maximum qui compte pour 11, sinon le total dépasserait 21.
+* On ne peut pas décider qu'un as vaut pour 11 tant qu'on n'a pas calculer la somme complète.
+Par exemple avec [8,1,7], lorsqu'on rencontre le 1, on pourrait être tenté de le compter 
+comme un 11 (8+11=19<21) mais ce sera un problème par la suite pour ajouter le 7 (19+7=26>21).
+
+Des constatation ci-dessus, on peut tirer un algorithme assez simple
+
+    Algorithme: **somme non simplifié d'un tableau de cartes.**
+    Soit _cartes_ le tableau des cartes
+    Calculer la somme simplifiée, c'est à priori la bonne réponse
+    Mais s'il existe (au moins) un as dans les cartes 
+                        et que la somme simplifiée est < 12 alors
+        Ajouter 10 à la somme simplifiée
+
+Dans cet algorithme le seul élément non trivial qui reste est de savoir
+s'il y a (au moins) un as dans la main du joueur.
+Voyons comment le résoudre.
+
+### Au moins un as 
+
+Se demander s'il y a un as dans la main du joueur (le tableau de cartes)
+est un problème très proche d'autres qu'on a déjà résolu 
+(ex: "est-ce que le tableau contient un 0 ?").
+On a vu que la solution mettait en oeuvre un **parcours partiel** du tableau.
+On a vu aussi qu'il y a deux solutions types : avec et sans variable booléenne.
+Il suffit donc de reprendre et d'adapter une des 2 approches déjà écrite par ailleurs.
+
+### Solution en Java
+
+    La solution en Java peut utiliser les 2 méthodes déja écrites
+
+    public int somme(int[] cartes) {
+        int somme = sommeSimplifiée(cartes);
+        if (existeAs(cartes) && somme<12) {
+            somme += 10;
+        }
+        return somme;
+    }
+
+    public boolean existeAs(int[] cartes) {
+        int i = 0;
+        boolean asTrouvé = false;
+        while (i<cartes.length && !asTrouvé) {
+            asTrouvé = (cartes[i]==1);
+            i++;
+        }
+        return asTrouvé;
+    }
+
+Revoyez l'algorithme de parcours partiel si vous ne comprenez pas bien la 
+méthode **existeAs**.
+Notez qu'on aurait pu utiliser l'autre approche pour **existeAs** ce qui aurait donné :
+
+    public boolean existeAs(int[] cartes) {
+        int i = 0;
+        while (i<cartes.length && cartes[i]!=1) {
+            i++;
+        }
+        return i<cartes.length;
+    }
+
+Vous vous rappelez pourquoi le test du return doit être celui-là ?
+
+Il reste une dernière chose à faire : modifier la méthode principale
+afin qu'elle appelle la nouvelle version de la somme :
+
+    public static void main(String[] args) {
+        int[] cartes = {5,12,1,4};
+        int somme = somme(cartes);
+        System.out.println(somme);
+    }
+
+Ce n'est pas tout-à-fait vrai.
+Comme tout programmeur est faillible, il reste une chose importante à faire : tester.
+Au minimum, en testant que le programme donne la bonne réponse dans tous les exemples
+donnés dans l'énoncé.
+
+## Conclusion
+
+Il y deux enseignements à tirer de cet exercice
+1. Ne pas hésiter à attaquer d'abord une version simplifiée du problème.
+Cela permet d'arriver plus facilement à la solution finale.
+Ici, il n'y a même pas eu de travail inutile puisque nous avons pu réutiliser tel quel
+le code écrit pour la version simplifiée.
+2. Décomposer la solution en plusieurs algorithme.
+Si on identifie un sous-problème, il mérite une méthode à part plutôt que
+d'incorporer toutes les lignes de code dans une même méthode.
+On obtiendrait une longue méthode qui a beaucoup de défauts
+(plus difficile à lire/comprendre/corriger) 
+et aucun avantage décisif (peut-être un rien plus rapide mais c'est négligeable).
