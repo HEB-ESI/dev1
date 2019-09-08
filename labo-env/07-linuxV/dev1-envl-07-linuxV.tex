@@ -100,8 +100,8 @@
 				installation de logiciels, 
 				gestion des comptes utilisateurs et des groupes, 
 				sauvegardes, gestion des panne\dots{}
-				Sur Linux, on dit aussi le « super user », 
-				le « compte root » ou le « root ».
+				Sur Linux, on dit aussi le « super user », 
+				le « compte root » ou le « root ».
 			} de la machine. 		
 			Sur \texttt{linux1}, 
 			il y a 3 groupes pour les utilisateurs.
@@ -384,17 +384,17 @@
 			\item
 				On indique d'abord les utilisateurs concernés par la modification des droits :
 				\begin{itemize}
-				\item « u » pour le propriétaire (user), 
-				\item « g » pour le groupe, 
-				\item « o » pour les autres (other) et
-				\item « a » pour tout le monde (all)
+				\item « u » pour le propriétaire (user), 
+				\item « g » pour le groupe, 
+				\item « o » pour les autres (other) et
+				\item « a » pour tout le monde (all)
 				\end{itemize}  
 			\item
-				On indique ensuite si on veut ajouter (« + ») 
-				ou enlever (« - ») un droit
+				On indique ensuite si on veut ajouter (« + ») 
+				ou enlever (« - ») un droit
 			\item 
 				On indique enfin quel(s) droit(s) on ajoute ou enlève 
-				(« r », « w » et/ou « x »)
+				(« r », « w » et/ou « x »)
 			\end{itemize}
 
 			Consultez à la page de manuel pour découvrir toutes les possibilités.
@@ -469,24 +469,24 @@
 		\end{wrapfigure}
 		Tout comme pour les fichiers, on peut donner des permissions au dossier. 
 		Ce qui change, c'est la signification des permissions. 
-		Que veut dire « exécuter » un dossier par exemple ? 
+		Que veut dire « exécuter » un dossier par exemple ? 
 		
 		Pour bien comprendre, prenons une image.
-		Imaginons qu'un dossier possède sur sa « couverture » une liste de son contenu. 
+		Imaginons qu'un dossier possède sur sa « couverture » une liste de son contenu. 
 		Par exemple, on voit ci-contre que le dossier td2 contient 3 fichiers.
 		
 		\begin{theorie}{Permissions sur un dossier}
 			Explicitons à présent le sens de chaque droit pour un dossier :
 			\begin{description}
 			\item[\samp{r} (lecture)] 
-				On a le droit de lire ce qui est écrit sur la « couverture » du dossier. 
+				On a le droit de lire ce qui est écrit sur la « couverture » du dossier. 
 				On peut par exemple faire \kbd{ls td2}.
 			\item[\samp{w} (écriture)] 
-				On peut modifier la « couverture » du dossier. 
+				On peut modifier la « couverture » du dossier. 
 				On peut ainsi effacer un fichier (\kbd{rm td1/brol2})
 				ou en créer un (\kbd{touch td1/brol3}). 
 			\item[\samp{x} (ouverture)]
-				On peut « ouvrir » le dossier / entrer dedans. 
+				On peut « ouvrir » le dossier / entrer dedans. 
 				On peut ainsi en faire son dossier courant (\kbd{cd td2}) 
 				ou le traverser dans un chemin (\kbd{cat td2/gossip}).				
 			\end{description}
@@ -533,8 +533,8 @@
 			Il existe d'autres types de fichiers que les deux que nous avons vus. 
 			Ils se rencontrent moins souvent et sont surtout utilisés par le système.
 			Par exemple, certains définissent des \textit{pilotes} vers le matériel. 
-			Si vous voulez en savoir plus, vous pouvez lire ceci 
-			(\url{en.wikipedia.org/wiki/Unix\_file\_types}).  
+			Si vous voulez en savoir plus, vous pouvez lire ceci~:
+			\url{https://en.wikipedia.org/wiki/Unix\_file\_types}.  
 
 			\medskip
 			\textbf{%
@@ -546,8 +546,8 @@
 			Il y a 3 permissions dont nous n'avons pas parlé parce qu'elles sont moins courantes : 
 			le \textit{suid} (set user id), le \textit{sgid} (set group id) 
 			et le \textit{sticky}. 
-			Si vous voulez en savoir plus, vous pouvez lire ceci 
-			(\url{fr.wikipedia.org/wiki/Permissions\_UNIX}).  
+			Si vous voulez en savoir plus, vous pouvez lire ceci~:
+			\url{https://fr.wikipedia.org/wiki/Permissions\_UNIX}.  
 
 			\medskip
 			\textbf{%
