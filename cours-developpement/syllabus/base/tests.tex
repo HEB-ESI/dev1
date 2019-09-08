@@ -68,7 +68,8 @@ faut convaincre, qu'il fournira les bons résultats dans \textbf{tous} les cas:
 	\item lors d'une utilisation non conforme du programme.
 \end{itemize}
 
-Pour répondre à ces attentes, le développeur ou la développeuse sera attentif·ve
+Pour répondre à ces attentes, le développeur ou la développeuse sera attentive
+\footnote{Je m'autorise un accord de proximité.}
 à utiliser une méthodologie éprouvée dans toutes les étapes de développement de
 son projet; de la phase d'analyse au déploiement.  Il mettra en place différents
 types de tests
@@ -84,7 +85,7 @@ fournira un ensemble de valeurs à tester représentatives et convaincantes.
 
 \textbf{Test unitaire} Procédure permettant de tester le bon fonctionnement
 d'une unité de code, une méthode \bsc{Java} dans notre cas. En fonction des
-paramètres qu'elle reçoit en entrée, la méthode fournit elle les bons résultats~? 
+paramètres qu'elle reçoit en entrée, la méthode fournit-elle les bons résultats~? 
 
 L'idée sous-jacente des tests unitaires est que si chaque partie est correcte,
 l'ensemble sera correct. 
@@ -96,14 +97,18 @@ planifier.
 
 \section{Planifier les tests}
 
-Dans la méthode de résolution de problèmes que nous avons présenté dans le chapitre \ref{refpblm} p.\pageref{refpblm} et dans l'exercice résolu de la section \ref{exerciceresolu} p.\pageref{exerciceresolu} nous précisions que l'écriture d'une solution complète dans ce premier cours de développement consistait en: 
+Dans la méthode de résolution de problèmes que nous avons présenté dans le
+chapitre~\ref{refpblm} p.\,\pageref{refpblm} et dans l'exercice résolu de la
+section~\ref{exerciceresolu} p.\,\pageref{exerciceresolu} nous précisions que
+l'écriture d'une solution complète dans ce premier cours de développement
+consistait en: 
 
 \begin{enumerate}
 	\item spécifier le problème;
 	\item fournir des exemples;
 	\item écrire un algorithme;
 	\item vérifier les exemples (en traçant l'algorithme);
-	\item écrire un programme correspondant à l'algorithme;
+	\item écrire un programme exécutable correspondant à l'algorithme;
 	\item tester le programme et constater qu'il fournit bien les résultats attendus.
 \end{enumerate}
 
@@ -125,16 +130,16 @@ convaincant.
 
 \index{plan de test}
 \marginicon{definition}
-Un \textbf{plan de test} est donc une liste ou un tableau reprenant un certain
-nombre d'exemples qui mettent en œuvre la méthode testée sur des cas tels que
-ceux décrits ci-dessus et permettent de faire apparaître des problèmes lors de
-l'exécution automatique. Chacun des tests sera défini par une méthode qui porte
-un nom qui explique l'objectif du test sans la nécessité de commentaires
-additionnels. Autant que possible, ce nom décrit aussi la portée ou le contexte
-de ce qui est vérifié.
+Un \textbf{plan de test}\index{plan de test} est donc une liste ou un tableau
+reprenant un certain nombre d'exemples qui mettent en œuvre la méthode testée
+sur des cas tels que ceux décrits ci-dessus et permettent de faire apparaitre
+des problèmes lors de l'exécution automatique. Chacun des tests sera défini par
+une méthode qui porte un nom qui explique l'objectif du test sans la nécessité
+de commentaires additionnels. Autant que possible, ce nom décrit aussi la
+portée ou le contexte de ce qui est vérifié.
 
 \paragraph{Remarque} Dans certaines méthodologies, la mise en exergue de l'importance des tests se fait en écrivant d'abord les tests avant le code.
-Voir par exemple \href{https://fr.wikipedia.org/wiki/Test_driven_development}{Wikipedia} ou \href{http://www.extremeprogramming.org/rules/testfirst.html}{cette article d'\textit{extreme programming}}. 
+Voir par exemple \href{https://fr.wikipedia.org/wiki/Test_driven_development}{Wikipedia} ou \href{http://www.extremeprogramming.org/rules/testfirst.html}{cette article d'\textit{extreme programming}}\cite{testfirst}. 
 
 Dès lors que le plan de tests est écrit, nous pouvons nous intéresser aux outils
 qui vont permettre d'automatiser l'exécution des tests et faciliter leur
@@ -208,7 +213,7 @@ public void max2_cas1(){
 }
 \end{java}
 
-Après lancement des tests, JUnit fournirait un rapport l'allure suivante~:
+Après lancement des tests, JUnit fournira un rapport l'allure suivante~:
 
 \begin{term}
 JUnit version 4.12
@@ -222,7 +227,7 @@ OK (1 test)
 \section{Exemple}
 
 Reprenons l'exemple du calcul du maximum de 2 nombres décrit dans la fiche
-\ref{fiche:max2nb} p.\pageref{fiche:max2nb}. Voici un plan de tests~:
+\ref{fiche:max2nb} p\,\pageref{fiche:max2nb}. Voici un plan de tests~:
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \bigskip 
