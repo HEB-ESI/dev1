@@ -112,8 +112,13 @@
 		\begin{theorie}{Java sans package}
 			Si le programme Java n'utilise pas de package :
 			\begin{itemize}
-				\item \kbd{javac MaClasse.java} compile le programme Java du fichier donné
-				\item \kbd{java MaClasse} exécute le programme Java se trouvant dans la classe donnée.
+				\item \kbd{javac MaClasse.java} compile, à destination
+				      de la machine virtuelle Java, le fichier source 
+				      \samp{MaClasse.java} contenant du code écrit en langage
+				      Java ;
+				\item \kbd{java MaClasse} exécute, dans la machine virtuelle 
+				      Java, le programme se trouvant dans la classe 
+				      \samp{MaClasse}, préalablement compilée.
 			\end{itemize}
 		\end{theorie}
 
@@ -121,14 +126,15 @@
 			Commençons par un programme correct et tentons de l'exécuter.  
 		
 			Le fichier \samp{/eCours/dev1/envl/Hello.java} 
-			contient un petit programme Java tout simple qui affiche un message de bienvenue. 
+			contient le code source d'un petit programme Java tout simple 
+			qui affiche un message de bienvenue. 
 			
 			\begin{steps}	
 			\item 
-				Si ce n'est pas le cas, placez-vous dans le dossier \samp{td3}.
+				Si ce n'est pas le cas, placez-vous dans le dossier \samp{td3}
 			\item 
 				Copiez le fichier indiqué dans cd dossier :
-				\kbd{cp /eCours/dev1/envl/Hello.java .}
+				\kbd{cp /eCours/dev1/envl/Hello.java}
 			\item 
 				Lisez-le et voyez si vous devinez ce qu'il fait : \kbd{cat Hello.java}
 			\item 
@@ -136,7 +142,7 @@
 			\item 
 				Que fait cette phase, à quoi sert-elle ?
 				Affichez le contenu du dossier pour le vérifier.
-			\item Exécutez le programme : \kbd{java Hello}
+			\item Exécutez la classe : \kbd{java Hello}
 			\end{steps}			
 		\end{Tutoriel}
 
