@@ -211,3 +211,8 @@ d'incorporer toutes les lignes de code dans une même méthode.
 On obtiendrait une longue méthode qui a beaucoup de défauts
 (plus difficile à lire/comprendre/corriger) 
 et aucun avantage décisif (peut-être un rien plus rapide mais c'est négligeable).
+3. Ne pas réinventer la roue ! Toujours se demander si le problème qu'on doit résoudre
+ne fait pas partie d'une catégorie de problèmes déjà résolu. Si c'est la cas,
+reprendre et adapter la solution déjà trouvée plutôt que de tout recommencer du début.
+Par exemple, ici, on a compris que rechercher la présence d'un as est un parcours partiel
+de tableau à la recherche d'un élément donné. Un problème déjà étudié et résolu.
