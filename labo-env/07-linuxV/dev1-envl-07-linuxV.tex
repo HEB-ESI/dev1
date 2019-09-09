@@ -38,7 +38,7 @@
 	et celle de \textit{groupe}. 
 
 	%======================================
-	\subsection{Les groupes d'utilisateurs}
+	\section{Les groupes d'utilisateurs}
 	%======================================
 
 		\begin{theorie}{Les groupes}
@@ -75,10 +75,12 @@
 			La commande \samp{groups} renseigne sur les groupes.
 			\begin{itemize}
 				\item \kbd{groups} : affiche les groupes de l'utilisateur.
-				\item \kbd{groups loginUtilisateur} : affiche les groupes de l'utilisateur donné.
+				\item \kbd{groups loginUtilisateur} : affiche les groupes de 
+				l'utilisateur donné.
 			\end{itemize}
 			Le premier groupe de la liste est le \textbf{groupe principal}.
-			C'est celui qui sera utilisé par défaut (par exemple, lorsqu'on crée un fichier).
+			C'est celui qui sera utilisé par défaut (par exemple, 
+			lorsqu'on crée un fichier).
 		\end{theorie}
 
 		\begin{Exercice}{Visualiser les groupes}
@@ -125,7 +127,7 @@
 		\end{alertbox}
 
 	%======================================
-	\subsection{Propriétaire d'un fichier}
+	\section{Propriétaire d'un fichier}
 	%======================================
 	
 		\exergue{La propriété est un piège: ce que nous croyons posséder nous possède.}
@@ -154,7 +156,8 @@
 		\end{Exercice}
 
 		\begin{faq}
-			\textbf{Les fichiers dans mon dossier personnel ne sont pas automatiquement à moi ?}
+			\textbf{Les fichiers dans mon dossier personnel ne sont pas 
+			automatiquement à moi ?}
 
 			Non. En pratique c'est généralement le cas, 
 			mais on peut très bien trouver dans un dossier personnel 
@@ -162,7 +165,7 @@
 		\end{faq}
 
 	%======================================
-	\subsection{Groupes d'un fichier}
+	\section{Groupes d'un fichier}
 	%======================================
 
 		\begin{theorie}{Groupe d'un fichier}
@@ -193,7 +196,7 @@
 		\end{Exercice}
 
 	%======================================
-	\subsection{Les 3 catégories de personnes}
+	\section{Les 3 catégories de personnes}
 	%======================================
 
 		\begin{infotbox}{Ce qu'on a déjà vu}
@@ -217,7 +220,7 @@
 		\end{center}
 
 	%======================================
-    \subsection{Les permissions sur un fichier}  
+    \section{Les permissions sur un fichier}  
 	%======================================
 
 		Nous avons vu que nous pouvons spécifier des permissions différentes
@@ -311,7 +314,7 @@
 		\end{Experience}		
 	
 	%=========================================
-	\subsection{Modifier les permissions}
+	\section{Modifier les permissions}
 	%=========================================
 
 		\begin{infotbox}{Faisons le point !}
@@ -330,7 +333,7 @@
 
 		Il existe deux façons d'indiquer les permissions : via des nombres ou via des lettres.
 
-		\subsubsection{Donner les permissions avec des nombres}
+		\subsection{Donner les permissions avec des nombres}
 		%======================================================
 
 			Pour indiquer les permissions avec un nombre, 
@@ -352,7 +355,8 @@
 			
 			Exemple : \kbd{chmod 640 welcome} donne 
 			au propriétaire le droit en lecture/écriture, 
-			aux utilisateurs dans le même groupe que le fichier le droit en lecture uniquement 
+			aux utilisateurs dans le même groupe que le fichier le droit 
+			en lecture uniquement 
 			et aucun droit aux autres.
 
 			\begin{Exercice}{Convertir les permissions en nombres} 
@@ -370,7 +374,7 @@
 				mais modifiable uniquement par vous.
 			\end{Exercice}
 
-		\subsubsection{Donner les permissions avec des lettres}
+		\subsection{Donner les permissions avec des lettres}
 		%======================================================
 
 			Avec la notation précédente, on spécifie toutes les permissions. 
@@ -410,7 +414,7 @@
 			\end{Exercice}
 
 	%======================================================
-	\subsection{Différencier les étudiants des enseignants}
+	\section{Différencier les étudiants des enseignants}
 	%======================================================
 
 		\begin{alertbox}
@@ -462,7 +466,7 @@
 		\end{Exercice}
 
 	%======================================================
-	\subsection{Les permissions sur les dossiers}
+	\section{Les permissions sur les dossiers}
 	%======================================================
 
 		\begin{wrapfigure}{r}{.2\textwidth}
@@ -517,7 +521,7 @@
 		\end{Exercice}
 
 	%================================
-	\subsection{Les derniers détails}
+	\section{Les derniers détails}
 	%================================
 
 		Voyons quelques détails mis de coté pendant notre apprentissage.
