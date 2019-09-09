@@ -102,7 +102,8 @@
 	\begin{Exercice}{Compiler en bloc}
 		Sachant que la commande \samp{javac} 
 		accepte plusieurs noms de fichiers à compiler,
-		comment compiler facilement tous les fichiers Java du dossier \samp{td4}.
+		comment compiler facilement tous les fichiers \name{Java} 
+		du dossier \samp{td4}.
 	\end{Exercice}
 
 %====================
@@ -140,7 +141,7 @@
 
 	\medskip
 	Exemple : \kbd{find \textasciitilde{} -name "*.java"}
-	\\permet de trouver tous les fichiers java%
+	\\permet de trouver tous les fichiers \name{Java}%
 	\footnote{
 		Les guillements demande au shell de ne \textbf{pas}
 		traiter le joker. Le motif est passé tel quel à la commande
@@ -177,7 +178,7 @@
 \section{Redirection}
 %====================
 
-	Imaginons qu'un programme Java produise un gros output.
+	Imaginons qu'un programme \name{Java} produise un gros output.
 	Est-il possible de le sauver dans un fichier pour le consulter tranquillement ?
 	Oui !
 	Ceci ,et bien d'autres choses encore, est possible grâce aux redirections.
@@ -191,17 +192,17 @@
 			créez un dossier \samp{td4} et placez-vous dedans.
 			\begin{steps}
 			\item 
-				\kbd{cp /eCours/dev1/envl/PasCroissant.java .}
-				pour copier un programme Java qui produit un output très long.
+				\kbd{cp /eCours/dev1/envl/PasCroissant.java}
+				pour copier un programme \name{Java} qui produit un output très long.
 			\item 
-				Examiner le code et essayez de comprendre ce qu'il fait.
+				Examinez le code et essayez de comprendre ce qu'il fait.
 			\item 
 				\kbd{javac PasCroissant.java} pour le compiler.
 			\item 
 				\kbd{java PasCroissant} pour l'exécuter.
 				Vous constatez que le résultat est très long.
 			\item 
-				\kbd{java PasCroissant >res}. Plus rien n'est affiché !?
+				\kbd{java PasCroissant > res} Plus rien n'est affiché !
 			\item 
 				\kbd{ls} pour constater qu'un fichier \samp{res} est apparu.
 			\item 
@@ -210,7 +211,7 @@
 			\end{steps}
 		\end{Experience}
 
-		Ce qu'on vient de voir avec un programme Java est en fait
+		Ce qu'on vient de voir avec un programme \name{Java} est en fait
 		vrai pour n'importe quel exécutable (les commandes aussi donc).
 
 		\begin{theorie}{Rediriger la sortie}
@@ -228,7 +229,7 @@
 		\begin{alerttbox}{Transparent pour les exécutables}
 			Comprenez-bien que ceci est \textbf{transparent}
 			pour les commandes.
-			Le programme Java n'a pas été modifié !
+			Le programme \name{Java} n'a pas été modifié !
 			Pour lui, \samp{System.out} représente la \emph{sortie standard}.
 			Par défaut c'est l'écran mais la redirection 
 			permet de rediriger vers un fichier.
@@ -243,7 +244,7 @@
 	\subsection{Rediriger l'erreur}
 	%===============================
 	
-		En Java, le code \samp{System.out.println()}
+		En \name{Java}, le code \samp{System.out.println()}
 		est utilisé pour afficher quelque chose à l'écran.
 		Il existe également le code \samp{System.err.println()}
 		pour afficher un message d'erreur.
@@ -263,7 +264,7 @@
 		ils sont mélangés aux affichages normaux.
 		Une redirection permet de les séparer pour mieux les voir.
 
-		Ceci explique pourquoi c'est une bonne pratique en Java
+		Ceci explique pourquoi c'est une bonne pratique en \name{Java}
 		d'utiliser \samp{System.err} lorsque vous affichez un message d'erreur.
 
 		\begin{Exercice}{Recherche}
@@ -271,7 +272,7 @@
 			il est possible que la commande tente d'accéder à des sous-dossiers
 			pour lesquels vous n'avez pas les droits%
 			\footnote{%
-				Un prochain TD sera consacré aux permissions sous Linux.
+				Un prochain TD sera consacré aux permissions sous \name{Linux}.
 			}.
 			Dans ce cas, elle affiche un message d'erreur.
 
@@ -301,7 +302,7 @@
 			\begin{steps}
 			\item 
 				\kbd{cp /eCours/dev1/envl/Multiple4.java .}
-				pour copier un programme Java qui produit lit des nombres
+				pour copier un programme \name{Java} qui produit lit des nombres
 				au clavier (plus précisément, sur l'entrée standard).
 			\item 
 				Examiner le code et essayez de comprendre ce qu'il fait.
@@ -426,7 +427,7 @@
 	Ceux qui ont du temps peuvent aborder les exercices suivants.
 
 	\begin{Exercice}{Traiter les fichiers trouvés}
-		Comment afficher le \textbf{contenu} de tous vos fichiers java ?
+		Comment afficher le \textbf{contenu} de tous vos fichiers \name{Java} ?
 		Aide : consultez la section \samp{ACTIONS} de la page de manuel
 		de \samp{find}.
 	\end{Exercice}

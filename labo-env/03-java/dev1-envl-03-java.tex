@@ -12,7 +12,7 @@
 
 \begin{document}
 
-\seance{3}{Nano et Java sur linux}
+\seance{3}{Nano et Java sur Linux}
 \entete
 \titre
 \ccbysa{esi-dev1-list@he2b.be}
@@ -22,11 +22,11 @@
 \begin{abstract}
     Lorsqu'on programme en \name{Java} sur \name{Linux},
     on peut, comme sur \name{Windows},
-    utiliser un environnement de développement comme \name{Netbeans}.
+    utiliser un environnement de développement comme \name{NetBeans}.
     Mais on peut aussi tout faire en mode console, 
     c'est ce que nous allons voir ici, en utilisant, entre autres choses,
-    l'éditeur de texte nano.
-    Nous en profiterons pour apprendre de nouvelles notions liées à Linux.
+    l'éditeur de texte \name{GNU nano}.
+    Nous en profiterons pour apprendre de nouvelles notions liées à \name{Linux}.
 \end{abstract}
 
 \bigskip
@@ -52,10 +52,10 @@
 	Vous connaissez probablement \name{Notepad} sous \name{Windows}. 
 	Sur \name{Linux}, il en existe beaucoup. 
 	Celui que nous vous proposons dans un premier temps au laboratoire 
-	s'appelle \name{nano}. 
+	s'appelle \name{GNU nano} ou simplement \name{nano}. 
 	Il est assez facile pour débuter et faire des choses simples. 
 	Par la suite, vous pourrez choisir de rester sous \name{nano} 
-	ou d'utiliser \name{vim}.
+	ou d'utiliser \name{Vim}.
 
 	\begin{Tutoriel}{Premiers pas avec nano}
 	\vspace{-1em}
@@ -93,14 +93,14 @@
 \section{Java en mode console}
 %==============================
 
-	Avec Netbeans, lorsque vous appuyez sur des boutons
+	Avec \name{NetBeans}, lorsque vous appuyez sur des boutons
 	(comme celui demandant d'exécuter le projet),
 	cela lance des commandes qui effectuent la tâche.
 	Il est possible d'exécuter directement ces commandes.
 	C'est ce que nous allons faire ici.
 
 	\begin{alerttbox}{Pas de package}
-		Nous allons aborder uniquement des programmes Java
+		Nous allons aborder uniquement des programmes \name{Java}
 		\textbf{sans package}.
 		L'utilisation de l'instruction \samp{package} en début de code
 		complique la tâche et nous n'aurons pas le temps d'aborder cette situation.
@@ -111,14 +111,14 @@
 	%==============================
 
 		\begin{theorie}{Java sans package}
-			Si le programme Java n'utilise pas de package :
+			Si le programme \name{Java} n'utilise pas de package :
 			\begin{itemize}
 				\item \kbd{javac MaClasse.java} compile, à destination
-				      de la machine virtuelle Java, le fichier source 
+				      de la machine virtuelle \name{Java}, le fichier source 
 				      \samp{MaClasse.java} contenant du code écrit en langage
-				      Java ;
+				      \name{Java} ;
 				\item \kbd{java MaClasse} exécute, dans la machine virtuelle 
-				      Java, le programme se trouvant dans la classe 
+				      \name{Java}, le programme se trouvant dans la classe 
 				      \samp{MaClasse}, préalablement compilée.
 			\end{itemize}
 		\end{theorie}
@@ -127,7 +127,7 @@
 			Commençons par un programme correct et tentons de l'exécuter.  
 		
 			Le fichier \samp{/eCours/dev1/envl/Hello.java} 
-			contient le code source d'un petit programme Java tout simple 
+			contient le code source d'un petit programme \name{Java} tout simple 
 			qui affiche un message de bienvenue. 
 			
 			\begin{steps}	
@@ -156,13 +156,13 @@
 		\end{alerttbox}
 
 	%=============================
-	\subsection{Produire et visualiser la Javadoc}
+	\subsection{Produire et visualiser la javadoc}
 	%==============================
 
 		\begin{theorie}{Javadoc}
 			\kbd{javadoc -doc dossierDoc MaClasse.java}
 			génère la javadoc présente dans le fichier \texttt{MaClasse.java}
-			dans le dossier \texttt{dossierDoc} (qui doit exister).
+			dans le dossier \texttt{dossierDoc}. Ce dernier doit exister.
 		\end{theorie}
 
 		\begin{Exercice}{Javadoc de Hello}
@@ -176,16 +176,16 @@
 		avec un simple navigateur web en ouvrant le fichier \verb|index.html|
 		mais il n'y en a pas sur \samp{linux1}%
 		\footnote{%
-			Un Linux avec environnement graphique 
+			Un \name{Linux} avec environnement graphique 
 			dispose bien sûr d'un navigateur web.
-			Si vous avez installé un Linux avec environnement graphique
+			Si vous avez installé un \name{Linux} avec environnement graphique
 			sur votre PC, il suffit de double-cliquer sur le fichier
 			\samp{index.html} produit.
 		}.
 
 		\begin{Tutoriel}{Visualiser la documentation sur Windows}
 			Voici comment procéder pour visualiser la documentation
-			produite à partir d'un navigateur sur Windows.
+			produite à partir d'un navigateur sur \name{Windows}.
 			\begin{steps}
 			\item 
 				Entrez \kbd{mkdir -p \textasciitilde{}/public\_{}html/doc}.
@@ -203,7 +203,7 @@
 				Entrez \kbd{javadoc -doc \textasciitilde{}/public\_{}html/doc Hello.java}
 				\\pour créer la javadoc en la plaçant au bon endroit.
 			\item 
-				Lancez votre navigateur préféré sur Windows.
+				Lancez votre navigateur préféré sur \name{Windows}.
 			\item 
 				Entrez comme \name{url} : \verb|http://linux1/~<votre login>/doc|.
 				Vous devriez voir la javadoc s'afficher.
@@ -215,7 +215,7 @@
 \section{L'éditeur nano}
 %======================================
 
-	Voyons quelques facilités proposées par le navigateur \name{nano}
+	Voyons quelques facilités proposées par l'éditeur \name{nano}
 	pour simplifier le développement de programmes.
 
 	\subsection{Coloration syntaxique}
@@ -223,7 +223,7 @@
 
 		La coloration syntaxique signifie 
 		utiliser des couleurs pour mettre en évidence certaines parties d'un code :
-		mots clés, constantes\dots{}
+		mots clés, constantes\ldots
 	
 		Pour utiliser cette facilité, 
 		il faut configurer \name{nano}. 
@@ -248,14 +248,15 @@
 	\subsection{Numérotation des lignes}
 	%=================================
 				
-		Nano peut également indiquer le numéro de la ligne sur laquelle se trouve 
+		\name{nano} peut également indiquer le numéro de la ligne 
+		sur laquelle se trouve 
 		le curseur, 
 		ce qui sera pratique pour corriger vos erreurs. 
 		Pour cela, il existe deux méthodes.
 
 		\begin{itemize}
 		\item \textbf{Méthode 1} : 
-			Lancer nano avec l'option \samp{-c} : \kbd{nano -c monFichier}
+			Lancer \name{nano} avec l'option \samp{-c} : \kbd{nano -c monFichier}
 			ou, mieux, ajouter \samp{set constantshow} au fichier
 			fichier \samp{\textasciitilde{}/.nanorc}.
 		\item \textbf{Méthode 2} : 
@@ -264,7 +265,7 @@
 		
 		Par ailleurs, il est possible d'indiquer les numéros des 
 		lignes dans la
-		marge gauche. Pour cela, lancer nano avec l'option 
+		marge gauche. Pour cela, lancer \name{nano} avec l'option 
 		\samp{-l} : \kbd{nano -l monFichier} ou, mieux, 
 	    ajouter \samp{set linenumbers} au fichier 
 	    fichier \samp{\textasciitilde{}/.nanorc}.
@@ -284,8 +285,9 @@
 		Pour qu'un programme soit lisible, 
 		il doit être \textit{indenté}. 
 		Ce qui serait pratique lorsqu'on code ce serait qu'un retour à la ligne 
-		positionne automatiquement le curseur de façon à être aligné avec la ligne précédente. 
-		Pour que nano fasse ça pour nous, 
+		positionne automatiquement le curseur de façon à être 
+		aligné avec la ligne précédente. 
+		Pour que \name{nano} fasse ça pour nous, 
 		il suffit d'ajouter	ceci à son fichier de configuration : \samp{set autoindent}.
 			
 	\subsection{Pour aller plus loin} 
@@ -343,7 +345,7 @@
 	\begin{Tutoriel}{Transférer des fichiers}
 	\begin{steps}		
 		\item 
-			Ouvrez l'explorateur de fichier de Windows.
+			Ouvrez l'explorateur de fichier de \name{Windows}.
 			%(par exemple en cliquant sur l'icône "My Computer").
 		\item 
 			Dans le champ d'adresse, tapez l'adresse \samp{ftp://linux1}.
@@ -352,7 +354,8 @@
 		\item 
 			Vous voyez apparaitre votre dossier personnel sur \textit{linux1}. 
 		\item 
-			Vous pouvez y prendre/déposer des fichiers comme vous le feriez pour un dossier Windows. 
+			Vous pouvez y prendre/déposer des fichiers comme vous le 
+			feriez pour un dossier \name{Windows}. 
 			Vous pouvez par exemple les mettre sur une \textbf{clé USB},
 			sur le cloud ou vous les envoyer par mail.
 	\end{steps}
@@ -366,9 +369,9 @@
 		Voici les notions importantes que vous devez avoir assimilées à la fin de ce TD.
 		\begin{itemize}
 		\item 
-			Savoir utiliser \samp{nano} pour éditer un petit programme Java.
+			Savoir utiliser \name{nano} pour éditer un petit programme \name{Java}.
 		\item 
-			Savoir compiler et exécuter un programme Java 
+			Savoir compiler et exécuter un programme \name{Java} 
 			qui n'utilise pas de package.
 		\item 
 			Savoir générer et visualiser la javadoc.

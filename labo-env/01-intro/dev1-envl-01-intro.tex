@@ -51,14 +51,14 @@
 \section{Une introduction à Linux}
 %====================
 
-	\exergue{Linux ? Il y a moins bien mais c'est plus cher.}{Auteur inconnu}
+	\exergue{\name{Linux} ? Il y a moins bien mais c'est plus cher.}{Auteur inconnu}
 
 	%====================
 	\subsection{Présentation}
 	%====================
 
-		Vous ne travaillerez pas directement sur votre PC durant les laboratoires d'environnement. 
-		Celui-ci vous servira pour vous connecter au serveur Linux
+		Vous ne travaillerez pas directement sur votre \name{PC} durant les laboratoires d'environnement. 
+		Celui-ci vous servira pour vous connecter au serveur \name{Linux}
 		(son nom est \verb_linux1_).
 
 		\begin{theorie}{Linux}
@@ -66,21 +66,22 @@
 				\vspace{-1em}
 				\flushright
 				\includegraphics[width=0.38\textwidth]{images/ubuntu}
-				\caption{Ubuntu 18.04}
+				\caption{\name{Ubuntu 18.04}}
 				\vspace{-1em}
 			\end{wrapfigure} 
-			Linux est un système d'exploitation comme le sont également Windows ou MacOS. 
+			\name{Linux} est un système d'exploitation comme le sont 
+			également \name{Windows} ou \name{MacOS}. 
 			Il permet d'utiliser l'ordinateur et ses périphériques. 
 			La plupart des systèmes d'exploitation actuels proposent 
 			une interface graphique à l'utilisateur. 
 			Ainsi, les concepts de fenêtre, de menus, de souris\dots{} vous sont familiers. 
-			Linux n'échappe pas à la règle et propose un environnement 
+			\name{Linux} n'échappe pas à la règle et propose un environnement 
 			proche de ce qu'on peut trouver sur d'autres systèmes.
 		\end{theorie}
 
 		Bien que nous pourrions utiliser le mode graphique, 
 		nous allons, pour des raisons pédagogiques, 
-		vous apprendre à utiliser Linux en mode console.
+		vous apprendre à utiliser \name{Linux} en mode console.
 
 		\begin{theorie}{Le mode console}
 			En mode console%
@@ -101,7 +102,7 @@
 				et de les exécuter. 
 				C'est ce shell qui tourne dans la console.
 			\item[Bash] 
-				Plusieurs shells existent en Linux. Bash est l'un d'entre eux.
+				Plusieurs shells existent en \name{Linux}. Bash est l'un d'entre eux.
 			\end{description} 
 			Dans l'exemple ci-dessus, 
 			vous pouvez constater que l'utilisateur entre la commande \kbd{pwd}  
@@ -109,12 +110,12 @@
 			\footnote{%
 				Vous comprendrez bientôt ce que signifie \samp{pwd}.
 			}. 
-			Ensuite, bash attend la commande suivante.
+			Ensuite, Bash attend la commande suivante.
 		\end{theorie}
 
 		Pour travailler en mode console, il faut savoir dialoguer avec ce shell. 
 		Comment lui indiquer par exemple qu'on veut copier un fichier, 
-		exécuter un programme Java\dots ? 
+		exécuter un programme \name{Java}\dots ? 
 		\textbf{C'est le principal objectif de ces TDs !}
 
 \newpage
@@ -125,8 +126,8 @@
 		\verb_linux1_ n'est pas la machine sur laquelle vous êtes.
 		Vous allez devoir vous y connecter à distance.
 
-		\begin{theorie}{putty}
-			\textbf{\name{putty}} est une application qui permet (notamment)
+		\begin{theorie}{PuTTY}
+			\textbf{\name{PuTTY}} est une application qui permet (notamment)
 			d'ouvrir un \emph{terminal} sur une machine distante, 
 			de s'y connecter et de dialoguer avec elle en mode console.
 		\end{theorie}
@@ -136,7 +137,7 @@
 			\begin{minipage}{10em}
 				\centering
 				\includegraphics[height=6em]{images/putty1}\\
-				{\footnotesize Vous, sur le PC Windows}
+				{\footnotesize Vous, sur le \name{PC} \name{Windows}}
 			\end{minipage}
 			\qquad
 			\begin{minipage}{8em}
@@ -160,13 +161,13 @@
 			\item[Votre login (username)]
 				Un \textbf{'g' minuscule} suivi de votre numéro d'étudiant
 				(ex: \samp{g52010}).
-				\\\textbf{Note} : pour Linux, les minuscules et les majuscules 
+				\\\textbf{Note} : pour \name{Linux}, les minuscules et les majuscules 
 				sont différentes.
 			\item[Votre mot de passe]
-				Le même que votre \textbf{mot de passe initial sous Windows}%
+				Le même que votre \textbf{mot de passe initial sous \name{Windows}}%
 				\footnote{%
-					Le mot de passe sous Windows,
-					sous Linux et pour votre mail \name{he2b} 
+					Le mot de passe sous \name{Windows},
+					sous \name{Linux} et pour votre mail \name{he2b} 
 					sont trois mots de passe différents
 					mais initialisés à la même valeur.        
 				}.			
@@ -177,10 +178,10 @@
 		Il y a 4 étapes :
 		\begin{steps}			
 		\item 
-			Lancez l'application \name{putty} 
+			Lancez l'application \name{PuTTY} 
 			(vous la trouverez dans le menu ou comme raccourci sur le bureau).			
 		\item 
-			Indiquez à \name{putty} le nom de la machine (\textit{Host Name}) 
+			Indiquez à \name{PuTTY} le nom de la machine (\textit{Host Name}) 
 			à laquelle vous voulez vous connecter (ici \kbd{linux1}) ;
 		\item 
 			Cliquez sur \og \textbf{Open} \fg ; 
@@ -213,7 +214,7 @@
 			\begin{itemize}
 			\item 
 				Un \textbf{fichier} contient de l'information : 
-				un code Java, un exécutable, un texte\dots{}
+				un code \name{Java}, un exécutable, un texte\dots{}
 			\item 
 				Un \textbf{dossier} contient des fichiers. 
 				Il sert à organiser/regrouper les nombreux fichiers du disque. 
@@ -226,7 +227,7 @@
 		\end{theorie}
 
 		\begin{theorie}{Le répertoire personnel}
-			Sur Linux, chaque utilisateur dispose d'un « \textbf{dossier personnel} » 
+			Sur \name{Linux}, chaque utilisateur dispose d'un « \textbf{dossier personnel} » 
 			(on dit aussi sa « \textbf{home} »). 
 			C'est dans ce dossier qu'il peut créer des fichiers (et des dossiers). 
 			Par convention, ce dossier porte le même nom que le login de l'utilisateur%
@@ -258,7 +259,7 @@
 					linux1:~> ls
 					dev1 welcome
 				\end{Console}				
-				Le bash vous montre le contenu de votre dossier courant
+				Bash vous montre le contenu de votre dossier courant
 				(votre dossier personnel dans ce cas ci).
 				Vous constatez qu'il contient déjà un dossier \samp{dev1}
 				et un fichier \samp{welcome}.
@@ -323,7 +324,7 @@
 			il vous affiche un message d'erreur 
 			car il ne comprend pas ce que vous lui voulez.
 			\begin{infobox}
-				En Linux, 
+				En \name{Linux}, 
 				\textbf{les majuscules et les minuscules n'ont pas le même sens.}
 			\end{infobox}
 		\end{Experience}	
@@ -379,7 +380,7 @@
 					\item 
 						Ensuite, vous entrez le nouveau mot de passe.
 						Vous pouvez reprendre le même mot de passe 
-						que celui que vous avez choisi pour Windows.
+						que celui que vous avez choisi pour \name{Windows}.
 					\item 
 						Vous retapez une deuxième fois ce mot de passe pour le confirmer.
 				\end{enumerate}
@@ -410,8 +411,8 @@
 				ce qui peut laisser trainer des processus actifs et vous empêcher de vous connecter la prochaine fois.
 
 			\medskip
-			\textbf{Si jamais j'oublie mon mot de passe sous Linux. Je dois aussi aller voir les techniciens ?}			
-				Non ! Votre professeur de labo peut réinitialiser le mot de passe Linux à sa valeur initiale.
+			\textbf{Si jamais j'oublie mon mot de passe sous \name{Linux}. Je dois aussi aller voir les techniciens ?}			
+				Non ! Votre professeur de labo peut réinitialiser le mot de passe \name{Linux} à sa valeur initiale.
 		\end{faq}
 
 	%====================
@@ -421,7 +422,7 @@
 		Comment désigner un fichier qui se trouve dans un sous-dossier ?
 		Peut-on se contenter d'indiquer son nom ? Testons !
 
-		\begin{Experience}{Le bash ne cherche pas un fichier}
+		\begin{Experience}{Bash ne cherche pas un fichier}
 			On voudrait visualiser le contenu du fichier \samp{readme}
 			qui se trouve dans \samp{dev1}.
 			\begin{steps}
@@ -458,7 +459,7 @@
 			est la suite des dossiers à traverser 
 			(séparés par \samp{/}%
 			\footnote{%
-				Attention ! Pas d'espace sinon le bash pense 
+				Attention ! Pas d'espace sinon Bash pense 
 				qu'il s'agit de 2 éléments distincts.
 			})
 			pour arriver au fichier
@@ -672,10 +673,10 @@
 		Non ! Cette machine n'est accessible que de l'école.
 
 		\medskip
-		\textbf{J'aimerais terminer à la maison mais je n'ai pas Linux ?}
+		\textbf{J'aimerais terminer à la maison mais je n'ai pas \name{Linux} ?}
 		
 		Sur poÉSI, vous trouverez un document qui vous explique
-		comment avoir facilement un Linux fonctionnel sur votre PC.
+		comment avoir facilement un \name{Linux} fonctionnel sur votre \name{PC}.
 
 		\medskip
 		\textbf{J'ai beaucoup de mal à faire les exercices. 
