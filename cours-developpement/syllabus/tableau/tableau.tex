@@ -3,7 +3,7 @@
 %======================
 
 	Dans ce chapitre nous étudions les tableaux, une structure qui peut contenir
-	plusieurs exemplaires de données similaires.
+	plusieurs exemplaires de même type.
 
 	\minitoc
 	\clearpage
@@ -51,66 +51,85 @@
 	\end{itemize}
 	
 		Vous trouverez sur la page suivante une version possible de cet
-		algorithme.
+		algorithme sans utiliser les tabeaux.
+
+		\begin{java}
+import java.util.Scanner;
+/*
+ Calcule et affiche la quantité vendue de 10 produits
+*/
+public static void statistics(){
+	Scanner keyboard = new Scanner(System.in);
+	int cpt0, cpt1, cpt2, cpt3, cpt4, cpt5, cpt6, cpt7, cpt8, cpt9;
+	int productId, quantity;
+	cpt0 = 0;
+	cpt1 = 0;
+	cpt2 = 0;
+	cpt3 = 0;
+	cpt4 = 0;
+	cpt5 = 0;
+	cpt6 = 0;
+	cpt7 = 0;
+	cpt8 = 0;
+	cpt9 = 0;
+	System.out.print("Introduire le numéro de produit : ");
+	productId = keyboard.nextInt();
+	while (productId != -1){
+		System.out.print("Quantité:");
+		quantity = keyboard.nextInt();
+		switch (productId){
+			case 0:
+				cpt0 = cpt0 + quantity;
+				break;
+			case 1:
+				cpt1 = cpt1 + quantity;
+				break;
+			case 2:
+				cpt2 = cpt2 + quantity;
+				break;
+			case 3:
+				cpt3 = cpt3 + quantity;
+				break;
+			case 4:
+				cpt4 = cpt4 + quantity;
+				break;
+			case 5:
+				cpt5 = cpt5 + quantity;
+				break;
+			case 6:
+				cpt6 = cpt6 + quantity;
+				break;
+			case 7:
+				cpt7 = cpt7 + quantity;
+				break;
+			case 8:
+				cpt8 = cpt8 + quantity;
+				break;
+			case 9:
+				cpt9 = cpt9 + quantity;
+				break;
+		}
+		System.out.print("Introduire le numéro de produit : ");
+		productId = keyboard.nextInt();
+	}
+
+	\end{java}
 	
-		\vfill
-		\begin{pseudocode}
-		\LComment Calcule et affiche la quantité vendue de 10 produits.
-		\Algo{statistiquesVentesSansTableau}{}{}
-			\Empty
-			\Decl{cpt0, cpt1, cpt2, cpt3, cpt4, cpt5, cpt6, cpt7, cpt8, cpt9}{entiers}
-			\Decl{numéroProduit, quantité}{entiers}
-			\Empty
-			\Let cpt0 \Gets 0
-			\Let cpt1 \Gets 0
-			\Let cpt2 \Gets 0
-			\Let cpt3 \Gets 0
-			\Let cpt4 \Gets 0
-			\Let cpt5 \Gets 0
-			\Let cpt6 \Gets 0
-			\Let cpt7 \Gets 0
-			\Let cpt8 \Gets 0
-			\Let cpt9 \Gets 0
-			\Empty
-			\Write "Introduisez le numéro du produit~:"
-			\Read numéroProduit
-			\Empty
-			\While{numéroProduit $\neq$ -1}
-			\Empty
-				\Write "Introduisez la quantité vendue~:"
-				\Read quantité
-				\Empty
-				\Switch{numéroProduit \K{vaut}}
-					\Stmt 0~: cpt0 \Gets cpt0 + quantité
-					\Stmt 1~: cpt1 \Gets cpt1 + quantité
-					\Stmt 2~: cpt2 \Gets cpt2 + quantité
-					\Stmt 3~: cpt3 \Gets cpt3 + quantité
-					\Stmt 4~: cpt4 \Gets cpt4 + quantité
-					\Stmt 5~: cpt5 \Gets cpt5 + quantité
-					\Stmt 6~: cpt6 \Gets cpt6 + quantité
-					\Stmt 7~: cpt7 \Gets cpt7 + quantité
-					\Stmt 8~: cpt8 \Gets cpt8 + quantité
-					\Stmt 9~: cpt9 \Gets cpt9 + quantité
-				\EndSwitch
-				\Empty
-				\Write "Introduisez le numéro du produit~:"
-				\Read numéroProduit
-				\Empty
-			\EndWhile
-			\Empty
-			\Write "quantité vendue de produit 0~:", cpt0
-			\Write "quantité vendue de produit 1~:", cpt1
-			\Write "quantité vendue de produit 2~:", cpt2
-			\Write "quantité vendue de produit 3~:", cpt3
-			\Write "quantité vendue de produit 4~:", cpt4
-			\Write "quantité vendue de produit 5~:", cpt5
-			\Write "quantité vendue de produit 6~:", cpt6
-			\Write "quantité vendue de produit 7~:", cpt7
-			\Write "quantité vendue de produit 8~:", cpt8
-			\Write "quantité vendue de produit 9~:", cpt9
-			\Empty
-		\EndAlgo
-		\end{pseudocode}
+	\begin{java}
+
+	System.out.println("Quantité vendue de produit 0" + cpt0);
+	System.out.println("Quantité vendue de produit 1" + cpt1);
+	System.out.println("Quantité vendue de produit 2" + cpt2);
+	System.out.println("Quantité vendue de produit 3" + cpt3);
+	System.out.println("Quantité vendue de produit 4" + cpt4);
+	System.out.println("Quantité vendue de produit 5" + cpt5);
+	System.out.println("Quantité vendue de produit 6" + cpt6);
+	System.out.println("Quantité vendue de produit 7" + cpt7);
+	System.out.println("Quantité vendue de produit 8" + cpt8);
+	System.out.println("Quantité vendue de produit 9" + cpt9);
+ }
+		\end{java}
+	
 
 		\index{tableau}
 		Que se passerait-il si le nombre de produits à traiter était de 20, voire
@@ -165,39 +184,34 @@
 		
 		Voici la version de notre solution avec tableau.
 	
-		\begin{pseudocode}
 		\label{tableau:tab1DStock10Articles}
-		\LComment Calcule et affiche la quantité vendue de 10 produits.
-		\Algo{statistiquesVentesAvecTableau}{}{}
-			\Empty
-			\Decl{cpt}{\Array{10}{entiers}}
-			\Decl{i, numéroProduit, quantité}{entiers}
-			\Empty
-			\For{i}{0}{9}
-				\Let cpt[i] \Gets 0
-			\EndFor
-			\Empty
-			\Write "Introduisez le numéro du produit~:"
-			\Read numéroProduit
-			\Empty
-			\While{numéroProduit $\neq$ -1}
-			\Empty
-				\Write "Introduisez la quantité vendue~:"
-				\Read quantité
-				\Empty
-				\Let cpt[numéroProduit] \Gets cpt[numéroProduit] + quantité
-				\Empty
-				\Write "Introduisez le numéro du produit~:"
-				\Read numéroProduit
-				\Empty
-			\EndWhile
-			\Empty
-			\For{i}{0}{9}
-				\Write "quantité vendue de produit ", i, ": ", cpt[i]
-			\EndFor
-			\Empty
-		\EndAlgo
-		\end{pseudocode}
+		\begin{java}
+import java.util.Scanner;
+public static void statisticsWithArray(){
+	Scanner keyboard = new Scanner(System.in);
+	int[] cpt = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	int i;
+	int productId;
+	int quantity;
+	System.out.print("Introduire le numéro de produit : ");
+	productId = keyboard.nextInt();
+	while (productId != -1){
+		System.out.print("Quantité:");
+		quantity = keyboard.nextInt();
+	
+		cpt[productId] = cpt[productId] + quantity;
+
+		System.out.print("Introduire le numéro de produit : ");
+		productId = keyboard.nextInt();		
+	}
+
+	for(int i=0; i<10; i++){
+		System.out.println("Quantité vendue de produit " i + ": " + cpt[i]);		
+	}
+}
+			
+		\end{java}
+
 		
 	% ====================
 	\section{Définitions}
@@ -234,11 +248,11 @@
 			\item la \textbf{déclaration} qui consiste à signaler qu'une
 				variable est un tableau. Dans un programme, cette déclaration
 				a pour effet de réserver un emplacement mémoire qui contiendra
-				une référence vers les cases du tableau. 
+				une référence vers les cases du tableau\,; 
 
 			\item la \textbf{création} du tableau consiste a réserver
 				l'emplacement mémoire qui contiendra les différentes valeurs.
-				Pour le créer, il faut connaitre sa taille. 
+				Pour le créer, il faut connaitre sa taille\,; 
 
 			\item l'\textbf{initialisation} du tableau consiste à donner ses
 				premières valeurs aux différents éléments du tableau.
@@ -248,104 +262,82 @@
 
 		\index{déclaration}
 		\index{création}
-		Nous supposerons dans la suite que \pc{size} est le nombre d’éléments 
+		Nous supposerons dans la suite que \pc{length} est le nombre d’éléments
+		—~la longueur~—
 		et \pc{Type} est le type des éléments que l’on trouvera dans le tableau.  
-		
-		Dans nos algorithmes, pour déclarer un tableau, nous écrirons~:
-
-		\begin{pseudocode}
-			\Decl{\textit{Identifier}}{\Array{}{\textit{Type}}}
-			\Empty
-			\LComment{Par exemple}
-			\Decl{myArray}{\Array{}{integer}}
-		\end{pseudocode}
-		
-		La création d'un tableau s'écrira~:
-
-		\begin{pseudocode}
-			\Let name \Gets \Array{\textit{size}}{\textit{Type}}
-
-			\Empty
-			\LComment{Par exemple}
-			\Let myArray \Gets \Array{10}{integer}
-		\end{pseudocode}
-
-		Pour déclarer et créer un tableau, nous écrirons en choisissant la
-		formulation longue ou courte ~:
-	
-		\begin{pseudocode}
-			\Decl{\textit{Identifier}}{\Array{}{\textit{Type}}}
-				\Gets \Array{\textit{size}}{\textit{Type}}
-			\Decl{Identifier}{\Array{\textit{size}}{\textit{Type}}}
-
-			\Empty
-			\LComment{Par exemple}
-			\Decl{myArray}{\Array{}{real}}
-				\Gets \Array{10}{real}
-			\Decl{otherArray}{\Array{1000}{integer}}
-		\end{pseudocode}
-
 		
 		Tous les types sont permis mais tous les éléments sont du même type. 
 
-	En langage Java, c'est assez semblable. Les caractères associés aux
-	tableaux, sont la paire de crochets~; \pc{[]}. Pour déclarer un tableau,
-	nous écrirons~:
+		\subsection{Déclaration}
+		\index{déclaration}
+
+		Pour \textbf{déclarer} un tableau~:
 
 	\begin{grammaire}
 		\grammarrule{ArrayDeclarationExpression:}
 		    \grammarrule{Type}[] \grammarrule{Identifier}
 	\end{grammaire}
+
+	\begin{java}
+int[] myArray;
+String[] strings;
+	\end{java}
+
+	Seule la variable est déclarée. Aucun espace mémoire n'est réservé pour
+	recevoir les éléments du tableau. Ceci sera fait lors de la création du
+	tableau.  
+
+	\subsection{Création}
+	\index{création}
 		
-	Pour créer un tableau, préalablement déclaré, nous écrirons~:
+	Pour \textbf{créer} un tableau, préalablement déclaré, nous écrirons~:
 
 	\begin{grammaire}
 		\grammarrule{ArrayCreationExpression:}
 		    new \grammarrule{Type}[\grammarrule{Expression}]
 	\end{grammaire}
 
-		
-	L'accès aux éléments d'un tableau se fait grâce aux crochets pour nos
-	algorithmes, en langage Java et dans beaucoup d'autres langages. Comme
-	suit~:
+	\begin{java}
+myArray = new int[10];
+strings = new String[3];
+	\end{java}
 
-	\begin{pseudocode}
-		\Stmt myArray[i]	\Comment{élément du tableau 'myArray' à l’indice i}
-	\end{pseudocode}
-		
-	La première case du tableau porte l’indice \pc{0}%
-	\footnote{%
-			Nous considérons que la première case du tableau
-			porte le numéro 0 comme c’est le cas dans beaucoup de langages
-			de programmation (comme Java par exemple).
-			Plus loin, nous verrons une notation alternative
-			qui permet de choisir un autre numéro de début pour le tableau,
-			plus naturel pour certains problèmes.
-	},
-	la dernière l’indice \pc{size-1}.  C’est considéré comme une erreur
+	L'emplacement mémoire nécessaire pour stocker la valeur de chaque élément
+	du tableau est réservé. 
+
+	\subsection{Initialisation}
+	\index{initialisation}
+
+	Pour \textbf{initialiser} les éléments du tableau, nous pouvons le faire en
+	accédant à chaque élément du tableau. Un par un. 
+	
+	L'accès aux éléments d'un tableau se fait grâce aux crochets
+	\pc{myArray[i]} pour nos algorithmes, en langage Java et dans beaucoup
+	d'autres langages. Comme suit~:
+
+	\begin{java}
+		myArray[0] = 5;
+		strings[1] = "Hello";
+	\end{java}
+
+	La première case du tableau porte l’indice \pc{0}
+	la dernière l’indice \pc{size-1}.  C’est une erreur
 	d’indiquer un indice qui ne correspond pas à une case du tableau (trop petit
 	ou trop grand).  Par exemple, si on déclare et crée le tableau \pc{myArray}~:
-	\begin{pseudocode}
-		\Decl{myArray}{\Array{100}{integers}}
-	\end{pseudocode}
-	il est interdit d’utiliser \pc{myArray[-1]} ou \pc{myArray[100]}. 
 
-	\index{initialisation}
-	L'initialisation d'un tableau, c'est-à-dire l'assignation de ses premières
-	valeurs, peut se faire élément par élément en utilisant les crochets ou en 
-	utilisant une notation compacte entre accolades \pc{{}}.
-		
-	\begin{pseudocode}
-		\Let myArray \Gets \{2, 3, 7\} 
-		\RComment{équivalent à myArray[0] \Gets 2, myArray[1] \Gets 3, }
-		\Let\RComment{myArray[3] \Gets 7}
-		\Let myArray \Gets \{0, \dots, 0\} 
-		\RComment{tous les éléments du tableau sont initialisés à 0}
-	\end{pseudocode}
-	
-	Il est également possible d'utiliser cette initialisation «~entre accolade~»
-	en langage Java. Elle s'appelle \textit{ArrayInitializer}. Par contre, seule 
-	la première forme est autorisée.
+	\begin{java}
+int[] myArray = new int[100];
+	\end{java}
+	c'est une erreur d’utiliser \pc{myArray[-1]} ou \pc{myArray[100]}. 
+
+	Il est également possible d'initialiser un tableau en une seule fois, en 
+	utilisant un \textit{array initializer}. Une notation entre accolades. 
+
+	\begin{langagenaturel}
+myArray = \{2, 3, 7\}
+	\end{langagenaturel}
+
+	Voici la grammaire Java. 
 
 	\begin{grammaire}
 		\grammarrule{ArrayInitializer:}
@@ -354,15 +346,6 @@
 		\grammarrule{VariableInitializerList:}
 		    \grammarrule{Expression} \grammarrule{[}, \grammarrule{Expression ]} 
 	\end{grammaire}
-
-	\paragraph{Exemples}
-
-	\begin{pseudocode}
-		\Decl{myArray}{\Array{3}{integers}}
-		\RComment{déclaration et création}
-		\Let myArray \Gets \{2, 3, 7\}
-		\RComment{initialisation}
-	\end{pseudocode}
 
 	\begin{java}
 		int[] myArray;
@@ -435,9 +418,6 @@
 			\Stmt display(anArray)
 		\end{pseudocode}
 	
-		Rappelons qu’il s’agit du passage par défaut si aucune flèche n’est
-		indiquée.
-				
 
 		\subsection{Un tableau comme paramètre en entrée-sortie}
 
@@ -505,20 +485,6 @@
 		retourner un tableau.  Ce sera à lui de le déclarer et de lui donner des
 		valeurs.  Exemple~:
 			
-		\begin{pseudocode}
-			\LComment{Retourne un tableau initialisé de 10 entiers}
-			\Algo{create}{}{\Array{}{integers}}
-				\Decl{myArray}{\Array{10}{integers}}
-				\For{i}{0}{9}
-					\Let myArray[i] \Gets i
-				\EndFor
-				\Return myArray
-			\EndAlgo 
-			\Empty
-			\LComment{Utilisation possible}
-			\Decl{anArray}{\Array{}{integers}}
-			\Let anArray \Gets create()
-		\end{pseudocode}
 
 \begin{java}
 	public static int[] create(){
@@ -537,16 +503,9 @@
 		\subsection{Paramétrer la taille}
 		%---------------------------------
 		
-		Un tableau connait sa taille dès lors qu'elle existe c'est-à-dire qu'il
-		est créé. Elle est accessible grâce au mot \pc{length} comme suit~:
-
-		\begin{pseudocode}
-			\Decl{myArray}{\Array{10}{reals}}
-			\Decl{size}{integer} \Gets myArray.length
-			\Empty
-			\Decl{otherArray}{\Array{}{reals}} \Gets \{3.14, 2.71\}
-			\Decl{otherSize}{integer} \Gets otherArray.length
-		\end{pseudocode}
+		Un tableau connait sa taille dès lors qu'elle existe c'est-à-dire dès
+		que le tableau est créé. La taille est accessible grâce au mot
+		\pc{length} comme suit~:
 
 		\begin{java}
 			double[] myArray;
@@ -561,31 +520,30 @@
 		L'algorithme ou la méthode aura comme paramètre un tableau qui connait
 		sa taille. Lorsque l'algorithme ou la méthode recevra le paramètre
 		effectif, la taille sera déterminée. 
-
-		\clearpage
+		
 		\textbf{Exemple~:}
-			\begin{pseudocode}
-				\LComment{Affiche un tableau de taille quelconque}
-				\Algo{display}{\Par{myArray}{\Array{}{integers}}}{}
-					\Write "Tableau de ", myArray.length, " éléments".
-					\For{i}{0}{myArray.length - 1} 
-						\RComment{Attention ! le dernier élément}
-						\RComment{est à l’indice taille -1}
-						\Write myArray[i]
-					\EndFor
-				\EndAlgo
-				\Empty
-				\Empty
-				\LComment{Utilisation possible}
-				\Decl{entiers}{\Array{2}{entiers}}
-				\Stmt entiers[0] \Gets 56
-				\Stmt entiers[1] \Gets -3
-				\Stmt afficher(entiers)
-				\Stmt entiers \Gets\Array{}{integers} \{6, 12, 18\}
-				\Stmt afficher(entiers)
-			\end{pseudocode}
-			
-			La fiche \vref{fiche:tab-passage-param} récapitule tout ça.
+
+		\begin{java}
+public static void display(int[] myArray){
+	System.out.println("Tableau de " 
+		+ myArray.length 
+		+ " éléments." );
+	for (int i=0; i< myArray.length; i++){
+		System.out.println(myArray[i]);
+	}
+
+	// Utilisations possibles
+	int[] integers = new int[2];
+	integers[0] = 56;
+	integers[1] = -3;
+	display(integers);
+	
+	int[] myBeautifulArray = {6, 12, 18};
+	display(myBeautifulArray);
+}
+		\end{java}
+
+		La fiche \vref{fiche:tab-passage-param} récapitule tout ça.
 
 	% ==============================================
 	\section{Parcours d’un tableau} 
@@ -686,33 +644,29 @@
 		L’algorithme suivant demande des valeurs positives à l’utilisateur et
 		les stocke dans un tableau (maximum 1000).  Toute valeur négative ou
 		nulle est une valeur sentinelle.
-		
-		\clearpage
-		\begin{pseudocode}
-			\Algo{stockValues}{}{}
-				\Decl{myArray}{\Array{1000}{integers}}
-				\Decl{nbValues}{integer} \RComment{C’est la taille logique}
-				\Decl{value}{integer}
-				\Let nbValues \Gets 0
-				\Read value
-				\While{value > 0 AND nbValues < myArray.length}
-					\Let myArray[nbValues] \Gets value
-					\Let nbValues \Gets nbValues + 1
-					\Read value
-				\EndWhile
-				\If{value > 0}		
-					\RComment{Pourquoi tester value et pas nbValues~?}
-					\Write "La limite physique a été atteinte"
-				\EndIf
-			\EndAlgo
-		\end{pseudocode}
 
-		Lors de l'implémentation de l'algorithme dans un langage de
-		programmation, si la limite physique du tableau est atteinte, une erreur
-		d'exécution va survenir. Une telle erreur survient dès que le programme
-		essaie d'accéder à une case mémoire «~qui n'existe pas~». Traduisez
-		l'exemple en Java sans le \pc{if} final et regardez l'erreur générée.
-		Nous y reviendrons au laboratoire. 
+		\begin{java}
+public static void stockValues(){
+	Scanner keyboard = new Scanner(System.in);
+	int[] myArray = new int[1000];
+	int nbValues = 0;
+	int value;
+	value = keyboard.nextint();
+	while (value > 0 && nbValues < myArray.length){
+		myArray[nbValues] = value;
+		nbValues++;
+		value = keyboard.nextint();
+	}
+	// Test de value et pas de nbValues. Pourquoi ?
+	if (value > 0){
+		System.out.println("La limite physique a été atteinte");
+	}
+}			
+		\end{java}
+		
+		En langage Java, essayer d'ajouter un élément en dehors de la taille du
+		tableau va générer une erreur à l'exécution. Une
+		\pc{ArrayIndexOutOfBoundException}. 
 
 		
 	% ==============================================
@@ -732,20 +686,38 @@
 		\dots{}
 		Une solution possible, sans tableau, serait~:
 		
-		\begin{pseudocode}
-			\Algo{dayName}{\Par{dayNumber}{integer}}{String}
-				\Switch{dayNumber}
-				\Case{1} \algorithmicreturn{} "lundi"
-				\Case{2} \algorithmicreturn{} "mardi"
-				\Case{3} \algorithmicreturn{} "mercredi"
-				\Case{4} \algorithmicreturn{} "jeudi"
-				\Case{5} \algorithmicreturn{} "vendredi"
-				\Case{6} \algorithmicreturn{} "samedi"
-				\Case{7} \algorithmicreturn{} "dimanche"
-				\EndSwitch
-			\EndAlgo
-		\end{pseudocode}
-		
+		\begin{java}
+public static String dayName(int dayNumber){
+	String dayName;
+	switch (dayNumber){
+		case 1:
+			dayName = "lundi";
+			break;
+		case 2:
+			dayName = "mardi";
+			break;
+		case 3:
+			dayName = "mercredi";
+			break;
+		case 4:
+			dayName = "jeudi";
+			break;
+		case 5:
+			dayName = "vendredi";
+			break;
+		case 6:
+			dayName = "samedi";
+			break;
+		case 7:
+			dayName = "dimanche";
+			break;
+		default:
+			dayName = "inconnu";
+	}
+	return dayName;
+}
+		\end{java}
+
 		Mais une solution plus élégante passe par l’utilisation d’un tableau.
 		Appelons-le \pc{dayString} et stockons-y les noms des jours
 		comme illustré ci-dessous.
