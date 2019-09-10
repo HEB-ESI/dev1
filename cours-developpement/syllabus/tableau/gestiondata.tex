@@ -89,21 +89,12 @@
 		
 			\clearpage
 			L’algorithme est assez simple~:
-			
-			\begin{pseudocode}
-				\LComment{Inscrit un étudiant de numéro donné.}
-				\Algo{register}{\Par{registered\In\Out}{\Array{}{integers}}, 
-					\Par{nRegistered\In\Out}{integer},
-					\\\hfill \Par{number\In}{integer}}{}
-					\LComment{On peut imaginer vérifier que l’étudiant n’est 
-					pas déjà inscrit}
-					\LComment{On peut imaginer vérifier qu’il reste 
-					de la place}
-					\LComment{(c-à-d que le tableau n’est pas plein)}
-					\Let registered[nRegistered] \Gets number
-					\Let nRegistered \Gets nRegistered + 1
-				\EndAlgo
-			\end{pseudocode}
+
+			\begin{langagenaturel}
+				algorithme register(registered,nRegistered, number)\\
+				\tab registered[nRegistered] = number\\
+				\tab incrémenter nRegistered
+			\end{langagenaturel}
 
 			En langage Java, il n'est pas possible de passer \pc{nRegistered} en 
 			entrée sortie puisque le passage de paramètre se fait par valeur et 
@@ -113,7 +104,9 @@
 			\begin{java}
 	public static int register(int[] registered, int nRegistered,
 			int number){
-		// idem
+		// On peut imaginer vérifier que l'étudiant n'est pas déjà unscrit
+		// On peut imaginer vérifier qu'il reste de la place
+		// (c-à-d que le tableau n'est pas plein)
 		registered[nRegistered] = number;
 		return nRegistered + 1;
 	}
@@ -133,28 +126,23 @@
 			L'algorithme ne va pas se contenter de retourner un booléen
 			précisant si le numéro est trouvé mais va retourner l'indice dans le
 			tableau de ce numéro, -1 sinon. 
-			
-			\begin{pseudocode}
-				\LComment{Vérifie si un étudiant est inscrit 
-				et donne sa position (-1 si non inscrit)}
-				\Algo{check}{\Par{registered\In}{\Array{n}{integers}}, 
-					\Par{nRegistered\In}{integer}, 
-					\\\hfill\Par{number\In}{integer}}{integer}
-					\Decl{i}{integer}
-					\Let i \Gets 0
-					\While{i < nRegistered ET registered[i] $\ne$ number}
-						\Let i \Gets i + 1
-					\EndWhile
-					\If{i < nRegistered}
-						\Return i
-					\Else
-						\Return -1
-					\EndIf
-				\EndAlgo
-			\end{pseudocode}
 
-			La traduction en langage Java ne pose aucune difficulté et est
-			laissée en exercice. 
+			\begin{java}
+public static int check(
+	int[] registered,
+	int nRegistered,
+	int number){
+		int i = 0;
+		while (i < nRegistered && registered[i] != number){
+			i++;
+		}
+		if (i<nRegistered){
+			return i;
+		} else {
+			return -1,
+		}
+}
+			\end{java}
 			
 			La fiche \vref{fiche:tab-recherche-non-triee} reprend cet algorithme
 			dans un cadre plus général.
@@ -202,33 +190,13 @@
 			L’algorithme est assez simple à écrire en utilisant la recherche
 			écrite juste avant~:
 			
-			\begin{pseudocode}
-				\LComment{Désinscrit l’étudiant donné}
-				\Algo{unsubscribe}{
-						\Par{registered\In\Out}{\Array{}{integers}}, 
-						\\\hfill\Par{nRegistered\In\Out}{integer}, 
-						\Par{number\In}{integer}
-						}{}
-					\Decl{pos}{integer}
-					\Let pos \Gets check(registered, nRegistered, number)
-					\LComment{On pourrait vérifier et générer une erreur 
-					si l’étudiant n’est pas inscrit}
-					\Let registered[pos] \Gets registered[nRegistered-1]
-					\Let nRegistered \Gets nRegistered - 1					
-				\EndAlgo
-			\end{pseudocode}
-		
-			Comme précédement, en langage Java, il n'est pas possible de passer
-			\pc{nRegistered} en entrée sortie.  Il faudra que ce soit en valeur
-			de retour. Nous pourrions écrire~:
-
 			\begin{java}
-	public static int unsubscribe(int[] registered, 
-			int nRegistered, int number){
-		int pos = check(registered, nRegistered, number);
-		registered[pos] = registered[nRegistered - 1];
-		return nRegistered - 1;
-	}
+public static int unsubscribe(int[] registered, 
+		int nRegistered, int number){
+	int pos = check(registered, nRegistered, number);
+	registered[pos] = registered[nRegistered - 1];
+	return nRegistered - 1;
+}
 			\end{java}
 
 		\subsection{Exercices}
@@ -306,37 +274,38 @@
 			la seconde pour vérifier que c'est bien le bon numéro qui se trouve
 			à cette position. 
 			
-			\begin{pseudocode}
-				\LComment{Recherche un étudiant.}
-				\LComment{return: la position où a été trouvé l’étudiant ou -1 s'il est pas inscrit}
-				\Algo{find}{
-						\Par{registered\In}{\Array{}{integers}}, 
-						\Par{nRegistered\In}{integer}, 
-						\\\hfill\Par{number\In}{integer}
-						}{integer}
-					\Decl{pos}{integer} \Gets 
-						findPosition(registered, nRegistered, number)
-					\If{registered[pos] == number}
-						\Return pos
-					\Else
-						\Return -1
-					\EndIf
-				\EndAlgo
-				
-				\LComment{Recherche une position}
-				\LComment{return: la position a laquelle est ou devrait être le numéro}
-				\Algo{findPosition}{
-						\Par{registered\In}{\Array{}{integers}}, 
-						\Par{nRegistered\In}{integer}, 
-						\\\hfill\Par{number\In}{integer}
-						}{integer}
-					\Decl{pos}{integer} \Gets 0
-					\While{pos < nRegistered AND registered[pos] < number}
-						\Let pos \Gets pos + 1
-					\EndWhile
-					\Return pos
-				\EndAlgo
-			\end{pseudocode}
+			\begin{java}
+/*
+ * Recherche d'un étudiant ou d'une étudiante par son numéro d'id.
+ * return: l aposition où a été trouvé le numéro 
+ * ou -1 si non présent
+ */
+public static int find(
+	int[] registered,
+	int nRegistered,
+	int number){
+		int pos = findPosition(registered, nRegistered, number);
+		if (registered[pos] == number){
+			return pos;
+		} else {
+			return -1;
+		}
+}
+
+/*
+ * Recherche d'une position
+ * return: la position à laquelle est ou devrais être le numéro
+ */
+public static int findPosition(
+	int[] registered,
+	int nRegistered,
+	int number){
+		int pos = 0,
+		while (pos < nRegistered && registered[pos] < number){
+			pos++;
+		}
+}
+			\end{java}
 			
 			Comprenez-vous pourquoi~:
 			\begin{itemize}
@@ -357,10 +326,12 @@
 			d'inscrites. Ensuite, il faut voir si le numéro à la position
 			trouvée est bien le bon. 
 
-			La traduction en Java est immédiate. Le \pc{if} tel que présenté
-			dans l'algorithm peut se réécrire grâce à l'opérateur
-			ternaire\index{ternaire} de Java. Profitons en pour le présenter. 
+			Le \pc{if} tel que présenté dans l'algorithm peut se réécrire grâce
+			à l'opérateur ternaire\index{ternaire} de Java. Profitons en pour
+			le présenter. 
 
+			\index{opérateur ternaire}
+			\index{conditional expression}
 			\begin{grammaire}
 				\grammarrule{ConditionalExpression:}
 				    \grammarrule{Condition} ? \grammarrule{Expression} : \grammarrule{Expression}
@@ -430,34 +401,6 @@
 			
 			Ce qui nous donne~:
 			
-			\begin{pseudocode}
-				\LComment{Inscrit un étudiant de numéro donné.}
-				\Algo{subscribe}{
-						\Par{registered\In\Out}{\Array{}{integers}}, 
-						\Par{nRegistered\In\Out}{integer}, 
-						\\\hfill\Par{number\In}{integer}
-						}{}
-					\Decl{pos}{integer}
-					\Stmt pos \Gets findPosition(registered, nRegistered, number)
-					\Stmt shiftRight(registered, pos, nRegistered-1)
-					\Let registered[pos] \Gets number
-					\Let nRegistered \Gets nRegistered + 1
-				\EndAlgo
-				\Empty
-				\LComment{Décale d’une position à droite les éléments 
-					entre la position début et fin}
-				\Algo{shiftRight}{
-						\Par{tab\In\Out}{\Array{}{integers}}, 
-						\Par{begin\In}{integer}, 
-						\Par{end\In}{integer}
-						}{}
-					\For[-1]{i}{end}{begin}
-						\Let tab[i+1] \Gets tab[i]
-					\EndFor
-				\EndAlgo
-			\end{pseudocode}
-	
-			En langage Java, la traduction est immédiate~:
 
 			\begin{java}
 /**
@@ -495,37 +438,6 @@ public shiftRight(int[] tab, int begin, int end){
 			Ici, il va falloir décaler vers la gauche
 			les éléments qui suivent celui à supprimer.
 
-			\begin{pseudocode}
-				\LComment{désinscrit l’étudiant donné}
-				\Algo{unsubscribe}{
-						\Par{registered\In\Out}{\Array{n}{integers}}, 
-						\Par{nRegistered\In\Out}{integer}, 
-						\\\hfill\Par{number\In}{integer}
-						}{}
-					\Decl{pos}{integer}
-					\Stmt pos \Gets findPosition(registered, nRegistered, number)
-					\Stmt shiftLeft(registered, pos, nRegistered-1)
-					\Let nRegistered \Gets nRegistered - 1					
-				\EndAlgo
-
-				\Empty
-				\LComment{Décale d’une position à gauche les éléments entre 
-					la position début et fin}
-				\Algo{shiftLeft}{
-						\Par{tab\In\Out}{\Array{n}{integers}}, 
-						\\\hfill\Par{begin\In}{integer}, 
-						\Par{end\In}{integer}
-						}{}
-					\For{i}{begin}{end}
-						\Let tab[i-1] \Gets tab[i]
-					\EndFor
-				\EndAlgo
-			\end{pseudocode}
-			
-			La fiche \vref{fiche:tab-recherche-triee} reprend cet algorithme
-			dans un cadre plus général.
-
-			En langage Java, la traduction est immédiate~:
 
 			\begin{java}
 /**
@@ -535,7 +447,7 @@ public shiftRight(int[] tab, int begin, int end){
  * @param nRegistered le nombre d'inscrit·es
  * @param number le numéro à chercher
  */
-public static void subscribe(int[] registred, int nRegistered,
+public static void unsubscribe(int[] registred, int nRegistered,
 				int number){
 	int pos = findPosition(registered, nRegistered, number);
 	shiftLeft(registred,pos, nRegistered);
@@ -555,6 +467,9 @@ public shiftLeft(int[] tab, int begin, int end){
 	}
 }
 			\end{java}
+			
+			La fiche \vref{fiche:tab-recherche-triee} reprend cet algorithme
+			dans un cadre plus général.
 
 		\subsection{Intérêt de trier les valeurs~?}
 		%---------------------------------------------
@@ -1011,6 +926,8 @@ public shiftLeft(int[] tab, int begin, int end){
 		{\sffamily\bfseries
 		Algorithme}
 		
+
+		%@TODO traduire l'algo en java en choissisant la valeur de retour 
 		\begin{pseudocode}
 			\Algo{dichotomousResearch}{
 					\\\hfill
