@@ -13,46 +13,37 @@
 	n’en avons encore fait que des usages basiques, essentiellement des
 	affichages.  Il est temps d’aller plus loin et de les \emph{manipuler},
 	c’est-à-dire d’examiner et de modifier, déplacer… le contenu de chaines.
+	
 	Procédons par étapes.
 	
 	\minitoc
 
 	\clearpage
-\section{Longueur}
-%=================
-	
-	\marginicon{definition}\index{chaine (longueur d’une)} La \textbf{longueur}
-	d’une chaine est le nombre de caractères qu’elle contient.  Pour la
-	connaitre on utilisera la notation pointée \pc{unechaine.length}.
-	
-	Par exemple~:
 
-	\begin{itemize}
-	\item \pc{"Bonjour".length} vaut 7.
-	\item \pc{"Une chaine".length} vaut 10 (l’espace compte pour 1).
-	\item \pc{"A".length} vaut 1.
-	\item \pc{"".length} est égal à 0.
-	\end{itemize}
 
-	En langage Java également, une chaine connait sa taille~:
+\section{Interface de programmation applicative}
+\index{api}
 
-	\begin{java}
-"Bonjour".length() // vaut 7		
-	\end{java}
+\marginicon{definition}
+Une interface de programmation applicative, \textit{application programming
+interface} en anglais ou encore simplement \textbf{API} est un ensemble de
+méthodes (de classes et de constantes) fournies — dans ce cas par le langage
+Java — au développeur.
 
-	\paragraph{Remarque}
-	\begin{itemize}
-		\item Notez la présence des parenthèses en Java. 
-		
-		\item Nous n'écrirons pas de parenthèse dans nos algorithmes mais ce
-			n'est pas une faute d'en mettre. 
-	
-	\end{itemize}
+L'API Java complète peut-être découverte à la lecture de la documentation
+fournie avec le langage à cette adresse par exemple~:
+\url{https://docs.oracle.com/en/java/javase/11/docs/api/index.html}~\cite{javadoc}
 
-	
+Un des éléments mesurant la force d'un langage est la taille de son API
+à laquelle s'ajoute la qualité de sa documentation. Dans cette API se
+retrouvent les «~actions ordinaires et habituelles~» que demandent les
+développeurs et développeuses. Intéressons-nous à la partie concernant les
+chaines de caractères. 
+
 \section{Chaine et caractère}
 %============================
 
+	\index{littéral}
 	Certains langages, comme Java, distinguent clairement le type chaine
 	(\pc{String}) et le type caractère\index{caractère} (\pc{char}).  Ainsi, en
 	Java, le littéral \pc{'A'} représente un caractère qui est différent du
@@ -62,56 +53,56 @@
 
 	Cette distinction est essentiellement dictée par des détails
 	d’implémentation; un caractère pouvant se représenter de façon plus économe
-	qu’une chaine. En langage Java toujours essayer de comparer — par un \pc{"A"
-	== 'A'} — un chaine et un caractère génère une erreur de compilation. 
+	qu’une chaine. En langage Java toujours essayer de comparer — par un
+	\pc{"A" == 'A'} — un chaine et un caractère génère une erreur de
+	compilation. 
 
 	D’autres langages, comme Python, n’ont pas de type caractère spécifique.
 	D’autres encore, comme C, ont un type caractère mais pas de type chaine
 	à proprement parler; ils sont vus comme des tableaux de caractères. 
 
-	Dans nos algorithmes — mais pas dans nos programmes Java — nous introduirons
-	un type \pc{character} (caractère) mais sans le distinguer clairement d’une
-	chaine.  Ainsi, un caractère pourra être utilisé comme une chaine et une
-	chaine d’un seul caractère pourra être considéré comme un caractère.  En
-	somme, \pc{character} n’est qu’un raccourci pour dire~: \emph{une chaine de
-	longueur 1}. 
+
+\section{Longueur}
+%=================
+	
+	\index{chaine (longueur d’une)} La \textbf{longueur}
+	d’une chaine est le nombre de caractères qu’elle contient.  Pour la
+	connaitre on utilisera la notation pointée \pc{uneChaine.length()}.
+	
+	Par exemple~:
+
+	\begin{itemize}
+	\item \pc{"Bonjour".length()} vaut 7.
+	\item \pc{"Une chaine".length()} vaut 10 (l’espace compte pour 1).
+	\item \pc{"A".length()} vaut 1.
+	\item \pc{"".length()} est égal à 0.
+	\end{itemize}
+
+	\begin{java}
+"Bonjour".length() // vaut 7		
+	\end{java}
+
+	\paragraph{Remarque}
+	Notez la présence des parenthèses.
+
+	
 	
 \section{Le contenu d’une chaine}
 %=================================
 
 	Pour pouvoir manipuler une chaine, il faut pouvoir accéder aux caractères
-	qui la composent.  Comme il s’agit d’une opération de base souvent utilisée,
-	nous allons introduire une écriture compacte, empruntée aux tableaux~:
-	\pc{nomChaine[i]} désigne le i\ieme{} caractère de la chaine nomChaine (en
-	commençant à 1).
+	qui la composent.  
+	Le langage Java, l'API, propose une méthode — \pc{char charAt(int)}
+	—  permettant d'accéder à une lettre d'un mot et la retournant. 
 	
-	Par exemple~:
-	\begin{pseudocode}
-		\Decl{text}{string} \Gets "Hello"
-		\Write text[5]	\RComment Affiche "o"
-		\Let text[2] \Gets "a" \RComment {texte vaut "Hallo"; }
-			\Let\RComment un caractère doit être remplacé par un seul caractère.
-	\end{pseudocode}
+	\begin{java}
+char c = "Hello".charAt(2);		// le caractère 'l'
+	\end{java}
 
 	\paragraph{Exemple.}
 	Écrivons un algorithme qui vérifie si un mot donné
 	contient une lettre donnée.
 	
-	\begin{pseudocode}
-		\Algo{contains}{\Par{word}{string}, \Par{letter}{character}}{boolean}
-			\Decl{i}{entier}
-			\Let i \Gets 1
-			\While{i $\le$ word.length AND word[i] $\neq$ letter}
-				\Let i \Gets i + 1
-			\EndWhile
-			\Return i $\le$ word.length
-		\EndAlgo
-	\end{pseudocode}
-
-	En langage Java, l'API propose une méthode — \pc{char charAt(int)}
-	—  permettant d'accéder à une lettre d'un mot et la retournant. Ce qui se
-	traduit en langage Java
-
 	\begin{java}
 public static boolean contains(String word, char letter){
 	int i = 1;
@@ -122,56 +113,47 @@ public static boolean contains(String word, char letter){
 }	
 	\end{java}
 
-	\clearpage
+	\paragraph{Remarque}
+
+	L'exemple est rhétorique car l'API Java propose une méthode \pc{contains}
+	répondant à cette question.  
+
+
+
 \section{La concaténation}\index{concaténation}
 %=================================
 
-	Il est fréquent de devoir rassembler plusieurs chaines 
-	pour former une seule chaine plus grande, 
-	il s’agit de l’opération de \textbf{concaténation}.
-	Introduisons également une notation compacte, le \pc{+}. 
+	Il est fréquent de devoir rassembler plusieurs chaines pour former une
+	seule chaine plus grande, il s’agit de l’opération de
+	\textbf{concaténation}. En Java, c'est simplement l'opérateur \pc{+} qui
+	est utilisé. Dès lors que les opérandes sont des chaines, l'opérateur
+	concatène au lieu d'additionner. 
 	
+\begin{java}
+String text;
+text = "al" + "go" + "rithmique";
+\end{java}<++>
 	
-	Par exemple~: 
-	\begin{pseudocode}
-		\Decl{texte}{string}
-		\Let texte \Gets "al" + "go" + "rithmique"
-		\RComment{assigne la chaine "algortihmique"}
-		\Let\RComment{à la variable texte.}
-	\end{pseudocode}	
-
-
 	\paragraph{Exemple.}
 	Écrivons un algorithme qui inverse toutes les lettres d’un mot.
 	Ainsi, "algo" deviendra "ogla".
 	
-	\begin{pseudocode}
-		\Algo{mirror}{\Par{\In word}{string}}{string}
-			\Decl{mirror}{string}
-			\Let mirror \Gets ""
-			\For{i}{1}{word.length}
-				\Let mirror \Gets word[i] + mirror
-			\EndFor
-			\Return mirror
-		\EndAlgo
-	\end{pseudocode}
-
-	Cet algorithme se traduit immédiatement en langage Java par~:
-
 	\begin{java}
 public static String mirror(String word){
 	String mirror = "";
 	for (int i = 0; i < word.length(); i = i + 1){
-		mirror = word[i] + mirror;
+		mirror = word.charAt(i) + mirror;
 	}
 	return mirror;
 }
 	\end{java}
 
-	L'instruction de la ligne 4 concatène un caractère (\pc{word[i]}) avec une
-	chaine (\pc{mirror}) ce qui n'est, à priori, pas possible. Dans ce cas, Java
-	convertit le caractère en une chaine avant d'effectuer la concaténation de
-	manière tout à fait transparente. 
+	\paragraph{Remarque}
+
+	L'instruction de la ligne 4 concatène un caractère (\pc{word.charAt(i)})
+	avec une chaine (\pc{mirror}) ce qui n'est, à priori, pas possible. Dans ce
+	cas, Java convertit le caractère en une chaine avant d'effectuer la
+	concaténation de manière tout à fait transparente. 
 
 	Dans cette instruction à la ligne 4 toujours, il y a création d'une nouvelle
 	chaine de caractère à chaque itération de la boucle. Si l'on veut gagner un
@@ -184,19 +166,9 @@ public static String mirror(String word){
 	deux types différents. De plus, l'un est de type primitif comme nous l'avons
 	déjà dit et l'autre de type référence. 
 
-	\index{api}
-
-	Java — comme tous les autres langages d'ailleurs — propose en plus des
-	instructions élémentaires telles que \pc{if} et \pc{while} par exemple, une
-	API (\textit{application programming interface}). Une API est un ensemble de
-	classes et de méthodes, de manière générale~; de services, qu'offre le
-	langage pour aider le développeur. Nous reviendrons abondamment sur ces
-	concepts dans les autres cours de développement. 
-
-	Dans le cas qui nous occupe, une manière élégante de résoudre le problème,
-	est l'utilisation de \pc{StringBuilder} qui, comme son nom l'indique, permet
-	de manipuler plus finement une chaine de caractères. 
-	Nous pouvons écrire~:
+	Une manière élégante de résoudre le problème, est l'utilisation de
+	\pc{StringBuilder} qui, comme son nom l'indique, permet de manipuler plus
+	finement une chaine de caractères.  Nous pouvons écrire~:
 
 	\begin{java}
 public static String mirror(String word){
@@ -222,17 +194,20 @@ public static String mirror(String word){
 \section{Manipuler les caractères}
 %================================
 
-	Voici quelques algorithmes et méthodes de l'API Java \index{api} pratiques 
+	Voici quelques méthodes de l'API Java \index{api} pratiques 
 	pour la manipulation de chaines. 
 
 	Nous pourrions écrire ces algorithmes et ces méthodes de l'API mais ce serait
-	long et fastidieux. Dans nos exercices, nous supposerons que les algorithmes
-	existent et pour chacun d'eux, nous montrerons comment les écrire en langage
-	Java en donnant un exemple simple. 
+	long et fastidieux. Vous pouvez y réfléchir à titre d'exercice. 
+
+	Certaines méthodes sont des méthodes de la classe \pc{String}, d'autres de
+	la classe \pc{Character}. Nous vous encourageons à consulter la Javadoc
+	\cite{javadoc}. 
+	
 	
 	\begin{description}
 	
-		\item[\pc{isLetter(c: character)\Gives~boolean}]
+		\item[\pc{isLetter}]
 			Cette fonction indique si un caractère \textbf{est une lettre}. 
 		Par exemple elle retourne vrai pour "a", "e", "G", "K", 
 		mais faux pour "4", "\$", "@"\dots %$ 
@@ -246,7 +221,7 @@ Character.isLetter(c);   // true
 		\end{java}
 	
 	
-	\item[\pc{isLowerCase(c: character)\Gives~boolean}]	
+	\item[\pc{isLowerCase}]	
 		Permet de savoir si le caractère \textbf{est une lettre minuscule}.
 
 		\pc{boolean Character.isLowerCase(char c)}
@@ -257,7 +232,7 @@ char c = 'a';
 Character.isLowerCase(c);   // true			
 		\end{java}
 
-	\item[\pc{isUpperCase(c: character)\Gives~boolean}]	
+	\item[\pc{isUpperCase}]	
 		Permet de savoir si le caractère \textbf{est une lettre majuscule}.
 		
 		\pc{boolean Character.isUpperCase(char c)}
@@ -269,7 +244,7 @@ Character.isUpperCase(c);   // true
 		\end{java}
 	
 
-	\item[\pc{isDigit(c: character)\Gives~boolean}]	
+	\item[\pc{isDigit}]	
 		Permet de savoir si un caractère \textbf{est un chiffre}. 
 		Elle retourne vrai pour les dix caractères 
 		'0', '1', '2', '3', '4', '5', '6', '7', '8' et '9'
@@ -282,11 +257,9 @@ char c = '1';
 Character.isDigit(c);   // true			
 		\end{java}
 	
-	\item[\pc{toUpperCase(s: string)\Gives~string}]
-		Retourne une chaine où toutes les lettres du texte
-		ont été converties en majuscules.
-
-		En langage Java, c'est la chaine qui est convertie. \\
+	\item[\pc{toUpperCase}]
+		Convertit la chaine en passant tous les caractères en majuscules.
+		
 		\pc{String.toUpperCase()}
 
 		\begin{java}
@@ -295,11 +268,9 @@ s.toUpperCase();
 System.out.println(s);		// affiche HELLO
 		\end{java}
 
-	\item[\pc{toLowerCase(s: string)\Gives~string}]
-		Retourne une chaine où toutes les lettres du texte
-		ont été converties en minuscules.
+	\item[\pc{toLowerCase}]
+		Convertit la chaine en passant tous les caractères en minuscules.
 		
-		En langage Java, c'est la chaine qui est convertie. \\
 		\pc{String.toLowerCase()}
 
 		\begin{java}
@@ -315,57 +286,51 @@ System.out.println(s);		// affiche world
 %===================
 
 	Il peut aussi être pratique de connaitre la position d’une lettre dans
-	l’alphabet pour résoudre des exercices.  Ceci se fera à l’aide de la
-	fonction~:
+	l’alphabet pour résoudre des exercices. Cette méthode retournerait toujours
+	un entier entre 1 et 26 (ou entre 0 et 25). Par exemple,
+	\pc{letterIndex('E')} donnerait 5. Cette fonction traiterait de la même
+	manière les lettres majuscules et les lettres minuscules. Ainsi,
+	\pc{letterIndex('e')} retournerait également 5. 
 
-	\begin{description}
+	Il n'existe pas de telle méthode dans l'API Java. 
 	
-		\item[\pc{letterIndex(c: character)\Gives~integer}]
-		Retourne toujours un entier entre 1 et 26. 
-
-		Par exemple \pc{letterIndex("E")} donnera 5, 
-		ainsi que \pc{letterIndex("e")}. 
+	Pour les caractères non accentués, il est assez simple de connaitre la
+	position d'une lettre dans l'alphabet dès lors que l'on sait qu'à chaque
+	lettre est associée un code (Unicode) et que ces codes se suivent. La
+	\href{https://www.unicode.org/charts/PDF/U0000.pdf}{table unicode contenant
+	les lettres de l'alphabet} nous montre que le code associé à la lettre
+	\pc{'A'} est \texttt{0x0041} ou 65 en base 10, \pc{'B'} \texttt{0x0042} et
+	ainsi de suite \cite{pbt-unicode}. 
 		
-		Cette fonction traite donc de la même manière les majuscules et les
-		minuscules.  \pc{letterIndex} retournera aussi 5 pour les caractères "é",
-		"è", "ê", "ë"\dots).  
+	Cette table nous montre également que les lettres minuscules arrivent
+	ensuite~; \pc{'a'} a comme code \texttt{0x0061} ou 97 en base 10, \pc{'b'}
+	\texttt{0x0062}…
 
-		En langage Java, il est assez simple de connaitre la position d'une
-		lettre dans l'alphabet dès lors que l'on sait qu'à chaque lettre est
-		associée un code (Unicode) et que ces codes se suivent. La
-		\href{https://www.unicode.org/charts/PDF/U0000.pdf}{table unicode
-		contenant les lettres de l'alphabet} nous montre que le code associé
-		à la lettre \pc{'A'} est \texttt{0x0041} ou 65 en base 10, \pc{'B'}
-		\texttt{0x0042} et ainsi de suite. 
-		
-		Cette table nous montre également que les lettres minuscules arrivent
-		ensuite~; \pc{'a'} a comme code \texttt{0x0061} ou 97 en base 10,
-		\pc{'b'} \texttt{0x0062}…
+	Retourner la position d'une lettre devient aussi simple qu'une
+	soustraction. En supposant qu'il ne faille pas vérifier que le caractère
+	reçu est bien une lettre, nous pourrions écrire~:
 
-		Retourner la position d'une lettre devient aussi simple qu'une
-		soustraction. En supposant qu'il ne faille pas vérifier que le caractère
-		reçu est bien une lettre, nous pourrions écrire~:
-
-		\begin{java}
+	\begin{java}
 public static int letterIndex(char c){
 	return Character.toLowerCase(c) - 0x61 + 1;
 }
-		\end{java}
+	\end{java}
 
-		Pour traiter les caractères accentués, c'est plus complexe et ça sort un
-		peu du cadre d'un premier cours de développement. Bien sûr, nous pouvons
-		nous en sortir avec une série de \pc{if} de la forme \pc{if(c == 'é' ||
-		c== 'è'…)} mais ce serait fastidieux. 
+	Pour traiter les caractères accentués, c'est plus complexe et ça sort un
+	peu du cadre d'un premier cours de développement. Bien sûr, nous pouvons
+	nous en sortir avec une série de \pc{if} de la forme \pc{if(c == 'é' || c==
+	'è'…)} mais ce serait fastidieux. 
 
-		L'API Java peut faire ce travail pour nous si c'est demandé gentiment.
-		Il existe une classe de l'API pour «~normaliser~» les caractères d'une
-		chaine. Cette normalisation consiste à vérifier que les caractères
-		accentués le sont sous la forme «~lettre-accent~». C'est-à-dire qu'un
-		\pc{à} est bien codé \pc{a`}. Dans ce cas, \pc{replaceAll} peut
-		supprimer les accents et la méthode devient\footnote{Un \texttt{import
-		java.text.Normalizer} est nécessaire.}~:
+	L'API Java peut faire ce travail pour nous si c'est demandé gentiment.  Il
+	existe une classe de l'API pour «~normaliser~» les caractères d'une chaine.
+	Cette normalisation consiste à vérifier que les caractères accentués le
+	sont sous la forme «~lettre-accent~». C'est-à-dire qu'un \pc{à} est bien
+	codé \pc{a`}. Dans ce cas, \pc{replaceAll} peut supprimer les accents et
+	l'on pourrait écrire une méthode \pc{letterIndex} qui fonctionne avec des
+	lettres accentuées comme suit\footnote{Un \texttt{import
+	java.text.Normalizer} est nécessaire.}~:
 
-		\begin{java}
+	\begin{java}
 public static int letterIndex(char c){
 	c = Normalizer
 		.normalize(""+c, Normalizer.Form.NFD)
@@ -373,29 +338,28 @@ public static int letterIndex(char c){
 		.charAt(0);
 	return Character.toLowerCase(c) - 0x61 + 1;
 }
-		\end{java}
+	\end{java}
 
-		… mais ça sort un peu du cadre de ce premier cours de développement. 
+	… mais ça sort un peu du cadre de ce premier cours de développement. 
 		
-	\end{description}
 	
-	Il peut être utile d’avoir un outil qui fait l’opération inverse, 
-	à savoir associer la lettre de l’alphabet correspondant à une position donnée. 
-	Pour cela, nous aurons~: 
+	Il peut être utile d’avoir un outil qui fait l’opération inverse, à savoir
+	associer la lettre de l’alphabet correspondant à une position donnée.
+	C'est immédiat avec une simple soustraction~: 
 
 	\begin{description}
 
-		\item[\pc{indexToUpperChar(n: integer)\Gives~character}]
+		\item[\pc{indexToUpperChar}]
 		Retourne la forme majuscule de la n\ieme{} lettre de l’alphabet 
 		(où \textit{n} sera obligatoirement compris entre 1 et 26). 
 		Par exemple, \pc{lettreMaj(13)} retourne "M".
 
-		En langage Java, c'est immédiat par \pc{return 0x41 + n}.
+		C'est immédiat par \pc{return 0x41 + n}.
 
-	\item[\pc{indexToLowerChar(n: integer)\Gives~character}]
+		\item[\pc{indexToLowerChar}]
 		Idem pour les minuscules.
 		
-		En langage Java, c'est immédiat par \pc{return 0x61 + n}.
+		C'est immédiat par \pc{return 0x61 + n}.
 
 	\end{description}
 
@@ -403,33 +367,41 @@ public static int letterIndex(char c){
 \section{Chaine et nombre}
 %=========================
 
-	Si une chaine contient un nombre, il doit être possible de le convertir, et
-	inversement.
+	Si une chaine contient un nombre, il doit être possible de convertir la
+	chaine en nombre et inversement.
 
 	\begin{description}
 	
-		\item[\pc{toString(n: real)\Gives~string}]
-		Transforme un nombre en chaine.
-		Ex: \pc{chaine(42)} retourne la chaine "42"
-		et \pc{chaine (3,14)} donnera "3,14". 
+		\item[Nombre vers chaine]			
+			La conversion d'un nombre en chaine est immédiate lors l'une
+			affectation dans une variable de type \pc{String}
 
-		En langage Java, cette conversion est immédiate et se fait de 
-		manière transparente.
+			\begin{java}
+				String s = 42;
+			\end{java}
 
-		\item[\pc{toReal(s : string) \Gives~real}]
+			Lors d'une concaténation, les conversions d'un nombre vers une
+			chaine sont immédiates à ceci près qu'il faut parfois être attentif
+			à l'ordre des opérandes.
+
+			\begin{java}
+				String s1 = 1 + "2";		// "12"
+				String s2 = 1 + 2;			// "3"
+				String s3 = 1 + "2" + "3";	// "123"
+				String s4 = 1 + 2 + "3";	// "33"
+			\end{java}
+
+		\item[Chaine vers nombre]
 		Transforme une chaine contenant des caractères numériques 
-		en nombre.
-		Ainsi, \pc{nombre("3,14")} retournera 3,14. 
-		C’est une erreur de l’utiliser avec une chaine
-		qui ne représente pas un nombre.
-	
-		En langage Java, pour chaque type, il existe une méthode qui fait cette
-		transformation. Pour le type \pc{double}, il suffit d'écrire~:
+		en nombre. Pour chaque type, il existe une méthode qui fait cette
+		transformation. 
 
 		\begin{java}
 String s = "3.14";		
 double d = Double.parseDouble(s);			
-		\end{java}<++>
+s = "5";
+int i = Integer.parseInt(s);
+		\end{java}
 
 	\end{description}
 	
@@ -437,15 +409,10 @@ double d = Double.parseDouble(s);
 % ==================================
 
 	\begin{description}
-	\item[\pc{substring(s: string, beginIndex: integer, endIndex: integer) 
-		\Gives~string}]
+	\item[\pc{substring}]
 		
 		Permet d’extraire une sous-chaine d'une chaine à partir d'une position
-		donnée jusqu'à une autre. \pc{beginIndex} est la position de départ et
-		\pc{endIndex - 1} la position de fin… ce qui implique que \pc{endIndex
-		- beginIndex} est la longueur de la sous chaine. 
-
-		En langage Java, il existe également une méthode \pc{substring}~:
+		donnée jusqu'à une autre. 
 
 		\begin{java}
 String s = "Karine, Jenny et Vicky paraissent belles";			
@@ -474,15 +441,13 @@ System.out.println(s.substring(8,40));
 % ==================================
 	
 	\begin{description}
-	\item[\pc{indexOf(s: string, subs: string)\Gives~integer}]	
+	\item[\pc{indexOf}]	
 	
 		Permet de savoir si une sous-chaine donnée est présente dans une chaine
 		donnée.  Elle permet d’éviter d’écrire le code correspondant à une
 		recherche.  La valeur de l’entier renvoyé est la position où commence la
 		sous-chaine recherchée.  Si la sous-chaine ne s’y trouve pas, la
 		fonction retourne -1.
-
-		En langage Java, il existe également une méthode \pc{indexOf}~:
 
 		\begin{java}
 String s = "Des 3 nombrils, " 
