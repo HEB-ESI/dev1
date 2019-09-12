@@ -1,0 +1,118 @@
+\clearpage
+\section{Exercices~: chaine et String}
+\bigskip
+
+	\begin{Exercice}{Calcul de fraction}
+		
+		Écrire un algorithme qui reçoit une fraction sous forme de chaine, et
+		retourne la valeur numérique de celle-ci.  Par exemple, si la fraction
+		donnée est "5/8", l’algorithme renverra 0,625.  On peut considérer que
+		la fraction donnée est correcte, elle est composée de 2 entiers séparés
+		par le caractère de division '/'.
+
+\end{Exercice}
+
+\begin{Exercice}{Conversion de nom}
+	Écrire un algorithme 
+	qui reçoit le nom complet d’une personne 
+	dans une chaine sous la forme "nom, prénom" 
+	et la renvoie au format "prénom nom" 
+	(sans virgule séparatrice). 
+	Exemple~: "De Groote, Jan" deviendra "Jan De Groote".	
+\end{Exercice}
+
+\begin{Exercice}{Gauche et droite}
+
+	Écrire un algorithme \pc{gauche} et un \pc{droite} recevant un paramètre
+	entier $n$ qui retourne la chaine formée respectivement des $n$ premiers et
+	des $n$ derniers caractères d’une chaine donnée.	
+
+\end{Exercice}
+
+\begin{Exercice}{Grammaire}
+	Écrire un algorithme 
+	qui met un mot en « ou » au pluriel. 
+	Pour rappel, 
+	un mot en « ou » prend un « s » à l’exception des 7 mots 
+	bijou, caillou, chou, genou, hibou, joujou et pou qui prennent 
+	un « x » au pluriel. 
+	Exemple~: un clou, des clous, un hibou, des hiboux. 
+	Si le mot soumis à l’algorithme n’est pas un mot en « ou », 
+	un message adéquat sera affiché.
+\end{Exercice}
+
+\begin{Exercice}{Normaliser une chaine}
+	Écrire un module qui reçoit une chaine et retourne une autre chaine,
+	version normalisée de la première.
+	Par normalisée, on entend~:~enlever tout ce qui n’est pas une lettre 
+	et tout mettre en majuscule.
+	\\Exemple~:~"Le <COBOL>, c’est la santé~!" devient "LECOBOLCESTLASANTE".
+\end{Exercice}
+
+\begin{Exercice}{Les palindromes}
+
+	Cet exercice a déjà été réalisé pour des entiers, 
+	en voici 2 versions « chaine »~! 
+	
+	\begin{enumerate}[label=\alph*)]
+	
+		\item Écrire un algorithme qui vérifie si un mot donné sous forme de
+			chaine constitue un palindrome (comme par exemple "kayak", "radar"
+			ou "saippuakivikauppias" (marchand de pierre de savon en finnois)
+		
+		\item Écrire un algorithme qui vérifie si une phrase donnée sous forme
+			de chaine constitue un palindrome (comme par exemple "Esope reste
+			ici et se repose" ou "Tu l’as trop écrasé, César, ce
+			Port-Salut~!").  Dans cette seconde version, on fait abstraction
+			des majuscules/minuscules et on néglige les espaces et tout signe
+			de ponctuation.
+
+	\end{enumerate}
+
+\end{Exercice}
+
+\begin{Exercice}{Le chiffre de César}
+	\label{ex:cesar}
+
+	\begin{quote}
+	
+		Depuis l’antiquité, les hommes politiques, les militaires, les hommes
+		d’affaires cherchent à garder secret les messages importants qu’ils
+		doivent envoyer.  L’empereur César utilisait une technique (on dit un
+		\emph{chiffrement}) qui porte à présent son nom~: remplacer chaque
+		lettre du message par la lettre qui se situe $k$ positions plus loin
+		dans l’alphabet (cycliquement).
+	
+	\end{quote}
+
+	Exemple~:~si $k$ vaut $2$, 
+	alors le texte clair "CESAR" devient "EGUCT" lorsqu’il est chiffré 
+	et le texte "ZUT" devient "BWV".
+
+	Bien sûr, il faut que l’expéditeur du message et le récepteur
+	se soient mis d’accord sur la valeur de $k$.
+
+	On vous demande d’écrire un algorithme qui reçoit une chaine ne contenant
+	que des lettres majuscules ainsi que la valeur de $k$ et qui retourne
+	la version chiffrée du message.
+
+	On vous demande également d’écrire l’algorithme de déchiffrement.
+	Cet algorithme reçoit un message chiffré et la valeur de $k$ qui a été
+	utilisée pour le chiffrer et retourne le message en clair.
+	
+	\paragraph{Remarque} Ce second algorithme est \textbf{très simple} dès lors
+	que l'algorithme de chiffrement est écrit.
+
+\end{Exercice}
+
+\begin{Exercice}{Remplacement de sous-chaines}
+	Écrire un algorithme 
+	qui remplace dans une chaine donnée 
+	toutes les sous-chaines ch1 par la sous-chaine ch2. 
+	Attention, 
+	cet exercice est plus coriace qu’il n’y parait à première vue\dots~
+	Assurez-vous que votre code n’engendre pas de boucle infinie. 
+\end{Exercice}	
+
+
+

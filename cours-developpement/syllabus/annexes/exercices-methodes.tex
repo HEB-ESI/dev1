@@ -1,0 +1,135 @@
+\clearpage
+\section{Exercices~: modules et méthodes}
+
+		\begin{Exercice}{Tracer des algorithmes}
+			Indiquer quels nombres sont successivement affichés 
+			lors de l’exécution des algorithmes ex1, ex2, ex3 et ex4.
+
+			\begin{java}
+public static void ex1(){
+	int x, y;
+	x = add(3, 4);
+	System.out.println(x);
+	x = 3;
+	y = 5;
+	y add(x, Y);
+	System.out.println(y);
+}
+
+public static int add(int a, int b){
+	int sum;
+	sum = a + b;
+	return sum;
+}
+			\end{java}
+
+			\begin{java}
+public static void ex2(){
+	int a, b;
+	a = add(3, 4);		// cfr. ci-dessus
+	System.out.println(a);
+	a = 3;
+	b = 5;
+	b = sub(b, a);
+	System.out.println(b);
+}
+
+public static int sub(int a, int b){
+	return a - b;
+}
+			\end{java}
+
+	\end{Exercice}
+
+	\begin{Exercice}{Appels de module}
+		Parmi les instructions suivantes (où les variables
+		\pc{a}, \pc{b} et \pc{c}
+		sont des entiers), lesquelles font correctement appel 
+		à l’algorithme d’en-tête suivant~?
+
+		\begin{java}
+public static int pgcd(int a, int b){
+	// ...
+}
+		\end{java}
+
+		\begin{itemize}
+			\item[$\Box$] \pc{a = pgcd(24, 32)} 
+			\item[$\Box$] \pc{a = pgcd(a, 24)}
+			\item[$\Box$] \pc{b = 3 * pgcd(a + b, 2 * c) + 120}
+			\item[$\Box$] \pc{pgcd(20, 30)}
+			\item[$\Box$] \pc{a = pgcd(a, b, c)}
+			\item[$\Box$] \pc{a = pgcd(a, b) + pgcd(a, c)}
+			\item[$\Box$] \pc{a = pgcd(a, pgcd(a, b))}
+			\item[$\Box$] \pc{System.out.println(pgcd(a, b))}
+			\item[$\Box$] \pc{pgcd(a, b) = c}
+		\end{itemize}
+
+	\end{Exercice}
+
+	\begin{Exercice}{Maximum de 4 nombres}
+		Écrivez un algorithme qui calcule le maximum de 4 nombres.
+	\end{Exercice}
+
+	\begin{Exercice}{Écart entre 2 durées}
+		Étant donné deux durées données chacune par trois
+		nombres (heure, minute, seconde),
+		écrire un algorithme qui calcule
+		le délai écoulé entre ces deux durées en heure(s), minute(s),
+		seconde(s) sachant que la deuxième durée donnée 
+		est plus petite que la première.
+	\end{Exercice}
+
+	\begin{comment}
+	\begin{Exercice}{Réussir GEN1}
+		Reprenons l’exercice \vref{algo:réussirGEN1}.
+		Cette fois-ci on ne veut rien afficher
+		mais fournir deux résultats~:
+		un booléen indiquant si l’étudiant a réussi ou pas
+		et un entier indiquant sa cote (qui n’a de sens que s’il a réussi). 
+	\end{Exercice}
+	\end{comment}
+
+	\begin{Exercice}{Tirer une carte}
+
+		L’exercice suivant a déjà été résolu. 
+		Refaites une solution modulaire.
+
+		Écrire un algorithme qui affiche l’intitulé d’une carte
+		tirée au hasard dans un paquet de 52 cartes.
+		Par exemple, "As de cœur", "3 de pique", "Valet de carreau"
+		ou encore "Roi de trèfle".
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre de jours dans un mois}
+		Écrire un algorithme qui donne le nombre de jours dans un mois.
+		Il reçoit en paramètre le numéro du mois (1 pour janvier\dots)
+		ainsi que l’année.
+		Pour le mois de février, 
+		il faudra répondre 28 ou 29 selon que l’année fournie
+		est bissextile ou pas.
+		Vous devez réutiliser au maximum ce que vous avez déjà fait
+		lors d’exercices précédents (cf. exercice \vref{ex:bissextile}).
+	\end{Exercice}
+
+	\begin{Exercice}{Valider une date}
+		Écrire un algorithme qui valide 
+		une date donnée par trois entiers~:~ l’année, le mois et le jour.
+		Vous devez réutiliser au maximum ce que vous avez déjà fait
+		lors d’exercices précédents.
+	\end{Exercice}
+
+	\begin{Exercice}{Généraliser un algorithme}
+		
+		Dans l’exercice \vref{algo:mult5}, nous avons écrit un algorithme pour
+		tester si un nombre est divisible par 5.  Si on vous demande à présent
+		un algorithme pour tester si un nombre est divisible par 3, vous le
+		feriez sans peine.  Idem pour tester la divisibilité par 2, 4, 6, 7, 8,
+		9\dots{} mais vous vous lasseriez bien vite.
+
+		Écrivez un seul algorithme, plus général, qui résoud tous ces problèmes
+		en une seule fois. 
+	
+	\end{Exercice}
+
+

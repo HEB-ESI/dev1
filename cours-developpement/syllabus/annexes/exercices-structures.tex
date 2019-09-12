@@ -1,0 +1,91 @@
+
+\section{Exercices~: structures et classes}
+
+Dans ces exercices nous supposons que vous avez au préalable écrit les
+structures et classes \pc{Moment}, \pc{Point}… telles que décrites dans le
+chapitre \ref{structures-classes} p~\pageref{structures-classes}.
+
+\begin{Exercice}{Conversion moment-secondes}
+	Écrire un module qui reçoit en paramètre un
+	moment d’une journée et qui retourne le nombre de secondes écoulées
+	depuis minuit jusqu’à ce moment.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes-moment}
+	Écrire un module qui reçoit en paramètre un
+	nombre de secondes écoulées dans une journée à partir de minuit et qui
+	retourne le moment correspondant de la journée.
+\end{Exercice}
+
+\begin{Exercice}{Temps écoulé entre 2 moments}
+	Écrire un module qui reçoit en paramètres deux
+	moments d’une journée et qui retourne le nombre de secondes séparant
+	ces deux moments.
+\end{Exercice}
+
+\begin{Exercice}{Milieu de 2 points}
+	Écrire un module recevant deux points du plan 
+	et qui retourne le point situé au milieu des deux.
+\end{Exercice}
+
+\begin{Exercice}{Distance entre 2 points}
+	Écrire un module recevant les coordonnées de
+	deux points distincts du plan et qui retourne
+	la distance entre ces deux points.
+\end{Exercice}
+
+\begin{Exercice}{Un cercle}
+	Définir un type \textbf{Cercle} pouvant décrire de façon
+	commode un cercle quelconque dans un espace à deux dimensions. 	
+	Écrire ensuite
+
+	\begin{enumerate}[label=\alph*)]
+		\item {
+			un module calculant la surface du cercle reçu en paramètre~;}
+		\item {
+				un module recevant 2 points en paramètre et retournant le cercle dont le
+			diamètre est le segment reliant ces 2 points~;}
+		\item {
+			un module qui détermine si un point donné est dans un cercle~;}
+		\item {
+				un module qui indique si 2 cercles ont une intersection.
+			}
+	\end{enumerate}
+\end{Exercice}
+
+
+\begin{Exercice}{Un rectangle}
+
+	Définir un type \textbf{Rectangle} pouvant décrire de façon
+	commode un rectangle dans un espace à deux dimensions et dont les côtés
+	sont parallèles aux axes des coordonnées. 	
+	Écrire ensuite
+
+	\begin{enumerate}[label=\alph*)]
+		\item {
+			un module calculant le périmètre d’un rectangle reçu en paramètre~;}
+		\item {
+			un module calculant la surface d’un rectangle reçu en paramètre~;}
+		\item {
+				un module recevant en paramètre un rectangle R et les coordonnées
+				d’un point P, et renvoyant 
+				\textbf{vrai} si et seulement si le point P est à
+			l’intérieur du rectangle R~;}
+			%\item {
+				%un module recevant en paramètre un rectangle R et les coordonnées
+				%d’un point P, et renvoyant 
+				%\textbf{vrai} si et seulement si le point P est sur le bord du
+				%rectangle R~;}
+			%\item {
+				%un module recevant en paramètre deux rectangles et renvoyant la valeur
+				%booléenne \textbf{vrai} si et seulement si ces deux rectangles ont une
+				%intersection.}
+	\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}{Validation de date}
+	Écrire un algorithme qui valide une date reçue en paramètre 
+	sous forme d’une structure.
+\end{Exercice}
+
+

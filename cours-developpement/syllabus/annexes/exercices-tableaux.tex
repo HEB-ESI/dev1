@@ -1,4 +1,177 @@
+\clearpage
+\section{Exercices~: tableaux}
+\bigskip 
 
+
+	\begin{Exercice}{Déclarer et initialiser}
+		Écrire un algorithme qui déclare un tableau de 100 chaines
+		et met votre nom dans la 3\ieme{} case du tableau.
+	\end{Exercice}
+
+	\begin{Exercice}{Initialiser un tableau à son indice}
+		Écrire un algorithme qui déclare un tableau de 100 entiers
+		et initialise chaque élément à la valeur de son indice.
+		Ainsi, la case numéro $i$ contiendra la valeur $i$.
+	\end{Exercice}
+
+	\begin{Exercice}{Initialiser un tableau aux valeurs de 1 à 100}
+		Écrire un algorithme qui déclare un tableau de 100 entiers
+		et y met les nombres de 1 à 100.
+	\end{Exercice}
+
+	\begin{Exercice}{Compréhension}
+		Expliquez la différence entre \pc{tab[i] \Gets tab[i+1]}
+		et \pc{tab[i] \Gets tab[i]+1}.
+	\end{Exercice}
+
+
+
+	\begin{Exercice}{Trouver les entêtes}
+		Écrire les entêtes (et uniquement les entêtes)
+		des algorithmes qui résolvent les problèmes suivants~:
+		\begin{enumerate}[label=\alph*)]
+			\item
+				Écrire un algorithme qui 
+				inverse le signe de tous les éléments négatifs dans un tableau d’entiers.
+			\item
+				Écrire un algorithme qui
+				donne le nombre d’éléments négatifs dans un tableau d’entiers.
+			\item
+				Écrire un algorithme qui
+				détermine si un tableau d’entiers contient au moins un nombre négatif.
+			\item
+				Écrire un algorithme qui
+				détermine si un tableau de chaines contient
+				une chaine donnée en paramètre.
+			\item
+				Écrire un algorithme qui
+				détermine si un tableau de chaines contient
+				au moins deux occurrences de la même chaine,
+				quelle qu’elle soit.
+			\item
+				Écrire un algorithme qui 
+				retourne un tableau donnant les $n$ premiers nombres premiers,
+				où $n$ est un paramètre de l’algorithme.
+			\item
+				Écrire un algorithme qui 
+				reçoit un tableau d’entiers
+				et retourne un tableau de booléens de la même taille
+				où la case $i$ indique si oui ou non
+				le nombre reçu dans la case $i$ est strictement positif.
+		\end{enumerate}
+	\end{Exercice}
+
+
+	\begin{Exercice}{Inverser le signe des éléments}
+		Écrire un algorithme qui 
+		inverse le signe de tous les éléments négatifs dans un tableau d’entiers.
+	\end{Exercice}
+
+	\begin{Exercice}{Somme}
+
+		Écrire un algorithme qui reçoit en paramètre le tableau \pc{integers}
+		de $n$ entiers et qui retourne la somme de ses éléments.
+	
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre d’éléments d’un tableau}
+		
+		Écrire un algorithme qui reçoit en paramètre le tableau \pc{doubles} de
+		$n$ réels et qui retourne le nombre d’éléments du tableau.
+	
+	\end{Exercice}
+
+	\begin{Exercice}{Compter les éléments négatifs}
+		Écrire un algorithme qui
+		donne le nombre d’éléments négatifs dans un tableau d’entiers.
+	\end{Exercice}
+
+
+	\begin{Exercice}{Y a-t-il une copie valant 20/20~?}
+		\begin{enumerate}
+			
+			\item Écrire un algorithme qui reçoit en paramètre le tableau
+				\pc{cotes} de $n$ entiers représentant les cotes des étudiants
+				et qui retourne un booléen indiquant s’il contient \textbf{au
+				moins} une fois la valeur 20. 
+
+			\item Écrire un algorithme qui reçoit en paramètre le tableau
+				\pc{cotes} de $n$ entiers représentant les cotes des étudiants
+				et qui retourne un booléen indiquant s’il contient
+				\textbf{exactement} une fois la valeur 20.  
+		
+		\end{enumerate}
+	
+	\end{Exercice}
+
+	\begin{Exercice}{Lancers de deux dés}
+
+		Écrire un algorithme qui lance $n$ fois deux dés et compte le nombre de
+		fois que chaque somme apparait. Cet algorithme retourne un tableau
+		d'entiers\,; un élément par somme. 
+
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre de jours dans un mois}
+
+		Écrire un algorithme qui reçoit un numéro de mois (de 1 à 12)
+		ainsi qu’une année et donne le nombre de jours dans ce mois
+		(en tenant compte des années bissextiles).
+		N’hésitez pas à réutiliser des algorithmes déjà écrits.
+	\end{Exercice}
+
+
+
+	\begin{Exercice}{Inscription / désinscription}
+
+		\begin{enumerate}
+
+			\item Comment modifier l’algorithme d’inscription (cfr.
+				\ref{subscribe} p\,\pageref{subscribe}) pour s’assurer qu’un
+				étudiant ne s’inscrive pas deux fois~?
+
+			\item Comment modifier l’algorithme d’inscription pour refuser une
+				inscription si le nombre maximal de participants est atteint en
+				supposant que ce maximum est égal à la taille physique du
+				tableau~?
+
+			\item Que se passerait-il avec l’algorithme de désinscription tel
+				qu’il est si on demande à désinscrire un étudiant non inscrit~?
+				Que suggérez-vous comme changement~?
+
+		\end{enumerate}
+	
+	\end{Exercice}
+
+
+	\begin{Exercice}{Calcul de complexités}
+		Quelle est la complexité d’un algorithme qui~:		
+		\begin{enumerate}[label=\alph*)]
+			\item 
+				recherche le maximum d’un tableau de $n$ éléments~?
+			\item 
+				remplace par 0 toutes les occurrences du maximum 
+				d’un tableau de $n$ éléments~?
+			\item 
+				vérifie si un tableau contient deux éléments égaux~?
+				%\item 
+				%	trie par recherche des minima successifs~?
+			\item 
+				vérifie si les éléments d’un tableau forment un palindrome~?
+			\item
+				cherche un élément dans un tableau 
+				en essayant des cases au hasard jusqu’à le trouver~?
+		\end{enumerate}
+	\end{Exercice}
+
+
+	\begin{Exercice}{Réflexion}
+		L’algorithme de recherche dichotomique 
+		est-il toujours à préférer à
+		l’algorithme de recherche linéaire~?
+	\end{Exercice}
+
+\bigskip
 \bigskip
 \begin{Emphase}
 	\paragraph{Remarque}
@@ -151,13 +324,14 @@
 	
 	\begin{Exercice}{Occurrence des chiffres}
 		
-		Écrire un algorithme qui reçoit 
-		un nombre entier positif ou nul en paramètre
-		et qui retourne un tableau de 10 entiers
-		indiquant, pour chacun de ses chiffres, 
-		le nombre de fois qu’il apparait dans ce nombre. 
-		Ainsi, pour le nombre 10502851125, on retournera
-		le tableau \{2,3,2,0,0,3,0,0,1,0\}.
+		Écrire un algorithme qui reçoit un nombre entier positif ou nul en
+		paramètre et qui retourne un tableau de 10 entiers indiquant, pour
+		chacun de ses chiffres, le nombre de fois qu’il apparait dans ce
+		nombre.  
+		
+		Ainsi, pour le nombre 10502851125, on retournera le tableau
+		[2,3,2,0,0,3,0,0,1,0].
+	
 	\end{Exercice}
 	
 	\begin{Exercice}{Les doublons}
@@ -169,6 +343,7 @@
 	\bigskip
 	
 	\begin{Exercice}{Le crible d’Ératosthène}
+
 		\begin{quote}
 			\og{} Le crible d’Ératosthène est un procédé 
 			qui permet de trouver tous les nombres premiers inférieurs 
@@ -186,40 +361,42 @@
 			tous les non-premiers ont déjà été rayés précédemment.\fg{}
 			(source~: Wikipédia)
 		\end{quote}
+		
 		Le tableau dont il est question peut être un simple tableau
 		de booléens; le booléen en position "i" indiquant 
 		si le nombre "i" est premier ou pas.
 
-		Écrire un algorithme qui reçoit un entier $n$
-		et affiche tous les entiers premiers de $1$ à $n$.
+		Écrire un algorithme qui reçoit un entier $n$ et affiche tous les
+		entiers premiers de $1$ à $n$\footnote{Tester votre programme avec de
+		«~grandes~» valeurs de $n$.}.
+
 	\end{Exercice}
 	
 	\begin{Exercice}{Mastermind}
 		
-		Dans le jeu du Mastermind, 
-		un joueur A doit trouver une combinaison de $n$ pions de couleur, 
-		choisie et tenue secrète par un autre joueur B. 
-		Cette combinaison peut contenir éventuellement des pions de même couleur. 
-		À chaque proposition du joueur A, 
-		le joueur B indique le nombre de pions de la proposition 
-		qui sont corrects et bien placés 
-		et le nombre de pions corrects mais mal placés. 
+		\begin{quote}
 		
-		Les propositions du joueur A, 
-		ainsi que la combinaison secrète du joueur B
-		sont contenues dans des tableaux de $n$ composantes de type chaine.
+			Dans le jeu du Mastermind, un joueur A doit trouver une combinaison
+			de $n$ pions de couleur, choisie et tenue secrète par un autre
+			joueur B.  Cette combinaison peut contenir éventuellement des pions
+			de même couleur.  À chaque proposition du joueur A, le joueur
+			B indique le nombre de pions de la proposition qui sont corrects et
+			bien placés et le nombre de pions corrects mais mal placés. 
 		
-		Écrire l’algorithme suivant qui renvoie dans les variables
-		\pc{bienPlacés} et \pc{malPlacés}
-		respectivement le nombre de pions bien placés et mal placés 
-		dans la «~proposition~» du joueur A en la comparant 
-		à la «~solution~» cachée du joueur B.
-	
-		\begin{pseudocode}
-		\Entete{testerProposition}{
-			\Par{proposition\In, solution\In}{\Array{n}{chaines}}, 
-			\\\hfill 
-			\Par{bienPlacés\Out, malPlacés\Out}{entiers}}{}
-		\end{pseudocode}
+			Les propositions du joueur A, ainsi que la combinaison secrète du
+			joueur B sont contenues dans des tableaux de $n$ composantes de
+			type chaine.
+		
+		\end{quote}
+		
+		Écrire deux algorithmes~:
+
+		\begin{itemize}
+			\item l'un qui renvoie le nombre de pions de la bonne couleur et 
+				bien placés et\,;
+			\item l'autre qui renvoie le nombre de pions de la bonne couleur 
+				et mal placés. 
+		\end{itemize}
+
 	\end{Exercice}
 	
