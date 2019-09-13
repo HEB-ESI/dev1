@@ -1,0 +1,127 @@
+\clearpage
+\section{Exercices~: tracer un algorithme}
+
+Nous vous proposons de tracer vos algorithmes comme présenté dans le chapitre 
+\ref{premalgos} dans la section \ref{tracer}, page \pageref{tracer}.
+
+
+\begin{Exercice}{Tracer des bouts de code}
+	Suivez l’évolution des variables pour les bouts
+	d’algorithmes donnés.
+
+	\begin{minipage}{4cm}
+		\begin{pseudocode}[1]
+			\Decl{a, b, c}{entiers}
+			\Let a \Gets 42
+			\Let b \Gets 24
+			\Let c \Gets a + b
+			\Let c \Gets c - 1
+			\Let a \Gets 2 * b
+			\Let c \Gets c + 1
+		\end{pseudocode}
+	\end{minipage}
+	\quad%
+	\begin{minipage}{7cm}
+		\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{3}{>{\centering\arraybackslash}m{2cm}}|}
+			\hline
+			\verb_#_ & {a} & {b} & {c}\\
+			\hline
+			1 & {} & {} & {} \\
+			2 & {} & {} & {} \\
+			3 & {} & {} & {} \\
+			4 & {} & {} & {} \\
+			5 & {} & {} & {} \\
+			6 & {} & {} & {} \\
+			7 & {} & {} & {} \\
+			\hline
+		\end{tabular}
+	\end{minipage}
+
+	\bigskip
+	\begin{minipage}{4cm}
+		\begin{pseudocode}[1]
+			\Decl{a, b, c}{entiers}
+			\Let a \Gets 2
+			\Let b \Gets a$^3$
+			\Let c \Gets b - a$^2$
+			\Let a \Gets $\sqrt{c}$
+			\Let a \Gets a / a
+		\end{pseudocode}
+	\end{minipage}
+	\quad%
+	\begin{minipage}{7cm}
+		\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{3}{>{\centering\arraybackslash}m{2cm}}|}
+			\hline
+			\verb_#_ & {a} & {b} & {c}\\
+			\hline
+			1 & {} & {} & {} \\
+			2 & {} & {} & {} \\
+			3 & {} & {} & {} \\
+			4 & {} & {} & {} \\
+			5 & {} & {} & {} \\
+			6 & {} & {} & {} \\
+			\hline
+		\end{tabular}
+	\end{minipage}	
+\end{Exercice}
+
+\begin{Exercice}{Calcul de vitesse}
+
+	Soit le problème suivant :
+	\og
+	Calculer la vitesse (en km/h) d’un véhicule 
+	dont on donne la durée du parcours (en secondes) 
+	et la distance parcourue (en mètres).
+	\fg.
+
+	Voici \textit{une} solution : 
+\begin{java}
+public static double vitesseKMH(double distanceM, double duréeS){
+	double distanceKMH, duréeH;
+	distanceKM = 1000 * distanceM;
+	duréeH = 3600 * duréeS;
+	return distanceKM / duréeH;
+}
+\end{java}
+
+L’algorithme, s’il est correct, devrait donner une vitesse de 1~km/h pour une
+distance de 1000~mètres et une durée de 3600~secondes.  Testez cet algorithme
+avec cet exemple.
+
+\begin{center}
+	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{5}{>{\centering\arraybackslash}m{2cm}}|}
+		\hline
+		\verb_#_  &  &  & & &  \\			
+		\hline
+		1 & & & & & \\
+		2 & & & & & \\
+		3 & & & & & \\
+		4 & & & & & \\
+		5 & & & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Si vous trouvez qu’il n’est pas correct, voyez ce qu’il faudrait changer pour le
+corriger.
+
+\end{Exercice}
+
+\begin{Exercice}{Allure et vitesse}
+
+	L’allure d’un coureur est le temps qu’il met pour parcourir 1~km (par
+	exemple, $4'37''$\footnote{4 minutes et 37 secondes}).  On voudrait calculer
+	sa vitesse (en km/h) à partir de son allure.  
+	
+	Par exemple, la vitesse d’un coureur ayant une allure de $4'37''$ est de
+	$12,996389892$~km/h. 
+
+\end{Exercice}
+
+\begin{Exercice}{Cote moyenne}
+
+	Étant donné les résultats (cote entière sur 20) de trois examens passés par
+	un étudiant (exprimés par six nombres, à savoir, la cote et la pondération
+	de chaque examen), calculer la moyenne globale exprimée en pourcentage.  
+
+\end{Exercice}

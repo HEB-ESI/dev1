@@ -560,8 +560,29 @@ public static void display(int[] myArray){
 			\item[Parcours complet]
 		
 			Nous avons déjà vu dans les exemples comment parcourir tous les
-			éléments d’un tableau.  Une boucle \pc{pour} fait généralement
-			l'affaire.  La fiche \vref{fiche:tab-parcours-complet} décrit
+			éléments d’un tableau.  Une boucle \pc{for} fait généralement
+			l'affaire comme ceci~:
+
+			\begin{java}
+int[] myArray = { /* insert values */ };
+for (int index = 0; index < myArray.length; index++){
+	// do something with myArray[index]
+}
+			\end{java}
+
+			Java propose une autre forme de \pc{for} —~l'\textit{enhanced for}
+			ou \textit{foreach}\index{foreach}~— permettant de parcourir un
+			tableau\footnote{Nous verrons en DEV2, que cette structure permet
+			de parcourir d'autres choses que les tableaux.}
+
+			\begin{java}
+int[] myArray = { /* insert values */ };
+for (int value: myArray){
+	// do something with value
+}
+			\end{java}
+			
+			La fiche \vref{fiche:tab-parcours-complet} décrit
 			comment afficher tous les éléments d’un tableau.  Il est possible de
 			faire autre chose avec ces éléments~: les sommer, les comparer\dots
 

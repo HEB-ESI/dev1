@@ -1,0 +1,394 @@
+\clearpage 
+\section{Exercices~: structures itératives}
+
+\subsection{while}
+\bigskip 
+
+	\begin{Exercice}{Compréhension d’algorithmes}
+		Quels sont les affichages réalisés lors de l’exécution
+		des algorithmes suivants~?
+
+		\begin{java}
+public static void while1(){
+	int x;
+	x = 0;
+	while (x < 12){
+		x = x + 2;
+	}
+	System.out.println(x);
+}
+		\end{java}
+
+		\begin{java}
+public static void while2(){
+	boolean shouldContinue = true;
+	int x = 5;
+	while (shouldContinue) {
+		x = x + 7;
+		shouldContinue = x % 11 != 0
+	}
+	System.out.println(x);
+}
+		\end{java}
+
+		\begin{java}
+public static void while3(){
+	boolean isDone = false;
+	int count = 0, 
+		x = 10;
+	while (!isDone && count < 3){
+		if (x % 2 == 0){
+			x = x + 1;
+			isDone = x < 20;
+		} else {
+			x = x + 3
+			count++
+		}
+	}
+	System.out.println(x);
+}	
+		\end{java}
+
+	\end{Exercice}
+
+		\begin{Exercice}{Afficher des nombres}
+
+			En utilisant un \pc{\algorithmicwhile},
+			écrire un algorithme qui reçoit un entier $n$ positif et affiche
+			\begin{enumerate}[label=\alph*)]
+				\item les nombres de 1 à $n$~;
+				\item les nombres de $n$ à 1 en ordre décroissant~;
+				\item les nombres impairs de 1 à $n$~;
+				\item les nombres de -$n$ à $n$~;
+				\item les multiples de 5 de 1 à $n$~;
+				\item les multiples de $n$ de 1 à 100.
+			\end{enumerate}
+		\end{Exercice}
+
+
+
+
+\subsection{for}
+\bigskip 
+
+	\begin{Exercice}{Compréhension d’algorithmes}
+	
+		Quels sont les affichages réalisés lors de l’exécution des algorithmes
+		suivants~?
+
+		\begin{java}
+public static void for1(){
+	int x;
+	boolean b;
+	x = 3;
+	b = true;
+	for (int i = 0; i < 5; i++){
+		x = x + i + 1;
+		b = b && x % 2 == 0;
+	}
+	if (b){
+		System.out.println(x);
+	} else {
+		System.out.println(2 * x);
+	}
+}
+		\end{java}
+
+		\begin{java}
+public static void for2(){
+	int end;
+	for (int i = 0; i < 3; i++){
+		end = 6 * (i + 1) - 11;
+		for (int j = 0; j < end; j = j + 3){
+			System.out.println(10 * i + j);
+		}
+	}
+}
+		\end{java}
+	
+
+	\end{Exercice}
+
+	\begin{Exercice}{Afficher des nombres}
+
+		Reprenons un exercice déjà donné avec le \pc{\algorithmicwhile}.
+		En utilisant un \pc{\algorithmicfor},
+		écrire un algorithme qui reçoit un entier $n$ positif et affiche
+		\begin{enumerate}[label=\alph*)]
+			\item les nombres de 1 à $n$~;
+			\item les nombres de 1 à $n$ en ordre décroissant~;
+			\item les nombres de -n à n~;
+			\item les multiples de 5 de 1 à n~;
+			\item les multiples de n de 1 à 100.
+		\end{enumerate}
+	\end{Exercice}
+
+
+
+\subsection{do while}
+\bigskip
+
+	\begin{Exercice}{Compréhension d’algorithmes}
+	
+		Quels sont les affichages réalisés lors de l’exécution
+		de l'algorithme suivant~?
+
+		\begin{java}
+public static void dowhile1(){
+	boolean isOdd, isBig;
+	int p, x;
+	x = 1;
+	p = 1;
+	do {
+		p = 2 * p;
+		x = x + p;
+		isOdd = x % 2 == 0;
+		isBig = x > 15;
+	} while (!isOdd && !isBig);
+		\end{java}
+
+		\end{Exercice}
+
+		\begin{Exercice}{Afficher des nombres}
+
+			Reprenons un exercice déjà fait avec le \pc{\algorithmicwhile}
+			et le \pc{\algorithmicfor}
+			en utilisant cette fois un \pc{\algorithmicrepeat} \pc{\algorithmicwhile}.
+			Écrire un algorithme qui reçoit un entier $n$ positif et affiche
+			\begin{enumerate}[label=\alph*)]
+				\item les nombres de 1 à $n$~;
+				\item les nombres de 1 à $n$ en ordre décroissant~;
+				\item les nombres de -n à n~;
+				\item les multiples de 5 de 1 à n~;
+				\item les multiples de n de 1 à 100.
+			\end{enumerate}
+		\end{Exercice}
+
+
+		
+\subsection{Exercices récapitulatifs sur les structures répétitives}
+\bigskip
+
+		\begin{Exercice}{Afficher les nombres impairs}
+			Écrire un algorithme qui demande une série
+			de valeurs entières à l’utilisateur
+			et qui affiche celles qui sont impaires.
+			L’algorithme commence par demander à l’utilisateur
+			le nombre de valeurs qu’il désire donner.
+		\end{Exercice}
+
+		\begin{Exercice}{Compter les nombres impairs}
+			Écrire un algorithme qui demande une série
+			de valeurs entières à l’utilisateur
+			et qui lui affiche le nombre de valeurs impaires
+			qu’il a donné.
+			Après chaque valeur entrée,
+			l’algorithme demande à l’utilisateur s’il y en a encore d’autres.
+		\end{Exercice}
+
+		\begin{Exercice}{Choix de la valeur sentinelle}
+			Quelle valeur sentinelle prendrait-on 
+			pour additionner une série de cotes d’interrogations~? 
+			Une série de températures~?
+		\end{Exercice}
+
+		\begin{Exercice}{Afficher les nombres impairs}
+
+			Écrire un algorithme qui demande une série
+			de valeurs entières non nulles à l’utilisateur
+			et qui affiche celles qui sont impaires.
+			La fin des données sera signalée 
+			par la valeur sentinelle 0.
+		\end{Exercice}
+
+		\begin{Exercice}{Compter le nombre de réussites}
+
+			Écrire un algorithme qui demande une série
+			de cotes (entières, sur 20) à l’utilisateur
+			et qui affiche le pourcentage de réussites.
+			La fin des données sera signalée 
+			par une valeur sentinelle que vous pouvez choisir.
+		\end{Exercice}
+
+		\begin{Exercice}{Suites}
+
+			Écrire les algorithmes qui affichent les $n$ premiers termes des
+			suites suivantes.  À vous de voir quel est, parmi les 2 modèles
+			décrits dans les exemples précédents, le modèle de solution le plus
+			adpaté.
+
+			\begin{enumerate}[label=\alph*)]
+				\item -1, -2, -3, -4, -5, -6\dots
+				\item 1, 3, 6, 10, 15, 21, 28\dots
+				\item 1, 0, 1, 0, 1, 0, 1, 0\dots
+				\item 1, 2, 0, 1, 2, 0, 1, 2\dots
+				\item 1, 2, 3, 1, 2, 3, 1, 2\dots
+				\item 1, 2, 3, 2, 1, 2, 3, 2\dots
+			\end{enumerate}			
+		\end{Exercice}
+
+\bigskip
+\begin{Emphase}
+
+	\paragraph{Remarque}
+
+	Pour les exercices qui suivent, nous vous donnons peu d’indications sur la
+	solution à mettre en \oe{}uvre.  À vous de jouer\dots{}
+
+\end{Emphase}
+\bigskip
+
+		\begin{Exercice}{Lire un nombre}
+
+			Écrire un algorithme qui demande à l’utilisateur un nombre entre
+			1 et $n$ et le retourne.  Si la valeur donnée n’est pas dans
+			l’intervalle souhaité, l’utilisateur est invité à rentrer une
+			nouvelle valeur jusqu’à ce qu’elle soit correcte.
+			
+	\end{Exercice}
+
+	\begin{Exercice}{Lancé de dés}
+
+		Écrire un algorithme qui simule un lancé de dé. Il lance $n$ fois un dé
+		et compte le nombre de fois qu’une certaine valeur est obtenue.
+
+		\begin{java}
+/**
+ * Simule le lancé d'un dé et compte
+ * le nombre de fois ou value apparait.
+ * 
+ * @param n le nombre de lancés
+ * @param value la valeur comptée
+ */
+public static int rollDice(int n, int value){
+	// ...
+}
+		\end{java}
+	
+	\end{Exercice}
+
+	\begin{Exercice}{Factorielle}
+
+		Écrire un algorithme qui retourne la factorielle de $n$ (entier positif ou
+		nul). 
+		
+		Rappel~: la factorielle de $n$, notée $n$!, est le produit des $n$
+		premiers entiers strictement positifs. 
+
+		Par convention, 0! = 1.
+	\end{Exercice}
+
+	\begin{Exercice}{Produit de 2 nombres}
+		Écrire un algorithme qui retourne le produit de deux entiers quelconques
+		sans utiliser l’opérateur de multiplication, mais en minimisant le
+		nombre d’opérations.
+	\end{Exercice}
+
+	\begin{Exercice}{Table de multiplication}
+
+		\begin{minipage}[t]{10cm}
+			Écrire un algorithme qui affiche la table de multiplication
+			des nombres de 1 à 10
+			(cf. l’exemple ci-contre).
+
+		\end{minipage}
+		\qquad
+		\begin{minipage}[t]{4cm}
+			\begin{verbatim}
+			1 x 1 = 1
+			1 x 2 = 2
+			...
+			1 x 10 = 10
+			2 x 1 = 2
+			...
+			10 x 9 = 90
+			10 x 10 = 100
+			\end{verbatim}
+		\end{minipage}		
+	\end{Exercice}
+
+	\begin{Exercice}{Double 6}
+
+		Écrire un algorithme qui lance de façon répétée deux dés.
+		Il s’arrête lorsqu’il obtient un double 6
+		et retourne le nombre de lancés effectués.
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre premier}
+
+		Écrire un algorithme qui vérifie si un entier positif est un
+		\textbf{nombre premier}. 
+
+		Rappel~:~un nombre est premier s’il n’est divisible que par 1 et par
+		lui-même. Le premier nombre premier est 2.
+	\end{Exercice}
+
+	\begin{Exercice}{Nombres premiers}
+
+		Écrire un algorithme qui affiche les nombres premiers inférieurs ou
+		égaux à un entier positif donné. Le module de cet algorithme fera appel
+		de manière répétée mais économique à celui de l’exercice précédent.
+	\end{Exercice}
+
+	\begin{Exercice}{Somme de chiffres}
+
+		Écrire un algorithme qui calcule la somme des chiffres qui forment un
+		nombre naturel $n$. Attention, on donne au départ \textbf{le} nombre et
+		pas ses chiffres. Exemple~: 133045 doit donner comme résultat 16,
+		car 1 + 3 + 3 + 0 + 4 + 5 = 16.
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre parfait}
+
+		Écrire un algorithme qui vérifie si un entier positif est un
+		\textbf{nombre parfait}, c’est-à-dire un nombre égal à la somme de ses
+		diviseurs (sauf lui-même). 
+
+		Par exemple, 6 est parfait car 6 = 1 + 2 + 3. 
+		De même, 28 est parfait car 28 = 1 + 2 + 4 + 7 + 14.
+	\end{Exercice}
+
+	\begin{Exercice}{Décomposition en facteurs premiers}
+		Écrire un algorithme qui affiche la décomposition 
+		d’un entier en facteurs premiers. 
+		Par exemple, $1001880$ donnerait comme décomposition
+		$2^3 * 3^2 * 5 * 11^2 * 23$.
+	\end{Exercice}
+
+	\begin{Exercice}{Nombre miroir}
+
+		Le miroir d’un nombre est le nombre obtenu
+		en lisant les chiffres de droite à gauche.
+		Ainsi le nombre miroir de $4209$ est $9024$.
+		Écrire un algorithme qui calcule le miroir
+		d’un nombre entier positif donné.
+	\end{Exercice}
+
+	\begin{Exercice}{Palindrome}
+
+		Écrire un algorithme qui vérifie si un entier donné 
+		forme un palindrome ou non. 
+		Un nombre palindrome est un nombre qui lu dans un sens 
+		(de gauche à droite) est identique au nombre lu dans l’autre sens 
+		(de droite à gauche). 
+		
+		Par exemple, $1047401$ est un nombre palindrome.
+	\end{Exercice}
+
+	\begin{Exercice}{Jeu de la fourchette}
+
+		Écrire un algorithme qui simule le jeu de la
+		fourchette. Ce jeu consiste à essayer de découvrir un nombre quelconque
+		compris entre 1 et 100 inclus, tiré au sort par l’ordinateur. 
+		L’utilisateur a droit à huit essais
+		maximum. À chaque essai, l’algorithme devra afficher un message
+		indicatif «~nombre donné trop petit~» ou «~nombre donné trop grand~».
+		En conclusion, soit «~bravo, vous avez trouvé en [nombre] essai(s)~» soit
+		«~désolé, le nombre était [valeur]~».
+	\end{Exercice}
+
+
+
+
+
+

@@ -1,0 +1,148 @@
+\clearpage
+\section{Exercices~: spécifier le problème}
+\label{annexe-specifier}
+
+Pour ces premiers exercices, nous vous demandons d’imiter la démarche décrite
+dans le chapitre \ref{refpblm}, à savoir~:
+
+\begin{itemize}
+	\item déterminer quelles sont les données~;
+		leur donner un nom et un type~;
+	\item déterminer quel est le type du résultat~;
+	\item déterminer un nom pertinent pour l’algorithme~;
+	\item fournir un résumé graphique~;
+	\item donner des exemples.
+\end{itemize}
+
+\begin{Exercice}{Somme de 2 nombres}
+	Calculer la somme de deux nombres donnés.
+	\paragraph{Solution.}%
+	\footnote{%
+		Nous allons de temps en temps 
+		fournir des solutions.
+		En algorithmique,
+		il y a souvent \textbf{plusieurs} solutions possibles.
+		Ce n’est donc pas parce que vous avez trouvé une autre façon de faire qu'elle est fausse.
+		Mais il peut y avoir des solutions \textbf{meilleures}
+		que d’autres; 
+		n’hésitez jamais à montrer la vôtre
+		à votre professeur pour avoir son avis.
+	}
+	Il y a ici clairement 2 données.
+	Comme elles n’ont pas de rôle précis,
+	on peut les appeler simplement \pc{nombre1}
+	et \pc{nombre2}
+	(\pc{nb1} et \pc{nb2} sont aussi de bons choix).
+	L’énoncé ne dit pas si les nombres sont entiers ou pas;
+	restons le plus général possible en prenant des réels.
+	Le résultat sera de même type que les données.
+	Le nom de l’algorithme pourrait être simplement \pc{somme}.
+	Ce qui donne~:
+	\begin{center}
+		\flowalgodd{nombre1 (réel)}{nombre2 (réel)}{somme}{réel}
+	\end{center}			 
+	Et voici quelques exemples numériques~:	\\
+	\pc{somme(3, 2)} donne $5$      \quad
+	\pc{somme(-3, 2)} donne $-1$    \\
+	\pc{somme(3, 2.5)} donne $5.5$  \quad
+	\pc{somme(-2.5, 2.5)} donne $0$.
+\end{Exercice}
+
+\begin{Exercice}{Moyenne de 2 nombres}
+	Calculer la moyenne de deux nombres donnés.
+\end{Exercice}
+
+\begin{Exercice}{Surface d’un triangle}
+	Calculer la surface d’un triangle connaissant sa base et sa hauteur.
+\end{Exercice}
+
+\begin{Exercice}{Périmètre d’un cercle}
+	Calculer le périmètre d’un cercle dont on donne le rayon. 
+\end{Exercice}
+
+\begin{Exercice}{Surface d’un cercle}
+	Calculer la surface d’un cercle dont on donne le rayon. 
+\end{Exercice}
+
+\begin{Exercice}{TVA}
+	Si on donne un prix  HTVA (hors tva), il faut lui ajouter 21\% 
+	pour obtenir le prix TTC (toutes taxes comprises). Écrire un algorithme 
+	qui permet de passer du prix HTVA au prix TTC.
+\end{Exercice}
+
+\begin{Exercice}{Les intérêts}
+	Calculer les intérêts reçus après 1 an pour un montant placé en 
+	banque à du 2\% d’intérêt.
+\end{Exercice}
+
+\begin{Exercice}{Placement}
+	Étant donné le montant d’un capital placé (en \texteuro) 
+	et le taux d’intérêt annuel (en \%), 
+	calculer la nouvelle valeur de ce capital après un an.
+\end{Exercice}
+
+\begin{Exercice}{Prix total}
+	Étant donné le prix unitaire d’un produit
+	(hors TVA), le taux de TVA (en \%) et la quantité de produit vendue à
+	un client, calculer le prix total à payer par ce client.
+\end{Exercice}
+
+\begin{Exercice}{Durée de trajet}
+	Étant donné la vitesse moyenne en \textbf{m/s}
+	d’un véhicule et la distance parcourue en \textbf{km} par ce véhicule,
+	calculer la durée en secondes du trajet de ce véhicule.
+\end{Exercice}
+
+\begin{Exercice}{Allure et vitesse}
+	L’allure d’un coureur est le temps qu’il met pour parcourir 1~km
+	(par exemple, $4'37''$).
+	On voudrait calculer sa vitesse (en km/h) à partir de son allure.
+	Par exemple, la vitesse d’un coureur ayant une allure de
+	$4'37''$ est de $13$~km/h. 
+\end{Exercice}
+
+\begin{Exercice}{Somme des chiffres}
+	Calculer la somme des chiffres
+	d’un nombre entier de 3 chiffres.
+\end{Exercice}
+
+\begin{Exercice}{Conversion HMS en secondes}
+	Étant donné un moment dans la journée donné
+	par trois nombres, à savoir, heure, minute et seconde, calculer le
+	nombre de secondes écoulées depuis minuit.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes en heures}
+	Étant donné un temps écoulé depuis minuit.
+	Si on devait exprimer ce temps sous la forme
+	habituelle (heure, minute et seconde),
+	que vaudrait la partie "heure".
+
+	Ex~:~10000 secondes donnera 2 heures.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes en minutes}
+	Étant donné un temps écoulé depuis minuit.
+	Si on devait exprimer ce temps sous la forme
+	habituelle (heure, minute et seconde),
+	que vaudrait la partie "minute".
+
+	Ex~:~10000 secondes donnera 46 minutes.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes en secondes}
+	Étant donné un temps écoulé depuis minuit.
+	Si on devait exprimer ce temps sous la forme
+	habituelle (heure, minute et seconde),
+	que vaudrait la partie "seconde".
+
+	Ex~:~10000 secondes donnera 40 secondes.
+\end{Exercice}	
+
+\begin{Exercice}{Cote moyenne}
+	Étant donné les résultats (cote entière sur
+	20) de trois examens passés par un étudiant (exprimés par six nombres,
+	à savoir, la cote et la pondération de chaque examen), calculer 
+	la moyenne globale exprimée en pourcentage.
+\end{Exercice}
+
