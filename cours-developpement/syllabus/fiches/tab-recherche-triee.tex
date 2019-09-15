@@ -5,19 +5,28 @@
 
 \Section{Problème}
 	
-	Rechercher, ajouter, supprimer des données triées dans un tableau d’entiers
-	triés.
+	Rechercher, ajouter, supprimer des données triées dans un tableau trié. Par
+	exemple dans un tableau d'entiers. 
 
 \Section{Rechercher}
 
+\SubSection{Spécification}
+
 	Rechercher la position où a été trouvé l’élément ou la position où il aurait
-	dû être
+	dû être.
 	
 	\textbf{Données}~: le tableau à analyser, le nombre d'éléments dans ce
 	tableau, la valeur à rechercher
 		
 	\textbf{Résultat}~: la position où a été trouvée la valeur ou la position où
 	elle aurait dû être
+
+	\SubSection{Solution}
+
+	L'algorithme retourne la position où a été trouvée la valeur \textbf{ou}
+	celle où elle devrait être. En parcourant le tableau, il suffit de
+	s'arrêter dès que l'élément du tableau est plus grand ou égal à la valeur
+	recherchée. 
 
 		\begin{pseudocode}
 				\LComment{Recherche un élément.}
@@ -36,41 +45,21 @@
 				\EndAlgo
 		\end{pseudocode}
 
-\Section{Vérifier} 
+		\begin{java}
+publci static int findIndex(int[] is, int nValues, int value){
+	int index = 0;
+	while (index < nValues && is[index] < value){
+		index++;
+	}
+	return index;
+}
+		\end{java}
 
-	Rechercher l'indice d'une donnée trouvée dans un tableau trié ou -1 si elle
-	n'est pas trouvée
-	
-	\textbf{Données}~: le tableau à analyser, le nombre d'éléments dans ce
-	tableau, la valeur à rechercher
-		
-	\textbf{Résultat}~: la position de l'élément si il est dans le tableau et -1
-	sinon
-	
-	Cette opération est triviale.
-			
-		\begin{pseudocode}
-			\LComment{Vérifie si un nombre est dans un tableau d'entiers trié}
-			\LComment{et donne sa position (-1 si non présent)}
-			\Algo{verify}{
-				\Par{is\In}{\Array{}{integers}}, 
-				\Par{nValues\In}{integer}, 
-				\\\hfill
-				\Par{value\In}{integer}
-			}{integer}
-				\Decl{index}{integer}
-				\Decl{isFound}{boolean}
-				\Stmt index \Gets findIndex( is, nValues, value)
-				\If{is[index] == value}
-					\Return index
-				\Else
-					\Return -1
-				\EndIf
-			\EndAlgo
-		\end{pseudocode}
 
 \Section{Ajouter}
 
+	\SubSection{Spécification}
+	
 	Ajouter une donnée non encore présente dans le tableau de données triées.
 	
 	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
@@ -78,76 +67,179 @@
 		
 	\textbf{Résultat}~: le tableau reçu est modifié en lui ajoutant la valeur si
 	elle n'y était pas déjà
-	
-		\begin{pseudocode}
-				\LComment{Ajouter un nombre donné.}
-				\Algo{add}{
-						\Par{is\In\Out}{\Array{}{integer}}, 
-						\Par{nValues\In}{integer}, 
-						\\\hfill\Par{value\In}{integer}
-						}{integer}
-					\Decl{index}{integer}
-					\Decl{isFound}{boolean}
-					\If{verify(is, nValues, value) == -1}
-						\Stmt index \Gets findIndex(is, nValues, value)
-						\Stmt shiftRight(is, index, nValues)
-						\Let is[index] \Gets value
-						\Let nValues \Gets nValues + 1
-					\EndIf
-					\Return nValues
-				\EndAlgo
-				\Empty
-				\LComment{Décale d’une position à droite les éléments}
-				\LComment{entre la position début et fin}
-				\Algo{shiftRight}{
-						\Par{is\In\Out}{\Array{}{integer}}, 
-						\Par{begin\In}{integer}, 
-						\Par{end\In}{integer}
-						}{}
-					\For[-1]{i}{end}{begin}
-						\Let is[i+1] \Gets is[i]
-					\EndFor
-				\EndAlgo
-			\end{pseudocode}
 
+	\SubSection{Solution}
+
+	Pour faire un ajout sans doublon dans un tableau triée, il faut~:
+
+	\begin{enumerate}
+		\item vérifier que la valeur n'est pas déjà présente\,;
+		\item rechercher l'endroit ou elle devrait être placée\,;
+		\item déplace les valeurs plus grande d'une position vers la droite\,;
+		\item insère la valeur à sa place. 
+	\end{enumerate}
+
+	En décomposant le problème, voici une solution~:
+
+	\begin{pseudocode}
+		\LComment{Ajouter un nombre donné.}
+		\Algo{add}{
+				\Par{is\In\Out}{\Array{}{integer}}, 
+				\Par{nValues\In}{integer}, 
+				\\\hfill\Par{value\In}{integer}
+				}{integer}
+			\Decl{index}{integer}
+			\Decl{isFound}{boolean}
+			\If{verify(is, nValues, value) == -1}
+				\Stmt index \Gets findIndex(is, nValues, value)
+				\Stmt shiftRight(is, index, nValues)
+				\Let is[index] \Gets value
+				\Let nValues \Gets nValues + 1
+			\EndIf
+			\Return nValues
+		\EndAlgo
+		\LComment{Vérifie si un nombre est dans un tableau d'entiers trié}
+		\LComment{et donne sa position (-1 si non présent)}
+		\Algo{verify}{
+			\Par{is\In}{\Array{}{integers}}, 
+			\Par{nValues\In}{integer}, 
+			\\\hfill
+			\Par{value\In}{integer}
+		}{integer}
+			\Decl{index}{integer}
+			\Decl{isFound}{boolean}
+			\Stmt index \Gets findIndex( is, nValues, value)
+			\If{is[index] == value}
+				\Return index
+			\Else
+				\Return -1
+			\EndIf
+		\EndAlgo
+		\Empty
+		\LComment{Décale d’une position à droite les éléments}
+		\LComment{entre la position début et fin}
+		\Algo{shiftRight}{
+				\Par{is\In\Out}{\Array{}{integer}}, 
+				\Par{begin\In}{integer}, 
+				\Par{end\In}{integer}
+				}{}
+			\For[-1]{i}{end}{begin}
+				\Let is[i+1] \Gets is[i]
+			\EndFor
+		\EndAlgo
+	\end{pseudocode}
+
+	\begin{java}
+/**
+ * Ajoute un nombre s'il n'est pas présent.
+ * 
+ * @param is le tableau d'éléments
+ * @param nValues le nombre d'éléments du tableau (taille logique)
+ * @param value la valeur à insérer
+ */
+public static int add(int[] is, int nValues, int value){
+	int index;
+	if (verify(is, nValues, value) == -1){
+		index = findIndex(is, nValues, value);
+		shiftRight(is, index, nValues);
+		is[index] = value;
+		nValues++;
+	}
+	return nValues;
+}
+
+/**
+ * Vérifie si la valeur est dans le tableau. 
+ *
+ * @param is le tableau d'éléments
+ * @param nValues le nombre d'éléments du tableau (taille logique)
+ * @param value la valeur à insérer
+ */
+public static int verify(int[] is, int nValues, int value){
+	int index = findIndex(is, nValues, value);
+	if (is[index] == value) {
+		return index;
+	} else {
+		return -1;
+	}
+}
+
+/**
+ * Décale d'une position vers la droite les éléments 
+ * entre position début et fin. 
+ * 
+ * @param is le tableau d'éléments
+ * @param begin la position de début
+ * @pasam end la position de fin
+ */
+public static void shiftRight(int[] is, int begin, int end){
+	for (int i = end; i >= begin; i--){
+		is[i+1] = is[i];
+	}
+}
+	\end{java}
 
 \Section{Supprimer}
-	Supprimer une donnée d'un tableau de données triées
+
+	\SubSection{Spécification}
+
+	Supprimer une donnée d'un tableau de données triées.
 	
 	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
 	tableau, la valeur à supprimer
 		
 	\textbf{Résultat}~: le tableau reçu est modifié en lui supprimant la valeur
 		
-		\begin{pseudocode}
-			\LComment{supprimer l'élément donné}
-			\Algo{delete}{
-				\Par{is\In\Out}{\Array{}{integer}}, 
-				\Par{nValues\In\Out}{integer}, 
-				\\\hfill\Par{value\In}{integer}
-			}{integer}
-				\Decl{index}{integer}
-				\Decl{isFound}{boolean}
-				\If{verify(is, nValues, value) $\neq$ -1}
-					\Stmt index \Gets findIndex(is, nValues, value)
-					\Stmt shiftLeft(is, index + 1, nValues)
-					\Let nValues \Gets nValues - 1	
-				\EndIf
-				\Return nValues
-			\EndAlgo
-			\Empty
-			\LComment{Décale d’une position à gauche les éléments }
-			\LComment{entre la position début et fin}
-			\Algo{shiftLeft}{
-				\Par{tab\In\Out}{\Array{}{integers}}, 
-				\Par{begin\In}{integer}, 
-				\Par{end\In}{integer}
-			}{}
-				\For{i}{begin}{end}
-					\Let is[i-1] \Gets is[i]
-				\EndFor
-			\EndAlgo
-			\end{pseudocode}
+	\SubSection{Solution}
 
+	Pour supprimer un élément, dès dès lors qu'il est trouvé, il suffit de décaler tous les élémens à sa droite vers la gauche et adapter la taille logique. 
+
+	\begin{pseudocode}
+		\LComment{supprimer l'élément donné}
+		\Algo{delete}{
+			\Par{is\In\Out}{\Array{}{integer}}, 
+			\Par{nValues\In\Out}{integer}, 
+			\\\hfill\Par{value\In}{integer}
+		}{integer}
+			\Decl{index}{integer}
+			\Decl{isFound}{boolean}
+			\If{verify(is, nValues, value) $\neq$ -1}
+				\Stmt index \Gets findIndex(is, nValues, value)
+				\Stmt shiftLeft(is, index + 1, nValues)
+				\Let nValues \Gets nValues - 1	
+			\EndIf
+			\Return nValues
+		\EndAlgo
+		\Empty
+		\LComment{Décale d’une position à gauche les éléments }
+		\LComment{entre la position début et fin}
+		\Algo{shiftLeft}{
+			\Par{tab\In\Out}{\Array{}{integers}}, 
+			\Par{begin\In}{integer}, 
+			\Par{end\In}{integer}
+		}{}
+			\For{i}{begin}{end}
+				\Let is[i-1] \Gets is[i]
+			\EndFor
+		\EndAlgo
+	\end{pseudocode}
+
+	\begin{java}
+public static int delete(int[] is, int nValues, int value){
+	int index;
+	if (verify(is, nValues, value) != -1){
+		index = findIndex(is, nValues, value);
+		shiftLeft(is, index+1, nValues);
+		nValues = nValues - 1;
+	}
+	return nValues;
+}
+
+public static void shiftLeft(int[] is, int begin, int end){
+	for (int i=begin, i < end; i++){
+		is[i-1] = is[i];
+	}
+}
+	\end{java}
 
 \end{Fiche}

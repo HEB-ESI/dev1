@@ -19,17 +19,19 @@ Un nombre reçu en paramètre est-il pair\footnote{\textit{Even} en anglais et \
 \Section{Exemples}
 
 	\begin{itemize}
-	\item \pc{isEven(2016)} donne $vrai$
-	\item \pc{isEven(2015)} donne $faux$
+	\item \pc{isEven(16)} donne $vrai$
+	\item \pc{isEven(15)} donne $faux$
+	\item \pc{isEven(0)} donne $vrai$
 	\end{itemize}
 	
 \Section{Solution}
 
 	Un nombre est pair si il est multiple de 2. 
 	C’est-à-dire si le reste de sa division par 2 vaut 0.
-	%\[
-		%estPair\ est\ vrai\ \equiv nombre\ MOD\ 2 = 0
-	%\]
+
+	\begin{langagenaturel}
+		n est pair si n modulo 2 = 0
+	\end{langagenaturel}
 
 	\begin{pseudocode}
 		\Algo{isEven}{\Par{number}{integer}}{boolean}
@@ -37,8 +39,30 @@ Un nombre reçu en paramètre est-il pair\footnote{\textit{Even} en anglais et \
 		\EndAlgo
 	\end{pseudocode}
 
-	Attention à éviter les mauvaises écritures expliquées à l’annexe
-	\vref{B-ass-bool}~: pas de \pc{\K{si-sinon}}.
+	\begin{java}
+public static boolean isEven(int n){
+	return n%2 == 0;
+}
+	\end{java}
+
+	\paragraph{Remarque} C'est mieux de respecter les bonnes pratiques
+	d'écriture et d'écrire directement un \pc{return} sans \pc{if} dans ce cas.
+	Voir annexe \vref{B-ass-bool}.
+
+\Section{Vérification / tests}
+
+	\begin{center}
+		\begin{tabular}{|c|ccc|c|}
+		\hline
+			\rowcolor{black!40}
+		test \no & n & rép. attendue & rép. fournie & {} \\
+		\hline 
+		1 & 16   & true   & true & {\color{ForestGreen}$\checkmark$} \\\hline
+		2 & 15   & false   & false & {\color{ForestGreen}$\checkmark$} \\\hline
+		3 & 0   & true   & true & {\color{ForestGreen}$\checkmark$} \\\hline
+		\end{tabular}
+	\end{center}								
+
 	
 \Section{Quand l’utiliser~?}
 

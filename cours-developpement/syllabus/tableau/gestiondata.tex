@@ -298,20 +298,21 @@ public static int find(
  * return: la position à laquelle est ou devrais être le numéro
  */
 public static int findPosition(
-	int[] registered,
-	int nRegistered,
-	int number){
-		int pos = 0,
-		while (pos < nRegistered && registered[pos] < number){
-			pos++;
-		}
+		int[] registered,
+		int nRegistered,
+		int number){
+	int pos = 0,
+	while (pos < nRegistered && registered[pos] < number){
+		pos++;
+	}
+	return pos;
 }
 			\end{java}
 			
 			Comprenez-vous pourquoi~:
 			\begin{itemize}
 			\item
-				\pc{registered[nRegistered] < number} contien un '<' dans la 
+				\pc{registered[nRegistered] < number} contient un '<' dans la 
 				condition du tant que et pas un '$\neq$'~?
 			\item
 				la condition du \pc{if} est composée de deux parties
@@ -331,6 +332,7 @@ public static int findPosition(
 			à l'opérateur ternaire\index{ternaire} de Java. Profitons en pour
 			le présenter. 
 
+			\label{opérateur-ternaire}
 			\index{opérateur ternaire}
 			\index{conditional expression}
 			\begin{grammaire}

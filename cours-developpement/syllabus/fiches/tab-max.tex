@@ -4,7 +4,8 @@
 \label{fiche:tab-max}
 
 \Section{Problème}
-	Trouver la valeur maximale dans un tableau d’entiers.
+	Parcours complet d'un tableau pour rechercher la valeur maximale.
+	Par exemple dans un tableau d'entiers. 
 
 \Section{Spécification}
 	
@@ -14,8 +15,21 @@
 
 \Section{Solution}
 
-	Il faut veiller à initialiser le maximum avec la première valeur du tableau
-	pour parcourir le reste du tableau à la recherche d’une valeur plus grande.
+	Une bonne manière de faire est d'initialiser la valeur du maximum à la
+	première valeur du tableau et d'ensuite parcourir le reste du tableau à la
+	recherche d'une valeur plus grande. 
+
+	\begin{langagenaturel}
+		int max\\
+		int[] is \\
+		maximum = première valeur du tableau, is[0]\\
+		pour chaque valeur à partir de la deuxième\\
+		\tab si max > valeur alors\\
+		\tab\tab max = valeur\\
+		\tab fin si\\ 
+		fin pour\\
+	\end{langagenaturel}
+
 	
 	\begin{pseudocode}
 		\Algo{max}{\Par{is}{\Array{}{integer}}}{integer}
@@ -29,6 +43,33 @@
 			\Return max
 		\EndAlgo
 	\end{pseudocode}
+
+	\begin{java}
+public static int max(int[] is){
+	int max = is[0];
+	for (int i=1; i < is.length; i++){
+		if (is[i] > max){
+			max = is[i];
+		}
+	}
+	return max;
+}
+	\end{java}
+
+	Si l'on accepte de tester la première valeur, cet algorithme peut s'écrire
+	avec un \textit{enhanced for}\index{foreach}.
+
+	\begin{java}
+public static int max(int[] is){
+	int max = is[0];
+	for (value: is){
+		if (value > max){
+			max = value;
+		}
+	}
+	return max,
+}
+	\end{java}
 
 \Section{Variante}
 
@@ -48,5 +89,16 @@
 		\EndAlgo
 	\end{pseudocode}
 	
+	\begin{java}
+public static int max(int[] is){
+	int maxIndex = 0;
+	for (int i=1; i < is.length; i++){
+		if (is[i] > is[maxIndex]){
+			maxIndex = i;
+		}
+	}
+	return max;
+}
+	\end{java}
 	
 \end{Fiche}

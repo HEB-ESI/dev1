@@ -42,6 +42,12 @@
 
 	Ainsi pour obtenir une vitesse en km/h, il faut convertir la distance en
 	kilomètres et la durée en heures.  Ce qui donne~:
+
+	\begin{langagenaturel}
+		convertir la distance reçue en mètres, en km: / 1000\\
+		convertir la durée reçue en secondes, en heure: / 3600\\
+		la vitesse est la distance / durée
+	\end{langagenaturel}
 		
 	\begin{pseudocode}
 		\Algo{speed}{\Par{meters, seconds}{real}}{real}
@@ -52,7 +58,17 @@
 		\EndAlgo
 	\end{pseudocode}
 
-\Section{Vérification}
+	\begin{java}
+public static double speed(double meters, double seconds){
+	double km;
+	double hours;
+	km = meters / 1000;
+	hours = seconds / 3600;
+	return km / hours;
+}
+	\end{java}
+
+\Section{Vérification / tests}
 
 	\begin{center}
 		\begin{tabular}{|c|cccc|c|}
@@ -66,17 +82,12 @@
 		\end{tabular}
 	\end{center}								
 
-\Section{Solution Java}
+\Section{Remarque}
 
-\begin{java}
-public static double speed(double meters, double seconds){
-	double km;
-	double hours;
-	km = meters / 1000;
-	hours = seconds / 3600;
-	return km / hours;
-}
-\end{java}
+Nous n'avons pas tenu compte des cas où la distance serait nulle et dans ce
+cas, la vitesse l'est aussi et où la durée est nulle… dans ce cas la vitesse
+serait infinie~!
+
 
 \Section{Quand l’utiliser~?}
 

@@ -22,17 +22,24 @@
 
 \Section{Exemples}
 
-	\vspace*{-3mm}
-	\begin{multicols}{3}
-		\begin{itemize}
-		\item \pc{max2(-3, 4)} donne $4$
-		\item \pc{max2(7, 4)} donne $7$
-		\item \pc{max2(4, 4)} donne $4$
-		\end{itemize}
-	\end{multicols}
-	\vspace*{-6mm}
+	\begin{itemize}
+	\item \pc{max2(-3, 4)} donne $4$
+	\item \pc{max2(7, 4)} donne $7$
+	\item \pc{max2(4, 4)} donne $4$
+	\item \pc{max2(-4, -8)} donne $-4$
+	\end{itemize}
 	
 \Section{Solution}
+
+	Pour trouver le maximum des deux nombres, il suffit de les comparer en
+	utilisant un \pc{si}. 
+
+	\begin{langagenaturel}
+		si nb1 > nb2 alors\\
+			\tab nb1 est le maximum\\
+		sinon\\
+			\tab nb2 est le maximum 
+	\end{langagenaturel}
 
 	\begin{pseudocode}
 	\Algo{max2}{\Par{nb1}{real}, \Par{nb2}{real}}{real}
@@ -46,8 +53,73 @@
 	\EndAlgo
 	\end{pseudocode}
 
-	Attention à éviter les mauvaises écritures 
-	expliquées à l’annexe \vref{B-ass-val}.
+	\begin{java}
+public static double max2(double nb1, double nb2){
+	double max;
+	if (nb1 > nb2){
+		max = nb1;
+	} else {
+		max = nb2;
+	}
+	return max;
+}
+	\end{java}
+
+	Nous pourrions raisonner différement et se dire que le maximum des deux
+	nombres est le premier… sauf si le deuxième est plus grand. C'est une autre
+	manière de penser. 
+
+	\begin{langagenaturel}
+		le maximum est nb1\\
+		si nb2 > nb1 alors\\
+			\tab le maximum est nb2\\
+	\end{langagenaturel}
+	
+	\begin{java}
+public static double max2(double nb1, double nb2){
+	double max = nb1
+	if (nb2 > nb1){
+		max = nb2;
+	} 
+	return max;
+}
+	\end{java}
+	
+	\paragraph{Remarques} 
+	
+	\begin{itemize}
+	
+		\item C'est mieux de respecter les bonnes pratiques d'écriture et
+			d'écrire directement un \pc{return} sans \pc{if} dans ce cas.  Voir
+			annexe \vref{B-ass-val}.
+
+			\index{opérateur ternaire}
+
+		\item Nous avons rapidement montré l'opérateur ternaire (cfr.
+			Section~\vref{opérateur-ternaire}) permettant d'écrire cette
+			méthode en une seule expression.
+
+			\begin{java}
+	return nb1 > nb2 ? nb1 : nb2;
+			\end{java}
+	
+	\end{itemize}
+
+
+\Section{Vérification / tests}
+
+	\begin{center}
+		\begin{tabular}{|c|cccc|c|}
+		\hline
+			\rowcolor{black!40}
+		test \no & nb1 & nb2 &  rép. attendue & rép. fournie & {} \\
+		\hline 
+		1 & -3 & 4   & 4   & 4 & {\color{ForestGreen}$\checkmark$} \\\hline
+		2 & 7 & 4   & 7   & 7 & {\color{ForestGreen}$\checkmark$} \\\hline
+		3 & 4 & 4   & 4   & 4 & {\color{ForestGreen}$\checkmark$} \\\hline
+		4 & -4 & -8   & -4   & -4 & {\color{ForestGreen}$\checkmark$} \\\hline
+		\end{tabular}
+	\end{center}								
 
 	
 \Section{Quand l’utiliser~?}

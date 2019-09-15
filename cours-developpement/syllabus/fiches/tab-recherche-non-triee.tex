@@ -5,10 +5,12 @@
 
 \Section{Problème}
 	
-	Rechercher, ajouter, supprimer des données non triées dans un tableau
-	d’entiers non triés.
+	Rechercher, ajouter, supprimer des données dans un tableau non trié. Par
+	exemple dans un tableau d'entiers
 
 \Section{Rechercher}
+
+	\SubSection{Spécification}
 
 	Retourner l'indice d'une donnée trouvée dans un tableau non trié ou -1 si
 	elle n'est pas trouvée. 
@@ -21,20 +23,36 @@
 	tableau (taille logique), la valeur à rechercher
 		
 	\textbf{Résultat}~: la position de l'élément si il est dans le tableau et -1
-	sinon
+	sinon.
 	
+	\SubSection{Solution}
+	
+		Il suffit de parcourir le tableau jusqu'à ce que l'on trouve la valeur
+		ou bien que l'on arrive à la fin. 
+
+		\begin{langagenaturel}
+			tant que l'on n'est pas à la fin et la valeur n'est pas trouvée\\
+			\tab incrémenter l'indice\\
+			fin tant que\\
+			si on n'est pas à la fin alors\\
+			\tab on a trouvé\\
+			sinon\\
+			\tab on n'a pas trouvé et on retourne -1\\
+			fin si\\
+		\end{langagenaturel}
+
 		\begin{pseudocode}
 			\LComment{Vérifie si un nombre est dans un tableau 
 			et donne sa position (-1 sinon)}
 			\Algo{indexValue}{\Par{is\In}{\Array{}{integers}}, 
-					\\\hfill\Par{nbValues\In}{integer}, 
+					\\\hfill\Par{nValues\In}{integer}, 
 					\Par{value\In}{integer}}{integer}
 				\Decl{i}{integer}
 				\Let i \Gets 0
-				\While{i < nbValues AND is[i] $\ne$ value}
+				\While{i < nValues AND is[i] $\ne$ value}
 					\Let i \Gets i + 1
 				\EndWhile
-				\If{i < nbValues}
+				\If{i < nValues}
 					\Return i
 				\Else
 					\Return -1
@@ -42,8 +60,27 @@
 			\EndAlgo
 		\end{pseudocode}
 
+		\begin{java}
+public static int indexValue(int[] is, int nValues, int value){
+	int i = 0;
+	while (i < nValues && is[i] != value){
+		i++;
+	}
+	if (i < nValues){
+		return i;
+	} else {
+		return -1;
+	}
+}
+		\end{java}
+
+
 \Section{Ajouter}
-	Ajouter une donnée non encore présente dans le tableau de données non triées
+
+	\SubSection{Spécification}
+
+	Ajouter une donnée non encore présente dans le tableau de données non
+	triées.
 	
 	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
 	tableau, la valeur à ajouter
@@ -51,31 +88,42 @@
 	\textbf{Résultat}~: le tableau reçu est modifié en lui ajoutant la valeur si
 	elle n'y était pas déjà
 	
+	\SubSection{Solution}
+
+	Si l'algorithme reçoit le tableau, le nombre d'éléments et la valeur
+	à ajouter, il suffit d'insérer la valeur dans le tableau… après avoir
+	vérifier qu'elle n'est pas présente. Cette vérification peut se faire
+	simplement en utilisant l'algorithme \pc{indexValue}. Si celui-ci retourne
+	-1, c'est que la valeur n'est pas présente. 
+
+	\begin{langagenaturel}
+		if nValues < taille du tableau AND indexValue = -1\\
+		\tab ajouter la valeur à la fin du tableau
+	\end{langagenaturel}
+
 		\begin{pseudocode}
-			\LComment{Ajoute un nombre non encore présente dans le isleau.}
+			\LComment{Ajoute un nombre non encore présent dans le tableau.}
 			\Algo{add}{\Par{is\In\Out}{\Array{}{integer}}, 
 				\\\hfill\Par{nValues\In\Out}{integer}, \Par{value\In}{integer}}{}
 				\If{nValues $<$ is.length 
-						AND indexValue(is, nValues, value) $\ne$ -1}
+						AND indexValue(is, nValues, value) $=$ -1}
 					\Let is[nValues] \Gets value
 					\Let nValues \Gets nValues + 1
 				\EndIf
 			\EndAlgo
 		\end{pseudocode}
 
-		\paragraph{Remarque} Si l'algorithme précédent se traduit immédiatement
-		en langage Java, ce n'est pas le cas de celui-ci. Pourquoi ? 
-	
-		Le passage de paramètre se faisant par valeur (cfr. chapitre
-		\ref{chap:insertion-recherche} p.~\pageref{chap:insertion-recherche}),
-		la taille logique du tableau doit être retournée et maintenue à jour par
-		le code appelant. En langage Java, cet algorithme aurait l'allure
-		suivante~:
+		\paragraph{Remarque} 
+		
+		En langage Java, le passage de paramètre se faisant par valeur (cfr.
+		Chapitre \vref{chap:insertion-recherche}), la taille logique du tableau
+		doit être retournée et maintenue à jour par le code appelant. En
+		langage Java, cet algorithme aurait l'allure suivante~:
 
 		\begin{java}
 public static int add(int[] is, int nValues, int value){
 	if (nValues < is.length() 
-			&& indexValue(is, nValues, value) != -1){
+			&& indexValue(is, nValues, value) == -1){
 		is[nValues] = value;
 		nValues = nValues + 1;
 	}
@@ -85,13 +133,29 @@ public static int add(int[] is, int nValues, int value){
 
 
 \Section{Supprimer}
-	Supprimer une donnée d'un tableau de données non triées
-	
+
+	\SubSection{Spécification}
+
+	Supprimer une donnée d'un tableau de données non triées.
+
 	\textbf{Données}~: le tableau à modifier, le nombre d'éléments dans ce
 	tableau, la valeur à supprimer
 		
 	\textbf{Résultat}~: le tableau reçu est modifié en lui supprimant la valeur
-		
+	
+	\SubSection{Solution}
+
+	Comme le tableau n'est pas trié, pour supprimer une valeur, il suffit de
+	trouver l'index de cette valeur et de placer la dernière valeur à sa place. 
+
+	\begin{langagenaturel}
+		index = l'index de la valeur à supprimer\\
+		if index != 1\\
+		\tab is[index] = is[nValues-1]\\
+		\tab nValues--\\
+		end if\\
+	\end{langagenaturel}
+
 		\begin{pseudocode}
 			\LComment{Supprime un nombre donné dans le tableau.}
 			\Algo{delete}{
@@ -107,6 +171,17 @@ public static int add(int[] is, int nValues, int value){
 				\EndIf			
 			\EndAlgo
 		\end{pseudocode}
+
+		\begin{java}
+public static int delete(int[] is, int nValues, int value){
+	int index = indexValue(is, nValues, value);
+	if (index != -1){
+		is[index] = is[nValues];
+		nValues = nValues - 1;
+	}
+	return nValues;
+}
+		\end{java}
 
 %\Section{Variante}
 

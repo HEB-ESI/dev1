@@ -3,8 +3,10 @@
 %================================
 \label{fiche:tab-parcours-complet}
 
-\Section{Problème}
-	Afficher tous les éléments d’un tableau d’entiers.
+\Section{Problème} 
+
+Parcours complet d'un tableau pour afficher tous les éléments. Par exemple un
+tableau de \pc{double}.
 
 \Section{Spécification}
 	
@@ -20,18 +22,42 @@
 	(\pc{for}).
 	
 	\begin{pseudocode}
-		\Algo{display}{\Par{is}{\Array{}{integer}}}{}
-			\For{i}{0}{is.length - 1}
-				\Write is[i]
+		\Algo{display}{\Par{ds}{\Array{}{real}}}{}
+			\For{i}{0}{ds.length - 1}
+				\Write ds[i]
 			\EndFor
 		\EndAlgo
 	\end{pseudocode}
+
+	\begin{java}
+// Utilisation d'un for
+public static void display (double[] ds){
+	for (int i=0; i < ds.length; i++){
+		System.out.println(ds[i]);
+	}
+}
+	\end{java}
+
+	Si l'on n'a pas besoin de modifier la valeur dans le tableau et que l'on
+	veut simplement utiliser la valeur — dans ce cas, pour l'afficher — on peut
+	utiliser une boucle \textit{enhanced for}\index{foreach} comme suit~:
+
+	\begin{java}
+// Utilisation d'un enhanced for (foreach)
+public static void display (double[] ds){
+	for (double d: ds){
+		System.out.println(d);
+	}
+}
+	\end{java}
 
 \Section{Quand l’utiliser~?}
 
 	Ce type de solution peut être utilisé à chaque fois qu’il est nécessaire
 	d'examiner \textbf{tous} les éléments d’un tableau, quel que soit le
 	traitement voulu~: les afficher, les sommer, les comparer\dots
+
+	L'\textit{enhanced for} ne permet pas de modifier les éléments du tableau. 
 	
 	
 \end{Fiche}
