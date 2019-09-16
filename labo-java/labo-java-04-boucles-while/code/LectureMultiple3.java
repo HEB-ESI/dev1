@@ -18,7 +18,7 @@ public class LectureMultiple3 {
             valeur = clavier.nextInt();
         }
         
-        System.out.println("vous avez rentré : "+ nbValeurs +" valeurs");
+        System.out.println("vous avez entré : "+ nbValeurs +" valeurs");
         System.out.println("La somme de toutes ces valeurs: "+ somme);
     }
 }

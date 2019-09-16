@@ -10,7 +10,7 @@ public class LectureMultiple2 {
         System.out.println("Combien de valeurs voulez-vous entrer?");
         int nbValeursTotal = clavier.nextInt();
         int somme = 0;
-        int nbValeurs = 1;
+        int nbValeurs = 0;
 
         while(nbValeurs < nbValeursTotal) {
             System.out.println("entrez une valeur: ");
@@ -19,7 +19,7 @@ public class LectureMultiple2 {
             nbValeurs = nbValeurs+1;
         }
         
-        System.out.println("vous avez rentré : "+ nbValeursTotal +" valeurs");
+        System.out.println("vous avez entré : "+ nbValeursTotal +" valeurs");
         System.out.println("La somme de toutes ces valeurs: "+ somme);
     }
 }
