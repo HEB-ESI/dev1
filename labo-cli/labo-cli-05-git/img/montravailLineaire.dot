@@ -1,7 +1,0 @@
-digraph versionLineaire {
-    juin3 [label="3 juin"];
-    juin12 [label="12 juin"];
-    juin13 [label="13 juin"];
-    monTravail [label="monTravail.doc"];
-    juin3 -> juin12 -> juin13 -> monTravail;
-}

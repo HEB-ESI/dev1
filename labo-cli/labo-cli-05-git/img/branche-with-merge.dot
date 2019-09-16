@@ -1,8 +1,0 @@
-digraph branche {
-    what [label="???"];
-    initialCommit [label="Commit initial"];
-    commit3SurLinux1 [label="Commit3 sur linux1"];
-    commit3SurGitBash [label="Commit3 sur Git Bash"];
-    initialCommit -> commit1 -> commit2[len=1.6];
-    commit2 -> {commit3SurLinux1, commit3SurGitBash} -> what;
-}
