@@ -29,7 +29,5 @@ public class Texte {
         for(int i=texte.length()-1; i>=0; i=i-1) { // parcours la chaine de caractères à l'envers
             System.out.print(texte.charAt(i));
         }
-        
-        System.out.println(texte.equals("Bonjour")); //affiche true si le texte entré est "Bonjour"
     }
 }

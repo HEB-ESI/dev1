@@ -116,6 +116,34 @@
 		\end{verbatim}
 	\end{Exercice}
 
+\section{L'égalité de chaines}
+
+	Tester l'égalité de deux chaines pose une petite difficulté
+	par rapport à ce que vous avez déjà fait pour tester l'égalité de nombres
+	ou de caractères.
+	Illustrons cette difficulté au travers de ce petit exemple :
+
+	\listing[basicstyle=\footnotesize\vtt]{java}{TexteEga.java}
+
+	On peut constater que le \samp{==}
+	ne fonctionne que pour des valeurs codées explicitement et complètement dans le source.
+	Par contre le \samp{.equals} fonctionne dans tous les cas.
+
+	\begin{Exercice}{Les parenthèses}	
+		Faire tourner le programme \samp{TexteEga}
+		et vérifier que le résultat est bien celui attendu.
+		
+		À présent, enlever les parenthèses autour de \samp{texte1==texte2}.
+		Qu'est-ce que ça change et pourquoi ?
+	\end{Exercice}
+
+	\begin{Exercice}{À votre écoute}	
+		Écrire un programme qui propose à l'utilisateur d'entrer du texte. 
+		Si le texte est \samp{OK ÉSI}, 
+		le programme répond \samp{Je vous écoute !}.
+		Si ce n'est pas le cas, il affiche \samp{Je n'ai pas compris !}. 
+	\end{Exercice}
+
 \section{Exercices Récapitulatifs}
 
 	\begin{Exercice}{Une phrase}	
