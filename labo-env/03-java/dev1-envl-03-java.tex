@@ -25,7 +25,7 @@
     utiliser un environnement de développement comme \name{NetBeans}.
     Mais on peut aussi tout faire en mode console, 
     c'est ce que nous allons voir ici, en utilisant, entre autres choses,
-    l'éditeur de texte \name{GNU nano}.
+    l'éditeur de code \name{GNU nano}.
     Nous en profiterons pour apprendre de nouvelles notions liées à \name{GNU/Linux}.
 \end{abstract}
 
@@ -40,15 +40,15 @@
 \end{infobox}
 \vfill
 
-\newpage
-
 %=====================================
-\section{Une introduction à l'éditeur de texte nano}
+\section{Une introduction à l'éditeur de code nano}
 %======================================
 
 	Un \textbf{éditeur de texte} (ou, plus court, un \textbf{éditeur}) 
 	est un programme qui vous permet d'entrer, modifier
-	le contenu d'un fichier texte. 
+	le contenu d'un fichier texte.
+	Lorsqu'il se spécialise dans l'édition d'un code informatique,
+	on parlera plutôt d'\textbf{éditeur de code}.
 	Vous connaissez probablement \name{Notepad} sous \name{Windows}. 
 	Sur \name{GNU/Linux}, il en existe beaucoup. 
 	Celui que nous vous proposons dans un premier temps au laboratoire 
@@ -99,6 +99,7 @@
 	Il est possible d'exécuter directement ces commandes.
 	C'est ce que nous allons faire ici.
 
+	\bigskip
 	\begin{alerttbox}{Pas de package}
 		Nous allons aborder uniquement des programmes \name{Java}
 		\textbf{sans package}.
@@ -139,7 +140,7 @@
 			\item 
 				Lisez-le et voyez si vous devinez ce qu'il fait : \kbd{cat Hello.java}
 			\item 
-				Compilez-le : \kbd{java Hello.java}
+				Compilez-le : \kbd{javac Hello.java}
 			\item 
 				Que fait cette phase, à quoi sert-elle ?
 				Affichez le contenu du dossier pour le vérifier.
@@ -147,12 +148,13 @@
 			\end{steps}			
 		\end{Tutoriel}
 
-		% Lorsqu'on compile, il faut mettre le \samp{.java} 
-		% mais lorsqu'on exécute, 
-		% il ne faut pas mettre le \samp{.class}.
-
 		\begin{alerttbox}{Retenez !} 
-			On \textbf{compile un fichier} mais on \textbf{exécute une classe}.
+			On \textbf{compile un fichier} mais on \textbf{exécute une classe}%
+			\footnote{
+				Depuis \samp{JDK 11},
+				il est possible d'écrire directement 
+				\kbd{java Hello.java} qui va compiler le fichier puis l'exécuter.	
+			}.
 		\end{alerttbox}
 
 	%=============================
@@ -182,7 +184,7 @@
 			sur votre PC, il suffit de double-cliquer sur le fichier
 			\samp{index.html} produit.
 		}.
-
+\newpage
 		\begin{Tutoriel}{Visualiser la documentation sur Windows}
 			Voici comment procéder pour visualiser la documentation
 			produite à partir d'un navigateur sur \name{Windows}.
@@ -210,7 +212,6 @@
 			\end{steps}
 		\end{Tutoriel}
 
-\newpage
 %=====================================
 \section{L'éditeur nano}
 %======================================
@@ -312,7 +313,7 @@
 	afin de vous aider à bien distinguer les phases de compilation et d'exécution. 
 
 	\begin{Exercice}{Comprendre les erreurs (I)}
-		Supposons que vous faites une erreur dans votre programme.
+		Supposons que vous fassiez une erreur dans votre programme.
 		Par exemple en écrivant \code{java}{Public} 
 		au lieu de \code{java}{public}.
 
@@ -383,5 +384,4 @@
 
 
 		
-\end{document}
-			
+\end{doc
