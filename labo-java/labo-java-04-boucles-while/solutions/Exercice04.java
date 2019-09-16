@@ -13,8 +13,11 @@ public class Exercice04 {
         System.out.println("Entrez " + nbValeursTotal + " valeurs");
         while (nbValeurs < nbValeursTotal) {
             int valeur = clavier.nextInt();
+            System.out.print(valeur + " est ");
             if (valeur % 2 == 0) {
-                System.out.println(valeur + " est pair");
+                System.out.println("pair");
+            } else {
+                System.out.println("impair");
             }
 
             nbValeurs = nbValeurs + 1;
