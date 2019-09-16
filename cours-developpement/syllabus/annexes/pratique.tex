@@ -3,9 +3,7 @@
 
 	Ce chapitre recense quelques bonnes pratiques d'écriture d'algorithme et de
 	code. Il montre également des manières d'écrire du code peu lisibles et donc
-	à éviter, voire à proscrire. Rappelons que le principal critère qui nous
-	guide dans ce chapitre est la lisibilité et donc la facilite de
-	compréhension à la lecture. 
+	à éviter, voire à proscrire. 
 	
 	Les bonnes pratiques d'écriture ont également un aspect culturel et
 	dépendant d'un langage. En effet, certaines communautés de programmeurs
@@ -14,53 +12,96 @@
 	présentons ici des bonnes pratiques d'algorithmique générale et des bonnes
 	pratiques liées au langage Java. 
 
+	\begin{quote}
+		
+		{\Large «}~Lorsque je code en langage Java, je respecte les conventions
+		du langage Java. 
+		Lorsque je code en langage C++, je respecte les
+		conventions du langage C++. 
+
+		Lorsque je contribue à un projet, je respecte les conventions du
+		langage et celles proposées par l'équipe en charge du projet.~{\Large»}
+
+	\end{quote}
+
 \minitoc
-	
+
+
+%===================================================
+\section{Bonnes pratiques générales}
+%===================================================
+
+	Certaines conventions d'écriture, sont communes à tous les langages. Citons
+	par exemple~:
+
+	\begin{itemize}
+
+		\item préferer des lignes de longueur maximale de 80 caractères. Ceci
+			facilite la lecture\,;
+		
+		\item couper les lignes qui seront trop longues en suivant ces règles\,;
+
+			\begin{itemize}
+				
+				\item couper après une virqule\,;
+				\item couper avant un opérateur\,;
+
+				\item préférer les coupures de haut niveau de priorité aux
+					coupures de priorité faible\,;
+
+				\item aligner la nouvelle ligne avec le début de l'expression
+					se trouvant à la ligne précédente.
+
+			\end{itemize}
+			
+	\end{itemize}
+
+	Nous vous invitons à consulter les conventions d'écriture du code en Java
+	—~même si le document est vieux~— ceci afin d'écrire un code plus lisible.
+	Voir \cite{java-codeconv}
+
 %===================================================
 \section{Tester un booléen}
 %===================================================
 
-	Lorsqu’il s’agit de comparer deux nombres dans la condition
-	d’un \K{if}, nous écrivons assez naturellement~:
-	\pc{\K{if} (nb1<nb2) \dots}
-	\\Il ne vous viendrait pas à l’idée d’écrire~:
-	\pc{\K{if} (nb1<nb2 == true) \dots}
+	Lorsqu’il s’agit de comparer deux nombres dans la condition d’un \K{if},
+	nous écrivons assez naturellement~: \pc{\K{if} (nb1<nb2)} et il ne vous
+	viendrait pas à l’idée d’écrire~: \pc{\K{if} (nb1<nb2 == true)}.
 	
 	\bigskip
 		
-	Avec un booléen, les choses sont moins simples.  Par exemple, 
-	pour exécuter un traitement si la variable \pc{adult} est vraie, certaines
-	personnes programmeuses débutantes écrivent ceci~:
+	Avec un booléen, nous allons également éviter d'écrire \pc{== true} ou
+	\pc{== false}.  Par exemple, pour exécuter un traitement si la variable
+	\pc{isAdult} est vraie, certaines personnes programmeuses débutantes écrivent
+	ceci~:
 	
-	\clearpage
-	\begin{wrong}
-	\begin{pseudocode} 
-		\If{adult == true} 
-			\Stmt \dots 
-		\EndIf 
-	\end{pseudocode} 
-	\end{wrong}
+	\marginicon{dont}
+	\begin{java}
+		if (isAdult == true){
+			// ...
+		}
+	\end{java}
 
 	Cette écriture est correcte mais inutilement lourde.  La variable étant déjà
 	un booléen qui vaut vrai ou faux, il suffit d’écrire~:
 
-	\begin{pseudocode}
-		\If{adult}
-			\Stmt \dots
-		\EndIf
-	\end{pseudocode}
+	\begin{java}
+if (isAdult){
+	// ...
+}
+	\end{java}
 
 	C'est une bonne pratique d'utiliser cette deuxième écriture. 
 	
 	De même, si le test doit être vrai quand la variable booléenne est fausse,
 	il suffit d’écrire~: 
 	
-	\begin{pseudocode}
-		\If{NON adult}
-			\Stmt \dots
-		\EndIf
-	\end{pseudocode}
-
+	\begin{java}
+if (!isAdult){
+	// ...
+}
+	\end{java}
+	
 
 %===================================================
 \section{Assigner un booléen}\label{B-ass-bool}
@@ -73,26 +114,23 @@
 	nombre est égal à 0 et \pc{false} sinon, nous pourrions écrire le bout de
 	code ci-dessous.	
 
-	\begin{wrong}
-	\begin{pseudocode}
-		\If{nb == 0}
-			\Let isNul \Gets true
-		\Else
-			\Let isNul \Gets false
-		\EndIf
-	\end{pseudocode}
-	\end{wrong}
-
+	\marginicon{dont}
+	\begin{java}
+if (nb == 0){
+	isNul = true;
+} else {
+	isNul = false;
+}
+	\end{java}
 
 	Ce code est correct mais inutilement compliqué.  Puisque on assigne
 	\pc{true} si la condition est vraie et \pc{false} si la condition est
 	fausse, il suffit d’assigner la condition.  Ce qui donne~:
 
-	\begin{pseudocode}
-		\Let isNul \Gets nb == 0
-	\end{pseudocode}
+	\begin{java}
+isNul = nb == 0;
+	\end{java}
 
-	Beaucoup plus court et plus lisible n'est-ce-pas ? 
 
 
 %===================================================
@@ -101,16 +139,25 @@
 
 	Examinons l’exemple ci-contre qui assigne un prix \pc{price} qui doit être
 	différent en fonction du droit ou non à un tarif réduit.  
-	
-	\begin{pseudocode}
-		\If{isDiscount}
-			\Let price \Gets 8 
-		\Else
-			\Let price \Gets 12 
-		\EndIf
-	\end{pseudocode}
 
-	Nous voyons souvent l'extrait de code plus court. Donc mieux
+	\begin{java}
+if (isDiscount){
+	price = 8;
+} else {
+	price = 12;
+}
+	\end{java}
+	
+	Nous rencontrons parfois le code suivant. Plus court. Est-il nécessairement
+	mieux ? 
+
+	\marhinicon{dont}
+	\begin{java}
+price = 12;
+if (isDiscount){
+	price = 8;
+}
+	\end{java}
 
 	Cette manière d'écrire comporte effectivement (un peu) moins de lignes mais
 	ce critère n’a que très peu d’importance.  Cette version n’est pas plus
@@ -118,19 +165,11 @@
 	lisible car le lecteur croit d’abord que le tarif est toujours de 12 avant
 	de constater qu’il peut être différent.
 
-	\begin{wrong}
-	\begin{pseudocode}
-		\Let price \Gets 12 
-		\If{isDiscount}
-			\Let price \Gets 8 
-		\EndIf
-	\end{pseudocode}
-	\end{wrong}
-
-	Privilégiez la première version. 
+	Nous privilégirons la première version. 
 	
 %===================================================
-	\section{Interrompre une boucle \texttt{for}}\label{B-for-break}
+	\section{Interrompre une boucle \texttt{for}}
+	\label{B-for-break}
 %===================================================
 
 	Certains développeurs et développeuses débutantes\footnote{En essayant
@@ -141,17 +180,16 @@
 	Dans l'exemple ci-dessous, l'indice \pc{i} reçoit une «~grande valeur~» pour
 	sortir de la boucle \pc{for}.
 	
-	\begin{wrong}
-	\begin{pseudocode}
-		\For{i}{1}{n}
-			\Stmt \dots
-			\If{aCondition}
-				\Let i \Gets n+1 \Comment {Pour interrompre la boucle}
-			\EndIf
-			\Stmt \dots
-		\EndFor
-	\end{pseudocode}
-	\end{wrong}
+	\marginicon{dont}
+	\begin{java}
+for (int i=0; i < n; i++){
+	// ...
+	if (aCondition) {
+		i = n + 1;		// pour interrompre la boucle
+	}
+	// ...
+}
+	\end{java}
 
 	Cette manière de faire est à proscrire absolument et ce, quelle qu’en soit
 	la raison.  Ce n’est pas une bonne idée en terme de lisibilité et dans
@@ -159,37 +197,37 @@
 	qui est attendu.
 	
 	Si vous devez interrompre un parcours répétitif, lorsqu'une condition est
-	remplie, nous insistons pour que vous utilisiez une boucle
+	remplie, nous insistons pour l'utilisation d'une boucle
 	\pc{\algorithmicwhile} et l’utilisation d’un booléen pour contrôler la fin.
 	
 	Par exemple~:
-		
-	\begin{pseudocode}
-		\Let i \Gets 1
-		\Let isFinished \Gets false
-		\While{i$\leq$n AND NON isFinished}
-			\Stmt \dots
-			\If{aCondition}
-				\Let isFinished \Gets false
-			\EndIf
-			\Stmt \dots
-			\Let i \Gets i+1
-		\EndWhile
-	\end{pseudocode}
 
+	\begin{java}
+int i = 0;
+isFinished = false;
+while (i < n && !isFinished){
+	// ...
+	if (aCondition){
+		isFinished = true;
+	}
+	// ...
+	i = i + 1;
+}
+	\end{java}
+		
 	\bigskip
 	Si le test est la première instruction de la boucle
 	et que la condition est courte,
 	on peut aussi se passer de la variable booléenne.
-		
-	\begin{pseudocode}
-		\Let i \Gets 1
-		\While{i$\leq$n AND NON aCondition}
-			\Stmt \dots
-			\Let i \Gets i+1
-		\EndWhile
-	\end{pseudocode}
 
+	\begin{java}
+int i = 0;
+while (i < n && !aCondition){
+	// ...
+	i = i + 1;
+}
+	\end{java}
+		
 	\medskip
 	Si vous tenez absolument à interrompre la boucle \pc{\algorithmicfor},
 	vous pouvez utiliser un \pc{return} comme expliqué au point suivant.
@@ -212,30 +250,27 @@
 
 	Un cas concret est l'arrêt anticipé d'une boucle.  Certains écrivent~:
 
-	\begin{pseudocode}
-			\For{i}{1}{n}
-				\If{\dots}
-					\Return something
-				\EndIf
-			\EndFor
-			\Return something else
-	\end{pseudocode}
-	
+	\begin{java}
+for (int i = 0; i < n; i++){
+	if (aCondition){
+		return something;
+	}
+	// ...
+	return somethingElse,
+}
+	\end{java}
+
 	\bigskip
 	
 	Une autre situation est lorsque la valeur à retourner dépend d’un test.  On
 	voit alors des bouts de code qui ressemblent à~:
 
-	\begin{pseudocode}
-			\If{\dots}
-				\Return quelquechose
-			\Else
-				\Return autrechose
-			\EndIf
-	\end{pseudocode}
-	
-	\medskip
-	
-	Ces écritures seront tolérées dans ce cours. Elles sont à utiliser avec 
-	parcimonie et ne se justifient que dans des algorithmes assez courts.
+	\begin{java}
+if (aCondition){
+	return something;
+} else {
+	return somethingElse;
+}
+	\end{java}
+
 	
