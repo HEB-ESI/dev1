@@ -3,7 +3,7 @@
 %================================
 \label{fiche:tri}
 
-\noindent Trier un tableau d’entiers par ordre croissant.
+\noindent Trier un tableau d’entiers par ordre croissant. Les algorithmes de tri sont présentés aux sections \vrefrange{chap:tri-insertion}{chap:tri-bubble}.
 
 \Section{Spécification}
 	
@@ -97,6 +97,48 @@ public static insertionSort(int[] myArray){
 		\EndAlgo
 	\end{pseudocode}
 
+	\begin{java}
+/**
+ * Trie le tableau reçu en paramètre via un tri
+ * par sélection des minima successifs
+ *
+ * @param myArray le tableau à trier
+ */
+public static void selectionSort(int[] myArray){
+	int i;
+	int minIndex;
+	for (int i=0; i<myArray.length-1; i++){
+		minIndex = searchMinIndex(myArray, i, myArray.length-1);
+		// swap values
+		int value = myArray[i];
+		myArray[i] = myArray[minIndex];
+		myArray[minIndex] = value;
+	}
+}
+
+/**
+ * Retourne l'indice du minimum entre les indices
+ * début et fin du tableau reçu.
+ * 
+ * @param myArray le tableau d'entiers
+ * @param l'indice de début
+ * @param l'indice de fin
+ */
+public static int searchMinIndex(
+		int[] myArray,
+		int begin,
+		int end){
+	int minIndex;
+	int i;
+	minIndex = begin;
+	for (int i = begin + 1; i<end; i++){
+		if (myArray[i] < myArray[minIndex]) {
+			minIndex = i;
+		}
+	}
+	return minIndex;	
+}
+	\end{java}
 
 
 
@@ -118,6 +160,24 @@ public static insertionSort(int[] myArray){
 			\EndFor
 		\EndAlgo
 	\end{pseudocode}
+	
+	\begin{java}
+public static void bubbleSort(int[] myArray){
+	for (int bubbleIndex = 0; 
+			bubbleIndex < myArray.length - 1; 
+			bubbleIndex++){
+		for (int i = myArray.length - 2; i <= bubbleIndex; i--){
+			if (myArray[i] > myArray[i + 1]){
+				// swap values
+				int value = myArray[i];
+				myArray[i] = myArray[i+1];
+				myArray[i+1] = value;			
+			}
+		}
+	}
+}
+	\end{java}
+	
 
 
 	

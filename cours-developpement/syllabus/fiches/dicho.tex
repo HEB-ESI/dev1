@@ -9,25 +9,68 @@
 	\textbf{trié} d’entiers.  Si la valeur n’est pas présente, on donnera la
 	position où elle aurait du se trouver.
 
+	Voir Section~\vref{chap:recherche-dichotomique}.
+
 \Section{Spécification}
 	
-	\textbf{Données}~: 
-		le tableau à analyser
-		et la valeur recherchée
+	\textbf{Données}~: le tableau à analyser et la valeur recherchée
 		
-	\textbf{Résultat}~:
-		un booléen indiquant si la valeur a été trouvée
-		ec un entier indiquant
-			soit la position où la valeur a été trouvée
-			soit la position où elle aurait du être.
+	\textbf{Résultat}~: un booléen indiquant si la valeur a été trouvée et un
+	entier indiquant soit la position où la valeur a été trouvée soit la
+	position où elle aurait du être.
 
 \Section{Solution}
 
 		L’algorithme rapide que nous avons vu est la recherche
 		dichotomique.
 		
+		\begin{java}
+public static int dichotomousSearch(int[] myArray, int value){
+	int leftIndex = 0;
+	int medianIndex;
+	int rightIndex = myArray.length;
+	int candidate;
+	boolean isFound = false;
+
+	while (!isFound && leftIndex < rightIndex){
+		medianIndex = (leftIndex + rightIndex) / 2;
+		candidate = myArray[medianIndex];
+		if (candidate == value){
+			isFound = true;
+		} else if (candidate < value){
+			leftIndex = medianIndex + 1;
+		} else {
+			rightIndex = medianIndex - 1;
+		}
+	}
+
+	if (isFound){
+		return medianIndex;
+	} else {
+		return -1,
+	}
+}
+		\end{java}
+		
+		Dans le cas d'un langage permettant d'autres passages de paramètres que
+		le passage par valeur (cfr.~Section~\vref{paramètres}), nous pourrions
+		écrire un algorithme~:
+
+		\begin{itemize}
+			
+			\item qui retourne un booléen présisant si la valeur est trouvée
+				et\,;
+
+			\item qui donne la position à laquelle se trouve la valeur ou la
+				position à laquelle elle devrait se trouver ce qui serait
+				pratique en cas d'insertion. 
+
+		\end{itemize}
+
+		Un tel algorithme aurait cette allure~:
+	
 		\begin{pseudocode}
-			\Algo{dichotomousResearch}{
+			\Algo{dichotomousSearch}{
 					\\\hfill
 					\Par{myArray\In}{\Array{}{integers}}, 
 					\Par{value\In}{integer}, 
@@ -35,17 +78,17 @@
 					}{boolean}
 				\Decl{rightIndex, leftIndex, medianIndex}{integer}
 				\Decl{candidate}{integer}
-				\Decl{isFind}{boolean}
+				\Decl{isFound}{boolean}
 				\Empty
 				\Let leftIndex \Gets 0
 				\Let rightIndex \Gets myArray.length - 1
-				\Let isFind \Gets false
+				\Let isFound \Gets false
 				\Empty
-				\While{NON isFind AND leftIndex {${\leq}$} rightIndex}
+				\While{NON isFound AND leftIndex {${\leq}$} rightIndex}
 					\Let medianIndex \Gets (leftIndex + rightIndex) DIV 2
 					\Let candidate \Gets myArray[medianIndex]
 					\If{candidate == value} 
-						\Let isFind \Gets vrai
+						\Let isFound \Gets vrai
 					\ElsIf{candidate < value}
 						\Let leftIndex \Gets medianIndex + 1
 						\RComment on garde la partie droite
@@ -55,7 +98,7 @@
 					\EndIf
 				\EndWhile
 				\Empty
-				\If{isFind}
+				\If{isFound}
 					\Let pos \Gets medianIndex
 				\Else
 					\Let pos \Gets leftIndex
@@ -65,9 +108,7 @@
 					où elle pourrait être insérée.
 				\EndIf
 				\Empty
-				\Return isFind
+				\Return isFound
 			\EndAlgo
 		\end{pseudocode}
-		
-	
 \end{Fiche}
