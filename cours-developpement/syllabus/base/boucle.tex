@@ -397,7 +397,7 @@ public static void count(int n){
 	\end{minipage}
 
 
-	Dans la grammaire du langage Java, l'instruction \textit{for} est
+	Dans la grammaire du langage Java, l'instruction \pc{for} est
 	un peu plus large que de dire qu'une variable parcourt les valeurs allant de \pc{début} à \pc{fin}. Voici sa grammaire (simplifiée).
 
 	\begin{grammaire}
@@ -419,7 +419,7 @@ public static void count(int n){
 			Par exemple \pc{variable = variable + pas}
 	\end{description}
 	
-	Une utilisation simple et fréquent du pour à cette forme~:
+	Une utilisation simple et fréquente du \pc{pour} a cette forme~:
 	
 	\begin{java}
 for (int i = début; i < fin; i = i + pas){
@@ -446,8 +446,7 @@ public static void countTo5({
 	for (int nb=1; nb<= 5; nb = nb+1){
 		System.out.printl(i);
 	}
-	System.out.println(
-		"nb n'existe plus");
+	System.out.println("nb n'existe plus");
 }
 			\end{java}
 		\end{minipage}
