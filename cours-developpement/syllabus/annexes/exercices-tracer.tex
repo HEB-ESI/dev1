@@ -10,15 +10,15 @@ Nous vous proposons de tracer vos algorithmes comme présenté dans le chapitre
 	d’algorithmes donnés.
 
 	\begin{minipage}{4cm}
-		\begin{pseudocode}[1]
-			\Decl{a, b, c}{entiers}
-			\Let a \Gets 42
-			\Let b \Gets 24
-			\Let c \Gets a + b
-			\Let c \Gets c - 1
-			\Let a \Gets 2 * b
-			\Let c \Gets c + 1
-		\end{pseudocode}
+		\begin{java}
+			int a, b, c;
+			a = 42;
+			b = 24;
+			c = a + b;
+			c = c - 1;
+			a = 2 * b;
+			c = c + 1;
+		\end{java}
 	\end{minipage}
 	\quad%
 	\begin{minipage}{7cm}
@@ -39,14 +39,15 @@ Nous vous proposons de tracer vos algorithmes comme présenté dans le chapitre
 
 	\bigskip
 	\begin{minipage}{4cm}
-		\begin{pseudocode}[1]
-			\Decl{a, b, c}{entiers}
-			\Let a \Gets 2
-			\Let b \Gets a$^3$
-			\Let c \Gets b - a$^2$
-			\Let a \Gets $\sqrt{c}$
-			\Let a \Gets a / a
-		\end{pseudocode}
+          \begin{java}
+            int a, b, c;
+            double d;
+            a = 2;
+            b = a*a*a;
+            c = b - a*a;
+            d = Math.sqrt(c);
+            d = d/d;
+          \end{java}
 	\end{minipage}
 	\quad%
 	\begin{minipage}{7cm}
