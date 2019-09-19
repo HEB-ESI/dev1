@@ -78,7 +78,7 @@ Nous vous proposons de tracer vos algorithmes comme présenté dans le chapitre
 	Voici \textit{une} solution : 
 \begin{java}
 public static double vitesseKMH(double distanceM, double duréeS){
-	double distanceKMH, duréeH;
+	double distanceKM, duréeH;
 	distanceKM = 1000 * distanceM;
 	duréeH = 3600 * duréeS;
 	return distanceKM / duréeH;
@@ -88,6 +88,10 @@ public static double vitesseKMH(double distanceM, double duréeS){
 L’algorithme, s’il est correct, devrait donner une vitesse de 1~km/h pour une
 distance de 1000~mètres et une durée de 3600~secondes.  Testez cet algorithme
 avec cet exemple.
+
+\begin{java}
+vitesseKMH(1000, 3600);
+\end{java}
 
 \begin{center}
 	\begin{tabular}{|>{\centering\arraybackslash}m{1cm}|*{5}{>{\centering\arraybackslash}m{2cm}}|}
