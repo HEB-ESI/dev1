@@ -1,4 +1,5 @@
 \documentclass[a4paper,11pt]{style-esi/td}
+%\documentclass[a4paper,11pt,draft]{style-esi/td}
 
 \usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
@@ -29,8 +30,8 @@
 	Ici, on va se concentrer sur la sécurité au niveau des fichiers 
 	et répondre aux questions suivantes :  
 	\begin{itemize}
-	\item À qui \textbf{appartient} un fichier ?
-	\item \textbf{Qui peut faire} quoi avec un fichier ?
+	\item À qui \emph{appartient} un fichier ?
+	\item \emph{Qui peut faire} quoi avec un fichier ?
 	\end{itemize}
 
 	Mais pour commencer il faut d'abord comprendre 
@@ -43,7 +44,7 @@
 
 		\begin{theorie}{Les groupes}
 			Les utilisateurs d'un système \name{GNU/Linux} sont placés 
-			dans des \textbf{groupes}. 
+			dans des \emph{groupes}. 
 			Un groupe contient un ou plusieurs utilisateur(s) 
 			et un utilisateur appartient à un ou plusieurs groupe(s).
 		\end{theorie}
@@ -53,7 +54,7 @@
 			\includegraphics[width=.3\textwidth]{image/groupes.pdf}
 			\vspace{-3em}
 		\end{wrapfigure}
-		\textbf{Exemple} :
+		\textbf{Exemple}
 		Dans l'exemple ci-contre on peut constater que :
 		\begin{itemize}
 		\item 
@@ -78,7 +79,7 @@
 				\item \kbd{groups loginUtilisateur} : affiche les groupes de 
 				l'utilisateur donné.
 			\end{itemize}
-			Le premier groupe de la liste est le \textbf{groupe principal}.
+			Le premier groupe de la liste est le \emph{groupe principal}.
 			C'est celui qui sera utilisé par défaut (par exemple, 
 			lorsqu'on crée un fichier).
 		\end{theorie}
@@ -109,21 +110,21 @@
 				le « compte root » ou le « root ».
 			} de la machine. 		
 			Sur \samp{linux1}, 
-			il y a 3 groupes pour les utilisateurs.
-			\begin{itemize}
-				\item \textbf{\samp{users}} : tous les utilisateurs sont dans ce groupe
-				\item \textbf{\samp{etudiants}} : tous les étudiants sont dans ce groupe
-				\item \textbf{\samp{enseignants}} : tous les professeurs sont dans ce groupe	
-			\end{itemize}
+			il y a 3 groupes pour les utilisateurs~:
+			\begin{description}
+				\item[\samp{users}] tous les utilisateurs sont dans ce groupe
+				\item[\samp{etudiants}] tous les étudiants sont dans ce groupe
+				\item[\samp{enseignants}] tous les professeurs sont dans ce groupe	
+			\end{description}
 		\end{colxbox}
 
 		\medskip
 		\begin{alertbox}
 			Attention, on remarque que vous confondez souvent 
-			la notion de \textbf{groupe d'étudiants} à l'école
-			et les \textbf{groupes sur \name{GNU/Linux}}.
-			C'est un même mot qui recouvre 2 
-			\textbf{concepts} complètement \textbf{différents}.
+			la notion de \emph{groupe d'étudiants} à l'école
+			et les \emph{groupes} sur \name{GNU/Linux}.
+			C'est un même mot qui recouvre deux 
+			\emph{concepts} complètement \emph{différents}.
 		\end{alertbox}
 
 	%======================================
@@ -138,8 +139,8 @@
 		\vspace{1em}
 
 		\begin{theorie}{Propriétaire}
-			Chaque fichier/dossier \textbf{appartient} à une personne, 
-			son \textbf{propriétaire}.
+			Chaque fichier/dossier \emph{appartient} à une personne, 
+			son \emph{propriétaire}.
 		\end{theorie}
 
 		Pour visualiser le propriétaire d'un fichier, 
@@ -169,7 +170,7 @@
 	%======================================
 
 		\begin{theorie}{Groupe d'un fichier}
-			Chaque fichier/dossier \textbf{appartient} à \textbf{un et un seul groupe}.
+			Chaque fichier/dossier \emph{appartient} à \emph{un et un seul groupe}.
 		\end{theorie}
 
 		\begin{center}
@@ -267,8 +268,8 @@
 		\item
 			Les permissions pour le propriétaire sont \samp{rw-}.
 			Donc, (\samp{g12345}) 
-			peut voir \textbf{(r)} le contenu 
-			et modifier \textbf{(w)} le fichier \samp{welcome}.
+			peut voir (\texttt{r}) le contenu 
+			et modifier (\texttt{w}) le fichier \samp{welcome}.
 			Par contre, il ne peut pas l'exécuter.
 		\item 
 			Idem pour les utilisateurs qui sont dans le groupe \samp{users}.
@@ -282,7 +283,8 @@
 		\begin{Exercice}{Déterminez les bonnes permissions}
 			Imaginons que vous écrivez un programme \name{Java} sur \samp{linux1}.
 			Vous ne voulez pas que quelqu'un copie sur vous.
-			Par contre, vous désirez qu'il puisse exécuter la version compilée.
+			Par contre, vous désirez qu'il puisse exécuter la version 
+			com\-pi\-lée.
 			Quelles permissions proposez-vous pour les fichiers :
 			\begin{itemize}
 			\item \samp{.java} ? 
@@ -425,7 +427,8 @@
 
 		\begin{Tutoriel}{Droit de lecture pour les enseignant uniquement}
 			Supposons que vous avez un fichier qui ne doit être
-			lu que par vous-même et les enseignants (mais pas les autres étudiants).
+			lu que par vous-même et les en\-sei\-gnants 
+			(mais pas les autres étudiants).
 
 			Comment donner des droits différents aux enseignants et aux étudiants ?
 			La seule solution passe par une modification du groupe du fichier.

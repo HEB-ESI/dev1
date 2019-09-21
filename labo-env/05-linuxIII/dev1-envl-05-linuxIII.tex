@@ -1,4 +1,5 @@
 \documentclass[a4paper,11pt]{style-esi/td}
+%\documentclass[a4paper,11pt,draft]{style-esi/td}
 
 \usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
@@ -48,14 +49,14 @@
 		\\C'est mieux mais encore pénible.
 	\item
 		S'il y a une certaine logique dans les fichiers à copier,
-		on peut utiliser les \textbf{jokers}.
+		on peut utiliser les \emph{jokers}.
 	\end{enumerate}
 
 	\begin{theorie}{Les jokers}
 		Dans un nom de fichier/dossier
 		\begin{itemize}
-			\item \og{}\samp{?}\fg{} remplace \textbf{un et un seul} caractère quelconque.
-			\item \og{}\samp{*}\fg{} remplace \textbf{0, 1 ou plusieurs} caractères quelconques.
+			\item \og{}\samp{?}\fg{} remplace \emph{un et un seul} caractère quelconque.
+			\item \og{}\samp{*}\fg{} remplace \emph{0, 1 ou plusieurs} caractères quelconques.
 		\end{itemize}
 	\end{theorie}
 
@@ -143,7 +144,7 @@
 	Exemple : \kbd{find \textasciitilde{} -name "*.java"}
 	\\permet de trouver tous les fichiers \name{Java}%
 	\footnote{
-		Les guillements demande au shell de ne \textbf{pas}
+		Les guillemets demande au shell de ne \emph{pas}
 		traiter le joker. Le motif est passé tel quel à la commande
 		et c'est le \samp{find} qui va en tenir compte.
 	} \emph{quelque part}
@@ -215,19 +216,19 @@
 		vrai pour n'importe quel exécutable (les commandes aussi donc).
 
 		\begin{theorie}{Rediriger la sortie}
-			La \textbf{sortie standard} d'un exécutable est par défaut l'écran.
+			La \emph{sortie standard} d'un exécutable est par défaut l'écran.
 			\c Ca peut être changé. 
 			\begin{itemize}
 				\item \samp{> nomFichier} :
 					à la suite d'une commande indique que les affichages
-					se feront \textbf{dans le fichier} indiqué (qui est créé ou vidé avant)
+					se feront \emph{dans le fichier} indiqué (qui est créé ou vidé avant)
 				\item \samp{>{}> nomFichier} : 
-					pour \textbf{ajouter} les affichages à la \textbf{fin} du fichier.
+					pour \emph{ajouter} les affichages à la \emph{fin} du fichier.
 			\end{itemize}
 		\end{theorie}
 
 		\begin{alerttbox}{Transparent pour les exécutables}
-			Comprenez-bien que ceci est \textbf{transparent}
+			Comprenez-bien que ceci est \emph{transparent}
 			pour les commandes.
 			Le programme \name{Java} n'a pas été modifié !
 			Pour lui, \samp{System.out} représente la \emph{sortie standard}.
@@ -237,7 +238,7 @@
 
 		\begin{Exercice}{Rediriger la sortie d'une commande}
 			Sauvez dans un fichier toute l'arborescence (commande \samp{tree})
-			de votre répertoire personnel.
+			de votre répertoire per\-son\-nel.
 		\end{Exercice}
 
 	%===============================
@@ -252,11 +253,11 @@
 		le résultat apparait au même endroit ?
 
 		\begin{theorie}{Rediriger l'erreur}
-			L'\textbf{erreur standard} d'un exécutable est par défaut l'écran.
+			L'\emph{erreur standard} d'un exécutable est par défaut l'écran.
 			\c Ca peut être changé. 
 			\begin{itemize}
 				\item \samp{2> nomFichier} : 
-				pour envoyer les \textbf{messages d'erreur} dans le fichier.
+				pour envoyer les \emph{messages d'erreur} dans le fichier.
 			\end{itemize}
 		\end{theorie}
 
@@ -289,12 +290,12 @@
 		on peut rediriger l'entrée.
 
 		\begin{theorie}{Rediriger l'entrée}
-			L'\textbf{entrée standard} d'un exécutable est par défaut le clavier.
+			L'\emph{entrée standard} d'un exécutable est par défaut le clavier.
 			\c Ca peut être changé. 
 			\begin{itemize}
 			\item \samp{< nomFichier} : 
 				pour indiquer que les lectures ne se font pas au clavier
-				mais \textbf{depuis le fichier} (qui doit exister).
+				mais \emph{depuis le fichier} (qui doit exister).
 			\end{itemize}
 		\end{theorie}
 
@@ -331,7 +332,7 @@
 
 		\medskip
 		\begin{alerttbox}{Transparent pour les exécutables}
-			À nouveau, ceci est \textbf{transparent} pour les commandes.
+			À nouveau, ceci est \emph{transparent} pour les commandes.
 			C'est toujours \samp{System.in} (l'entrée standard) 
 			qui est donné à \samp{Scanner}.
 		\end{alerttbox}
@@ -427,7 +428,7 @@
 	Ceux qui ont du temps peuvent aborder les exercices suivants.
 
 	\begin{Exercice}{Traiter les fichiers trouvés}
-		Comment afficher le \textbf{contenu} de tous vos fichiers \name{Java} ?
+		Comment afficher le \emph{contenu} de tous vos fichiers \name{Java} ?
 		Aide : consultez la section \samp{ACTIONS} de la page de manuel
 		de \samp{find}.
 	\end{Exercice}

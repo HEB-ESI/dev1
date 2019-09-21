@@ -1,4 +1,5 @@
 \documentclass[a4paper,11pt]{style-esi/td}
+%\documentclass[a4paper,11pt,draft]{style-esi/td}
 
 \usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
@@ -44,11 +45,11 @@
 \section{Une introduction à l'éditeur de code nano}
 %======================================
 
-	Un \textbf{éditeur de texte} (ou, plus court, un \textbf{éditeur}) 
+	Un \emph{éditeur de texte} (ou, plus court, un \emph{éditeur}) 
 	est un programme qui vous permet d'entrer, modifier
 	le contenu d'un fichier texte.
 	Lorsqu'il se spécialise dans l'édition d'un code informatique,
-	on parlera plutôt d'\textbf{éditeur de code}.
+	on parlera plutôt d'\emph{éditeur de code}.
 	Vous connaissez probablement \name{Notepad} sous \name{Windows}. 
 	Sur \name{GNU/Linux}, il en existe beaucoup. 
 	Celui que nous vous proposons dans un premier temps au laboratoire 
@@ -87,14 +88,15 @@
 	\end{Tutoriel}
 
 	C'est un bon début.
-	Plus loin dans ce TD, nous verrons quelques facilités supplémentaires.
+	Plus loin dans ce TD, nous verrons quelques facilités 
+	sup\-plé\-men\-tai\-res.
 
 %=============================
 \section{Java en mode console}
 %==============================
 
 	Avec \name{NetBeans}, lorsque vous appuyez sur des boutons
-	(comme celui demandant d'exécuter le projet),
+	(comme celui demandant d'e\-xé\-cu\-ter le projet),
 	cela lance des commandes qui effectuent la tâche.
 	Il est possible d'exécuter directement ces commandes.
 	C'est ce que nous allons faire ici.
@@ -102,7 +104,7 @@
 	\bigskip
 	\begin{alerttbox}{Pas de package}
 		Nous allons aborder uniquement des programmes \name{Java}
-		\textbf{sans package}.
+		\emph{sans package}.
 		L'utilisation de l'instruction \samp{package} en début de code
 		complique la tâche et nous n'aurons pas le temps d'aborder cette situation.
 	\end{alerttbox}
@@ -128,7 +130,7 @@
 			Commençons par un programme correct et tentons de l'exécuter.  
 		
 			Le fichier \samp{/eCours/dev1/envl/Hello.java} 
-			contient le code source d'un petit programme \name{Java} tout simple 
+			contient le code source d'un petit pro\-gram\-me \name{Java} tout simple 
 			qui affiche un message de bienvenue. 
 			
 			\begin{steps}	
@@ -149,7 +151,7 @@
 		\end{Tutoriel}
 
 		\begin{alerttbox}{Retenez !} 
-			On \textbf{compile un fichier} mais on \textbf{exécute une classe}%
+			On \emph{compile un fichier} mais on \emph{exécute une classe}%
 			\footnote{
 				Depuis \samp{JDK 11},
 				il est possible d'écrire directement 
@@ -187,7 +189,7 @@
 \newpage
 		\begin{Tutoriel}{Visualiser la documentation sur Windows}
 			Voici comment procéder pour visualiser la documentation
-			produite à partir d'un navigateur sur \name{Windows}.
+			produite à partir d'un na\-vi\-ga\-teur sur \name{Windows}.
 			\begin{steps}
 			\item 
 				Entrez \kbd{mkdir -p \textasciitilde{}/public\_{}html/doc}.
@@ -255,15 +257,15 @@
 		ce qui sera pratique pour corriger vos erreurs. 
 		Pour cela, il existe deux méthodes.
 
-		\begin{itemize}
-		\item \textbf{Méthode 1} : 
+		\begin{description}
+		\item[Méthode 1] 
 			Lancer \name{nano} avec l'option \samp{-c} : \kbd{nano -c monFichier}
 			ou, mieux, ajouter \samp{set constantshow}\footnote{Ou 
 			\samp{set const} avant la version 2.5 de \name{Gnu nano}.} au fichier
 			fichier \samp{\textasciitilde{}/.nanorc}.
-		\item \textbf{Méthode 2} : 
+		\item[Méthode 2] 
 			Dans l'éditeur, appuyez sur \samp{CTRL-c}.
-		\end{itemize}
+		\end{description}
 		
 		Par ailleurs, il est possible\footnote{Depuis la version
 		2.7.1 de \name{Gnu nano}.} d'indiquer les numéros des 
@@ -279,7 +281,7 @@
         Selon Wikipédia\footnote{\url{https://fr.wikipedia.org/wiki/Style_d\%27indentation}}~:
         \begin{quote}
         \og{}En informatique, l'indentation consiste en l'ajout de tabulations ou 
-        d'espaces dans un fichier texte. [...]
+        d'es\-pa\-ces dans un fichier texte. [...]
 
         L'indentation se définit par la manière d'arranger les blocs de code, 
         mais surtout par le nombre d'espaces utilisés à chaque niveau.\fg{} 
@@ -341,7 +343,8 @@
 \section{Transfert de fichiers}  
 %=================================
 
-	Vous n'avez peut-être pas fini. Pour pouvoir continuer à la maison sans tout recommencer, 
+	Vous n'avez peut-être pas fini. Pour pouvoir continuer à la maison sans 
+	tout re\-com\-men\-cer, 
     il serait bon de pouvoir récupérer ce que vous avez déjà fait sur \samp{linux1}.
 	Voici une façon de le faire.			
 				
@@ -360,7 +363,7 @@
 		\item 
 			Vous pouvez y prendre/déposer des fichiers comme vous le 
 			feriez pour un dossier \name{Windows}. 
-			Vous pouvez par exemple les mettre sur une \textbf{clé USB},
+			Vous pouvez par exemple les mettre sur une \emph{clé USB},
 			sur le cloud ou vous les envoyer par mail.
 	\end{steps}
 	\end{Tutoriel}			

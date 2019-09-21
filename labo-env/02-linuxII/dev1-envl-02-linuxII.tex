@@ -1,4 +1,5 @@
 \documentclass[a4paper,11pt]{style-esi/td}
+%\documentclass[a4paper,11pt,draft]{style-esi/td}
 
 \usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
@@ -50,10 +51,10 @@
 		Et où se trouve ce dossier \samp{home} ? 
 		Dans un dossier appelé \og{}\samp{/}\fg{} (la barre oblique). 
 		Et où se trouve ce dossier \og{}\samp{/}\fg{} ? Nulle part ;) 
-		C'est le dossier principal (la \textbf{racine}).
+		C'est le dossier principal (la \emph{racine}).
 
 		\begin{theorie}{La racine du système de fichiers}
-			La \textbf{racine} est le dossier principal, 
+			La \emph{racine} est le dossier principal, 
 			tout en haut de la hiérarchie des dossiers.
 		\end{theorie}
 
@@ -72,7 +73,7 @@
 		\begin{theorie}{Chemin absolu et relatif}
 			\begin{description}
 			\item[Chemin]
-				Un \textbf{chemin} est une suite de dossiers à traverser 
+				Un \emph{chemin} est une suite de dossiers à traverser 
 				pour arriver au dossier ou au fichier qui nous intéresse.
 				On les sépare par \og{}\samp{/}\fg{}.
 
@@ -83,19 +84,19 @@
 				qui contient un dossier \samp{td1} 
 				qui contient un fichier (ou un dossier) \samp{test}.
 			\item[Chemin absolu]
-				Un chemin est \textbf{absolu} 
-				s'il commence à partir de la \textbf{racine}.
+				Un chemin est \emph{absolu} 
+				s'il commence à partir de la \emph{racine}.
 				Il commence donc par \og{}\samp{/}\fg{}.
 				Par exemple : \samp{/home/g12345/td1/test}
 			\item[Chemin absolu]
-				Dans le cas contraire il est \textbf{relatif}.
-				Il s'agit d'un chemin à suivre à partir du \textbf{dossier courant}.
+				Dans le cas contraire il est \emph{relatif}.
+				Il s'agit d'un chemin à suivre à partir du \emph{dossier courant}.
 			\end{description}
 		\end{theorie}
 
 		\begin{alertbox}
-			Un chemin \textbf{absolu} désigne toujours le même endroit.
-			Un chemin \textbf{relatif} non ! \c ca dépend d'où on est,
+			Un chemin \emph{absolu} désigne toujours le même endroit.
+			Un chemin \emph{relatif} non ! \c ca dépend d'où on est,
 			du dossier courant.
 		\end{alertbox}
 
@@ -110,9 +111,9 @@
 			désigne toujours un fichier (ou un dossier) se trouvant
 			dans le dossier courant
 	
-			Pour indiquer un \textbf{fichier} (ou un dossier) 
-			se trouvant \textbf{ailleurs},
-			il faut donner son \textbf{chemin} (absolu ou relatif).
+			Pour indiquer un \emph{fichier} (ou un dossier) 
+			se trouvant \emph{ailleurs},
+			il faut donner son \emph{chemin} (absolu ou relatif).
 		\end{infobox}
 
 		Par exemple : \kbd{ls /home/g12345}
@@ -127,10 +128,10 @@
 			\item 
 				Affichez le contenu du fichier \samp{readme}
 				(qui se trouve dans le dossier \samp{td1})
-				en utilisant un chemin \textbf{relatif}.
+				en utilisant un chemin \emph{relatif}.
 			\item 
 				Faites la même chose 
-				en utilisant un chemin \textbf{absolu}.
+				en utilisant un chemin \emph{absolu}.
 			\item
 				Créez une copie du fichier \samp{welcome} 
 				dans le dossier \samp{dev1/td2}
@@ -172,7 +173,7 @@
 
 		\begin{Exercice}{Chemins absolus et relatifs}
 			Parmi tous les chemins suivants, quels sont ceux qui sont 
-			\textbf{relatifs} ?			
+			\emph{relatifs} ?			
 			\begin{selectmany} 
 			\item \verb@~/../g12345/td2@
 			\item \verb@/home/g12345/../g54321/Hello.java@
@@ -188,25 +189,25 @@
 			\begin{enumerate}
 			\item 
 				Quelle est la commande pour le faire en utilisant
-				des chemins \textbf{absolus} si le dossier courant
+				des chemins \emph{absolus} si le dossier courant
 				est le répertoire personnel ?
 				\textbox{2em}
 			\item 
-				Idem mais avec des chemins \textbf{relatifs}.
+				Idem mais avec des chemins \emph{relatifs}.
 				\textbox{2em}
 			\item 
-				Avec des chemins \textbf{relatifs}
+				Avec des chemins \emph{relatifs}
 				si le répertoire courant est \verb|~/dev1/|.
 				\textbox{2em}
 			\item 
-				Idem mais avec des chemins \textbf{absolus}.
+				Idem mais avec des chemins \emph{absolus}.
 				\textbox{2em}
 			\item 
-				Avec des chemins \textbf{relatifs}
+				Avec des chemins \emph{relatifs}
 				si le répertoire courant est \verb|~/dev1/td2/|.
 				\textbox{2em}
 			\item 
-				Idem mais avec des chemins \textbf{absolus}.
+				Idem mais avec des chemins \emph{absolus}.
 				\textbox{2em}
 		\end{enumerate}
 		\end{Exercice}
@@ -271,10 +272,10 @@
 				\kbd{!n} réexécute la commande numéro \emph{n}.
 			\item 
 				\kbd{!mot} réexécute la commande la plus récente 
-				\textbf{commençant} par \emph{mot}.
+				\emph{commençant} par \emph{mot}.
 			\item 
 				\kbd{!?mot} réexécute la commande la plus récente 
-				\textbf{contenant} \emph{mot}.
+				\emph{contenant} \emph{mot}.
 			\item 
 				\kbd{\^{}chaine1\^{}chaine2\^{}} réexécute la dernière commande
 				en remplaçant \emph{chaine1} par \emph{chaine2}.
@@ -285,10 +286,10 @@
 	\subsection{Les options}
 	%=====================
 	
-		La plupart des commandes possèdent des \textbf{options}.
+		La plupart des commandes possèdent des \emph{options}.
 
 		\begin{theorie}{Les options}
-			Une \textbf{option modifie le sens} d'une commande ;
+			Une \emph{option modifie le sens} d'une commande ;
 			\begin{itemize}
 			\item Elle commence par le signe \texttt{-} suivi d'une seule lettre ;
 			\item ou encore par le double tiret \texttt{-{}-} suivi d'un nom d'option.
@@ -334,7 +335,7 @@
 
 	\medskip
 	\begin{theorie}{Fichiers cachés}
-		Un \textbf{fichier caché} 
+		Un \emph{fichier caché} 
 		est un fichier dont le nom commence par un point.
 		\begin{itemize}
 		\item Par défaut, il n'est pas montré par la commande \kbd{ls}.
@@ -386,8 +387,8 @@
 			Trouvez l'option qui permet d'afficher cette taille sous un format plus lisible.  
 			
 			\begin{alertbox} 
-				De grâce, \textbf{cherchez} la réponse, 
-				ne la \textbf{demandez pas} à votre voisin. 
+				De grâce, \emph{cherchez} la réponse, 
+				ne la \emph{demandez pas} à votre voisin. 
 				Le but de cet exercice n'est pas de connaitre l'option 
 				(elle n'est pas si utile que \c ca) 
 				mais d'apprendre à trouver soi-même l'information.  
@@ -403,14 +404,14 @@
 		le contenu d'un fichier contenant cette aide.
 		Comme il est long, il ne l'a pas affiché comme le ferait un \samp{cat}
 		mais au travers d'une commande 
-		qui permet d'afficher \textbf{page par page} un document.
+		qui permet d'afficher \emph{page par page} un document.
 
 		\begin{theorie}{less}
 			\kbd{less nomDeFichier} 
-			permet de \textbf{consulter} le fichier en question \emph{page par page}.
+			permet de \emph{consulter} le fichier en question \emph{page par page}.
 			\begin{itemize}
 			\item
-				Ce n'est pas un éditeur; vous ne pouvez \textbf{pas modifier} le document.
+				Ce n'est pas un éditeur ; vous ne pouvez \emph{pas modifier} le document.
 			\item 
 				Les flèches et les touches \samp{PGUP} et \samp{PGDN}
 				permettent de se déplacer dans le document.

@@ -1,4 +1,5 @@
 \documentclass[a4paper,11pt]{style-esi/td}
+%\documentclass[a4paper,11pt,draft]{style-esi/td}
 
 \usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
@@ -28,20 +29,20 @@
 	\item 
 		Faites bien tous les exercices proposés.
 	\item 
-		Vous pouvez \textbf{coopérer} avec vos condisciples 
-		mais nous vous demandons de ne \textbf{pas copier} les réponses. 
-		Si vous voulez progresser, \textbf{chercher} la réponse est plus important que de la trouver. 
+		Vous pouvez \emph{coopérer} avec vos condisciples 
+		mais nous vous demandons de ne \emph{pas copier} les réponses. 
+		Si vous voulez progresser, \emph{chercher} la réponse est plus important que de la trouver. 
 	\item 
-		N'hésitez pas à \textbf{montrer votre travail} à votre professeur.
+		N'hésitez pas à \emph{montrer votre travail} à votre professeur.
 	\item 
-		N'hésitez pas à \textbf{poser des questions} 
+		N'hésitez pas à \emph{poser des questions} 
 		si vous n'avez pas bien compris ce qu'on vous demande.
 	\item 
-		\textbf{Prenez des notes} ! 
+		\emph{Prenez des notes} ! 
 		Ce que vous allez apprendre aujourd'hui 
 		vous servira les semaines prochaines 
 		mais vous en aurez oublié une grande partie si vous ne notez rien. 
-		Le plus pratique est probablement d'annoter la version \textbf{papier}. 
+		Le plus pratique est probablement d'annoter la version \emph{papier}. 
 	\end{itemize}
 \end{coltbox}
 \vfill
@@ -57,7 +58,8 @@
 	\section{Présentation}
 	%====================
 
-		Vous ne travaillerez pas directement sur votre \name{PC} durant les laboratoires d'environnement. 
+		Vous ne travaillerez pas directement sur votre \name{PC} durant les 
+		laboratoires d'environne\-ment. 
 		Celui-ci vous servira pour vous connecter au serveur \name{GNU/Linux}
 		(son nom est \samp{linux1}).
 
@@ -80,16 +82,16 @@
 		\end{theorie}
 
 		Bien que nous pourrions utiliser le mode graphique, 
-		nous allons, pour des raisons pédagogiques, 
+		nous allons, pour des raisons pédago\-gi\-ques, 
 		vous apprendre à utiliser \name{GNU/Linux} en mode console.
 
 		\begin{theorie}{Le mode console}
 			En mode console%
 			\footnote{%
-				On parle aussi de mode \og{}commande\fg{} ou encore \og{}terminal\fg{}.
+				On parle aussi de mode \emph{commande} ou encore \emph{terminal}.
 			}, 
 			nous n'allons pas utiliser des fenêtres et une souris 
-			mais nous allons donner (\textbf{écrire}) des commandes au système.
+			mais nous allons donner (\emph{écrire}) des commandes au système.
 			
 			\medskip
 			\begin{center}
@@ -116,7 +118,7 @@
 		Pour travailler en mode console, il faut savoir dialoguer avec ce shell. 
 		Comment lui indiquer par exemple qu'on veut copier un fichier, 
 		exécuter un programme \name{Java}\dots ? 
-		\textbf{C'est le principal objectif de ces TDs !}
+		\emph{C'est le principal objectif de ces TDs !}
 
 \newpage
 	%====================
@@ -127,7 +129,7 @@
 		Vous allez devoir vous y connecter à distance.
 
 		\begin{theorie}{PuTTY}
-			\textbf{\name{PuTTY}} est une application qui permet (notamment)
+			\name{PuTTY} est une application qui permet (notamment)
 			d'ouvrir un \emph{terminal} sur une machine distante, 
 			de s'y connecter et de dialoguer avec elle en mode console.
 		\end{theorie}
@@ -159,12 +161,12 @@
 		\begin{infobox}
 			\begin{description}
 			\item[Votre login (username)]
-				Un \textbf{'g' minuscule} suivi de votre numéro d'étudiant
-				(ex: \samp{g52010}).
-				\\\textbf{Note} : pour \name{GNU/Linux}, les minuscules et les majuscules 
+				Un \texttt{'g'} \emph{minuscule} suivi de votre numéro d'étudiant
+				(p. ex.: \samp{g52010}).\\
+				\textbf{Note} Pour \name{GNU/Linux}, les minuscules et les majuscules 
 				sont différentes.
 			\item[Votre mot de passe]
-				Le même que votre \textbf{mot de passe initial sous \name{Windows}}%
+				Le même que votre \emph{mot de passe initial sous \name{Windows}}%
 				\footnote{%
 					Le mot de passe sous \name{Windows},
 					sous \name{GNU/Linux} et pour votre mail \name{he2b} 
@@ -184,10 +186,10 @@
 			Indiquez à \name{PuTTY} le nom de la machine (\textit{Host Name}) 
 			à laquelle vous voulez vous connecter (ici \samp{linux1}) ;
 		\item 
-			Cliquez sur \og \textbf{Open} \fg ; 
+			Cliquez sur \og \textit{Open} \fg ; 
 			la connexion se fait ! 
-			S'il vous présente une boite de message avec un \og \textbf{Security Alert} \fg, 
-			cliquez sur \og \textbf{Yes} \fg\ en toute confiance.			
+			S'il vous présente une boite de message avec un \og \textit{Security Alert} \fg, 
+			cliquez sur \og \textit{Yes} \fg\ en toute confiance.			
 		\item 
 			Identifiez-vous !
 			\begin{steps}
@@ -195,9 +197,8 @@
 				Tapez votre nom d'utilisateur (cf. plus haut) 
 				puis sur la touche \verb_ENTREE_. 
 			\item 
-				Tapez votre mot de passe (cf. plus haut) puis sur la touche \verb_ENTREE_.
-				\par
-				\textbf{Note} : Rien ne s'affiche quand vous tapez votre mot de passe ; c'est normal.
+				Tapez votre mot de passe (cf. plus haut) puis sur la touche \verb_ENTREE_.\\
+				\textbf{Note} Rien ne s'affiche quand vous tapez votre mot de passe ; c'est normal.
 			\end{steps}
 		\end{steps}
 		\end{Tutoriel}
@@ -213,24 +214,26 @@
 			sont organisées en fichiers et dossiers :
 			\begin{itemize}
 			\item 
-				Un \textbf{fichier} contient de l'information : 
-				un code \name{Java}, un exécutable, un texte\dots{}
+				Un \emph{fichier} contient de l'information : 
+				un code \name{Java}, un exécutable, un texte, etc.
 			\item 
-				Un \textbf{dossier} contient des fichiers. 
+				Un \emph{dossier} contient des fichiers. 
 				Il sert à organiser/regrouper les nombreux fichiers du disque. 
-				On parle aussi de \textbf{répertoire}.
+				On parle aussi de \emph{répertoire}.
 			\item 
 				Un dossier peut aussi contenir des dossiers qui, à leur tour, 
-				peuvent contenir des fichiers/dossiers qui\dots{}
-				On a une organisation \textbf{hiérarchique} des fichiers.
+				peuvent contenir des fichiers/dossiers qui etc.
+				On a une organisation \emph{hiérarchique} des fichiers.
 			\end{itemize}
 		\end{theorie}
 
 		\begin{theorie}{Le répertoire personnel}
-			Sur \name{GNU/Linux}, chaque utilisateur dispose d'un « \textbf{dossier personnel} » 
-			(on dit aussi sa « \textbf{home} »). 
+			Sur \name{GNU/Linux}, chaque utilisateur dispose 
+			d'un \emph{dossier personnel}
+			(on dit aussi sa \textit{home}). 
 			C'est dans ce dossier qu'il peut créer des fichiers (et des dossiers). 
-			Par convention, ce dossier porte le même nom que le login de l'utilisateur%
+			Par convention, ce dossier porte le même nom que le \textit{login} 
+			de l'utilisateur%
 			\footnote{%
 				À ne pas confondre avec le dossier qui s'appelle \samp{home}
 				et qui contient tous les répertoires personnels.
@@ -239,8 +242,8 @@
 
 		\begin{theorie}{Le dossier courant}
 			À tout moment,
-			on se trouve dans un dossier précis, le \og{}\textbf{dossier courant}\fg{}. 
-			Au départ, lorsqu'on se connecte, c’est le \emph{répertoire personnel}.
+			on se trouve dans un dossier précis, le \emph{dossier courant}. 
+			Au départ, lorsqu'on se connecte, c'est le \emph{répertoire personnel}.
 		\end{theorie}
 
 	%====================
@@ -325,7 +328,7 @@
 			car il ne comprend pas ce que vous lui voulez.
 			\begin{infobox}
 				En \name{GNU/Linux}, 
-				\textbf{les majuscules et les minuscules n'ont pas le même sens.}
+				\emph{les majuscules et les minuscules n'ont pas le même sens}.
 			\end{infobox}
 		\end{Experience}	
 			
@@ -338,7 +341,7 @@
 			\item \kbd{ls dev 1}
 			\end{steps}
 			À nouveau le résultat est différent dans les 3 cas. 
-			\textbf{Les espaces ont de l'importance}.
+			\emph{Les espaces ont de l'importance}.
 		\end{Experience}				
 
 		\begin{theorie}{Une commande décomposée}
@@ -348,9 +351,8 @@
 				\includegraphics[width=0.6\textwidth]{images/commande.jpg}
 			\end{center}
 			La 1\iere{} partie indique ce qu'on veut faire. 
-			Ensuite on donne des arguments pour préciser ce qu'on veut faire.
-			\\
-			\textbf{Exemples} :
+			Ensuite on donne des arguments pour préciser ce qu'on veut faire.\\
+			\textbf{Exemples}
 			\begin{itemize}
 			\item 
 				Si on veut détruire un fichier (commande \kbd{rm}), 
@@ -413,8 +415,10 @@
 				empêcher de vous connecter la prochaine fois.
 
 			\medskip
-			\textbf{Si jamais j'oublie mon mot de passe sous \name{GNU/Linux}. Je dois aussi aller voir les techniciens ?}			
-				Non ! Votre professeur de labo peut réinitialiser le mot de passe \name{GNU/Linux} à sa valeur initiale.
+			\textbf{Si jamais j'oublie mon mot de passe sous \name{GNU/Linux}. 
+			Je dois aussi aller voir les techniciens ?}			
+				Non ! Votre professeur de labo peut réinitialiser le mot de passe 
+				\name{GNU/Linux} à sa valeur initiale.
 		\end{faq}
 
 	%====================
@@ -435,9 +439,9 @@
 		\end{Experience}
 
 		\begin{alertbox}
-			Quand on indique un \textbf{nom} de fichier ou de dossier sans plus de précision,
-			il doit se trouver dans le \textbf{dossier courant}.
-			Le shell ne va \textbf{pas chercher} ailleurs ou dans un sous-dossier 
+			Quand on indique un \emph{nom} de fichier ou de dossier sans plus de précision,
+			il doit se trouver dans le \emph{dossier courant}.
+			Le shell ne va \emph{pas chercher} ailleurs ou dans un sous-dossier 
 			pour le trouver. 
 		\end{alertbox}
 
@@ -455,7 +459,7 @@
 		\end{Experience}
 
 		\begin{theorie}{Une première approche des chemins}
-			En première approche, un \textbf{chemin}
+			En première approche, un \emph{chemin}
 			est la suite des dossiers à traverser 
 			(séparés par \samp{/}%
 			\footnote{%
@@ -495,9 +499,9 @@
 				Tapez la commande \kbd{cd bin}.
 				\begin{itemize}
 				\item 
-					Cette commande demande de se \textit{\textbf{déplacer}} 
+					Cette commande demande de se \emph{déplacer}
 					dans le dossier \textit{bin}.
-					Elle \textbf{change le dossier courant}.
+					Elle \emph{change le dossier courant}.
 				\end{itemize}
 			\item 
 				Retapez la commande \kbd{ls} du début.
@@ -518,7 +522,7 @@
 				\item \kbd{cd ..}
 					vous amène dans le dossier juste au-dessus de celui où vous êtes, 
 					c-à-d celui qui contient le dossier courant actuel.
-					On parle de \textbf{répertoire parent}.
+					On parle de \emph{répertoire parent}.
 				\item \kbd{cd}
 					(sans rien derrière) vous ramène toujours dans votre dossier personnel.
 				\end{itemize}

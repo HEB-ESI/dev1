@@ -1,4 +1,5 @@
 \documentclass[a4paper,11pt]{style-esi/td}
+%\documentclass[a4paper,11pt,draft]{style-esi/td}
 
 \usepackage{style-esi/licence}
 \usepackage{style-esi/exercice}
@@ -37,7 +38,7 @@
 	On a déjà vu la commande \samp{find}
 	qui permet de rechercher un fichier en fonction de critères.
 	La commande \samp{grep} permet de faire une recherche 
-	\textbf{à l'intérieur} d'un fichier.
+	\emph{à l'intérieur} d'un fichier.
 
 	\begin{theorie}{Grep}
 		\kbd{grep motif fichiers...}
@@ -107,7 +108,7 @@
 			
 			\medskip
 			Produit sur la sortie standard toutes les lignes du fichier
-			\samp{Hello.java} qui contiennent \textbf{à la fois}
+			\samp{Hello.java} qui contiennent \emph{à la fois}
 			les mots \samp{Scanner} et \samp{System}.
 		\end{Exemple}
 
@@ -166,7 +167,7 @@
 	%==================
 
 		La commande \samp{uniq} ne laisse passer qu'une seule fois
-		les lignes identiques \textbf{qui se suivent}.
+		les lignes identiques \emph{qui se suivent}.
 
 		\begin{Experience}{Enlever les doublons}
 			\begin{steps}
@@ -178,7 +179,7 @@
 				\kbd{hello}.
 			\item 
 				Entrez à nouveau \kbd{hello}.
-				Il n'est \textbf{pas reproduit sur la sortie} !
+				Il n'est \emph{pas reproduit sur la sortie} !
 				La ligne précédente étant identique.
 			\item 
 				Entrez à nouveau  \kbd{salut} puis, à la ligne, \kbd{hello}.
@@ -190,7 +191,7 @@
 		\end{Experience}
 
 		\begin{Exercice}{Les utilisations de Scanner}
-			Affichez toutes les lignes \textbf{différentes}
+			Affichez toutes les lignes \emph{différentes}
 			contenant le mot \samp{Scanner} dans tous vos fichiers \name{Java}
 			du dossier \samp{td4}.
 			\\Aide: 
@@ -202,7 +203,8 @@
 	%==================
 	
 		La commande \samp{head} (respectivement \samp{tail})
-		ne laisse passer que les premières (respectivement dernières)
+		ne laisse passer que les premières (res\-pec\-ti\-ve\-ment 
+		dernières)
 		lignes reçues.
 
 		\begin{Experience}{Les premières/dernières lignes}
@@ -302,7 +304,7 @@
 	%==================
 
 		La commande \samp{wc} est un peu particulière.
-		Elle compte le nombre de lignes/mots/caractères reçus.
+		Elle compte le nombre de lignes/mots/ca\-rac\-tè\-res reçus.
 
 		\begin{Exemple}{Le nombre de connexions}
 			\kbd{who | wc} donne le nombre de connexions actuellement.
@@ -365,20 +367,20 @@
 	
 	\begin{Exercice}{Un mot ou un autre}
 		Vous avez vu comment utiliser la commande \samp{grep}
-		pour sélectionner les lignes qui contiennent \verb_Scanner_
-		\textbf{ET} \verb_System_.
-		Comment faire pour sélectionner celles qui contiennent
-		\verb_Scanner_ \textbf{OU} \verb_System_.
+		pour sélectionner les lignes qui con\-tien\-nent \verb_Scanner_
+		\emph{et} \verb_System_.
+		Comment faire pour sélectionner celles qui con\-tien\-nent
+		\verb_Scanner_ \emph{ou} \verb_System_.
 	\end{Exercice}
 	
 	\begin{Exercice}{Un chiffre}
 		Comment sélectionner avec \samp{grep}
-		toutes les lignes qui contiennent un chiffre, quel qu'il soit.
+		toutes les lignes qui con\-tien\-nent un chiffre, quel qu'il soit.
 	\end{Exercice}
 
 	\begin{Exercice}{La casse}
 		Affichez le contenu de votre dossier en remplaçant
-		toutes les minuscules par des majuscules. 
+		toutes les minuscules par des ma\-jus\-cu\-les. 
 	\end{Exercice}
 
 \end{document}
