@@ -1,7 +1,7 @@
 % ============================
-\renewcommand{\chaptername}{Errata}
 \chapter{Les exceptions}
 \label{chap:exceptions}
+\index{exceptions}
 % ============================
 
 \begin{Exergue}
@@ -13,11 +13,11 @@
 \section{Motivation}
 Un programme ne tourne pas dans un monde idéal.
 
-Il doit pouvoir \emph{résister aux défaillances} de l'environnement, telles que
+Il doit pouvoir \emph{résister aux défaillances} de l'environnement, telles que~:
   \begin{itemize}
-  \item On tente d'ouvrir un fichier qui n'existe pas
-  \item L'utilisateur entre des données incorrectes
-  \item Une connexion à un site web ne se fait pas
+  \item on tente d'ouvrir un fichier qui n'existe pas\,;
+  \item l'utilisateur entre des données incorrectes\,;
+  \item une connexion à un site web ne se fait pas\,;
   \item etc.
   \end{itemize}
 
@@ -65,15 +65,15 @@ On constate qu'une Exception a été levée (ou \og lancée\fg), ce qui résulte
 \section{L'instruction \pc{try-catch}}
 On l'a vu, une Exception peut arrêter l'exécution du programme. Cependant, le mécanisme autorise aussi d'intercepter (ou \og attraper\fg) les Exceptions, afin de traiter l'erreur de façon transparente pour l'utilisateur. On utilise à cet effet une instruction \pc{try-catch}, constituée de deux blocs de code :
 \begin{itemize}
-\item \pc{try} : contient les instructions qui \emph{peuvent mal se passer}
-\item \pc{catch} : contient le code qui est \emph{en charge} de gérer le problème
+\item \pc{try} : contient les instructions qui \emph{peuvent mal se passer}\,;
+\item \pc{catch} : contient le code qui est \emph{en charge} de gérer le problème.
 \end{itemize}
 
-Quand une exception est levée dans un \pc{try}
+Quand une exception est levée dans un \pc{try}~:
 \begin{itemize}
-\item Le code du \pc{try} est interrompu
-\item Le code du \pc{catch} est exécuté
-\item L'exécution reprend après le bloc \pc{try-catch}
+\item le code du \pc{try} est interrompu\,;
+\item le code du \pc{catch} est exécuté\,;
+\item l'exécution reprend après le bloc \pc{try-catch}.
 \end{itemize}
 
 À titre d'exemple, on peut ainsi intercepter les exceptions levées par \pc{nextInt()} comme ceci :
