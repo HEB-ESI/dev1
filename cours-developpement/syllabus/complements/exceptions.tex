@@ -62,12 +62,45 @@ On constate qu'une Exception a été levée (ou \og lancée\fg), ce qui résulte
 %	at Affiche.main(Affiche.java:7)
 %\end{Code}
 
+\subsection*{Remarque}
+
+Ici, c'est une \pc{InputMismatchException} qui a été lancée et pas une \pc{Exception}. En fait, nous verrons en \textit{Développement II} qu'il existe plusieurs exceptions différentes. 
+
+Celles que nous pouvons déjà retenir sont~:
+
+\begin{description}
+
+	\item[InputMismatchException] par exemple lorsque l'utilisateur ou l'utilisatrice entre une valeur qui n'est pas du type attendu\,;
+
+	\item[ArrayIndexOutOfBoundException] par exemple lorsque le programme essaie d'accéder à un élément d'un tableau hors de celui-ci\,;
+
+	\item[IllegalArgumentException] par exemple lorsque l'argument passé à une méthode n'est pas dans la plage des valeurs attendues\,;
+
+	\item[NullPointerException] par exemple lorsque l'on essaie d'accéder à un tableau qui n'a pas été créé.
+
+\end{description}
+
 \section{L'instruction \pc{try-catch}}
-On l'a vu, une Exception peut arrêter l'exécution du programme. Cependant, le mécanisme autorise aussi d'intercepter (ou \og attraper\fg) les Exceptions, afin de traiter l'erreur de façon transparente pour l'utilisateur. On utilise à cet effet une instruction \pc{try-catch}, constituée de deux blocs de code :
+Une Exception peut arrêter l'exécution du programme. Cependant, le mécanisme autorise aussi d'intercepter (ou \og attraper\fg) les Exceptions, afin de traiter l'erreur de façon transparente pour l'utilisateur. On utilise à cet effet une instruction \pc{try-catch}, constituée de deux blocs de code :
 \begin{itemize}
 \item \pc{try} : contient les instructions qui \emph{peuvent mal se passer}\,;
 \item \pc{catch} : contient le code qui est \emph{en charge} de gérer le problème.
 \end{itemize}
+
+Voici la grammaire simplifiée (voir \cite{jls9} page 463 pour la grammaire
+complète)~:
+
+\begin{grammaire}
+	\grammarrule{TryStatement :}
+	    try \grammarrule{Block} \grammarrule{Catches}
+
+	\grammarrule{Catches :}
+	    \grammarrule{CatchClause \{CatchClause\}}
+
+	\grammarrule{CatchClause :}
+	    catch ( \grammarrule{Type Identifier} ) \grammarrule{Block}
+\end{grammaire}
+
 
 Quand une exception est levée dans un \pc{try}~:
 \begin{itemize}
@@ -106,6 +139,13 @@ Imaginons la situation où un programme doit demander un \emph{entier positif} �
 Si le programme ne vérifie pas immédiatement que le nombre donné est entier et positif, il s'expose à des problèmes tels que plantages, résultats erronés, perte ou corruption de données, etc.
 avec la condition aggravante que le problème pourrait ne se signaler que plus loin dans le code, et plus tard dans le temps, rendant le déboguage plus difficile.
 Cette constatation est à la base du mantra \og Fail early, fail loudly.\fg.
+
+Dès que le développeur ou la développeuse constate que son code pourrait être dans une situation instable —~pourrait \textit{planter} à court terme~— à cause d'un argument par exemple, elle décide de lever une exception en utilisant l'instruction \pc{throw}~:
+
+\begin{grammaire}
+	\grammarrule{ThrowStatement :}
+	    throw \grammarrule{Expression};
+\end{grammaire}
 
 Cas pratique : vérifier les \emph{arguments} reçus.
 Si un paramètre est supposé être un entier positif, une saine gestion consiste à vérifier que c'est le cas et à lever une exception sinon.
