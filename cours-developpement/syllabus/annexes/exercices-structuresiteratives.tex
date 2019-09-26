@@ -34,15 +34,15 @@ public static void while2(){
 		\begin{java}
 public static void while3(){
 	boolean isDone = false;
-	int count = 0, 
-		x = 10;
+	int count = 0;
+	int x = 10;
 	while (!isDone && count < 3){
 		if (x % 2 == 0){
 			x = x + 1;
-			isDone = x < 20;
+			isDone = x > 20;
 		} else {
-			x = x + 3
-			count++
+			x = x + 3;
+			count = count + 1;
 		}
 	}
 	System.out.println(x);
