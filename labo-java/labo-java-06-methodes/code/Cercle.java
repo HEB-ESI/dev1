@@ -3,7 +3,7 @@ package esi.dev1.td6;
 public class Cercle {
 
     static double périmètre(double rayon) {
-        return 2 * 3.141596 * rayon ;
+        return 2 * Math.PI * rayon ;
     }
     
     public static void main(String[] args) {

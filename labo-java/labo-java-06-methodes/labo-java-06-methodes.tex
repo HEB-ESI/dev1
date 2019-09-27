@@ -19,7 +19,9 @@
 \section{Introduction}
 %====================	
 
-	Une méthode est une construction qui permet de décomposer une solution sous forme de petit module.
+	Une méthode est une construction qui permet de décomposer une solution sous
+	forme de petits modules.
+
 	Dans l'exemple ci-dessous la méthode \texttt{périmètre} de la classe \texttt{Cercle} calcule le périmètre d'un cercle 
 	étant donné son rayon.
 	
@@ -33,12 +35,14 @@
 		\item elle retourne une valeur de type \texttt{double}.
 	\end{itemize}
 	Nous verrons ultérieurement la signification du mot clef \texttt{static}, qui doit toujours se trouver au début de l'entête des méthodes
-	que vous écrivez. Une méthode non-static a un tout autre sens que nous verrons en dev2.
+	que vous écrivez. Une méthode non \textit{static} a un tout autre sens que nous verrons en dev2.
 
-	Le \emph{corps} de la méthode est ici très simple, il \emph{retourne} (à l'aide de l'instruction  \texttt{return})
-	 la valeur reçue en paramètre (le rayon) multiplié par 2*3.141596.
-	Le type de la valeur retournée doit être compatible avec le type déclaré dans l'entête, 
-	ici cela doit être un \texttt{double}.	
+	Le \emph{corps} de la méthode est ici très simple, il \emph{retourne} (à
+	l'aide de l'instruction  \texttt{return}) la valeur reçue en paramètre (le
+	rayon) multiplié par $2*\pi$\footnote{En Java, la valeur de $\pi$ est
+		accessible grâce à \texttt{Math.PI}}.  Le type de la valeur retournée
+		doit être compatible avec le type déclaré dans l'entête, ici cela doit
+		être un \texttt{double}.	
 	
 	La méthode principale \emph{appelle}  cette méthode avec la valeur 10 comme rayon. 
 
@@ -93,7 +97,7 @@
  	\listing{java}{Maximum.java}
 	
 	Dans la classe \texttt{Maximum} ci-dessus sont définies 2 méthodes: \texttt{max2} et \texttt{max3}.
-	Dans l'entête de la méthode \texttt{max2} on constate que cette méthode 
+	Dans l'entête de la méthode \texttt{max2} on constate que cette méthode~:
 	\begin{itemize}
 		\item s'appelle \texttt{max2}~;
 		\item reçoit \emph{en paramètres} deux entiers, ces entiers seront manipulés grâce à leur nom \texttt{a} et \texttt{b}~;
@@ -104,7 +108,7 @@
 	La méthode principale fait un appel à la méthode \texttt{max2} avec les paramètres effectifs 10 et 6 
 	et affiche la valeur retournée par la méthode max2: 10.
 	
-	 Dans l'entête de la méthode \texttt{max3} on constate que cette méthode 
+	 Dans l'entête de la méthode \texttt{max3} on constate que cette méthode~:
 	\begin{itemize}
 		\item s'appelle \texttt{max3}~;
 		\item reçoit \emph{en paramètres} trois entiers, ces entiers seront manipulés grâce à leur nom \texttt{a}, \texttt{b} et \texttt{c}~;
@@ -165,19 +169,34 @@
 	\end{Exercice} 
 
 
+	\begin{Exercice}{Erreurs de types}
+		Dans votre méthode main, faites les appels suivants~:
+
+		\begin{itemize}
+			\item \texttt{String résultat = premièreLettre("Hello");}
+			\item \texttt{char caractère = dernièreLettre(123);}
+		\end{itemize}
+
+		et constatez quelles erreurs sont générées. 
+
+	\end{Exercice}
+
+
 
 \section{Méthodes et booléens}
 
 	Nous avons vu que les \emph{booléens} sont les deux valeurs \texttt{true} (vrai) et \texttt{false} (faux). 
 	Le type associé aux booléens est \texttt{boolean}.
 	
-	Une méthode retournant vrai ou faux sera de type \texttt{boolean} comme illustré dans l'exemple suivant.
-	 	\listing{java}{Pair.java}
-	La méthode \texttt{estPair} retourne la valeur de l'expression \code{java}{(nb\%2)==0}, 
-	cette expression est vraie si \texttt{nb} est pair et faux sinon.
+	Une méthode retournant vrai ou faux sera de type \texttt{boolean} comme
+	illustré dans l'exemple suivant.  \listing{java}{Pair.java} La méthode
+	\texttt{estPair} retourne la valeur de l'expression
+	\code{java}{(nb\%2)==0}, cette expression est vraie si \texttt{nb} est pair
+	et fausse sinon.
 	
-	La condition de l'instruction \texttt{if}, \code{java}{estPair(10)}, sera vraie si l'appel à la méthode retourne vrai (et donc si \texttt{10} est pair)
-	 et faux sinon.
+	La condition de l'instruction \texttt{if}, \code{java}{estPair(10)}, sera
+	vraie si l'appel à la méthode retourne vrai (et donc si \texttt{10} est
+	pair) et fausse sinon.
 
 	 \begin{Exercice}{Divisible}
 		Dans la classe \texttt{MathUtil} ajoutez la méthode 
@@ -234,7 +253,8 @@
 		\end{itemize}
 		Testez-les dans la méthode principale.
 	\end{Exercice} 
-	
+
+	\clearpage
 	\begin{Exercice}{Voyelles et consonnes}
 		Dans la classe \texttt{ChaineUtil} ajoutez les méthodes suivantes~: 
 		\begin{itemize}
