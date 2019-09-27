@@ -13,13 +13,19 @@
 \seance{11}{Mise en pratique : Le mot le plus long}{td11-mot-le-plus-long}{
 	Dans ce TD vous utiliserez les notions vues précédemment 
 	afin de réaliser le jeu \og{}le mot le plus long\fg. 
+
+	\begin{center}
+		\includegraphics[width=13cm]{resources/lemotlepluslong}
+	\end{center}
 }
+
 
 \section{Le mot le plus long}
 
 	Le mot le plus long est un jeu de lettres à deux joueurs qui se déroule en
 	plusieurs manches. Le nombre de manches est choisi au départ, par exemple 5 manches.
 	Une manche se déroule en 2 étapes. 
+
 	
 	Tout d'abord les joueurs, chacun à leur tour, 
 	tirent au hasard soit une voyelle, soit une consonne (le joueur choisit), 
@@ -40,7 +46,7 @@
 
 	Tout d'abord,
 	Créez un package \texttt{g12345.dev1.lemotlepluslong} et une classe
-	\texttt{LeMotLePlusLong}. 
+	\texttt{LeMot\-Le\-Plus\-Long}. 
 	Créez aussi la méthode principale qui, dans un premier temps, 
 	affiche un message de bienvenue au 'mot le plus long'.
 
@@ -72,7 +78,7 @@
 
  	\begin{Exercice}{Afficher les lettres}
  		\'Ecrivez la méthode \code{java}{void afficherLettres(char[] lettres)}
-		qui affiche affiche le contenu du tableau de caractère \texttt{lettres}.
+		qui affiche le contenu du tableau de caractère \texttt{lettres}.
 		
 		Par exemple si la méthode reçoit le tableau 
 		\texttt{\{'E', 'E', 'I', 'O', 'C', 'D', 'M', 'R', 'Z'\}}
@@ -117,8 +123,8 @@
 		
 		Attention: vous ne pouvez pas modifier le tableau \texttt{lettres}.
 		
-		Astuce: vous pouvez utilisé un tableau de travail, par exemple un 
-		tableau de booléens qui indiquera si une lettre à déjà été utilisé.
+		Astuce: vous pouvez utiliser un tableau de travail, par exemple un 
+		tableau de booléens qui indiquera si une lettre à déjà été utilisée.
 		
 		Cette méthode n'est pas triviale, elle doit être validée par des tests.
 		Ajoutez des tests JUnit en prenant soin de tester les cas particuliers: 
@@ -168,7 +174,7 @@
 			
 			Vous avez maintenant un tableau contenant tous les mots du dictionnaire.
 			Par exemple \code{java}{System.out.println(dico[58]);} affichera 
-			le 58è mot de ce dictionnaire.
+			le $58^e$ mot de ce dictionnaire.
 
 			
 	\end{Exercice} 
@@ -178,18 +184,18 @@
  		\code{java}{String meilleurMot(char[] lettres)}
 		qui parcourt le dictionnaire à la recherche du mot le plus long faisable 
 		avec les lettres disponibles. 
-		Si plusieurs mots sont possible on en choisit ici un seul.
+		Si plusieurs mots sont possibles on en choisit ici un seul.
 
 		Testez votre méthode avec plusieurs tests JUnit.
 
-		 Intégrez cela dans a méthode principale.
+		 Intégrez cela dans la méthode principale.
 	\end{Exercice}
 
- 	\begin{Exercice}{BONUS 1 - Les meilleurs mots}
+ 	\begin{Exercice}{Bonus 1 - Les meilleurs mots}
  	 	\'Ecrivez la méthode 
  		\code{java}{String[] meilleursMots(char[] lettres)}
 		qui retourne la liste de tous les mots les plus longs du dictionnaire 
-		faisable avec les lettres disponibles.
+		faisables avec les lettres disponibles.
 
 		Testez votre méthode avec plusieurs tests JUnit.
 
@@ -198,22 +204,24 @@
 
 
  	\begin{Exercice}{Bonus 2 - 2 joueurs}
-		Développer le jeu à plusieurs manches, avec 2 joueurs, 
+		Développez le jeu à plusieurs manches, avec 2 joueurs, 
 		ainsi que la gestion du score et du gagnant.
-		Pour cela vous pouvez-vous référer aux règles officielles probablement 
-		disponibles quelque part sur internet.
+		Pour cela vous pouvez vous référer aux règles officielles  
+		disponibles sur internet\footnote{Par exemple~:\url{https://www.trictrac.net/jeu-de-societe/le-mot-le-plus-long-3/details}}.
 	\end{Exercice}
 		
  	\begin{Exercice}{Bonus 3 - Fréquence des lettres}
-		Pour que le jeu soit agréable il faudrait que la fréquence des différentes
-		lettres ne soit pas uniforme. En d'autres mots, il est préférable d'avoir plus
-		souvent un 'e' ou un 'a' qu'un 'y' ou un 's' qu'un 'z'. Modifiez vos méthodes
-		\texttt{voyelle} et \texttt{consonne} afin d'ajuster la probabilité des
-		différentes lettres. 
+		
+		Pour que le jeu soit agréable il faudrait que la fréquence des
+		différentes lettres ne soit pas uniforme. En d'autres mots, il est
+		préférable d'avoir plus souvent un 'e' ou un 'a' qu'un 'y', un 's'
+		ou un 'z'. Modifiez vos méthodes \texttt{voyelle} et \texttt{consonne}
+		afin d'ajuster la probabilité des différentes lettres. 
 		
 		Vous pouvez vous baser par exemple sur la fréquence des lettres en français:
 		 \url{https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres_en_fran%C3%A7ais}
-	\end{Exercice}
+	
+	 \end{Exercice}
 		
 
 
