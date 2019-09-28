@@ -19,7 +19,8 @@
 \section{Un calendrier}
 
 Votre programme demandera à l'utilisateur d'entrer au clavier un mois et une année 
-au format MM (ou M) AAAA (par exemple 6 2018 ou 12 2015) et afficher le calendrier de ce mois.
+au format MM AAA ou M AAAA (par exemple 6 2018 ou 12 2015) et affichera le calendrier de ce mois.
+
 Par exemple pour le mois de juin 2018 le programme affichera~: 
 
 \begin{verbatim}
@@ -38,7 +39,7 @@ Par exemple pour le mois de juin 2018 le programme affichera~:
 Nous allons vous guider tout au long de ce TD afin de développer les différentes méthodes nécessaires à cette petite application.
 
 Tout d'abord,
-Créez un package \texttt{g12345.dev1.calendrier} et une classe \texttt{Calendrier}.
+créez un package \texttt{g12345.dev1.calendrier} et une classe \texttt{Calendrier}.
 
 
  	\begin{Exercice}{Mois}
@@ -47,7 +48,7 @@ Créez un package \texttt{g12345.dev1.calendrier} et une classe \texttt{Calendri
 		Par exemple si la méthode reçoit 1 elle retourne "Janvier" et si elle reçoit 6 elle retourne "Juin".
 		
 		Nous supposons pour le moment que la méthode reçoit toujours un nombre entre 1 et 12.
-		Nous traiterons les erreurs au TD suivant.
+		Nous traiterons les erreurs dans un prochain TD.
 	\end{Exercice} 
 
  
@@ -130,13 +131,17 @@ Créez un package \texttt{g12345.dev1.calendrier} et une classe \texttt{Calendri
 
 
  	\begin{Exercice}{Années bissextiles}
-	 Pour connaître le nombre de jour dans un mois il est nécessaire de savoir 
-	 si l'année est bissextile ou non\footnote{\url{http://en.wikipedia.org/wiki/Leap_year}}. 
-	 En effet, le mois de février de ces années contient 29 jours au lieu de 28. 
 	 
-	 La règle est simple, une année est bissextile si l'une des deux conditions suivantes est vraies
-		\begin{itemize}
-			\item si elle est divisible par 4 et non divisible par 100, ou
+		Pour connaître le nombre de jour dans un mois il est nécessaire de
+		savoir si l'année est bissextile ou
+		non\footnote{\url{http://en.wikipedia.org/wiki/Leap_year}} pour traiter
+		correctement le cas du mois de février. 
+	 
+		La règle est simple, une année est bissextile si l'une des deux
+		conditions suivantes est vraies~:
+		
+	 \begin{itemize}
+			\item si elle est divisible par 4 et non divisible par 100, ou\,;
 			\item si elle est divisible par 400.
 		\end{itemize}
 		
@@ -194,7 +199,8 @@ $((3 + 10 + 8 + 2 + 5 + 100 + 5) \mod 7) = (133 \mod 7) = 0$ et donc lundi.
 		\'Ecrivez la méthode \code{java}{int numéroJour(int jour, int mois, int année)} 
 		qui retourne la valeur de la congruence de Zeller correspondant au jour reçu en paramètre.
 
-	Terminez votre application en y insérant le décalage obtenu avec cette méthode \texttt{numéroJour}.
+	Terminez votre application en y insérant le décalage obtenu avec cette
+	méthode \texttt{numéro\-Jour}.
 
 	\end{Exercice} 
 
