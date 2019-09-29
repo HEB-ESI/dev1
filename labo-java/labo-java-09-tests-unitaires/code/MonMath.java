@@ -8,7 +8,7 @@ public class MonMath {
      * @param message message à afficher.
      * @return l'entier saisi par l'utilisateur.
     */
-    static double abs(double x) {
+    public static double abs(double x) {
         double solution = x;
 
         if(x < 0) {

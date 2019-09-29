@@ -8,7 +8,7 @@ public class Cercle {
     * @param rayon le rayon du cercle
     * @return le périmètre du cercle de rayon \code{rayon}
     */
-    static double périmètre(double rayon) {
+    public static double périmètre(double rayon) {
         if(rayon < 0) {
             throw new IllegalArgumentException("Le rayon doit être positif: "+rayon);
         }

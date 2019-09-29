@@ -12,8 +12,7 @@ public class CercleTest {
      * Test de la méthode périmètre avec le lancement d'une exception
      */
     @Test(expected=IllegalArgumentException.class)
-    public void testMain() {
-        System.out.println("Avec rayon négatif menant à une exception");
+    public void périmètre_rayonNégatif_IAException() {
         Cercle.périmètre(-5);
     }
     

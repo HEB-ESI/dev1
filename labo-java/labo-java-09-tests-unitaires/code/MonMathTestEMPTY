@@ -11,10 +11,9 @@ public class MonMathTest {
    
     @Test
     public void testAbs() {
-        System.out.println("abs");
-        double x = 0.0;
-        double expResult = 0.0;
+        double x = 4.0;
+        double expResult = 4.0;
         double result = MonMath.abs(x);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0.001);
     }
 }
