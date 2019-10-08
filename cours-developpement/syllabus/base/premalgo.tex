@@ -1151,15 +1151,15 @@ ok = b != 0 && 1/b < 0.1;
 				\quad\equiv\quad \textrm{nb MOD 2 = 0} 
 			\]
 			
-			En supposant que \pc{isOdd} (\textit{odd} pour pair et \textit{even}
+			En supposant que \pc{isEven} (\textit{even} pour pair et \textit{odd}
 			pour impair) est une varibale booléenne, nous pourrions donc
-			écrire~: \pc{isOdd \Gets nb MOD 2 == 0}.
+			écrire~: \pc{isEven \Gets nb MOD 2 == 0}.
 
 			Et, en langage java~:
 
 			\begin{java}
-boolean isOdd;
-isOdd = nb % 2 == 0;
+boolean isEven;
+isEven = nb % 2 == 0;
 			\end{java}
 
 		\subsubsection{Utilité - Extraire les chiffres d’un nombre}

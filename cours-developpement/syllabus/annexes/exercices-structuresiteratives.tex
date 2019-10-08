@@ -135,16 +135,16 @@ public static void for2(){
 
 		\begin{java}
 public static void dowhile1(){
-	boolean isOdd, isBig;
+	boolean isEven, isBig;
 	int p, x;
 	x = 1;
 	p = 1;
 	do {
 		p = 2 * p;
 		x = x + p;
-		isOdd = x % 2 == 0;
+		isEven = x % 2 == 0;
 		isBig = x > 15;
-	} while (!isOdd && !isBig);
+	} while (!isEven && !isBig);
 	System.out.println(x);
 		\end{java}
 
