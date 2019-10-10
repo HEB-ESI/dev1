@@ -19,7 +19,7 @@ Ressources pour toute l'UE DEV1.
 ├── aide
 ├── cc-by-sa.png
 ├── cours-developpement
-├── labo-cli
+├── labo-env
 ├── labo-java
 ├── references
 └── README.md
