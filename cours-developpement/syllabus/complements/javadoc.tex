@@ -253,6 +253,8 @@ Voici quelques règles de style\footnote{Ces règles sont principalement issues 
 	
 	\item Seules les classes et les méthodes publiques sont commentées. 
 
+	\item Dans la mesure du possible la \textit{javadoc} s'écrit en anglais. 
+
 	\item Les mots clés (\textit{keywords}), les noms de classes, de méthodes
 		sont écrit entre les balises \texttt{<code> </code>} 
 
@@ -348,19 +350,35 @@ Certaines options sont intéressantes~:
 		l'utf-8 ce qui aura pour effet que les caractères accentués seront
 		correctement affichés dans la documentation. 
 
+	\item[-sourcepath <directory>] précise dans quels répertoires chercher les
+		fichiers sources lorsque l'on précise le \textit{package} à documenter.
+		Par défaut, cherche dans le répertoire courant. Les nom de répertoires
+		sont séparés par deux points ($:$) s'il y en a plusieurs.
+
 \end{description}
 
-Pour générer toutes la documentation en une seule fois en utilisant ces
-options, on préfèrera donc une commande du style~:
+\textbf{Exemples:}
+
+Tous mes fichiers sources se trouvent dans le sous répertoire \texttt{src}, je
+génère la documentation en une seule fois dans le répertoire \texttt{doc} par~:
 
 \begin{term}
-	javadoc *.java -d doc -charset utf-8
+	javadoc src/*.java -d doc -charset utf-8
 \end{term}
 
-Et si les classes ne sont pas toutes dans le répertoire courant, pourquoi ne pas demander à son shell de les chercher ? 
+Mes fichiers sources sont dans un répertoire \texttt{src} et dans des
+sous-répertoires, je peux demander à mon shell de les chercher avant d'en
+fournir la liste à \texttt{javadoc}. Je génère la documentation dans le répertoire \texttt{doc} par~:
 
 \begin{term}
-	javadoc $(find . -name '*.java') -d doc -charset utf-8
+	javadoc \$(find src -name '*.java') -d doc -charset utf-8 
 \end{term}
+
+Mes classes font toutes partie du \textit{package}\footnote{La notion sera vue en Développement II, à ce stade, supposont que les classes ont toutes la même instruction \texttt{package} en début de fichier} \texttt{my.package} et se trouve dans le répertoire \texttt{src/my/package/}. Je génère la documentation dans le répertoire \texttt{doc} par~:
+
+\begin{term}
+javadoc my.package -d doc -charset utf-8 -sourcepath src
+\end{term}
+
 
 
