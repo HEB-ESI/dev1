@@ -158,7 +158,7 @@ public static double max3(double a, double b, double c){
 
 	Il s’agit d’une situation fréquente mais pas obligatoire que nous pouvons
 	généraliser.  De manière générale nous pouvons concevoir trois sortes de
-	paramètres. Nous verrons ensuitece qu'il en est en langage Java. 
+	paramètres. Nous verrons ensuite ce qu'il en est en langage Java. 
 
 	%==================================
 	\subsection{Le paramètre en entrée}
@@ -424,7 +424,7 @@ public static double max3(double a, double b, double c){
 		\end{tabular}
 
 		\paragraph{Remarque} Nous verrons dans la section
-		\ref{primitif-reference} que le langage Java ne permet pas de traduire
+		\vref{primitif-reference} que le langage Java ne permet pas de traduire
 		ces algorithmes en l'état. 
 		
 	%==================================
@@ -432,7 +432,6 @@ public static double max3(double a, double b, double c){
 	%==================================
 
 	La valeur de retour correspond au résultat de l'algorithme. 
-	
 
 		\begin{minipage}{6cm}
 			\begin{pseudocode}
@@ -489,11 +488,13 @@ public static double max3(double a, double b, double c){
 			entrée/sortie.
 	\end{itemize}
 
-	Intéressons nous au langage Java en commençant par faire un petit détour sur
-	les notions de \textbf{type primitif} et \textbf{type référence}.
+	Intéressons à la différence entre \textbf{type primitif} et \textbf{type
+	référence}.
 
 	\subsection{Type primitif}
-	
+
+	\index{variable}
+	\label{variable}
 	\marginicon{definition} 
 	\textbf{Définition~:} 
 	Une variable de type primitif est une variable qui contient directement la
@@ -507,6 +508,7 @@ public static double max3(double a, double b, double c){
 		tas (\textit{heap}).  
 	}).
 	
+	\index{int}
 	Par exemple, une variable de type \pc{int} a une taille de
 	4~\textit{bytes} (32~bits). Toujours.
 	
@@ -520,95 +522,10 @@ public static double max3(double a, double b, double c){
 
 	Une variable \texttt{i} de type primitif et contenant la valeur 7 peut se
 	représenter comme ci-contre. 
-	
-	Il existe, en Java, 8 types primitifs~: des types primitifs numériques
-	entiers, numériques à virgule flottante, les  caractères et les booléens.
-	Voici ce que dit la grammaire~: 
-	
-	\begin{grammaire}
-		\grammarrule{PrimitiveType:}
-		    \grammarrule{NumericType}
-		    boolean
 
-		\grammarrule{NumericType:}
-		    \grammarrule{IntegralType}
-		    \grammarrule{FloatingPointType}
-
-		\grammarrule{IntegralType:}
-		    \grammarrule{(one of)}
-		    byte short int long char
-
-		\grammarrule{FloatingPointType:}
-		    \grammarrule{(one of)}
-		    float double
-	\end{grammaire}
-	
-	Chaque type a une taille déterminée. 
-	
-	Les entiers sont codés en notation en
-	complément à deux, excepté le type \pc{char} qui est un entier non-signé de
-	16~bits représentant le code Unicode codé en UTF-16 du caractère
-	\footnote{%	
-		Pour en savoir plus sur l'Unicode, UTF8, UTF16 et UTF32, lire
-		«~Unicode, UTF8, UTF16, UTF32\ldots et tutti quanti~»
-		\\\url{http://namok.be/blog/?post/2009/11/30/unicode-UTF8-UTF16-UTF32-et-tutti-quanti}
-	}. 
-	
-	Voici les tailles et les intervalles. 
-
-	\begin{center}
-		\begin{tabular}[t]{|l|>{\centering}p{1cm}|>{\centering}p{1cm}|l|}
-		\hline
-		\rowcolor{black!40}
-		type & taille (\textit{byte})& taille (\textit{bit})	& intervalle\\
-		\hline
-		byte	& 1		& 8		& [-128, 127]	\\
-				&		&		& [$-2^7$, $2^7-1$]	\\
-		\hline
-		short	& 2		& 16	& [-32\,768, 32\,767]\\
-				&		&		& [$-2^{15}$, $2^{15}-1$]	\\
-		\hline
-		int		& 4		& 32	& [-2\,147\,483\,648, 2\,147\,483\,647]\\
-				&		&		& [$-2^{31}$, $2^{31}-1$]	\\
-		\hline
-		long	& 8		& 64	& [-9\,223\,372\,036\,854\,775\,808,
-								9\,223\,372\,036\,854\,775\,807]\\
-				&		&		& [$-2^{63}$, $2^{63}-1$]	\\
-		\hline
-		char	& 2		& 16	& [0,65\,535]\\
-				&		&		& [0, $2^{16}-1$]	\\
-		\hline
-	\end{tabular}
-	\end{center}
-
-	Les nombres pseudo-réel, ou encore les nombres à virgule flottante, sont
-	codés suivant la norme
-	\href{https://fr.wikipedia.org/wiki/IEEE_754}{IEEE\,754}. Selon cette norme,
-	un nombre est représenté avec un signe, une mantisse et un exposant. Le tout
-	en base 2. Un bit est utilisé pour le signe.  
-
-	\[
-		nombre = signe~mantisse_2~2^{exposant_2} 
-	\]
-
-
-	\begin{center}
-	\begin{tabular}[t]{|l|c|c|c|}
-		\hline
-		\rowcolor{black!40}
-		type 	& taille (\textit{bit})	& exposant & mantisse\\
-		\hline
-		float	& 32					& 8		& 23\\
-		\hline
-		double	& 64					& 11	& 52\\
-		\hline
-	\end{tabular}
-	\end{center}
-	
-	Pour les booléens, bien qu'un bit suffirait, la taille dépend 
-	de l'architecture et de la \textit{jvm}. 
-	
-	
+	Le langage Java accepte d'autres types primitifs, le détail se trouve dans le
+	complément de la section \vref{chap:types}.
+		
 	
 	\subsection{Type référence}
 	
@@ -638,7 +555,6 @@ public static double max3(double a, double b, double c){
 
 	Une variable \texttt{s} de type référence et contenant la valeur "Hello" 
 	peut se représenter comme ci-contre. 
-	
 
 	La même variable \pc{s} peut recevoir une autre valeur, par exemple beaucoup
 	plus grande \pc{I would just like to say hello}. 
@@ -663,12 +579,13 @@ public static double max3(double a, double b, double c){
 	\end{center}
 	
 	\paragraph{Remarque.} Même si nous ne connaissons actuellement qu'un seul
-	type référence, ce seront les types les plus répandus. En effet, les types
-	primitifs en Java sont au nombre de 8 comme nous l'avons vu tandis qu'il
-	existe des types références prédéfinis (comme \pc{String}) et tous les types
-	références définis par le développeur.  
+	type référence, ce seront les types les plus répandus. 
 	
-	Les tableaux sont aussi des types références comme nous le verrons plus tard.
+	
+	Le langage Java accepte d'autres types références, le détail se trouve dans
+	le complément de la section \vref{chap:types}. Les tableaux sont aussi des
+	types références comme nous le verrons plus tard dans la section
+	\vref{chap:tableaux}.
 	
 	
 	
