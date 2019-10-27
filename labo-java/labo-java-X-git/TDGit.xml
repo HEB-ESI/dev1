@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lesson xmlns="http://www.elml.ch"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.elml.ch ../../../_config/validate.xsd"
+    label="TDGit" title="TD2 - Git et la gestion de versions">
+    
+    <entry>
+		<paragraph>
+			Un logiciel de gestion de versions comme <formatted style="bold">git</formatted> permet de :
+            <list listStyle="unordered">
+				<item>
+					gérer l'historique d'un projet en sauvant chaque version
+					et la description de ce qu'elle apporte ;
+				</item>
+                <item>
+					sauver le projet (dans toutes ses versions) sur un serveur ;
+                </item>
+				<item>
+					le retrouver facilement sur une autre machine.
+				</item>
+                </list>
+            Il permet également le travail de groupe mais c'est un point 
+            que nous n'aborderons pas en DEV2.
+		</paragraph>
+ 			
+		<paragraph>
+            Le but de ce TD est de vous offrir une introduction à la gestion de versions
+            via <formatted style="bold">git</formatted>.
+        </paragraph>
+    </entry>
+    
+    <unit label="NetbeansLocal" title="Git en local">
+        
+        <entry>
+     
+            <paragraph>
+                Explorons comment demander à <formatted style="bold">git</formatted>
+                de suivre notre projet et comment créer et décrire ses différentes
+                versions.
+            </paragraph>
+            
+        </entry>
+        
+        <learningObject title="Création d'un projet dans Netbeans">
+            <act>
+            	
+                <paragraph>
+					Créez un nouveau projet NetBeans appelé <formatted style="bold">TestGit</formatted>.
+                    Ce projet sera constitué <link targetLabel="fig07"/> :
+                    <list listStyle="unordered">
+                        <item>
+                            d'un package <formatted style="bold">be.esi.heb.user</formatted> ;
+                        </item>
+                        <item>
+                            d'une classe principale appelée <formatted style="bold">MainApp</formatted> 
+                            qui affiche le numéro de version du projet.
+                        </item>
+                    </list>
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Project_01.png" width="900" type="png" 
+                    	label="fig07" legend="Un projet Netbeans fraichement créé" />
+                </paragraph>
+                
+            </act>
+        </learningObject>
+               
+        <learningObject title="Initialisation de l'historisation">
+            <act>
+            	
+                <paragraph>
+                    Afin de commencer l'historisation <formatted style="bold">locale</formatted> de votre projet, 
+                    suivez les étapes suivantes sous Netbeans 
+                    <link targetLabel="fig09"/>:
+                    <list listStyle="unordered">
+                        <item>
+                            Dans le <formatted style="bold">project explorer</formatted> (à gauche) cliquez droit sur le projet <formatted style="bold">TestGit</formatted>
+                        </item>
+                        <item>
+                            Choisissez l'option <formatted style="bold">Versioning</formatted>
+                        </item>
+                        <item>
+                            Suivi de l'option <formatted style="bold">Initialize Git Repository...</formatted>
+                        </item>
+                    </list>                
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Push01.png" width="700" type="png" 
+                    	label="fig09" legend="Initialiser l'historisation"/>
+                </paragraph>
+                
+                <paragraph>
+                    Un pop-up vous propose de choisir le dossier qui contiendra l'historique local
+                    <link targetLabel="fig10"/>.
+                    Conservez le chemin proposé par défaut, il s'agit du répertoire de votre projet.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/InitProject02.png" width="500" type="png"
+						label="fig10" legend="Sélection du dossier contenant l'historique"/>
+                </paragraph>
+                                
+            </act>
+        </learningObject>
+        
+        <learningObject title="Notion de commit">
+            <act>
+            	
+                <paragraph>    
+                    Imaginons que la première fonctionnalité de votre projet <formatted style="bold">TestGit</formatted> soit terminée : 
+                    vous savez afficher la version du projet dans la console.
+                    Comme cette partie du développement est clôturée, 
+                    vous souhaitez l'enregistrer dans l'historique du projet.
+                </paragraph>
+                
+                <paragraph>
+                    Pour ce faire suivez les étapes suivantes <link targetLabel="fig12"/> :
+                    <list listStyle="unordered">
+                        <item>
+                            Dans le <formatted style="bold">project explorer</formatted> cliquez droit sur le projet
+                        </item>
+                        <item>
+                            Sélectionnez l'option <formatted style="bold">Git</formatted>
+                        </item>
+                        <item>
+                            Suivi de l'option <formatted style="bold">Commit...</formatted>
+                        </item>
+                    </list>
+                </paragraph>
+                <paragraph>
+					<multimedia src="../image/NetBeans_Push02.png" width="700" type="png"
+						label="fig12" legend="Demander le premier commit"/>
+                </paragraph>
+                
+                <paragraph>
+                    Attention, une erreur courante est de cliquer droit sur un fichier et non sur le projet.
+                    Seules les modifications du fichier sont commitées dans ce cas, ce qui est rarement l'action souhaitée.
+                </paragraph>
+                
+                <paragraph>
+                    Cette action vous renvoie vers l'écran de validation des <formatted style="bold">commits</formatted>
+                    <link targetLabel="fig13"/>.
+                </paragraph>
+                
+                <paragraph>
+                    Afin de garder une trace de ce que vous avez développé, écrivez le message suivant dans la partie <formatted style="bold">Commit Message</formatted> :
+                    <formatted style="bold">"Création du projet et affichage du numéro de version"</formatted>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Push03.png" width="90" units="percent" type="png"
+						label="fig13" legend="Informations sur le commit"/>
+                </paragraph>
+                
+                <paragraph>
+                    En dessous du message vous apercevez tous les fichiers qui ont été créés,  
+                    modifiés ou supprimés par votre travail.
+                    Comme il s'agit d'un nouveau projet, 
+                    il s'agit ici des fichiers créés et gérés par NetBeans 
+                    en plus de la classe <formatted style="bold">MainApp</formatted>.
+                </paragraph>
+            </act>
+        </learningObject>
+        
+        <learningObject title="Nouvelle fonctionnalité ... Nouveau Commit">
+            <act>
+                <paragraph>
+                    Dans le cadre de ce projet une nouvelle fonctionnalité est demandée,
+                    l'utilisateur doit encoder son nom
+					<link targetLabel="fig14"/>.
+	                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Project_03.png" width="80" units="percent" type="png"
+						label="fig14" legend="Nouvelle fonctionnalité : encoder le nom"/>
+                </paragraph>
+                
+                <paragraph>
+                    Afin de conserver dans l'historique cette nouvelle version du projet, 
+                    il faut effectuer un nouveau <formatted style="bold">commit</formatted>.
+                    Comme vous le constatez sur l'écran de validation des commits, 
+                    un seul fichier a été modifié : <formatted style="bold">MainApp.java</formatted>.
+                </paragraph>
+                
+                <paragraph>
+                    Ajoutez le message suivant pour indiquer ce qui a été ajouté :
+                    <formatted style="bold">"Demande du nom de l'utilisateur"</formatted>
+                    <link targetLabel="fig15"/>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Project_031.png" width="80" units="percent" type="png"
+						label="fig15" legend="Informations sur le deuxième commit"/>
+                </paragraph>
+                
+                <paragraph>
+                    Pour l'instant l'historique de votre projet 
+                    est enregistré dans un dossier caché de votre projet 
+                    (<formatted style="bold">.git</formatted>).
+                    Il est possible d'utiliser git sans serveur pour conserver un historique en local
+                    mais l'utilisation d'un serveur permet de développer sur différentes machines.
+                    C'est ce que nous allons voir dans la section suivante.
+                </paragraph>
+                
+            </act>
+        </learningObject>
+        
+    </unit>
+       
+    <unit label="GitLabServer" title="Le serveur gitlab">
+        
+        <entry>
+            <paragraph>
+                Un serveur git nous permet principalement :
+                <list listStyle="unordered">
+                    <item>
+                        de pouvoir accéder facilement à notre projet sur différentes machines ;
+                    </item>
+                    <item>
+                        de contribuer à plusieurs sur un même projet ;
+                    </item>
+                    <item>
+                        de montrer publiquement le projet à toute la communauté dès lors qu'il est public.
+                    </item>
+                </list>
+            </paragraph>
+            
+            <paragraph>
+	            Nous avons installé à l'école le serveur <formatted style="bold">Gitlab for ÉSI</formatted>
+	            <link targetLabel="fig151"/>,
+           	</paragraph>
+            	 
+            <paragraph>
+                <multimedia src="../image/gitlab.png" width="70" units="percent" type="png" 
+                	label="fig151" legend="Gitlab for ESI"/>
+            </paragraph>
+        </entry>
+        
+        <learningObject title="S'identifier sur le serveur">
+            <act>
+            	
+                <paragraph>
+                	Rendez-vous sur le serveur
+					<link uri="https://git.esi-bru.be">Gitlab for ESI</link>
+					et identifiez-vous en cliquant sur le bouton :
+					<formatted style="bold">ESI Google apps login</formatted>.
+				</paragraph>
+				        
+            </act>
+        </learningObject>
+        
+        <learningObject title="Définir un mot de passe">
+            <act>
+            	
+                <paragraph>
+					Pour vous faciliter les opérations ultérieures,
+					il est important de définir un mot de passe propre à ce serveur.
+					Pour cela, cliquez sur le menu en haut à droite,
+					choisissez <formatted style="code">Profile settings</formatted>
+					puis <formatted style="code">Password</formatted>.
+					Cliquez alors sur <formatted style="code">I forgot my password</formatted>
+					et suivez la procédure.
+				</paragraph>
+				        
+            </act>
+        </learningObject>
+                
+        <learningObject title="Création d'un projet sur le serveur">
+            <act>
+                <paragraph>
+                    Sur la page d'accueil de votre compte GitLab, 
+                    vous trouverez un bouton dans le coin supérieur droit 
+                    vous permettant de créer des nouveaux projets
+                    <link targetLabel="fig16"/>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/GitLabCreateProject00.png" width="100" units="percent" type="png"
+						label="fig16" legend="Bouton de création d'un nouveau projet"/>
+                </paragraph>
+                
+                <paragraph>
+                    Donnez à ce projet le nom : <formatted style="bold">Dev2TdGit</formatted> 
+                    et confirmez la création du projet
+                    <link targetLabel="fig17"/>.
+                    Vous êtes redirigé vers la page d'accueil du projet.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/GitLabCreateProject01.png" width="700" type="png"
+						label="fig17" legend="Informations de création d'un projet"/>
+                </paragraph>
+
+                <paragraph>
+                	Remarquez que dans la suite du cours 
+                	<formatted style="bold">UN</formatted> projet gitlab 
+                	ne contiendra qu'<formatted style="bold">UN</formatted> seul projet Netbeans.
+                </paragraph>
+                                
+            </act>
+        </learningObject>
+        
+        <learningObject title="Premier push">
+            <act>
+                <paragraph>
+                    Il est temps de ranger l'historique de votre projet NetBeans <formatted style="bold">TestGit</formatted> 
+                    sur le serveur GitLab.
+                    Pour cela vous devez récupérer l'url <formatted style="bold">https</formatted> de votre projet GitLab
+					<link targetLabel="fig18"/>.
+                    Elle sera du type
+                    <formatted style="bold">https://git.esi-bru.be/g12345/Dev2TdGit.git</formatted>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/GitLabCreateProject02.png" width="700" type="png"
+						label="fig18" legend="Page d'acceuil du projet fraichement créé"/>
+                </paragraph>
+
+                <paragraph>
+                    Dans NetBeans  <link targetLabel="fig19"/> :
+                    <list listStyle="unordered">
+                        <item>
+                            Dans le <formatted style="bold">project explorer</formatted> cliquez droit sur le projet <formatted style="bold">TestGit</formatted>
+                        </item>
+                        <item>
+                            Choisissez l'option <formatted style="bold">Git</formatted>
+                        </item>
+                        <item>
+                            Suivi de l'option <formatted style="bold">Remote</formatted>
+                        </item>
+                        <item>
+                            Sélectionnez l'option <formatted style="bold">Push...</formatted>
+                        </item>
+                    </list>
+                </paragraph>
+                     
+				<paragraph>
+					<multimedia src="../image/NetBeans_Push04.png" width="700" type="png"
+						label="fig19" legend="Demander un push du projet"/>
+				</paragraph>
+                 
+                <paragraph>   
+					Afin d'envoyer vos sources vers le serveur GitLab, plusieurs étapes sont nécessaires :
+                    <list listStyle="ordered">
+                        <item>
+                            <formatted style="bold">Remote Repository</formatted> : 
+                            copiez l'url https de votre projet et
+                            entrez votre <formatted style="bold">username</formatted> 
+                            et votre <formatted style="bold">password</formatted> (défini un peu plus tôt)
+                            <link targetLabel="fig20"/>.
+                            
+                            <paragraph>
+                                <multimedia src="../image/NetBeans_Push05.png" width="700" type="png"
+									label="fig20" legend="Entrée du login et du mot de passe"/>
+                            </paragraph>                          
+                        </item>
+                        <item>
+                            <formatted style="bold">Local Branches</formatted> : 
+                            sélectionnez <formatted style="bold">master -> master</formatted> 
+                            et cliquez <formatted style="bold">Next</formatted>
+                            <link targetLabel="fig21"/>.
+
+                            <paragraph>
+                                <multimedia src="../image/NetBeans_Push06.png" width="70" units="percent" type="png"
+									label="fig21" legend="Sélection de la branche locale"/>
+                            </paragraph>
+                        </item>
+                        <item>
+                            <formatted style="bold">Update Local References</formatted> : 
+                            cliquez <formatted style="bold">Finish</formatted>
+                            <link targetLabel="fig22"/>.
+                            <paragraph>
+                                <multimedia src="../image/NetBeans_Push07.png" width="70" units="percent" type="png"
+									label="fig22"/>
+                            </paragraph>
+                        </item>
+                    </list>
+                </paragraph>
+                
+                <paragraph>
+                    La première fois que vous effectuez un push, un pop-up apparait
+                    <link targetLabel="fig23"/>.
+                    Confirmez sans crainte.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Push08.png" width="60" units="percent" type="png"
+						label="fig23" legend="popup lors du premier push"/>
+                </paragraph>
+                                
+            </act>
+        </learningObject>
+        
+        <learningObject title="Changement sur le serveur">
+            <act>
+                <paragraph>
+                    Visitez la page principale de votre projet sur le serveur gitlab.
+                    Le résultat de votre <formatted style="bold">push</formatted> apparait à l'écran
+                    <link targetLabel="fig24"/>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Push09.png" width="700" type="png"
+						label="fig24" legend="Visualiser le push"/>
+                </paragraph>
+                
+                <paragraph>
+                    Via le menu Files, vous pouvez visualiser les fichiers déposés sur le serveur
+                    <link targetLabel="fig25"/>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Push10.png"
+						width="700" type="png"
+						label="fig25" legend="Voir les fichiers déposés sur le serveur"/>
+                </paragraph>
+                
+            </act>
+        </learningObject>
+        
+    </unit>
+    
+    
+    <unit label="RemoteWork" title="Changement de machine">
+        
+        <entry>
+            <paragraph>
+                Afin de continuer l'exercice
+                <list listStyle="unordered">
+                    <item>
+                        Déconnectez-vous de votre machine
+                    </item>
+                    <item>
+                        Changez de machine
+                    </item>
+                    <item>
+                        Reprennez le TD à cet endroit
+                    </item>
+                </list>
+                À tout de suite...
+            </paragraph>
+        </entry>
+        
+        <learningObject title="Clonage">
+            <act>
+                <paragraph>
+                    Sur cette nouvelle machine nous aimerions continuer le travail entamé depuis le début du TD.
+                </paragraph>
+                
+                <paragraph>
+                    Pour récupérer l'historique se trouvant sur le serveur,
+                    il faut <formatted style="bold">cloner</formatted> celui-ci.
+                </paragraph>
+                
+                <paragraph>
+                    Dans NetBeans,
+                    choisissez <formatted style="bold">Team > Git > Clone...</formatted>
+                    <link targetLabel="fig26"/>.
+                    <paragraph>
+                        <multimedia src="../image/NetBeans_clone01.png" width="90" units="percent" type="png"
+							label="fig26" legend="Clonage d'un projet quand aucun projet n'est ouvert"/>
+                    </paragraph>                    
+                </paragraph>
+                
+                <paragraph>
+                    Une fois le menu clone sélectionné vous êtes renvoyé vers l'écran de clonage.
+                    Pour terminer l'opération il suffit :
+                    <list listStyle="unordered">
+                        <item>
+                            d'entrer l'url du projet et de choisir un répertoire pour enregistrer le projet. Prenez par exemple le dossier MesDocuments
+		                    <link targetLabel="fig28"/> ;
+                            <paragraph>
+                                <multimedia src="../image/NetBeans_clone03.png" width="70" units="percent" type="png"
+									label="fig28" legend="Clonage : informations sur le serveur"/>
+                            </paragraph>
+                        </item>
+                        <item>
+                            de sélectionner l'option master
+		                    <link targetLabel="fig28a"/> ;
+                            <paragraph>
+                                <multimedia src="../image/NetBeans_clone04.png" width="70" units="percent" type="png"
+									label="fig28a" legend="Clonage : informations sur la branche"/>
+                            </paragraph>
+                        </item>
+                        <item>
+                            de cliquer sur <formatted style="bold">Finish</formatted>
+		                    <link targetLabel="fig29"/> ;
+                            <paragraph>
+                                <multimedia src="../image/NetBeans_clone05.png" width="90" units="percent" type="png"
+									label="fig29" legend="Clonage : informations sur le dossier local"/>
+                            </paragraph>
+                        </item>
+                        <item>
+                            de confirmer l'ouverture du projet dans NetBeans
+		                    <link targetLabel="fig29a"/>.
+                            <paragraph>
+                                <multimedia src="../image/NetBeans_clone06.png" width="50" units="percent" type="png"
+	                                label="fig29a" legend="Clonage : confirmation"/>
+                            </paragraph>
+                        </item>
+                    </list>
+                </paragraph>
+                
+            </act>
+        </learningObject>
+        
+        <learningObject title="push">
+            <act>
+                <paragraph>
+                    Continuons à développer le projet.
+                    le programme doit désormais afficher le nombre de caractères du nom encodé par l'utilisateur
+                     <link targetLabel="fig30"/>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Project_10.png" width="700" type="png"
+						label="fig30" legend="Troisième version du programme"/>
+                </paragraph>
+                
+                <paragraph>
+                    Une fois la programmation terminée, effectuez dans l'ordre :
+                    <list listStyle="unordered">
+                        <item>
+                            un <formatted style="bold">commit</formatted> ;
+                        </item>
+                        <item>
+                            un <formatted style="bold">push</formatted> vers le serveur.
+                        </item>
+                    </list>
+                    
+                </paragraph>
+                
+            </act>
+        </learningObject>
+        
+        <learningObject title="Du coté serveur">
+            <act>
+                <paragraph>
+					Rendez-vous sur le serveur Gitlab et connectez-vous.
+                    Sur la page principale de votre projet, 
+                    sélectionnez le dernier commit
+					<link targetLabel="fig31"/>.
+				</paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/GitDiff01.png" width="700" type="png"
+	                    label="fig31" legend="Sélection du dernier commit"/>
+                </paragraph>
+                
+                <paragraph>
+                    Vous pourrez alors observer les différences apportées par votre dernière modification
+					<link targetLabel="fig32"/>.
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/GitDiff02.png" width="700" type="png"
+	                    label="fig32" legend="Visualiser les différences entre versions"/>
+                </paragraph>
+                
+            </act>
+        </learningObject>
+        
+        <learningObject title="pull">
+            <act>
+                <paragraph>
+                    Afin de continuer l'exercice déconnectez-vous de votre machine
+					et revenez à la machine du début du TD.
+                    À tout de suite...
+                </paragraph>
+
+                <paragraph>
+                    Pour récupérer les changements depuis le serveur, 
+                    lancez Netbeans et suivez les étapes ci-dessous                    
+                    <list listStyle="unordered">
+                        <item>
+                            Dans le <formatted style="bold">project explorer</formatted> 
+                            cliquez droit sur le projet <formatted style="bold">TestGit</formatted>
+                        </item>
+                        <item>
+                            Choisissez l'option <formatted style="bold">Git > Remote > Pull...</formatted>
+							<link targetLabel="fig33"/>.
+                        </item>
+                    </list>
+                </paragraph>
+                
+                <paragraph>
+                    <multimedia src="../image/NetBeans_Pull01.png" width="700" type="png"
+						label="fig33" legend="Pull du projet"/>
+                </paragraph>
+                
+                <paragraph>
+                    Qu'affiche une exécution de votre projet ?
+                </paragraph>
+            </act>
+        </learningObject>
+        
+    </unit>
+    
+    
+    <unit label="Summary" title="En résumé">
+        
+        <entry>
+	        Voici un résumé des étapes par lesquelles vous devez passer.    
+        </entry>
+
+        <learningObject title="Au début d'un projet">
+        	<clarify>
+        		<paragraph>
+        			<list listStyle="unordered">
+        				<item>
+        					Créez un projet sur le serveur ;
+        				</item>
+        				<item>
+        					Créez un projet dans Netbeans ;
+        				</item>
+        				<item>
+        					Faites suivre le projet par git ;
+        				</item>
+        				<item>
+        					Faites un premier commit ;
+        				</item>
+        				<item>
+        					Faites un push pour le lier au projet sur le serveur.
+        				</item>
+        			</list>
+        		</paragraph>
+        	</clarify>
+        </learningObject>
+        
+        <learningObject title="À chaque fois que vous y travaillez">
+            <clarify>
+                <paragraph>
+                    <list listStyle="unordered">
+                        <item>
+                            En début de séance vous <formatted style="bold">devez</formatted> faire 
+                            un <formatted style="bold">pull</formatted> (si le projet existe déjà en local)
+                            ou un <formatted style="bold">clone</formatted> (dans le cas contraire).
+                        </item>
+                        <item>
+                            Durant votre travail,
+                            dès que vous avez fini une fonctionnalité,
+                            vous <formatted style="bold">devez</formatted> faire un <formatted style="bold">commit</formatted>.
+                        </item>
+                        <item>
+                            En fin de séance vous <formatted style="bold">devez</formatted> faire un <formatted style="bold">push</formatted>.
+                        </item>
+                    </list>
+                </paragraph>
+                <paragraph>
+                	<formatted style="bold">Veillez à toujours bien faire vos push 
+                		avant de quitter votre machine de travail !</formatted>
+               	</paragraph>
+            </clarify>
+        </learningObject>
+        
+    </unit>
+    
+    <unit label="Bonus" title="Pour aller plus loin">
+        
+        <entry>
+            <paragraph>
+                Au cours de votre utilisation de git, il est possible que :
+                <list listStyle="unordered">
+                    <item>
+                        vous souhaitiez utiliser plus de fonctionnalités offertes par ce logiciel (comme annuler un commit) ;
+                    </item>
+                    <item>
+                        vous rencontriez une erreur dont nous n'avons pas parlé ; ...
+                    </item>
+                </list>
+                Nous ne pouvons pas tout vous expliquer dans ce TD 
+                mais nous vous renvoyons vers une documentation plus détaillée.
+            </paragraph>
+                        
+        </entry>
+        
+        <learningObject title="Approfondir git">
+	        <clarify>
+				<paragraph>
+					Pour approfondir l'utilisation de <formatted style="bold">git</formatted>  
+					vous pouvez lire la documentation
+                    <link uri="http://git-scm.com/book/fr/v1/Démarrage-à-propos-de-la-gestion-de-version">
+	                    suivante
+					</link>.
+				</paragraph>
+			</clarify>
+		</learningObject>
+                    
+        <learningObject title="Les lignes de commande">
+	        <clarify>
+	            <paragraph>
+	                Git et un logiciel indépendant de Netbeans 
+	                et il est possible de l'utiliser en ligne de commande. 
+	                Cette possibilité est immédiate sous Linux ou OSX.
+	                Sous Windows vous devez passer par une application tierce 
+	                <formatted style="bold">GitBash</formatted>.
+	                Vous ne l'installerez pas à l'école mais il pourra vous être utile chez vous.
+	            </paragraph>
+                <paragraph>
+                	Via le
+                	<link uri="https://try.github.io/levels/1/challenges/1">lien suivant</link>
+                	vous découvrirez un tutoriel interactif 
+                	vous permettant d'apprendre à utiliser les commandes de git.
+                </paragraph>
+			</clarify>            
+        </learningObject>
+
+	</unit>
+
+	<unit label="ExerciceComplet" title="Exercice complet">
+		
+		<learningObject title="Calendrier ou Scrabble">
+			
+			<clarify>
+				
+				<paragraph>
+					Nous allons maintenant nous attaquer à un exercice complet
+					qu'on vous demande de résoudre en utilisant git.
+				</paragraph>
+
+				<paragraph visible="online" >
+					Nous vous laissons le choix parmi les 2 exercices suivants : 
+					<link uri="../../../TD1/fr/calendrier/calendrier.pdf">le calendrier</link> 
+					ou <link uri="../../../TD1/fr/Scrabble/scrabble.pdf">le  Scrabble</link>.
+				</paragraph>
+				<paragraph visible="print" >
+					Nous vous laissons le choix parmi 2 exercices disponibles sur poÉsi,  
+					le calendrier ou le Scrabble.
+					Nous avons bien conscience que vous n'aurez probablement pas le temps
+					de le terminer pendant les 2 heures de laboratoire;
+					on vous demande de le terminer à la maison pour le prochain laboratoire.
+				</paragraph>
+				
+				<paragraph>
+					Pour réaliser cet exercice, vous aurez besoin d'ajouter un .jar à votre programme.
+				</paragraph>
+				
+				<paragraph title="Mais qu'est-ce qu'un .jar ?">
+					Un JAR (Java Archive) est un fichier Zip utilisé pour distribuer un ensemble de classes Java.
+					Ce format est utilisé pour stocker les définitions des classes, ainsi que des métadonnées,
+					constituant l'ensemble d'un programme. <newLine/>
+						[Wikipedia]
+				</paragraph>
+				
+				<paragraph title="Comment ajouter un .jar donné ?">
+					Sous Netbeans, pour pouvoir utiliser les classes d'un .jar donné, il suffit :
+					<list listStyle="ordered">
+						<item>
+							de copier ce .jar dans un sous-dossier de votre projet
+							(par exemple dans le dossier <formatted style="code">lib</formatted>,
+							à créer pour l'occasion).
+						</item>
+						<item>
+							d'ajouter ce .jar aux librairies de votre projet
+							<link targetLabel="NBjar"/>.
+							<paragraph>
+								<multimedia src="../image/jar.png" type="png" width="30" units="percent" legend="Ajouter un jar" label="NBjar"/>
+							</paragraph>
+						</item>
+					</list>
+				</paragraph>
+				
+			</clarify>
+			
+		</learningObject>
+	</unit>
+				   
+</lesson>
