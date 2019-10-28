@@ -18,7 +18,7 @@
 
 \end{Exergue}
 
-En langage Java, toute donnée à un type. 
+En langage Java, toute donnée a un type. 
 
 Les données manipulées dans un programme peuvent être écrites dans le code du
 programme ou être mémorisées le temps de l'exécution de celui-ci ou encore être
@@ -144,7 +144,7 @@ Les nombres entiers sont représentés en utilisant les chiffres habituels. Il
 est cependant possible d'écrire un nombre dans différentes bases. Il faudra
 alors pouvoir les distinguer. En mathématiques il est d'habitude d'utiliser un
 indice pour préciser la base comme : $7_{10} = 111_2$. En informatique nous
-utiliseront un \textbf{préfixe}. 
+utiliserons un \textbf{préfixe}.
 
 \textbf{Littéral numérique décimal}
 
@@ -156,7 +156,7 @@ Respecte les règles suivantes~:
 		\pc{byte} ou \pc{short}\footnote{Ceci ne nous empêchera pas d'écrire 
 		\pc{byte b = 5} par exemple. Nous verrons les conversions en 
 		Développement II};
-	\item pour distinguer un littéral \pc{long} d'un \pc{int}, suffixer 
+	\item pour distinguer un littéral \pc{long} du type par défaut \pc{int}, suffixer 
 		d'un \texttt{l} ou \texttt{L};
 \end{itemize}
 
@@ -176,7 +176,7 @@ Respecte les règles suivantes~:
 	\item commence par un \texttt{0};
 	\item un littéral est de type \pc{int} ou \pc{long}, jamais de type 
 		\pc{byte} ou \pc{short};
-	\item pour distinguer un littéral \pc{long} d'un \pc{int}, suffixer 
+	\item pour distinguer un littéral \pc{long} du type par défaut \pc{int}, suffixer 
 		d'un \texttt{l} ou \texttt{L};
 \end{itemize}
 
@@ -196,7 +196,7 @@ Respecte les règles suivantes~:
 	\item commence par un \texttt{0x} ou \texttt{OX};
 	\item un littéral est de type \pc{int} ou \pc{long}, jamais de type 
 		\pc{byte} ou \pc{short};
-	\item pour distinguer un littéral \pc{long} d'un \pc{int}, suffixer 
+	\item pour distinguer un littéral \pc{long} du type par défaut \pc{int}, suffixer 
 		d'un \texttt{l} ou \texttt{L};
 \end{itemize}
 
@@ -216,14 +216,14 @@ Respecte les règles suivantes~:
 	\item commence par un \texttt{0b} ou \texttt{OB};
 	\item un littéral est de type \pc{int} ou \pc{long}, jamais de type 
 		\pc{byte} ou \pc{short};
-	\item pour distinguer un littéral \pc{long} d'un \pc{int}, suffixer 
+	\item pour distinguer un littéral \pc{long} du type par défaut \pc{int}, suffixer 
 		d'un \texttt{l} ou \texttt{L};
 \end{itemize}
 
 \textit{Exemple, la quantité 100: } 
 \begin{java}
 	int myBinaryInt = 0b01100100;
-	int anotherBinaryInt = 0B0110\_0100;
+	int anotherBinaryInt = 0B0110_0100;
 \end{java}
 
 \subsection{Le type primitif numérique entier particulier \pc{char}}
@@ -501,7 +501,7 @@ que nous n'en verrons que quelques-uns dans ce premier cours de développement.
 
 Dans cette section, nous parlerons essentiellement de \texttt{String} et de
 \textit{tableaux} bien que l'on ait déjà rencontré d'autres types références
-comme \texttt{Scanner} ou \texttt{Random}. Pas d'inquiétude, nous règlerons
+comme \texttt{Scanner} ou \texttt{Random}. Pas d'inquiétude, nous leur règlerons
 leur compte plus tard, en développement II. 
 
 \clearpage
@@ -713,7 +713,7 @@ int[] is = {3, -14, 15};
 
 \begin{minipage}[t]{.5\linewidth}
 	\textbf{Remplacement} d'une valeur de type primitif dans le tableau. 
-	La variable \texttt{is[0]}, de type primitif (\texttt{int}) reçoit directement
+	La variable \texttt{is[1]}, de type primitif (\texttt{int}) reçoit directement
 	une nouvelle valeur. 
 	\medskip
 
@@ -752,7 +752,7 @@ is[1] = 14;
 	\medskip
 	\begin{java}
 int[] is = {3, -14, 15};
-is[0] = 14;
+is[1] = 14;
 is = new int[] {-2, 71, 82, 81};
 	\end{java}
 	\vspace{1cm}
