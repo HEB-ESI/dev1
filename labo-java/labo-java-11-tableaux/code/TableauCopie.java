@@ -1,4 +1,4 @@
-package esi.dev1.td10;
+package esi.dev1.td11;
 
 /**
  * Exemples de méthodes retournant un tableau.
