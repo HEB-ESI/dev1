@@ -11,7 +11,7 @@
 }
 \begin{document}
 
-\seancesimple{X}{Une introduction à Git sous NetBeans}
+\seancesimple{9}{Une introduction à Git sous NetBeans}
 
 \bigskip
 \begin{abstract}
@@ -74,7 +74,7 @@ et comment créer et décrire ses différentes versions.
 	\begin{steps}
 	\item
 		Dans l'onglet \samp{Projects} (à gauche) 
-		cliquez droit sur le projet \samp{TestGit}.
+		cliquez droit sur le projet \samp{HelloGit}.
 	\item 
 		Choisissez l'option \samp{Versioning}.
 	\item 
@@ -132,7 +132,6 @@ est à présent en vert.
 		Sélectionnez l'option \samp{Git} puis l'option \samp{Commit...}
 		\image{NetBeans_Push02}{5cm}
 	\end{steps}
-
 	Cette action vous renvoie vers l'écran de validation des \emph{commits}
 	où vous pourrez décrire ce que vous venez de développer.
 	\image{NetBeans_Push03}{5cm}
@@ -140,10 +139,10 @@ est à présent en vert.
 	modifiés ou supprimés par votre travail.
 	Comme il s'agit d'un nouveau projet, 
 	il s'agit ici des fichiers créés et gérés par \bsc{NetBeans}
-	en plus de la classe \samp{HelloGit}.
+	en plus de la classe \samp{MainApp}.
 	\begin{steps}
 	\item 
-		Écrivez le message suivant dans la partie \samp{Commit Message} :\\
+		Écrivez le message suivant dans la partie \samp{Commit Message} :
 		\samp{"Création du projet et affichage du numéro de version"}.
 	 \item 
 		Terminez l'opération en cliquant sur le bouton \samp{Commit}.
@@ -157,21 +156,41 @@ est à présent en vert.
 	\begin{steps}
 	\item 
 		Modifiez le programme afin qu'il demande le nom de l'utilisateur :
-		\begin{center}
-			\includegraphics[width=.7\textwidth]{image/NetBeans_Project_03.png}
-		\end{center}
+		\image{NetBeans_Project_03}{5cm}
 	\end{steps}
+	Remarquez que le nom de fichier est en bleu 
+	(modifié par rapport au dernier \emph{commit})
+	et que les nouvelles lignes sont également colorées 
+	(vert pour une nouveauté, bleu pour une méthode modifiée).
+
 	Afin de conserver dans l'historique cette nouvelle version du projet, 
 	il faut effectuer un nouveau \emph{commit}.
 	\begin{steps}
 	\item 
 		Effectuez ce commit comme expliqué dans le tutorial précédent.
-		\begin{center}
-			\includegraphics[width=.7\textwidth]{image/NetBeans_Project_031.png}
-		\end{center}
+		\image{NetBeans_Project_031}{5cm}
 	\end{steps}
 	Comme vous le constatez sur l'écran de validation des commits, 
-	un seul fichier a été modifié : \samp{MainApp.java}.
+	un seul fichier a été modifié : \samp{HelloGit.java}.
+\end{Tutoriel}
+
+\begin{Tutoriel}{Historique des commits}
+%------------------------------------------------------------------
+Il est facile de demander à voir l'historique des commits qui ont été effectués.
+\begin{steps}
+	\item 
+		Dans l'onglet \samp{Projects} cliquez droit sur le projet.
+	\item 
+		Choisissez l'option \samp{Git > Show History}.
+	\item 
+		Dans la fenêtre qui apparait, cliquez sur le bouton \samp{Search}
+		en bas à droite.
+		Vous obtenez la liste des commits associés à ce projet.
+		\image{Netbeans_History}{4cm}
+\end{steps}
+Il est possible d'affiner la recherche 
+ainsi que de développer un commit pour avoir plus de détails. 
+On vous laisse explorer\dots{}
 \end{Tutoriel}
 
 %==========================
@@ -180,8 +199,7 @@ est à présent en vert.
 
 Pour l'instant l'historique de votre projet 
 est enregistré dans un dossier caché de votre projet (\samp{.git}).
-Il est possible d'utiliser git sans serveur pour conserver un historique en local
-mais l'utilisation d'un serveur permet de développer sur différentes machines.
+L'utilisation d'un serveur permet de développer sur différentes machines.
 C'est ce que nous allons voir dans cette section.
 
 Un \textbf{serveur git} nous permet principalement :
@@ -192,9 +210,7 @@ Un \textbf{serveur git} nous permet principalement :
 \end{itemize}
 
 Nous avons installé à l'école le serveur \bsc{Gitlab for ÉSI}.
-\begin{center}
-	\includegraphics[width=.5\textwidth]{image/gitlab.png}
-\end{center}
+\image{gitlab}{4cm}
 
 \begin{Tutoriel}{S'identifier sur le serveur}
 %------------------------------------------------------------------
@@ -211,7 +227,7 @@ Nous avons installé à l'école le serveur \bsc{Gitlab for ÉSI}.
 	Pour cela,
 	\begin{steps}
 	\item Cliquez sur le menu en haut à droite ;
-	\item choisissez \samp{Profile settings}
+	\item Choisissez \samp{Profile settings}
 			puis \samp{Password} ;
 	\item Cliquez alors sur \samp{I forgot my password} et suivez la procédure.
 	\end{steps}
@@ -227,16 +243,12 @@ Nous avons installé à l'école le serveur \bsc{Gitlab for ÉSI}.
 		vous trouverez un bouton dans le coin supérieur droit 
 		vous permettant de créer des nouveaux projets.
 		Cliquez dessus.
-		\begin{center}
-			\includegraphics[width=.5\textwidth]{image/GitLabCreateProject00.png}
-		\end{center}
+		\image{GitLabCreateProject00}{.8cm}
 	\item 
-		Donnez à ce projet le nom : \samp{Dev1TdGit}
+		Donnez à ce projet le nom : \samp{dev1-td-git}
 		et confirmez la création du projet.
+		\image{GitLabCreateProject01}{4cm}
 		Vous êtes redirigé vers la page d'accueil du projet.
-		\begin{center}
-			\includegraphics[width=.5\textwidth]{image/GitLabCreateProject01.png}
-		\end{center}
 	\end{steps}
 \end{Tutoriel}
 
@@ -254,11 +266,12 @@ Nous avons installé à l'école le serveur \bsc{Gitlab for ÉSI}.
 	Pour effectuer ce push :
 	\begin{steps}
 	\item 
-		Sur la page d'accueil de votre dépôt GitLab,
+		Sur la page d'accueil de votre dépôt \bsc{GitLab},
 		récupérez l'url \samp{https} de ce dépôt.
  		Elle sera du type
-		\url{https://git.esi-bru.be/g12345/Dev1TdGit.git}.
+		\url{https://git.esi-bru.be/g12345/dev1-td-git.git}.
 		Le plus simple est de la copier dans le presse-papier.
+		\image{GitLabCreateProject02}{2cm}
 	\item 
 		Dans NetBeans :
 		\begin{steps}
@@ -268,7 +281,7 @@ Nous avons installé à l'école le serveur \bsc{Gitlab for ÉSI}.
 		\end{steps}
 	\end{steps}
 	Comme c'est le tout premier \emph{push} pour ce projet,
-	il va falloir indiquer à \bsc{Netbeans} quel dépôt utilisé.
+	il va falloir indiquer à \bsc{Netbeans} quel dépôt utiliser.
 	Les \emph{push} suivants seront plus immédiats.
 	\begin{steps}
 	\item 
@@ -276,39 +289,30 @@ Nous avons installé à l'école le serveur \bsc{Gitlab for ÉSI}.
 		\begin{steps}
 			\item Copiez l'url \emph{https} de votre projet
 				(celui que vous venez de copier) ;
-			\item Entrez votre \samp{username}
+			\item Entrez votre \samp{username} (c'est votre numéro d'étudiant)
 			\item Ainsi que votre \samp{password} (défini un peu plus tôt).
+			\item Vous pouvez cochez la demande de sauvegarde du mot de passe.
 			\item Cliquez sur \samp{Next>}
-			\begin{center}
-				\includegraphics[width=.5\textwidth]{image/NetBeans_Push05.png}
-			\end{center}		
+			\image{NetBeans_Push05}{4cm}
 		\end{steps}
 	\item 
-		Dans \samp{Local Branches} : 
-		\begin{steps}
-			\item Sélectionnez \samp{master -> master}
-			\item Cliquez sur \samp{Next>}
-			\begin{center}
-				\includegraphics[width=.5\textwidth]{image/NetBeans_Push06.png}
-			\end{center}		
-		\end{steps}
+		Dans \samp{Local Branches} : Cochez \samp{master -> master}
+		puis cliquez sur \samp{Next>}
+		\image{NetBeans_Push06}{3cm}
 	\item 
 		Dans \samp{Update Local References} : 
 		Il vous suffit de cliquer sur \samp{Finish}
 
 		La première fois que vous effectuez un push, un popup apparait.
 		Confirmez sans crainte.
-		\begin{center}
-			\includegraphics[width=.5\textwidth]{image/NetBeans_Push08.png}
-		\end{center}
+		\image{NetBeans_Push08}{2cm}
 	\end{steps}
 \end{Tutoriel}
 
 \begin{alertit}{On ne push que ce qui est commité}
-	Attention,
-	lors du \emph{push}, 
+	Lors du \emph{push}, 
 	seuls les commits sont envoyés sur le serveur.
-	Si vous avez sauver un fichier 
+	Si vous avez sauvé un fichier 
 	mais que vous ne l'avez pas inclus dans un commit,
 	il ne sera pas envoyé sur le serveur !
 \end{alertit}
@@ -317,22 +321,19 @@ Nous avons installé à l'école le serveur \bsc{Gitlab for ÉSI}.
 	L'effet du \emph{push} peut être constaté sur le serveur.
 	\begin{steps}
 	\item
-		Visitez la page principale de votre projet sur le serveur gitlab.
-		Le résultat de votre \samp{push} apparait sur la page d'accueil.
-		\begin{center}
-			\includegraphics[width=.7\textwidth]{image/NetBeans_Push09.png}
-		\end{center}
-	\item 
-		Via le menu \samp{Files}, 
-		vous pouvez visualiser les fichiers déposés sur le serveur
-		et leur contenu.
-		\begin{center}
-			\includegraphics[width=.7\textwidth]{image/NetBeans_Push10.png}
-		\end{center}
+		Rafraichissez la page principale de votre projet sur le serveur \bsc{gitlab}.
+		Le résultat de votre \samp{push} y apparait.
+		\image{NetBeans_Push09}{4cm}
 	\end{steps}
+	Sur cet écran, vous pouvez :
+	\begin{itemize}
+	\item Voir les informations sur le dernier commit.
+	\item Cliquer sur \samp{Commits (2)} pour une liste complète des commits.
+	\item Visualiser et explorer le contenu de votre dépôt.
+	\item \dots{}
+	\end{itemize}
 \end{Tutoriel}
 
-\newpage
 %==============================
 \section{Changement de machine}
 %==============================
@@ -348,6 +349,7 @@ pour vous connecter sur une autre et reprendre le TD à cet endroit.
 À tout de suite\dots{}
 
 \begin{Tutoriel}{Cloner un projet}
+%---------------------------------
 	Vous voici sur une nouvelle machine et vous aimeriez récupérer
 	ce qui a été déposé sur le serveur \bsc{gitlab}.
 
@@ -359,57 +361,55 @@ pour vous connecter sur une autre et reprendre le TD à cet endroit.
 		On l'utilise lorsqu'il n'y a encore \textbf{rien} sur la machine.
 	\end{infoit}
 
+\newpage
+
 	\begin{steps}
 	\item 
-		Dans NetBeans,
+		Dans \bsc{NetBeans},
 		choisissez \samp{Team/Git/Clone...}
-		\begin{center}
-			\includegraphics[width=.5\textwidth]{image/NetBeans_clone01.png}
-		\end{center}
-	\item 
-		Vous êtes renvoyé vers l'écran de clonage.
-		Pour terminer l'opération il suffit :
-		\begin{steps}
-		\item
-			Dans \samp{Remote Repository} : 
-			d'entrer l'url du dépôt, votre login et mot de passe
-			et de choisir un répertoire pour l'enregistrer ;
-			\begin{center}
-				\includegraphics[width=.7\textwidth]{image/NetBeans_clone03.png}
-			\end{center}
-		\item
-			Dans \samp{Remote Branches} : 
-			de sélectionner l'option \samp{master} ;
-			% \begin{center}
-			% 	\includegraphics[width=.7\textwidth]{image/NetBeans_clone04.png}
-			% \end{center}
-		\item
-			Dans \samp{Destination Directory} :
-			de cliquer sur \samp{Finish} ;
-		\item 
-			Enfin, de confirmer l'ouverture du projet dans NetBeans
-			\begin{center}
-				\includegraphics[width=.4\textwidth]{image/NetBeans_clone06.png}
-			\end{center}			
-		\end{steps}
+		\image{NetBeans_clone01}{3cm}
 	\end{steps}
+	Vous êtes renvoyé vers l'écran de clonage.
+	Pour terminer l'opération il suffit :
+	\begin{steps}
+	\item
+		Dans \samp{Remote Repository} : 
+		d'entrer l'url du dépôt, votre login et mot de passe
+		et de choisir un répertoire pour l'enregistrer 
+		(où sauvez-vous vos projets d'habitude ?);
+		\image{NetBeans_clone03}{4cm}
+	\item
+		Dans \samp{Remote Branches} : 
+		de sélectionner l'option \samp{master} ;
+	\item
+		Dans \samp{Destination Directory} :
+		de cliquer sur \samp{Finish} ;
+	\item 
+		Enfin, de confirmer l'ouverture du projet dans NetBeans
+		\image{NetBeans_clone06}{2cm}
+	\end{steps}
+	Votre projet (dans toute ses versions) est à présent disponible localement.
 \end{Tutoriel}
 	
 \begin{Tutoriel}{Continuer le projet}
-	Continuons à développer le projet.
+%---------------------------------
+Continuons à développer le projet.
 	Le programme doit désormais 
 	afficher le nombre de caractères du nom encodé par l'utilisateur.
 	Vous savez tout ce qu'il faut pour mener à bien cette tâche.
 	\begin{steps}
 		\item 
 			Modifiez le programme ;
-			\begin{center}
-				\includegraphics[width=.7\textwidth]{image/NetBeans_Project_10.png}
-			\end{center}		
+			\image{NetBeans_Project_10}{5cm}
+			Remarquez le triangle rouge qui indique des lignes supprimées.
 		\item 
 			Effectuez un \textbf{commit} ;	
+			(attention à bien cliquer-droit sur le projet et pas sur le fichier \bsc{Java})
 		\item 
 			Effectuez un \textbf{push} ;
+			(comme le lien avec le serveur est déjà fait,
+			vous pouvez choisir l'option \samp{Git > Remote > Push to Upstream}
+			qui le fait sans poser de question)
 		\item 
 			Allez sur le serveur et vérifiez que vos modifications s'y trouvent.
 	\end{steps}
@@ -427,7 +427,7 @@ et revenez à la machine du début du TD.
 
 À tout de suite\dots{}
 
-\begin{Tutoriel}{Pull}
+\begin{Tutoriel}{Pull - Mise à jour du projet}
 	Vous voici de retour sur la machine du début.
 	\begin{steps}
 	\item 
@@ -514,14 +514,14 @@ lorsque vous utilisez \bsc{git}.
 	vous aurez des incohérences de dépôt qu'il sera plus difficile de corriger.
 \end{alertit}
 
-\newpage
 %=================
 \section{Exercice}
 %=================
 
 Nous vous proposons un seul exercice
 consistant à déposer tous vos projets \bsc{Netbeans} développés
-lors des précédents TDS sur gitlab afin de pouvoir en disposer partout.
+lors des précédents TDs sur gitlab afin de pouvoir en disposer partout
+(dans et hors de l'école).
 
 \begin{infoit}{Limite sur les dépôts}
 	L'administrateur du serveur \bsc{gitlab}
@@ -534,9 +534,15 @@ lors des précédents TDS sur gitlab afin de pouvoir en disposer partout.
 		il est possible de déposer plusieurs projets \bsc{Netbeans}
 		dans un même dépôt mais n'ajoutons pas de complexité
 		dans le cadre de cette introduction à \bsc {git}.
-	}
-	si ce n'est pas encore fait.
+	}.
 \end{infoit}
+
+Concrètement :
+\begin{enumerate}
+\item Créez un dépôt sur \bsc{GitLab}.
+\item Rassemblez tout votre travail dans un seul projet \bsc{Netbeans}.
+\item Sauvez-le sur le serveur.
+\end{enumerate}
 
 %=================
 \section{Conclusion}
