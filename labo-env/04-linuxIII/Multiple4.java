@@ -12,6 +12,8 @@ public class Multiple4 {
                 if (nb % 4 == 0) {
                     System.out.println(nb);
                 }
+            } else {
+                kbd.next();
             }
         }
     }
