@@ -29,7 +29,7 @@ une entrée du programme.
 \begin{itemize}
 	\index{littéral}
 	\item Une valeur écrite dans un programme est appelée
-		«~\textit{littéral}~». Cette valeur une valeur et un type. 
+		«~\textit{littéral}~». Cette \textit{valeur} a une valeur et un type. 
 
 	\item Pour qu'une valeur soit mémorisée le temps de l'exécution —~ou tout
 		du moins pendant une partie de l'exécution~— elle doit être stockée
@@ -139,6 +139,7 @@ usuelles. L'intervalle qu'il représente est généralement suffisant%
 \end{figure}
 
 \subsection{Les littéraux numérique entiers (excepté \pc{char})}
+\label{subsection:litterauxentiers}
 
 Les nombres entiers sont représentés en utilisant les chiffres habituels. Il
 est cependant possible d'écrire un nombre dans différentes bases. Il faudra
@@ -226,6 +227,17 @@ Respecte les règles suivantes~:
 	int anotherBinaryInt = 0B0110_0100;
 \end{java}
 
+\paragraph{Remarque} Pour toutes les variables de cette section, dès lors que
+la quantité —~\textit{100} dans nos exemples~— est stockée dans les variables~:
+\texttt{myInt}, \texttt{my\-Other\-Int\-Some\-Value}, \texttt{myLong} \dots\,
+\texttt{anotherBinaryInt}, c'est toujours la même quantité. 
+
+Afficher toutes ses variables, affichera \texttt{100}. Par exemple~:
+
+\begin{java}
+	System.out.println(myBinaryInt); // 100
+\end{java}
+
 \subsection{Le type primitif numérique entier particulier \pc{char}}
 
 Le type \pc{char} est un entier non signé de 16~bits représentant le code 
@@ -235,7 +247,9 @@ Unicode codé en UTF-16 du caractère
 		«~Unicode, UTF8, UTF16, UTF32\ldots et tutti quanti~» \cite{pbt-unicode}
 	}. 
 Un caractère Unicode codé en UTF-16 fait une taille de 16 bits ou de 32 bits en
-fonction du caractère qu'il représente. Le type \pc{char} en Java ne permet de
+fonction du caractère qu'il représente. 
+
+Le type \pc{char} en Java ne permet de
 ne représenter que le sous ensemble BMP (\textit{Basic Multilingual Plane}) des
 caractères Unicodes codés en UTF-16. Ceux ayant leur code compris entre
 \texttt{\textbackslash u0000} et \texttt{\textbackslash uffff}. La figure 
@@ -256,22 +270,18 @@ caractères Unicodes codés en UTF-16. Ceux ayant leur code compris entre
 	\label{fig:typeschar}
 \end{figure}
 
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=.75\linewidth]{../images/unicode-latin-2.png}
-	\caption{Table Unicode \textit{Basic Latin (ASCII)}}
-	\label{fig:tableunicode}
-\end{figure}
 
 \subsection{Les littéraux numériques entiers \pc{char}}
 
-Un littéral de type \pc{char} se caractérise par les guillemets simples
-(\textit{single quote}) qui l'entourent. 
+Un littéral de type \pc{char} se caractérise par les guillemet-apostrophes
+(\textit{single quote} ou guillemet-simples) qui l'entourent. 
 
-Le caractère \textit{a} par exemple, se représente \texttt{'a'}. Et l'on pourra
+Le caractère \textit{a} par exemple, se représente \texttt{'a'}. 
+
+Et l'on pourra
 déclarer une variable de type \pc{char} et l'initialiser avec le caractère
 \textit{a} par une instruction de la forme~:
-
+\nopagebreak
 \begin{java}
 	char myChar = 'a';
 \end{java}
@@ -280,7 +290,6 @@ La variable \pc{myChar} de type \pc{char} est initialisée avec le littéral
 \pc{'a'} de type \pc{char} également. 
 
 
-\clearpage
 \marginicon{definition}
 \index{séquence d'échappement}
 À ceci s'ajoute la possibilité \textbf{d'échapper des caractères}. Un caractère
@@ -289,7 +298,8 @@ peut parfois avoir plusieurs significations. Par exemple le caractère
 mais peut vouloir signaler simplement le caractère~\pc{'}.   
 Comment distinguer les deux ?
 
-Lorsque l'on écrit simplement un caractère, il a sa signification habituelle~: 
+Lorsque l'on écrit simplement un caractère, il a sa signification première, son 
+sens premier~: 
 \texttt{a} signifie \textit{a},
 \texttt{b} signifie \textit{b},
 \texttt{Z} signifie \textit{Z},
@@ -341,8 +351,10 @@ Selon cette norme, un nombre est représenté avec un signe, une mantisse et un
 exposant. Le tout en base 2. Un bit est utilisé pour le signe.  
 
 \[
-	nombre = signe~mantisse_2~2^{exposant_2} 
+	nombre = signe~mantisse~2^{exposant} 
 \]
+
+\medskip
 
 Il existe 2 types primitifs à virgule flottante~: \textbf{\texttt{float}} et
 \textbf{\texttt{double}} dont les tailles sont données à la figure
@@ -479,6 +491,12 @@ Les littéraux booléens sont simplement~: \pc{true} pour \textit{vrai} et
 \end{java}
 
 
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=.75\linewidth]{../images/unicode-latin-2.png}
+	\caption{Table Unicode \textit{Basic Latin (ASCII)}}
+	\label{fig:tableunicode}
+\end{figure}
 
 
 
@@ -486,7 +504,7 @@ Les littéraux booléens sont simplement~: \pc{true} pour \textit{vrai} et
 
 
 
-
+\clearpage
 \index{type référence}
 \section{Les types références}
 
@@ -504,7 +522,6 @@ Dans cette section, nous parlerons essentiellement de \texttt{String} et de
 comme \texttt{Scanner} ou \texttt{Random}. Pas d'inquiétude, nous leur règlerons
 leur compte plus tard, en développement II. 
 
-\clearpage
 \subsection{Le type référence \texttt{String}}
 
 \texttt{String} est un type référence. 
