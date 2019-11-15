@@ -78,6 +78,7 @@
 }
 {%
 	\IfBooleanTF {#1}
-	{\par\noindent\color{colmain}\hrulefill\quad\textbf{Fin #2 \arabic{#3}}\quad\hrulefill}%
+	%{\par\noindent\color{colmain}\hrulefill\quad\textbf{Fin #2 \arabic{#3}}\quad\hrulefill}%
+	{\nopagebreak\color{colmain}\vspace{-0.3cm}\rule{0.4pt}{.5cm}\rule{8cm}{0.4pt}\par}
 	{}
 }
