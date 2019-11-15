@@ -12,9 +12,9 @@ public class Exercice101 {
         String minuscule = mot.toLowerCase();
 
         int nbVoyelles = 0;
-        int nbLettres = minuscule.length() - 1;
+        int dernierIndice = minuscule.length() - 1;
         int indice = 0;
-        while (indice <= nbLettres) {
+        while (indice <= dernierIndice) {
             switch (minuscule.charAt(indice)) {
                 case 'a':
                 case 'e':

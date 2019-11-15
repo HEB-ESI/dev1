@@ -10,8 +10,8 @@ public class Exercice06 {
         System.out.print("Entrez un mot\t: ");
         String mot = clavier.nextLine();
         String minuscule = mot.toLowerCase();
-        int nbLettres = minuscule.length() - 1;
-        for (int indice = 0; indice <= nbLettres; indice++) {
+        int dernierIndice = minuscule.length() - 1;
+        for (int indice = 0; indice <= dernierIndice; indice++) {
             switch (minuscule.charAt(indice)) {
                 case 'a':
                 case 'e':

@@ -12,8 +12,8 @@ public class Exercice08 {
         String minuscule = mot.toLowerCase();
 
         int nbVoyelles = 0;
-        int nbLettres = minuscule.length() - 1;
-        for (int indice = 0; indice <= nbLettres; indice++) {
+        int dernierIndice = minuscule.length() - 1;
+        for (int indice = 0; indice <= dernierIndice; indice++) {
             switch (minuscule.charAt(indice)) {
                 case 'a':
                 case 'e':
