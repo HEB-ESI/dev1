@@ -9,14 +9,14 @@ public class Exercice102 {
 
         System.out.print("Entrez un mot\t: ");
         String mot = clavier.nextLine();
-        String miniscule = mot.toLowerCase();
+        String minuscule = mot.toLowerCase();
 
         int longueur = mot.length();
         boolean estPalindrome = true;
 
         int indice = 0;
         while (estPalindrome && indice < longueur / 2) {
-            if (miniscule.charAt(indice) != miniscule.charAt(longueur - indice - 1)) {
+            if (minuscule.charAt(indice) != minuscule.charAt(longueur - indice - 1)) {
                 estPalindrome = false;
             }
             indice++;
