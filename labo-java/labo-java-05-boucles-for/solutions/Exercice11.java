@@ -9,13 +9,13 @@ public class Exercice09 {
 
         System.out.print("Entrez un mot\t: ");
         String mot = clavier.nextLine();
-        String miniscule = mot.toLowerCase();
+        String minuscule = mot.toLowerCase();
 
         int longueur = mot.length();
         boolean estPalindrome = true;
 
         for (int indice = 0; indice < longueur / 2; indice++) {
-            if (miniscule.charAt(indice) != miniscule.charAt(longueur - indice - 1)) {
+            if (minuscule.charAt(indice) != minuscule.charAt(longueur - indice - 1)) {
                 estPalindrome = false;
             }
         }

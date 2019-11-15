@@ -9,11 +9,11 @@ public class Exercice05 {
 
         System.out.print("Entrez un mot\t: ");
         String mot = clavier.nextLine();
-        String miniscule = mot.toLowerCase();
-        int nbLettres = miniscule.length() - 1;
+        String minuscule = mot.toLowerCase();
+        int nbLettres = minuscule.length() - 1;
         System.out.print("Le mot mirroir est ");
         for (int indice = nbLettres; indice >= 0; indice--) {
-            System.out.print(miniscule.charAt(indice));
+            System.out.print(minuscule.charAt(indice));
         }
         System.out.println("");
     }
