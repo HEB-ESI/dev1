@@ -1,0 +1,3 @@
+[submodule "labo-env/05-git/depot-labo-envl-git"]
+	path = labo-env/05-git/depot-labo-envl-git
+	url = git@git.esi-bru.be:dev1/labo-envl-git
