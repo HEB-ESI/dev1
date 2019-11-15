@@ -9,16 +9,16 @@ public class Exercice06 {
 
         System.out.print("Entrez un mot\t: ");
         String mot = clavier.nextLine();
-        String miniscule = mot.toLowerCase();
-        int nbLettres = miniscule.length() - 1;
-        for (int indice = 0; indice <= nbLettres; indice++) {
-            switch (miniscule.charAt(indice)) {
+        String minuscule = mot.toLowerCase();
+        int dernierIndice = minuscule.length() - 1;
+        for (int indice = 0; indice <= dernierIndice; indice++) {
+            switch (minuscule.charAt(indice)) {
                 case 'a':
                 case 'e':
                 case 'i':
                 case 'o':
                 case 'u':
-                    System.out.print(miniscule.charAt(indice));
+                    System.out.print(minuscule.charAt(indice));
                     break;
                 default:
                 // do nothing

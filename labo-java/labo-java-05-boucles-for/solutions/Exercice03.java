@@ -9,9 +9,9 @@ public class Exercice03 {
 
         System.out.print("Entrez un mot\t: ");
         String mot = clavier.nextLine();
-        String miniscule = mot.toLowerCase();
+        String minuscule = mot.toLowerCase();
         boolean consonneEnPremier = true;
-        switch (miniscule.charAt(0)) {
+        switch (minuscule.charAt(0)) {
             case 'a':
             case 'e':
             case 'i':

@@ -9,12 +9,12 @@ public class Exercice08 {
 
         System.out.print("Entrez un mot\t: ");
         String mot = clavier.nextLine();
-        String miniscule = mot.toLowerCase();
+        String minuscule = mot.toLowerCase();
 
         int nbVoyelles = 0;
-        int nbLettres = miniscule.length() - 1;
-        for (int indice = 0; indice <= nbLettres; indice++) {
-            switch (miniscule.charAt(indice)) {
+        int dernierIndice = minuscule.length() - 1;
+        for (int indice = 0; indice <= dernierIndice; indice++) {
+            switch (minuscule.charAt(indice)) {
                 case 'a':
                 case 'e':
                 case 'i':

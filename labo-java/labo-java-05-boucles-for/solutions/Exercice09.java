@@ -9,7 +9,7 @@ public class Exercice07 {
 
         System.out.print("Entrez une pharase\t: ");
         String phrase = clavier.nextLine();
-        int nbLettres = phrase.length() - 1;
+        int dernierIndice = phrase.length() - 1;
 
         boolean commenceParMajuscule = Character.isUpperCase(phrase.charAt(0));
         System.out.print("La première lettre ");
@@ -19,7 +19,7 @@ public class Exercice07 {
             System.out.println("n'est pas une majuscule");
         }
 
-        boolean termineParPoint = phrase.charAt(nbLettres) == '.';
+        boolean termineParPoint = phrase.charAt(dernierIndice) == '.';
         System.out.print("Le dernièr caractère ");
         if (termineParPoint) {
             System.out.println("est un point");
