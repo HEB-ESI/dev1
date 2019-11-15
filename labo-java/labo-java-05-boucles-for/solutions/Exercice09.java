@@ -2,24 +2,30 @@ package esi.dev1.td5;
 
 import java.util.Scanner;
 
-public class Exercice09 {
+public class Exercice07 {
 
     public static void main(String[] args) {
         Scanner clavier = new Scanner(System.in);
 
-        System.out.print("Entrez un mot\t: ");
-        String mot = clavier.nextLine();
-        String miniscule = mot.toLowerCase();
+        System.out.print("Entrez une pharase\t: ");
+        String phrase = clavier.nextLine();
+        int nbLettres = phrase.length() - 1;
 
-        int longueur = mot.length();
-        boolean estPalindrome = true;
-
-        for (int indice = 0; indice < longueur / 2; indice++) {
-            if (miniscule.charAt(indice) != miniscule.charAt(longueur - indice - 1)) {
-                estPalindrome = false;
-            }
+        boolean commenceParMajuscule = Character.isUpperCase(phrase.charAt(0));
+        System.out.print("La première lettre ");
+        if (commenceParMajuscule) {
+            System.out.println("est une majuscule");
+        } else {
+            System.out.println("n'est pas une majuscule");
         }
 
-        System.out.println("Le mot est-il un palindrome : " + estPalindrome);
+        boolean termineParPoint = phrase.charAt(nbLettres) == '.';
+        System.out.print("Le dernièr caractère ");
+        if (termineParPoint) {
+            System.out.println("est un point");
+        } else {
+            System.out.println("n'est pas un point");
+        }
+        
     }
 }
