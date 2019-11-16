@@ -210,7 +210,7 @@ ce faire, il faut les enregistrer une fois correctement.
 		exemple si vous vous appelez Juste Leblanc~:
 
 	\begin{term}
-		git config --global user.name Juste Leblanc
+		git config --global user.name "Juste Leblanc"
 	\end{term}
 	
 	\item Enregistrez votre adresse email dans la configuration de git. Par
@@ -241,10 +241,10 @@ La commande \texttt{\textbf{log}} de git permet de voir l'historique des
 	        Historique sur une ligne avec un identifiant court.
 
 	    --name-status
-	        Affiche pour chaque \textit{commit} la liste des fichiers 
-	        et leur status.
+	        Affiche pour chaque commit la liste des fichiers 
+	        et leur état.
 
-	        Quelques statuts sont (en anglais) : Added (A), Copied (C), 
+	        Quelques états sont (en anglais) : Added (A), Copied (C), 
 	        Deleted (D), Modified (M), Renamed (R), have their 
 	        type (i.e. regular file, symlink, submodule…) changed (T), 
 	        are Unmerged (U)…
@@ -281,7 +281,7 @@ commit 8da44fddfe53771a46202a1d9512496b20609dd6
 	\end{steps}
 \end{Exercice}
 
-L'option \texttt{--name-status} affiche, pour chaque \textit{commit} la liste
+L'option \texttt{-{}-name-status} affiche, pour chaque \textit{commit} la liste
 des fichier et leur statut.  Par exemple, si pour un \textit{commit} on a~:
 
 \begin{verbatim}
@@ -299,7 +299,7 @@ Ceci veut dire~:
 	\item le fichier \texttt{logo.jpg} a été supprimé ;
 	\item le code C se trouvant dans le fichier \texttt{code.c} a été modifié ;
 	\item le fichier \texttt{avant.txt} a été renommé en \texttt{apres.txt}. Les 
-		deux fichiers sont 100\% identiques. Ils n'ont pas subit de modification. 
+		deux fichiers sont 100\% identiques. Ils n'ont pas subi de modification. (git détecte parfois un renommage alors que vous avez simplement supprimé un fichier et créé un autre identique ou très similaire. Cela n'a aucune importance pour git.)
 \end{enumerate}
 
 \begin{Exercice}*{Statuts des \textit{commits}}
@@ -316,7 +316,7 @@ Ceci veut dire~:
 
 \begin{Exercice}*{Affichage}
 	\begin{steps}
-	\item Affichez uniquement les changements des deux derniers \textit{commits}. 
+	\item Affichez les changements des deux derniers \textit{commits} uniquement.
 	\end{steps}
 \end{Exercice}
 
@@ -369,7 +369,9 @@ Le dernier \textit{commit}, en plus de son identifiant, a comme nom symbolique \
 \section{État du dépôt local et zones}
 
 La commande \texttt{\textbf{status}} de git donne l'état du dépôt.
-La commande \texttt{\textbf{add}} de git ajoute des fichiers à la zone de transit. Les commandes \texttt{\textbf{mv}} et \texttt{\textbf{rm}} déplace et supprime un fichier. 
+La commande \texttt{\textbf{add}} de git ajoute des fichiers à la zone de transit. Les commandes \texttt{\textbf{mv}} et \texttt{\textbf{rm}} de git déplace et supprime un fichier. 
+
+Ces deux commandes agissent par défaut sur la zone de transit en plus de la zone de travail (voir encadré ci-après), contrairement aux commandes \texttt{mv} et \texttt{rm} que vous connaissez déjà, qui elles n'agissent que sur la zone de travail.
 
 \bigskip
 \begin{colxbox}[colback=white,drop fuzzy shadow]
@@ -451,7 +453,7 @@ commit}).
 
 		Les modifications sont maintenant validées et prêtes à être
 		\textit{commitées} (voir figure \vref{fig:git-add}). Elles sont passées 
-		de la zone de travail (\textit{working directory}) à la zone de transfert
+		de la zone de travail (\textit{working directory}) à la zone de transit
 		(\textit{staging area}).
 
 	\end{steps}
@@ -505,7 +507,7 @@ commit}).
 	\texttt{Main}. 
 	\begin{steps}
 	
-		\item Éditez le fichier et renommer la classe. 
+		\item Éditez le fichier et renommez la classe. 
 		\item Renommez le fichier d'un simple 
 			\texttt{git mv Main.java Joxo.java} et vérifiez le résultat avec un 
 			\texttt{git status}… et un \texttt{ls}. 
@@ -524,15 +526,15 @@ comparer la zone de travail, la zone de transit et des \textit{commits}. La figu
 \begin{colxbox}[colback=white,drop fuzzy shadow]
 	\begin{verbatim}
 	git diff
-	    Compare la zone de travail avec la zone de transit
+	    Compare la zone de transit avec la zone de travail
+	git diff --staged
+	    Compare le dernier commit avec la zone de transit
 	git diff <id>
-	    Compare la zone de travail avec le commit id
+	    Compare le commit id avec la zone de travail
+	git diff --staged <id>
+	    Compare le commit id avec la zone de transit
 	git diff <id1> <id2>
 	    Compare le commit id1 avec le commit id2
-	
-	    --staged
-	        Utilise la zone de transit plutôt que la zone de travail.
-
 	\end{verbatim}
 \end{colxbox}
 \bigskip
@@ -567,7 +569,7 @@ comparer la zone de travail, la zone de transit et des \textit{commits}. La figu
 			\begin{itemize}
 				\item \texttt{git diff HEAD} puisque le dernier \textit{commit} s'appelle 
 					\texttt{HEAD};
-				\item \texttt{git log --oneline} pour trouver le numéro du dernier
+				\item \texttt{git log -{}-oneline} pour trouver le numéro du dernier
 					commit, suivi de \texttt{git diff bca37}.
 			\end{itemize}
 
@@ -582,7 +584,7 @@ comparer la zone de travail, la zone de transit et des \textit{commits}. La figu
 	\begin{steps}
 		
 		\item Comparez la zone de transit et le dernier \textit{commit} en ajoutant 
-			\texttt{--staged} aux dernières commandes. 
+			\texttt{-{}-staged} aux dernières commandes. 
 
 			Git ne vous montre plus l'ajout du commentaire javadoc qui est la
 			modification dans la zone de travail mais uniquement les
@@ -608,7 +610,7 @@ comparer la zone de travail, la zone de transit et des \textit{commits}. La figu
 \end{colxbox}
 \bigskip 
 
-Une fois les fichiers ajoutés à la zone de transfert et les dernières
+Une fois les fichiers ajoutés à la zone de transit et les dernières
 vérifications faites, nous pouvons enfin \textit{commiter} les fichiers pour
 les placer dans le dépôt local. 
 
@@ -633,7 +635,7 @@ Si vous exécutez la commande \texttt{git commit} sans l’option \texttt{-m}, g
 ouvre l’éditeur de texte par défaut du système\footnote{Sur de nombreux
 	systèmes, cet éditeur de texte par défaut est \texttt{vim}. Son utilisation
 	n’est pas intuitive. Si vous préférez nano, la commande \texttt{git config
-	--global core.editor nano} demandera à git d'enregistrer votre choix.
+	-{}-global core.editor nano} demandera à git d'enregistrer votre choix.
 } pour permettre l’écriture du message. Il est ainsi possible d’écrire un
 message avec une explication sur plusieurs lignes. 
 
@@ -641,7 +643,7 @@ Il n’y a pas de contrainte sur la forme des messages. Néanmoins, la conventio
 la plus utilisée est de commencer le message par une courte ligne de moins
 d’une cinquantaine de caractères, suivie d’une ligne vide puis d’une
 description complète. La première ligne servira de titre, par exemple, dans un
-\texttt{git log --oneline}. 
+\texttt{git log -{}-oneline}. 
 
 
 
@@ -718,8 +720,8 @@ Date:   Thu Oct 17 15:25:30 2019 +0200
 \end{alltt}
 
 La première ligne, montre que le \textit{commit} \texttt{210eb} est le dernier commit :
-\texttt{HEAD}. Le \textit{commit} \texttt{bac37} est étiqueté \textbf{origin/master} et
-est le dernier \textit{commit} sur le dépôt distant. 
+\texttt{HEAD}. Le \textit{commit} \texttt{bca37} est étiqueté \textbf{origin/master} et
+est le dernier \textit{commit} connu du dépôt distant.
 
 Pour synchroniser le dépôt local avec le dépôt distant, il faut téléverser
 (\textit{uploader}) le dépôt local (ses commits) vers le dépôt distant. 
@@ -766,7 +768,7 @@ distant en exécutant un \texttt{git pull} \textbf{avant} de commencer à travai
 	{\textit{Generate it}}
 
 	\bigskip
-	\textbf{Je suis allé voir le répertoire \texttt{.git} comme conseillé. J'ai 
+	\textbf{Je suis allé voir le répertoire \texttt{.git} comme conseillé. J'ai également 
 	vu un fichier \texttt{.gitignore} qu'est-ce que c'est ?}
 	\medskip
 
