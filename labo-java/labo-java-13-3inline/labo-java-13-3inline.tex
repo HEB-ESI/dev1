@@ -35,12 +35,13 @@
 
 
 	Ce jeu se joue seul. Le jeu est constitué d'un plateau pouvant recevoir
-	vingt billes de différentes couleurs. Il existe cinq couleurs. Au début du
-	jeu, deux billes de couleurs aléatoires sont placées à deux endroits libres
-	aléatoires. 
+	vingt billes de différentes couleurs. Une valeur par couleur. Il existe
+	cinq couleurs. Au début du jeu, deux billes de couleurs aléatoires sont
+	placées à deux endroits libres aléatoires. Le plateau de jeu est à une
+	dimension comme sur les illustrations. 
 			
 	À chaque tour de jeu, le joueur choisit quelle bille déplacer et
-	à quelle endroit la déplacer pour peu qu'il n'y ait pas plus d'une
+	à quel endroit la déplacer pour peu qu'il n'y ait pas plus d'une
 	bille à \textit{sauter}. À chaque déplacement, deux nouvelles billes de
 	couleurs aléatoires sont placées à deux endroits libres aléatoires.
 
@@ -116,7 +117,8 @@
 	\begin{enumerate}
 		\item Le plateau de jeu est représenté par un tableau d'entiers de 
 			taille 20. 
-		\item Les billes sont représentées par un entier numéroté de 1 à 5. 
+		\item Sur le plateau, les billes sont représentées par un entier 
+			numéroté de 1 à 5 correspondant à leur valeur.
 		\item Une case vide est représentée par l'entier 0. 
 		\item La classe s'appellera \texttt{g12345.inline.InLine}. Elle fait donc
 			partie du package \texttt{g12345.inline}, s'appelle \texttt{InLine} et 
@@ -185,7 +187,10 @@ Lancez vos tests… et constatez qu'ils échouent tous. C'est normal. Continuons
 			position de départ et la position d'arrivée. Votre méthode
 			vérifiera par contre que le mouvement reste bien dans le tableau,
 			qu'il y a une bille à la position de départ et que la position 
-			de destination n'est pas occupée. 
+			de destination n'est pas occupée.
+
+			La méthode lance une \texttt{IllegalArgumentException} si les
+			paramètres ne permettent pas de faire le déplacement. 
 
 		\item Lancez vos tests. Les six premiers tests doivent réussir. Le
 			dernier sera pour plus tard.
@@ -202,7 +207,7 @@ Lancez vos tests… et constatez qu'ils échouent tous. C'est normal. Continuons
 
 \begin{Exercice}{Ajouter deux billes}
 	\begin{steps}
-		\item Écrivez une méthode \texttt{add2bals} ajoutant deux billes à deux 
+		\item Écrivez une méthode \texttt{add2balls} ajoutant deux billes à deux 
 			endroits libres aléatoires du tableau de jeu. 
 	\end{steps}
 
@@ -211,7 +216,7 @@ Lancez vos tests… et constatez qu'ils échouent tous. C'est normal. Continuons
 	Voici la signature de la méthode~:
 
 	\begin{Code}{java}
-		public static void add2bals(int[] is)
+		public static void add2balls(int[] is)
 	\end{Code}
 
 	\paragraph{Remarque~:} Soyez attentif au fait que vous ne pourrez pas placer 
@@ -300,11 +305,11 @@ faire un déplacement.
 		\begin{itemize}
 			\item créer le tableau de jeu (le tableau d'entiers);
 			\item l'initialiser avec deux billes placées aléatoirement (via la 
-				méthode \texttt{add2bals});
+				méthode \texttt{add2balls});
 			\item dans une boucle~: lire le mouvement désiré, 
 				l'appliquer (via la méthode \texttt{move}) s'il est valide, 
 				ajouter deux billes placées aléatoirement
-				(via la méthode \texttt{add2bals},
+				(via la méthode \texttt{add2balls},
 				vérifier si trois billes sont en lignes et les supprimer 
 				(via la méthode \texttt{remove3inline})\footnote{Le choix est 
 				fait d'ajouter d'abord les billes supplémentaires avant de 
