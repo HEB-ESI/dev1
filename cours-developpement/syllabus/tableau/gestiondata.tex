@@ -404,21 +404,21 @@ public static int findPosition(
 			
 			Ce qui nous donne~:
 			
-
+% SRE: Je rectifie le code ci-dessous (18/11/2019)
 			\begin{java}
 /**
  * Inscrit un ou une étudiant·e.
  * 
  * @param registered le tableau d'inscrit·es
  * @param nRegistered le nombre d'inscrit·es
- * @param number le numéro à chercher
+ * @param number le numéro à enregistrer
  */
-public static void subscribe(int[] registred, int nRegistered,
+public static int subscribe(int[] registred, int nRegistered,
 				int number){
 	int pos = findPosition(registered, nRegistered, number);
-	shiftRight(registred,pos, nRegistered);
+	shiftRight(registred,pos, nRegistered-1);
 	registered[pos] = number;
-	nRegistered = nRegistered + 1;
+	return nRegistered + 1;
 }
 
 /**
@@ -427,7 +427,7 @@ public static void subscribe(int[] registred, int nRegistered,
  * @param begin l'indice de départ
  * @param end l'indice de fin
  */
-public shiftRight(int[] tab, int begin, int end){
+public static void shiftRight(int[] tab, int begin, int end){
 	for (int i = end, i >= begin; i = i - 1){
 		tab[i + 1] = tab[i];
 	}
@@ -441,20 +441,20 @@ public shiftRight(int[] tab, int begin, int end){
 			Ici, il va falloir décaler vers la gauche
 			les éléments qui suivent celui à supprimer.
 
-
+% SRE: Je rectifie le code ci-dessous (18/11/2019)
 			\begin{java}
 /**
  * Désinscrit un ou une étudiant·e.
  * 
  * @param registered le tableau d'inscrit·es
  * @param nRegistered le nombre d'inscrit·es
- * @param number le numéro à chercher
+ * @param number le numéro à supprimer
  */
-public static void unsubscribe(int[] registred, int nRegistered,
+public static int unsubscribe(int[] registred, int nRegistered,
 				int number){
 	int pos = findPosition(registered, nRegistered, number);
-	shiftLeft(registred,pos, nRegistered);
-	nRegistered = nRegistered - 1;
+	shiftLeft(registred,pos+1, nRegistered);
+	return nRegistered - 1;
 }
 
 /**
@@ -464,7 +464,7 @@ public static void unsubscribe(int[] registred, int nRegistered,
  * @param begin l'indice de départ
  * @param end l'indice de fin
  */
-public shiftLeft(int[] tab, int begin, int end){
+public static void shiftLeft(int[] tab, int begin, int end){
 	for (int i = begin, i <= end; i = i + 1){
 		tab[i - 1] = tab[i];
 	}
