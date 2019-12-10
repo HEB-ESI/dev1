@@ -876,28 +876,9 @@ public static int searchMinIndex(
 	Au total, il y aura $n-1$ étapes.
 
 	\clearpage
-	\paragraph{Algorithme.}
+	\paragraph{Algorithme.}~
 
-	Dans cet algorithme, la variable \pc{bubbleIndex} est à
-	la fois le compteur d’étapes et aussi l’indice de l’élément récepteur
-	de la bulle à la fin d’une étape donnée.
-
-	\begin{java}
-public static void bubbleSort(int[] myArray){
-	for (int bubbleIndex = 0; 
-			bubbleIndex < myArray.length - 1; 
-			bubbleIndex++){
-		for (int i = myArray.length - 2; i <= bubbleIndex; i--){
-			if (myArray[i] > myArray[i + 1]){
-				// swap values
-				int value = myArray[i];
-				myArray[i] = myArray[i+1];
-				myArray[i+1] = value;			
-			}
-		}
-	}
-}
-	\end{java}
+        \inputjava{algo-standards/bubbleSort.java}
 	
 
 %=========================
