@@ -23,35 +23,10 @@
 
 		L’algorithme rapide que nous avons vu est la recherche
 		dichotomique.
-		
-		\begin{java}
-public static int dichotomousSearch(int[] myArray, int value){
-	int leftIndex = 0;
-	int medianIndex;
-	int rightIndex = myArray.length;
-	int candidate;
-	boolean isFound = false;
 
-	while (!isFound && leftIndex < rightIndex){
-		medianIndex = (leftIndex + rightIndex) / 2;
-		candidate = myArray[medianIndex];
-		if (candidate == value){
-			isFound = true;
-		} else if (candidate < value){
-			leftIndex = medianIndex + 1;
-		} else {
-			rightIndex = medianIndex - 1;
-		}
-	}
+		\inputjava{algo-standards/binarySearch.java}
 
-	if (isFound){
-		return medianIndex;
-	} else {
-		return -1,
-	}
-}
-		\end{java}
-		
+		\clearpage
 		Dans le cas d'un langage permettant d'autres passages de paramètres que
 		le passage par valeur (cfr.~Section~\vref{paramètres}), nous pourrions
 		écrire un algorithme~:

@@ -19,8 +19,9 @@ public static void bubbleSort(int[] myArray) {
         }
     }
 }
+
 /**
- * Echange deux valeurs dans un tableau
+ * Échange deux valeurs dans un tableau
  * 
  * @param myArray un tableau
  * @param pos1 une position

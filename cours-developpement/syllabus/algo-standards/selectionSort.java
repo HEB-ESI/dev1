@@ -1,6 +1,6 @@
 /**
- * Trie le tableau reçu en paramètre via un tri par sélection des minima
- * successifs
+ * Trie le tableau reçu en paramètre via un tri par sélection 
+ * des minima successifs
  *
  * @param myArray le tableau à trier
  */
@@ -14,8 +14,10 @@ public static void selectionSort(int[] myArray) {
 }
 
 /**
- * Retourne l'indice du minimum entre les indices début et fin du tableau
- * reçu. En cas d'égalité, c'est l'indice le plus petit qui est retourné.
+ * Retourne l'indice du minimum entre les indices début et fin 
+ * du tableau reçu. 
+ *
+ * En cas d'égalité, c'est l'indice le plus petit qui est retourné.
  *
  * @param myArray le tableau d'entiers
  * @param begin l'indice de début
@@ -35,7 +37,7 @@ public static int searchMinIndex(
 }
 
 /**
- * Echange deux valeurs dans un tableau
+ * Échange deux valeurs dans un tableau
  * 
  * @param myArray un tableau
  * @param pos1 une position
