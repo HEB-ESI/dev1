@@ -40,6 +40,34 @@
 	attach boxed title to bottom right={yshift=5mm, xshift=-7mm},
 	boxed title style={colback=white},
 }
+\newtcbinputlisting{inputjava}[1]{ %% copy pasted from above
+	colback=gray!25,
+	colframe=gray!75,
+	listing only,
+        listing file={#1}, %% modified here
+	listing options={
+		style=tcblatex,
+		language=java,
+		tabsize=2,
+		keywordstyle=\color{javapurple}\bfseries,
+		stringstyle=\color{javared},
+		commentstyle=\color{javagreen},
+		numbers=left,
+		numberstyle=\tiny\color{solarizedyellow},
+		stepnumber=3,
+		numbersep=4pt,
+	},
+    sharp corners=northwest,
+    leftrule=.6em,
+    enhanced,
+    title=java,
+    coltitle=red,
+    fonttitle=\bfseries,
+	attach boxed title to bottom right={yshift=5mm, xshift=-7mm},
+	boxed title style={colback=white},
+}
+
+
 
 % usage
 %

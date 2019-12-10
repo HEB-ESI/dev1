@@ -301,26 +301,8 @@
 	L'algorithme combine la recherche de la position d’insertion et le
 	décalage concomitant de valeurs.
 
-	\begin{java}
-/**
- * Tri par insertion. 
- *
- * @param myArray tableau à trier
- */
-public static void insertionSort(int[] myArray){
-	int j, value;
-	for (int i = 1; i < myArray.length; i = i + 1){
-		value = myArray[i];
-		j = i - 1;
-		while (j >= 0 && value < myArray[j]){
-			myArray[j + 1] = myArray[j];
-			j = j - 1;
-		}
-		myArray[j + 1] = value;
-	}
-}
-	\end{java}
-
+        \inputjava{algo-standards/insertionSort.java}
+	
 %================================================
 \clearpage
 \section{Tri par sélection des minima successifs}
@@ -518,49 +500,7 @@ public static void insertionSort(int[] myArray){
 	sous-tableau non trié n’est plus que de taille 1, il contient nécessairement
 	le maximum de l’ensemble.
 
-	\begin{java}
-/**
- * Trie le tableau reçu en paramètre via un tri
- * par sélection des minima successifs
- *
- * @param myArray le tableau à trier
- */
-public static void selectionSort(int[] myArray){
-	int i;
-	int minIndex;
-	for (int i=0; i<myArray.length-1; i++){
-		minIndex = searchMinIndex(myArray, i, myArray.length-1);
-		// swap values
-		int value = myArray[i];
-		myArray[i] = myArray[minIndex];
-		myArray[minIndex] = value;
-	}
-}
-
-/**
- * Retourne l'indice du minimum entre les indices
- * début et fin du tableau reçu.
- * 
- * @param myArray le tableau d'entiers
- * @param l'indice de début
- * @param l'indice de fin
- */
-public static int searchMinIndex(
-		int[] myArray,
-		int begin,
-		int end){
-	int minIndex;
-	int i;
-	minIndex = begin;
-	for (int i = begin + 1; i<end; i++){
-		if (myArray[i] < myArray[minIndex]) {
-			minIndex = i;
-		}
-	}
-	return minIndex;	
-}
-	\end{java}
-
+	\inputjava{algo-standards/selectionSort.java}
 
 %==================
 \section{Tri bulle}
@@ -876,28 +816,9 @@ public static int searchMinIndex(
 	Au total, il y aura $n-1$ étapes.
 
 	\clearpage
-	\paragraph{Algorithme.}
+	\paragraph{Algorithme.}~
 
-	Dans cet algorithme, la variable \pc{bubbleIndex} est à
-	la fois le compteur d’étapes et aussi l’indice de l’élément récepteur
-	de la bulle à la fin d’une étape donnée.
-
-	\begin{java}
-public static void bubbleSort(int[] myArray){
-	for (int bubbleIndex = 0; 
-			bubbleIndex < myArray.length - 1; 
-			bubbleIndex++){
-		for (int i = myArray.length - 2; i <= bubbleIndex; i--){
-			if (myArray[i] > myArray[i + 1]){
-				// swap values
-				int value = myArray[i];
-				myArray[i] = myArray[i+1];
-				myArray[i+1] = value;			
-			}
-		}
-	}
-}
-	\end{java}
+        \inputjava{algo-standards/bubbleSort.java}
 	
 
 %=========================

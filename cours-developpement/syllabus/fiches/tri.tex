@@ -33,25 +33,7 @@
 		\EndAlgo
 	\end{pseudocode}
 
-	\begin{java}
-/**
- * Tri par insertion. 
- * @param myArray tableau à trier
- */
-public static insertionSort(int[] myArray){
-	int j, value;
-	for (int i = 1; i < myArray.length; i = i + 1){
-		value = myArray[i];
-		j = i - 1;
-		while (j >= 0 && value < myArray[j]){
-			myArray[j + 1] = myArray[j];
-			j = j - 1;
-		}
-		myArray[j + 1] = value;
-	}
-}
-	\end{java}
-
+        \inputjava{algo-standards/insertionSort.java}
 
 
 	
@@ -97,49 +79,7 @@ public static insertionSort(int[] myArray){
 		\EndAlgo
 	\end{pseudocode}
 
-	\begin{java}
-/**
- * Trie le tableau reçu en paramètre via un tri
- * par sélection des minima successifs
- *
- * @param myArray le tableau à trier
- */
-public static void selectionSort(int[] myArray){
-	int i;
-	int minIndex;
-	for (int i=0; i<myArray.length-1; i++){
-		minIndex = searchMinIndex(myArray, i, myArray.length-1);
-		// swap values
-		int value = myArray[i];
-		myArray[i] = myArray[minIndex];
-		myArray[minIndex] = value;
-	}
-}
-
-/**
- * Retourne l'indice du minimum entre les indices
- * début et fin du tableau reçu.
- * 
- * @param myArray le tableau d'entiers
- * @param l'indice de début
- * @param l'indice de fin
- */
-public static int searchMinIndex(
-		int[] myArray,
-		int begin,
-		int end){
-	int minIndex;
-	int i;
-	minIndex = begin;
-	for (int i = begin + 1; i<end; i++){
-		if (myArray[i] < myArray[minIndex]) {
-			minIndex = i;
-		}
-	}
-	return minIndex;	
-}
-	\end{java}
-
+	\inputjava{algo-standards/selectionSort.java}
 
 
 	
@@ -149,36 +89,18 @@ public static int searchMinIndex(
 	\begin{pseudocode}
 	\LComment Trie le tableau reçu en paramètre (via un tri bulle).
 		\Algo{bubbleSort}{\Par{myArray\InOut}{\Array{}{integers}}}{}
-			\Decl{bubbleIndex, i}{integers}
-			\For{bubbleIndex}{0}{myArray.length - 2}
-				\For[-1]{i}{myArray.length – 2}{bubbleIndex}
-					\If{myArray[i] > myArray[i + 1]}
-						\Stmt swap( myArray[i], myArray[i + 1] )
-						\RComment voir algorithme précédent
+			\Decl{burstIndex, bubbleIndex}{integers}
+			\For{burstIndex}{0}{myArray.length - 2}
+				\For[-1]{bubbleIndex}{myArray.length – 2}{burstIndex}
+					\If{myArray[bubbleIndex] > myArray[bubbleIndex + 1]}
+                                        	\LComment voir algorithme précédent
+						\Stmt swap( myArray[bubbleIndex], myArray[bubbleIndex + 1] )
 					\EndIf
 				\EndFor
 			\EndFor
 		\EndAlgo
 	\end{pseudocode}
-	
-	\begin{java}
-public static void bubbleSort(int[] myArray){
-	for (int bubbleIndex = 0; 
-			bubbleIndex < myArray.length - 1; 
-			bubbleIndex++){
-		for (int i = myArray.length - 2; i <= bubbleIndex; i--){
-			if (myArray[i] > myArray[i + 1]){
-				// swap values
-				int value = myArray[i];
-				myArray[i] = myArray[i+1];
-				myArray[i+1] = value;			
-			}
-		}
-	}
-}
-	\end{java}
-	
 
+        \inputjava{algo-standards/bubbleSort.java}
 
-	
 \end{Fiche}
