@@ -236,7 +236,7 @@ public static int delete(int[] is, int nValues, int value){
 }
 
 public static void shiftLeft(int[] is, int begin, int end){
-	for (int i=begin, i < end; i++){
+	for (int i=begin; i <= end; i++){
 		is[i-1] = is[i];
 	}
 }

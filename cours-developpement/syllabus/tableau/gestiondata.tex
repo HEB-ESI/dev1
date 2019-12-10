@@ -428,7 +428,7 @@ public static int subscribe(int[] registred, int nRegistered,
  * @param end l'indice de fin
  */
 public static void shiftRight(int[] tab, int begin, int end){
-	for (int i = end, i >= begin; i = i - 1){
+	for (int i = end; i >= begin; i = i - 1){
 		tab[i + 1] = tab[i];
 	}
 }
@@ -459,13 +459,13 @@ public static int unsubscribe(int[] registred, int nRegistered,
 
 /**
  * Décale les éléments du tableau de begin à end un à gauche
- * (et écrase donc le premier).
+ * (et écrase donc l'élément en position begin-1).
  * @param tab le tableau
  * @param begin l'indice de départ
  * @param end l'indice de fin
  */
 public static void shiftLeft(int[] tab, int begin, int end){
-	for (int i = begin, i <= end; i = i + 1){
+	for (int i = begin; i <= end; i = i + 1){
 		tab[i - 1] = tab[i];
 	}
 }
