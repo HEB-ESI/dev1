@@ -31,6 +31,7 @@ Ressources pour toute l'UE DEV1.
 
 ## Auteurs
 
+Andrew Sassoye <andrew@sassoye.be>  
 Christine Leignel <cleignel@he2b.be>  
 Don Patrick Bischop <dpbischop@he2b.be>  
 Frédéric Servais <fservais@he2b.be>  
