@@ -306,7 +306,7 @@
 			Quelle est la situation de départ quand on crée un fichier ?
 			Faisons une petite expérience pour le découvrir.
 			\begin{steps}
-			\item Si ce n'est pas encore fait, créez un dossier \samp{dev1/td2}.
+			\item Si ce n'est pas encore fait, créez un dossier \samp{dev1/td7}.
 			\item Créez-y un fichier vide.
 			\item Demandez les détails du fichier (propriétaire, groupe, permission)
 			\end{steps}
@@ -370,7 +370,7 @@
 			\end{Exercice}
 			
 			\begin{Exercice}{Modifier les permissions}
-				Créez un fichier \samp{dev1/td2/brol} 
+				Créez un fichier \samp{dev1/td7/brol} 
 				contenant un petit texte de votre choix.
 				Faites en sorte qu'il soit lisible par tout le monde
 				mais modifiable uniquement par vous.
@@ -409,10 +409,10 @@
 			Consultez à la page de manuel pour découvrir toutes les possibilités.
 
 			\begin{Exercice}{Modifier les permissions}
-				Créez un fichier \samp{dev1/td2/brol2} 
+				Créez un fichier \samp{dev1/td7/brol2} 
 				contenant un petit texte de votre choix.
-				Faites en sorte qu'il soit lisible par tout le monde
-				mais modifiable uniquement par vous.
+				Faites en sorte qu'il soit modifiable par tout le monde
+				mais lisible uniquement par vous.
 			\end{Exercice}
 
 	%======================================================
@@ -443,7 +443,7 @@
 
 			\begin{steps}
 			\item 
-				Entrez \kbd{cd ~/dev1/td2}
+				Entrez \kbd{cd ~/dev1/td7}
 				pour vous placer dans le dossier indiqué.
 			\item 
 				Entrez \kbd{touch examen} 
@@ -462,7 +462,7 @@
 		\end{Tutoriel}
 
 		\begin{Exercice}{Un fichier réservé aux étudiants}
-			Créez un fichier \samp{dev1/td2/gossip}
+			Créez un fichier \samp{dev1/td7/gossip}
 			pour partager des rumeurs entre élèves.
 			On voudrait que tous les étudiants puissent le lire et le modifier
 			mais que les enseignants ne puissent ni le lire, ni l'écrire.
@@ -483,22 +483,22 @@
 		
 		Pour bien comprendre, prenons une image.
 		Imaginons qu'un dossier possède sur sa « couverture » une liste de son contenu. 
-		Par exemple, on voit ci-contre que le dossier td2 contient 3 fichiers.
+		Par exemple, on voit ci-contre que le dossier td7 contient 3 fichiers.
 		
 		\begin{theorie}{Permissions sur un dossier}
 			Explicitons à présent le sens de chaque droit pour un dossier :
 			\begin{description}
 			\item[\samp{r} (lecture)] 
 				On a le droit de lire ce qui est écrit sur la « couverture » du dossier. 
-				On peut par exemple faire \kbd{ls td2}.
+				On peut par exemple faire \kbd{ls td7}.
 			\item[\samp{w} (écriture)] 
 				On peut modifier la « couverture » du dossier. 
-				On peut ainsi effacer un fichier (\kbd{rm td1/brol2})
-				ou en créer un (\kbd{touch td1/brol3}). 
+				On peut ainsi effacer un fichier (\kbd{rm td7/brol2})
+				ou en créer un (\kbd{touch td7/brol3}). 
 			\item[\samp{x} (ouverture)]
 				On peut « ouvrir » le dossier / entrer dedans. 
-				On peut ainsi en faire son dossier courant (\kbd{cd td2}) 
-				ou le traverser dans un chemin (\kbd{cat td2/gossip}).				
+				On peut ainsi en faire son dossier courant (\kbd{cd td7}) 
+				ou le traverser dans un chemin (\kbd{cat td7/gossip}).				
 			\end{description}
 		\end{theorie}
 
@@ -509,7 +509,7 @@
 		\end{alertbox}
 		
 		\begin{Exercice}{Les permissions sur un dossier (I)}           
-			Dans un dossier \samp{dir1} dans votre dossier \samp{td2}.
+			Dans un dossier \samp{dir1} dans votre dossier \samp{td7}.
 			Dans ce dossier, créez un fichier \samp{file}.
 			Faites en sorte que tout le monde puisse voir 
 			quels fichiers se trouvent dans \samp{dir1}
@@ -517,7 +517,7 @@
 		\end{Exercice}
 
 		\begin{Exercice}{Les permissions sur un dossier (II)}           
-			Dans un dossier \samp{dir2} dans votre dossier \samp{td2}.
+			Dans un dossier \samp{dir2} dans votre dossier \samp{td7}.
 			Dans ce dossier, créez un fichier \samp{file}.
 			Faites en sorte que tout le monde puisse modifier ce fichier 
 			mais sans pouvoir le supprimer.
