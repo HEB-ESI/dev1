@@ -120,8 +120,8 @@
 
 		\medskip
 		\begin{alertbox}
-			Attention, on remarque que vous confondez souvent 
-			la notion de \emph{groupe d'étudiants} à l'école
+			Attention, ne confondons pas
+			la notion de \emph{groupe d'étudiants} à l'école (A112 par exemple)
 			et les \emph{groupes} sur \name{GNU/Linux}.
 			C'est un même mot qui recouvre deux 
 			\emph{concepts} complètement \emph{différents}.
@@ -184,6 +184,7 @@
 		\begin{theorie}{Changer le groupe}
 			\kbd{chgrp nouveauGroupe nomFichier}
 			place le fichier indiqué dans le groupe donné.
+                        La personne qui exécute la commande doit être propriétaire du fichier \emph{et} membre du nouveau groupe.
 		\end{theorie}
 
 		Par défaut, un fichier est placé dans le groupe principal de celui qui le crée.
@@ -193,6 +194,8 @@
 			\begin{itemize}
 			\item Visualisez vos fichiers et déterminez à quel groupe ils appartiennent.
 			\item Créez un fichier de test et modifiez le groupe auquel il appartient.
+                          
+                          Pouvez-vous placer ce fichier dans le groupe \texttt{enseignants} ? Pourquoi ?
 			\end{itemize}
 		\end{Exercice}
 
@@ -200,21 +203,25 @@
 	\section{Catégories de personnes}
 	%======================================
 
-		\begin{infotbox}{Ce qu'on a déjà vu}
-			Un fichier a un propriétaire et appartient à un groupe.
+		\begin{infotbox}{Ce que nous avons déjà vu}
+			Chaque fichier a un propriétaire, et appartient à un groupe.
 		\end{infotbox}
 
-		\begin{alerttbox}{Restez concentré !} 
-			D'expérience nous constatons que vous avez du mal avec 
-			les notions qui vont suivre.
-			Restez concentrés et vérifiez que vous avez bien compris.
-		\end{alerttbox}
+		% \begin{alerttbox}{Restez concentré !}
+		% 	D'expérience nous constatons que vous avez du mal avec 
+		% 	les notions qui vont suivre.
+		% 	Restez concentrés et vérifiez que vous avez bien compris.
+		% \end{alerttbox}
 		
 		Lorsque nous allons donner des permissions sur un fichier/dossier,
 		nous allons pouvoir donner des droits différents à trois catégories
-		de personnes : le propriétaire, les utilisateurs qui sont dans le même
-		groupe que le fichier et tous les \og{}autres\fg{} 
-		(ceux qui ne sont pas dans les deux premières catégories).
+		de personnes :
+                \begin{itemize}
+                \item le \textcolor{green!50!black}{propriétaire} du fichier/dossier,
+                \item les \textcolor{blue!50!black}{utilisateurs qui sont dans le même groupe} que le fichier (excepté le propriétaire lui-même), et
+                \item \textcolor{violet}{tous les autres} : ceux qui ne sont dans aucune des deux premières catégories.
+              \end{itemize}
+
 
 		\begin{center}
 			\includegraphics[width=.8\textwidth]{image/categorie}
@@ -267,7 +274,7 @@
 		\begin{itemize}
 		\item
 			Les permissions pour le propriétaire sont \samp{rw-}.
-			Donc, (\samp{g12345}) 
+			Donc, le propriétaire (\samp{g12345}) 
 			peut voir (\texttt{r}) le contenu 
 			et modifier (\texttt{w}) le fichier \samp{welcome}.
 			Par contre, il ne peut pas l'exécuter.
@@ -280,7 +287,7 @@
 		\end{itemize}
 
 		\medskip
-		\begin{Exercice}{Déterminez les bonnes permissions}
+		\begin{Exercice}{Déterminez les bonnes permissions}\label{exo:permjava}
 			Imaginons que vous écrivez un programme \name{Java} sur \samp{linux1}.
 			Vous ne voulez pas que quelqu'un copie sur vous.
 			Par contre, vous désirez qu'il puisse exécuter la version 
@@ -372,8 +379,8 @@
 			\begin{Exercice}{Modifier les permissions}
 				Créez un fichier \samp{dev1/td7/brol} 
 				contenant un petit texte de votre choix.
-				Faites en sorte qu'il soit lisible par tout le monde
-				mais modifiable uniquement par vous.
+				Faites en sorte qu'il soit modifiable par tout le monde
+				mais lisible uniquement par vous.
 			\end{Exercice}
 
 		\subsection{Avec des lettres}
@@ -413,7 +420,13 @@
 				contenant un petit texte de votre choix.
 				Faites en sorte qu'il soit modifiable par tout le monde
 				mais lisible uniquement par vous.
-			\end{Exercice}
+                              \end{Exercice}
+
+                        \begin{Exercice}{Exécutabilité d'un programme java}
+                          Reprenez la situation de l'exercice \ref{exo:permjava}, et vérifiez avec votre voisin ou voisine que votre solution fonctionne.
+
+                          Essayez à présent de permettre à votre voisin ou voisine de lire votre code source, et enfin essayez de l'empêcher d'exécuter votre fichier compilé. Vérifiez avec elle ou avec lui à chaque étape.
+                        \end{Exercice}
 
 	%======================================================
 	\section{Groupe étudiants et groupe enseignants}
@@ -465,7 +478,7 @@
 			Créez un fichier \samp{dev1/td7/gossip}
 			pour partager des rumeurs entre élèves.
 			On voudrait que tous les étudiants puissent le lire et le modifier
-			mais que les enseignants ne puissent ni le lire, ni l'écrire.
+			mais que les enseignants ne puissent ni le lire, ni y écrire.
 		\end{Exercice}
 
 	%======================================================
