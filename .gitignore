@@ -37,3 +37,4 @@
 **/build/
 .vscode
 /labo-java/labo-java-X-git/code/HelloGit/nbproject/private/.DS_Store
+*.synctex(busy)
