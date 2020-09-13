@@ -36,5 +36,6 @@
 /labo-java/labo-java-03-alternatives/solutions/td-java/build/
 **/build/
 .vscode
-/labo-java/labo-java-X-git/code/HelloGit/nbproject/private/.DS_Store
+/labo-java/labo-java-X-git/code/HelloGit/nbproject/private/
+.DS_Store
 *.synctex(busy)
