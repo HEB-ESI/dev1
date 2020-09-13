@@ -209,7 +209,8 @@
 
 		\begin{Experience}{Les premières/dernières lignes}
 			\kbd{ls *.java | head -5}
-			pour afficher le nom de 5 fichiers \name{Java} de votre dossier courant.
+			pour afficher le nom de 5 fichiers \name{Java} de votre dossier courant.\footnote{Nous utilisons ici et dans la suite la commande \samp{ls} comme exemple simple. Cependant, filtrer l'affichage de \samp{ls} n'est généralement pas une bonne idée, par exemple parce qu'un nom de fichier pourrait contenir un retour à la ligne. Voir à ce sujet: \url{https://mywiki.wooledge.org/ParsingLs}.}
+                        %Dans le cas présent, on pourrait proposer \kbd{files=(*.java); printf \textquotesingle\%s\textbackslash n\textquotesingle{} "\$\{files[@]:0:5\}"}
 		\end{Experience}
 
 		\begin{Exercice}{Les gros dossiers}
@@ -264,6 +265,7 @@
 				pour ne garder que les noms des fichiers sans leur extension.
 				L'option \samp{d} modifie le séparateur de champ
 				qui est une tabulation par défaut.
+                                \footnote{À votre avis, que fait cette commande si le fichier \samp{ld.so.conf} est présent ?}
 			\end{itemize}
 		\end{Exemple}
 
