@@ -11,7 +11,9 @@
 %numbersep=3pt,
 
 %\@ifpackageloaded{monbeaupackage}{}{\usepackage{monbeaupackage}}
-\@ifpackageloaded{tcolorbox}{}{\usepackage[most,listings]{tcolorbox}}
+\@ifpackageloaded{tcolorbox}{}{
+  \PassOptionsToPackage{most,listings,skins}{tcolorbox}
+  \RequirePackage{tcolorbox}}
 \@ifpackageloaded{environ}{}{\usepackage{environ}}
 \tcbuselibrary{listingsutf8}
 
