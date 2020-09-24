@@ -111,8 +111,8 @@
 			print 2\\
 			print 3\\
 			print 4\\
-			print 5\\
-		\end{langagenaturel}	
+			print 5
+		\end{langagenaturel}
 		
 		Ces cinq instructions sont proches mais pas tout-à-fait identiques. 
 		En l’état, nous ne pouvons pas encore en faire une boucle%
@@ -402,7 +402,7 @@ public static void count(int n){
 
 	\begin{grammaire}
 		\grammarrule{ForStatement:}
-		    for ( \grammarrule{ForInit}; \grammarrule{Expression}; \grammarrule{ForUpdate})
+		    for ( \grammarrule{ForInit}; \grammarrule{Expression}; \grammarrule{ForUpdate} )
 		        \grammarrule{Statement}
 	\end{grammaire}
 
@@ -442,9 +442,9 @@ for (int i = début; i < fin; i = i + pas){
 
 		\begin{minipage}{80mm}
 			\begin{java}
-public static void countTo5({
-	for (int nb=1; nb<= 5; nb = nb+1){
-		System.out.printl(i);
+public static void countTo5(){
+	for (int nb=1; nb <= 5; nb = nb+1){
+		System.out.println(i);
 	}
 	System.out.println("nb n'existe plus");
 }
@@ -559,7 +559,7 @@ public static void countTo1(int n){
 
 
 		\begin{java}
-public static void printOdd(int n){
+public static void printEven(int n){
 	for (int i=2; i <= n; i = i + 2){
 		System.out.println(i);
 	}
