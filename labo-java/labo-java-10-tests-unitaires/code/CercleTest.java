@@ -1,7 +1,7 @@
 package esi.dev1.td10;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -11,9 +11,9 @@ public class CercleTest {
     /**
      * Test de la méthode périmètre avec le lancement d'une exception
      */
-    @Test(expected=IllegalArgumentException.class)
+    @Test
     public void périmètre_rayonNégatif_IAException() {
-        Cercle.périmètre(-5);
+        assertThrows(IllegalArgumentException.class, () -> MonMath.périmètre(-5));
     }
     
 }

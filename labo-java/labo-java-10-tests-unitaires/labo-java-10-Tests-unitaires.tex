@@ -17,7 +17,9 @@
 
 	Toutes ses modifications du code imposent que le code soit testé. Il doit
 	être testé à chaque modification ce qui serait fastidieux si les tests
-	n'étaient pas automatisés.  Heureusement, c'est ce que propose JUnit.
+	n'étaient pas automatisés.  Heureusement, c'est ce que propose JUnit.\\
+	
+	Attention: Pour ce TD, nous vous demandons explicitement de travailler avec Maven.
 }
 
 %====================
@@ -196,6 +198,9 @@ mais il nous reste à être rigoureux pour obtenir un code maintenable.
 Nous allons donc utiliser le framework \bsc{JUnit}
 qui va nous permettre d'obtenir cette lisibilité.
 
+
+Rappel: Pour la suite de ce TD, il est important que vous utilisiez Maven (qui ajoutera automatiquement la librairie de test JUnit à votre projet). Si ce n'est pas encore fait, veuillez donc créer un nouveau projet Java utilisant Maven.
+
 \subsection{Écrire des tests unitaires}
 %---------------------------------------
 
@@ -337,14 +342,19 @@ Un plan de tests devrait ressembler à~:
 
 Nous vous laissons écrire les deux premiers tests.
 
-Pour vérifier le lancement d'une exception dans le cas du troisième test,
-ajoutez un paramètre au tag \texttt{@Test}
-spécifiant le type de l'exception attendue.
-Comme ci-dessous~:
+Comment vérifier le lancement d'une exception dans le cas du troisième test ? Il faut cette fois utiliser la méthode \texttt{assertThrows} plutôt que \texttt{assert}. Cette méthode vérifie qu'une exception est bien déclenchée, elle prend en paramètre le type de l'exception attendue et la méthode que l'on souhaite tester.
+
+Ecrivez le code de la méthode de test ainsi:
+%Pour vérifier le lancement d'une exception dans le cas du troisième test,
+%ajoutez un paramètre au tag \texttt{@Test}
+%spécifiant le type de l'exception attendue.
+%Comme ci-dessous~:
 
 \listing[linerange=14-17]{java}{CercleTest.java}
 
-Remarquez que dans le cas présent, vous ne devez pas ajouter de méthode \texttt{assert}\footnote{Pourquoi ?}.
+Si, lors de l'exécution de l'appel de méthode \texttt{MonMath.périmètre(-5)} une exception de type \texttt{IllegalArgumentException} n'est pas déclenchée, le test échouera.
+
+%Remarquez que dans le cas présent, vous ne devez pas ajouter de méthode \texttt{assert}\footnote{Pourquoi ?}.
 
 \begin{Exercice}{Couverture de code - Exceptions}
 	Pour chacun des exercices précédents, 
