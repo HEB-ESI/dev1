@@ -8,16 +8,16 @@
 
 \begin{document}
 
-\seance{10}{Les tests unitaires}{td09-tests-unitaires}{
+\seance{10}{Les tests unitaires}{td10-tests-unitaires}{
 	Un code est souvent modifié. Cela veut dire que le temps passé à le
 	simplifier permet souvent un gain de temps lors d’une modification
 	ultérieure.  Il est même parfois conseillé de~:  écrire un code simplement
 	fonctionnel, de le modifier afin d'améliorer sa lisibilité et sa modularité
 	et, enfin, d'améliorer son efficacité.
 
-	Toutes ses modifications du code imposent que le code soit testé. Il doit
-	être testé à chaque modification ce qui serait fastidieux si les tests
-	n'étaient pas automatisés.  Heureusement, c'est ce que propose JUnit.\\
+	Toutes ces modifications du code imposent que le code soit testé. Il doit
+	être testé à chaque modification, ce qui serait fastidieux si les tests
+	n'étaient pas automatisés.  Heureusement, c'est ce que propose JUnit.
 	
 	Attention: Pour ce TD, nous vous demandons explicitement de travailler avec Maven.
 }
@@ -26,7 +26,7 @@
 \section{Introduction}
 %====================	
 
-La démarche que l'on vous propose de suivre dans ce TD permet de limiter au maximum
+La démarche que l'on vous propose de suivre dans ce TD permet de limiter %au maximum
 le nombre de \textit{bugs} dans son code%
 \footnote{%
 	Un code sans bug est difficile à obtenir,
@@ -148,7 +148,7 @@ afin de fournir une couverture de code aussi complète et exacte que possible%
 	Donnez les entrées et sorties nécessaires à l’élaboration d’une bonne couverture de code de la méthode \code{java}{boolean estAnagramme(String mot, String candidat)}. Cette méthode vérifie si une chaîne de caractères est une anagramme.
 	\begin{quote}
 		\og Une anagramme est une construction fondée sur une figure de style qui inverse ou permute les lettres d’un mot ou d’un groupe de mots pour en extraire un sens ou un mot nouveau.\fg
-		Wikipedia\footnote{https ://fr.wikipedia.org/wiki/Anagramme}.
+		Wikipedia\footnote{https://fr.wikipedia.org/wiki/Anagramme}.
 	\end{quote}
 \end{Exercice}
 

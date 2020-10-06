@@ -13,7 +13,7 @@ public class CercleTest {
      */
     @Test
     public void périmètre_rayonNégatif_IAException() {
-        assertThrows(IllegalArgumentException.class, () -> MonMath.périmètre(-5));
+        assertThrows(IllegalArgumentException.class, () -> Cercle.périmètre(-5));
     }
     
 }
