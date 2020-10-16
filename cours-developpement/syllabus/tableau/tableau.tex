@@ -151,7 +151,8 @@ public static void statistics(){
 		\pc{cpt9} qui deviendrait \pc{cpt[9]}.
 	
 		\begin{center}
-			\begin{tabular}{*{11}{>{\centering\arraybackslash}m{5mm}}}
+			\setlength{\tabcolsep}{0pt}
+			\begin{tabular}{*{11}{>{\centering\arraybackslash}m{3em}}}
 				{} &
 				\pc{cpt[0]} &
 				\pc{cpt[1]} &
@@ -164,17 +165,17 @@ public static void statistics(){
 				\pc{cpt[8]} &
 				\pc{cpt[9]} 
 				\\\hhline{~*{10}{-}}
-				\multicolumn{1}{m{5mm}|}{\pc{cpt}} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~} &
-				\multicolumn{1}{m{5mm}|}{~}
+				\multicolumn{1}{c|}{\pc{cpt}~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~} &
+				\multicolumn{1}{c|}{~}
 				\\\hhline{~*{10}{-}}
 			\end{tabular}
 		\end{center}
@@ -428,7 +429,7 @@ myArray = \{2, 3, 7\}
 			
 		\begin{pseudocode}
 			\LComment{Inverse le signe des éléments du tableau}
-			\Algo{reverseSigne}{\Par{myArray\In\Out}{\Array{10}{integers}}}{} 
+			\Algo{reverseSign}{\Par{myArray\In\Out}{\Array{10}{integers}}}{} 
 				\For{i}{0}{9}
 					\Let myArray[i] \Gets -myArray[i]
 				\EndFor
@@ -440,7 +441,7 @@ myArray = \{2, 3, 7\}
 			\Let anArray \Gets	
 				{\Array{}{integers}}
 				\{2,-3,5,-7,11,13,17,-19,23,29\}
-			\Stmt reverseSigne(anArray)
+			\Stmt reverseSign(anArray)
 		\end{pseudocode}
 
 
@@ -453,7 +454,7 @@ myArray = \{2, 3, 7\}
 		reçu par un autre. Exemples~:
 
 \begin{java}
-	public static void reverseSigne(int[] is){
+	public static void reverseSign(int[] is){
 		for (int i=0; i < is.length; i = i + 1){
 			is[i] = -is[i];
 		}
@@ -461,7 +462,7 @@ myArray = \{2, 3, 7\}
 
 	// Utilisation
 	int[] myArray = {2,-3,5,-7,11,13,17,-19,23,29};
-	reverseSigne(myArray);
+	reverseSign(myArray);
 \end{java}
 
 \marginicon{dont}

@@ -103,7 +103,7 @@
 %-----------------------------------------------
 \algblockdefx[ALGO]{Algo}{EndAlgo}[3]%
   {\printandpush\algorithmicalgo\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
-  {\popandprint\algorithmicend\ \\}
+  {\popandprint\algorithmicend}
 \algnewcommand\algorithmicalgo{\textbf{algorithm}}
 \algrenewcommand\algorithmicend{\textbf{}}
 \newcommand{\Par}[2]{#1 : #2}

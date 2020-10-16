@@ -54,8 +54,8 @@ chaines de caractères.
 
 	Cette distinction est essentiellement dictée par des détails
 	d’implémentation; un caractère pouvant se représenter de façon plus économe
-	qu’une chaine. En langage Java toujours essayer de comparer — par un
-	\pc{"A" == 'A'} — un chaine et un caractère génère une erreur de
+	qu’une chaine. En langage Java essayer de comparer — par un
+	\pc{"A" == 'A'} —  une chaine et un caractère génère une erreur de
 	compilation. 
 
 	D’autres langages, comme Python, n’ont pas de type caractère spécifique.
@@ -133,7 +133,7 @@ public static boolean contains(String word, char letter){
 \begin{java}
 String text;
 text = "al" + "go" + "rithmique";
-\end{java}<++>
+\end{java}
 	
 	\paragraph{Exemple.}
 	Écrivons un algorithme qui inverse toutes les lettres d’un mot.
@@ -353,14 +353,14 @@ public static int letterIndex(char c){
 		\item[\pc{indexToUpperChar}]
 		Retourne la forme majuscule de la n\ieme{} lettre de l’alphabet 
 		(où \textit{n} sera obligatoirement compris entre 1 et 26). 
-		Par exemple, \pc{lettreMaj(13)} retourne "M".
+		Par exemple, \pc{indexToUpperChar(13)} retourne "M".
 
-		C'est immédiat par \pc{return 0x41 + n}.
+		C'est immédiat par \pc{return 0x41 + n - 1}.
 
 		\item[\pc{indexToLowerChar}]
 		Idem pour les minuscules.
 		
-		C'est immédiat par \pc{return 0x61 + n}.
+		C'est immédiat par \pc{return 0x61 + n - 1}.
 
 	\end{description}
 
@@ -386,10 +386,10 @@ public static int letterIndex(char c){
 			à l'ordre des opérandes.
 
 			\begin{java}
-				String s1 = 1 + "2";		// "12"
-				String s2 = 1 + 2;			// "3"
-				String s3 = 1 + "2" + "3";	// "123"
-				String s4 = 1 + 2 + "3";	// "33"
+				String s1 = 1 + "2";        // "12"
+				String s2 = 1 + 2;          // "3"
+				String s3 = 1 + "2" + "3";  // "123"
+				String s4 = 1 + 2 + "3";    // "33"
 			\end{java}
 
 		\item[Chaine vers nombre]
