@@ -51,7 +51,7 @@ public class LeMotLePlusLong {
             throw new IllegalArgumentException("Le minimimum doit être "
                     + "strictement inférieur au maximum " + min + " " + max);
         }
-        return (int) (Math.random() * max + min);
+        return (int) (Math.random() * (max-min+1) + min);
     }
 
     /**
@@ -61,7 +61,7 @@ public class LeMotLePlusLong {
      */
     static char tirerVoyelle() {
         char[] voyelles = {'A', 'E', 'I', 'O', 'U', 'Y'};
-        int indice = tirerHasard(0, voyelles.length);
+        int indice = tirerHasard(0, voyelles.length - 1);
         return voyelles[indice];
     }
 
@@ -74,7 +74,7 @@ public class LeMotLePlusLong {
     static char tirerConsonne() {
         char[] consonnes = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M',
             'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z'};
-        int indice = tirerHasard(0, consonnes.length);
+        int indice = tirerHasard(0, consonnes.length - 1);
         return consonnes[indice];
     }
 
