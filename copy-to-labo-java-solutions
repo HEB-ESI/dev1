@@ -1,0 +1,52 @@
+#!/bin/bash
+
+orig=.
+dest=../labo-java-solutions
+
+
+shopt -s nullglob
+
+what=(labo-java/labo-java-??-*/{solutions,code})
+
+die() {
+    printf >&2 "%s\n" "$@"
+    exit 1;
+}
+
+convertDirName() {
+    # INPUT: labo-java/labo-java-05-boucles-for/solutions
+    # OUTPUT: td05-boucles-for/solutions
+
+    # INPUT: labo-java/labo-java-05-boucles-for/solutions
+    # OUTPUT: td05-boucles-for/solutions
+    input=$1
+    printf '%s' "td${input##*labo-java-}"
+}
+
+## make sure we're safe :
+if ! [[ -d labo-java ]]; then
+    die "Sommes-nous à la racine du dépôt DEV1 ?"
+fi
+if ! [[ -d "$dest/.git" ]]; then
+    die "La destination ne contient pas dépôt git: $dest"
+fi
+if [[ -n $(git --work-tree "$dest" --git-dir "$dest/.git" ls-files -m) ]]; then
+    die "Modified files exist in $dest. Aborting."
+fi
+
+rm -r "$dest"/*
+
+for i in "${what[@]}"; do
+    idest="$dest/$(convertDirName "$i")"
+    mkdir -p "$idest"
+    cp -r "$i" -T "$idest"
+done
+
+cat >"$dest/README.md" <<'EOF'
+# Comment consulter les solutions
+
+Si vous êtes sur https://git.esi-bru.be/dev1/labo-java
+vous pouvez consulter les fichiers en cliquant sur leur **nom**
+
+Attention à bien cliquer sous la colonne "Name", et pas "Last commit".
+EOF
