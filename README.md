@@ -41,6 +41,7 @@ Nicolas Pettiaux <npettiaux@he2b.be>
 Nicolas Richard <nrichard@he2b.be>  
 Nicolas Vansteenkiste <nvansteenkiste@he2b.be>  
 Pierre Bettens <pbettens@he2b.be>  
+Pierre Hauweele <phauweele@he2b.be>  
 Sébastien Drobisz <sdrobisz@he2b.be>  
 Selim Rexhep <srexhep@he2b.be>  
 
