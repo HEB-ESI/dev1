@@ -1,3 +1,7 @@
+[![GitHub issues](https://img.shields.io/github/issues/HEB-ESI/dev1)](https://github.com/HEB-ESI/dev1/issues)
+[![GitHub stars](https://img.shields.io/github/stars/HEB-ESI/dev1)](https://github.com/HEB-ESI/dev1/stargazers)
+[![GitHub license](https://img.shields.io/github/license/HEB-ESI/dev1)](https://github.com/HEB-ESI/dev1/blob/master/LICENSE)
+
 # DEV1 - Développement I
 
 ```
