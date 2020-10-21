@@ -49,5 +49,8 @@ Pierre Hauweele <phauweele@he2b.be>
 Sébastien Drobisz <sdrobisz@he2b.be>  
 Selim Rexhep <srexhep@he2b.be>  
 
+<a href="https://github.com/HEB-ESI/dev1/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=HEB-ESI/dev1" />
+</a>
 
 \ ![](cc-by-sa.png)
