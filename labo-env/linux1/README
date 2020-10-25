@@ -1,1 +1,7 @@
-Le dossier envl devra être copié sur linux1 (dans /eCours/dev1)
+Le dossier eCours/dev1/envl devra être copié sur linux1 (dans /eCours/dev1)
+
+après `make tarball`,
+`tar -C / -x -f envl.tar` devrait le faire
+
+Si souci de permission, mais j'en doute, il faudra qqch comme:
+`tar --strip-components 2 -C /eCours/dev1/ -x -f envl.tar`
