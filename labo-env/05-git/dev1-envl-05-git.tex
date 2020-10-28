@@ -8,13 +8,14 @@
 \usepackage{terminal}
 \usepackage[french]{varioref}
 \usepackage{newunicodechar}
+\usepackage{xspace}
 \newunicodechar{ }{~}
 \newunicodechar{ }{\,}
 \newunicodechar{…}{\ldots}
 
 \marginnumbertrue
 
-\newcommand{\git}{\textbf{git }}
+\newcommand{\git}{\textbf{git}\xspace}
 
 \begin{document}
 
@@ -146,7 +147,7 @@ de \textit{fork}.
 	\url{https://git.esi-bru.be/dev1/labo-envl-git}. Forkez le projet en cliquant
 	sur le bouton idoine.
 	\begin{center}
-	\includegraphics[width=\linewidth]{img/depot-git-2.png}
+	\includegraphics[scale=0.6]{img/depot-git-2.png}
 	\end{center}
 	
 	\item Prenez note de l'adresse du \textit{fork} qui sera de la forme~:\\
@@ -158,8 +159,7 @@ de \textit{fork}.
 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=\linewidth]{img/depot-git-fork-1.png}
-		\includegraphics[width=\linewidth]{img/depot-git-fork-2.png}
+		\includegraphics[scale=0.6]{img/depot-git-fork-1.png}
 		\caption{Un dépôt git a deux liens : https et ssh}
 		\label{fig:depot-git-3}
 	\end{figure}
