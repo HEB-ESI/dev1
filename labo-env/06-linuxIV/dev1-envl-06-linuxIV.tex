@@ -62,7 +62,7 @@
 		dans tous les programmes \name{Java} du dossier courant.
 	\end{Exemple}
 
-	Consultez la page de manuel pour voir comment paramétrer la commande.
+	% Consultez la page de manuel pour voir comment paramétrer la commande.
 
 %===================
 \section{Filtres : présentation}
@@ -76,15 +76,15 @@
 		mais aussi rechercher dans du texte donné en entrée.
 
 		\begin{Exemple}{grep comme un filtre}
-			\kbd{cat Hello.java | grep Scanner}
+			\kbd{cat -n Hello.java | grep Scanner}
 			
 			\medskip
 			Avec cette écriture, le contenu du fichier \samp{Hello.java}
 			est envoyé à la commande \samp{grep} qui n'affichera
-			que les lignes contenant le mot \samp{Scanner}.
+			que les lignes (avec leur numéro, grâce à l'option \kbd{-n}) contenant le mot \samp{Scanner}.
 		\end{Exemple}
 
-		On peut voir la commande comme un \emph{filtre}.
+		On peut voir la commande comme un \emph{filtre}. Le symbole \kbd{|} est appelé \textit{pipe} (ou \textit{tube}, en français).
 
 		\begin{theorie}{Filtres - Définition}
 			Les filtres sont des commandes qui lisent sur l'entrée standard
@@ -104,10 +104,10 @@
 \newpage
 
 		\begin{Exemple}{Combiner les filtres}
-			\kbd{cat Hello.java | grep Scanner | grep System}
+			\kbd{cat -n Hello.java | grep Scanner | grep System}
 			
 			\medskip
-			Produit sur la sortie standard toutes les lignes du fichier
+			Produit sur la sortie standard toutes les lignes (avec leur numéro) du fichier
 			\samp{Hello.java} qui contiennent \emph{à la fois}
 			les mots \samp{Scanner} et \samp{System}.
 		\end{Exemple}
@@ -117,7 +117,7 @@
 	
 		Les filtres traitent les données reçues.
 		Quelles peuvent être ces données ? N'importe quoi.
-		Nous avons vu que ça peut être le contenu d'un fichier
+		Nous avons vu que ça peut être le contenu d'un fichier (par exemple un fichier log)
 		mais ça peut aussi être le résultat d'une commande quelconque.
 		Afin d'enrichir nos exemples et exercices, 
 		voyons 2 commandes qui produisent des données.
@@ -172,7 +172,7 @@
 		\begin{Experience}{Enlever les doublons}
 			\begin{steps}
 			\item 
-				\kbd{cat | uniq}.
+				Exécutez \kbd{uniq}.
 				La commande est en attente de texte et le reproduit tel quel.
 			\item 
 				Faites-en l'expérience en entrant \kbd{salut} puis, à la ligne,
@@ -211,6 +211,10 @@
 			\kbd{ls *.java | head -5}
 			pour afficher le nom de 5 fichiers \name{Java} de votre dossier courant.\footnote{Nous utilisons ici et dans la suite la commande \samp{ls} comme exemple simple. Cependant, filtrer l'affichage de \samp{ls} n'est généralement pas une bonne idée, par exemple parce qu'un nom de fichier pourrait contenir un retour à la ligne. Voir à ce sujet: \url{https://mywiki.wooledge.org/ParsingLs}.}
                         %Dans le cas présent, on pourrait proposer \kbd{files=(*.java); printf \textquotesingle\%s\textbackslash n\textquotesingle{} "\$\{files[@]:0:5\}"}
+                        Cela fonctionne-t-il ?
+                        Essayez maintenant \kbd{ls *.java} sans filtre. Combien de lignes s'affichent ?
+
+                        À retenir : certaines commandes changent de comportement lorsqu'elles sont insérées dans un pipeline.
 		\end{Experience}
 
 		\begin{Exercice}{Les gros dossiers}
@@ -265,7 +269,7 @@
 				pour ne garder que les noms des fichiers sans leur extension.
 				L'option \samp{d} modifie le séparateur de champ
 				qui est une tabulation par défaut.
-                                \footnote{À votre avis, que fait cette commande si le fichier \samp{ld.so.conf} est présent ?}
+                                \footnote{À votre avis, que fait cette commande si le fichier \samp{ld.so.conf} est présent dans le répertoire ? Comment essayer ?}
 			\end{itemize}
 		\end{Exemple}
 
