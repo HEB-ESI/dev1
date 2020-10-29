@@ -7,6 +7,7 @@
 \usepackage{style/dev1}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{placeins}
 
 \begin{document}
 
@@ -46,11 +47,9 @@
 
 
 	Tout d'abord,
-	Créez un package \texttt{g12345.dev1.lemotlepluslong} et une classe
-	\texttt{LeMot\-Le\-Plus\-Long}. 
+	créez une classe \mbox{LeMotLePlusLong} que vous placez dans le package \texttt{g12345.dev1.lemotlepluslong}.
 	Créez aussi la méthode principale qui, dans un premier temps, 
 	affiche un message de bienvenue au 'mot le plus long'.
-
 
  	\begin{Exercice}{Hasard}
 		\'Ecrivez la méthode \code{java}{int tirerHasard(int min, int max)} qui
@@ -60,7 +59,7 @@
 		Par exemple si la méthode reçoit 3 et 8, elle retourne 6.
 		
 		Astuce: utilisez la méthode \texttt{random} de la classe \texttt{Math} qui 
-		retourne un nombre réel entre 0 et 1 non compris.
+		retourne un nombre réel entre 0 (compris) et 1 (non-compris).
 	\end{Exercice} 
 
  
@@ -79,24 +78,24 @@
 
  	\begin{Exercice}{Afficher les lettres}
  		\'Ecrivez la méthode \code{java}{void afficherLettres(char[] lettres)}
-		qui affiche le contenu du tableau de caractère \texttt{lettres}.
+		qui affiche le contenu du tableau \texttt{lettres}.
 		
 		Par exemple si la méthode reçoit le tableau 
-		\texttt{\{'E', 'E', 'I', 'O', 'C', 'D', 'M', 'R', 'Z'\}}
-		Elle affiche~:
-		
-		\begin{verbatim}
+                \begin{quote}\ttfamily
+		\{'E', 'E', 'I', 'O', 'C', 'D', 'M', 'R', 'Z'\},
+              \end{quote}
+		elle doit afficher~:
+		\begin{quote}\ttfamily
 		E E I O C D M R Z
-		\end{verbatim}
+		\end{quote}
 		
 		Cette méthode permettra d'afficher les lettres tirées par les joueurs.
-.
 	\end{Exercice} 
 
  	\begin{Exercice}{Demander les lettres}
 		\'Ecrivez la méthode \code{java}{char[] demanderLettres()}
 		qui demande à l'utilisateur s'il veut une voyelle ou une consonne
-		et qui en fonction de la réponse tire une voyelle ou une consonne.
+		et qui, en fonction de la réponse, tire une voyelle ou une consonne.
 		La méthode affiche les lettres déjà tirées et répète la demande
 		et le tirage 9 fois.
 		 
@@ -133,7 +132,7 @@
 		même lettre disponible plusieurs fois, utilisation d'une lettre non 
 		disponible, etc.
 		
-		Complètez la méthode principale.
+		Complétez la méthode principale.
 	\end{Exercice} 
 	
  	\begin{Exercice}{Mot du dictionnaire}
@@ -142,30 +141,91 @@
 		qui vérifie que le mot proposé se trouve dans le dictionnaire.
 				
 		Pour réaliser cet exercice, nous vous fournissons une librairie qui contient 
-		un dictionnaire complet, ou plus exactement la liste de tous les mots
-		acceptés par le jeu. Cette librairie vous est fournie dans un fichier
-		 \texttt{.jar} que vous devez ajouter à votre projet.	
+		un dictionnaire, ou plus exactement la liste de tous les mots
+		acceptés par le jeu. Cette librairie vous est fournie : devez l'ajouter à votre projet sous forme de dépendance.
 		 
-		\begin{infoit}{Jar}	
-		\subsection*{Mais qu’est-ce qu’un jar ?}
-			Un JAR (Java Archive) est un fichier Zip utilisé pour distribuer un 
-			ensemble de classes Java. Ce format est utilisé pour stocker les 
-			définitions des classes, ainsi que des métadonnées, constituant 
-			l’ensemble d’un programme. [Wikipedia]
-		
-		\medskip
-		\subsection*{Comment ajouter un jar donné ?}
-			Sous Netbeans, pour pouvoir utiliser les classes d’un .jar donné, il suffit :
-			\begin{enumerate}
-				\item de copier ce .jar dans un sous-dossier de votre projet (par exemple
-					dans le dossier lib, que vous créez pour l’occasion).
-				\item d’ajouter ce .jar aux librairies de votre projet.
-			\end{enumerate}
-		\end{infoit}	
+                \begin{figure}[hb]\centering
+                \includegraphics[height=6cm]{resources/whereIsPom}
+                \includegraphics[height=6cm]{resources/add-dependency-1}
+                \caption{\label{pompompom}Le fichier pom.xml (à gauche), et le menu pour ajouter une dépendance (à droite)}
+              \end{figure}
 
-	Une fois le jar ajouté à votre projet, comment l'utiliser ?
-			Le jar que nous vous fournissons contient une seule classe.
-			La classe \texttt{Dictionnaire} qui se trouve dans le package 
+                  \begin{figure}[hb]
+                    \centering
+                    \begin{Code}[basicstyle=\ttfamily]{xml}% ttfamily has the added benefit of not turning the hyphen (-) into a MINUS SIGN (−). See also https://tex.stackexchange.com/questions/33185/listings-package-changes-hyphens-to-minus-signs
+                   <repositories>
+                        <repository>
+                            <id>esi</id>
+                            <name>esi</name>
+                            <url>https://maven.esi-bru.be/</url>
+                        </repository>
+                    </repositories>
+                  \end{Code}
+                  \caption{Code à ajouter au fichier pom.xml}
+                  \label{pomrepository}
+                \end{figure}
+
+
+                
+		\begin{infoit}{Dépendances}	
+		% \subsection*{Mais qu’est-ce qu’un jar ?}
+		% 	Un JAR (Java Archive) est un fichier Zip utilisé pour distribuer un 
+		% 	ensemble de classes Java. Ce format est utilisé pour stocker les 
+		% 	définitions des classes, ainsi que des méta-données, constituant 
+		% 	l’ensemble d’un programme. [Wikipedia]
+		
+                \subsection*{Qu'est-ce qu'une dépendance ?}
+                Un \emph{dépendance} est du code dont votre projet \emph{dépend}.
+                Votre projet va \emph{dépendre} du dictionnaire pour son fonctionnement.
+                L'idée de dépendance est comprise par l'outil Maven via le fichier pom.xml.
+                % Pour que Maven cherche et trouve les dépendances, il faut
+                % \begin{enumerate}
+                % \item lui indiquer des \emph{repositories} (dépôts) où chercher, et
+                % \item \emph{déclarer} la dépendance.
+                % \end{enumerate}
+                
+		% \subsection*{Comment ajouter un jar donné ?}
+		% 	Sous Netbeans, pour pouvoir utiliser les classes d’un .jar donné, il suffit :
+		% 	\begin{enumerate}
+		% 		\item de copier ce .jar dans un sous-dossier de votre projet (par exemple
+		% 			dans le dossier lib, que vous créez pour l’occasion).
+		% 		\item d’ajouter ce .jar aux librairies de votre projet.
+		% 	\end{enumerate}
+
+                \medskip
+                \subsection*{Le fichier pom.xml ?}
+                C'est un fichier de configuration de Maven.
+                Vous le trouverez dans Netbeans sous \emph{Project Files} (voir figure~\vref{pompompom}, à gauche).
+                Prenez quelques secondes pour essayer de comprendre le format de ce fichier : c'est un fichier XML%
+                \footnote{
+                  des balises qui s'ouvrent, possèdent (parfois) des attributs,
+                  ont du contenu, et se ferment.
+                  \texttt{<balise attribut="valeur">contenu</balise>}
+                  En outre, l'indentation permet de visualiser le fait que certaines balises sont "contenues" dans d'autres.
+                }.
+
+                \medskip
+                \subsection*{Ajouter la dépendance}
+                \begin{enumerate}
+              \item Ajoutez d'abord le dépôt des librairies de l'ESI en ajoutant le code de la figure~\vref{pomrepository} dans la balise \texttt{project} (par exemple juste avant la ligne \texttt{</project>}).
+                Vérifiez que Netbeans ne souligne rien en rouge, puis sauvez.
+
+                
+              \item Ensuite, après un clic droit sur Dependencies, cliquez sur Add dependency (voir figure~\vref{pompompom}, à droite).
+                Une fenêtre s'ouvre.
+                Dans Query, indiquez \emph{Dictionnaire} et appuyez sur Enter.
+                Rapidement, le résultat suivant doit s'afficher ; sélectionnez-le et confirmez :
+                \begin{center}
+                \includegraphics[scale=0.6]{resources/add-dependency-2}
+                \end{center}
+                C'est fait ! Re-lancez votre projet pour vérifier qu'aucune erreur n'est apparue.
+
+              \end{enumerate}
+              \end{infoit}
+
+              	Une fois la dépendance ajoutée à votre projet, comment l'utiliser ?
+			La librairie que nous vous fournissons contient une seule classe : 
+			la classe \texttt{Dictionnaire} qui se trouve dans le package 
 			\texttt{esi.dev1.util}. Cette classe possède une méthode 
 			\code{java}{String[] mots()} qui retourne un tableau contenant tous les mots
 			du dictionnaire. Pour l'utiliser il suffit donc d'appeler cette méthode
@@ -175,11 +235,9 @@
 			
 			Vous avez maintenant un tableau contenant tous les mots du dictionnaire.
 			Par exemple \code{java}{System.out.println(dico[58]);} affichera 
-			le $58^e$ mot de ce dictionnaire.
-
-			
+			le 59\ieme{} mot de ce dictionnaire.
 	\end{Exercice} 
-
+        \FloatBarrier
  	\begin{Exercice}{Le meilleur mot}
  	 	\'Ecrivez la méthode 
  		\code{java}{String meilleurMot(char[] lettres)}
@@ -189,7 +247,7 @@
 
 		Testez votre méthode avec plusieurs tests JUnit.
 
-		 Intégrez cela dans la méthode principale.
+                Intégrez cela dans la méthode principale.
 	\end{Exercice}
 
  	\begin{Exercice}{Bonus 1 - Les meilleurs mots}
@@ -227,3 +285,7 @@
 
 
 \end{document}
+
+%%% Local Variables:
+%%% TeX-master: t
+%%% End:
