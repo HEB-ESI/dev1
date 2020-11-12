@@ -76,7 +76,7 @@ public static void statistics(){
 	System.out.print("Introduire le numéro de produit : ");
 	productId = keyboard.nextInt();
 	while (productId != -1){
-		System.out.print("Quantité:");
+		System.out.print("Quantité : ");
 		quantity = keyboard.nextInt();
 		switch (productId){
 			case 0:
@@ -118,16 +118,16 @@ public static void statistics(){
 	
 	\begin{java}
 
-	System.out.println("Quantité vendue de produit 0" + cpt0);
-	System.out.println("Quantité vendue de produit 1" + cpt1);
-	System.out.println("Quantité vendue de produit 2" + cpt2);
-	System.out.println("Quantité vendue de produit 3" + cpt3);
-	System.out.println("Quantité vendue de produit 4" + cpt4);
-	System.out.println("Quantité vendue de produit 5" + cpt5);
-	System.out.println("Quantité vendue de produit 6" + cpt6);
-	System.out.println("Quantité vendue de produit 7" + cpt7);
-	System.out.println("Quantité vendue de produit 8" + cpt8);
-	System.out.println("Quantité vendue de produit 9" + cpt9);
+	System.out.println("Quantité vendue de produit 0 : " + cpt0);
+	System.out.println("Quantité vendue de produit 1 : " + cpt1);
+	System.out.println("Quantité vendue de produit 2 : " + cpt2);
+	System.out.println("Quantité vendue de produit 3 : " + cpt3);
+	System.out.println("Quantité vendue de produit 4 : " + cpt4);
+	System.out.println("Quantité vendue de produit 5 : " + cpt5);
+	System.out.println("Quantité vendue de produit 6 : " + cpt6);
+	System.out.println("Quantité vendue de produit 7 : " + cpt7);
+	System.out.println("Quantité vendue de produit 8 : " + cpt8);
+	System.out.println("Quantité vendue de produit 9 : " + cpt9);
  }
 		\end{java}
 	
@@ -198,17 +198,18 @@ public static void statisticsWithArray(){
 	System.out.print("Introduire le numéro de produit : ");
 	productId = keyboard.nextInt();
 	while (productId != -1){
-		System.out.print("Quantité:");
+		System.out.print("Quantité : ");
 		quantity = keyboard.nextInt();
-	
+
 		cpt[productId] = cpt[productId] + quantity;
 
 		System.out.print("Introduire le numéro de produit : ");
-		productId = keyboard.nextInt();		
+		productId = keyboard.nextInt();
 	}
 
 	for(int i=0; i<10; i++){
-		System.out.println("Quantité vendue de produit " i + ": " + cpt[i]);		
+		System.out.println(
+				"Quantité vendue de produit " i + ": " + cpt[i]);
 	}
 }
 			
