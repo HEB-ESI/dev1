@@ -3,12 +3,12 @@ package esi.dev1.td6;
 public class ChaineUtil {
 
     static char premièreLettre(String mot) {
-        //A votre avis que doit-on faire si aucun mot n'est donné en paramètre ?
+        //À votre avis que doit-on faire si aucun mot n'est donné en paramètre ?
         return mot.charAt(0);
     }
 
     static char dernièreLettre(String mot) {
-        //A votre avis que doit-on faire si aucun mot n'est donné en paramètre ?
+        //À votre avis que doit-on faire si aucun mot n'est donné en paramètre ?
         return mot.charAt(mot.length() - 1);
     }
 

@@ -34,7 +34,7 @@ public class MathUtil {
     }
 
     static int abs(int nb) {
-        //A votre avis que fait la méthode Math.abs() ?
+        //À votre avis que fait la méthode Math.abs() ?
         int résultat = nb;
         if (résultat < 0) {
             résultat = -résultat;

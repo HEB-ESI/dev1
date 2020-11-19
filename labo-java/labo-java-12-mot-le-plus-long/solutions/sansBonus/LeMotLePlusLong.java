@@ -8,7 +8,7 @@ import java.util.Scanner;
  * plusieurs manches. Le nombre de manches est choisi au départ, par exemple 5
  * manches. Une manche se déroule en 2 étapes. Tout d’abord les joueurs, chacun
  * à leur tour, tirent au hasard soit une voyelle, soit une consonne (le score
- * choisit), jusqu’à obtenir 9 lettres. A chaque fois qu’une lettre est tirée
+ * choisit), jusqu’à obtenir 9 lettres. À chaque fois qu’une lettre est tirée
  * (voyelle ou consonne), la lettre est dévoilée aux joueurs afin qu’ils
  * puissent continuer en connaissance de cause.Ensuite les joueurs cherchent le
  * mot le plus long avec les lettres disponibles. Chaque score annonce la
