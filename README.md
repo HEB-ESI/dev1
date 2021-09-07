@@ -2,6 +2,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/HEB-ESI/dev1)](https://github.com/HEB-ESI/dev1/stargazers)
 [![GitHub license](https://img.shields.io/github/license/HEB-ESI/dev1)](https://github.com/HEB-ESI/dev1/blob/master/LICENSE)
 
+Note important : ce dépôt est désormais en lecture seule. Veuillez vous rendre au nouvel emplacement : https://git.esi-bru.be/dev1/supports/dev1
+
 # DEV1 - Développement I
 
 ```
